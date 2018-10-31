@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on 丁敬个人博客</title>
+    <link>https://www.dingjingmaster.top/categories/</link>
+    <description>Recent content in Categories on 丁敬个人博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zn-ch</language>
+    
+	<atom:link href="https://www.dingjingmaster.top/categories/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>NGINX</title>
+      <link>https://www.dingjingmaster.top/categories/nginx/</link>
+      <pubDate>Sat, 13 Oct 2018 10:51:27 +0800</pubDate>
+      
+      <guid>https://www.dingjingmaster.top/categories/nginx/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>PHP</title>
+      <link>https://www.dingjingmaster.top/categories/php/</link>
+      <pubDate>Sat, 04 Aug 2018 13:45:22 +0800</pubDate>
+      
+      <guid>https://www.dingjingmaster.top/categories/php/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>SPARK</title>
+      <link>https://www.dingjingmaster.top/categories/spark/</link>
+      <pubDate>Fri, 15 Dec 2017 15:09:03 +0800</pubDate>
+      
+      <guid>https://www.dingjingmaster.top/categories/spark/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>github</title>
+      <link>https://www.dingjingmaster.top/categories/github/</link>
+      <pubDate>Tue, 16 Oct 2018 15:27:10 +0800</pubDate>
+      
+      <guid>https://www.dingjingmaster.top/categories/github/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>go</title>
+      <link>https://www.dingjingmaster.top/categories/go/</link>
+      <pubDate>Fri, 19 Oct 2018 09:41:39 +0800</pubDate>
+      
+      <guid>https://www.dingjingmaster.top/categories/go/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>iris</title>
+      <link>https://www.dingjingmaster.top/categories/iris/</link>
+      <pubDate>Wed, 17 Oct 2018 13:29:15 +0800</pubDate>
+      
+      <guid>https://www.dingjingmaster.top/categories/iris/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>mongo</title>
+      <link>https://www.dingjingmaster.top/categories/mongo/</link>
+      <pubDate>Sun, 22 Oct 2017 09:39:03 +0800</pubDate>
+      
+      <guid>https://www.dingjingmaster.top/categories/mongo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>shell</title>
+      <link>https://www.dingjingmaster.top/categories/shell/</link>
+      <pubDate>Thu, 19 Oct 2017 16:25:05 +0800</pubDate>
+      
+      <guid>https://www.dingjingmaster.top/categories/shell/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>名词理解</title>
+      <link>https://www.dingjingmaster.top/categories/%E5%90%8D%E8%AF%8D%E7%90%86%E8%A7%A3/</link>
+      <pubDate>Fri, 12 Oct 2018 10:52:47 +0800</pubDate>
+      
+      <guid>https://www.dingjingmaster.top/categories/%E5%90%8D%E8%AF%8D%E7%90%86%E8%A7%A3/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>环境配置</title>
+      <link>https://www.dingjingmaster.top/categories/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Thu, 11 Oct 2018 12:07:55 +0800</pubDate>
+      
+      <guid>https://www.dingjingmaster.top/categories/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>资源下载</title>
+      <link>https://www.dingjingmaster.top/categories/%E8%B5%84%E6%BA%90%E4%B8%8B%E8%BD%BD/</link>
+      <pubDate>Fri, 19 Oct 2018 17:30:11 +0800</pubDate>
+      
+      <guid>https://www.dingjingmaster.top/categories/%E8%B5%84%E6%BA%90%E4%B8%8B%E8%BD%BD/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

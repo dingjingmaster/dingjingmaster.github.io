@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="zn-ch">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  
+  <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-127300551-1"></script>
+  <script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-127300551-1');</script>
+  
+  <title>Mongo CURD - 丁敬个人博客</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="丁敬" /><meta name="description" content="Mongo CURD，mongodb 的增删改查操作" />
+<meta name="keywords" content="mongodb, 增、删、改、查" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.49" />
+
+
+<link rel="canonical" href="https://www.dingjingmaster.top/post/mongo/mongo-curd/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+<link href="/dist/even.min.css?v=3.2.0" rel="stylesheet">
+
+
+
+
+
+<meta property="og:title" content="Mongo CURD" />
+<meta property="og:description" content="Mongo CURD，mongodb 的增删改查操作" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.dingjingmaster.top/post/mongo/mongo-curd/" /><meta property="article:published_time" content="2017-10-21T10:52:33&#43;08:00"/>
+<meta property="article:modified_time" content="2017-10-21T10:52:33&#43;08:00"/>
+
+<meta itemprop="name" content="Mongo CURD">
+<meta itemprop="description" content="Mongo CURD，mongodb 的增删改查操作">
+
+
+<meta itemprop="datePublished" content="2017-10-21T10:52:33&#43;08:00" />
+<meta itemprop="dateModified" content="2017-10-21T10:52:33&#43;08:00" />
+<meta itemprop="wordCount" content="4437">
+
+
+
+<meta itemprop="keywords" content="mongo,数据库," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Mongo CURD"/>
+<meta name="twitter:description" content="Mongo CURD，mongodb 的增删改查操作"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">DJ&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/resource/">
+        <li class="mobile-menu-item">资源下载</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">DJ&#39;s Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/resource/">资源下载</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Mongo CURD</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2017-10-21 10:52:33 </span>
+        <div class="post-category">
+            
+              <a href="/categories/mongo/"> mongo </a>
+            
+          </div>
+        <span class="more-meta">  </span>
+        <span class="more-meta">  </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title"></h2>
+  
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#增加-插入数据">增加/插入数据</a>
+<ul>
+<li><a href="#常用的文档插入">常用的文档插入</a></li>
+</ul></li>
+<li><a href="#查询文档">查询文档</a>
+<ul>
+<li><a href="#一般查询">一般查询</a>
+<ul>
+<li><a href="#等于条件">等于条件</a></li>
+<li><a href="#查询操作符">查询操作符</a></li>
+<li><a href="#指定and条件">指定AND条件</a></li>
+<li><a href="#指定or条件">指定OR条件</a></li>
+<li><a href="#and和or">AND和OR</a></li>
+</ul></li>
+<li><a href="#嵌入文档查询">嵌入文档查询</a>
+<ul>
+<li><a href="#文档精确匹配">文档精确匹配</a></li>
+<li><a href="#字段精确匹配">字段精确匹配</a></li>
+</ul></li>
+<li><a href="#数组查询">数组查询</a>
+<ul>
+<li><a href="#数组精确匹配">数组精确匹配</a>
+<ul>
+<li><a href="#匹配数组中指定元素">匹配数组中指定元素</a></li>
+<li><a href="#指定数组元素多个查询条件">指定数组元素多个查询条件</a></li>
+<li><a href="#元素组合满足查询条件">元素组合满足查询条件</a></li>
+<li><a href="#嵌入文档数组">嵌入文档数组</a></li>
+<li><a href="#多个查询条件">多个查询条件</a></li>
+<li><a href="#字段过滤">字段过滤</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#查找空值或不存在字段">查找空值或不存在字段</a>
+<ul>
+<li><a href="#查找不存在字段或字段值为空">查找不存在字段或字段值为空</a></li>
+<li><a href="#类型筛查">类型筛查</a></li>
+<li><a href="#存在性筛查">存在性筛查</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#查询结果迭代">查询结果迭代</a>
+<ul>
+<li><a href="#手动迭代-cursor">手动迭代 cursor</a></li>
+<li><a href="#迭代器索引">迭代器索引</a></li>
+<li><a href="#游标的行为">游标的行为</a>
+<ul>
+<li><a href="#关闭游标">关闭游标</a></li>
+<li><a href="#隔离游标">隔离游标</a></li>
+<li><a href="#游标批次">游标批次</a></li>
+<li><a href="#游标信息">游标信息</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#更新文档">更新文档</a>
+<ul>
+<li><a href="#更新行为">更新行为</a>
+<ul>
+<li><a href="#原子性">原子性</a></li>
+<li><a href="#id-字段">_id 字段</a></li>
+<li><a href="#文档大小">文档大小</a></li>
+<li><a href="#字段顺序">字段顺序</a></li>
+<li><a href="#upsert-选项">upsert 选项</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#删除文档">删除文档</a>
+<ul>
+<li><a href="#删除的行为表现">删除的行为表现</a>
+<ul>
+<li><a href="#索引">索引</a></li>
+<li><a href="#原子性-1">原子性</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#最后">最后</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    
+
+    
+    <div class="post-content">
+      
+
+<h3 id="增加-插入数据">增加/插入数据</h3>
+
+<ul>
+<li>创建集合   插入文档的时候，文档所属集合不存在，那么插入操作会创建集合</li>
+<li>主键分配   每个插入的文档都需要指定唯一的id（&rdquo;_id&rdquo;）作为主键，如果没有指定，那么mongodb驱动会自动为&rdquo;_id&rdquo;字段生成一个 ObjectId。</li>
+<li>原子性     mongoDB中的所有写操作，在单一文档层级上是原子的</li>
+</ul>
+
+<h4 id="常用的文档插入">常用的文档插入</h4>
+
+<table>
+<thead>
+<tr>
+<th align="left">函数</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">db.collection.insertOne()</td>
+<td align="left">向集合插入单个文档</td>
+</tr>
+
+<tr>
+<td align="left">db.collection.insertMany()</td>
+<td align="left">向集合中插入多个文档</td>
+</tr>
+
+<tr>
+<td align="left">db.collection.insert()</td>
+<td align="left">向集合插入一个或多个文档</td>
+</tr>
+</tbody>
+</table>
+
+<pre><code class="language-js">/* 向 users 集合插入一个文档 */
+db.users.insertOne(
+   {
+      name: &quot;sue&quot;,
+      age: 19,
+      status: &quot;P&quot;
+   }
+)
+</code></pre>
+
+<p><img src="/img/mongo/insert_one.png" alt="insert one" /></p>
+
+<pre><code class="language-js">/* 向 users 集合插入多个文档 */
+db.users.insertMany(
+   [
+     { name: &quot;bob&quot;, age: 42, status: &quot;A&quot;, },
+     { name: &quot;ahn&quot;, age: 22, status: &quot;A&quot;, },
+     { name: &quot;xi&quot;, age: 34, status: &quot;D&quot;, }
+   ]
+)
+</code></pre>
+
+<p><img src="/img/mongo/insert_many.png" alt="insert one" /></p>
+
+<pre><code class="language-js">/* insert 向 users 集合插入一个文档 */
+db.users.insert(
+   {
+      name: &quot;sue&quot;,
+      age: 19,
+      status: &quot;P&quot;
+   }
+)
+</code></pre>
+
+<p><img src="/img/mongo/insert.png" alt="insert one" /></p>
+
+<pre><code class="language-js">/* insert 向 users 集合插入读个文档 */
+db.users.insert(
+   [
+     { name: &quot;bob&quot;, age: 42, status: &quot;A&quot;, },
+     { name: &quot;ahn&quot;, age: 22, status: &quot;A&quot;, },
+     { name: &quot;xi&quot;, age: 34, status: &quot;D&quot;, }
+   ]
+)
+</code></pre>
+
+<p><img src="/img/mongo/insert_2.png" alt="insert one" /></p>
+
+<h3 id="查询文档">查询文档</h3>
+
+<blockquote>
+<p>db.collection.find( &lt;查询条件&gt;, &lt;查询结果返回字段&gt;)</p>
+</blockquote>
+
+<ul>
+<li>结果返回一个指向匹配文档的 cursor</li>
+</ul>
+
+<h4 id="一般查询">一般查询</h4>
+
+<h5 id="等于条件">等于条件</h5>
+
+<ul>
+<li>查询条件可以用 <code>{&lt;field1&gt;:&lt;value1&gt;, ...}</code> 的表达式形式指定包含 <code>field</code> 且该field 等于指定 <code>value</code>的所有文档。</li>
+</ul>
+
+<pre><code class="language-js">/* test 集合中查找 status 字段等于 &quot;A&quot; 的所有文档 */
+db.test.find( { status: &quot;A&quot; } )
+</code></pre>
+
+<h5 id="查询操作符">查询操作符</h5>
+
+<ul>
+<li>查询条件可以用 <code>{ &lt;field1&gt;: { &lt;operator1&gt;: &lt;value1&gt; }, ... }</code> 的表达式形式指定包含 <code>field</code> 字段且该field满足 <code>{ &lt;operator1&gt;: &lt;value1&gt; }</code>条件的所有文档。</li>
+</ul>
+
+<pre><code class="language-js">/* test 集合中查找 status 字段值为 &quot;P&quot; 或 &quot;D&quot; 的所有文档 */
+db.test.find( { status: { $in: [ &quot;P&quot;, &quot;D&quot; ] } } )
+</code></pre>
+
+<h5 id="指定and条件">指定AND条件</h5>
+
+<ul>
+<li>查询条件可以在集合文档的多个字段上指定条件。隐含地，一个逻辑的 AND 连接词会连接复合查询的子句，使得查询选出集合中匹配所有条件的文档。</li>
+</ul>
+
+<pre><code class="language-js">/* 在 test 集合中检索 status 等于 &quot;A&quot; 并且 age 小于 30 是所有文档 */
+db.test.find( { status: &quot;A&quot;, age: { $lt: 30 } } )
+</code></pre>
+
+<h5 id="指定or条件">指定OR条件</h5>
+
+<ul>
+<li>通过使用 $or 操作符，你可以指定一个使用逻辑 OR 连接词连接各子句的复合查询选择集合中匹配至少一个条件的文档。</li>
+</ul>
+
+<pre><code class="language-js">/* 在 test 集合中查找 status 等于 &quot;A&quot; 或 age 小于 30 的所有文档 */
+db.test.find(
+   {
+     $or: [ { status: &quot;A&quot; }, { age: { $lt: 30 } } ]
+   }
+)
+</code></pre>
+
+<h5 id="and和or">AND和OR</h5>
+
+<pre><code class="language-js">/* 在 test 集合中查找 status 等于 &quot;A&quot; 且 (age 小于30 或 type 等于 1)的所有文档 */
+db.test.find(
+   {
+     status: &quot;A&quot;,
+     $or: [ { age: { $lt: 30 } }, { type: 1 } ]
+   }
+)
+</code></pre>
+
+<h4 id="嵌入文档查询">嵌入文档查询</h4>
+
+<h5 id="文档精确匹配">文档精确匹配</h5>
+
+<ul>
+<li>使用 <code>{ &lt;field&gt;: &lt;value&gt; }</code> 并且 &ldquo;<value>&rdquo; 为要匹配文档的查询文档，来指定匹配整个内嵌文档的完全相等条件.(要使)相等条件匹配上内嵌文档需要指定 <value> 包括字段顺序的精确匹配。</li>
+</ul>
+
+<pre><code class="language-js">/* 查询 test 集合中匹配所有 favorites 字段是中只包含article 和 food 字段 且 (artist=&quot;Picasso&quot; food=&quot;pizza&quot;) 的文档 */
+db.test.find( { favorites: { artist: &quot;Picasso&quot;, food: &quot;pizza&quot; } } )
+</code></pre>
+
+<h5 id="字段精确匹配">字段精确匹配</h5>
+
+<ul>
+<li>使用 dot notation 匹配内嵌文档中的特定的字段。内嵌文档中特定字段的相等匹配将筛选出集合中内嵌文档包含该指定字段并等于指定的值的文档。内嵌文档可以包含其他的字段</li>
+</ul>
+
+<pre><code class="language-js">/* 查找 test 集合中，包含 favorites 字段，且该字段下 内嵌文档包含 artist 字段, 且字段值为 &quot;Picasso&quot; 的所有文档 */
+db.test.find( { &quot;favorites.artist&quot;: &quot;Picasso&quot; } )
+</code></pre>
+
+<h4 id="数组查询">数组查询</h4>
+
+<h5 id="数组精确匹配">数组精确匹配</h5>
+
+<ul>
+<li>要指定数组相等匹配，使用查询文档 { <field>: <value> } 其中 <value> 是匹配的数组。数组的相等匹配要求数组字段与指定的匹配数组 <value> 完全 相符，包括数组元素的顺序。
+```js
+/* 查询 test 集合中，包含 badges 字段 且 值为 [&ldquo;blue&rdquo;, &ldquo;black&rdquo;]  */
+db.test.find( { badges: [ &ldquo;blue&rdquo;, &ldquo;black&rdquo; ] } )</li>
+</ul>
+
+<p>// 返回结果示例
+{
+   &ldquo;_id&rdquo; : 1,
+   &ldquo;name&rdquo; : &ldquo;sue&rdquo;,
+   &ldquo;age&rdquo; : 19,
+   &ldquo;type&rdquo; : 1,
+   &ldquo;status&rdquo; : &ldquo;P&rdquo;,
+   &ldquo;favorites&rdquo; : { &ldquo;artist&rdquo; : &ldquo;Picasso&rdquo;, &ldquo;food&rdquo; : &ldquo;pizza&rdquo; },
+   &ldquo;finished&rdquo; : [ 17, 3 ]
+   &ldquo;badges&rdquo; : [ &ldquo;blue&rdquo;, &ldquo;black&rdquo; ],
+   &ldquo;points&rdquo; : [ { &ldquo;points&rdquo; : 85, &ldquo;bonus&rdquo; : 20 }, { &ldquo;points&rdquo; : 85, &ldquo;bonus&rdquo; : 10 } ]
+}</p>
+
+<pre><code>###### 匹配一个数组元素
+
+- 等于匹配可以指定匹配数组中的单一元素。如果数组中至少 一个 元素包含特定的值，就可以匹配这些声明。
+
+```js
+/* 查询 test 集合中包含 badges 字段，且该字段数组中包含 &quot;black&quot; 的所有文档 */
+db.test.find( { badges: &quot;black&quot; } )
+
+// 返回结果示例
+{
+   &quot;_id&quot; : 6,
+   &quot;name&quot; : &quot;abc&quot;,
+   &quot;age&quot; : 43,
+   &quot;type&quot; : 1,
+   &quot;status&quot; : &quot;A&quot;,
+   &quot;favorites&quot; : { &quot;food&quot; : &quot;pizza&quot;, &quot;artist&quot; : &quot;Picasso&quot; },
+   &quot;finished&quot; : [ 18, 12 ],
+   &quot;badges&quot; : [ &quot;black&quot;, &quot;blue&quot; ],
+   &quot;points&quot; : [ { &quot;points&quot; : 78, &quot;bonus&quot; : 8 }, { &quot;points&quot; : 57, &quot;bonus&quot; : 7 } ]
+}
+</code></pre>
+
+<h6 id="匹配数组中指定元素">匹配数组中指定元素</h6>
+
+<ul>
+<li>等于匹配可以指定匹配数组某一特定所有或位置的元素，使用 dot notation。</li>
+</ul>
+
+<pre><code class="language-js">/* 查询 test 集合中包含 badges 字段，且该字段第 0 个元素值为 &quot;black&quot; 的所有文档 */
+db.test.find( { &quot;badges.0&quot;: &quot;black&quot; } )
+
+// 返回结果示例
+{
+   &quot;_id&quot; : 6,
+   &quot;name&quot; : &quot;abc&quot;,
+   &quot;age&quot; : 43,
+   &quot;type&quot; : 1,
+   &quot;status&quot; : &quot;A&quot;,
+   &quot;favorites&quot; : { &quot;food&quot; : &quot;pizza&quot;, &quot;artist&quot; : &quot;Picasso&quot; },
+   &quot;finished&quot; : [ 18, 12 ],
+   &quot;badges&quot; : [ &quot;black&quot;, &quot;blue&quot; ],
+   &quot;points&quot; : [ { &quot;points&quot; : 78, &quot;bonus&quot; : 8 }, { &quot;points&quot; : 57, &quot;bonus&quot; : 7 } ]
+}
+</code></pre>
+
+<h6 id="指定数组元素多个查询条件">指定数组元素多个查询条件</h6>
+
+<ul>
+<li>使用 $elemMatch 操作符为数组元素指定复合条件，以查询数组中至少一个元素满足所有指定条件的文档。</li>
+</ul>
+
+<pre><code class="language-js">/* 查询 test 集合中，包含 finished 字段,且该字段值是数组,该数组中有原始 大于15 且 小于20 的所有文档  */
+db.test.find( { finished: { $elemMatch: { $gt: 15, $lt: 20 } } } )
+
+// 返回结果
+{
+   &quot;_id&quot; : 6,
+   &quot;name&quot; : &quot;abc&quot;,
+   &quot;age&quot; : 43,
+   &quot;type&quot; : 1,
+   &quot;status&quot; : &quot;A&quot;,
+   &quot;favorites&quot; : { &quot;food&quot; : &quot;pizza&quot;, &quot;artist&quot; : &quot;Picasso&quot; },
+   &quot;finished&quot; : [ 18, 12 ],
+   &quot;badges&quot; : [ &quot;black&quot;, &quot;blue&quot; ],
+   &quot;points&quot; : [ { &quot;points&quot; : 78, &quot;bonus&quot; : 8 }, { &quot;points&quot; : 57, &quot;bonus&quot; : 7 } ]
+}
+</code></pre>
+
+<h6 id="元素组合满足查询条件">元素组合满足查询条件</h6>
+
+<pre><code class="language-js">/* 查询 test 集合中，包含 finished 字段,且该字段值是数组,该数组中有元素 大于15 且 也有元素 小于20 的所有文档 */
+db.test.find( { finished: { $gt: 15, $lt: 20 } } )
+
+// 返回结果
+{
+   &quot;_id&quot; : 2,
+   &quot;name&quot; : &quot;bob&quot;,
+   &quot;age&quot; : 42,
+   &quot;type&quot; : 1,
+   &quot;status&quot; : &quot;A&quot;,
+   &quot;favorites&quot; : { &quot;artist&quot; : &quot;Miro&quot;, &quot;food&quot; : &quot;meringue&quot; },
+   &quot;finished&quot; : [ 11, 20 ],
+   &quot;badges&quot; : [ &quot;green&quot; ],
+   &quot;points&quot; : [ { &quot;points&quot; : 85, &quot;bonus&quot; : 20 }, { &quot;points&quot; : 64, &quot;bonus&quot; : 12 } ]
+}
+</code></pre>
+
+<h6 id="嵌入文档数组">嵌入文档数组</h6>
+
+<ul>
+<li>使用数组索引匹配嵌入文档中的字段</li>
+</ul>
+
+<pre><code class="language-js">/* 查询 test 集合中，包含points的字段，且points是数组，查询该字段对于值第0个位置对象的 point value 小于55 的文档 */
+db.test.find( { 'points.0.point': { $lte: 55 } } )
+
+// 返回结果
+{
+   &quot;_id&quot; : 4,
+   &quot;name&quot; : &quot;xi&quot;,
+   &quot;age&quot; : 34,
+   &quot;type&quot; : 2,
+   &quot;status&quot; : &quot;D&quot;,
+   &quot;favorites&quot; : { &quot;artist&quot; : &quot;Chagall&quot;, &quot;food&quot; : &quot;chocolate&quot; },
+   &quot;finished&quot; : [ 5, 11 ],
+   &quot;badges&quot; : [ &quot;red&quot;, &quot;black&quot; ],
+   &quot;points&quot; : [ { &quot;point&quot; : 53, &quot;bonus&quot; : 15 }, { &quot;point&quot; : 51, &quot;bonus&quot; : 15 } ]
+}
+</code></pre>
+
+<ul>
+<li>不指定数组素银匹配字段</li>
+</ul>
+
+<p>如果你不知道文档在数组中的索引位置，用点号 (.) 将包含数组的字段的名字和内嵌文档的字段的名字连起来。</p>
+
+<pre><code class="language-js">/* 查询 test 集合中，所有 points 数组中至少有一个嵌入文档包含值小于或等于 55 的字段 points 的文档 */
+db.test.find( { 'points.points': { $lte: 55 } } )
+
+// 结果示例
+{
+   &quot;_id&quot; : 3,
+   &quot;name&quot; : &quot;ahn&quot;,
+   &quot;age&quot; : 22,
+   &quot;type&quot; : 2,
+   &quot;status&quot; : &quot;A&quot;,
+   &quot;favorites&quot; : { &quot;artist&quot; : &quot;Cassatt&quot;, &quot;food&quot; : &quot;cake&quot; },
+   &quot;finished&quot; : [ 6 ],
+   &quot;badges&quot; : [ &quot;blue&quot;, &quot;red&quot; ],
+   &quot;points&quot; : [ { &quot;points&quot; : 81, &quot;bonus&quot; : 8 }, { &quot;points&quot; : 55, &quot;bonus&quot; : 20 } ]
+}
+</code></pre>
+
+<h6 id="多个查询条件">多个查询条件</h6>
+
+<ul>
+<li>单个元素满足查询条件</li>
+</ul>
+
+<p>使用 $elemMatch 操作符为数组元素指定复合条件，以查询数组中至少一个元素满足所有指定条件的文档。</p>
+
+<pre><code class="language-js">/* 查询 test 集合中， points 数组有至少一个包含 points 小于等于 70 并且字段 bonus 等于 20 的内嵌文档的文档 */
+db.test.find( { points: { $elemMatch: { points: { $lte: 70 }, bonus: 20 } } } )
+
+// 返回结果示例
+{
+   &quot;_id&quot; : 3,
+   &quot;name&quot; : &quot;ahn&quot;,
+   &quot;age&quot; : 22,
+   &quot;type&quot; : 2,
+   &quot;status&quot; : &quot;A&quot;,
+   &quot;favorites&quot; : { &quot;artist&quot; : &quot;Cassatt&quot;, &quot;food&quot; : &quot;cake&quot; },
+   &quot;finished&quot; : [ 6 ],
+   &quot;badges&quot; : [ &quot;blue&quot;, &quot;red&quot; ],
+   &quot;points&quot; : [ { &quot;points&quot; : 81, &quot;bonus&quot; : 8 }, { &quot;points&quot; : 55, &quot;bonus&quot; : 20 } ]
+}
+</code></pre>
+
+<ul>
+<li>元素组合满足查询条件</li>
+</ul>
+
+<pre><code class="language-js">/* 查询 test 集合中，points 数组包含了以某种组合满足查询条件的元素的文档 */
+db.test.find( { &quot;points.points&quot;: { $lte: 70 }, &quot;points.bonus&quot;: 20 } )
+
+// 结果
+{
+   &quot;_id&quot; : 2,
+   &quot;name&quot; : &quot;bob&quot;,
+   &quot;age&quot; : 42,
+   &quot;type&quot; : 1,
+   &quot;status&quot; : &quot;A&quot;,
+   &quot;favorites&quot; : { &quot;artist&quot; : &quot;Miro&quot;, &quot;food&quot; : &quot;meringue&quot; },
+   &quot;finished&quot; : [ 11, 20 ],
+   &quot;badges&quot; : [ &quot;green&quot; ],
+   &quot;points&quot; : [ { &quot;points&quot; : 85, &quot;bonus&quot; : 20 }, { &quot;points&quot; : 64, &quot;bonus&quot; : 12 } ]
+}
+</code></pre>
+
+<h6 id="字段过滤">字段过滤</h6>
+
+<ul>
+<li>获取文档所有字段的话，可以湖绿该参数，若保留结果中的字段则将该字段置为 true 或 1，反之置为 false 或 0</li>
+</ul>
+
+<pre><code class="language-js">/* 查找 test 集合中 status 为 &quot;A&quot; 的所有文档，且返回这些文档的 name 字段 和 _id 字段，不反回 status 字段 */
+db.test.find( { status: &quot;A&quot; }, { name: 1, status: false } )
+</code></pre>
+
+<ul>
+<li>返回嵌入文档中的指定字段</li>
+</ul>
+
+<pre><code class="language-js">/* 查找 test 集合中 status 为 &quot;A&quot; 的所有文档，只返回 name、_id、status、favorite 下的 foot 字段 */
+db.test.find(
+   { status: &quot;A&quot; },
+   { name: 1, status: 1, &quot;favorites.food&quot;: 1 }
+)
+</code></pre>
+
+<ul>
+<li>排除嵌入文档中的特定字段</li>
+</ul>
+
+<pre><code class="language-js">/* 查找 test 集合中 status 为 &quot;A&quot; 的所有文档，除了 favorite 下的 food 字段，其它字段都返回 */
+db.test.find(
+   { status: &quot;A&quot; },
+   { &quot;favorites.food&quot;: 0 }
+)
+</code></pre>
+
+<ul>
+<li>映射数组中的嵌入文档¶</li>
+</ul>
+
+<pre><code class="language-js">/* 映射返回 name 字段、 status 字段，以及 points 数组的文档中包含 bonus 字段的文档。 默认返回 _id */
+db.test.find( { status: &quot;A&quot; }, { name: 1, status: 1, &quot;points.bonus&quot;: 1 } )
+</code></pre>
+
+<ul>
+<li>映射返回数组中特定的数组元素</li>
+</ul>
+
+<pre><code class="language-js">/* 使用 $slice 映射操作符来返回 scores 数组中最后的元素 */
+db.test.find( { status: &quot;A&quot; }, { name: 1, status: 1, points: { $slice: -1 } } )
+</code></pre>
+
+<h4 id="查找空值或不存在字段">查找空值或不存在字段</h4>
+
+<h5 id="查找不存在字段或字段值为空">查找不存在字段或字段值为空</h5>
+
+<pre><code class="language-js">/* 返回 name 字段是空 或 name 字段不存在的文档 */
+db.test.find( { name: null } )
+</code></pre>
+
+<h5 id="类型筛查">类型筛查</h5>
+
+<pre><code class="language-js">/* { name : { $type: 10 } } 查询 仅仅 匹配那些包含值是 null 的 name 字段的文档,亦即 条目 字段的值是BSON类型中的 Null (即 10 ) */
+db.test.find( { name : { $type: 10 } } )
+</code></pre>
+
+<h5 id="存在性筛查">存在性筛查</h5>
+
+<pre><code class="language-js">/* 查找不包含 name 字段的 文档 */
+db.test.find( { name : { $exists: false } } )
+</code></pre>
+
+<h3 id="查询结果迭代">查询结果迭代</h3>
+
+<h4 id="手动迭代-cursor">手动迭代 cursor</h4>
+
+<ul>
+<li>在 mongo shell 中，没有把查询结果赋值给变量，则会自动迭代前20条结果，否则需要手动迭代游标</li>
+</ul>
+
+<pre><code class="language-js">var myCursor = db.users.find( { type: 2 } );
+while (myCursor.hasNext()) {
+   print(tojson(myCursor.next()));
+}
+</code></pre>
+
+<p>或</p>
+
+<pre><code class="language-js">var myCursor =  db.users.find( { type: 2 } );
+myCursor.forEach(printjson);
+</code></pre>
+
+<h4 id="迭代器索引">迭代器索引</h4>
+
+<ul>
+<li>在 mongo shell，可以使用 toArray() 方法来迭代游标，并且以数组的形式来返回文档</li>
+</ul>
+
+<pre><code class="language-js">var myCursor = db.inventory.find( { type: 2 } );
+var documentArray = myCursor.toArray();
+var myDocument = documentArray[3];
+</code></pre>
+
+<p>或直接在游标上使用索引来访问文档</p>
+
+<pre><code class="language-js">var myCursor = db.users.find( { type: 2 } );
+var myDocument = myCursor[1];
+</code></pre>
+
+<h4 id="游标的行为">游标的行为</h4>
+
+<h5 id="关闭游标">关闭游标</h5>
+
+<ul>
+<li>默认情况下，服务在游标使用 10 分钟后 或者 客户端用尽游标后关闭游标，可以使用(cursor.noCursorTimeout()防止过时后关闭游标)</li>
+</ul>
+
+<pre><code class="language-js">var myCursor = db.users.find().noCursorTimeout();
+</code></pre>
+
+<ul>
+<li>使用 cursor.close() 手动关闭游标</li>
+</ul>
+
+<h5 id="隔离游标">隔离游标</h5>
+
+<ul>
+<li>当游标返回文档时，其他操作可能与查询交织在一起。对于MMAPv1存储引擎，如果文档发生了更改，那么在文档上进行插入操作可能会导致光标返回文档不止一次。</li>
+</ul>
+
+<h5 id="游标批次">游标批次</h5>
+
+<ul>
+<li>MongoDB 服务分批返回游标，批处理中的数据量不会超过BSON文档的最大大小。</li>
+<li>默认情况下，find()和aggregate()操作的批处理大小为101个文档。针对生成的游标发出的后续getMore操作没有默认的批处理大小，因此它们仅受16兆字节消息大小的限制。</li>
+<li>对于包含没有索引的排序操作的查询，服务器必须在返回任何结果之前加载内存中的所有文档来执行排序。</li>
+<li>当您遍历游标并到达返回批处理的末尾时，如果有更多的结果，那么cursor.next()将执行getMore操作来检索下一个批处理。</li>
+</ul>
+
+<pre><code class="language-js">var myCursor = db.inventory.find(); // 返回游标
+var myFirstDocument = myCursor.hasNext() ? myCursor.next() : null; // 获得游标第一个元素
+myCursor.objsLeftInBatch(); // 迭代游标中，批处理中还剩多少文档
+</code></pre>
+
+<h5 id="游标信息">游标信息</h5>
+
+<ul>
+<li>使用 db.serverStatus() 获得游标信息的度量文档， 文档包含以下信息：
+
+<ol>
+<li>自上次服务器重新启动以来超时游标的数量</li>
+<li>通过  DBQuery.Option.noTimeout 设置了在一段时间不活动之后防止超时断开的游标数量</li>
+<li>固定打开游标的书目</li>
+<li>游标的总数</li>
+</ol></li>
+</ul>
+
+<pre><code class="language-js">/* 获取游标信息 */
+db.serverStatus().metrics.cursor
+
+// 返回结果
+{
+   &quot;timedOut&quot; : &lt;number&gt;
+   &quot;open&quot; : {
+      &quot;noTimeout&quot; : &lt;number&gt;,
+      &quot;pinned&quot; : &lt;number&gt;,
+      &quot;total&quot; : &lt;number&gt;
+   }
+}
+</code></pre>
+
+<h3 id="更新文档">更新文档</h3>
+
+<table>
+<thead>
+<tr>
+<th align="left">操作</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">db.collection.updateOne()</td>
+<td align="left">即使可能有多个文档通过过滤条件匹配到，但是也最多也只更新一个文档。</td>
+</tr>
+
+<tr>
+<td align="left">db.collection.updateMany()</td>
+<td align="left">更新所有通过过滤条件匹配到的文档.</td>
+</tr>
+
+<tr>
+<td align="left">db.collection.replaceOne()</td>
+<td align="left">即使可能有多个文档通过过滤条件匹配到，但是也最多也只替换一个文档。</td>
+</tr>
+
+<tr>
+<td align="left">db.collection.update()</td>
+<td align="left">即使可能有多个文档通过过滤条件匹配到，但是也最多也只更新或者替换一个文档。</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li>默认情况下, db.collection.update() 只更新 一个 文档。要更新多个文档，请使用 multi 选项。</li>
+<li>更新文档意味着，除了 &ldquo;_id&rdquo; 其它字段都会替换</li>
+</ul>
+
+<pre><code class="language-js">/* 更新操作 */
+db.collection.update(
+   &lt;query&gt;, // 查找指定文档的条件
+   &lt;update&gt;, // 要更新的值
+   { // 更新相关参数，后续...
+     upsert: &lt;boolean&gt;,
+     multi: &lt;boolean&gt;,
+     writeConcern: &lt;document&gt;
+   }
+)
+</code></pre>
+
+<ul>
+<li>查询过滤文档 能够用 <field>:<value> 表达式指定相等条件并以此选出所有包含有指定 <value> 的 <field> 的文档</li>
+</ul>
+
+<pre><code class="language-js">{ &lt;field1&gt;: &lt;value1&gt;, ... }
+</code></pre>
+
+<ul>
+<li>查询过滤文档 能使用以下 ref:查询操作符 <query-selectors> 来指定查询条件</li>
+</ul>
+
+<pre><code class="language-js">{ &lt;field1&gt;: { &lt;operator1&gt;: &lt;value1&gt; }, ... }
+</code></pre>
+
+<h4 id="更新行为">更新行为</h4>
+
+<h5 id="原子性">原子性</h5>
+
+<ul>
+<li>MongoDB中所有的写操作在单一文档层级上是原子的</li>
+</ul>
+
+<h5 id="id-字段">_id 字段</h5>
+
+<ul>
+<li>一旦设定，不能更新 _id 字段的值，也不能用有不同 _id 字段值的替换文档来替换已经存在的文档。</li>
+</ul>
+
+<h5 id="文档大小">文档大小</h5>
+
+<ul>
+<li>当执行更新操作增加的文档大小超过了为该文档分配的空间时。更新操作会在磁盘上重定位该文档。</li>
+</ul>
+
+<h5 id="字段顺序">字段顺序</h5>
+
+<ul>
+<li>MongoDB按照文档写入的顺序整理文档字段，除了如下的情况：
+
+<ol>
+<li>_id 字段始终是文档中的第一个字段。</li>
+<li>包括字段名称的 renaming 操作可能会导致文档中的字段重新排序。</li>
+</ol></li>
+</ul>
+
+<h5 id="upsert-选项">upsert 选项</h5>
+
+<ul>
+<li>更新文档时，若操作包含 upsert : true 并且 没有文档匹配指定的过滤器，那么此操作会创建一个新文档并插入它。如果有匹配的文档，那么此操作修改或替换匹配的单个或多个文档。</li>
+</ul>
+
+<h3 id="删除文档">删除文档</h3>
+
+<table>
+<thead>
+<tr>
+<th align="left">操作</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">db.collection.remove()</td>
+<td align="left">删除一个或多个匹配过滤条件的文档</td>
+</tr>
+
+<tr>
+<td align="left">db.collection.deleteOne()</td>
+<td align="left">即使多个文档可能与指定筛选器匹配，也最多删除其中一个匹配的文档</td>
+</tr>
+
+<tr>
+<td align="left">db.collection.deleteMany()</td>
+<td align="left">删除所有匹配指定过滤条件的文档</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li>可以指定条件或过滤器来找到要删除的文档.这些 filters 使用与 查找 操作语法相同</li>
+</ul>
+
+<h4 id="删除的行为表现">删除的行为表现</h4>
+
+<h5 id="索引">索引</h5>
+
+<ul>
+<li>删除操作不会删除索引</li>
+</ul>
+
+<h5 id="原子性-1">原子性</h5>
+
+<h3 id="最后">最后</h3>
+
+<p>博客参考整理自: <a href="http://www.mongoing.com/docs/">MongoDB 文档</a></p>
+
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">作者</span>
+    <span class="item-content">丁敬</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">修改时间</span>
+    <span class="item-content">2017-10-21 10:52:33</span>
+  </p>
+  
+  
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/mongo/">mongo</a>
+          
+          <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/post/mongo/mongodb-bulk-write-operations/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">MongoDB Bulk Write Operations</span>
+            <span class="prev-text nav-mobile"></span>
+          </a>
+        
+          <a class="next" href="/post/mongo/sql%E5%88%B0mongodb%E6%98%A0%E5%B0%84%E8%A1%A8/">
+            <span class="next-text nav-default">SQL到MongoDB映射表</span>
+            <span class="next-text nav-mobile"></span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8080155533523922"
+     data-ad-slot="1056838406"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
+  
+
+  <div id="gitalk-container"></div>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.2.2/dist/gitalk.css" integrity="sha256-rJVe5uyYRXdLM+Kkoj7JtN+9qI0bZTxkYTaNWODpg7U=" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1.2.2/dist/gitalk.min.js" integrity="sha256-DcjhdbufsHMHflFjZtKNFnPKOAL2ybOxGcPOR4MtnJg=" crossorigin="anonymous"></script>
+  <script type="text/javascript">
+  var gitalk = new Gitalk({
+    id: '2017-10-21 10:52:33 \x2b0800 CST',
+    title: 'Mongo CURD',
+    clientID: '3c8da4e91628fe8bbd9d',
+    clientSecret: 'd93d1a1463f3a30c049d3816dd66c58bdeb17744',
+    repo: 'blog',
+    owner: 'dingjingmaster',
+    admin: ['dingjingmaster'],
+    body: decodeURI(location.href)
+  });
+  gitalk.render('gitalk-container');
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:dingjing@live.cn" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/dingjingmaster" class="iconfont icon-github" title="github"></a>
+  <a href="https://www.dingjingmaster.top/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="copyright-year">
+    &copy; 
+    
+      2017 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">丁敬</span><br/>
+	<span>
+		<span>访客数量: <img src="http://www.reliablecounter.com/count.php?page=www.dingjingmaster.top/&digit=style/black-and-white/1/&reloads=0" border="0"></span>
+	</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  
+
+<script></script>
+<script src="https://cdn.jsdelivr.net/npm/raphael@2.2.7/raphael.min.js" integrity="sha256-67By+NpOtm9ka1R6xpUefeGOY8kWWHHRAKlvaTJ7ONI=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/flowchart.js@1.8.0/release/flowchart.min.js" integrity="sha256-zNGWjubXoY6rb5MnmpBNefO0RgoVYfle9p0tvOQM+6k=" crossorigin="anonymous"></script><script></script>
+<script src="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.js" integrity="sha256-4O4pS1SH31ZqrSO2A/2QJTVjTPqVe+jnYgOWUVr7EEc=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/snapsvg@0.5.1/dist/snap.svg-min.js" integrity="sha256-oI+elz+sIm+jpn8F/qEspKoKveTc5uKeFHNNVexe6d8=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/underscore@1.8.3/underscore-min.js" integrity="sha256-obZACiHd7gkOk9iIL/pimWMTJ4W/pBsKu+oZnSeBIek=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/gh/bramp/js-sequence-diagrams@2.0.1/dist/sequence-diagram-min.js" integrity="sha384-8748Vn52gHJYJI0XEuPB2QlPVNUkJlJn9tHqKec6J3q2r9l8fvRxrgn/E5ZHV0sP" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bramp/js-sequence-diagrams@2.0.1/dist/sequence-diagram-min.css" integrity="sha384-6QbLKJMz5dS3adWSeINZe74uSydBGFbnzaAYmp+tKyq60S7H2p6V7g1TysM5lAaF" crossorigin="anonymous">
+<script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+      TeX: {equationNumbers: {autoNumber: "AMS"}},
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

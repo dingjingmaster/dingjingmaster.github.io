@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="zn-ch">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  
+  <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-127300551-1"></script>
+  <script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-127300551-1');</script>
+  
+  <title>正向代理与反向代理 - 丁敬个人博客</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="丁敬" /><meta name="description" content="正向代理与反向代理" />
+<meta name="keywords" content="nginx, nginx 正向代理, nginx 反向代理" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.49" />
+
+
+<link rel="canonical" href="https://www.dingjingmaster.top/post/%E6%AD%A3%E5%90%91%E4%BB%A3%E7%90%86%E4%B8%8E%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+<link href="/dist/even.min.css?v=3.2.0" rel="stylesheet">
+
+
+
+
+
+<meta property="og:title" content="正向代理与反向代理" />
+<meta property="og:description" content="正向代理与反向代理" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.dingjingmaster.top/post/%E6%AD%A3%E5%90%91%E4%BB%A3%E7%90%86%E4%B8%8E%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/" /><meta property="article:published_time" content="2018-10-12T10:52:47&#43;08:00"/>
+<meta property="article:modified_time" content="2018-10-12T10:52:47&#43;08:00"/>
+
+<meta itemprop="name" content="正向代理与反向代理">
+<meta itemprop="description" content="正向代理与反向代理">
+
+
+<meta itemprop="datePublished" content="2018-10-12T10:52:47&#43;08:00" />
+<meta itemprop="dateModified" content="2018-10-12T10:52:47&#43;08:00" />
+<meta itemprop="wordCount" content="905">
+
+
+
+<meta itemprop="keywords" content="正向代理,反向代理," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="正向代理与反向代理"/>
+<meta name="twitter:description" content="正向代理与反向代理"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">DJ&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/resource/">
+        <li class="mobile-menu-item">资源下载</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">DJ&#39;s Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/resource/">资源下载</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">正向代理与反向代理</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-10-12 10:52:47 </span>
+        <div class="post-category">
+            
+              <a href="/categories/%E5%90%8D%E8%AF%8D%E7%90%86%E8%A7%A3/"> 名词理解 </a>
+            
+          </div>
+        <span class="more-meta">  </span>
+        <span class="more-meta">  </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title"></h2>
+  
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#1-正向代理-forward-proxy">1. 正向代理(Forward Proxy)</a>
+<ul>
+<li><a href="#1-正向代理的作用">1. 正向代理的作用</a></li>
+</ul></li>
+<li><a href="#2-反向代理-reverse-proxy">2. 反向代理(reverse proxy)</a>
+<ul>
+<li><a href="#1-反向代理的作用">1. 反向代理的作用</a></li>
+</ul></li>
+<li><a href="#3-正向代理和反向代理">3. 正向代理和反向代理</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    
+
+    
+    <div class="post-content">
+      
+
+<h3 id="1-正向代理-forward-proxy">1. 正向代理(Forward Proxy)</h3>
+
+<p>正向代理是一个位于【客户端A】与【服务器B】之间的【服务器Z】。当【客户端A】想要访问【服务器B】的时候，【客户端A】发送请求到【服务器Z】并指定要访问【服务器B】，【服务器Z】会访问【服务器B】的数据，将结果返回到【客户端A】。</p>
+
+<p><img src="/img/正向代理.png" alt="正向代理" /></p>
+
+<h4 id="1-正向代理的作用">1. 正向代理的作用</h4>
+
+<ul>
+<li>访问客户端A无法访问，但是代理服务端Z可以访问的服务器B（典型的例子就是翻墙VPN）。</li>
+<li>客户端访问权限控制（网关），代理服务器Z 可以根据控制客户端角色的不同，控制客户端对服务器B的访问权限（毕竟客户端是通过服务端Z访问目标服务器B的，所以代理服务器Z可以驳回客户端的一些请求）。</li>
+<li>Cache缓冲，假设客户端通过代理服务器Z访问目标服务器B的某一资源，如果代理服务器Z已经把目标服务器B的这份资源缓存下来了，那么代理服务器Z可以不用再次请求服务器B，直接把资源返回到客户端（想想假如客户端和代理服务器都在国内，而目标服务器B远在国外&hellip;）。</li>
+<li>隐藏访问者的行踪，客户端（访问者）是通过代理服务器Z进行访问目标服务器B的，跟服务器B交互的只是代理服务器Z，那么服务器B获得的只是代理服务器的信息（比如代理服务器的ip，网络位置&hellip;）</li>
+</ul>
+
+<h3 id="2-反向代理-reverse-proxy">2. 反向代理(reverse proxy)</h3>
+
+<p>反向代理与正向代理的流程大致类似，但是与正向代理作用不同，先看例子，再理解其区别：</p>
+
+<h4 id="1-反向代理的作用">1. 反向代理的作用</h4>
+
+<ul>
+<li>保护和隐藏原始资源服务器（客户端通过反向代理服务器访问资源服务器，对于客户端而言，资源服务器是透明的）</li>
+<li>负载均衡（当大量客户端访问一台服务器时，通过代理服务器将客户端分发到集群中的机器，以此减小压力。代理服务器只负责与客户端交互，而复杂的逻辑由服务端集群来完成）</li>
+</ul>
+
+<h3 id="3-正向代理和反向代理">3. 正向代理和反向代理</h3>
+
+<ol>
+<li><p>正向代理是客户端通过代理服务器访问服务端，而服务端可以是服务器M，也可以是服务器N &hellip;.</p></li>
+
+<li><p>反向代理是客户端通过反向代理服务器访问服务端，针对客户端来说，反向代理服务器就是服务端，服务端除了反向代理服务器，其它服务器对客户端都是透明的</p></li>
+
+<li><p>正向代理针对的是客户端，反向代理针对的是服务端（也不是绝对的，但是可以这么理解）</p></li>
+
+<li><p>无论是正向代理还是反向代理，都是通过代理服务器来完成客户端与目标服务端的数据交换</p></li>
+</ol>
+
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">作者</span>
+    <span class="item-content">丁敬</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">修改时间</span>
+    <span class="item-content">2018-10-12 10:52:47</span>
+  </p>
+  
+  
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/%E6%AD%A3%E5%90%91%E4%BB%A3%E7%90%86/">正向代理</a>
+          
+          <a href="/tags/%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/">反向代理</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/post/web%E9%85%8D%E7%BD%AEhttps%E5%9F%9F%E5%90%8D/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Web配置https域名</span>
+            <span class="prev-text nav-mobile"></span>
+          </a>
+        
+          <a class="next" href="/post/nginx%E4%B8%80%E5%8F%B0%E4%B8%BB%E6%9C%BA%E9%85%8D%E7%BD%AE%E4%B8%A4%E4%B8%AA%E7%BD%91%E7%AB%99/">
+            <span class="next-text nav-default">Nginx一台主机配置两个网站</span>
+            <span class="next-text nav-mobile"></span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8080155533523922"
+     data-ad-slot="1056838406"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
+  
+
+  <div id="gitalk-container"></div>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.2.2/dist/gitalk.css" integrity="sha256-rJVe5uyYRXdLM+Kkoj7JtN+9qI0bZTxkYTaNWODpg7U=" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1.2.2/dist/gitalk.min.js" integrity="sha256-DcjhdbufsHMHflFjZtKNFnPKOAL2ybOxGcPOR4MtnJg=" crossorigin="anonymous"></script>
+  <script type="text/javascript">
+  var gitalk = new Gitalk({
+    id: '2018-10-12 10:52:47 \x2b0800 CST',
+    title: '正向代理与反向代理',
+    clientID: '3c8da4e91628fe8bbd9d',
+    clientSecret: 'd93d1a1463f3a30c049d3816dd66c58bdeb17744',
+    repo: 'blog',
+    owner: 'dingjingmaster',
+    admin: ['dingjingmaster'],
+    body: decodeURI(location.href)
+  });
+  gitalk.render('gitalk-container');
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:dingjing@live.cn" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/dingjingmaster" class="iconfont icon-github" title="github"></a>
+  <a href="https://www.dingjingmaster.top/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="copyright-year">
+    &copy; 
+    
+      2017 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">丁敬</span><br/>
+	<span>
+		<span>访客数量: <img src="http://www.reliablecounter.com/count.php?page=www.dingjingmaster.top/&digit=style/black-and-white/1/&reloads=0" border="0"></span>
+	</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  
+
+<script></script>
+<script src="https://cdn.jsdelivr.net/npm/raphael@2.2.7/raphael.min.js" integrity="sha256-67By+NpOtm9ka1R6xpUefeGOY8kWWHHRAKlvaTJ7ONI=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/flowchart.js@1.8.0/release/flowchart.min.js" integrity="sha256-zNGWjubXoY6rb5MnmpBNefO0RgoVYfle9p0tvOQM+6k=" crossorigin="anonymous"></script><script></script>
+<script src="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.js" integrity="sha256-4O4pS1SH31ZqrSO2A/2QJTVjTPqVe+jnYgOWUVr7EEc=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/snapsvg@0.5.1/dist/snap.svg-min.js" integrity="sha256-oI+elz+sIm+jpn8F/qEspKoKveTc5uKeFHNNVexe6d8=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/underscore@1.8.3/underscore-min.js" integrity="sha256-obZACiHd7gkOk9iIL/pimWMTJ4W/pBsKu+oZnSeBIek=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/gh/bramp/js-sequence-diagrams@2.0.1/dist/sequence-diagram-min.js" integrity="sha384-8748Vn52gHJYJI0XEuPB2QlPVNUkJlJn9tHqKec6J3q2r9l8fvRxrgn/E5ZHV0sP" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bramp/js-sequence-diagrams@2.0.1/dist/sequence-diagram-min.css" integrity="sha384-6QbLKJMz5dS3adWSeINZe74uSydBGFbnzaAYmp+tKyq60S7H2p6V7g1TysM5lAaF" crossorigin="anonymous">
+<script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+      TeX: {equationNumbers: {autoNumber: "AMS"}},
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>iris on 丁敬个人博客</title>
+    <link>https://www.dingjingmaster.top/categories/iris/</link>
+    <description>Recent content in iris on 丁敬个人博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zn-ch</language>
+    <lastBuildDate>Wed, 17 Oct 2018 13:29:15 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.dingjingmaster.top/categories/iris/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Iris 安装</title>
+      <link>https://www.dingjingmaster.top/post/iris/iris--%E5%AE%89%E8%A3%85/</link>
+      <pubDate>Wed, 17 Oct 2018 13:29:15 +0800</pubDate>
+      
+      <guid>https://www.dingjingmaster.top/post/iris/iris--%E5%AE%89%E8%A3%85/</guid>
+      <description>1. 安装go 百度下载安装 2. 安装 iris go get -u github.com/kataras/iris 3. 测试安装成功否 创建 main.go 并编辑以下代码 在 main.go 所在文件夹下打开 命令窗口 执行 go run ./main.go 打开浏览器并输入 http://127.0.0.1:8080 即可看到 iris</description>
+    </item>
+    
+  </channel>
+</rss>

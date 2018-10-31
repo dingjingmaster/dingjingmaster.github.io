@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="zn-ch">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  
+  <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-127300551-1"></script>
+  <script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-127300551-1');</script>
+  
+  <title>Shell Top命令 - 丁敬个人博客</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="丁敬" /><meta name="description" content="Shell Top命令" />
+
+  <meta name="keywords" content="blog, 博客, 丁敬博客, 丁敬, dingjing, 丁敬个人博客, 丁敬的个人博客" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.49" />
+
+
+<link rel="canonical" href="https://www.dingjingmaster.top/post/shell/shell-top%E5%91%BD%E4%BB%A4/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+<link href="/dist/even.min.css?v=3.2.0" rel="stylesheet">
+
+
+
+
+
+<meta property="og:title" content="Shell Top命令" />
+<meta property="og:description" content="Shell Top命令" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.dingjingmaster.top/post/shell/shell-top%E5%91%BD%E4%BB%A4/" /><meta property="article:published_time" content="2017-10-18T16:03:16&#43;08:00"/>
+<meta property="article:modified_time" content="2017-10-18T16:03:16&#43;08:00"/>
+
+<meta itemprop="name" content="Shell Top命令">
+<meta itemprop="description" content="Shell Top命令">
+
+
+<meta itemprop="datePublished" content="2017-10-18T16:03:16&#43;08:00" />
+<meta itemprop="dateModified" content="2017-10-18T16:03:16&#43;08:00" />
+<meta itemprop="wordCount" content="1804">
+
+
+
+<meta itemprop="keywords" content="shell,linux,ubuntu," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Shell Top命令"/>
+<meta name="twitter:description" content="Shell Top命令"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">DJ&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/resource/">
+        <li class="mobile-menu-item">资源下载</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">DJ&#39;s Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/resource/">资源下载</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Shell Top命令</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2017-10-18 16:03:16 </span>
+        <div class="post-category">
+            
+              <a href="/categories/shell/"> shell </a>
+            
+          </div>
+        <span class="more-meta">  </span>
+        <span class="more-meta">  </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title"></h2>
+  
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#简介">简介</a></li>
+<li><a href="#参数含义">参数含义</a></li>
+<li><a href="#top命令行选项">top命令行选项</a></li>
+<li><a href="#top运行时交互命令">top运行时交互命令</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    
+
+    
+    <div class="post-content">
+      
+
+<h3 id="简介">简介</h3>
+
+<ul>
+<li>top命令是Linux下常用的性能分析工具，能够实时显示系统中各个进程的资源占用状况。</li>
+<li>top动态的显示系统当前的进程和其他状况,</li>
+<li>如下图：</li>
+</ul>
+
+<p><img src="/img/shell/shell命令top.png" alt="shell top" /></p>
+
+<h3 id="参数含义">参数含义</h3>
+
+<pre><code>top：
+01:11:31            表示当前系统时间
+up 4:17             表示系统运行时间
+1 user              当前登录用户数
+load average        系统负载，即系统任务队列的平均长度。三个数值分别为 1分钟 5分钟 15分钟 到现在的平均值。load average是每隔5秒钟检查一次活跃的进程数，计算出的数值。如果这个数除以逻辑CPU的数量，结果高于5的时候就表明系统在超负荷运转了。
+
+Tasks：
+total               进程总数
+running             正在运行的进程数
+sleeping            睡眠的进程数
+stopped             停止的进程数
+zombie              僵尸进程数
+
+%Cpu：
+0.1 us              用户空间占用CPU百分比
+0.1 sy              内核空间占用CPU百分比
+0.0 ni              用户进程空间内改变过优先级的进程占用CPU百分比
+99.8 id             空闲CPU百分比
+0.0 wa              等待输入输出的CPU时间百分比
+0.0 hi              硬件CPU中断占用百分比
+0.0 si              软中断占用百分比
+0.0 st              虚拟机占用百分比
+
+KiB Mem:
+8144452 total           物理内存总量
+3792516 free            空闲内存总量。指内核还未纳入其管理范围的内存数
+1751356 used            使用的物理内存总量。指内核控制的内存数，内核管理的内存数不一定都是内核正在使用中的，还包括以前使用过，现在可重复使用的内存
+2600580 buff/Cache      用作内核缓存的内存量
+
+KiB Swap:
+2097148 total           交换区总量
+2097148 free            空闲交换区总量
+0 used                  使用的交换区总量
+6068824 avail Mem       缓冲的交换区总量
+
+== 空行 ==
+
+PID               进程id
+USER              用户名
+PR                优先级
+NI                nice值，负值表示最高优先级，不是从终端启动的进程则为 ?
+VIRT              进程使用的虚拟内存总量
+RES               进程使用的未被换出的物理内存大小 Kb
+SHR               共享内存大小 Kb
+S                 进程状态（D=不可中断的睡眠状态，R=运行就绪 S=睡眠， T=跟踪/停止， Z=僵尸进程， O=进程正在处理器运行， I=空闲状态， S=进程正在等待更多的内存页）
+%CPU              上次更新到现在的CPU时间占用百分比
+%MEM              进程使用的物理内存百分比
+TIME+             进程使用的CPU时间总计，单位1/100秒
+TIME              进程使用的CPU时间总计，单位秒
+Flags             任务标志，参考 sched.h
+WCHAN             若该进程在睡眠，则显示睡眠中的系统函数名
+COMMAND           命令名/命令行
+nDRT              最后一次写入到现在，被修改过的页面数。
+nFLT              页面错误次数
+DATA              可执行代码以外的部分(数据段+栈)占用的物理内存大小，单位kb
+CODE              可执行代码占用的物理内存大小，单位kb
+</code></pre>
+
+<ul>
+<li>补充：在top命令运行期间 按 <code>f</code> 键可以打开想要查看的参数，小写是打开参数，大写是关闭参数，<code>enter</code> 返回 top 命令界面</li>
+<li>Mem 中的free + Mem中的buffers + Swap 中的avail 即为现在可用内存数</li>
+<li>当 Swap 中的 used 这个数值在不断变化，表示内核在不断进行内存和swap的数据交换，表示真正的内存不够用了</li>
+</ul>
+
+<h3 id="top命令行选项">top命令行选项</h3>
+
+<p>top [-] [d] [p] [q] [c] [C] [S] [s]  [n]</p>
+
+<pre><code>d     指定每两次屏幕信息刷新之间的时间间隔。当然用户可以使用s交互命令来改变之。
+p     通过指定监控进程ID来仅仅监控某个进程的状态。
+q     该选项将使top没有任何延迟的进行刷新。如果调用程序有超级用户权限，那么top将以尽可能高的优先级运行。
+S     指定累计模式
+s     使top命令在安全模式中运行。这将去除交互命令所带来的潜在危险。
+i     使top不显示任何闲置或者僵死进程。
+c     显示整个命令行而不只是显示命令名
+</code></pre>
+
+<h3 id="top运行时交互命令">top运行时交互命令</h3>
+
+<pre><code>Ctrl+L        擦除并且重写屏幕。
+h 或者 ?      显示帮助画面，给出一些简短的命令总结说明。
+k             终止一个进程。系统将提示用户输入需要终止的进程PID，以及需要发送给该进程什么样的信号。一般的终止进程可以使用15信号；如果不能正常结束那就使用信号9强制结束该进程。默认值是信号15。在安全模式中此命令被屏蔽。
+i             忽略闲置和僵死进程。这是一个开关式命令。
+q             退出程序。
+r             重新安排一个进程的优先级别。系统提示用户输入需要改变的进程PID以及需要设置的进程优先级值。输入一个正值将使优先级降低，反之则可以使该进程拥有更高的优先权。默认值是10。
+S             切换到累计模式。
+s             改变两次刷新之间的延迟时间。系统将提示用户输入新的时间，单位为s。如果有小数，就换算成m s。输入0值则系统将不断刷新，默认值是5 s。需要注意的是如果设置太小的时间，很可能会引起不断刷新，从而根本来不及看清显示的情况，而且系统负载也会大大增加。
+f或者F        从当前显示中添加或者删除项目。
+o或者O        改变显示项目的顺序。
+l             切换显示平均负载和启动时间信息。
+m             切换显示内存信息。
+t             切换显示进程和CPU状态信息。
+c             切换显示命令名称和完整命令行。
+M             根据驻留内存大小进行排序。
+P             根据CPU使用百分比大小进行排序。
+T             根据时间/累计时间进行排序。
+W             将当前设置写入~/.toprc文件中。这是写top配置文件的推荐方法。
+</code></pre>
+
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">作者</span>
+    <span class="item-content">丁敬</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">修改时间</span>
+    <span class="item-content">2017-10-18 16:03:16</span>
+  </p>
+  
+  
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/shell/">shell</a>
+          
+          <a href="/tags/linux/">linux</a>
+          
+          <a href="/tags/ubuntu/">ubuntu</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/post/shell/shell-ps%E5%91%BD%E4%BB%A4/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Shell ps命令</span>
+            <span class="prev-text nav-mobile"></span>
+          </a>
+        
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8080155533523922"
+     data-ad-slot="1056838406"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
+  
+
+  <div id="gitalk-container"></div>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.2.2/dist/gitalk.css" integrity="sha256-rJVe5uyYRXdLM+Kkoj7JtN+9qI0bZTxkYTaNWODpg7U=" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1.2.2/dist/gitalk.min.js" integrity="sha256-DcjhdbufsHMHflFjZtKNFnPKOAL2ybOxGcPOR4MtnJg=" crossorigin="anonymous"></script>
+  <script type="text/javascript">
+  var gitalk = new Gitalk({
+    id: '2017-10-18 16:03:16 \x2b0800 CST',
+    title: 'Shell Top命令',
+    clientID: '3c8da4e91628fe8bbd9d',
+    clientSecret: 'd93d1a1463f3a30c049d3816dd66c58bdeb17744',
+    repo: 'blog',
+    owner: 'dingjingmaster',
+    admin: ['dingjingmaster'],
+    body: decodeURI(location.href)
+  });
+  gitalk.render('gitalk-container');
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:dingjing@live.cn" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/dingjingmaster" class="iconfont icon-github" title="github"></a>
+  <a href="https://www.dingjingmaster.top/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="copyright-year">
+    &copy; 
+    
+      2017 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">丁敬</span><br/>
+	<span>
+		<span>访客数量: <img src="http://www.reliablecounter.com/count.php?page=www.dingjingmaster.top/&digit=style/black-and-white/1/&reloads=0" border="0"></span>
+	</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  
+
+<script></script>
+<script src="https://cdn.jsdelivr.net/npm/raphael@2.2.7/raphael.min.js" integrity="sha256-67By+NpOtm9ka1R6xpUefeGOY8kWWHHRAKlvaTJ7ONI=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/flowchart.js@1.8.0/release/flowchart.min.js" integrity="sha256-zNGWjubXoY6rb5MnmpBNefO0RgoVYfle9p0tvOQM+6k=" crossorigin="anonymous"></script><script></script>
+<script src="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.js" integrity="sha256-4O4pS1SH31ZqrSO2A/2QJTVjTPqVe+jnYgOWUVr7EEc=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/snapsvg@0.5.1/dist/snap.svg-min.js" integrity="sha256-oI+elz+sIm+jpn8F/qEspKoKveTc5uKeFHNNVexe6d8=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/underscore@1.8.3/underscore-min.js" integrity="sha256-obZACiHd7gkOk9iIL/pimWMTJ4W/pBsKu+oZnSeBIek=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/gh/bramp/js-sequence-diagrams@2.0.1/dist/sequence-diagram-min.js" integrity="sha384-8748Vn52gHJYJI0XEuPB2QlPVNUkJlJn9tHqKec6J3q2r9l8fvRxrgn/E5ZHV0sP" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bramp/js-sequence-diagrams@2.0.1/dist/sequence-diagram-min.css" integrity="sha384-6QbLKJMz5dS3adWSeINZe74uSydBGFbnzaAYmp+tKyq60S7H2p6V7g1TysM5lAaF" crossorigin="anonymous">
+<script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+      TeX: {equationNumbers: {autoNumber: "AMS"}},
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

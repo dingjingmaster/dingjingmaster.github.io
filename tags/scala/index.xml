@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>scala on 丁敬个人博客</title>
+    <link>https://www.dingjingmaster.top/tags/scala/</link>
+    <description>Recent content in scala on 丁敬个人博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zn-ch</language>
+    <lastBuildDate>Fri, 15 Dec 2017 15:09:03 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.dingjingmaster.top/tags/scala/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Spark Scala快速入门</title>
+      <link>https://www.dingjingmaster.top/post/spark-scala%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/</link>
+      <pubDate>Fri, 15 Dec 2017 15:09:03 +0800</pubDate>
+      
+      <guid>https://www.dingjingmaster.top/post/spark-scala%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/</guid>
+      <description>1、spark参数配置 sparkConf类 配置spark程序，以key-value的形式设置spark参数。它的设置优先于系统设置。 该类所有</description>
+    </item>
+    
+  </channel>
+</rss>

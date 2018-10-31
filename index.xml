@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>丁敬个人博客</title>
+    <link>https://www.dingjingmaster.top/</link>
+    <description>Recent content on 丁敬个人博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zn-ch</language>
+    <lastBuildDate>Fri, 19 Oct 2018 17:30:11 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.dingjingmaster.top/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>资源</title>
+      <link>https://www.dingjingmaster.top/resource/</link>
+      <pubDate>Fri, 19 Oct 2018 17:30:11 +0800</pubDate>
+      
+      <guid>https://www.dingjingmaster.top/resource/</guid>
+      <description>书籍资源 索引 &amp;ndash; J 机器学习(周志华) 索引 &amp;ndash; K Kubernetes中文指南/云原生应用架构实践手册 索引 &amp;ndash; S 算法图解</description>
+    </item>
+    
+    <item>
+      <title>Go语法基础</title>
+      <link>https://www.dingjingmaster.top/post/go/go%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80/</link>
+      <pubDate>Fri, 19 Oct 2018 09:41:39 +0800</pubDate>
+      
+      <guid>https://www.dingjingmaster.top/post/go/go%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80/</guid>
+      <description>hello world 开始 package main import &amp;quot;fmt&amp;quot; func main() { fmt.Println(&amp;quot;Hello, 世界&amp;quot;) } 包 每个 Go 程序都是由包构成的(类似面向对象中的命名空间)，按照约定，包名和导入路径最后一个元素一致</description>
+    </item>
+    
+    <item>
+      <title>Iris 安装</title>
+      <link>https://www.dingjingmaster.top/post/iris/iris--%E5%AE%89%E8%A3%85/</link>
+      <pubDate>Wed, 17 Oct 2018 13:29:15 +0800</pubDate>
+      
+      <guid>https://www.dingjingmaster.top/post/iris/iris--%E5%AE%89%E8%A3%85/</guid>
+      <description>1. 安装go 百度下载安装 2. 安装 iris go get -u github.com/kataras/iris 3. 测试安装成功否 创建 main.go 并编辑以下代码 在 main.go 所在文件夹下打开 命令窗口 执行 go run ./main.go 打开浏览器并输入 http://127.0.0.1:8080 即可看到 iris</description>
+    </item>
+    
+    <item>
+      <title>提高github访问速度的方法</title>
+      <link>https://www.dingjingmaster.top/post/%E6%8F%90%E9%AB%98github%E8%AE%BF%E9%97%AE%E9%80%9F%E5%BA%A6%E7%9A%84%E6%96%B9%E6%B3%95/</link>
+      <pubDate>Tue, 16 Oct 2018 15:27:10 +0800</pubDate>
+      
+      <guid>https://www.dingjingmaster.top/post/%E6%8F%90%E9%AB%98github%E8%AE%BF%E9%97%AE%E9%80%9F%E5%BA%A6%E7%9A%84%E6%96%B9%E6%B3%95/</guid>
+      <description>1. 查询github域名对应ip 访问网站 https://www.ipaddress.com 查询以下两个域名对应ip github.com的ip, 我查到的结果是：192.30.253.112 和 192.30.253.113</description>
+    </item>
+    
+    <item>
+      <title>Web配置https域名</title>
+      <link>https://www.dingjingmaster.top/post/web%E9%85%8D%E7%BD%AEhttps%E5%9F%9F%E5%90%8D/</link>
+      <pubDate>Sat, 13 Oct 2018 10:51:27 +0800</pubDate>
+      
+      <guid>https://www.dingjingmaster.top/post/web%E9%85%8D%E7%BD%AEhttps%E5%9F%9F%E5%90%8D/</guid>
+      <description>1. 获取阿里云 DV SSL证书（免费） 进入官网 阿里云盾证书服务 依次选择： 【选择品牌】: Symantec &amp;ndash;&amp;gt; 【保护类型】：一个域名 &amp;ndash;&amp;gt; 【证书类型】：免费型DV SSL &amp;ndash;&amp;gt; 立即</description>
+    </item>
+    
+    <item>
+      <title>正向代理与反向代理</title>
+      <link>https://www.dingjingmaster.top/post/%E6%AD%A3%E5%90%91%E4%BB%A3%E7%90%86%E4%B8%8E%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/</link>
+      <pubDate>Fri, 12 Oct 2018 10:52:47 +0800</pubDate>
+      
+      <guid>https://www.dingjingmaster.top/post/%E6%AD%A3%E5%90%91%E4%BB%A3%E7%90%86%E4%B8%8E%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/</guid>
+      <description>1. 正向代理(Forward Proxy) 正向代理是一个位于【客户端A】与【服务器B】之间的【服务器Z】。当【客户端A】想要访问【服务器B】的时候，【客户</description>
+    </item>
+    
+    <item>
+      <title>Nginx一台主机配置两个网站</title>
+      <link>https://www.dingjingmaster.top/post/nginx%E4%B8%80%E5%8F%B0%E4%B8%BB%E6%9C%BA%E9%85%8D%E7%BD%AE%E4%B8%A4%E4%B8%AA%E7%BD%91%E7%AB%99/</link>
+      <pubDate>Fri, 12 Oct 2018 10:38:47 +0800</pubDate>
+      
+      <guid>https://www.dingjingmaster.top/post/nginx%E4%B8%80%E5%8F%B0%E4%B8%BB%E6%9C%BA%E9%85%8D%E7%BD%AE%E4%B8%A4%E4%B8%AA%E7%BD%91%E7%AB%99/</guid>
+      <description>1.大致过程 nginx 监听固定端口（http是80端口，https是443端口），当客户端请求到达nginx时，nginx根据server name将</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu卸载vmware</title>
+      <link>https://www.dingjingmaster.top/post/ubuntu%E5%8D%B8%E8%BD%BDvmware/</link>
+      <pubDate>Thu, 11 Oct 2018 12:07:55 +0800</pubDate>
+      
+      <guid>https://www.dingjingmaster.top/post/ubuntu%E5%8D%B8%E8%BD%BDvmware/</guid>
+      <description>1. 查看安装的虚拟机 vmware-installer -l 2. 卸载虚拟机 sudo vmware-installer --uninstall-product vmware-workstation 然后根据提示看看是否保存虚拟机配置文件输入 yes 或 no 即可。</description>
+    </item>
+    
+    <item>
+      <title>PHP实现分页展示</title>
+      <link>https://www.dingjingmaster.top/post/php%E5%AE%9E%E7%8E%B0%E5%88%86%E9%A1%B5%E5%B1%95%E7%A4%BA/</link>
+      <pubDate>Sat, 04 Aug 2018 13:45:22 +0800</pubDate>
+      
+      <guid>https://www.dingjingmaster.top/post/php%E5%AE%9E%E7%8E%B0%E5%88%86%E9%A1%B5%E5%B1%95%E7%A4%BA/</guid>
+      <description>一、思路 要展示的几个字段 当前第 xx 页/共有 xx 页 首页 前一页 可以直接跳转到的页码 下一页 末页 共有多少条信息需要展示 针对当前页的页码需要进行特殊展示 提</description>
+    </item>
+    
+    <item>
+      <title>Spark Scala快速入门</title>
+      <link>https://www.dingjingmaster.top/post/spark-scala%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/</link>
+      <pubDate>Fri, 15 Dec 2017 15:09:03 +0800</pubDate>
+      
+      <guid>https://www.dingjingmaster.top/post/spark-scala%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/</guid>
+      <description>1、spark参数配置 sparkConf类 配置spark程序，以key-value的形式设置spark参数。它的设置优先于系统设置。 该类所有</description>
+    </item>
+    
+    <item>
+      <title>MongoDB Bulk Write Operations</title>
+      <link>https://www.dingjingmaster.top/post/mongo/mongodb-bulk-write-operations/</link>
+      <pubDate>Sun, 22 Oct 2017 09:39:03 +0800</pubDate>
+      
+      <guid>https://www.dingjingmaster.top/post/mongo/mongodb-bulk-write-operations/</guid>
+      <description>翻译自: http://www.mongoing.com/docs/core/bulk-write-operations.html 综述 MongoDB给客户端提供了批量写的操作。批量写操作影响单个集合。MongoDB允许应用程序确定批量写操作所需的可接受的确认级</description>
+    </item>
+    
+    <item>
+      <title>Mongo CURD</title>
+      <link>https://www.dingjingmaster.top/post/mongo/mongo-curd/</link>
+      <pubDate>Sat, 21 Oct 2017 10:52:33 +0800</pubDate>
+      
+      <guid>https://www.dingjingmaster.top/post/mongo/mongo-curd/</guid>
+      <description>增加/插入数据 创建集合 插入文档的时候，文档所属集合不存在，那么插入操作会创建集合 主键分配 每个插入的文档都需要指定唯一的id（&amp;rdquo;_</description>
+    </item>
+    
+    <item>
+      <title>SQL到MongoDB映射表</title>
+      <link>https://www.dingjingmaster.top/post/mongo/sql%E5%88%B0mongodb%E6%98%A0%E5%B0%84%E8%A1%A8/</link>
+      <pubDate>Fri, 20 Oct 2017 11:44:13 +0800</pubDate>
+      
+      <guid>https://www.dingjingmaster.top/post/mongo/sql%E5%88%B0mongodb%E6%98%A0%E5%B0%84%E8%A1%A8/</guid>
+      <description>SQL 和 MongoDB术语和概念比较 SQL 术语/概念 MongoDB 术语/概念 数据库 database 表 collection 行 document or BSON 文档 列 field 索引 index 表连接 内嵌文档和链接 主键 指定任何唯一列或复合列作为</description>
+    </item>
+    
+    <item>
+      <title>Shell ps命令</title>
+      <link>https://www.dingjingmaster.top/post/shell/shell-ps%E5%91%BD%E4%BB%A4/</link>
+      <pubDate>Thu, 19 Oct 2017 16:25:05 +0800</pubDate>
+      
+      <guid>https://www.dingjingmaster.top/post/shell/shell-ps%E5%91%BD%E4%BB%A4/</guid>
+      <description>简介 ps(progress status)即：系统进程状态。用于查看目前系统进程的运行状态。 linux进程的 5 种状态 运行 &amp;ndash; R 正在运行或在运行队列中等待 中断 &amp;ndash; S 休眠</description>
+    </item>
+    
+    <item>
+      <title>Shell Top命令</title>
+      <link>https://www.dingjingmaster.top/post/shell/shell-top%E5%91%BD%E4%BB%A4/</link>
+      <pubDate>Wed, 18 Oct 2017 16:03:16 +0800</pubDate>
+      
+      <guid>https://www.dingjingmaster.top/post/shell/shell-top%E5%91%BD%E4%BB%A4/</guid>
+      <description>简介 top命令是Linux下常用的性能分析工具，能够实时显示系统中各个进程的资源占用状况。 top动态的显示系统当前的进程和其他状况, 如下图：</description>
+    </item>
+    
+  </channel>
+</rss>

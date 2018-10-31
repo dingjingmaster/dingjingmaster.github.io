@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>mongo on 丁敬个人博客</title>
+    <link>https://www.dingjingmaster.top/categories/mongo/</link>
+    <description>Recent content in mongo on 丁敬个人博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zn-ch</language>
+    <lastBuildDate>Sun, 22 Oct 2017 09:39:03 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.dingjingmaster.top/categories/mongo/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>MongoDB Bulk Write Operations</title>
+      <link>https://www.dingjingmaster.top/post/mongo/mongodb-bulk-write-operations/</link>
+      <pubDate>Sun, 22 Oct 2017 09:39:03 +0800</pubDate>
+      
+      <guid>https://www.dingjingmaster.top/post/mongo/mongodb-bulk-write-operations/</guid>
+      <description>翻译自: http://www.mongoing.com/docs/core/bulk-write-operations.html 综述 MongoDB给客户端提供了批量写的操作。批量写操作影响单个集合。MongoDB允许应用程序确定批量写操作所需的可接受的确认级</description>
+    </item>
+    
+    <item>
+      <title>Mongo CURD</title>
+      <link>https://www.dingjingmaster.top/post/mongo/mongo-curd/</link>
+      <pubDate>Sat, 21 Oct 2017 10:52:33 +0800</pubDate>
+      
+      <guid>https://www.dingjingmaster.top/post/mongo/mongo-curd/</guid>
+      <description>增加/插入数据 创建集合 插入文档的时候，文档所属集合不存在，那么插入操作会创建集合 主键分配 每个插入的文档都需要指定唯一的id（&amp;rdquo;_</description>
+    </item>
+    
+    <item>
+      <title>SQL到MongoDB映射表</title>
+      <link>https://www.dingjingmaster.top/post/mongo/sql%E5%88%B0mongodb%E6%98%A0%E5%B0%84%E8%A1%A8/</link>
+      <pubDate>Fri, 20 Oct 2017 11:44:13 +0800</pubDate>
+      
+      <guid>https://www.dingjingmaster.top/post/mongo/sql%E5%88%B0mongodb%E6%98%A0%E5%B0%84%E8%A1%A8/</guid>
+      <description>SQL 和 MongoDB术语和概念比较 SQL 术语/概念 MongoDB 术语/概念 数据库 database 表 collection 行 document or BSON 文档 列 field 索引 index 表连接 内嵌文档和链接 主键 指定任何唯一列或复合列作为</description>
+    </item>
+    
+  </channel>
+</rss>

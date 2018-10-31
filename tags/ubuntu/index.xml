@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ubuntu on 丁敬个人博客</title>
+    <link>https://www.dingjingmaster.top/tags/ubuntu/</link>
+    <description>Recent content in ubuntu on 丁敬个人博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zn-ch</language>
+    <lastBuildDate>Sat, 13 Oct 2018 10:51:27 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.dingjingmaster.top/tags/ubuntu/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Web配置https域名</title>
+      <link>https://www.dingjingmaster.top/post/web%E9%85%8D%E7%BD%AEhttps%E5%9F%9F%E5%90%8D/</link>
+      <pubDate>Sat, 13 Oct 2018 10:51:27 +0800</pubDate>
+      
+      <guid>https://www.dingjingmaster.top/post/web%E9%85%8D%E7%BD%AEhttps%E5%9F%9F%E5%90%8D/</guid>
+      <description>1. 获取阿里云 DV SSL证书（免费） 进入官网 阿里云盾证书服务 依次选择： 【选择品牌】: Symantec &amp;ndash;&amp;gt; 【保护类型】：一个域名 &amp;ndash;&amp;gt; 【证书类型】：免费型DV SSL &amp;ndash;&amp;gt; 立即</description>
+    </item>
+    
+    <item>
+      <title>Nginx一台主机配置两个网站</title>
+      <link>https://www.dingjingmaster.top/post/nginx%E4%B8%80%E5%8F%B0%E4%B8%BB%E6%9C%BA%E9%85%8D%E7%BD%AE%E4%B8%A4%E4%B8%AA%E7%BD%91%E7%AB%99/</link>
+      <pubDate>Fri, 12 Oct 2018 10:38:47 +0800</pubDate>
+      
+      <guid>https://www.dingjingmaster.top/post/nginx%E4%B8%80%E5%8F%B0%E4%B8%BB%E6%9C%BA%E9%85%8D%E7%BD%AE%E4%B8%A4%E4%B8%AA%E7%BD%91%E7%AB%99/</guid>
+      <description>1.大致过程 nginx 监听固定端口（http是80端口，https是443端口），当客户端请求到达nginx时，nginx根据server name将</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu卸载vmware</title>
+      <link>https://www.dingjingmaster.top/post/ubuntu%E5%8D%B8%E8%BD%BDvmware/</link>
+      <pubDate>Thu, 11 Oct 2018 12:07:55 +0800</pubDate>
+      
+      <guid>https://www.dingjingmaster.top/post/ubuntu%E5%8D%B8%E8%BD%BDvmware/</guid>
+      <description>1. 查看安装的虚拟机 vmware-installer -l 2. 卸载虚拟机 sudo vmware-installer --uninstall-product vmware-workstation 然后根据提示看看是否保存虚拟机配置文件输入 yes 或 no 即可。</description>
+    </item>
+    
+    <item>
+      <title>Shell ps命令</title>
+      <link>https://www.dingjingmaster.top/post/shell/shell-ps%E5%91%BD%E4%BB%A4/</link>
+      <pubDate>Thu, 19 Oct 2017 16:25:05 +0800</pubDate>
+      
+      <guid>https://www.dingjingmaster.top/post/shell/shell-ps%E5%91%BD%E4%BB%A4/</guid>
+      <description>简介 ps(progress status)即：系统进程状态。用于查看目前系统进程的运行状态。 linux进程的 5 种状态 运行 &amp;ndash; R 正在运行或在运行队列中等待 中断 &amp;ndash; S 休眠</description>
+    </item>
+    
+    <item>
+      <title>Shell Top命令</title>
+      <link>https://www.dingjingmaster.top/post/shell/shell-top%E5%91%BD%E4%BB%A4/</link>
+      <pubDate>Wed, 18 Oct 2017 16:03:16 +0800</pubDate>
+      
+      <guid>https://www.dingjingmaster.top/post/shell/shell-top%E5%91%BD%E4%BB%A4/</guid>
+      <description>简介 top命令是Linux下常用的性能分析工具，能够实时显示系统中各个进程的资源占用状况。 top动态的显示系统当前的进程和其他状况, 如下图：</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="zn-ch">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  
+  <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-127300551-1"></script>
+  <script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-127300551-1');</script>
+  
+  <title>Shell ps命令 - 丁敬个人博客</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="丁敬" /><meta name="description" content="Shell ps命令" />
+
+  <meta name="keywords" content="blog, 博客, 丁敬博客, 丁敬, dingjing, 丁敬个人博客, 丁敬的个人博客" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.49" />
+
+
+<link rel="canonical" href="https://www.dingjingmaster.top/post/shell/shell-ps%E5%91%BD%E4%BB%A4/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+<link href="/dist/even.min.css?v=3.2.0" rel="stylesheet">
+
+
+
+
+
+<meta property="og:title" content="Shell ps命令" />
+<meta property="og:description" content="Shell ps命令" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.dingjingmaster.top/post/shell/shell-ps%E5%91%BD%E4%BB%A4/" /><meta property="article:published_time" content="2017-10-19T16:25:05&#43;08:00"/>
+<meta property="article:modified_time" content="2017-10-19T16:25:05&#43;08:00"/>
+
+<meta itemprop="name" content="Shell ps命令">
+<meta itemprop="description" content="Shell ps命令">
+
+
+<meta itemprop="datePublished" content="2017-10-19T16:25:05&#43;08:00" />
+<meta itemprop="dateModified" content="2017-10-19T16:25:05&#43;08:00" />
+<meta itemprop="wordCount" content="688">
+
+
+
+<meta itemprop="keywords" content="shel,linux,ubuntu," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Shell ps命令"/>
+<meta name="twitter:description" content="Shell ps命令"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">DJ&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/resource/">
+        <li class="mobile-menu-item">资源下载</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">DJ&#39;s Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/resource/">资源下载</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Shell ps命令</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2017-10-19 16:25:05 </span>
+        <div class="post-category">
+            
+              <a href="/categories/shell/"> shell </a>
+            
+          </div>
+        <span class="more-meta">  </span>
+        <span class="more-meta">  </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title"></h2>
+  
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#简介">简介</a></li>
+<li><a href="#linux进程的-5-种状态">linux进程的 5 种状态</a>
+<ul>
+<li><a href="#运行-r">运行 &ndash; R</a></li>
+<li><a href="#中断-s">中断 &ndash; S</a></li>
+<li><a href="#不可中断-d">不可中断 &ndash; D</a></li>
+<li><a href="#僵死-z">僵死 &ndash; Z</a></li>
+<li><a href="#停止-t">停止 &ndash; T</a></li>
+</ul></li>
+<li><a href="#命令格式及参数">命令格式及参数</a>
+<ul>
+<li><a href="#命令格式">命令格式</a></li>
+<li><a href="#命令参数">命令参数</a></li>
+</ul></li>
+<li><a href="#常用的ps命令">常用的ps命令</a>
+<ul>
+<li><a href="#ps-ef">ps -ef</a></li>
+<li><a href="#ps-aux">ps -aux</a></li>
+<li><a href="#ps-axjf">ps -axjf</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    
+
+    
+    <div class="post-content">
+      
+
+<h3 id="简介">简介</h3>
+
+<ul>
+<li>ps(progress status)即：系统进程状态。用于查看目前系统进程的运行状态。</li>
+</ul>
+
+<h3 id="linux进程的-5-种状态">linux进程的 5 种状态</h3>
+
+<h4 id="运行-r">运行 &ndash; R</h4>
+
+<ul>
+<li>正在运行或在运行队列中等待</li>
+</ul>
+
+<h4 id="中断-s">中断 &ndash; S</h4>
+
+<ul>
+<li>休眠、受阻、在等待某个条件的形成或接收到信号</li>
+</ul>
+
+<h4 id="不可中断-d">不可中断 &ndash; D</h4>
+
+<ul>
+<li>收到信号不唤醒和不可运行，进程必须等待直到有中断发生</li>
+</ul>
+
+<h4 id="僵死-z">僵死 &ndash; Z</h4>
+
+<ul>
+<li>进程已终止，但进程描述符存在，直到父进程调用 wait()后释放</li>
+</ul>
+
+<h4 id="停止-t">停止 &ndash; T</h4>
+
+<ul>
+<li>进程收到 SIGSTOP、SIGSTP、SIGTIN、SIGTOUT信号停止运行</li>
+</ul>
+
+<h3 id="命令格式及参数">命令格式及参数</h3>
+
+<h4 id="命令格式">命令格式</h4>
+
+<pre><code class="language-shell">ps [参数]
+</code></pre>
+
+<h4 id="命令参数">命令参数</h4>
+
+<ul>
+<li>-A 列出所有的行程</li>
+<li>-w 显示加宽可以显示较多的资讯</li>
+<li>-au 显示较详细的资讯</li>
+<li>-aux 显示所有包含其他使用者的行程</li>
+<li>l 长格式输出</li>
+<li>u 按用户名和启动时间的顺序显示进程</li>
+<li>j 用任务格式显示进程</li>
+<li>f 用树形格式显示进程</li>
+<li>a 显示所有用户的所有进程</li>
+<li>x 显示无法控制终端的进程</li>
+<li>r 显示运行中的进程</li>
+<li>ww 避免详细参数被截断</li>
+</ul>
+
+<h3 id="常用的ps命令">常用的ps命令</h3>
+
+<h4 id="ps-ef">ps -ef</h4>
+
+<p><img src="/img/shell/ps-ef.png" alt="shell ps ef" /></p>
+
+<pre><code class="language-shell">UID --------- 程序被该 UID 所拥有
+PID --------- 该进程的 ID
+PPID -------- 则是其父程序的 ID
+C ----------- CPU 使用的资源百分比
+STIME ------- 该进程开始运行时间
+TTY --------- 登入者终端机位置
+TIME -------- 进程使用掉的 CPU 时间
+CMD --------- 启动该进程的命令名
+</code></pre>
+
+<h4 id="ps-aux">ps -aux</h4>
+
+<p><img src="/img/shell/ps-aux.png" alt="shell ps aux" /></p>
+
+<pre><code class="language-shell">USER -------- 进程所属用户
+PID --------- 该进程的 ID
+%CPU -------- CPU 使用的资源百分比
+%MEM -------- 进程占用的物理内存百分比
+VSZ --------- 该进程用掉的虚拟内存量
+RSS --------- 该进程占用的固定内存量
+TTY --------- 登入者终端机位置，若与终端无关则显示 ? ，表示是后台进程
+STAT -------- 该进程目前状态
+START ------- 该进程被触发启动的时间
+TIME -------- 该进程实际使用 CPU 运作的时间
+COMMAND ----- 该程序的实际指令
+</code></pre>
+
+<h4 id="ps-axjf">ps -axjf</h4>
+
+<p><img src="/img/shell/axjf.png" alt="shell ps axjf" /></p>
+
+<pre><code class="language-shell">PPID -------- 该进程父进程 ID
+PID --------- 该进程的 ID
+PGID -------- 进程组 ID
+SID --------- 会话 ID
+TTY --------- 登入者终端机位置，若与终端无关则显示 ? ，表示是后台进程
+TPGID ------- 控制终端进程组ID
+STAT -------- 该进程目前状态
+UID --------- 用户 ID
+TIME -------- 进程占用 CPU 时间
+COMMAND ----- 该程序的实际指令
+</code></pre>
+
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">作者</span>
+    <span class="item-content">丁敬</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">修改时间</span>
+    <span class="item-content">2017-10-19 16:25:05</span>
+  </p>
+  
+  
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/shel/">shel</a>
+          
+          <a href="/tags/linux/">linux</a>
+          
+          <a href="/tags/ubuntu/">ubuntu</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/post/mongo/sql%E5%88%B0mongodb%E6%98%A0%E5%B0%84%E8%A1%A8/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">SQL到MongoDB映射表</span>
+            <span class="prev-text nav-mobile"></span>
+          </a>
+        
+          <a class="next" href="/post/shell/shell-top%E5%91%BD%E4%BB%A4/">
+            <span class="next-text nav-default">Shell Top命令</span>
+            <span class="next-text nav-mobile"></span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8080155533523922"
+     data-ad-slot="1056838406"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
+  
+
+  <div id="gitalk-container"></div>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.2.2/dist/gitalk.css" integrity="sha256-rJVe5uyYRXdLM+Kkoj7JtN+9qI0bZTxkYTaNWODpg7U=" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1.2.2/dist/gitalk.min.js" integrity="sha256-DcjhdbufsHMHflFjZtKNFnPKOAL2ybOxGcPOR4MtnJg=" crossorigin="anonymous"></script>
+  <script type="text/javascript">
+  var gitalk = new Gitalk({
+    id: '2017-10-19 16:25:05 \x2b0800 CST',
+    title: 'Shell ps命令',
+    clientID: '3c8da4e91628fe8bbd9d',
+    clientSecret: 'd93d1a1463f3a30c049d3816dd66c58bdeb17744',
+    repo: 'blog',
+    owner: 'dingjingmaster',
+    admin: ['dingjingmaster'],
+    body: decodeURI(location.href)
+  });
+  gitalk.render('gitalk-container');
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:dingjing@live.cn" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/dingjingmaster" class="iconfont icon-github" title="github"></a>
+  <a href="https://www.dingjingmaster.top/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="copyright-year">
+    &copy; 
+    
+      2017 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">丁敬</span><br/>
+	<span>
+		<span>访客数量: <img src="http://www.reliablecounter.com/count.php?page=www.dingjingmaster.top/&digit=style/black-and-white/1/&reloads=0" border="0"></span>
+	</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  
+
+<script></script>
+<script src="https://cdn.jsdelivr.net/npm/raphael@2.2.7/raphael.min.js" integrity="sha256-67By+NpOtm9ka1R6xpUefeGOY8kWWHHRAKlvaTJ7ONI=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/flowchart.js@1.8.0/release/flowchart.min.js" integrity="sha256-zNGWjubXoY6rb5MnmpBNefO0RgoVYfle9p0tvOQM+6k=" crossorigin="anonymous"></script><script></script>
+<script src="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.js" integrity="sha256-4O4pS1SH31ZqrSO2A/2QJTVjTPqVe+jnYgOWUVr7EEc=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/snapsvg@0.5.1/dist/snap.svg-min.js" integrity="sha256-oI+elz+sIm+jpn8F/qEspKoKveTc5uKeFHNNVexe6d8=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/underscore@1.8.3/underscore-min.js" integrity="sha256-obZACiHd7gkOk9iIL/pimWMTJ4W/pBsKu+oZnSeBIek=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/gh/bramp/js-sequence-diagrams@2.0.1/dist/sequence-diagram-min.js" integrity="sha384-8748Vn52gHJYJI0XEuPB2QlPVNUkJlJn9tHqKec6J3q2r9l8fvRxrgn/E5ZHV0sP" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bramp/js-sequence-diagrams@2.0.1/dist/sequence-diagram-min.css" integrity="sha384-6QbLKJMz5dS3adWSeINZe74uSydBGFbnzaAYmp+tKyq60S7H2p6V7g1TysM5lAaF" crossorigin="anonymous">
+<script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+      TeX: {equationNumbers: {autoNumber: "AMS"}},
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

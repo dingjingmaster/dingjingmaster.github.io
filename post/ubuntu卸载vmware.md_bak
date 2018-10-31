@@ -1,0 +1,19 @@
+---
+title: "ubuntu卸载vmware"
+date: 2018-10-11T11:34:27+08:00
+description: "ubuntu卸载vmware"
+Tags: ["ubuntu"]
+Categories: "环境配置"
+draft: true
+---
+
+### ubuntu卸载vmware
+#### 查看安装的虚拟机
+```shell
+vmware-installer -l
+```
+#### 卸载虚拟机
+```shell
+sudo vmware-installer --uninstall-product vmware-workstation
+```
+然后根据提示看看是否保存虚拟机配置文件输入 ```yes``` 或 ```no``` 即可。

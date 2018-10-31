@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="zn-ch">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  
+  <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-127300551-1"></script>
+  <script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-127300551-1');</script>
+  
+  <title>MongoDB Bulk Write Operations - 丁敬个人博客</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="丁敬" /><meta name="description" content="MongoDB Bulk Write Operations" />
+<meta name="keywords" content="mongodb, 批量操作" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.49" />
+
+
+<link rel="canonical" href="https://www.dingjingmaster.top/post/mongo/mongodb-bulk-write-operations/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+<link href="/dist/even.min.css?v=3.2.0" rel="stylesheet">
+
+
+
+
+
+<meta property="og:title" content="MongoDB Bulk Write Operations" />
+<meta property="og:description" content="MongoDB Bulk Write Operations" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.dingjingmaster.top/post/mongo/mongodb-bulk-write-operations/" /><meta property="article:published_time" content="2017-10-22T09:39:03&#43;08:00"/>
+<meta property="article:modified_time" content="2017-10-22T09:39:03&#43;08:00"/>
+
+<meta itemprop="name" content="MongoDB Bulk Write Operations">
+<meta itemprop="description" content="MongoDB Bulk Write Operations">
+
+
+<meta itemprop="datePublished" content="2017-10-22T09:39:03&#43;08:00" />
+<meta itemprop="dateModified" content="2017-10-22T09:39:03&#43;08:00" />
+<meta itemprop="wordCount" content="1372">
+
+
+
+<meta itemprop="keywords" content="mongo," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="MongoDB Bulk Write Operations"/>
+<meta name="twitter:description" content="MongoDB Bulk Write Operations"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">DJ&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/resource/">
+        <li class="mobile-menu-item">资源下载</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">DJ&#39;s Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/resource/">资源下载</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">MongoDB Bulk Write Operations</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2017-10-22 09:39:03 </span>
+        <div class="post-category">
+            
+              <a href="/categories/mongo/"> mongo </a>
+            
+          </div>
+        <span class="more-meta">  </span>
+        <span class="more-meta">  </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title"></h2>
+  
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#综述">综述</a></li>
+<li><a href="#操作的有序和无序">操作的有序和无序</a>
+<ul>
+<li><a href="#有序操作">有序操作</a></li>
+<li><a href="#无序操作">无序操作</a></li>
+</ul></li>
+<li><a href="#批量操作支持的方法">批量操作支持的方法</a></li>
+<li><a href="#对分片集合进行批量插入的策略">对分片集合进行批量插入的策略</a>
+<ul>
+<li><a href="#pre-split-the-collection">Pre-Split the Collection</a></li>
+<li><a href="#unordered-writes-to-mongos">Unordered Writes to mongos</a></li>
+<li><a href="#avoid-monotonic-throttling">Avoid Monotonic Throttling</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    
+
+    
+    <div class="post-content">
+      
+
+<blockquote>
+<p>翻译自: <a href="http://www.mongoing.com/docs/core/bulk-write-operations.html">http://www.mongoing.com/docs/core/bulk-write-operations.html</a></p>
+</blockquote>
+
+<h3 id="综述">综述</h3>
+
+<ul>
+<li>MongoDB给客户端提供了批量写的操作。批量写操作影响单个集合。MongoDB允许应用程序确定批量写操作所需的可接受的确认级别。</li>
+</ul>
+
+<p>3.2版本开始
+db.collection.bulkWrite() 方法提供了批量插入、更新和删除操作。当然 db.collection.insertMany() 也属于批量插入操作。</p>
+
+<h3 id="操作的有序和无序">操作的有序和无序</h3>
+
+<ul>
+<li>批量操作可以是有序的，也可以是无序的。</li>
+<li>执行有序操作比执行无序操作慢，有序操作是一个一个执行，无需操作是同时执行。</li>
+</ul>
+
+<h4 id="有序操作">有序操作</h4>
+
+<ul>
+<li>使用有序列表，MongoDB按顺序执行一系列操作。一旦在执行期间发生错误，MongoDB 将会中止升序的写操作。</li>
+<li>批量操作默认是有序的写入</li>
+</ul>
+
+<pre><code class="language-js">// 原有集合 &quot;characters&quot; 包含以下文档
+{ &quot;_id&quot; : 1, &quot;char&quot; : &quot;Brisbane&quot;, &quot;class&quot; : &quot;monk&quot;, &quot;lvl&quot; : 4 },
+{ &quot;_id&quot; : 2, &quot;char&quot; : &quot;Eldon&quot;, &quot;class&quot; : &quot;alchemist&quot;, &quot;lvl&quot; : 3 },
+{ &quot;_id&quot; : 3, &quot;char&quot; : &quot;Meldane&quot;, &quot;class&quot; : &quot;ranger&quot;, &quot;lvl&quot; : 3 }
+
+// 执行批量写操作
+try {
+   db.characters.bulkWrite(
+      [
+         { insertOne :
+            {
+               &quot;document&quot; :
+               {
+                  &quot;_id&quot; : 4, &quot;char&quot; : &quot;Dithras&quot;, &quot;class&quot; : &quot;barbarian&quot;, &quot;lvl&quot; : 4
+               }
+            }
+         },
+         { insertOne :
+            {
+               &quot;document&quot; :
+               {
+                  &quot;_id&quot; : 5, &quot;char&quot; : &quot;Taeln&quot;, &quot;class&quot; : &quot;fighter&quot;, &quot;lvl&quot; : 3
+               }
+            }
+         },
+         { updateOne :
+            {
+               &quot;filter&quot; : { &quot;char&quot; : &quot;Eldon&quot; },
+               &quot;update&quot; : { $set : { &quot;status&quot; : &quot;Critical Injury&quot; } }
+            }
+         },
+         { deleteOne :
+            { &quot;filter&quot; : { &quot;char&quot; : &quot;Brisbane&quot;} }
+         },
+         { replaceOne :
+            {
+               &quot;filter&quot; : { &quot;char&quot; : &quot;Meldane&quot; },
+               &quot;replacement&quot; : { &quot;char&quot; : &quot;Tanys&quot;, &quot;class&quot; : &quot;oracle&quot;, &quot;lvl&quot; : 4 }
+            }
+         }
+      ]
+   );
+}
+catch (e) {
+   print(e);
+}
+
+// 返回结果如下
+{
+   &quot;acknowledged&quot; : true,
+   &quot;deletedCount&quot; : 1,
+   &quot;insertedCount&quot; : 2,
+   &quot;matchedCount&quot; : 2,
+   &quot;upsertedCount&quot; : 0,
+   &quot;insertedIds&quot; : {
+      &quot;0&quot; : 4,
+      &quot;1&quot; : 5
+   },
+   &quot;upsertedIds&quot; : {
+
+   }
+}
+
+// 如果第二个插入操作的 _id 与数据库中已有文档_id重复了，那么将会跑出以下错误
+// 因为 ordered 默认为 true， 所以，只有第一个操作完成，第二个操作抛出错误后就中止写操作
+BulkWriteError({
+   &quot;writeErrors&quot; : [
+      {
+         &quot;index&quot; : 0,
+         &quot;code&quot; : 11000,
+         &quot;errmsg&quot; : &quot;E11000 duplicate key error collection: guidebook.characters index: _id_ dup key: { : 4 }&quot;,
+         &quot;op&quot; : {
+            &quot;_id&quot; : 5,
+            &quot;char&quot; : &quot;Taeln&quot;
+         }
+      }
+   ],
+   &quot;writeConcernErrors&quot; : [ ],
+   &quot;nInserted&quot; : 1,
+   &quot;nUpserted&quot; : 0,
+   &quot;nMatched&quot; : 0,
+   &quot;nModified&quot; : 0,
+   &quot;nRemoved&quot; : 0,
+   &quot;upserted&quot; : [ ]
+})
+</code></pre>
+
+<h4 id="无序操作">无序操作</h4>
+
+<ul>
+<li>使用无序的操作列表，MongoDB可以并行执行操作。</li>
+<li>如果在处理一个写操作时发生错误，MongoDB将继续处理剩余的操作，跳过发生错误的那条操作。</li>
+</ul>
+
+<pre><code class="language-js">// &quot;characters&quot;集合中默认文档如下
+{ &quot;_id&quot; : 1, &quot;char&quot; : &quot;Brisbane&quot;, &quot;class&quot; : &quot;monk&quot;, &quot;lvl&quot; : 4 },
+{ &quot;_id&quot; : 2, &quot;char&quot; : &quot;Eldon&quot;, &quot;class&quot; : &quot;alchemist&quot;, &quot;lvl&quot; : 3 },
+{ &quot;_id&quot; : 3, &quot;char&quot; : &quot;Meldane&quot;, &quot;class&quot; : &quot;ranger&quot;, &quot;lvl&quot; : 3 }
+
+// 执行以下批量操作
+try {
+   db.characters.bulkWrite(
+         [
+            { insertOne :
+               {
+                  &quot;document&quot; :
+                  {
+                     &quot;_id&quot; : 4, &quot;char&quot; : &quot;Dithras&quot;, &quot;class&quot; : &quot;barbarian&quot;, &quot;lvl&quot; : 4
+                  }
+               }
+            },
+            { insertOne :
+               {
+                  &quot;document&quot; :
+                     {
+                        &quot;_id&quot; : 4, &quot;char&quot; : &quot;Taeln&quot;, &quot;class&quot; : &quot;fighter&quot;, &quot;lvl&quot; : 3
+                     }
+               }
+            },
+            { updateOne :
+               {
+                  &quot;filter&quot; : { &quot;char&quot; : &quot;Eldon&quot; },
+                  &quot;update&quot; : { $set : { &quot;status&quot; : &quot;Critical Injury&quot; } }
+               }
+            },
+            { deleteOne :
+               { &quot;filter&quot; : { &quot;char&quot; : &quot;Brisbane&quot;} }
+            },
+            { replaceOne :
+               {
+                  &quot;filter&quot; : { &quot;char&quot; : &quot;Meldane&quot; },
+                  &quot;replacement&quot; : { &quot;char&quot; : &quot;Tanys&quot;, &quot;class&quot; : &quot;oracle&quot;, &quot;lvl&quot; : 4 }
+               }
+            }
+         ],
+            { ordered : false } // false 执行无序插入操作
+      );
+   }
+   catch (e) {
+   print(e);
+}
+
+// 返回结果
+BulkWriteError({
+   &quot;writeErrors&quot; : [
+      {
+         &quot;index&quot; : 0,
+         &quot;code&quot; : 11000,
+         &quot;errmsg&quot; : &quot;E11000 duplicate key error collection: guidebook.characters index: _id_ dup key: { : 4 }&quot;,
+         &quot;op&quot; : {
+            &quot;_id&quot; : 4,
+            &quot;char&quot; : &quot;Taeln&quot;
+         }
+      }
+   ],
+   &quot;writeConcernErrors&quot; : [ ],
+   &quot;nInserted&quot; : 1, // 两次插入操作只有一次完成了，另一次与前一次 _id 重复了，所以失败了一次
+   &quot;nUpserted&quot; : 0,
+   &quot;nMatched&quot; : 2,
+   &quot;nModified&quot; : 2,
+   &quot;nRemoved&quot; : 1,
+   &quot;upserted&quot; : [ ]
+})
+</code></pre>
+
+<h3 id="批量操作支持的方法">批量操作支持的方法</h3>
+
+<ul>
+<li>每个写操作都是作为一个数组中的文档传递给 bulkWrite()
+
+<ol>
+<li>insertOne</li>
+<li>updateOne</li>
+<li>updateMany</li>
+<li>replaceOne</li>
+<li>deleteOne</li>
+<li>deleteMany</li>
+</ol></li>
+</ul>
+
+<h3 id="对分片集合进行批量插入的策略">对分片集合进行批量插入的策略</h3>
+
+<ul>
+<li>大量插入操作(包括初始数据插入或常规数据导入)可能会影响分片集群的性能。对于批量插入，考虑以下策略</li>
+</ul>
+
+<h4 id="pre-split-the-collection">Pre-Split the Collection</h4>
+
+<ul>
+<li>预分割集合</li>
+<li>如果分片集合为空，则集合只有一个初始块，它驻留在单个分片上。然后MongoDB必须花时间接收数据，创建分块，并将分块分发给可用的碎片。为了避免这种性能成本，可以预先分割集合。</li>
+<li>如果数据块的大小已经达到设定的最大值（默认64MB），MongoDB会在数据再次插入时进行分裂，不过有时候，需要手动进行数据块分裂.</li>
+</ul>
+
+<h4 id="unordered-writes-to-mongos">Unordered Writes to mongos</h4>
+
+<ul>
+<li>无序批量写入MongoDB</li>
+<li>无序写入是同步进行的</li>
+</ul>
+
+<h4 id="avoid-monotonic-throttling">Avoid Monotonic Throttling</h4>
+
+<ul>
+<li>避免单调限制</li>
+<li>如果在插入操作期间，分片键是单调的增加，所有插入数据都要进入集合的最后一个分块中，因此，集群的插入容量永远不会超过单个碎片的插入容量。</li>
+</ul>
+
+<blockquote>
+<p>注：看分片管理</p>
+</blockquote>
+
+    </div>
+
+    
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">作者</span>
+    <span class="item-content">丁敬</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">修改时间</span>
+    <span class="item-content">2017-10-22 09:39:03</span>
+  </p>
+  
+  
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/mongo/">mongo</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/post/spark-scala%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Spark Scala快速入门</span>
+            <span class="prev-text nav-mobile"></span>
+          </a>
+        
+          <a class="next" href="/post/mongo/mongo-curd/">
+            <span class="next-text nav-default">Mongo CURD</span>
+            <span class="next-text nav-mobile"></span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8080155533523922"
+     data-ad-slot="1056838406"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
+  
+
+  <div id="gitalk-container"></div>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.2.2/dist/gitalk.css" integrity="sha256-rJVe5uyYRXdLM+Kkoj7JtN+9qI0bZTxkYTaNWODpg7U=" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1.2.2/dist/gitalk.min.js" integrity="sha256-DcjhdbufsHMHflFjZtKNFnPKOAL2ybOxGcPOR4MtnJg=" crossorigin="anonymous"></script>
+  <script type="text/javascript">
+  var gitalk = new Gitalk({
+    id: '2017-10-22 09:39:03 \x2b0800 CST',
+    title: 'MongoDB Bulk Write Operations',
+    clientID: '3c8da4e91628fe8bbd9d',
+    clientSecret: 'd93d1a1463f3a30c049d3816dd66c58bdeb17744',
+    repo: 'blog',
+    owner: 'dingjingmaster',
+    admin: ['dingjingmaster'],
+    body: decodeURI(location.href)
+  });
+  gitalk.render('gitalk-container');
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:dingjing@live.cn" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/dingjingmaster" class="iconfont icon-github" title="github"></a>
+  <a href="https://www.dingjingmaster.top/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="copyright-year">
+    &copy; 
+    
+      2017 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">丁敬</span><br/>
+	<span>
+		<span>访客数量: <img src="http://www.reliablecounter.com/count.php?page=www.dingjingmaster.top/&digit=style/black-and-white/1/&reloads=0" border="0"></span>
+	</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  
+
+<script></script>
+<script src="https://cdn.jsdelivr.net/npm/raphael@2.2.7/raphael.min.js" integrity="sha256-67By+NpOtm9ka1R6xpUefeGOY8kWWHHRAKlvaTJ7ONI=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/flowchart.js@1.8.0/release/flowchart.min.js" integrity="sha256-zNGWjubXoY6rb5MnmpBNefO0RgoVYfle9p0tvOQM+6k=" crossorigin="anonymous"></script><script></script>
+<script src="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.js" integrity="sha256-4O4pS1SH31ZqrSO2A/2QJTVjTPqVe+jnYgOWUVr7EEc=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/snapsvg@0.5.1/dist/snap.svg-min.js" integrity="sha256-oI+elz+sIm+jpn8F/qEspKoKveTc5uKeFHNNVexe6d8=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/underscore@1.8.3/underscore-min.js" integrity="sha256-obZACiHd7gkOk9iIL/pimWMTJ4W/pBsKu+oZnSeBIek=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/gh/bramp/js-sequence-diagrams@2.0.1/dist/sequence-diagram-min.js" integrity="sha384-8748Vn52gHJYJI0XEuPB2QlPVNUkJlJn9tHqKec6J3q2r9l8fvRxrgn/E5ZHV0sP" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bramp/js-sequence-diagrams@2.0.1/dist/sequence-diagram-min.css" integrity="sha384-6QbLKJMz5dS3adWSeINZe74uSydBGFbnzaAYmp+tKyq60S7H2p6V7g1TysM5lAaF" crossorigin="anonymous">
+<script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+      TeX: {equationNumbers: {autoNumber: "AMS"}},
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>web on 丁敬个人博客</title>
+    <link>https://www.dingjingmaster.top/tags/web/</link>
+    <description>Recent content in web on 丁敬个人博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zn-ch</language>
+    <lastBuildDate>Sat, 13 Oct 2018 10:51:27 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.dingjingmaster.top/tags/web/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Web配置https域名</title>
+      <link>https://www.dingjingmaster.top/post/web%E9%85%8D%E7%BD%AEhttps%E5%9F%9F%E5%90%8D/</link>
+      <pubDate>Sat, 13 Oct 2018 10:51:27 +0800</pubDate>
+      
+      <guid>https://www.dingjingmaster.top/post/web%E9%85%8D%E7%BD%AEhttps%E5%9F%9F%E5%90%8D/</guid>
+      <description>1. 获取阿里云 DV SSL证书（免费） 进入官网 阿里云盾证书服务 依次选择： 【选择品牌】: Symantec &amp;ndash;&amp;gt; 【保护类型】：一个域名 &amp;ndash;&amp;gt; 【证书类型】：免费型DV SSL &amp;ndash;&amp;gt; 立即</description>
+    </item>
+    
+    <item>
+      <title>Nginx一台主机配置两个网站</title>
+      <link>https://www.dingjingmaster.top/post/nginx%E4%B8%80%E5%8F%B0%E4%B8%BB%E6%9C%BA%E9%85%8D%E7%BD%AE%E4%B8%A4%E4%B8%AA%E7%BD%91%E7%AB%99/</link>
+      <pubDate>Fri, 12 Oct 2018 10:38:47 +0800</pubDate>
+      
+      <guid>https://www.dingjingmaster.top/post/nginx%E4%B8%80%E5%8F%B0%E4%B8%BB%E6%9C%BA%E9%85%8D%E7%BD%AE%E4%B8%A4%E4%B8%AA%E7%BD%91%E7%AB%99/</guid>
+      <description>1.大致过程 nginx 监听固定端口（http是80端口，https是443端口），当客户端请求到达nginx时，nginx根据server name将</description>
+    </item>
+    
+  </channel>
+</rss>

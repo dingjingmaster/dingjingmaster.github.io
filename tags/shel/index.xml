@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>shel on 丁敬个人博客</title>
+    <link>https://www.dingjingmaster.top/tags/shel/</link>
+    <description>Recent content in shel on 丁敬个人博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zn-ch</language>
+    <lastBuildDate>Thu, 19 Oct 2017 16:25:05 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.dingjingmaster.top/tags/shel/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Shell ps命令</title>
+      <link>https://www.dingjingmaster.top/post/shell/shell-ps%E5%91%BD%E4%BB%A4/</link>
+      <pubDate>Thu, 19 Oct 2017 16:25:05 +0800</pubDate>
+      
+      <guid>https://www.dingjingmaster.top/post/shell/shell-ps%E5%91%BD%E4%BB%A4/</guid>
+      <description>简介 ps(progress status)即：系统进程状态。用于查看目前系统进程的运行状态。 linux进程的 5 种状态 运行 &amp;ndash; R 正在运行或在运行队列中等待 中断 &amp;ndash; S 休眠</description>
+    </item>
+    
+  </channel>
+</rss>

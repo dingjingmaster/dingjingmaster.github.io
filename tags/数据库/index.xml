@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>数据库 on 丁敬个人博客</title>
+    <link>https://www.dingjingmaster.top/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/</link>
+    <description>Recent content in 数据库 on 丁敬个人博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zn-ch</language>
+    <lastBuildDate>Sat, 21 Oct 2017 10:52:33 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.dingjingmaster.top/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Mongo CURD</title>
+      <link>https://www.dingjingmaster.top/post/mongo/mongo-curd/</link>
+      <pubDate>Sat, 21 Oct 2017 10:52:33 +0800</pubDate>
+      
+      <guid>https://www.dingjingmaster.top/post/mongo/mongo-curd/</guid>
+      <description>增加/插入数据 创建集合 插入文档的时候，文档所属集合不存在，那么插入操作会创建集合 主键分配 每个插入的文档都需要指定唯一的id（&amp;rdquo;_</description>
+    </item>
+    
+  </channel>
+</rss>

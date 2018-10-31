@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>git on 丁敬个人博客</title>
+    <link>https://www.dingjingmaster.top/tags/git/</link>
+    <description>Recent content in git on 丁敬个人博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zn-ch</language>
+    <lastBuildDate>Tue, 16 Oct 2018 15:27:10 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.dingjingmaster.top/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>提高github访问速度的方法</title>
+      <link>https://www.dingjingmaster.top/post/%E6%8F%90%E9%AB%98github%E8%AE%BF%E9%97%AE%E9%80%9F%E5%BA%A6%E7%9A%84%E6%96%B9%E6%B3%95/</link>
+      <pubDate>Tue, 16 Oct 2018 15:27:10 +0800</pubDate>
+      
+      <guid>https://www.dingjingmaster.top/post/%E6%8F%90%E9%AB%98github%E8%AE%BF%E9%97%AE%E9%80%9F%E5%BA%A6%E7%9A%84%E6%96%B9%E6%B3%95/</guid>
+      <description>1. 查询github域名对应ip 访问网站 https://www.ipaddress.com 查询以下两个域名对应ip github.com的ip, 我查到的结果是：192.30.253.112 和 192.30.253.113</description>
+    </item>
+    
+  </channel>
+</rss>

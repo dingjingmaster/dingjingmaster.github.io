@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>正向代理 on 丁敬个人博客</title>
+    <link>https://www.dingjingmaster.top/tags/%E6%AD%A3%E5%90%91%E4%BB%A3%E7%90%86/</link>
+    <description>Recent content in 正向代理 on 丁敬个人博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zn-ch</language>
+    <lastBuildDate>Fri, 12 Oct 2018 10:52:47 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.dingjingmaster.top/tags/%E6%AD%A3%E5%90%91%E4%BB%A3%E7%90%86/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>正向代理与反向代理</title>
+      <link>https://www.dingjingmaster.top/post/%E6%AD%A3%E5%90%91%E4%BB%A3%E7%90%86%E4%B8%8E%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/</link>
+      <pubDate>Fri, 12 Oct 2018 10:52:47 +0800</pubDate>
+      
+      <guid>https://www.dingjingmaster.top/post/%E6%AD%A3%E5%90%91%E4%BB%A3%E7%90%86%E4%B8%8E%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/</guid>
+      <description>1. 正向代理(Forward Proxy) 正向代理是一个位于【客户端A】与【服务器B】之间的【服务器Z】。当【客户端A】想要访问【服务器B】的时候，【客户</description>
+    </item>
+    
+  </channel>
+</rss>
