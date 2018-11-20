@@ -67,7 +67,7 @@
 
 <meta itemprop="datePublished" content="2018-11-13T16:27:24&#43;08:00" />
 <meta itemprop="dateModified" content="2018-11-13T16:27:24&#43;08:00" />
-<meta itemprop="wordCount" content="3123">
+<meta itemprop="wordCount" content="3131">
 
 
 
@@ -209,73 +209,70 @@
 <p>为了确保在每次插入之后给定的树仍然是AVL，我们必须增加标准的BST插入操作来执行一些重新平衡。左旋转 和 右旋转 两个操作可以在不违反BST属性(键(左)&lt; key(根)&lt; keys(右))的情况下重新平衡BST。</p>
 </blockquote>
 
-<p>针对插入新节点 w：</p>
+<p>针对插入新节点 w</p>
 
-<ol>
+<ul>
 <li>执行标准的插入(从树的根节点开始向下遍历，w 的 key 大于子树的根结点则向右遍历，否则向左遍历。直到找到节点为 NULL 的地方，把 w 节点插入该位置)</li>
 <li>从 w 节点向上移动(w 节点高度为 1，向上移动顺次更新各个节点高度)，找到第一个不平衡节点(针对AVL树不满足左子树和右子树高度差不超过1这一条件的节点)。设 z 是第一个不平衡节点，y 是 z 的子结点，x 是 z 的孙子结点。</li>
+<li>通过对以z为根的子树进行适当的旋转来重新平衡树。有4种可能的情况需要处理，因为x、y和 z 有4种排列方式，如下所示：</li>
+</ul>
 
-<li><p>通过对以z为根的子树进行适当的旋转来重新平衡树。有4种可能的情况需要处理，因为x、y和 z 有4种排列方式：</p>
-
-<ol>
-<li><p>y 是 z 的左子结点 x 是 y 的左子结点(左下)</p>
+<p>① y 是 z 的左子结点 x 是 y 的左子结点(左下)</p>
 
 <pre><code>左左 --- 右旋
 T1, T2, T3 和 T4 是子树。
 假设字数 T1 T2 高度都为 1 括号值为每个节点高度，显然 z 节点 左子树 和 其左右子树的高度超过了 1
 旋转前提:
-调整的办法就是降低高度高的那一个节点
-由二叉搜索树性质(左子树 &lt; 根节点 &lt; 右子树)得出: z &gt; y、T4 &gt; z、 T3 &lt; z
+  调整的办法就是降低高度高的那一个节点
+  由二叉搜索树性质(左子树 &lt; 根节点 &lt; 右子树)得出: z &gt; y、T4 &gt; z、 T3 &lt; z
 
-    (3)z                                       y
-    /   \                                    /   \
-  (2)y (0)T4      右旋 (z)                  x      z
-   /   \          - - - - - - - - -&gt;      /  \    /  \
- (1)x  (0)T3                            T1   T2  T3  T4
-  /   \
+        (3)z                                       y
+        /   \                                    /   \
+      (2)y (0)T4      右旋 (z)                  x      z
+       /   \          - - - - - - - - -&gt;      /  \    /  \
+     (1)x  (0)T3                            T1   T2  T3  T4
+      /   \
 T1(0)   T2(0)
-</code></pre></li>
+</code></pre>
 
-<li><p>y是z的左子结点x是y的右子结点(左右图)</p>
+<p>② y是z的左子结点x是y的右子结点(左右图)</p>
 
 <pre><code>左右 -- 左旋 + 右旋
 T1, T2, T3 和 T4 是子树
-    z                               z                           x
-   / \                            /   \                        /  \
-  y   T4  左旋 (y)                x    T4  右旋(z)            y      z
- / \      - - - - - - - - -&gt;    /  \      - - - - - - - -&gt;  / \    / \
-T1   x                          y    T3                    T1  T2 T3  T4
-    / \                        / \
-  T2   T3                    T1   T2
-</code></pre></li>
+        z                               z                           x
+       / \                            /   \                        /  \
+      y   T4  左旋 (y)                x    T4  右旋(z)            y      z
+     / \      - - - - - - - - -&gt;    /  \      - - - - - - - -&gt;  / \    / \
+   T1   x                          y    T3                    T1  T2 T3  T4
+        / \                        / \
+      T2   T3                    T1   T2
+</code></pre>
 
-<li><p>y是z的右子结点x是y的右子结点</p>
+<p>③ y是z的右子结点x是y的右子结点</p>
 
 <pre><code>右右 -- 左旋
 T1, T2, T3 和 T4 是子树
-   z                                y
-  /  \                            /   \
- T1   y      左旋(z)             z      x
-     /  \   - - - - - - - -&gt;    / \    / \
-    T2   x                     T1  T2 T3  T4
-        / \
-      T3  T4
-</code></pre></li>
+       z                                y
+      /  \                            /   \
+     T1   y      左旋(z)             z      x
+         /  \   - - - - - - - -&gt;    / \    / \
+        T2   x                     T1  T2 T3  T4
+            / \
+          T3  T4
+</code></pre>
 
-<li><p>y是z的右子结点x是y的左子结点(右左)</p>
+<p>④ y是z的右子结点x是y的左子结点(右左)</p>
 
 <pre><code>右左 -- 右旋 + 左旋
 T1, T2, T3 和 T4 是子树
-   z                            z                            x
-  / \                          / \                          /  \
-T1   y   右旋 (y)             T1   x      左旋(z)          z      y
-    / \  - - - - - - - - -&gt;     /  \   - - - - - - - -&gt;  / \    / \
-   x   T4                      T2   y                  T1  T2  T3  T4
-  / \                              /  \
-T2   T3                           T3   T4
-</code></pre></li>
-</ol></li>
-</ol>
+       z                            z                            x
+      / \                          / \                          /  \
+    T1   y   右旋 (y)             T1   x      左旋(z)          z      y
+        / \  - - - - - - - - -&gt;     /  \   - - - - - - - -&gt;  / \    / \
+       x   T4                      T2   y                  T1  T2  T3  T4
+      / \                              /  \
+    T2   T3                           T3   T4
+</code></pre>
 
 <p>代码实现</p>
 
@@ -793,8 +790,8 @@ int main(void) {
   var gitalk = new Gitalk({
     id: '2018-11-13 16:27:24 \x2b0800 CST',
     title: 'AVL Tree',
-    clientID: '77f3dcf7b883de0aae8b',
-    clientSecret: 'da3c107ff3c2ca225df2489d9b185915dd05f10f',
+    clientID: '3c8da4e91628fe8bbd9d',
+    clientSecret: 'd93d1a1463f3a30c049d3816dd66c58bdeb17744',
     repo: 'blog',
     owner: 'dingjingmaster',
     admin: ['dingjingmaster'],
