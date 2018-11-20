@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>gcc on 丁敬个人博客</title>
+    <link>https://www.dingjingmaster.top/categories/gcc/</link>
+    <description>Recent content in gcc on 丁敬个人博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zn-ch</language>
+    <lastBuildDate>Thu, 09 Nov 2017 15:02:27 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.dingjingmaster.top/categories/gcc/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>gcc 命令行</title>
+      <link>https://www.dingjingmaster.top/post/c%E7%BC%96%E8%AF%91/gcc-%E5%91%BD%E4%BB%A4%E8%A1%8C/</link>
+      <pubDate>Thu, 09 Nov 2017 15:02:27 +0800</pubDate>
+      
+      <guid>https://www.dingjingmaster.top/post/c%E7%BC%96%E8%AF%91/gcc-%E5%91%BD%E4%BB%A4%E8%A1%8C/</guid>
+      <description>&lt;p&gt;GCC 的意思也只是 GNU C Compiler 而已。经过了这么多年的发展，GCC 已经不仅仅能支持 C 语言；它现在还支持 Ada 语言、C++ 语言、Java 语言、Objective C 语言、Pascal 语言、COBOL语言，以及支持函数式编程和逻辑编程的 Mercury 语言，等等。而 GCC 也不再单只是 GNU C 语言编译器的意思了，而是变成了 GNU Compiler Collection 也即是 GNU 编译器家族的意思了。另一方面，说到 GCC 对于操作系统平台及硬件平台支持，概括起来就是一句话：无所不在。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

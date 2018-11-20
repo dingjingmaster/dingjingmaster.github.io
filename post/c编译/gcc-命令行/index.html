@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="zn-ch">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  
+  <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-127300551-1"></script>
+  <script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-127300551-1');</script>
+  
+  <title>gcc 命令行 - 丁敬个人博客</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="丁敬" /><meta name="description" content="gcc 命令行" />
+<meta name="keywords" content="gcc使用, gcc常用命令" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.49" />
+
+
+<link rel="canonical" href="https://www.dingjingmaster.top/post/c%E7%BC%96%E8%AF%91/gcc-%E5%91%BD%E4%BB%A4%E8%A1%8C/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<style>table{width: 100%;}</style>
+
+
+
+
+
+
+
+<link href="/dist/even.min.css?v=3.2.0" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+<style type="text/css">.mjx-chtml{outline:0;}</style>
+
+
+
+<meta property="og:title" content="gcc 命令行" />
+<meta property="og:description" content="gcc 命令行" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.dingjingmaster.top/post/c%E7%BC%96%E8%AF%91/gcc-%E5%91%BD%E4%BB%A4%E8%A1%8C/" /><meta property="article:published_time" content="2017-11-09T15:02:27&#43;08:00"/>
+<meta property="article:modified_time" content="2017-11-09T15:02:27&#43;08:00"/>
+
+<meta itemprop="name" content="gcc 命令行">
+<meta itemprop="description" content="gcc 命令行">
+
+
+<meta itemprop="datePublished" content="2017-11-09T15:02:27&#43;08:00" />
+<meta itemprop="dateModified" content="2017-11-09T15:02:27&#43;08:00" />
+<meta itemprop="wordCount" content="1346">
+
+
+
+<meta itemprop="keywords" content="gcc,c," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="gcc 命令行"/>
+<meta name="twitter:description" content="gcc 命令行"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">DJ&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/resource/">
+        <li class="mobile-menu-item">文档资源</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">DJ&#39;s Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/resource/">文档资源</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">gcc 命令行</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2017-11-09 </span>
+        <div class="post-category">
+            
+              <a href="/categories/gcc/"> gcc </a>
+            
+          </div>
+        <span class="more-meta">  </span>
+        <span class="more-meta">  </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title"></h2>
+  
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#简单编译">简单编译</a></li>
+<li><a href="#编译过程">编译过程</a>
+<ul>
+<li><a href="#预处理">预处理</a></li>
+<li><a href="#编译为汇编代码">编译为汇编代码</a></li>
+<li><a href="#汇编">汇编</a></li>
+<li><a href="#连接">连接</a></li>
+</ul></li>
+<li><a href="#gcc-命令行">gcc 命令行</a></li>
+<li><a href="#静态库链接时搜索路径顺序">静态库链接时搜索路径顺序：</a></li>
+<li><a href="#gcc-环境变量">GCC 环境变量</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    
+
+    
+    <div class="post-content">
+      <p>GCC 的意思也只是 GNU C Compiler 而已。经过了这么多年的发展，GCC 已经不仅仅能支持 C 语言；它现在还支持 Ada 语言、C++ 语言、Java 语言、Objective C 语言、Pascal 语言、COBOL语言，以及支持函数式编程和逻辑编程的 Mercury 语言，等等。而 GCC 也不再单只是 GNU C 语言编译器的意思了，而是变成了 GNU Compiler Collection 也即是 GNU 编译器家族的意思了。另一方面，说到 GCC 对于操作系统平台及硬件平台支持，概括起来就是一句话：无所不在。</p>
+
+<p></p>
+
+<h3 id="简单编译">简单编译</h3>
+
+<pre><code class="language-c">//test.c
+#include &lt;stdio.h&gt;
+int main(void)
+{
+    printf(&quot;Hello World!\n&quot;); // 注释
+    return 0;
+}
+</code></pre>
+
+<p>编译输出</p>
+
+<pre><code class="language-shell">gcc test.c -o test
+</code></pre>
+
+<blockquote>
+<p>实质上，上述编译过程是分为四个阶段进行的，即预处理(也称预编译，Preprocessing)、编译(Compilation)、汇编 (Assembly)和连接(Linking)。</p>
+</blockquote>
+
+<h3 id="编译过程">编译过程</h3>
+
+<h4 id="预处理">预处理</h4>
+
+<blockquote>
+<p>在C里预处理只是简单的头文件替换、宏替换 和 删除注释</p>
+</blockquote>
+
+<pre><code class="language-shell">  gcc -E test.c -o test.i
+#或
+  gcc -E test.c
+</code></pre>
+
+<p>结果如下：</p>
+
+<pre><code class="language-c"># 1 &quot;main.c&quot;
+# 1 &quot;&lt;built-in&gt;&quot;
+# 1 &quot;&lt;command-line&gt;&quot;
+# 1 &quot;main.c&quot;
+
+# 省略接近 800 行代码
+
+  __attribute__ ((__dllimport__)) size_t __attribute__((__cdecl__)) _fread_nolock_s(void *_DstBuf,size_t _DstSize,size_t _ElementSize,size_t _Count,FILE *_File);
+# 992 &quot;C:/Strawberry/c/i686-w64-mingw32/include/stdio.h&quot; 2 3
+
+# 1 &quot;C:/Strawberry/c/i686-w64-mingw32/include/_mingw_print_pop.h&quot; 1 3
+# 994 &quot;C:/Strawberry/c/i686-w64-mingw32/include/stdio.h&quot; 2 3
+# 3 &quot;main.c&quot; 2
+int main(void)
+{
+    printf(&quot;Hello World!\n&quot;);
+    return 0;
+}
+</code></pre>
+
+<h4 id="编译为汇编代码">编译为汇编代码</h4>
+
+<blockquote>
+<p>预处理之后，可直接对生成的test.i文件编译，生成汇编代码</p>
+</blockquote>
+
+<pre><code class="language-c">gcc -S test.i -o test.s
+</code></pre>
+
+<p>结果如下</p>
+
+<pre><code class="language-c">.file	&quot;main.c&quot;
+.def	___main;	.scl	2;	.type	32;	.endef
+.section .rdata,&quot;dr&quot;
+LC0:
+.ascii &quot;Hello World!\0&quot;
+.text
+.globl	_main
+.def	_main;	.scl	2;	.type	32;	.endef
+_main:
+pushl	%ebp
+movl	%esp, %ebp
+andl	$-16, %esp
+subl	$16, %esp
+call	___main
+movl	$LC0, (%esp)
+call	_puts
+movl	$0, %eax
+leave
+ret
+.ident	&quot;GCC: (i686-posix-sjlj, built by strawberryperl.com project) 4.9.2&quot;
+.def	_puts;	.scl	2;	.type	32;	.endef
+</code></pre>
+
+<h4 id="汇编">汇编</h4>
+
+<blockquote>
+<p>对于生成的汇编代码文件test.s，gas汇编器负责将其编译为目标文件，如下：</p>
+</blockquote>
+
+<pre><code class="language-c">gcc -c test.s -o test.o
+</code></pre>
+
+<h4 id="连接">连接</h4>
+
+<blockquote>
+<p>gcc连接器是gas提供的，负责将程序的目标文件与所需的所有附加的目标文件连接起来，最终生成可执行文件。附加的目标文件包括静态连接库和动态连接库。
+对于之前生成的test.o，将其与Ｃ标准输入输出库进行连接，最终生成程序test</p>
+</blockquote>
+
+<h3 id="gcc-命令行">gcc 命令行</h3>
+
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">-E</td>
+<td align="left">预处理</td>
+</tr>
+
+<tr>
+<td align="left">-S</td>
+<td align="left">编译</td>
+</tr>
+
+<tr>
+<td align="left">-c</td>
+<td align="left">汇编</td>
+</tr>
+
+<tr>
+<td align="left">-o</td>
+<td align="left">指定输出文件名</td>
+</tr>
+
+<tr>
+<td align="left">-g</td>
+<td align="left">产生gdb调试的必要信息(后加1、2、3控制调试信息量)</td>
+</tr>
+
+<tr>
+<td align="left">-g1</td>
+<td align="left">不包含局部变量和与行号有关的调试信息，只能够用于回溯跟踪和堆栈转储</td>
+</tr>
+
+<tr>
+<td align="left">-g2</td>
+<td align="left">产生的调试信息包括：扩展的符号表、行号、局部或外部变量信息(默认g2)</td>
+</tr>
+
+<tr>
+<td align="left">-g3</td>
+<td align="left">包含级别2中的所有调试信息以及源代码中定义的宏</td>
+</tr>
+
+<tr>
+<td align="left">-O</td>
+<td align="left">对程序进行优化编译、链接，编译过程慢</td>
+</tr>
+
+<tr>
+<td align="left">-O2</td>
+<td align="left">比-O更好的优化编译、链接。速度更慢</td>
+</tr>
+
+<tr>
+<td align="left">-p</td>
+<td align="left">会将剖析（Profiling）信息加入到最终生成的二进制代码中,利于优化性能</td>
+</tr>
+
+<tr>
+<td align="left">-v</td>
+<td align="left">输出gcc工作的详细过程</td>
+</tr>
+
+<tr>
+<td align="left">-pedantic</td>
+<td align="left">帮助程序员发现一些不符合 ANSI/ISO C标准的代码</td>
+</tr>
+
+<tr>
+<td align="left">-Wall</td>
+<td align="left">能够使GCC产生尽可能多的警告信息</td>
+</tr>
+
+<tr>
+<td align="left">-Werror</td>
+<td align="left">GCC会在所有产生警告的地方停止编译</td>
+</tr>
+
+<tr>
+<td align="left">–I</td>
+<td align="left">指定头文件路径</td>
+</tr>
+
+<tr>
+<td align="left">–L</td>
+<td align="left">指定库文件路径</td>
+</tr>
+
+<tr>
+<td align="left">–l</td>
+<td align="left">指定编译时依赖的库文件</td>
+</tr>
+
+<tr>
+<td align="left">-static</td>
+<td align="left">强制编译时使用静态链接库(默认gcc优先使用动态库)</td>
+</tr>
+
+<tr>
+<td align="left">-shared</td>
+<td align="left">生成一个共享的目标文件，能与其他目标一起链接生成可执行文件</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="静态库链接时搜索路径顺序">静态库链接时搜索路径顺序：</h3>
+
+<ol>
+<li>ld会去找GCC命令中的参数-L</li>
+<li>再找gcc的环境变量LIBRARY_PATH</li>
+<li>再找内定目录 /lib /usr/lib /usr/local/lib 这是当初compile gcc时写在程序内的</li>
+</ol>
+
+<p>动态链接时、执行时搜索路径顺序:</p>
+
+<ol>
+<li>编译目标代码时指定的动态库搜索路径</li>
+<li>环境变量LD_LIBRARY_PATH指定的动态库搜索路径</li>
+<li>配置文件/etc/ld.so.conf中指定的动态库搜索路径</li>
+<li>默认的动态库搜索路径/lib</li>
+<li>默认的动态库搜索路径/usr/lib</li>
+</ol>
+
+<h3 id="gcc-环境变量">GCC 环境变量</h3>
+
+<ul>
+<li>LIBRARY_PATH环境变量：指定程序静态链接库文件搜索路径</li>
+<li>LD_LIBRARY_PATH环境变量：指定程序动态链接库文件搜索路径</li>
+</ul>
+    </div>
+
+    
+    
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/gcc/">gcc</a>
+          
+          <a href="/tags/c/">c</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/post/spark-scala%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Spark Scala快速入门</span>
+            <span class="prev-text nav-mobile"></span>
+          </a>
+        
+          <a class="next" href="/post/c%E7%BC%96%E8%AF%91/gdb-%E5%91%BD%E4%BB%A4%E8%A1%8C/">
+            <span class="next-text nav-default">GDB 命令行</span>
+            <span class="next-text nav-mobile"></span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8080155533523922"
+     data-ad-slot="1056838406"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
+  
+
+  <div id="gitalk-container"></div>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.2.2/dist/gitalk.css" integrity="sha256-rJVe5uyYRXdLM+Kkoj7JtN+9qI0bZTxkYTaNWODpg7U=" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1.2.2/dist/gitalk.min.js" integrity="sha256-DcjhdbufsHMHflFjZtKNFnPKOAL2ybOxGcPOR4MtnJg=" crossorigin="anonymous"></script>
+  <script type="text/javascript">
+  var gitalk = new Gitalk({
+    id: '2017-11-09 15:02:27 \x2b0800 CST',
+    title: 'gcc 命令行',
+    clientID: '77f3dcf7b883de0aae8b',
+    clientSecret: 'da3c107ff3c2ca225df2489d9b185915dd05f10f',
+    repo: 'blog',
+    owner: 'dingjingmaster',
+    admin: ['dingjingmaster'],
+    body: decodeURI(location.href)
+  });
+  gitalk.render('gitalk-container');
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:dingjing@live.cn" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/dingjingmaster" class="iconfont icon-github" title="github"></a>
+  <a href="https://www.dingjingmaster.top/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="copyright-year">
+    &copy; 
+    
+      2017 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">丁敬</span><br/>
+	<span>
+	
+	<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1275283166'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s23.cnzz.com/z_stat.php%3Fid%3D1275283166%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
+	
+	
+	</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+<script></script>
+<script src="https://cdn.jsdelivr.net/npm/raphael@2.2.7/raphael.min.js" integrity="sha256-67By+NpOtm9ka1R6xpUefeGOY8kWWHHRAKlvaTJ7ONI=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/flowchart.js@1.8.0/release/flowchart.min.js" integrity="sha256-zNGWjubXoY6rb5MnmpBNefO0RgoVYfle9p0tvOQM+6k=" crossorigin="anonymous"></script><script></script>
+<script src="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.js" integrity="sha256-4O4pS1SH31ZqrSO2A/2QJTVjTPqVe+jnYgOWUVr7EEc=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/snapsvg@0.5.1/dist/snap.svg-min.js" integrity="sha256-oI+elz+sIm+jpn8F/qEspKoKveTc5uKeFHNNVexe6d8=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/underscore@1.8.3/underscore-min.js" integrity="sha256-obZACiHd7gkOk9iIL/pimWMTJ4W/pBsKu+oZnSeBIek=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/gh/bramp/js-sequence-diagrams@2.0.1/dist/sequence-diagram-min.js" integrity="sha384-8748Vn52gHJYJI0XEuPB2QlPVNUkJlJn9tHqKec6J3q2r9l8fvRxrgn/E5ZHV0sP" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bramp/js-sequence-diagrams@2.0.1/dist/sequence-diagram-min.css" integrity="sha384-6QbLKJMz5dS3adWSeINZe74uSydBGFbnzaAYmp+tKyq60S7H2p6V7g1TysM5lAaF" crossorigin="anonymous">
+<script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+      TeX: {equationNumbers: {autoNumber: "AMS"}},
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

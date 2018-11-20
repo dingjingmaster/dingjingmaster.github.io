@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>vps on 丁敬个人博客</title>
+    <link>https://www.dingjingmaster.top/tags/vps/</link>
+    <description>Recent content in vps on 丁敬个人博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zn-ch</language>
+    <lastBuildDate>Thu, 01 Nov 2018 17:07:27 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.dingjingmaster.top/tags/vps/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>VPS 选择</title>
+      <link>https://www.dingjingmaster.top/post/experience/vps-%E9%80%89%E6%8B%A9/</link>
+      <pubDate>Thu, 01 Nov 2018 17:07:27 +0800</pubDate>
+      
+      <guid>https://www.dingjingmaster.top/post/experience/vps-%E9%80%89%E6%8B%A9/</guid>
+      <description>写在前面 至今(2018-11-01)，我用 vps 已经超过 2 年多了，而且我又喜欢折腾，所以也算是积累了一些经验。起初我只是使用 vps 搭建 vpn，后来工</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -6,10 +6,90 @@
     <description>Recent content on 丁敬个人博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zn-ch</language>
-    <lastBuildDate>Fri, 19 Oct 2018 17:30:11 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 13 Nov 2018 16:26:37 +0800</lastBuildDate>
     
 	<atom:link href="https://www.dingjingmaster.top/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Tree</title>
+      <link>https://www.dingjingmaster.top/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/tree/</link>
+      <pubDate>Tue, 13 Nov 2018 16:26:37 +0800</pubDate>
+      
+      <guid>https://www.dingjingmaster.top/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/tree/</guid>
+      <description>&lt;p&gt;树:与数组、链表、堆栈和队列(它们是线性数据结构)不同，树是分层数据结构。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Kotlin 流程控制</title>
+      <link>https://www.dingjingmaster.top/post/kotlin/kotlin-%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/</link>
+      <pubDate>Mon, 12 Nov 2018 17:25:55 +0800</pubDate>
+      
+      <guid>https://www.dingjingmaster.top/post/kotlin/kotlin-%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/</guid>
+      <description>&lt;p&gt;循环 和 控制&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Kotlin 基本类型</title>
+      <link>https://www.dingjingmaster.top/post/kotlin/kotlin-%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B/</link>
+      <pubDate>Fri, 09 Nov 2018 16:39:05 +0800</pubDate>
+      
+      <guid>https://www.dingjingmaster.top/post/kotlin/kotlin-%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B/</guid>
+      <description>&lt;p&gt;Kotlin编程语言中的基本数据类型。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Kotlin 介绍</title>
+      <link>https://www.dingjingmaster.top/post/kotlin/kotlin-%E4%BB%8B%E7%BB%8D/</link>
+      <pubDate>Fri, 09 Nov 2018 15:59:49 +0800</pubDate>
+      
+      <guid>https://www.dingjingmaster.top/post/kotlin/kotlin-%E4%BB%8B%E7%BB%8D/</guid>
+      <description>&lt;p&gt;Kotlin是一种新的开源编程语言，如Java、JavaScript等。它是一种高度静态类型的语言，将功能和技术结合在一起。它在JVM上运行。Kotlin受到Java、Scala、Groovy、Gosu等其他编程语言的影响。Kotlin为开发提供了互操作性、代码安全性和透明性。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Spark 安装</title>
+      <link>https://www.dingjingmaster.top/post/spark/spark-%E5%AE%89%E8%A3%85/</link>
+      <pubDate>Thu, 08 Nov 2018 15:37:55 +0800</pubDate>
+      
+      <guid>https://www.dingjingmaster.top/post/spark/spark-%E5%AE%89%E8%A3%85/</guid>
+      <description>&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Hadoop 安装</title>
+      <link>https://www.dingjingmaster.top/post/hadoop/1-hadoop-%E5%AE%89%E8%A3%85/</link>
+      <pubDate>Thu, 08 Nov 2018 11:32:32 +0800</pubDate>
+      
+      <guid>https://www.dingjingmaster.top/post/hadoop/1-hadoop-%E5%AE%89%E8%A3%85/</guid>
+      <description>准备 系统：linux/ubuntu java jdk 1.5 + ssh rsync hadoop 稳定发行版 开始安装 安装 java 配置 JAVA_HOME 手动下载 java 安装包, tar 命令解压，配置好 JAVA_HOME 安装 ssh 和 rsync sudo apt-get install ssh rsync 解压</description>
+    </item>
+    
+    <item>
+      <title>GO import</title>
+      <link>https://www.dingjingmaster.top/post/go/go-import-%E6%93%8D%E4%BD%9C/</link>
+      <pubDate>Wed, 07 Nov 2018 15:40:54 +0800</pubDate>
+      
+      <guid>https://www.dingjingmaster.top/post/go/go-import-%E6%93%8D%E4%BD%9C/</guid>
+      <description>go import 下划线 在 Golang 里，import 的作用主要是导入其它 package，如果 import 后加下划线，则表示，并不导入包，只是执行包里的 init() 函数 如: import ( &amp;quot;github.com/astaxie/beego&amp;quot; _ &amp;quot;iyuedu_service/routers&amp;quot; )</description>
+    </item>
+    
+    <item>
+      <title>VPS 选择</title>
+      <link>https://www.dingjingmaster.top/post/experience/vps-%E9%80%89%E6%8B%A9/</link>
+      <pubDate>Thu, 01 Nov 2018 17:07:27 +0800</pubDate>
+      
+      <guid>https://www.dingjingmaster.top/post/experience/vps-%E9%80%89%E6%8B%A9/</guid>
+      <description>写在前面 至今(2018-11-01)，我用 vps 已经超过 2 年多了，而且我又喜欢折腾，所以也算是积累了一些经验。起初我只是使用 vps 搭建 vpn，后来工</description>
+    </item>
     
     <item>
       <title>资源</title>
@@ -17,7 +97,7 @@
       <pubDate>Fri, 19 Oct 2018 17:30:11 +0800</pubDate>
       
       <guid>https://www.dingjingmaster.top/resource/</guid>
-      <description>书籍资源 索引 &amp;ndash; J 机器学习(周志华) 索引 &amp;ndash; K Kubernetes中文指南/云原生应用架构实践手册 索引 &amp;ndash; S 算法图解</description>
+      <description>书籍资源 索引 &amp;ndash; G go语言web示例 索引 &amp;ndash; J 机器学习(周志华) 索引 &amp;ndash; K Kubernetes中文指南/云原生应用架构实践手册 索引 &amp;ndash; M MathJax 中文文档 索</description>
     </item>
     
     <item>
@@ -99,6 +179,28 @@
       
       <guid>https://www.dingjingmaster.top/post/spark-scala%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/</guid>
       <description>1、spark参数配置 sparkConf类 配置spark程序，以key-value的形式设置spark参数。它的设置优先于系统设置。 该类所有</description>
+    </item>
+    
+    <item>
+      <title>gcc 命令行</title>
+      <link>https://www.dingjingmaster.top/post/c%E7%BC%96%E8%AF%91/gcc-%E5%91%BD%E4%BB%A4%E8%A1%8C/</link>
+      <pubDate>Thu, 09 Nov 2017 15:02:27 +0800</pubDate>
+      
+      <guid>https://www.dingjingmaster.top/post/c%E7%BC%96%E8%AF%91/gcc-%E5%91%BD%E4%BB%A4%E8%A1%8C/</guid>
+      <description>&lt;p&gt;GCC 的意思也只是 GNU C Compiler 而已。经过了这么多年的发展，GCC 已经不仅仅能支持 C 语言；它现在还支持 Ada 语言、C++ 语言、Java 语言、Objective C 语言、Pascal 语言、COBOL语言，以及支持函数式编程和逻辑编程的 Mercury 语言，等等。而 GCC 也不再单只是 GNU C 语言编译器的意思了，而是变成了 GNU Compiler Collection 也即是 GNU 编译器家族的意思了。另一方面，说到 GCC 对于操作系统平台及硬件平台支持，概括起来就是一句话：无所不在。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>GDB 命令行</title>
+      <link>https://www.dingjingmaster.top/post/c%E7%BC%96%E8%AF%91/gdb-%E5%91%BD%E4%BB%A4%E8%A1%8C/</link>
+      <pubDate>Thu, 09 Nov 2017 11:09:12 +0800</pubDate>
+      
+      <guid>https://www.dingjingmaster.top/post/c%E7%BC%96%E8%AF%91/gdb-%E5%91%BD%E4%BB%A4%E8%A1%8C/</guid>
+      <description>&lt;p&gt;GDB是一个由GNU开源组织发布的、UNIX/LINUX操作系统下的、基于命令行的、功能强大的程序调试工具。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>

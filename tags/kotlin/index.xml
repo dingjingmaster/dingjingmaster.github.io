@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>kotlin on 丁敬个人博客</title>
+    <link>https://www.dingjingmaster.top/tags/kotlin/</link>
+    <description>Recent content in kotlin on 丁敬个人博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zn-ch</language>
+    <lastBuildDate>Mon, 12 Nov 2018 17:25:55 +0800</lastBuildDate>
+    
+	<atom:link href="https://www.dingjingmaster.top/tags/kotlin/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Kotlin 流程控制</title>
+      <link>https://www.dingjingmaster.top/post/kotlin/kotlin-%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/</link>
+      <pubDate>Mon, 12 Nov 2018 17:25:55 +0800</pubDate>
+      
+      <guid>https://www.dingjingmaster.top/post/kotlin/kotlin-%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/</guid>
+      <description>&lt;p&gt;循环 和 控制&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Kotlin 基本类型</title>
+      <link>https://www.dingjingmaster.top/post/kotlin/kotlin-%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B/</link>
+      <pubDate>Fri, 09 Nov 2018 16:39:05 +0800</pubDate>
+      
+      <guid>https://www.dingjingmaster.top/post/kotlin/kotlin-%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B/</guid>
+      <description>&lt;p&gt;Kotlin编程语言中的基本数据类型。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Kotlin 介绍</title>
+      <link>https://www.dingjingmaster.top/post/kotlin/kotlin-%E4%BB%8B%E7%BB%8D/</link>
+      <pubDate>Fri, 09 Nov 2018 15:59:49 +0800</pubDate>
+      
+      <guid>https://www.dingjingmaster.top/post/kotlin/kotlin-%E4%BB%8B%E7%BB%8D/</guid>
+      <description>&lt;p&gt;Kotlin是一种新的开源编程语言，如Java、JavaScript等。它是一种高度静态类型的语言，将功能和技术结合在一起。它在JVM上运行。Kotlin受到Java、Scala、Groovy、Gosu等其他编程语言的影响。Kotlin为开发提供了互操作性、代码安全性和透明性。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

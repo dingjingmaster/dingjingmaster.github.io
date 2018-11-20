@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="zn-ch">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  
+  <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-127300551-1"></script>
+  <script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-127300551-1');</script>
+  
+  <title>Hadoop 安装 - 丁敬个人博客</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="丁敬" /><meta name="description" content="Hadoop 安装" />
+<meta name="keywords" content="ubuntu18安装hadoop" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.49" />
+
+
+<link rel="canonical" href="https://www.dingjingmaster.top/post/hadoop/1-hadoop-%E5%AE%89%E8%A3%85/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<style>table{width: 100%;}</style>
+
+
+
+
+
+
+
+<link href="/dist/even.min.css?v=3.2.0" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+<style type="text/css">.mjx-chtml{outline:0;}</style>
+
+
+
+<meta property="og:title" content="Hadoop 安装" />
+<meta property="og:description" content="Hadoop 安装" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.dingjingmaster.top/post/hadoop/1-hadoop-%E5%AE%89%E8%A3%85/" /><meta property="article:published_time" content="2018-11-08T11:32:32&#43;08:00"/>
+<meta property="article:modified_time" content="2018-11-08T11:32:32&#43;08:00"/>
+
+<meta itemprop="name" content="Hadoop 安装">
+<meta itemprop="description" content="Hadoop 安装">
+
+
+<meta itemprop="datePublished" content="2018-11-08T11:32:32&#43;08:00" />
+<meta itemprop="dateModified" content="2018-11-08T11:32:32&#43;08:00" />
+<meta itemprop="wordCount" content="549">
+
+
+
+<meta itemprop="keywords" content="ubuntu,hadoop," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Hadoop 安装"/>
+<meta name="twitter:description" content="Hadoop 安装"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">DJ&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/resource/">
+        <li class="mobile-menu-item">文档资源</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">DJ&#39;s Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/resource/">文档资源</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Hadoop 安装</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-11-08 </span>
+        <div class="post-category">
+            
+              <a href="/categories/hadoop/"> hadoop </a>
+            
+          </div>
+        <span class="more-meta">  </span>
+        <span class="more-meta">  </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title"></h2>
+  
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#准备">准备</a></li>
+<li><a href="#开始安装">开始安装</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    
+
+    
+    <div class="post-content">
+      
+
+<h3 id="准备">准备</h3>
+
+<ul>
+<li>系统：linux/ubuntu</li>
+<li>java jdk 1.5 +</li>
+<li>ssh</li>
+<li>rsync</li>
+<li>hadoop 稳定发行版</li>
+</ul>
+
+<h3 id="开始安装">开始安装</h3>
+
+<ul>
+<li><p>安装 java 配置 JAVA_HOME</p>
+
+<p>手动下载 java 安装包, tar 命令解压，配置好 JAVA_HOME</p></li>
+
+<li><p>安装 ssh 和 rsync</p>
+
+<pre><code class="language-shell">sudo apt-get install ssh rsync
+</code></pre></li>
+
+<li><p>解压 hadoop</p></li>
+
+<li><p>ssh 无密码访问</p>
+
+<pre><code class="language-shell">ssh localhost                       # 按下 ctrl + C 打断
+cd ~/.ssh/
+ssh-keygen -t dsa                   # 一直回车
+cat ./id_dsa.pub &gt;&gt; authorized_keys # 加入授权, 我追加的形式把 公钥写入 authorized_keys 文件中验证不了,我直接覆盖的写 &quot;&gt;&quot;,用vim打开复制应该也可以，可能与 文件结尾EOF有关系。
+chmod 0666 ./authorized_keys        # 修改权限
+
+# 修改 sshd 配置
+sudo vi /etc/sshd_config
+# 修改以下几项(为了省事，可以直接把文件配置全部注释后复制以下配置)
+  Port 22
+  AddressFamily any
+  ListenAddress 0.0.0.0
+  StrictModes no
+  PermitRootLogin yes
+  RSAAuthentication yes
+  PubkeyAuthentication yes
+  AuthorizedKeysFile  .ssh/authorized_keys
+  PasswordAuthentication no
+  ChallengeResponseAuthentication no
+  UsePAM yes
+  X11Forwarding yes
+  PrintMotd no
+  AcceptEnv LANG LC_*
+  Subsystem   sftp    /usr/lib/openssh/sftp-server
+# :wq 保存即可
+ssh localhost # 第一次要输入用户密码，之后就可以免密码连接了
+</code></pre></li>
+
+<li><p>配置 hadoop 伪分布模式</p>
+
+<p>1、 配置 hadoop-env.sh 文件</p>
+
+<pre><code class="language-shell">vi hadoop-env.sh
+# 25 行替换为 export JAVA_HOME=&quot;java 安装路径&quot;
+</code></pre>
+
+<p>2、 配置 DFS</p>
+
+<pre><code class="language-shell"># 1. 配置 core-site.xml
+vi core-site.xml
+# 配置为如下
+&lt;configuration&gt;
+    &lt;property&gt;
+        &lt;name&gt;fs.defaultFS&lt;/name&gt;
+        &lt;value&gt;hdfs://localhost:9000&lt;/value&gt;
+    &lt;/property&gt;
+&lt;/configuration&gt;
+
+# 2. 配置 hdfs-site.xml
+vi hdfs-site.xml
+# 配置如下
+&lt;configuration&gt;
+    &lt;property&gt;
+        &lt;name&gt;dfs.replication&lt;/name&gt;
+        &lt;value&gt;1&lt;/value&gt;
+    &lt;/property&gt;
+&lt;/configuration&gt;
+
+# 3. 格式化 DFS
+hdfs namenode -format # 需要把 ${HADOOP_HOME}/bin/ 添加到 PATH 系统变量中
+
+# 4. 测试 启动 NameNode 和 DataNode
+sbin/start-dfs.sh # 需要到 ${HADOOP_HOME} 目录下
+# 浏览器打开 http://localhost:50070/ 可以看到 NameNode 相关信息
+</code></pre>
+
+<p>3、配置 YARN</p>
+
+<pre><code class="language-shell"># 1. 配置 mapred-site.xml
+&lt;configuration&gt;
+    &lt;property&gt;
+        &lt;name&gt;mapreduce.framework.name&lt;/name&gt;
+        &lt;value&gt;yarn&lt;/value&gt;
+    &lt;/property&gt;
+&lt;/configuration&gt;
+
+# 2. 配置 yarn-site.xml
+&lt;configuration&gt;
+    &lt;property&gt;
+        &lt;name&gt;yarn.nodemanager.aux-services&lt;/name&gt;
+        &lt;value&gt;mapreduce_shuffle&lt;/value&gt;
+    &lt;/property&gt;
+&lt;/configuration&gt;
+
+# 3. 启动 ResourceManager 和 NodeManager
+sbin/start-yarn.sh
+# 在浏览器中访问http://localhost:8088/，可以看到ResourceManager相关信息。
+</code></pre></li>
+
+<li><p>此时查看 java 进程</p>
+
+<pre><code class="language-shell">jps
+</code></pre>
+
+<p><img src="/img/hadoop/hadoop进程.png" alt="hadoop进程" /></p></li>
+
+<li><p>hadoop 停止</p>
+
+<pre><code class="language-shell"># 在 ${HADOOP_HOME}中执行
+sbin/stop-dfs.sh
+sbin/stop-yarn.sh
+</code></pre></li>
+</ul>
+
+    </div>
+
+    
+    
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/ubuntu/">ubuntu</a>
+          
+          <a href="/tags/hadoop/">hadoop</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/post/spark/spark-%E5%AE%89%E8%A3%85/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Spark 安装</span>
+            <span class="prev-text nav-mobile"></span>
+          </a>
+        
+          <a class="next" href="/post/go/go-import-%E6%93%8D%E4%BD%9C/">
+            <span class="next-text nav-default">GO import</span>
+            <span class="next-text nav-mobile"></span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8080155533523922"
+     data-ad-slot="1056838406"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
+  
+
+  <div id="gitalk-container"></div>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.2.2/dist/gitalk.css" integrity="sha256-rJVe5uyYRXdLM+Kkoj7JtN+9qI0bZTxkYTaNWODpg7U=" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1.2.2/dist/gitalk.min.js" integrity="sha256-DcjhdbufsHMHflFjZtKNFnPKOAL2ybOxGcPOR4MtnJg=" crossorigin="anonymous"></script>
+  <script type="text/javascript">
+  var gitalk = new Gitalk({
+    id: '2018-11-08 11:32:32 \x2b0800 CST',
+    title: 'Hadoop 安装',
+    clientID: '77f3dcf7b883de0aae8b',
+    clientSecret: 'da3c107ff3c2ca225df2489d9b185915dd05f10f',
+    repo: 'blog',
+    owner: 'dingjingmaster',
+    admin: ['dingjingmaster'],
+    body: decodeURI(location.href)
+  });
+  gitalk.render('gitalk-container');
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:dingjing@live.cn" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/dingjingmaster" class="iconfont icon-github" title="github"></a>
+  <a href="https://www.dingjingmaster.top/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="copyright-year">
+    &copy; 
+    
+      2017 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">丁敬</span><br/>
+	<span>
+	
+	<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1275283166'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s23.cnzz.com/z_stat.php%3Fid%3D1275283166%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
+	
+	
+	</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+<script></script>
+<script src="https://cdn.jsdelivr.net/npm/raphael@2.2.7/raphael.min.js" integrity="sha256-67By+NpOtm9ka1R6xpUefeGOY8kWWHHRAKlvaTJ7ONI=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/flowchart.js@1.8.0/release/flowchart.min.js" integrity="sha256-zNGWjubXoY6rb5MnmpBNefO0RgoVYfle9p0tvOQM+6k=" crossorigin="anonymous"></script><script></script>
+<script src="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.js" integrity="sha256-4O4pS1SH31ZqrSO2A/2QJTVjTPqVe+jnYgOWUVr7EEc=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/snapsvg@0.5.1/dist/snap.svg-min.js" integrity="sha256-oI+elz+sIm+jpn8F/qEspKoKveTc5uKeFHNNVexe6d8=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/underscore@1.8.3/underscore-min.js" integrity="sha256-obZACiHd7gkOk9iIL/pimWMTJ4W/pBsKu+oZnSeBIek=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/gh/bramp/js-sequence-diagrams@2.0.1/dist/sequence-diagram-min.js" integrity="sha384-8748Vn52gHJYJI0XEuPB2QlPVNUkJlJn9tHqKec6J3q2r9l8fvRxrgn/E5ZHV0sP" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bramp/js-sequence-diagrams@2.0.1/dist/sequence-diagram-min.css" integrity="sha384-6QbLKJMz5dS3adWSeINZe74uSydBGFbnzaAYmp+tKyq60S7H2p6V7g1TysM5lAaF" crossorigin="anonymous">
+<script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+      TeX: {equationNumbers: {autoNumber: "AMS"}},
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

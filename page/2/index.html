@@ -42,6 +42,8 @@
 <link rel="manifest" href="/manifest.json">
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 
+<style>table{width: 100%;}</style>
+
 
 
 
@@ -49,8 +51,9 @@
 
 
 <link href="/dist/even.min.css?v=3.2.0" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
-
+<style type="text/css">.mjx-chtml{outline:0;}</style>
 
 
 
@@ -58,7 +61,7 @@
 <meta property="og:description" content="丁敬个人博客，总结工作生活中的技术、心得，既方便自己回顾、复习，又可与大家一起分享。" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://www.dingjingmaster.top/" />
-<meta property="og:updated_time" content="2017-12-15T15:09:03&#43;08:00"/>
+<meta property="og:updated_time" content="2018-11-07T15:40:54&#43;08:00"/>
 
 <meta itemprop="name" content="丁敬个人博客">
 <meta itemprop="description" content="丁敬个人博客，总结工作生活中的技术、心得，既方便自己回顾、复习，又可与大家一起分享。">
@@ -98,6 +101,8 @@
         <li class="mobile-menu-item">标签</li>
       </a><a href="/categories/">
         <li class="mobile-menu-item">分类</li>
+      </a><a href="/resource/">
+        <li class="mobile-menu-item">文档资源</li>
       </a>
   </ul>
 </nav>
@@ -117,6 +122,8 @@
         <a class="menu-item-link" href="/tags/">标签</a>
       </li><li class="menu-item">
         <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/resource/">文档资源</a>
       </li>
   </ul>
 </nav>
@@ -132,12 +139,12 @@
     
       <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/spark-scala%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/">Spark Scala快速入门</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/post/go/go-import-%E6%93%8D%E4%BD%9C/">GO import</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2017-12-15 </span>
+      <span class="post-time"> 2018-11-07 </span>
       <div class="post-category">
           
-            <a href="/categories/spark/"> SPARK </a>
+            <a href="/categories/go/"> go </a>
           
         </div>
       <span class="more-meta">  </span>
@@ -145,12 +152,154 @@
     </div>
   </header>
   
+  
+  
   <div class="post-content">
     <div class="post-summary">
-      1、spark参数配置 sparkConf类 配置spark程序，以key-value的形式设置spark参数。它的设置优先于系统设置。 该类所有
+      go import 下划线 在 Golang 里，import 的作用主要是导入其它 package，如果 import 后加下划线，则表示，并不导入包，只是执行包里的 init() 函数 如: import ( &quot;github.com/astaxie/beego&quot; _ &quot;iyuedu_service/routers&quot; )
     </div>
     <div class="read-more">
-      <a href="/post/spark-scala%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/" class="read-more-link"></a>
+      <a href="/post/go/go-import-%E6%93%8D%E4%BD%9C/" class="read-more-link"></a>
+    </div>
+  </div>
+</article>
+
+    
+      <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/experience/vps-%E9%80%89%E6%8B%A9/">VPS 选择</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2018-11-01 </span>
+      <div class="post-category">
+          
+            <a href="/categories/vps/"> vps </a>
+          
+        </div>
+      <span class="more-meta">  </span>
+      <span class="more-meta">  </span>
+    </div>
+  </header>
+  
+  
+  
+  <div class="post-content">
+    <div class="post-summary">
+      写在前面 至今(2018-11-01)，我用 vps 已经超过 2 年多了，而且我又喜欢折腾，所以也算是积累了一些经验。起初我只是使用 vps 搭建 vpn，后来工
+    </div>
+    <div class="read-more">
+      <a href="/post/experience/vps-%E9%80%89%E6%8B%A9/" class="read-more-link"></a>
+    </div>
+  </div>
+</article>
+
+    
+      <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/go/go%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80/">Go语法基础</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2018-10-19 </span>
+      <div class="post-category">
+          
+            <a href="/categories/go/"> go </a>
+          
+        </div>
+      <span class="more-meta">  </span>
+      <span class="more-meta">  </span>
+    </div>
+  </header>
+  
+  
+  
+  <div class="post-content">
+    <div class="post-summary">
+      hello world 开始 package main import &quot;fmt&quot; func main() { fmt.Println(&quot;Hello, 世界&quot;) } 包 每个 Go 程序都是由包构成的(类似面向对象中的命名空间)，按照约定，包名和导入路径最后一个元素一致
+    </div>
+    <div class="read-more">
+      <a href="/post/go/go%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80/" class="read-more-link"></a>
+    </div>
+  </div>
+</article>
+
+    
+      <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/iris/iris--%E5%AE%89%E8%A3%85/">Iris 安装</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2018-10-17 </span>
+      <div class="post-category">
+          
+            <a href="/categories/iris/"> iris </a>
+          
+        </div>
+      <span class="more-meta">  </span>
+      <span class="more-meta">  </span>
+    </div>
+  </header>
+  
+  
+  
+  <div class="post-content">
+    <div class="post-summary">
+      1. 安装go 百度下载安装 2. 安装 iris go get -u github.com/kataras/iris 3. 测试安装成功否 创建 main.go 并编辑以下代码 在 main.go 所在文件夹下打开 命令窗口 执行 go run ./main.go 打开浏览器并输入 http://127.0.0.1:8080 即可看到 iris
+    </div>
+    <div class="read-more">
+      <a href="/post/iris/iris--%E5%AE%89%E8%A3%85/" class="read-more-link"></a>
+    </div>
+  </div>
+</article>
+
+    
+      <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/%E6%8F%90%E9%AB%98github%E8%AE%BF%E9%97%AE%E9%80%9F%E5%BA%A6%E7%9A%84%E6%96%B9%E6%B3%95/">提高github访问速度的方法</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2018-10-16 </span>
+      <div class="post-category">
+          
+            <a href="/categories/github/"> github </a>
+          
+        </div>
+      <span class="more-meta">  </span>
+      <span class="more-meta">  </span>
+    </div>
+  </header>
+  
+  
+  
+  <div class="post-content">
+    <div class="post-summary">
+      1. 查询github域名对应ip 访问网站 https://www.ipaddress.com 查询以下两个域名对应ip github.com的ip, 我查到的结果是：192.30.253.112 和 192.30.253.113
+    </div>
+    <div class="read-more">
+      <a href="/post/%E6%8F%90%E9%AB%98github%E8%AE%BF%E9%97%AE%E9%80%9F%E5%BA%A6%E7%9A%84%E6%96%B9%E6%B3%95/" class="read-more-link"></a>
+    </div>
+  </div>
+</article>
+
+    
+      <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/web%E9%85%8D%E7%BD%AEhttps%E5%9F%9F%E5%90%8D/">Web配置https域名</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2018-10-13 </span>
+      <div class="post-category">
+          
+            <a href="/categories/nginx/"> NGINX </a>
+          
+        </div>
+      <span class="more-meta">  </span>
+      <span class="more-meta">  </span>
+    </div>
+  </header>
+  
+  
+  
+  <div class="post-content">
+    <div class="post-summary">
+      1. 获取阿里云 DV SSL证书（免费） 进入官网 阿里云盾证书服务 依次选择： 【选择品牌】: Symantec &ndash;&gt; 【保护类型】：一个域名 &ndash;&gt; 【证书类型】：免费型DV SSL &ndash;&gt; 立即
+    </div>
+    <div class="read-more">
+      <a href="/post/web%E9%85%8D%E7%BD%AEhttps%E5%9F%9F%E5%90%8D/" class="read-more-link"></a>
     </div>
   </div>
 </article>
@@ -165,6 +314,10 @@
         <span class="prev-text"></span>
       </a>
     
+      <a class="next" href="/page/3/">
+        <span class="next-text"></span>
+        <i class="iconfont icon-right"></i>
+      </a>
   </nav>
 
         </div>
@@ -191,7 +344,10 @@
     </span>
     <span class="author">丁敬</span><br/>
 	<span>
-		<span>访客数量: <img src="http://www.reliablecounter.com/count.php?page=www.dingjingmaster.top/&digit=style/black-and-white/1/&reloads=0" border="0"></span>
+	
+	<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1275283166'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s23.cnzz.com/z_stat.php%3Fid%3D1275283166%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
+	
+	
 	</span>
   </span>
 </div>
@@ -202,10 +358,25 @@
     </div>
   </div>
   
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
 <script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
-  
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
 
 <script></script>
 <script src="https://cdn.jsdelivr.net/npm/raphael@2.2.7/raphael.min.js" integrity="sha256-67By+NpOtm9ka1R6xpUefeGOY8kWWHHRAKlvaTJ7ONI=" crossorigin="anonymous"></script>

@@ -6,10 +6,19 @@
     <description>Recent content in spark on 丁敬个人博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zn-ch</language>
-    <lastBuildDate>Fri, 15 Dec 2017 15:09:03 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 08 Nov 2018 15:37:55 +0800</lastBuildDate>
     
 	<atom:link href="https://www.dingjingmaster.top/tags/spark/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Spark 安装</title>
+      <link>https://www.dingjingmaster.top/post/spark/spark-%E5%AE%89%E8%A3%85/</link>
+      <pubDate>Thu, 08 Nov 2018 15:37:55 +0800</pubDate>
+      
+      <guid>https://www.dingjingmaster.top/post/spark/spark-%E5%AE%89%E8%A3%85/</guid>
+      <description>&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Spark Scala快速入门</title>

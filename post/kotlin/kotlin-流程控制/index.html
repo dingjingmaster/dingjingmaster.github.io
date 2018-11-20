@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="zn-ch">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  
+  <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-127300551-1"></script>
+  <script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-127300551-1');</script>
+  
+  <title>Kotlin 流程控制 - 丁敬个人博客</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="丁敬" /><meta name="description" content="Kotlin 流程控制" />
+<meta name="keywords" content="kotlin, if-else, when, for, while, break, continue, return" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.49" />
+
+
+<link rel="canonical" href="https://www.dingjingmaster.top/post/kotlin/kotlin-%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<style>table{width: 100%;}</style>
+
+
+
+
+
+
+
+<link href="/dist/even.min.css?v=3.2.0" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+<style type="text/css">.mjx-chtml{outline:0;}</style>
+
+
+
+<meta property="og:title" content="Kotlin 流程控制" />
+<meta property="og:description" content="Kotlin 流程控制" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.dingjingmaster.top/post/kotlin/kotlin-%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/" /><meta property="article:published_time" content="2018-11-12T17:25:55&#43;08:00"/>
+<meta property="article:modified_time" content="2018-11-12T17:25:55&#43;08:00"/>
+
+<meta itemprop="name" content="Kotlin 流程控制">
+<meta itemprop="description" content="Kotlin 流程控制">
+
+
+<meta itemprop="datePublished" content="2018-11-12T17:25:55&#43;08:00" />
+<meta itemprop="dateModified" content="2018-11-12T17:25:55&#43;08:00" />
+<meta itemprop="wordCount" content="980">
+
+
+
+<meta itemprop="keywords" content="kotlin,流程控制," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Kotlin 流程控制"/>
+<meta name="twitter:description" content="Kotlin 流程控制"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">DJ&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/resource/">
+        <li class="mobile-menu-item">文档资源</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">DJ&#39;s Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/resource/">文档资源</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Kotlin 流程控制</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-11-12 </span>
+        <div class="post-category">
+            
+              <a href="/categories/kotlin/"> kotlin </a>
+            
+          </div>
+        <span class="more-meta">  </span>
+        <span class="more-meta">  </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title"></h2>
+  
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#if-else">if-else</a></li>
+<li><a href="#when">when</a></li>
+<li><a href="#for-循环">for 循环</a></li>
+<li><a href="#while-循环">while 循环</a></li>
+<li><a href="#return-break-continue">return, break, continue</a>
+<ul>
+<li><a href="#return">return</a></li>
+<li><a href="#continue-和-break">continue 和 break</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    
+
+    
+    <div class="post-content">
+      <p>循环 和 控制</p>
+
+<p></p>
+
+<h3 id="if-else">if-else</h3>
+
+<blockquote>
+<p>在 Kotlin 中 if 不是关键字，而是表达式，如果可以， if 可以返回一个值。与其他编程语言一样，if-else 块被用作初始条件检查操作符</p>
+</blockquote>
+
+<pre><code class="language-java">fun main(args: Array&lt;String&gt;) {
+   val a:Int = 5
+   val b:Int = 2
+   var max: Int
+
+   if (a &gt; b) {
+      max = a
+   } else {
+      max = b
+   }
+   print(&quot;Maximum of a or b is &quot; +max)
+
+   // As expression
+   // val max = if (a &gt; b) a else b
+}
+</code></pre>
+
+<p>结果</p>
+
+<pre><code>Maximum of a or b is 5
+</code></pre>
+
+<h3 id="when">when</h3>
+
+<blockquote>
+<p>when 操作符将变量值与分支条件匹配。如果它满足分支条件，那么它将在该范围内执行语句。 when 类似其他语言的 switch</p>
+</blockquote>
+
+<p>Kotlin 编译器将 x 的值与给定的分支相匹配。如果它不匹配任何分支，那么它将执行 else 部分。实际上，when等价于多个 if 块。</p>
+
+<pre><code class="language-java">fun main(args: Array&lt;String&gt;) {
+   val x:Int = 5
+   when (x) {
+      1 -&gt; print(&quot;x = = 1&quot;)
+      2 -&gt; print(&quot;x = = 2&quot;)
+
+      else -&gt; { // Note the block
+         print(&quot;x is neither 1 nor 2&quot;)
+      }
+   }
+}
+</code></pre>
+
+<p>结果</p>
+
+<pre><code class="language-java">x is neither 1 nor 2
+</code></pre>
+
+<p>when 还支持在同一行检查多个条件，多个检查之间用逗号(,)分割。</p>
+
+<pre><code class="language-java">fun main(args: Array&lt;String&gt;) {
+   val x:Int = 5
+   when (x) {
+      1,2 -&gt; print(&quot; Value of X either 1,2&quot;)
+
+      else -&gt; { // Note the block
+         print(&quot;x is neither 1 nor 2&quot;)
+      }
+   }
+}
+</code></pre>
+
+<p>结果如下:</p>
+
+<pre><code class="language-java">x is neither 1 nor 2
+</code></pre>
+
+<h3 id="for-循环">for 循环</h3>
+
+<blockquote>
+<p>循环提供了遍历任何类型的数据结构的灵活性。与其他编程语言一样，Kotlin也提供了许多类型的循环方法，但是其中&rdquo;For&rdquo;是最成功的一种。For循环的实现和使用在概念上类似于Java For循环</p>
+</blockquote>
+
+<pre><code class="language-java">fun main(args: Array&lt;String&gt;) {
+   val items = listOf(1, 2, 3, 4)
+   for (i in items) println(&quot;values of the array&quot;+i)
+}
+</code></pre>
+
+<p>结果如下:</p>
+
+<pre><code class="language-java">values of the array1
+values of the array2
+values of the array3
+values of the array4
+</code></pre>
+
+<p>另一种遍历</p>
+
+<pre><code class="language-java">fun main(args: Array&lt;String&gt;) {
+   val items = listOf(1, 22, 83, 4)
+
+   for ((index, value) in items.withIndex()) {
+      println(&quot;the element at $index is $value&quot;)
+   }
+}
+</code></pre>
+
+<p>结果:</p>
+
+<pre><code class="language-java">the element at 0 is 1
+the element at 1 is 22
+the element at 2 is 83
+the element at 3 is 4
+</code></pre>
+
+<h3 id="while-循环">while 循环</h3>
+
+<blockquote>
+<p>While 和 do -While 的工作方式与其他编程语言完全相同。这两个循环之间唯一的区别是，如果是Do-while循环，条件将在循环结束时进行测试。</p>
+</blockquote>
+
+<pre><code class="language-java">fun main(args: Array&lt;String&gt;) {
+   var x:Int = 0
+   println(&quot;Example of While Loop--&quot;)
+
+   while(x &lt;= 10) {
+      println(x)
+      x++
+   }
+}
+</code></pre>
+
+<p>输出结果:</p>
+
+<pre><code class="language-java">Example of While Loop--
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</code></pre>
+
+<p>do-while 循环</p>
+
+<pre><code class="language-java">fun main(args: Array&lt;String&gt;) {
+   var x:Int = 0
+   do {
+      x = x + 10
+      println(&quot;I am inside Do block---&quot;+x)
+   } while(x &lt;= 50)
+}
+</code></pre>
+
+<p>输出结果:</p>
+
+<pre><code class="language-java">I am inside Do block---10
+I am inside Do block---20
+I am inside Do block---30
+I am inside Do block---40
+I am inside Do block---50
+I am inside Do block---60
+</code></pre>
+
+<h3 id="return-break-continue">return, break, continue</h3>
+
+<h4 id="return">return</h4>
+
+<blockquote>
+<p>Return是一个关键字，它从被调用的函数向调用函数返回一些值。</p>
+</blockquote>
+
+<pre><code class="language-java">fun main(args: Array&lt;String&gt;) {
+   var x:Int = 10
+   println(&quot;The value of X is--&quot;+doubleMe(x))
+}
+fun doubleMe(x:Int):Int {
+   return 2*x;
+}
+</code></pre>
+
+<p>结果:</p>
+
+<pre><code class="language-java">The value of X is--20
+</code></pre>
+
+<h4 id="continue-和-break">continue 和 break</h4>
+
+<blockquote>
+<p>在循环过程中，继续循环 和 中断循环 是逻辑问题中最重要的部分。如果某些条件失败，“break”关键字将终止循环，而“continue”则跳过本次循环。</p>
+</blockquote>
+
+<pre><code class="language-java">fun main(args: Array&lt;String&gt;) {
+   println(&quot;Example of Break and Continue&quot;)
+   myLabel@ for(x in 1..10) { // appling the custom label
+      if(x = = 5) {
+         println(&quot;I am inside if block with value&quot;+x+&quot;\n-- hence it will close the operation&quot;)
+         break@myLabel //specifing the label
+      } else {
+         println(&quot;I am inside else block with value&quot;+x)
+         continue@myLabel
+      }
+   }
+}
+</code></pre>
+
+<p>输出结果:</p>
+
+<pre><code class="language-java">Example of Break and Continue
+I am inside else block with value1
+I am inside else block with value2
+I am inside else block with value3
+I am inside else block with value4
+I am inside if block with value5
+-- hence it will close the operation
+</code></pre>
+    </div>
+
+    
+    
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/kotlin/">kotlin</a>
+          
+          <a href="/tags/%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/">流程控制</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/tree/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Tree</span>
+            <span class="prev-text nav-mobile"></span>
+          </a>
+        
+          <a class="next" href="/post/kotlin/kotlin-%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B/">
+            <span class="next-text nav-default">Kotlin 基本类型</span>
+            <span class="next-text nav-mobile"></span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8080155533523922"
+     data-ad-slot="1056838406"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
+  
+
+  <div id="gitalk-container"></div>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.2.2/dist/gitalk.css" integrity="sha256-rJVe5uyYRXdLM+Kkoj7JtN+9qI0bZTxkYTaNWODpg7U=" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1.2.2/dist/gitalk.min.js" integrity="sha256-DcjhdbufsHMHflFjZtKNFnPKOAL2ybOxGcPOR4MtnJg=" crossorigin="anonymous"></script>
+  <script type="text/javascript">
+  var gitalk = new Gitalk({
+    id: '2018-11-12 17:25:55 \x2b0800 CST',
+    title: 'Kotlin 流程控制',
+    clientID: '77f3dcf7b883de0aae8b',
+    clientSecret: 'da3c107ff3c2ca225df2489d9b185915dd05f10f',
+    repo: 'blog',
+    owner: 'dingjingmaster',
+    admin: ['dingjingmaster'],
+    body: decodeURI(location.href)
+  });
+  gitalk.render('gitalk-container');
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:dingjing@live.cn" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/dingjingmaster" class="iconfont icon-github" title="github"></a>
+  <a href="https://www.dingjingmaster.top/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="copyright-year">
+    &copy; 
+    
+      2017 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">丁敬</span><br/>
+	<span>
+	
+	<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1275283166'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s23.cnzz.com/z_stat.php%3Fid%3D1275283166%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
+	
+	
+	</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+<script></script>
+<script src="https://cdn.jsdelivr.net/npm/raphael@2.2.7/raphael.min.js" integrity="sha256-67By+NpOtm9ka1R6xpUefeGOY8kWWHHRAKlvaTJ7ONI=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/flowchart.js@1.8.0/release/flowchart.min.js" integrity="sha256-zNGWjubXoY6rb5MnmpBNefO0RgoVYfle9p0tvOQM+6k=" crossorigin="anonymous"></script><script></script>
+<script src="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.js" integrity="sha256-4O4pS1SH31ZqrSO2A/2QJTVjTPqVe+jnYgOWUVr7EEc=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/snapsvg@0.5.1/dist/snap.svg-min.js" integrity="sha256-oI+elz+sIm+jpn8F/qEspKoKveTc5uKeFHNNVexe6d8=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/underscore@1.8.3/underscore-min.js" integrity="sha256-obZACiHd7gkOk9iIL/pimWMTJ4W/pBsKu+oZnSeBIek=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/gh/bramp/js-sequence-diagrams@2.0.1/dist/sequence-diagram-min.js" integrity="sha384-8748Vn52gHJYJI0XEuPB2QlPVNUkJlJn9tHqKec6J3q2r9l8fvRxrgn/E5ZHV0sP" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bramp/js-sequence-diagrams@2.0.1/dist/sequence-diagram-min.css" integrity="sha384-6QbLKJMz5dS3adWSeINZe74uSydBGFbnzaAYmp+tKyq60S7H2p6V7g1TysM5lAaF" crossorigin="anonymous">
+<script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+      TeX: {equationNumbers: {autoNumber: "AMS"}},
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

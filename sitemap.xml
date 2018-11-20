@@ -3,6 +3,62 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.dingjingmaster.top/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/tree/</loc>
+    <lastmod>2018-11-13T16:26:37+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.dingjingmaster.top/post/kotlin/kotlin-%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/</loc>
+    <lastmod>2018-11-12T17:25:55+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.dingjingmaster.top/post/kotlin/kotlin-%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B/</loc>
+    <lastmod>2018-11-09T16:39:05+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.dingjingmaster.top/post/kotlin/kotlin-%E4%BB%8B%E7%BB%8D/</loc>
+    <lastmod>2018-11-09T15:59:49+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.dingjingmaster.top/post/spark/spark-%E5%AE%89%E8%A3%85/</loc>
+    <lastmod>2018-11-08T15:37:55+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.dingjingmaster.top/post/hadoop/1-hadoop-%E5%AE%89%E8%A3%85/</loc>
+    <lastmod>2018-11-08T11:32:32+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.dingjingmaster.top/post/go/go-import-%E6%93%8D%E4%BD%9C/</loc>
+    <lastmod>2018-11-07T15:40:54+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.dingjingmaster.top/post/experience/vps-%E9%80%89%E6%8B%A9/</loc>
+    <lastmod>2018-11-01T17:07:27+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://www.dingjingmaster.top/resource/</loc>
     <lastmod>2018-10-19T17:30:11+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -73,6 +129,20 @@
   </url>
   
   <url>
+    <loc>https://www.dingjingmaster.top/post/c%E7%BC%96%E8%AF%91/gcc-%E5%91%BD%E4%BB%A4%E8%A1%8C/</loc>
+    <lastmod>2017-11-09T15:02:27+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.dingjingmaster.top/post/c%E7%BC%96%E8%AF%91/gdb-%E5%91%BD%E4%BB%A4%E8%A1%8C/</loc>
+    <lastmod>2017-11-09T11:09:12+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://www.dingjingmaster.top/post/mongo/mongodb-bulk-write-operations/</loc>
     <lastmod>2017-10-22T09:39:03+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -108,7 +178,15 @@
   </url>
   
   <url>
+    <loc>https://www.dingjingmaster.top/categories/c-%E7%BC%96%E8%AF%91%E4%B8%8E%E8%B0%83%E8%AF%95/</loc>
+    <lastmod>2017-11-09T11:09:12+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://www.dingjingmaster.top/categories/</loc>
+    <lastmod>2017-11-09T11:09:12+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -129,7 +207,7 @@
   
   <url>
     <loc>https://www.dingjingmaster.top/post/</loc>
-    <lastmod>2018-10-19T09:41:39+08:00</lastmod>
+    <lastmod>2018-11-13T16:26:37+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -143,6 +221,41 @@
   
   <url>
     <loc>https://www.dingjingmaster.top/tags/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.dingjingmaster.top/tags/c/</loc>
+    <lastmod>2017-11-09T15:02:27+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.dingjingmaster.top/tags/c-c&#43;&#43;/</loc>
+    <lastmod>2017-11-09T11:09:12+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.dingjingmaster.top/tags/gcc/</loc>
+    <lastmod>2017-11-09T15:02:27+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.dingjingmaster.top/categories/gcc/</loc>
+    <lastmod>2017-11-09T15:02:27+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.dingjingmaster.top/tags/gdb/</loc>
+    <lastmod>2017-11-09T11:09:12+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -170,14 +283,14 @@
   
   <url>
     <loc>https://www.dingjingmaster.top/tags/go/</loc>
-    <lastmod>2018-10-19T09:41:39+08:00</lastmod>
+    <lastmod>2018-11-07T15:40:54+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://www.dingjingmaster.top/categories/go/</loc>
-    <lastmod>2018-10-19T09:41:39+08:00</lastmod>
+    <lastmod>2018-11-07T15:40:54+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -185,6 +298,20 @@
   <url>
     <loc>https://www.dingjingmaster.top/tags/golang/</loc>
     <lastmod>2018-10-19T09:41:39+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.dingjingmaster.top/tags/hadoop/</loc>
+    <lastmod>2018-11-08T11:32:32+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.dingjingmaster.top/categories/hadoop/</loc>
+    <lastmod>2018-11-08T11:32:32+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -211,8 +338,22 @@
   </url>
   
   <url>
+    <loc>https://www.dingjingmaster.top/tags/kotlin/</loc>
+    <lastmod>2018-11-12T17:25:55+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.dingjingmaster.top/categories/kotlin/</loc>
+    <lastmod>2018-11-12T17:25:55+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://www.dingjingmaster.top/tags/linux/</loc>
-    <lastmod>2017-10-19T16:25:05+08:00</lastmod>
+    <lastmod>2017-11-09T11:09:12+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -275,14 +416,28 @@
   
   <url>
     <loc>https://www.dingjingmaster.top/tags/spark/</loc>
+    <lastmod>2018-11-08T15:37:55+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.dingjingmaster.top/categories/spark/</loc>
     <lastmod>2017-12-15T15:09:03+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
+    <loc>https://www.dingjingmaster.top/tags/tree/</loc>
+    <lastmod>2018-11-13T16:26:37+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://www.dingjingmaster.top/tags/ubuntu/</loc>
-    <lastmod>2018-10-13T10:51:27+08:00</lastmod>
+    <lastmod>2018-11-08T15:37:55+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -290,6 +445,20 @@
   <url>
     <loc>https://www.dingjingmaster.top/tags/vmware/</loc>
     <lastmod>2018-10-11T12:07:55+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.dingjingmaster.top/tags/vps/</loc>
+    <lastmod>2018-11-01T17:07:27+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.dingjingmaster.top/categories/vps/</loc>
+    <lastmod>2018-11-01T17:07:27+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -303,7 +472,7 @@
   
   <url>
     <loc>https://www.dingjingmaster.top/</loc>
-    <lastmod>2018-10-19T17:30:11+08:00</lastmod>
+    <lastmod>2018-11-13T16:26:37+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -337,8 +506,29 @@
   </url>
   
   <url>
+    <loc>https://www.dingjingmaster.top/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</loc>
+    <lastmod>2018-11-13T16:26:37+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.dingjingmaster.top/tags/%E6%A0%91/</loc>
+    <lastmod>2018-11-13T16:26:37+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://www.dingjingmaster.top/tags/%E6%AD%A3%E5%90%91%E4%BB%A3%E7%90%86/</loc>
     <lastmod>2018-10-12T10:52:47+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.dingjingmaster.top/tags/%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/</loc>
+    <lastmod>2018-11-12T17:25:55+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>

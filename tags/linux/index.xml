@@ -6,10 +6,21 @@
     <description>Recent content in linux on 丁敬个人博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zn-ch</language>
-    <lastBuildDate>Thu, 19 Oct 2017 16:25:05 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 09 Nov 2017 11:09:12 +0800</lastBuildDate>
     
 	<atom:link href="https://www.dingjingmaster.top/tags/linux/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>GDB 命令行</title>
+      <link>https://www.dingjingmaster.top/post/c%E7%BC%96%E8%AF%91/gdb-%E5%91%BD%E4%BB%A4%E8%A1%8C/</link>
+      <pubDate>Thu, 09 Nov 2017 11:09:12 +0800</pubDate>
+      
+      <guid>https://www.dingjingmaster.top/post/c%E7%BC%96%E8%AF%91/gdb-%E5%91%BD%E4%BB%A4%E8%A1%8C/</guid>
+      <description>&lt;p&gt;GDB是一个由GNU开源组织发布的、UNIX/LINUX操作系统下的、基于命令行的、功能强大的程序调试工具。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Shell ps命令</title>

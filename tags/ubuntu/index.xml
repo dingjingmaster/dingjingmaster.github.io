@@ -6,10 +6,28 @@
     <description>Recent content in ubuntu on 丁敬个人博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zn-ch</language>
-    <lastBuildDate>Sat, 13 Oct 2018 10:51:27 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 08 Nov 2018 15:37:55 +0800</lastBuildDate>
     
 	<atom:link href="https://www.dingjingmaster.top/tags/ubuntu/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Spark 安装</title>
+      <link>https://www.dingjingmaster.top/post/spark/spark-%E5%AE%89%E8%A3%85/</link>
+      <pubDate>Thu, 08 Nov 2018 15:37:55 +0800</pubDate>
+      
+      <guid>https://www.dingjingmaster.top/post/spark/spark-%E5%AE%89%E8%A3%85/</guid>
+      <description>&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Hadoop 安装</title>
+      <link>https://www.dingjingmaster.top/post/hadoop/1-hadoop-%E5%AE%89%E8%A3%85/</link>
+      <pubDate>Thu, 08 Nov 2018 11:32:32 +0800</pubDate>
+      
+      <guid>https://www.dingjingmaster.top/post/hadoop/1-hadoop-%E5%AE%89%E8%A3%85/</guid>
+      <description>准备 系统：linux/ubuntu java jdk 1.5 + ssh rsync hadoop 稳定发行版 开始安装 安装 java 配置 JAVA_HOME 手动下载 java 安装包, tar 命令解压，配置好 JAVA_HOME 安装 ssh 和 rsync sudo apt-get install ssh rsync 解压</description>
+    </item>
     
     <item>
       <title>Web配置https域名</title>
