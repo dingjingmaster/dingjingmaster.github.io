@@ -3,6 +3,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.dingjingmaster.top/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/avl-tree/</loc>
+    <lastmod>2018-11-13T16:27:24+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://www.dingjingmaster.top/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/tree/</loc>
     <lastmod>2018-11-13T16:26:37+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -207,7 +214,7 @@
   
   <url>
     <loc>https://www.dingjingmaster.top/post/</loc>
-    <lastmod>2018-11-13T16:26:37+08:00</lastmod>
+    <lastmod>2018-11-13T16:27:24+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -221,6 +228,13 @@
   
   <url>
     <loc>https://www.dingjingmaster.top/tags/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.dingjingmaster.top/tags/avl-tree/</loc>
+    <lastmod>2018-11-13T16:27:24+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -430,7 +444,7 @@
   
   <url>
     <loc>https://www.dingjingmaster.top/tags/tree/</loc>
-    <lastmod>2018-11-13T16:26:37+08:00</lastmod>
+    <lastmod>2018-11-13T16:27:24+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -472,7 +486,7 @@
   
   <url>
     <loc>https://www.dingjingmaster.top/</loc>
-    <lastmod>2018-11-13T16:26:37+08:00</lastmod>
+    <lastmod>2018-11-13T16:27:24+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -507,7 +521,7 @@
   
   <url>
     <loc>https://www.dingjingmaster.top/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</loc>
-    <lastmod>2018-11-13T16:26:37+08:00</lastmod>
+    <lastmod>2018-11-13T16:27:24+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>

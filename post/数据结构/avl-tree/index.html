@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="zn-ch">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  
+  <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-127300551-1"></script>
+  <script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-127300551-1');</script>
+  
+  <title>AVL Tree - 丁敬个人博客</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="丁敬" /><meta name="description" content="AVL Tree" />
+<meta name="keywords" content="avl 树, 平衡二叉树, AVL 树, avl tree" />
+
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.49" />
+
+
+<link rel="canonical" href="https://www.dingjingmaster.top/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/avl-tree/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<style>table{width: 100%;}</style>
+
+
+
+
+
+
+
+<link href="/dist/even.min.css?v=3.2.0" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+<style type="text/css">.mjx-chtml{outline:0;}</style>
+
+
+
+<meta property="og:title" content="AVL Tree" />
+<meta property="og:description" content="AVL Tree" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.dingjingmaster.top/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/avl-tree/" /><meta property="article:published_time" content="2018-11-13T16:27:24&#43;08:00"/>
+<meta property="article:modified_time" content="2018-11-13T16:27:24&#43;08:00"/>
+
+<meta itemprop="name" content="AVL Tree">
+<meta itemprop="description" content="AVL Tree">
+
+
+<meta itemprop="datePublished" content="2018-11-13T16:27:24&#43;08:00" />
+<meta itemprop="dateModified" content="2018-11-13T16:27:24&#43;08:00" />
+<meta itemprop="wordCount" content="3123">
+
+
+
+<meta itemprop="keywords" content="tree,avl tree," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="AVL Tree"/>
+<meta name="twitter:description" content="AVL Tree"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">DJ&#39;s Blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/resource/">
+        <li class="mobile-menu-item">文档资源</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">DJ&#39;s Blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/resource/">文档资源</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">AVL Tree</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-11-13 </span>
+        <div class="post-category">
+            
+              <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"> 数据结构 </a>
+            
+          </div>
+        <span class="more-meta">  </span>
+        <span class="more-meta">  </span>
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title"></h2>
+  
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#左旋和右旋">左旋和右旋</a></li>
+<li><a href="#插入key操作">插入key操作</a></li>
+<li><a href="#删除key操作">删除key操作</a></li>
+<li><a href="#修改key操作">修改key操作</a></li>
+<li><a href="#查找key操作">查找key操作</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    
+
+    
+    <div class="post-content">
+      <p>AVL树是一种自平衡二叉搜索树(BST)，对于所有节点，其左右子树的高度差不能超过1。</p>
+
+<p></p>
+
+<blockquote>
+<p>大多数BST操作(例如:搜索，最大，最小，插入，删除)以O(h)为时间，h是BST的高度。对于倾斜的二叉树，这些操作的成本可能变成O(n)。如果我们确保在每次插入和删除之后树的高度仍然是O(Logn)，那么我们就可以保证所有这些操作的O(Logn)的上界。AVL树的高度总是O(Logn)，其中n是树中的节点数。</p>
+</blockquote>
+
+<h3 id="左旋和右旋">左旋和右旋</h3>
+
+<pre><code class="language-shell"># 右旋 (左边树,针对根节点为 x 的子树右旋)
+# 左旋 (右边树,针对根节点为 y 的子树左旋)
+       y                                x
+      / \      右旋转                  /  \
+     x   T3    – – – – – – – &gt;        T1   y
+    / \        &lt; - - - - - - -            / \
+   T1  T2      左旋转                    T2  T3
+</code></pre>
+
+<h3 id="插入key操作">插入key操作</h3>
+
+<blockquote>
+<p>为了确保在每次插入之后给定的树仍然是AVL，我们必须增加标准的BST插入操作来执行一些重新平衡。左旋转 和 右旋转 两个操作可以在不违反BST属性(键(左)&lt; key(根)&lt; keys(右))的情况下重新平衡BST。</p>
+</blockquote>
+
+<p>针对插入新节点 w：</p>
+
+<ol>
+<li>执行标准的插入(从树的根节点开始向下遍历，w 的 key 大于子树的根结点则向右遍历，否则向左遍历。直到找到节点为 NULL 的地方，把 w 节点插入该位置)</li>
+<li>从 w 节点向上移动(w 节点高度为 1，向上移动顺次更新各个节点高度)，找到第一个不平衡节点(针对AVL树不满足左子树和右子树高度差不超过1这一条件的节点)。设 z 是第一个不平衡节点，y 是 z 的子结点，x 是 z 的孙子结点。</li>
+
+<li><p>通过对以z为根的子树进行适当的旋转来重新平衡树。有4种可能的情况需要处理，因为x、y和 z 有4种排列方式：</p>
+
+<ol>
+<li><p>y 是 z 的左子结点 x 是 y 的左子结点(左下)</p>
+
+<pre><code>左左 --- 右旋
+T1, T2, T3 和 T4 是子树。
+假设字数 T1 T2 高度都为 1 括号值为每个节点高度，显然 z 节点 左子树 和 其左右子树的高度超过了 1
+旋转前提:
+调整的办法就是降低高度高的那一个节点
+由二叉搜索树性质(左子树 &lt; 根节点 &lt; 右子树)得出: z &gt; y、T4 &gt; z、 T3 &lt; z
+
+    (3)z                                       y
+    /   \                                    /   \
+  (2)y (0)T4      右旋 (z)                  x      z
+   /   \          - - - - - - - - -&gt;      /  \    /  \
+ (1)x  (0)T3                            T1   T2  T3  T4
+  /   \
+T1(0)   T2(0)
+</code></pre></li>
+
+<li><p>y是z的左子结点x是y的右子结点(左右图)</p>
+
+<pre><code>左右 -- 左旋 + 右旋
+T1, T2, T3 和 T4 是子树
+    z                               z                           x
+   / \                            /   \                        /  \
+  y   T4  左旋 (y)                x    T4  右旋(z)            y      z
+ / \      - - - - - - - - -&gt;    /  \      - - - - - - - -&gt;  / \    / \
+T1   x                          y    T3                    T1  T2 T3  T4
+    / \                        / \
+  T2   T3                    T1   T2
+</code></pre></li>
+
+<li><p>y是z的右子结点x是y的右子结点</p>
+
+<pre><code>右右 -- 左旋
+T1, T2, T3 和 T4 是子树
+   z                                y
+  /  \                            /   \
+ T1   y      左旋(z)             z      x
+     /  \   - - - - - - - -&gt;    / \    / \
+    T2   x                     T1  T2 T3  T4
+        / \
+      T3  T4
+</code></pre></li>
+
+<li><p>y是z的右子结点x是y的左子结点(右左)</p>
+
+<pre><code>右左 -- 右旋 + 左旋
+T1, T2, T3 和 T4 是子树
+   z                            z                            x
+  / \                          / \                          /  \
+T1   y   右旋 (y)             T1   x      左旋(z)          z      y
+    / \  - - - - - - - - -&gt;     /  \   - - - - - - - -&gt;  / \    / \
+   x   T4                      T2   y                  T1  T2  T3  T4
+  / \                              /  \
+T2   T3                           T3   T4
+</code></pre></li>
+</ol></li>
+</ol>
+
+<p>代码实现</p>
+
+<blockquote>
+<p>代码中暂时主要只针对 “左左” 进行了检测(详见：主函数注释)，配合前序遍历和后续遍历可检查树的结构是否正确。</p>
+</blockquote>
+
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+#include &lt;stdlib.h&gt;
+
+struct Node {
+    int key;
+    struct Node* left;
+    struct Node* right;
+    int height;
+};
+
+// 获得节点高度
+int height(struct Node* n) {
+    if (NULL == n) {
+        return 0;
+    }
+    return n-&gt;height;
+}
+
+// 获取整数较大值
+int max(int a, int b) {
+    return (a &gt; b) ? a : b;
+}
+
+// 创建新节点
+struct Node* new_node(int key) {
+    struct Node* node = (struct Node*) malloc(sizeof (struct Node));
+    memset(node, 0, sizeof (struct Node));
+
+    node-&gt;key = key;
+    node-&gt;left = NULL;
+    node-&gt;right = NULL;
+    node-&gt;height = 1;
+
+    return node;
+}
+
+// 右旋
+struct Node* right_rotate(struct Node* z) {
+    struct Node* x = z-&gt;left;
+    struct Node* T2 = x-&gt;right;
+
+    x-&gt;right = z;
+    z-&gt;left = T2;
+
+    z-&gt;height = 1 + max(height(z-&gt;left), height(z-&gt;right));
+    x-&gt;height = 1 + max(height(x-&gt;left), height(x-&gt;right));
+
+    return x;
+}
+
+// 左旋
+struct Node* left_rotate(struct Node* z) {
+    struct Node* y = z-&gt;right;
+    struct Node* T2 = y-&gt;left;
+
+    y-&gt;left = z;
+    z-&gt;right = T2;
+
+    z-&gt;height = 1 + max(height(z-&gt;left), height(z-&gt;right));
+    y-&gt;height = 1 + max(height(y-&gt;left), height(y-&gt;right));
+
+    return y;
+}
+
+// 节点的平衡系数
+int get_balance(struct Node* n) {
+    if (NULL == n) {
+        return 1;
+    }
+
+    return height(n-&gt;left) - height(n-&gt;right);
+}
+
+// 插入操作
+struct Node* insert(struct Node* node, int key) {
+    // 1. 执行插入操作
+    if (NULL == node) {
+        return (new_node(key));
+    }
+
+    if (key &lt; node-&gt;key) { // key 值小于根节点 key 值，则向左子树遍历
+        node-&gt;left = insert(node-&gt;left, key);
+    } else if (key &gt; node-&gt;key) { // key 值大于根节点 key 值，则向右子树遍历
+        node-&gt;right = insert(node-&gt;right, key);
+    } else { // key 值重复，直接返回
+        return node;
+    }
+
+    // 更新节点高度， 插入新节点后，新节点的祖先节点高度需要更新，知道 root 根节点。
+    node-&gt;height = 1 + max(height(node-&gt;left), height(node-&gt;right));
+//    printf(&quot;%d(%d)\n&quot;, node-&gt;key, node-&gt;height);
+
+    // 检查是否失衡
+    int balance = get_balance(node);
+
+    // 如果失衡 有四种情况
+    if(balance &gt; 1 &amp;&amp; key &lt; node-&gt;left-&gt;key) {// 左左 -- node 处为不平衡子树的根节点、key &lt; 跟节点左子树, 则新节点在左边
+        return right_rotate(node);
+    } else if (balance &gt; 1 &amp;&amp; key &gt; node-&gt;left-&gt;key) { // 左右
+        node-&gt;left = left_rotate(node-&gt;left);
+        return right_rotate(node);
+    } else if (balance &lt; -1 &amp;&amp; key &lt; node-&gt;right-&gt;key) {
+        node-&gt;right = right_rotate(node-&gt;left);
+        return left_rotate(node);
+    } else if (balance &lt; -1 &amp;&amp; key &gt; node-&gt;right-&gt;key) {
+        return left_rotate(node);
+    }
+
+    // 不需要调整
+    return node;
+}
+
+// 前序遍历
+void pre_order(struct Node* root) {
+    if (NULL != root) {
+        printf(&quot;%d(%d) &quot;, root-&gt;key, root-&gt;height);
+        pre_order(root-&gt;left);
+        pre_order(root-&gt;right);
+    }
+}
+
+// 后序遍历
+void post_order(struct Node* root) {
+    if (NULL != root) {
+        post_order(root-&gt;left);
+        post_order(root-&gt;right);
+        printf(&quot;%d(%d) &quot;, root-&gt;key, root-&gt;height);
+    }
+}
+
+int main(void) {
+
+    struct Node* root = NULL;
+    /**
+     *  10、20、30
+     *      20
+     *    /   \
+     *  10    30
+     *
+     *
+     *  10、20、30、40
+     *      20
+     *     / \
+     *    10 30
+     *        \
+     *        40
+     *
+     *  10、20、30、40、50
+     *      20                                                  20
+     *     / \                                              /       \
+     *    10 30(3)          -----&gt;                         10       40
+     *        \                                                   /    \
+     *        40(2)                                              30     50
+     *         \
+     *         50(1)
+     *
+     *  10、20、30、40、50、60
+     *             20(4)                                     40
+     *          /     \                                   /    \
+     *         10(1)  40(3)        -------&gt;             20     50
+     *               /  \                              / \      \
+     *              30  50(2)                         10 30     60
+     *                   \
+     *                   60(1)
+     *
+     * 10、20、30、40、50、60、70
+     *              40                                      40
+     *            /   \                                   /     \
+     *          20    50                                20      60
+     *         / \     \    -----------&gt;              /   \    /  \
+     *        10 30    60                            10   30  50  70
+     *                  \
+     *                  70
+     */
+
+    root = insert(root, 10);
+    root = insert(root, 20);
+    root = insert(root, 30);
+    root = insert(root, 40);
+    root = insert(root, 50);
+    root = insert(root, 60);
+    root = insert(root, 70);
+    root = insert(root, 80);
+    root = insert(root, 90);
+    root = insert(root, 100);
+    root = insert(root, 110);
+    root = insert(root, 120);
+
+
+    pre_order(root);
+    puts(&quot;\n&quot;);
+    post_order(root);
+
+    return 0;
+}
+</code></pre>
+
+<h3 id="删除key操作">删除key操作</h3>
+
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+#include &lt;stdlib.h&gt;
+
+struct Node {
+    int key;
+    struct Node* left;
+    struct Node* right;
+    int height;
+};
+
+// 获得节点高度
+int height(struct Node* n) {
+    if (NULL == n) {
+        return 0;
+    }
+    return n-&gt;height;
+}
+
+// 获取整数较大值
+int max(int a, int b) {
+    return (a &gt; b) ? a : b;
+}
+
+// 创建新节点
+struct Node* new_node(int key) {
+    struct Node* node = (struct Node*) malloc(sizeof (struct Node));
+    memset(node, 0, sizeof (struct Node));
+
+    node-&gt;key = key;
+    node-&gt;left = NULL;
+    node-&gt;right = NULL;
+    node-&gt;height = 1;
+
+    return node;
+}
+
+// 右旋
+struct Node* right_rotate(struct Node* z) {
+    struct Node* x = z-&gt;left;
+    struct Node* T2 = x-&gt;right;
+
+    x-&gt;right = z;
+    z-&gt;left = T2;
+
+    z-&gt;height = 1 + max(height(z-&gt;left), height(z-&gt;right));
+    x-&gt;height = 1 + max(height(x-&gt;left), height(x-&gt;right));
+
+    return x;
+}
+
+// 左旋
+struct Node* left_rotate(struct Node* z) {
+    struct Node* y = z-&gt;right;
+    struct Node* T2 = y-&gt;left;
+
+    y-&gt;left = z;
+    z-&gt;right = T2;
+
+    z-&gt;height = 1 + max(height(z-&gt;left), height(z-&gt;right));
+    y-&gt;height = 1 + max(height(y-&gt;left), height(y-&gt;right));
+
+    return y;
+}
+
+// 节点的平衡系数
+int get_balance(struct Node* n) {
+    if (NULL == n) {
+        return 1;
+    }
+
+    return height(n-&gt;left) - height(n-&gt;right);
+}
+
+// 返回键值最小的节点
+struct Node* min_value_node(struct Node* node) {
+    struct Node* current = node;
+
+    while (NULL != current-&gt;left) {
+        current = current-&gt;left;
+    }
+
+    return current;
+}
+
+// 插入操作
+struct Node* insert(struct Node* node, int key) {
+    // 1. 执行插入操作
+    if (NULL == node) {
+        return (new_node(key));
+    }
+
+    if (key &lt; node-&gt;key) { // key 值小于根节点 key 值，则向左子树遍历
+        node-&gt;left = insert(node-&gt;left, key);
+    } else if (key &gt; node-&gt;key) { // key 值大于根节点 key 值，则向右子树遍历
+        node-&gt;right = insert(node-&gt;right, key);
+    } else { // key 值重复，直接返回
+        return node;
+    }
+
+    // 更新节点高度， 插入新节点后，新节点的祖先节点高度需要更新，知道 root 根节点。
+    node-&gt;height = 1 + max(height(node-&gt;left), height(node-&gt;right));
+//    printf(&quot;%d(%d)\n&quot;, node-&gt;key, node-&gt;height);
+
+    // 检查是否失衡
+    int balance = get_balance(node);
+
+    // 如果失衡 有四种情况
+    if(balance &gt; 1 &amp;&amp; key &lt; node-&gt;left-&gt;key) {// 左左 -- node 处为不平衡子树的根节点、key &lt; 跟节点左子树, 则新节点在左边
+        return right_rotate(node);
+    } else if (balance &gt; 1 &amp;&amp; key &gt; node-&gt;left-&gt;key) { // 左右
+        node-&gt;left = left_rotate(node-&gt;left);
+        return right_rotate(node);
+    } else if (balance &lt; -1 &amp;&amp; key &lt; node-&gt;right-&gt;key) {
+        node-&gt;right = right_rotate(node-&gt;left);
+        return left_rotate(node);
+    } else if (balance &lt; -1 &amp;&amp; key &gt; node-&gt;right-&gt;key) {
+        return left_rotate(node);
+    }
+
+    // 不需要调整
+    return node;
+}
+
+struct Node* delete (struct Node* node, int key) {
+    if (NULL == node) {
+        return node;
+    }
+
+    // 删除指定key的节点
+    if (key &lt; node-&gt;key) { // 小于根节点 向左遍历接着找
+        node-&gt;left = delete(node-&gt;left, key);
+    } else if (key &gt; node-&gt;key) {
+        node-&gt;right = delete(node-&gt;right, key);
+    } else { // 要找的 key 就是此时的跟节点
+        if((NULL == node-&gt;left) || (NULL == node-&gt;right)) { // 最多有一个子树的情况
+            struct Node* tmp = (node-&gt;left != NULL) ? node-&gt;left : node-&gt;right;
+
+            if (NULL == tmp) { // 没有子树的情况
+                tmp = node;
+                node = NULL;
+            } else { // 只有一个子树
+                *node = *tmp; // 深拷贝 用tmp的值覆盖了 node, 相当于删除
+                free(tmp);  // 删除多一份的 tmp 值
+            }
+        } else { // 删除要查找的key 并以此右子树最小值替代此时根节点的值，删除右子树被替代的值
+            struct Node* tmp = min_value_node(node-&gt;right);
+            node-&gt;key = tmp-&gt;key;
+            node-&gt;right = delete(node-&gt;right, tmp-&gt;key);
+        }
+    }
+
+    if(NULL == node) { // tree 只有一个节点则返回
+        return node;
+    }
+
+    // 更新 tree 的高度 从删除掉的节点开始依次向根节点更新
+    node-&gt;height = 1 + max(height(node-&gt;left), height(node-&gt;right));
+
+    // 检测是否平衡
+    int balance = get_balance(node);
+
+    // 四种可能的不平衡状态
+    if(balance &gt; 1 &amp;&amp; key &lt; node-&gt;left-&gt;key) {// 左左 -- node 处为不平衡子树的根节点、key &lt; 跟节点左子树, 则新节点在左边
+        return right_rotate(node);
+    } else if (balance &gt; 1 &amp;&amp; key &gt; node-&gt;left-&gt;key) { // 左右
+        node-&gt;left = left_rotate(node-&gt;left);
+        return right_rotate(node);
+    } else if (balance &lt; -1 &amp;&amp; key &lt; node-&gt;right-&gt;key) {
+        node-&gt;right = right_rotate(node-&gt;left);
+        return left_rotate(node);
+    } else if (balance &lt; -1 &amp;&amp; key &gt; node-&gt;right-&gt;key) {
+        return left_rotate(node);
+    }
+
+    // 平衡
+    return node;
+}
+
+// 前序遍历
+void pre_order(struct Node* root) {
+    if (NULL != root) {
+        printf(&quot;%d(%d) &quot;, root-&gt;key, root-&gt;height);
+        pre_order(root-&gt;left);
+        pre_order(root-&gt;right);
+    }
+}
+
+// 后序遍历
+void post_order(struct Node* root) {
+    if (NULL != root) {
+        post_order(root-&gt;left);
+        post_order(root-&gt;right);
+        printf(&quot;%d(%d) &quot;, root-&gt;key, root-&gt;height);
+    }
+}
+
+int main(void) {
+
+    struct Node* root = NULL;
+    /**
+     * 10、20、30、40、50、60、70
+     *            40
+     *         /     \
+     *       20      60
+     *     /   \    /  \
+     *    10   30  50  70
+     *
+     * 删除 key = 60
+     *          40
+     *       /     \
+     *      20     70
+     *    /   \    /
+     *   10   30  50
+     *
+     * 删除 key = 40
+                50
+     *       /     \
+     *      20     60
+     *    /   \     \
+     *   10   30    70
+     *
+     *
+     */
+
+    root = insert(root, 10);
+    root = insert(root, 20);
+    root = insert(root, 30);
+    root = insert(root, 40);
+    root = insert(root, 50);
+    root = insert(root, 60);
+    root = insert(root, 70);
+
+    root = delete(root, 40);
+
+    //root = delete(root, 60);
+
+
+    pre_order(root);
+    puts(&quot;\n&quot;);
+    post_order(root);
+
+    return 0;
+}
+</code></pre>
+
+<h3 id="修改key操作">修改key操作</h3>
+
+<blockquote>
+<p>修改key操作可以由删除和插入组合而成.</p>
+</blockquote>
+
+<h3 id="查找key操作">查找key操作</h3>
+
+<blockquote>
+<p>直接从根节点开始递归遍历，找到指定 key 则返回；若已经到达了叶子节点(左子树和右子树都是 NULL)依然没有没找到指定 key，则说明key不存在。</p>
+</blockquote>
+    </div>
+
+    
+    
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/tree/">tree</a>
+          
+          <a href="/tags/avl-tree/">avl tree</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+        
+          <a class="next" href="/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/tree/">
+            <span class="next-text nav-default">Tree</span>
+            <span class="next-text nav-mobile"></span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-8080155533523922"
+     data-ad-slot="1056838406"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
+  
+
+  <div id="gitalk-container"></div>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.2.2/dist/gitalk.css" integrity="sha256-rJVe5uyYRXdLM+Kkoj7JtN+9qI0bZTxkYTaNWODpg7U=" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1.2.2/dist/gitalk.min.js" integrity="sha256-DcjhdbufsHMHflFjZtKNFnPKOAL2ybOxGcPOR4MtnJg=" crossorigin="anonymous"></script>
+  <script type="text/javascript">
+  var gitalk = new Gitalk({
+    id: '2018-11-13 16:27:24 \x2b0800 CST',
+    title: 'AVL Tree',
+    clientID: '77f3dcf7b883de0aae8b',
+    clientSecret: 'da3c107ff3c2ca225df2489d9b185915dd05f10f',
+    repo: 'blog',
+    owner: 'dingjingmaster',
+    admin: ['dingjingmaster'],
+    body: decodeURI(location.href)
+  });
+  gitalk.render('gitalk-container');
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:dingjing@live.cn" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/dingjingmaster" class="iconfont icon-github" title="github"></a>
+  <a href="https://www.dingjingmaster.top/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="copyright-year">
+    &copy; 
+    
+      2017 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">丁敬</span><br/>
+	<span>
+	
+	<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1275283166'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s23.cnzz.com/z_stat.php%3Fid%3D1275283166%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
+	
+	
+	</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+<script></script>
+<script src="https://cdn.jsdelivr.net/npm/raphael@2.2.7/raphael.min.js" integrity="sha256-67By+NpOtm9ka1R6xpUefeGOY8kWWHHRAKlvaTJ7ONI=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/flowchart.js@1.8.0/release/flowchart.min.js" integrity="sha256-zNGWjubXoY6rb5MnmpBNefO0RgoVYfle9p0tvOQM+6k=" crossorigin="anonymous"></script><script></script>
+<script src="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.js" integrity="sha256-4O4pS1SH31ZqrSO2A/2QJTVjTPqVe+jnYgOWUVr7EEc=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/snapsvg@0.5.1/dist/snap.svg-min.js" integrity="sha256-oI+elz+sIm+jpn8F/qEspKoKveTc5uKeFHNNVexe6d8=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/underscore@1.8.3/underscore-min.js" integrity="sha256-obZACiHd7gkOk9iIL/pimWMTJ4W/pBsKu+oZnSeBIek=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/gh/bramp/js-sequence-diagrams@2.0.1/dist/sequence-diagram-min.js" integrity="sha384-8748Vn52gHJYJI0XEuPB2QlPVNUkJlJn9tHqKec6J3q2r9l8fvRxrgn/E5ZHV0sP" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bramp/js-sequence-diagrams@2.0.1/dist/sequence-diagram-min.css" integrity="sha384-6QbLKJMz5dS3adWSeINZe74uSydBGFbnzaAYmp+tKyq60S7H2p6V7g1TysM5lAaF" crossorigin="anonymous">
+<script type="text/javascript" src="/dist/even.min.js?v=3.2.0"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+      TeX: {equationNumbers: {autoNumber: "AMS"}},
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
