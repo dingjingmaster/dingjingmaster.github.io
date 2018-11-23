@@ -6,13 +6,24 @@
     <description>Recent content on 丁敬个人博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zn-ch</language>
-    <lastBuildDate>Tue, 13 Nov 2018 16:27:24 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 20 Nov 2018 15:46:51 +0800</lastBuildDate>
     
 	<atom:link href="https://www.dingjingmaster.top/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>AVL Tree</title>
+      <title>堆</title>
+      <link>https://www.dingjingmaster.top/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%A0%86/</link>
+      <pubDate>Tue, 20 Nov 2018 15:46:51 +0800</pubDate>
+      
+      <guid>https://www.dingjingmaster.top/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%A0%86/</guid>
+      <description>&lt;p&gt;堆是完整二叉树(除了最后一层，其他层都被完全填满)的一种。根据根节点放置的是所有键值中的最大值还是最小值，堆被分为最大堆和最小堆。堆常用数组来存储。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>avl 树</title>
       <link>https://www.dingjingmaster.top/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/avl-tree/</link>
       <pubDate>Tue, 13 Nov 2018 16:27:24 +0800</pubDate>
       
@@ -23,7 +34,7 @@
     </item>
     
     <item>
-      <title>Tree</title>
+      <title>树</title>
       <link>https://www.dingjingmaster.top/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/tree/</link>
       <pubDate>Tue, 13 Nov 2018 16:26:37 +0800</pubDate>
       

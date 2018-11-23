@@ -7,7 +7,7 @@
   <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-127300551-1"></script>
   <script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-127300551-1');</script>
   
-  <title>Web配置https域名 - 丁敬个人博客</title>
+  <title>堆 - 丁敬个人博客</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -20,8 +20,8 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="丁敬" /><meta name="description" content="Web配置https域名" />
-<meta name="keywords" content="nginx, https, nginx配置https" />
+<meta name="author" content="丁敬" /><meta name="description" content="堆" />
+<meta name="keywords" content="数据结构, 堆, 最大堆, 最小堆" />
 
 
 
@@ -32,7 +32,7 @@
 <meta name="generator" content="Hugo 0.49" />
 
 
-<link rel="canonical" href="https://www.dingjingmaster.top/post/web%E9%85%8D%E7%BD%AEhttps%E5%9F%9F%E5%90%8D/" />
+<link rel="canonical" href="https://www.dingjingmaster.top/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%A0%86/" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -55,26 +55,26 @@
 
 
 
-<meta property="og:title" content="Web配置https域名" />
-<meta property="og:description" content="Web配置https域名" />
+<meta property="og:title" content="堆" />
+<meta property="og:description" content="堆" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.dingjingmaster.top/post/web%E9%85%8D%E7%BD%AEhttps%E5%9F%9F%E5%90%8D/" /><meta property="article:published_time" content="2018-10-13T10:51:27&#43;08:00"/>
-<meta property="article:modified_time" content="2018-10-13T10:51:27&#43;08:00"/>
+<meta property="og:url" content="https://www.dingjingmaster.top/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%A0%86/" /><meta property="article:published_time" content="2018-11-20T15:46:51&#43;08:00"/>
+<meta property="article:modified_time" content="2018-11-20T15:46:51&#43;08:00"/>
 
-<meta itemprop="name" content="Web配置https域名">
-<meta itemprop="description" content="Web配置https域名">
-
-
-<meta itemprop="datePublished" content="2018-10-13T10:51:27&#43;08:00" />
-<meta itemprop="dateModified" content="2018-10-13T10:51:27&#43;08:00" />
-<meta itemprop="wordCount" content="711">
+<meta itemprop="name" content="堆">
+<meta itemprop="description" content="堆">
 
 
+<meta itemprop="datePublished" content="2018-11-20T15:46:51&#43;08:00" />
+<meta itemprop="dateModified" content="2018-11-20T15:46:51&#43;08:00" />
+<meta itemprop="wordCount" content="887">
 
-<meta itemprop="keywords" content="web,https,ubuntu,nginx," />
+
+
+<meta itemprop="keywords" content="数据结构,堆," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Web配置https域名"/>
-<meta name="twitter:description" content="Web配置https域名"/>
+<meta name="twitter:title" content="堆"/>
+<meta name="twitter:description" content="堆"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -141,13 +141,13 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">Web配置https域名</h1>
+      <h1 class="post-title">堆</h1>
 
       <div class="post-meta">
-        <span class="post-time"> 2018-10-13 </span>
+        <span class="post-time"> 2018-11-20 </span>
         <div class="post-category">
             
-              <a href="/categories/nginx/"> NGINX </a>
+              <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"> 数据结构 </a>
             
           </div>
         <span class="more-meta">  </span>
@@ -167,9 +167,9 @@
 <ul>
 <li>
 <ul>
-<li><a href="#1-获取阿里云-dv-ssl证书-免费">1. 获取阿里云 DV SSL证书（免费）</a></li>
-<li><a href="#2-nginx配置">2. nginx配置</a></li>
-<li><a href="#3-最后">3. 最后</a></li>
+<li><a href="#堆-heap">堆(heap)</a></li>
+<li><a href="#堆的应用">堆的应用</a></li>
+<li><a href="#最小堆实现">最小堆实现</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -182,119 +182,187 @@
 
     
     <div class="post-content">
-      
+      <p>堆是完整二叉树(除了最后一层，其他层都被完全填满)的一种。根据根节点放置的是所有键值中的最大值还是最小值，堆被分为最大堆和最小堆。堆常用数组来存储。</p>
 
-<h3 id="1-获取阿里云-dv-ssl证书-免费">1. 获取阿里云 DV SSL证书（免费）</h3>
+<p></p>
 
-<ol>
-<li>进入官网 <a href="https://common-buy.aliyun.com/?commodityCode=cas">阿里云盾证书服务</a></li>
-<li>依次选择：
-【选择品牌】: Symantec &ndash;&gt; 【保护类型】：一个域名 &ndash;&gt;  【证书类型】：免费型DV SSL  &ndash;&gt;  立即购买即可</li>
-<li>进入云盾控制台补全信息,点击进度栏的 “补全” 链接，补全数据，这一步大概等待二十多分钟。
-<img src="/img/云盾控制台.png" alt="云盾控制台" /></li>
-<li>等待 “证书状态栏” 变为 “已签发” 时，点击“下载” &mdash;&gt; “下载证书 for Nginx”</li>
-</ol>
+<h3 id="堆-heap">堆(heap)</h3>
 
-<h3 id="2-nginx配置">2. nginx配置</h3>
+<ul>
+<li>堆是一个完整的树(所有的层都被填满了，除了最后一层，最后一层有尽可能多的键)。堆的这个属性使它适合存储在数组中。</li>
+<li>堆不是最小堆就是最大堆。在最小堆中，根上的键必须是最小的(最小堆只保证子树的根部节点值小于左子树和右子树,最终保证了整个树根是最小值)。</li>
+<li>堆的数组描述(针对数组 Arr)
 
 <ol>
-<li>在服务端 <code>/etc/nginx</code> 目录下创建新目录<code>cert</code></li>
-<li>将下载的证书 <code>xxx.zip</code> 解压，并把文件夹中的 <code>xxx.key</code> 和 <code>xxx.pem</code> 上传到 <code>cert</code> 目录下。</li>
+<li>根节点 <code>Arr[0]</code></li>
+<li>父节点: <code>Arr[(i - 1) / 2] (i &gt; 0)</code></li>
+<li>左子节点: <code>Arr[(2 * i) + 1] (i &gt;= 0)</code></li>
+<li>右子节点: <code>Arr[(2 * i) + 2] (i &gt;= 0)</code></li>
+</ol></li>
+</ul>
 
-<li><p>配置nginx配置目录 <code>/etc/nginx/sites-enabled</code> 下 <code>default</code> 文件如下:</p>
+<h3 id="堆的应用">堆的应用</h3>
 
-<pre><code>  server {
-          listen 443 ssl;
-          server_name www.xxx.com; # 域名
-          ssl_certificate &quot;/etc/nginx/cert/xxx.pem&quot;;   # 刚刚保存的 /etc/nginx/cert/xxx.pem
-          ssl_certificate_key &quot;/etc/nginx/cert/xxx.key&quot;; # 刚刚保存的 /etc/nginx/cert/xxx.key
-          ssl_session_timeout 5m;
-          ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4;
-          ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
-          ssl_prefer_server_ciphers on;
+<ul>
+<li>堆排序: 堆排序的时间复杂度是 <code>O(nlogn)</code></li>
+<li>优先队列：使用二进制堆可以有效地实现优先队列，因为它支持在 <code>O(logn)</code> 时间内的 <code>insert()</code> 、<code>delete()</code> 操作。</li>
+<li>图算法：如 <code>Dijkstra 最短路径</code> 和 <code>prim 最小生成树</code> 。</li>
+<li>数组中第K个最大的元素。</li>
+<li>合并K个排序数组。</li>
+</ul>
 
-          root /xxx/xxx/; # 网站根目录（放置html或php代码的根目录）
-          index index.php index.html;
+<h3 id="最小堆实现">最小堆实现</h3>
 
-          location ~ ^.+\.php { # php 请求转发
-              fastcgi_pass   127.0.0.1:9000;
-              fastcgi_index  index.php;
-              fastcgi_split_path_info ^(.+\.php)(.*)$;
-              fastcgi_param  PATH_INFO $fastcgi_path_info;
-              fastcgi_param  PATH_TRANSLATED $document_root$fastcgi_path_info;
-              include        fastcgi_params;
-              include        fastcgi.conf;
-      }
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+#include &lt;stdlib.h&gt;
 
-  }
-</code></pre></li>
+/**
+ *  最小堆的实现
+ *
+ */
 
-<li><p>重新启动nginx</p>
+// 最小堆的容量
+#define MIN_HEAP_CAPACITY   1000
 
-<pre><code class="language-shell">  nginx -s stop &amp;&amp; nginx
-</code></pre></li>
-</ol>
+typedef struct _Heap {
+    int* ptr;
+    int size;
+    int capacity;
+}Heap;
 
-<h3 id="3-最后">3. 最后</h3>
-
-<p>上述配置完成之后当你在浏览器地址栏输入 <code>https://www.xxx.com</code> 的时候可以正常访问网站，而且链接也变成了 <code>https</code>。但是，当你在浏览器地址栏输入 <code>http://www.xxx.com</code> 时候，服务无法访问。这主要是因为服务端只监听了<code>443</code>端口，值提供了<code>https</code>服务，而不再监听<code>80</code>端口，所以不能提供<code>http</code>服务。</p>
-
-<p>具体做法:</p>
-
-<ol>
-<li><p>打开nginx配置文件（刚刚配置过）</p>
-
-<pre><code class="language-shell">cd /etc/nginx/sites-enabled/ &amp;&amp; vi default # 打开nginx配置文件
-</code></pre></li>
-
-<li><p>加入对 <code>80</code>端口的监听</p>
-
-<pre><code>server {
-    listen 80;
-    server_name xxx.top www.xxx.com;
-    rewrite ^(.*) https://www.xxx.com; # 将 http://www.xxx.com 的请求转发到 https://www.xxx.com
+// 交换两个值
+static void swap(int* x, int* y) {
+    int tmp = *x;
+    *x = *y;
+    *y = tmp;
 }
-</code></pre></li>
 
-<li><p>重启nginx</p>
+static int left(int i) {
+    return 2 * i + 1;
+}
 
-<pre><code class="language-shell">nginx -s stop &amp;&amp; nginx
-</code></pre></li>
-</ol>
+static int right(int i) {
+    return 2 * i + 2;
+}
 
-<p>最后附上整个 <code>default</code>配置</p>
+static int parent(int i) {
+    return (i - 1) / 2;
+}
 
-<pre><code>  server { # 监听80端口，提供http服务
-      listen 80;
-      server_name xxx.top www.xxx.com;
-      rewrite ^(.*) https://www.xxx.com; # 将 http://www.xxx.com 的请求转发到 https://www.xxx.com
-  }
+// 初始化
+void minheap_init(Heap** heap/* out */) {
+    *heap = (Heap*) malloc(sizeof(Heap));
+    // 判断返回值
+    (*heap)-&gt;ptr = (int*)malloc(sizeof(int) * MIN_HEAP_CAPACITY);
+    // 判断
+    (*heap)-&gt;size = 0;
+    (*heap)-&gt;capacity = MIN_HEAP_CAPACITY;
+}
 
-  server { # 监听443接口，提供https服务
-          listen 443 ssl;
-          server_name www.xxx.com; # 域名
-          ssl_certificate &quot;/etc/nginx/cert/xxx.pem&quot;;   # 刚刚保存的 /etc/nginx/cert/xxx.pem
-          ssl_certificate_key &quot;/etc/nginx/cert/xxx.key&quot;; # 刚刚保存的 /etc/nginx/cert/xxx.key
-          ssl_session_timeout 5m;
-          ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4;
-          ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
-          ssl_prefer_server_ciphers on;
+// 由根部开始向下调整
+void minheap_heapify(Heap* heap, int i) {
+    int l = left(i);
+    int r = right(i);
+    int smallest = i; // 根节点
+    if(l &lt; heap-&gt;size &amp;&amp; *(heap-&gt;ptr + l) &lt; *(heap-&gt;ptr + smallest)) { // 根节点和左孩子比较
+        smallest = l;
+    }
 
-          root /xxx/xxx/; # 网站根目录（放置html或php代码的根目录）
-          index index.php index.html;
+    if (r &lt; heap-&gt;size &amp;&amp; *(heap-&gt;ptr + r) &lt; *(heap-&gt;ptr + smallest)) { // 根节点和右孩子比较
+        smallest = r;
+    }
 
-          location ~ ^.+\.php { # php 请求转发
-              fastcgi_pass   127.0.0.1:9000;
-              fastcgi_index  index.php;
-              fastcgi_split_path_info ^(.+\.php)(.*)$;
-              fastcgi_param  PATH_INFO $fastcgi_path_info;
-              fastcgi_param  PATH_TRANSLATED $document_root$fastcgi_path_info;
-              include        fastcgi_params;
-              include        fastcgi.conf;
-      }
-  }
+    if (i != smallest) { // 需要调整堆结构
+        swap(heap-&gt;ptr + i, heap-&gt;ptr + smallest);
+        minheap_heapify(heap, smallest);
+    }
+}
+
+void minheap_insert(Heap* heap, int i) {
+    if(heap-&gt;size &gt;= heap-&gt;capacity) {
+        // 超出堆的大小
+        puts(&quot;error!&quot;);
+        return;
+    }
+
+    ++ heap-&gt;size;
+    int t = heap-&gt;size - 1; // 最小堆末尾插入值
+    *(heap-&gt;ptr + t) = i;
+
+    // 检查是否违反最小堆的性质(根节点小于子节点), 违反则修复
+    while (t != 0 &amp;&amp; *(heap-&gt;ptr + parent(t)) &gt; *(heap-&gt;ptr + t)) {
+        swap(heap-&gt;ptr + t, heap-&gt;ptr + parent(t));
+        t = parent(t);
+    }
+}
+
+// 返回最小堆的最小值 (根部值)
+int minheap_pop(Heap* heap) {
+    if (heap-&gt;size &lt;= 0) {
+        return INT_MIN; // 错误
+    }
+    if (heap-&gt;size == 1) {
+        -- heap-&gt;size;
+        return *heap-&gt;ptr;
+    }
+
+    // 保存最小值
+    int m = *heap-&gt;ptr;
+
+    // 覆盖根部并开始调整
+    *heap-&gt;ptr = *(heap-&gt;ptr + heap-&gt;size - 1);
+    -- heap-&gt;size;
+    minheap_heapify(heap, 0);
+
+    return m;
+}
+
+int main(void) {
+    Heap* heap = NULL;
+
+    // 初始化堆
+    minheap_init(&amp;heap);
+    // 检查返回值 heap
+
+    // 插入
+    minheap_insert(heap, 1);
+    minheap_insert(heap, 0);
+    minheap_insert(heap, 188);
+    minheap_insert(heap, 71);
+    minheap_insert(heap, 61);
+    minheap_insert(heap, 51);
+    minheap_insert(heap, 41);
+    minheap_insert(heap, 71);
+    minheap_insert(heap, 81);
+    minheap_insert(heap, -1);
+    minheap_insert(heap, -128);
+    minheap_insert(heap, -33);
+    minheap_insert(heap, -4);
+    minheap_insert(heap, 1);
+    minheap_insert(heap, 18);
+    minheap_insert(heap, 188);
+    minheap_insert(heap, 71);
+    minheap_insert(heap, 61);
+    minheap_insert(heap, 51);
+    minheap_insert(heap, 41);
+    minheap_insert(heap, 71);
+    minheap_insert(heap, 81);
+
+    printf(&quot;size: %d\n&quot;, heap-&gt;size);
+    printf(&quot;capacity: %d\n\n&quot;, heap-&gt;capacity);
+
+    // 输出看看是不是由小到大
+    int i = 0;
+    for(i = heap-&gt;size; i &gt; 0; -- i) {
+        int v = minheap_pop(heap);
+        printf(&quot;%d\t&quot;, v);
+    }
+    printf(&quot;\n\ncomplete!!!\n&quot;);
+
+    return 0;
+}
 </code></pre>
-
     </div>
 
     
@@ -306,27 +374,18 @@
     <footer class="post-footer">
       <div class="post-tags">
           
-          <a href="/tags/web/">web</a>
+          <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
           
-          <a href="/tags/https/">https</a>
-          
-          <a href="/tags/ubuntu/">ubuntu</a>
-          
-          <a href="/tags/nginx/">nginx</a>
+          <a href="/tags/%E5%A0%86/">堆</a>
           
         </div>
 
       
       <nav class="post-nav">
         
-          <a class="prev" href="/post/%E6%8F%90%E9%AB%98github%E8%AE%BF%E9%97%AE%E9%80%9F%E5%BA%A6%E7%9A%84%E6%96%B9%E6%B3%95/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">提高github访问速度的方法</span>
-            <span class="prev-text nav-mobile"></span>
-          </a>
         
-          <a class="next" href="/post/%E6%AD%A3%E5%90%91%E4%BB%A3%E7%90%86%E4%B8%8E%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/">
-            <span class="next-text nav-default">正向代理与反向代理</span>
+          <a class="next" href="/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/avl-tree/">
+            <span class="next-text nav-default">avl 树</span>
             <span class="next-text nav-mobile"></span>
             <i class="iconfont icon-right"></i>
           </a>
@@ -355,8 +414,8 @@
     <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
   <script type="text/javascript">
   var gitalk = new Gitalk({
-    id: '2018-10-13 10:51:27 \x2b0800 CST',
-    title: 'Web配置https域名',
+    id: '2018-11-20 15:46:51 \x2b0800 CST',
+    title: '堆',
     clientID: '3c8da4e91628fe8bbd9d',
     clientSecret: '3d6b1bce6decf4ac3f5d8ba49933cfdfc5647c80',
     repo: 'dingjingmaster.github.io',

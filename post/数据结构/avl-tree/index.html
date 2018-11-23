@@ -7,7 +7,7 @@
   <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-127300551-1"></script>
   <script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-127300551-1');</script>
   
-  <title>AVL Tree - 丁敬个人博客</title>
+  <title>avl 树 - 丁敬个人博客</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -21,7 +21,7 @@
 
 
 <meta name="author" content="丁敬" /><meta name="description" content="AVL Tree" />
-<meta name="keywords" content="avl 树, 平衡二叉树, AVL 树, avl tree" />
+<meta name="keywords" content="avl 树, 平衡二叉树, AVL 树, avl tree, 自平衡二叉树" />
 
 
 
@@ -55,25 +55,25 @@
 
 
 
-<meta property="og:title" content="AVL Tree" />
+<meta property="og:title" content="avl 树" />
 <meta property="og:description" content="AVL Tree" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.dingjingmaster.top/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/avl-tree/" /><meta property="article:published_time" content="2018-11-13T16:27:24&#43;08:00"/>
 <meta property="article:modified_time" content="2018-11-13T16:27:24&#43;08:00"/>
 
-<meta itemprop="name" content="AVL Tree">
+<meta itemprop="name" content="avl 树">
 <meta itemprop="description" content="AVL Tree">
 
 
 <meta itemprop="datePublished" content="2018-11-13T16:27:24&#43;08:00" />
 <meta itemprop="dateModified" content="2018-11-13T16:27:24&#43;08:00" />
-<meta itemprop="wordCount" content="3131">
+<meta itemprop="wordCount" content="3133">
 
 
 
-<meta itemprop="keywords" content="tree,avl tree," />
+<meta itemprop="keywords" content="tree,avl tree,树,搜索二叉树," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="AVL Tree"/>
+<meta name="twitter:title" content="avl 树"/>
 <meta name="twitter:description" content="AVL Tree"/>
 
 <!--[if lte IE 9]>
@@ -141,7 +141,7 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">AVL Tree</h1>
+      <h1 class="post-title">avl 树</h1>
 
       <div class="post-meta">
         <span class="post-time"> 2018-11-13 </span>
@@ -206,7 +206,7 @@
 <h3 id="插入key操作">插入key操作</h3>
 
 <blockquote>
-<p>为了确保在每次插入之后给定的树仍然是AVL，我们必须增加标准的BST插入操作来执行一些重新平衡。左旋转 和 右旋转 两个操作可以在不违反BST属性(键(左)&lt; key(根)&lt; keys(右))的情况下重新平衡BST。</p>
+<p>为了确保在每次插入之后给定的树仍然是AVL，我们必须增加标准的BST插入操作来执行一些重新平衡。左旋转 和 右旋转 两个操作可以在不违反BST属性(key(左)&lt; key(根)&lt; keys(右))的情况下重新平衡BST。</p>
 </blockquote>
 
 <p>针对插入新节点 w</p>
@@ -214,7 +214,7 @@
 <ul>
 <li>执行标准的插入(从树的根节点开始向下遍历，w 的 key 大于子树的根结点则向右遍历，否则向左遍历。直到找到节点为 NULL 的地方，把 w 节点插入该位置)</li>
 <li>从 w 节点向上移动(w 节点高度为 1，向上移动顺次更新各个节点高度)，找到第一个不平衡节点(针对AVL树不满足左子树和右子树高度差不超过1这一条件的节点)。设 z 是第一个不平衡节点，y 是 z 的子结点，x 是 z 的孙子结点。</li>
-<li>通过对以z为根的子树进行适当的旋转来重新平衡树。有4种可能的情况需要处理，因为x、y和 z 有4种排列方式，如下所示：</li>
+<li>通过对以z为根的子树进行适当的旋转来重新平衡树。有4种可能的情况需要处理，因为x、y 和 z 有4种排列方式，如下所示：</li>
 </ul>
 
 <p>① y 是 z 的左子结点 x 是 y 的左子结点(左下)</p>
@@ -226,13 +226,13 @@ T1, T2, T3 和 T4 是子树。
   调整的办法就是降低高度高的那一个节点
   由二叉搜索树性质(左子树 &lt; 根节点 &lt; 右子树)得出: z &gt; y、T4 &gt; z、 T3 &lt; z
 
-        (3)z                                       y
+        (4)z                                       y
         /   \                                    /   \
-      (2)y (0)T4      右旋 (z)                  x      z
+      (3)y (2)T4      右旋 (z)                  x      z
        /   \          - - - - - - - - -&gt;      /  \    /  \
-     (1)x  (0)T3                            T1   T2  T3  T4
+     (2)x  (1)T3                             T1   T2  T3  T4
       /   \
-T1(0)   T2(0)
+T1(1)   T2(1)
 </code></pre>
 
 <p>② y是z的左子结点x是y的右子结点(左右图)</p>
@@ -752,14 +752,23 @@ int main(void) {
           
           <a href="/tags/avl-tree/">avl tree</a>
           
+          <a href="/tags/%E6%A0%91/">树</a>
+          
+          <a href="/tags/%E6%90%9C%E7%B4%A2%E4%BA%8C%E5%8F%89%E6%A0%91/">搜索二叉树</a>
+          
         </div>
 
       
       <nav class="post-nav">
         
+          <a class="prev" href="/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%A0%86/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">堆</span>
+            <span class="prev-text nav-mobile"></span>
+          </a>
         
           <a class="next" href="/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/tree/">
-            <span class="next-text nav-default">Tree</span>
+            <span class="next-text nav-default">树</span>
             <span class="next-text nav-mobile"></span>
             <i class="iconfont icon-right"></i>
           </a>
@@ -784,15 +793,15 @@ int main(void) {
   
 
   <div id="gitalk-container"></div>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.2.2/dist/gitalk.css" integrity="sha256-rJVe5uyYRXdLM+Kkoj7JtN+9qI0bZTxkYTaNWODpg7U=" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/gitalk@1.2.2/dist/gitalk.min.js" integrity="sha256-DcjhdbufsHMHflFjZtKNFnPKOAL2ybOxGcPOR4MtnJg=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
   <script type="text/javascript">
   var gitalk = new Gitalk({
     id: '2018-11-13 16:27:24 \x2b0800 CST',
-    title: 'AVL Tree',
+    title: 'avl 树',
     clientID: '3c8da4e91628fe8bbd9d',
-    clientSecret: 'd93d1a1463f3a30c049d3816dd66c58bdeb17744',
-    repo: 'blog',
+    clientSecret: '3d6b1bce6decf4ac3f5d8ba49933cfdfc5647c80',
+    repo: 'dingjingmaster.github.io',
     owner: 'dingjingmaster',
     admin: ['dingjingmaster'],
     body: decodeURI(location.href)

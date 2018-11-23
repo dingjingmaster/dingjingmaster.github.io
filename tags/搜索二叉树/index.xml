@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>树 on 丁敬个人博客</title>
-    <link>https://www.dingjingmaster.top/tags/%E6%A0%91/</link>
-    <description>Recent content in 树 on 丁敬个人博客</description>
+    <title>搜索二叉树 on 丁敬个人博客</title>
+    <link>https://www.dingjingmaster.top/tags/%E6%90%9C%E7%B4%A2%E4%BA%8C%E5%8F%89%E6%A0%91/</link>
+    <description>Recent content in 搜索二叉树 on 丁敬个人博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zn-ch</language>
     <lastBuildDate>Tue, 13 Nov 2018 16:27:24 +0800</lastBuildDate>
     
-	<atom:link href="https://www.dingjingmaster.top/tags/%E6%A0%91/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.dingjingmaster.top/tags/%E6%90%9C%E7%B4%A2%E4%BA%8C%E5%8F%89%E6%A0%91/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -18,17 +18,6 @@
       
       <guid>https://www.dingjingmaster.top/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/avl-tree/</guid>
       <description>&lt;p&gt;AVL树是一种自平衡二叉搜索树(BST)，对于所有节点，其左右子树的高度差不能超过1。&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>树</title>
-      <link>https://www.dingjingmaster.top/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/tree/</link>
-      <pubDate>Tue, 13 Nov 2018 16:26:37 +0800</pubDate>
-      
-      <guid>https://www.dingjingmaster.top/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/tree/</guid>
-      <description>&lt;p&gt;树:与数组、链表、堆栈和队列(它们是线性数据结构)不同，树是分层数据结构。&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
     </item>
