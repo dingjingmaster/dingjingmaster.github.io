@@ -1,0 +1,291 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.20"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>C library: ecm.ECMTransform类 参考</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">C library
+   &#160;<span id="projectnumber">v1.0.0</span>
+   </div>
+   <div id="projectbrief">C/C++常用库整理 + C/C++、基于linux 系统一些例子</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.20 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="../../d1/d8c/namespaceecm.html">ecm</a></li><li class="navelem"><a class="el" href="../../d1/d89/classecm_1_1ECMTransform.html">ECMTransform</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pub-attribs">Public 属性</a> &#124;
+<a href="#pub-static-attribs">静态 Public 属性</a> &#124;
+<a href="../../d5/df3/classecm_1_1ECMTransform-members.html">所有成员列表</a>  </div>
+  <div class="headertitle">
+<div class="title">ecm.ECMTransform类 参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="../../closed.png" alt="+"/> 类 ecm.ECMTransform 继承关系图:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d2/dd7/classecm_1_1ECMTransform__inherit__graph.png" border="0" usemap="#aecm_8ECMTransform_inherit__map" alt="Inheritance graph"/></div>
+<map name="ecm_8ECMTransform_inherit__map" id="aecm_8ECMTransform_inherit__map">
+<area shape="rect" title=" " alt="" coords="5,131,144,252"/>
+<area shape="rect" title=" " alt="" coords="33,5,116,83"/>
+</map>
+</div>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="../../closed.png" alt="+"/> ecm.ECMTransform 的协作图:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d1/d3f/classecm_1_1ECMTransform__coll__graph.png" border="0" usemap="#aecm_8ECMTransform_coll__map" alt="Collaboration graph"/></div>
+<map name="ecm_8ECMTransform_coll__map" id="aecm_8ECMTransform_coll__map">
+<area shape="rect" title=" " alt="" coords="5,131,144,252"/>
+<area shape="rect" title=" " alt="" coords="33,5,116,83"/>
+</map>
+</div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a821c8cfc342f300af821f37e419f837d"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d89/classecm_1_1ECMTransform.html#a821c8cfc342f300af821f37e419f837d">__init__</a> (self, document, startnode)</td></tr>
+<tr class="separator:a821c8cfc342f300af821f37e419f837d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a537645be19387aae012003c82d3feb3f"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d89/classecm_1_1ECMTransform.html#a537645be19387aae012003c82d3feb3f">apply</a> (self)</td></tr>
+<tr class="separator:a537645be19387aae012003c82d3feb3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af07dad0a15c572a9ce04c91db17dccb6"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d89/classecm_1_1ECMTransform.html#af07dad0a15c572a9ce04c91db17dccb6">parse_title</a> (self, docname)</td></tr>
+<tr class="separator:af07dad0a15c572a9ce04c91db17dccb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Public 属性</h2></td></tr>
+<tr class="memitem:a010b140fec114c3305fe6ca07b7b2925"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d89/classecm_1_1ECMTransform.html#a010b140fec114c3305fe6ca07b7b2925">titles</a></td></tr>
+<tr class="separator:a010b140fec114c3305fe6ca07b7b2925"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
+静态 Public 属性</h2></td></tr>
+<tr class="memitem:a2d85e333abd8bb6fa697a43f5a97915c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d89/classecm_1_1ECMTransform.html#a2d85e333abd8bb6fa697a43f5a97915c">default_priority</a> = 210</td></tr>
+<tr class="separator:a2d85e333abd8bb6fa697a43f5a97915c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"></div><h2 class="groupheader">构造及析构函数说明</h2>
+<a id="a821c8cfc342f300af821f37e419f837d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a821c8cfc342f300af821f37e419f837d">&#9670;&nbsp;</a></span>__init__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def ecm.ECMTransform.__init__ </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>document</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>startnode</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="a537645be19387aae012003c82d3feb3f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a537645be19387aae012003c82d3feb3f">&#9670;&nbsp;</a></span>apply()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def ecm.ECMTransform.apply </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="../../#l00140">ecm._ecm_object_inventory()</a> , 以及 <a class="el" href="../../#l00158">ecm.ECMTransform.parse_title()</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="../../closed.png" alt="+"/> 函数调用图:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d1/d89/classecm_1_1ECMTransform_a537645be19387aae012003c82d3feb3f_cgraph.png" border="0" usemap="#ad1/d89/classecm_1_1ECMTransform_a537645be19387aae012003c82d3feb3f_cgraph" alt=""/></div>
+<map name="d1/d89/classecm_1_1ECMTransform_a537645be19387aae012003c82d3feb3f_cgraph" id="ad1/d89/classecm_1_1ECMTransform_a537645be19387aae012003c82d3feb3f_cgraph">
+<area shape="rect" title=" " alt="" coords="5,35,181,61"/>
+<area shape="rect" href="../../d1/d8c/namespaceecm.html#aab2a06d0bb98ca644c7a52f718c28d5c" title=" " alt="" coords="229,5,415,32"/>
+<area shape="rect" href="../../d1/d89/classecm_1_1ECMTransform.html#af07dad0a15c572a9ce04c91db17dccb6" title=" " alt="" coords="234,57,410,98"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="af07dad0a15c572a9ce04c91db17dccb6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af07dad0a15c572a9ce04c91db17dccb6">&#9670;&nbsp;</a></span>parse_title()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def ecm.ECMTransform.parse_title </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>docname</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Parse a document title as the first line starting in [A-Za-z0-9&lt;]
+   or fall back to the document basename if no such line exists.
+   Return the title or False if the document file does not exist.
+</pre> 
+<p class="reference">引用了 <a class="el" href="../../#l00156">ecm.ECMTransform.titles</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00182">ecm.ECMTransform.apply()</a>.</p>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="../../closed.png" alt="+"/> 这是这个函数的调用关系图:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d1/d89/classecm_1_1ECMTransform_af07dad0a15c572a9ce04c91db17dccb6_icgraph.png" border="0" usemap="#ad1/d89/classecm_1_1ECMTransform_af07dad0a15c572a9ce04c91db17dccb6_icgraph" alt=""/></div>
+<map name="d1/d89/classecm_1_1ECMTransform_af07dad0a15c572a9ce04c91db17dccb6_icgraph" id="ad1/d89/classecm_1_1ECMTransform_af07dad0a15c572a9ce04c91db17dccb6_icgraph">
+<area shape="rect" title=" " alt="" coords="229,5,405,47"/>
+<area shape="rect" href="../../d1/d89/classecm_1_1ECMTransform.html#a537645be19387aae012003c82d3feb3f" title=" " alt="" coords="5,13,181,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="a2d85e333abd8bb6fa697a43f5a97915c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d85e333abd8bb6fa697a43f5a97915c">&#9670;&nbsp;</a></span>default_priority</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ecm.ECMTransform.default_priority = 210</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a010b140fec114c3305fe6ca07b7b2925"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a010b140fec114c3305fe6ca07b7b2925">&#9670;&nbsp;</a></span>titles</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ecm.ECMTransform.titles</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00158">ecm.ECMTransform.parse_title()</a>.</p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>extra-cmake-modules/docs/sphinx/ext/<a class="el" href="../../">ecm.py</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+生成于 2021年 一月 3日 星期日 19:22:18 , 为 C library使用 &#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20
+</small></address>
+</body>
+</html>

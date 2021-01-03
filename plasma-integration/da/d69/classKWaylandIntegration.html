@@ -1,0 +1,575 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.20"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>C library: KWaylandIntegration类 参考</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">C library
+   &#160;<span id="projectnumber">v1.0.0</span>
+   </div>
+   <div id="projectbrief">C/C++常用库整理 + C/C++、基于linux 系统一些例子</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.20 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">类</a> &#124;
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pri-methods">Private 成员函数</a> &#124;
+<a href="#pri-attribs">Private 属性</a> &#124;
+<a href="../../d7/d2e/classKWaylandIntegration-members.html">所有成员列表</a>  </div>
+  <div class="headertitle">
+<div class="title">KWaylandIntegration类 参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;<a class="el" href="../../">kwaylandintegration.h</a>&gt;</code></p>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="../../closed.png" alt="+"/> 类 KWaylandIntegration 继承关系图:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../df/d52/classKWaylandIntegration__inherit__graph.png" border="0" usemap="#aKWaylandIntegration_inherit__map" alt="Inheritance graph"/></div>
+<map name="KWaylandIntegration_inherit__map" id="aKWaylandIntegration_inherit__map">
+<area shape="rect" title=" " alt="" coords="5,131,180,369"/>
+<area shape="rect" title=" " alt="" coords="57,5,128,83"/>
+</map>
+</div>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="../../closed.png" alt="+"/> KWaylandIntegration 的协作图:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d8/da9/classKWaylandIntegration__coll__graph.png" border="0" usemap="#aKWaylandIntegration_coll__map" alt="Collaboration graph"/></div>
+<map name="KWaylandIntegration_coll__map" id="aKWaylandIntegration_coll__map">
+<area shape="rect" title=" " alt="" coords="5,131,180,369"/>
+<area shape="rect" title=" " alt="" coords="57,5,128,83"/>
+</map>
+</div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+类</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/dbd/structKWaylandIntegration_1_1WindowInfo.html">WindowInfo</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:ac6a3a69fa830bf56b725f04025eca67c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d69/classKWaylandIntegration.html#ac6a3a69fa830bf56b725f04025eca67c">eventFilter</a> (QObject *watched, QEvent *event) override</td></tr>
+<tr class="separator:ac6a3a69fa830bf56b725f04025eca67c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c1019f245812b61b2d0423b28ebea9b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d69/classKWaylandIntegration.html#a4c1019f245812b61b2d0423b28ebea9b">init</a> ()</td></tr>
+<tr class="separator:a4c1019f245812b61b2d0423b28ebea9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad245cadc268de4bc3e3ceeb6ba257141"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d69/classKWaylandIntegration.html#ad245cadc268de4bc3e3ceeb6ba257141">KWaylandIntegration</a> ()</td></tr>
+<tr class="separator:ad245cadc268de4bc3e3ceeb6ba257141"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6cb2b85f6ae5c53d4b090760ddaeea62"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d69/classKWaylandIntegration.html#a6cb2b85f6ae5c53d4b090760ddaeea62">setAppMenu</a> (QWindow *window, const QString &amp;serviceName, const QString &amp;objectPath)</td></tr>
+<tr class="separator:a6cb2b85f6ae5c53d4b090760ddaeea62"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01cd0430e1ed8eca418ae9093c7fc60c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d69/classKWaylandIntegration.html#a01cd0430e1ed8eca418ae9093c7fc60c">setPalette</a> (QWindow *window, const QString &amp;paletteName)</td></tr>
+<tr class="separator:a01cd0430e1ed8eca418ae9093c7fc60c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a21074fd69bcd0f6a8680793bc9a0562d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d69/classKWaylandIntegration.html#a21074fd69bcd0f6a8680793bc9a0562d">~KWaylandIntegration</a> () override</td></tr>
+<tr class="separator:a21074fd69bcd0f6a8680793bc9a0562d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private 成员函数</h2></td></tr>
+<tr class="memitem:a09b128c64f1b3ef6c3a1eee48ac009ab"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d69/classKWaylandIntegration.html#a09b128c64f1b3ef6c3a1eee48ac009ab">installColorScheme</a> (QWindow *w)</td></tr>
+<tr class="separator:a09b128c64f1b3ef6c3a1eee48ac009ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c71ee9f42a1aeb912933a1e7751b684"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d69/classKWaylandIntegration.html#a5c71ee9f42a1aeb912933a1e7751b684">shellSurfaceCreated</a> (QWindow *w)</td></tr>
+<tr class="separator:a5c71ee9f42a1aeb912933a1e7751b684"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d196a86c61ec02774eee34fe3a5ee57"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d69/classKWaylandIntegration.html#a8d196a86c61ec02774eee34fe3a5ee57">shellSurfaceDestroyed</a> (QWindow *w)</td></tr>
+<tr class="separator:a8d196a86c61ec02774eee34fe3a5ee57"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private 属性</h2></td></tr>
+<tr class="memitem:aab34ec3fc97c4e9c59dacedc687bac8c"><td class="memItemLeft" align="right" valign="top">KWayland::Client::AppMenuManager *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d69/classKWaylandIntegration.html#aab34ec3fc97c4e9c59dacedc687bac8c">m_appMenuManager</a> = nullptr</td></tr>
+<tr class="separator:aab34ec3fc97c4e9c59dacedc687bac8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f0af8b020596b91fb4aff46c4228ac5"><td class="memItemLeft" align="right" valign="top">KWayland::Client::ServerSideDecorationPaletteManager *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d69/classKWaylandIntegration.html#a4f0af8b020596b91fb4aff46c4228ac5">m_paletteManager</a> = nullptr</td></tr>
+<tr class="separator:a4f0af8b020596b91fb4aff46c4228ac5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d2c8cd30dfb9c08812ecce1bec72362"><td class="memItemLeft" align="right" valign="top">KWayland::Client::Registry *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d69/classKWaylandIntegration.html#a5d2c8cd30dfb9c08812ecce1bec72362">m_registry</a> = nullptr</td></tr>
+<tr class="separator:a5d2c8cd30dfb9c08812ecce1bec72362"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4032cf561dc5a83b4bdc9a4bf5058b46"><td class="memItemLeft" align="right" valign="top">QHash&lt; QWindow *, <a class="el" href="../../dc/dbd/structKWaylandIntegration_1_1WindowInfo.html">WindowInfo</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d69/classKWaylandIntegration.html#a4032cf561dc5a83b4bdc9a4bf5058b46">m_windowInfo</a></td></tr>
+<tr class="separator:a4032cf561dc5a83b4bdc9a4bf5058b46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"></div><h2 class="groupheader">构造及析构函数说明</h2>
+<a id="ad245cadc268de4bc3e3ceeb6ba257141"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad245cadc268de4bc3e3ceeb6ba257141">&#9670;&nbsp;</a></span>KWaylandIntegration()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">KWaylandIntegration::KWaylandIntegration </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a21074fd69bcd0f6a8680793bc9a0562d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a21074fd69bcd0f6a8680793bc9a0562d">&#9670;&nbsp;</a></span>~KWaylandIntegration()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">KWaylandIntegration::~KWaylandIntegration </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="ac6a3a69fa830bf56b725f04025eca67c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac6a3a69fa830bf56b725f04025eca67c">&#9670;&nbsp;</a></span>eventFilter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool KWaylandIntegration::eventFilter </td>
+          <td>(</td>
+          <td class="paramtype">QObject *&#160;</td>
+          <td class="paramname"><em>watched</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">QEvent *&#160;</td>
+          <td class="paramname"><em>event</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="../../#l00134">installColorScheme()</a>, <a class="el" href="../../#l00098">shellSurfaceCreated()</a> , 以及 <a class="el" href="../../#l00123">shellSurfaceDestroyed()</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="../../closed.png" alt="+"/> 函数调用图:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../da/d69/classKWaylandIntegration_ac6a3a69fa830bf56b725f04025eca67c_cgraph.png" border="0" usemap="#ada/d69/classKWaylandIntegration_ac6a3a69fa830bf56b725f04025eca67c_cgraph" alt=""/></div>
+<map name="da/d69/classKWaylandIntegration_ac6a3a69fa830bf56b725f04025eca67c_cgraph" id="ada/d69/classKWaylandIntegration_ac6a3a69fa830bf56b725f04025eca67c_cgraph">
+<area shape="rect" title=" " alt="" coords="5,35,156,76"/>
+<area shape="rect" href="../../da/d69/classKWaylandIntegration.html#a09b128c64f1b3ef6c3a1eee48ac009ab" title=" " alt="" coords="415,5,565,47"/>
+<area shape="rect" href="../../da/d69/classKWaylandIntegration.html#a5c71ee9f42a1aeb912933a1e7751b684" title=" " alt="" coords="210,35,361,76"/>
+<area shape="rect" href="../../da/d69/classKWaylandIntegration.html#a8d196a86c61ec02774eee34fe3a5ee57" title=" " alt="" coords="204,100,367,141"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a4c1019f245812b61b2d0423b28ebea9b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c1019f245812b61b2d0423b28ebea9b">&#9670;&nbsp;</a></span>init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KWaylandIntegration::init </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="../../#l00056">m_appMenuManager</a> , 以及 <a class="el" href="../../#l00058">m_registry</a>.</p>
+
+</div>
+</div>
+<a id="a09b128c64f1b3ef6c3a1eee48ac009ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a09b128c64f1b3ef6c3a1eee48ac009ab">&#9670;&nbsp;</a></span>installColorScheme()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KWaylandIntegration::installColorScheme </td>
+          <td>(</td>
+          <td class="paramtype">QWindow *&#160;</td>
+          <td class="paramname"><em>w</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="../../#l00057">m_paletteManager</a>, <a class="el" href="../../#l00058">m_registry</a> , 以及 <a class="el" href="../../#l00036">s_schemePropertyName</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00068">eventFilter()</a> , 以及 <a class="el" href="../../#l00098">shellSurfaceCreated()</a>.</p>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="../../closed.png" alt="+"/> 这是这个函数的调用关系图:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../da/d69/classKWaylandIntegration_a09b128c64f1b3ef6c3a1eee48ac009ab_icgraph.png" border="0" usemap="#ada/d69/classKWaylandIntegration_a09b128c64f1b3ef6c3a1eee48ac009ab_icgraph" alt=""/></div>
+<map name="da/d69/classKWaylandIntegration_a09b128c64f1b3ef6c3a1eee48ac009ab_icgraph" id="ada/d69/classKWaylandIntegration_a09b128c64f1b3ef6c3a1eee48ac009ab_icgraph">
+<area shape="rect" title=" " alt="" coords="403,5,553,47"/>
+<area shape="rect" href="../../da/d69/classKWaylandIntegration.html#ac6a3a69fa830bf56b725f04025eca67c" title=" " alt="" coords="5,5,156,47"/>
+<area shape="rect" href="../../da/d69/classKWaylandIntegration.html#a5c71ee9f42a1aeb912933a1e7751b684" title=" " alt="" coords="204,35,355,76"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a6cb2b85f6ae5c53d4b090760ddaeea62"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6cb2b85f6ae5c53d4b090760ddaeea62">&#9670;&nbsp;</a></span>setAppMenu()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KWaylandIntegration::setAppMenu </td>
+          <td>(</td>
+          <td class="paramtype">QWindow *&#160;</td>
+          <td class="paramname"><em>window</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const QString &amp;&#160;</td>
+          <td class="paramname"><em>serviceName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const QString &amp;&#160;</td>
+          <td class="paramname"><em>objectPath</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="../../#l00064">m_windowInfo</a>.</p>
+
+</div>
+</div>
+<a id="a01cd0430e1ed8eca418ae9093c7fc60c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a01cd0430e1ed8eca418ae9093c7fc60c">&#9670;&nbsp;</a></span>setPalette()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KWaylandIntegration::setPalette </td>
+          <td>(</td>
+          <td class="paramtype">QWindow *&#160;</td>
+          <td class="paramname"><em>window</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const QString &amp;&#160;</td>
+          <td class="paramname"><em>paletteName</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5c71ee9f42a1aeb912933a1e7751b684"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5c71ee9f42a1aeb912933a1e7751b684">&#9670;&nbsp;</a></span>shellSurfaceCreated()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KWaylandIntegration::shellSurfaceCreated </td>
+          <td>(</td>
+          <td class="paramtype">QWindow *&#160;</td>
+          <td class="paramname"><em>w</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="../../#l00134">installColorScheme()</a>, <a class="el" href="../../#l00056">m_appMenuManager</a>, <a class="el" href="../../#l00064">m_windowInfo</a>, <a class="el" href="../../#l00037">s_blurBehindPropertyName</a> , 以及 <a class="el" href="../../#l00036">s_schemePropertyName</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00068">eventFilter()</a>.</p>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="../../closed.png" alt="+"/> 函数调用图:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../da/d69/classKWaylandIntegration_a5c71ee9f42a1aeb912933a1e7751b684_cgraph.png" border="0" usemap="#ada/d69/classKWaylandIntegration_a5c71ee9f42a1aeb912933a1e7751b684_cgraph" alt=""/></div>
+<map name="da/d69/classKWaylandIntegration_a5c71ee9f42a1aeb912933a1e7751b684_cgraph" id="ada/d69/classKWaylandIntegration_a5c71ee9f42a1aeb912933a1e7751b684_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,156,47"/>
+<area shape="rect" href="../../da/d69/classKWaylandIntegration.html#a09b128c64f1b3ef6c3a1eee48ac009ab" title=" " alt="" coords="204,5,355,47"/>
+</map>
+</div>
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="../../closed.png" alt="+"/> 这是这个函数的调用关系图:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../da/d69/classKWaylandIntegration_a5c71ee9f42a1aeb912933a1e7751b684_icgraph.png" border="0" usemap="#ada/d69/classKWaylandIntegration_a5c71ee9f42a1aeb912933a1e7751b684_icgraph" alt=""/></div>
+<map name="da/d69/classKWaylandIntegration_a5c71ee9f42a1aeb912933a1e7751b684_icgraph" id="ada/d69/classKWaylandIntegration_a5c71ee9f42a1aeb912933a1e7751b684_icgraph">
+<area shape="rect" title=" " alt="" coords="204,5,355,47"/>
+<area shape="rect" href="../../da/d69/classKWaylandIntegration.html#ac6a3a69fa830bf56b725f04025eca67c" title=" " alt="" coords="5,5,156,47"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a8d196a86c61ec02774eee34fe3a5ee57"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d196a86c61ec02774eee34fe3a5ee57">&#9670;&nbsp;</a></span>shellSurfaceDestroyed()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KWaylandIntegration::shellSurfaceDestroyed </td>
+          <td>(</td>
+          <td class="paramtype">QWindow *&#160;</td>
+          <td class="paramname"><em>w</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00068">eventFilter()</a>.</p>
+<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-6-trigger" src="../../closed.png" alt="+"/> 这是这个函数的调用关系图:</div>
+<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-6-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../da/d69/classKWaylandIntegration_a8d196a86c61ec02774eee34fe3a5ee57_icgraph.png" border="0" usemap="#ada/d69/classKWaylandIntegration_a8d196a86c61ec02774eee34fe3a5ee57_icgraph" alt=""/></div>
+<map name="da/d69/classKWaylandIntegration_a8d196a86c61ec02774eee34fe3a5ee57_icgraph" id="ada/d69/classKWaylandIntegration_a8d196a86c61ec02774eee34fe3a5ee57_icgraph">
+<area shape="rect" title=" " alt="" coords="204,5,367,47"/>
+<area shape="rect" href="../../da/d69/classKWaylandIntegration.html#ac6a3a69fa830bf56b725f04025eca67c" title=" " alt="" coords="5,5,156,47"/>
+</map>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="aab34ec3fc97c4e9c59dacedc687bac8c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab34ec3fc97c4e9c59dacedc687bac8c">&#9670;&nbsp;</a></span>m_appMenuManager</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">KWayland::Client::AppMenuManager* KWaylandIntegration::m_appMenuManager = nullptr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00046">init()</a> , 以及 <a class="el" href="../../#l00098">shellSurfaceCreated()</a>.</p>
+
+</div>
+</div>
+<a id="a4f0af8b020596b91fb4aff46c4228ac5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f0af8b020596b91fb4aff46c4228ac5">&#9670;&nbsp;</a></span>m_paletteManager</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">KWayland::Client::ServerSideDecorationPaletteManager* KWaylandIntegration::m_paletteManager = nullptr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00134">installColorScheme()</a>.</p>
+
+</div>
+</div>
+<a id="a5d2c8cd30dfb9c08812ecce1bec72362"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5d2c8cd30dfb9c08812ecce1bec72362">&#9670;&nbsp;</a></span>m_registry</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">KWayland::Client::Registry* KWaylandIntegration::m_registry = nullptr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00046">init()</a> , 以及 <a class="el" href="../../#l00134">installColorScheme()</a>.</p>
+
+</div>
+</div>
+<a id="a4032cf561dc5a83b4bdc9a4bf5058b46"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4032cf561dc5a83b4bdc9a4bf5058b46">&#9670;&nbsp;</a></span>m_windowInfo</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QHash&lt;QWindow*, <a class="el" href="../../dc/dbd/structKWaylandIntegration_1_1WindowInfo.html">WindowInfo</a>&gt; KWaylandIntegration::m_windowInfo</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00158">setAppMenu()</a> , 以及 <a class="el" href="../../#l00098">shellSurfaceCreated()</a>.</p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>src/platformtheme/<a class="el" href="../../">kwaylandintegration.h</a></li>
+<li>src/platformtheme/<a class="el" href="../../">kwaylandintegration.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+生成于 2021年 一月 3日 星期日 19:22:18 , 为 C library使用 &#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20
+</small></address>
+</body>
+</html>

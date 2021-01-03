@@ -1,0 +1,900 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.20"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>C library: KdePlatformTheme类 参考</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">C library
+   &#160;<span id="projectnumber">v1.0.0</span>
+   </div>
+   <div id="projectbrief">C/C++常用库整理 + C/C++、基于linux 系统一些例子</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.20 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pri-methods">Private 成员函数</a> &#124;
+<a href="#pri-static-methods">静态 Private 成员函数</a> &#124;
+<a href="#pri-attribs">Private 属性</a> &#124;
+<a href="../../d8/d23/classKdePlatformTheme-members.html">所有成员列表</a>  </div>
+  <div class="headertitle">
+<div class="title">KdePlatformTheme类 参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;<a class="el" href="../../">kdeplatformtheme.h</a>&gt;</code></p>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="../../closed.png" alt="+"/> 类 KdePlatformTheme 继承关系图:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../de/d3f/classKdePlatformTheme__inherit__graph.png" border="0" usemap="#aKdePlatformTheme_inherit__map" alt="Inheritance graph"/></div>
+<map name="KdePlatformTheme_inherit__map" id="aKdePlatformTheme_inherit__map">
+<area shape="rect" title=" " alt="" coords="5,131,231,487"/>
+<area shape="rect" title=" " alt="" coords="55,5,181,83"/>
+</map>
+</div>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="../../closed.png" alt="+"/> KdePlatformTheme 的协作图:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d7/d89/classKdePlatformTheme__coll__graph.png" border="0" usemap="#aKdePlatformTheme_coll__map" alt="Collaboration graph"/></div>
+<map name="KdePlatformTheme_coll__map" id="aKdePlatformTheme_coll__map">
+<area shape="rect" title=" " alt="" coords="157,624,382,951"/>
+<area shape="rect" title=" " alt="" coords="5,308,131,385"/>
+<area shape="rect" href="../../db/df6/classKHintsSettings.html" title=" " alt="" coords="155,132,384,561"/>
+<area shape="rect" title=" " alt="" coords="350,5,421,83"/>
+<area shape="rect" href="../../d6/d99/classKFontSettingsData.html" title=" " alt="" coords="409,249,599,444"/>
+</map>
+</div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a0aec251cbc803274fcf534afa9f7e2d0"><td class="memItemLeft" align="right" valign="top">QIconEngine *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d13/classKdePlatformTheme.html#a0aec251cbc803274fcf534afa9f7e2d0">createIconEngine</a> (const QString &amp;iconName) const override</td></tr>
+<tr class="separator:a0aec251cbc803274fcf534afa9f7e2d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac79b4690146046102b40ca3ecfcce72b"><td class="memItemLeft" align="right" valign="top">QPlatformDialogHelper *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d13/classKdePlatformTheme.html#ac79b4690146046102b40ca3ecfcce72b">createPlatformDialogHelper</a> (DialogType type) const override</td></tr>
+<tr class="separator:ac79b4690146046102b40ca3ecfcce72b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a383b8dde4a3b799dc68b261c05d13697"><td class="memItemLeft" align="right" valign="top">QPlatformMenuBar *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d13/classKdePlatformTheme.html#a383b8dde4a3b799dc68b261c05d13697">createPlatformMenuBar</a> () const override</td></tr>
+<tr class="separator:a383b8dde4a3b799dc68b261c05d13697"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a695d8bb84d983a4fc2c9cc00bd242c6e"><td class="memItemLeft" align="right" valign="top">QPlatformSystemTrayIcon *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d13/classKdePlatformTheme.html#a695d8bb84d983a4fc2c9cc00bd242c6e">createPlatformSystemTrayIcon</a> () const override</td></tr>
+<tr class="separator:a695d8bb84d983a4fc2c9cc00bd242c6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27bb28aaa4bc07cac37636e094f7ac1c"><td class="memItemLeft" align="right" valign="top">QIcon&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d13/classKdePlatformTheme.html#a27bb28aaa4bc07cac37636e094f7ac1c">fileIcon</a> (const QFileInfo &amp;fileInfo, QPlatformTheme::IconOptions iconOptions) const override</td></tr>
+<tr class="separator:a27bb28aaa4bc07cac37636e094f7ac1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c5147a71754943c887d3673f35e76e0"><td class="memItemLeft" align="right" valign="top">const QFont *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d13/classKdePlatformTheme.html#a1c5147a71754943c887d3673f35e76e0">font</a> (Font type) const override</td></tr>
+<tr class="separator:a1c5147a71754943c887d3673f35e76e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7587ead26783d87a0bd8b84ec02c47a7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d13/classKdePlatformTheme.html#a7587ead26783d87a0bd8b84ec02c47a7">KdePlatformTheme</a> ()</td></tr>
+<tr class="separator:a7587ead26783d87a0bd8b84ec02c47a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a359d2ffb0b1497cfaa3c295c40cfacb6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d4a/classQList.html">QList</a>&lt; QKeySequence &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d13/classKdePlatformTheme.html#a359d2ffb0b1497cfaa3c295c40cfacb6">keyBindings</a> (QKeySequence::StandardKey key) const override</td></tr>
+<tr class="separator:a359d2ffb0b1497cfaa3c295c40cfacb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a657637c9a1ab81673b3f49b2ffe54377"><td class="memItemLeft" align="right" valign="top">const QPalette *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d13/classKdePlatformTheme.html#a657637c9a1ab81673b3f49b2ffe54377">palette</a> (Palette type=SystemPalette) const override</td></tr>
+<tr class="separator:a657637c9a1ab81673b3f49b2ffe54377"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06f4a102195e8f3442545910b1526eb6"><td class="memItemLeft" align="right" valign="top">QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d13/classKdePlatformTheme.html#a06f4a102195e8f3442545910b1526eb6">standardButtonText</a> (int button) const override</td></tr>
+<tr class="separator:a06f4a102195e8f3442545910b1526eb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad938ad2b8eee1c9edb338c2f0f3a7cbc"><td class="memItemLeft" align="right" valign="top">QVariant&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d13/classKdePlatformTheme.html#ad938ad2b8eee1c9edb338c2f0f3a7cbc">themeHint</a> (ThemeHint hint) const override</td></tr>
+<tr class="separator:ad938ad2b8eee1c9edb338c2f0f3a7cbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29c64a57749e543d7e63d56b384d79e6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d13/classKdePlatformTheme.html#a29c64a57749e543d7e63d56b384d79e6">usePlatformNativeDialog</a> (DialogType type) const override</td></tr>
+<tr class="separator:a29c64a57749e543d7e63d56b384d79e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e8e3392694323745f9ca9db32f8fbbb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d13/classKdePlatformTheme.html#a3e8e3392694323745f9ca9db32f8fbbb">~KdePlatformTheme</a> () override</td></tr>
+<tr class="separator:a3e8e3392694323745f9ca9db32f8fbbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private 成员函数</h2></td></tr>
+<tr class="memitem:aab7b510d4f94e69a55c54fadc7b25cf9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d13/classKdePlatformTheme.html#aab7b510d4f94e69a55c54fadc7b25cf9">loadSettings</a> ()</td></tr>
+<tr class="separator:aab7b510d4f94e69a55c54fadc7b25cf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab49534cbfd1fdf66f372dc01e9e8dfe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d13/classKdePlatformTheme.html#aab49534cbfd1fdf66f372dc01e9e8dfe">setQtQuickControlsTheme</a> ()</td></tr>
+<tr class="separator:aab49534cbfd1fdf66f372dc01e9e8dfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-methods"></a>
+静态 Private 成员函数</h2></td></tr>
+<tr class="memitem:aba49810e8a44347f3aaf6a4f2780d2f7"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d13/classKdePlatformTheme.html#aba49810e8a44347f3aaf6a4f2780d2f7">setWindowProperty</a> (QWindow *window, const QByteArray &amp;name, const QByteArray &amp;value)</td></tr>
+<tr class="separator:aba49810e8a44347f3aaf6a4f2780d2f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af709e0036d3d8b758bc5d4ab5f6aa459"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d13/classKdePlatformTheme.html#af709e0036d3d8b758bc5d4ab5f6aa459">useXdgDesktopPortal</a> ()</td></tr>
+<tr class="separator:af709e0036d3d8b758bc5d4ab5f6aa459"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private 属性</h2></td></tr>
+<tr class="memitem:a0636823f310d38cf9e2ab4c14bd4e7b1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d6/d99/classKFontSettingsData.html">KFontSettingsData</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d13/classKdePlatformTheme.html#a0636823f310d38cf9e2ab4c14bd4e7b1">m_fontsData</a> = nullptr</td></tr>
+<tr class="separator:a0636823f310d38cf9e2ab4c14bd4e7b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab44e352c7e3366970bc65dfdd59f2bae"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/df6/classKHintsSettings.html">KHintsSettings</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d13/classKdePlatformTheme.html#ab44e352c7e3366970bc65dfdd59f2bae">m_hints</a> = nullptr</td></tr>
+<tr class="separator:ab44e352c7e3366970bc65dfdd59f2bae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8bfae5cabedf6b6c697649cd460dea2"><td class="memItemLeft" align="right" valign="top">QScopedPointer&lt; <a class="el" href="../../da/d69/classKWaylandIntegration.html">KWaylandIntegration</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d13/classKdePlatformTheme.html#aa8bfae5cabedf6b6c697649cd460dea2">m_kwaylandIntegration</a></td></tr>
+<tr class="separator:aa8bfae5cabedf6b6c697649cd460dea2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f76d9740482a77a246aa874e6498468"><td class="memItemLeft" align="right" valign="top">QScopedPointer&lt; <a class="el" href="../../d7/d5e/classX11Integration.html">X11Integration</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d13/classKdePlatformTheme.html#a4f76d9740482a77a246aa874e6498468">m_x11Integration</a></td></tr>
+<tr class="separator:a4f76d9740482a77a246aa874e6498468"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"></div><h2 class="groupheader">构造及析构函数说明</h2>
+<a id="a7587ead26783d87a0bd8b84ec02c47a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7587ead26783d87a0bd8b84ec02c47a7">&#9670;&nbsp;</a></span>KdePlatformTheme()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">KdePlatformTheme::KdePlatformTheme </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="../../#l00174">loadSettings()</a>, <a class="el" href="../../#l00071">m_kwaylandIntegration</a>, <a class="el" href="../../#l00072">m_x11Integration</a> , 以及 <a class="el" href="../../#l00381">setQtQuickControlsTheme()</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="../../closed.png" alt="+"/> 函数调用图:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d6/d13/classKdePlatformTheme_a7587ead26783d87a0bd8b84ec02c47a7_cgraph.png" border="0" usemap="#ad6/d13/classKdePlatformTheme_a7587ead26783d87a0bd8b84ec02c47a7_cgraph" alt=""/></div>
+<map name="d6/d13/classKdePlatformTheme_a7587ead26783d87a0bd8b84ec02c47a7_cgraph" id="ad6/d13/classKdePlatformTheme_a7587ead26783d87a0bd8b84ec02c47a7_cgraph">
+<area shape="rect" title=" " alt="" coords="5,27,227,69"/>
+<area shape="rect" href="../../d6/d13/classKdePlatformTheme.html#aab7b510d4f94e69a55c54fadc7b25cf9" title=" " alt="" coords="275,5,495,32"/>
+<area shape="rect" href="../../d6/d13/classKdePlatformTheme.html#aab49534cbfd1fdf66f372dc01e9e8dfe" title=" " alt="" coords="278,57,491,98"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a3e8e3392694323745f9ca9db32f8fbbb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3e8e3392694323745f9ca9db32f8fbbb">&#9670;&nbsp;</a></span>~KdePlatformTheme()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">KdePlatformTheme::~KdePlatformTheme </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="../../#l00070">m_fontsData</a> , 以及 <a class="el" href="../../#l00069">m_hints</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="a0aec251cbc803274fcf534afa9f7e2d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0aec251cbc803274fcf534afa9f7e2d0">&#9670;&nbsp;</a></span>createIconEngine()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QIconEngine * KdePlatformTheme::createIconEngine </td>
+          <td>(</td>
+          <td class="paramtype">const QString &amp;&#160;</td>
+          <td class="paramname"><em>iconName</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00199">KdePlatformTheme_UnitTest::testPlatformIconEngine()</a> , 以及 <a class="el" href="../../#l00205">KdePlatformTheme_UnitTest::testPlatformIconEngineTheme()</a>.</p>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="../../closed.png" alt="+"/> 这是这个函数的调用关系图:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d6/d13/classKdePlatformTheme_a0aec251cbc803274fcf534afa9f7e2d0_icgraph.png" border="0" usemap="#ad6/d13/classKdePlatformTheme_a0aec251cbc803274fcf534afa9f7e2d0_icgraph" alt=""/></div>
+<map name="d6/d13/classKdePlatformTheme_a0aec251cbc803274fcf534afa9f7e2d0_icgraph" id="ad6/d13/classKdePlatformTheme_a0aec251cbc803274fcf534afa9f7e2d0_icgraph">
+<area shape="rect" title=" " alt="" coords="267,39,449,80"/>
+<area shape="rect" href="../../db/d2d/classKdePlatformTheme__UnitTest.html#a95dde179cef1b7e8dc26b1d8ef786acd" title=" " alt="" coords="16,5,208,47"/>
+<area shape="rect" href="../../db/d2d/classKdePlatformTheme__UnitTest.html#a074956637ba44a443e447831d3d84693" title=" " alt="" coords="5,71,219,112"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ac79b4690146046102b40ca3ecfcce72b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac79b4690146046102b40ca3ecfcce72b">&#9670;&nbsp;</a></span>createPlatformDialogHelper()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QPlatformDialogHelper * KdePlatformTheme::createPlatformDialogHelper </td>
+          <td>(</td>
+          <td class="paramtype">DialogType&#160;</td>
+          <td class="paramname"><em>type</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="../../#l00344">generate-fastlane-metadata::type</a> , 以及 <a class="el" href="../../#l00398">useXdgDesktopPortal()</a>.</p>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="../../closed.png" alt="+"/> 函数调用图:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d6/d13/classKdePlatformTheme_ac79b4690146046102b40ca3ecfcce72b_cgraph.png" border="0" usemap="#ad6/d13/classKdePlatformTheme_ac79b4690146046102b40ca3ecfcce72b_cgraph" alt=""/></div>
+<map name="d6/d13/classKdePlatformTheme_ac79b4690146046102b40ca3ecfcce72b_cgraph" id="ad6/d13/classKdePlatformTheme_ac79b4690146046102b40ca3ecfcce72b_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,188,47"/>
+<area shape="rect" href="../../d6/d13/classKdePlatformTheme.html#af709e0036d3d8b758bc5d4ab5f6aa459" title=" " alt="" coords="236,5,425,47"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a383b8dde4a3b799dc68b261c05d13697"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a383b8dde4a3b799dc68b261c05d13697">&#9670;&nbsp;</a></span>createPlatformMenuBar()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QPlatformMenuBar * KdePlatformTheme::createPlatformMenuBar </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="../../#l00068">isDBusGlobalMenuAvailable()</a>, <a class="el" href="../../#l00071">m_kwaylandIntegration</a>, <a class="el" href="../../#l00072">m_x11Integration</a>, <a class="el" href="../../#l00055">s_x11AppMenuObjectPathPropertyName</a>, <a class="el" href="../../#l00054">s_x11AppMenuServiceNamePropertyName</a> , 以及 <a class="el" href="../../d7/d70/classQDBusMenuBar.html#a4850e044ddba8e53b74bac8c0c7cb734">QDBusMenuBar::windowChanged()</a>.</p>
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="../../closed.png" alt="+"/> 函数调用图:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d6/d13/classKdePlatformTheme_a383b8dde4a3b799dc68b261c05d13697_cgraph.png" border="0" usemap="#ad6/d13/classKdePlatformTheme_a383b8dde4a3b799dc68b261c05d13697_cgraph" alt=""/></div>
+<map name="d6/d13/classKdePlatformTheme_a383b8dde4a3b799dc68b261c05d13697_cgraph" id="ad6/d13/classKdePlatformTheme_a383b8dde4a3b799dc68b261c05d13697_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,188,47"/>
+<area shape="rect" href="../../d1/d07/kdeplatformtheme_8cpp.html#a53d70a39564d3ce9ae3df081eff057eb" title=" " alt="" coords="236,13,423,39"/>
+<area shape="rect" href="../../d1/d07/kdeplatformtheme_8cpp.html#ad66800899977b5bfefadc3e873bc4b79" title=" " alt="" coords="471,13,683,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a695d8bb84d983a4fc2c9cc00bd242c6e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a695d8bb84d983a4fc2c9cc00bd242c6e">&#9670;&nbsp;</a></span>createPlatformSystemTrayIcon()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QPlatformSystemTrayIcon * KdePlatformTheme::createPlatformSystemTrayIcon </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a27bb28aaa4bc07cac37636e094f7ac1c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27bb28aaa4bc07cac37636e094f7ac1c">&#9670;&nbsp;</a></span>fileIcon()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QIcon KdePlatformTheme::fileIcon </td>
+          <td>(</td>
+          <td class="paramtype">const QFileInfo &amp;&#160;</td>
+          <td class="paramname"><em>fileInfo</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">QPlatformTheme::IconOptions&#160;</td>
+          <td class="paramname"><em>iconOptions</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1c5147a71754943c887d3673f35e76e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c5147a71754943c887d3673f35e76e0">&#9670;&nbsp;</a></span>font()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const QFont * KdePlatformTheme::font </td>
+          <td>(</td>
+          <td class="paramtype">Font&#160;</td>
+          <td class="paramname"><em>type</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="../../#l00046">KFontSettingsData::FixedFont</a>, <a class="el" href="../../#l00072">KFontSettingsData::font()</a>, <a class="el" href="../../#l00045">KFontSettingsData::GeneralFont</a>, <a class="el" href="../../#l00070">m_fontsData</a>, <a class="el" href="../../#l00048">KFontSettingsData::MenuFont</a>, <a class="el" href="../../#l00051">KFontSettingsData::SmallestReadableFont</a>, <a class="el" href="../../#l00047">KFontSettingsData::ToolbarFont</a>, <a class="el" href="../../#l00344">generate-fastlane-metadata::type</a> , 以及 <a class="el" href="../../#l00049">KFontSettingsData::WindowTitleFont</a>.</p>
+<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-6-trigger" src="../../closed.png" alt="+"/> 函数调用图:</div>
+<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-6-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d6/d13/classKdePlatformTheme_a1c5147a71754943c887d3673f35e76e0_cgraph.png" border="0" usemap="#ad6/d13/classKdePlatformTheme_a1c5147a71754943c887d3673f35e76e0_cgraph" alt=""/></div>
+<map name="d6/d13/classKdePlatformTheme_a1c5147a71754943c887d3673f35e76e0_cgraph" id="ad6/d13/classKdePlatformTheme_a1c5147a71754943c887d3673f35e76e0_cgraph">
+<area shape="rect" title=" " alt="" coords="5,13,176,39"/>
+<area shape="rect" href="../../d6/d99/classKFontSettingsData.html#acfac7ccfecab93386ac79f4d260c9c67" title=" " alt="" coords="224,13,391,39"/>
+<area shape="rect" href="../../d6/d99/classKFontSettingsData.html#a38abbd00a51ada48e63435871bbad6a7" title=" " alt="" coords="439,5,581,47"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a359d2ffb0b1497cfaa3c295c40cfacb6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a359d2ffb0b1497cfaa3c295c40cfacb6">&#9670;&nbsp;</a></span>keyBindings()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d1/d4a/classQList.html">QList</a>&lt; QKeySequence &gt; KdePlatformTheme::keyBindings </td>
+          <td>(</td>
+          <td class="paramtype">QKeySequence::StandardKey&#160;</td>
+          <td class="paramname"><em>key</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aab7b510d4f94e69a55c54fadc7b25cf9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab7b510d4f94e69a55c54fadc7b25cf9">&#9670;&nbsp;</a></span>loadSettings()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KdePlatformTheme::loadSettings </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="../../#l00070">m_fontsData</a> , 以及 <a class="el" href="../../#l00069">m_hints</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00074">KdePlatformTheme()</a>.</p>
+<div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-7-trigger" src="../../closed.png" alt="+"/> 这是这个函数的调用关系图:</div>
+<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-7-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d6/d13/classKdePlatformTheme_aab7b510d4f94e69a55c54fadc7b25cf9_icgraph.png" border="0" usemap="#ad6/d13/classKdePlatformTheme_aab7b510d4f94e69a55c54fadc7b25cf9_icgraph" alt=""/></div>
+<map name="d6/d13/classKdePlatformTheme_aab7b510d4f94e69a55c54fadc7b25cf9_icgraph" id="ad6/d13/classKdePlatformTheme_aab7b510d4f94e69a55c54fadc7b25cf9_icgraph">
+<area shape="rect" title=" " alt="" coords="275,13,495,39"/>
+<area shape="rect" href="../../d6/d13/classKdePlatformTheme.html#a7587ead26783d87a0bd8b84ec02c47a7" title=" " alt="" coords="5,5,227,47"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a657637c9a1ab81673b3f49b2ffe54377"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a657637c9a1ab81673b3f49b2ffe54377">&#9670;&nbsp;</a></span>palette()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const QPalette * KdePlatformTheme::palette </td>
+          <td>(</td>
+          <td class="paramtype">Palette&#160;</td>
+          <td class="paramname"><em>type</em> = <code>SystemPalette</code></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="../../#l00069">m_hints</a>, <a class="el" href="../../#l00063">KHintsSettings::palette()</a> , 以及 <a class="el" href="../../#l00344">generate-fastlane-metadata::type</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00273">KdePlatformTheme_UnitTest::testPlatformPaletteChanges()</a>.</p>
+<div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-8-trigger" src="../../closed.png" alt="+"/> 函数调用图:</div>
+<div id="dynsection-8-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-8-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d6/d13/classKdePlatformTheme_a657637c9a1ab81673b3f49b2ffe54377_cgraph.png" border="0" usemap="#ad6/d13/classKdePlatformTheme_a657637c9a1ab81673b3f49b2ffe54377_cgraph" alt=""/></div>
+<map name="d6/d13/classKdePlatformTheme_a657637c9a1ab81673b3f49b2ffe54377_cgraph" id="ad6/d13/classKdePlatformTheme_a657637c9a1ab81673b3f49b2ffe54377_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,193,32"/>
+<area shape="rect" href="../../db/df6/classKHintsSettings.html#acb7b363e7bebb8a59931bcc09503e5f1" title=" " alt="" coords="241,5,400,32"/>
+</map>
+</div>
+<div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-9-trigger" src="../../closed.png" alt="+"/> 这是这个函数的调用关系图:</div>
+<div id="dynsection-9-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-9-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d6/d13/classKdePlatformTheme_a657637c9a1ab81673b3f49b2ffe54377_icgraph.png" border="0" usemap="#ad6/d13/classKdePlatformTheme_a657637c9a1ab81673b3f49b2ffe54377_icgraph" alt=""/></div>
+<map name="d6/d13/classKdePlatformTheme_a657637c9a1ab81673b3f49b2ffe54377_icgraph" id="ad6/d13/classKdePlatformTheme_a657637c9a1ab81673b3f49b2ffe54377_icgraph">
+<area shape="rect" title=" " alt="" coords="252,13,440,39"/>
+<area shape="rect" href="../../db/d2d/classKdePlatformTheme__UnitTest.html#aa852570529fe8a0307ea8f8d37fb82b8" title=" " alt="" coords="5,5,204,47"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aab49534cbfd1fdf66f372dc01e9e8dfe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab49534cbfd1fdf66f372dc01e9e8dfe">&#9670;&nbsp;</a></span>setQtQuickControlsTheme()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KdePlatformTheme::setQtQuickControlsTheme </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="../../#l00033">conf::name</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00074">KdePlatformTheme()</a>.</p>
+<div id="dynsection-10" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-10-trigger" src="../../closed.png" alt="+"/> 这是这个函数的调用关系图:</div>
+<div id="dynsection-10-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-10-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d6/d13/classKdePlatformTheme_aab49534cbfd1fdf66f372dc01e9e8dfe_icgraph.png" border="0" usemap="#ad6/d13/classKdePlatformTheme_aab49534cbfd1fdf66f372dc01e9e8dfe_icgraph" alt=""/></div>
+<map name="d6/d13/classKdePlatformTheme_aab49534cbfd1fdf66f372dc01e9e8dfe_icgraph" id="ad6/d13/classKdePlatformTheme_aab49534cbfd1fdf66f372dc01e9e8dfe_icgraph">
+<area shape="rect" title=" " alt="" coords="275,5,488,47"/>
+<area shape="rect" href="../../d6/d13/classKdePlatformTheme.html#a7587ead26783d87a0bd8b84ec02c47a7" title=" " alt="" coords="5,5,227,47"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aba49810e8a44347f3aaf6a4f2780d2f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aba49810e8a44347f3aaf6a4f2780d2f7">&#9670;&nbsp;</a></span>setWindowProperty()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void KdePlatformTheme::setWindowProperty </td>
+          <td>(</td>
+          <td class="paramtype">QWindow *&#160;</td>
+          <td class="paramname"><em>window</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const QByteArray &amp;&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const QByteArray &amp;&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a06f4a102195e8f3442545910b1526eb6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a06f4a102195e8f3442545910b1526eb6">&#9670;&nbsp;</a></span>standardButtonText()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QString KdePlatformTheme::standardButtonText </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>button</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="../../#l00105">check-outbound-license::help</a>.</p>
+
+</div>
+</div>
+<a id="ad938ad2b8eee1c9edb338c2f0f3a7cbc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad938ad2b8eee1c9edb338c2f0f3a7cbc">&#9670;&nbsp;</a></span>themeHint()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QVariant KdePlatformTheme::themeHint </td>
+          <td>(</td>
+          <td class="paramtype">ThemeHint&#160;</td>
+          <td class="paramname"><em>hint</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="../../#l00058">KHintsSettings::hint()</a> , 以及 <a class="el" href="../../#l00069">m_hints</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00230">KdePlatformTheme_UnitTest::testPlatformHintChanges()</a>, <a class="el" href="../../#l00132">KdePlatformTheme_UnitTest::testPlatformHints()</a> , 以及 <a class="el" href="../../#l00212">KdePlatformTheme_UnitTest::testPlatformIconChanges()</a>.</p>
+<div id="dynsection-11" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-11-trigger" src="../../closed.png" alt="+"/> 函数调用图:</div>
+<div id="dynsection-11-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-11-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d6/d13/classKdePlatformTheme_ad938ad2b8eee1c9edb338c2f0f3a7cbc_cgraph.png" border="0" usemap="#ad6/d13/classKdePlatformTheme_ad938ad2b8eee1c9edb338c2f0f3a7cbc_cgraph" alt=""/></div>
+<map name="d6/d13/classKdePlatformTheme_ad938ad2b8eee1c9edb338c2f0f3a7cbc_cgraph" id="ad6/d13/classKdePlatformTheme_ad938ad2b8eee1c9edb338c2f0f3a7cbc_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,216,32"/>
+<area shape="rect" href="../../db/df6/classKHintsSettings.html#ac7f2cf138942dc0cf5da3c30e649b5a0" title=" " alt="" coords="264,5,405,32"/>
+</map>
+</div>
+<div id="dynsection-12" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-12-trigger" src="../../closed.png" alt="+"/> 这是这个函数的调用关系图:</div>
+<div id="dynsection-12-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-12-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d6/d13/classKdePlatformTheme_ad938ad2b8eee1c9edb338c2f0f3a7cbc_icgraph.png" border="0" usemap="#ad6/d13/classKdePlatformTheme_ad938ad2b8eee1c9edb338c2f0f3a7cbc_icgraph" alt=""/></div>
+<map name="d6/d13/classKdePlatformTheme_ad938ad2b8eee1c9edb338c2f0f3a7cbc_icgraph" id="ad6/d13/classKdePlatformTheme_ad938ad2b8eee1c9edb338c2f0f3a7cbc_icgraph">
+<area shape="rect" title=" " alt="" coords="245,78,456,105"/>
+<area shape="rect" href="../../db/d2d/classKdePlatformTheme__UnitTest.html#a7333a57010d84e4c91d807efc5f7d1a4" title=" " alt="" coords="5,5,197,47"/>
+<area shape="rect" href="../../db/d2d/classKdePlatformTheme__UnitTest.html#a3d9b24352329a9804ea29398d6287cfb" title=" " alt="" coords="5,71,197,112"/>
+<area shape="rect" href="../../db/d2d/classKdePlatformTheme__UnitTest.html#a4fe504e5baca58f1aaab5644ae3331c1" title=" " alt="" coords="5,136,197,177"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a29c64a57749e543d7e63d56b384d79e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a29c64a57749e543d7e63d56b384d79e6">&#9670;&nbsp;</a></span>usePlatformNativeDialog()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool KdePlatformTheme::usePlatformNativeDialog </td>
+          <td>(</td>
+          <td class="paramtype">DialogType&#160;</td>
+          <td class="paramname"><em>type</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="../../#l00344">generate-fastlane-metadata::type</a>.</p>
+
+</div>
+</div>
+<a id="af709e0036d3d8b758bc5d4ab5f6aa459"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af709e0036d3d8b758bc5d4ab5f6aa459">&#9670;&nbsp;</a></span>useXdgDesktopPortal()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool KdePlatformTheme::useXdgDesktopPortal </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00321">createPlatformDialogHelper()</a>.</p>
+<div id="dynsection-13" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-13-trigger" src="../../closed.png" alt="+"/> 这是这个函数的调用关系图:</div>
+<div id="dynsection-13-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-13-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d6/d13/classKdePlatformTheme_af709e0036d3d8b758bc5d4ab5f6aa459_icgraph.png" border="0" usemap="#ad6/d13/classKdePlatformTheme_af709e0036d3d8b758bc5d4ab5f6aa459_icgraph" alt=""/></div>
+<map name="d6/d13/classKdePlatformTheme_af709e0036d3d8b758bc5d4ab5f6aa459_icgraph" id="ad6/d13/classKdePlatformTheme_af709e0036d3d8b758bc5d4ab5f6aa459_icgraph">
+<area shape="rect" title=" " alt="" coords="236,5,425,47"/>
+<area shape="rect" href="../../d6/d13/classKdePlatformTheme.html#ac79b4690146046102b40ca3ecfcce72b" title=" " alt="" coords="5,5,188,47"/>
+</map>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="a0636823f310d38cf9e2ab4c14bd4e7b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0636823f310d38cf9e2ab4c14bd4e7b1">&#9670;&nbsp;</a></span>m_fontsData</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d6/d99/classKFontSettingsData.html">KFontSettingsData</a>* KdePlatformTheme::m_fontsData = nullptr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00129">font()</a>, <a class="el" href="../../#l00174">loadSettings()</a> , 以及 <a class="el" href="../../#l00094">~KdePlatformTheme()</a>.</p>
+
+</div>
+</div>
+<a id="ab44e352c7e3366970bc65dfdd59f2bae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab44e352c7e3366970bc65dfdd59f2bae">&#9670;&nbsp;</a></span>m_hints</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../db/df6/classKHintsSettings.html">KHintsSettings</a>* KdePlatformTheme::m_hints = nullptr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00174">loadSettings()</a>, <a class="el" href="../../#l00119">palette()</a>, <a class="el" href="../../#l00100">themeHint()</a> , 以及 <a class="el" href="../../#l00094">~KdePlatformTheme()</a>.</p>
+
+</div>
+</div>
+<a id="aa8bfae5cabedf6b6c697649cd460dea2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa8bfae5cabedf6b6c697649cd460dea2">&#9670;&nbsp;</a></span>m_kwaylandIntegration</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QScopedPointer&lt;<a class="el" href="../../da/d69/classKWaylandIntegration.html">KWaylandIntegration</a>&gt; KdePlatformTheme::m_kwaylandIntegration</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00342">createPlatformMenuBar()</a> , 以及 <a class="el" href="../../#l00074">KdePlatformTheme()</a>.</p>
+
+</div>
+</div>
+<a id="a4f76d9740482a77a246aa874e6498468"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f76d9740482a77a246aa874e6498468">&#9670;&nbsp;</a></span>m_x11Integration</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QScopedPointer&lt;<a class="el" href="../../d7/d5e/classX11Integration.html">X11Integration</a>&gt; KdePlatformTheme::m_x11Integration</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00342">createPlatformMenuBar()</a> , 以及 <a class="el" href="../../#l00074">KdePlatformTheme()</a>.</p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>src/platformtheme/<a class="el" href="../../">kdeplatformtheme.h</a></li>
+<li>src/platformtheme/<a class="el" href="../../">kdeplatformtheme.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+生成于 2021年 一月 3日 星期日 19:22:18 , 为 C library使用 &#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20
+</small></address>
+</body>
+</html>

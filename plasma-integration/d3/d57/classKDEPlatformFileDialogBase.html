@@ -1,0 +1,888 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.20"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>C library: KDEPlatformFileDialogBase类 参考</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">C library
+   &#160;<span id="projectnumber">v1.0.0</span>
+   </div>
+   <div id="projectbrief">C/C++常用库整理 + C/C++、基于linux 系统一些例子</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.20 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#signals">信号</a> &#124;
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pro-methods">Protected 成员函数</a> &#124;
+<a href="#pro-attribs">Protected 属性</a> &#124;
+<a href="#friends">友元</a> &#124;
+<a href="../../d0/d54/classKDEPlatformFileDialogBase-members.html">所有成员列表</a>  </div>
+  <div class="headertitle">
+<div class="title">KDEPlatformFileDialogBase类 参考<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;<a class="el" href="../../">kdeplatformfiledialogbase_p.h</a>&gt;</code></p>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="../../closed.png" alt="+"/> 类 KDEPlatformFileDialogBase 继承关系图:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../dc/d59/classKDEPlatformFileDialogBase__inherit__graph.png" border="0" usemap="#aKDEPlatformFileDialogBase_inherit__map" alt="Inheritance graph"/></div>
+<map name="KDEPlatformFileDialogBase_inherit__map" id="aKDEPlatformFileDialogBase_inherit__map">
+<area shape="rect" title=" " alt="" coords="99,131,300,355"/>
+<area shape="rect" href="../../dd/d9a/classKDEPlatformFileDialog.html" title=" " alt="" coords="5,417,188,671"/>
+<area shape="rect" href="../../d0/d6c/classKDirSelectDialog.html" title=" " alt="" coords="212,403,395,685"/>
+<area shape="rect" title=" " alt="" coords="165,5,234,83"/>
+</map>
+</div>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="../../closed.png" alt="+"/> KDEPlatformFileDialogBase 的协作图:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../dd/daf/classKDEPlatformFileDialogBase__coll__graph.png" border="0" usemap="#aKDEPlatformFileDialogBase_coll__map" alt="Collaboration graph"/></div>
+<map name="KDEPlatformFileDialogBase_coll__map" id="aKDEPlatformFileDialogBase_coll__map">
+<area shape="rect" title=" " alt="" coords="5,131,207,355"/>
+<area shape="rect" title=" " alt="" coords="71,5,141,83"/>
+</map>
+</div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="signals"></a>
+信号</h2></td></tr>
+<tr class="memitem:a3c8e41f6226d8f54d0f6cde341012f22"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d57/classKDEPlatformFileDialogBase.html#a3c8e41f6226d8f54d0f6cde341012f22">closed</a> ()</td></tr>
+<tr class="separator:a3c8e41f6226d8f54d0f6cde341012f22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a666fde45aa76b3ba36eafd4ea564a0f6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d57/classKDEPlatformFileDialogBase.html#a666fde45aa76b3ba36eafd4ea564a0f6">currentChanged</a> (const QUrl &amp;path)</td></tr>
+<tr class="separator:a666fde45aa76b3ba36eafd4ea564a0f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f040af8f86f13797d0ce099ac42f5a4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d57/classKDEPlatformFileDialogBase.html#a7f040af8f86f13797d0ce099ac42f5a4">directoryEntered</a> (const QUrl &amp;<a class="el" href="../../d3/d57/classKDEPlatformFileDialogBase.html#a13594cf8f86e72f803536a05f42ca886">directory</a>)</td></tr>
+<tr class="separator:a7f040af8f86f13797d0ce099ac42f5a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a080e51adfbe4c6cad16c1e3ea2aad3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d57/classKDEPlatformFileDialogBase.html#a6a080e51adfbe4c6cad16c1e3ea2aad3">fileSelected</a> (const QUrl &amp;<a class="el" href="../../db/daa/extra-cmake-modules_2tests_2ECMInstallIconsTest_2CMakeLists_8txt.html#a6266d93519c252e66cf360682e5d1690">file</a>)</td></tr>
+<tr class="separator:a6a080e51adfbe4c6cad16c1e3ea2aad3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a55465cbf61f27a7ea4c781d1fdd158f9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d57/classKDEPlatformFileDialogBase.html#a55465cbf61f27a7ea4c781d1fdd158f9">filesSelected</a> (const <a class="el" href="../../d1/d4a/classQList.html">QList</a>&lt; QUrl &gt; &amp;<a class="el" href="../../db/db6/MIT_8txt.html#a230902626bc74ad7e058274476c0ff96">files</a>)</td></tr>
+<tr class="separator:a55465cbf61f27a7ea4c781d1fdd158f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ca20fd655f655690a97467f113d8e1a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d57/classKDEPlatformFileDialogBase.html#a7ca20fd655f655690a97467f113d8e1a">filterSelected</a> (const QString &amp;filter)</td></tr>
+<tr class="separator:a7ca20fd655f655690a97467f113d8e1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a2309276cea1aae31556c81229ddde9cb"><td class="memItemLeft" align="right" valign="top">virtual QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d57/classKDEPlatformFileDialogBase.html#a2309276cea1aae31556c81229ddde9cb">currentFilterText</a> ()=0</td></tr>
+<tr class="separator:a2309276cea1aae31556c81229ddde9cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13594cf8f86e72f803536a05f42ca886"><td class="memItemLeft" align="right" valign="top">virtual QUrl&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d57/classKDEPlatformFileDialogBase.html#a13594cf8f86e72f803536a05f42ca886">directory</a> ()=0</td></tr>
+<tr class="separator:a13594cf8f86e72f803536a05f42ca886"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a53205ece7046fd0bd6342fa4aa437e53"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d57/classKDEPlatformFileDialogBase.html#a53205ece7046fd0bd6342fa4aa437e53">KDEPlatformFileDialogBase</a> ()</td></tr>
+<tr class="separator:a53205ece7046fd0bd6342fa4aa437e53"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9be1ad4fabed70d2661c9eff9dedab08"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="../../d1/d4a/classQList.html">QList</a>&lt; QUrl &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d57/classKDEPlatformFileDialogBase.html#a9be1ad4fabed70d2661c9eff9dedab08">selectedFiles</a> ()=0</td></tr>
+<tr class="separator:a9be1ad4fabed70d2661c9eff9dedab08"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a689d52ab8b3b8d7a8d381e56d43c4768"><td class="memItemLeft" align="right" valign="top">virtual QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d57/classKDEPlatformFileDialogBase.html#a689d52ab8b3b8d7a8d381e56d43c4768">selectedMimeTypeFilter</a> ()=0</td></tr>
+<tr class="separator:a689d52ab8b3b8d7a8d381e56d43c4768"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9795103223cffbf58460dec1a377ba0a"><td class="memItemLeft" align="right" valign="top">virtual QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d57/classKDEPlatformFileDialogBase.html#a9795103223cffbf58460dec1a377ba0a">selectedNameFilter</a> ()=0</td></tr>
+<tr class="separator:a9795103223cffbf58460dec1a377ba0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abcda19a8dadc9c3e4a1bb8c1541c13de"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d57/classKDEPlatformFileDialogBase.html#abcda19a8dadc9c3e4a1bb8c1541c13de">selectFile</a> (const QUrl &amp;filename)=0</td></tr>
+<tr class="separator:abcda19a8dadc9c3e4a1bb8c1541c13de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64b4e85d49d51fb4949757d9fbd78bc8"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d57/classKDEPlatformFileDialogBase.html#a64b4e85d49d51fb4949757d9fbd78bc8">selectMimeTypeFilter</a> (const QString &amp;filter)=0</td></tr>
+<tr class="separator:a64b4e85d49d51fb4949757d9fbd78bc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2dc1f33077e52f99b0071ef49927f6b3"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d57/classKDEPlatformFileDialogBase.html#a2dc1f33077e52f99b0071ef49927f6b3">selectNameFilter</a> (const QString &amp;filter)=0</td></tr>
+<tr class="separator:a2dc1f33077e52f99b0071ef49927f6b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a067d1e81f2104988a593f36f0d2faa97"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d57/classKDEPlatformFileDialogBase.html#a067d1e81f2104988a593f36f0d2faa97">setDirectory</a> (const QUrl &amp;<a class="el" href="../../d3/d57/classKDEPlatformFileDialogBase.html#a13594cf8f86e72f803536a05f42ca886">directory</a>)=0</td></tr>
+<tr class="separator:a067d1e81f2104988a593f36f0d2faa97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
+Protected 成员函数</h2></td></tr>
+<tr class="memitem:a091947afd08099a0877de3c9cb9b0f14"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d57/classKDEPlatformFileDialogBase.html#a091947afd08099a0877de3c9cb9b0f14">closeEvent</a> (QCloseEvent *e) override</td></tr>
+<tr class="separator:a091947afd08099a0877de3c9cb9b0f14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected 属性</h2></td></tr>
+<tr class="memitem:ae8dbf3ba74c319250ce164a11d3b6391"><td class="memItemLeft" align="right" valign="top">QDialogButtonBox *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d57/classKDEPlatformFileDialogBase.html#ae8dbf3ba74c319250ce164a11d3b6391">m_buttons</a> = nullptr</td></tr>
+<tr class="separator:ae8dbf3ba74c319250ce164a11d3b6391"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
+友元</h2></td></tr>
+<tr class="memitem:a2fcb2984dd1d8cbda6f99ad185a831ec"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d57/classKDEPlatformFileDialogBase.html#a2fcb2984dd1d8cbda6f99ad185a831ec">KDEPlatformFileDialogHelper</a></td></tr>
+<tr class="separator:a2fcb2984dd1d8cbda6f99ad185a831ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"></div><h2 class="groupheader">构造及析构函数说明</h2>
+<a id="a53205ece7046fd0bd6342fa4aa437e53"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a53205ece7046fd0bd6342fa4aa437e53">&#9670;&nbsp;</a></span>KDEPlatformFileDialogBase()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">KDEPlatformFileDialogBase::KDEPlatformFileDialogBase </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="a3c8e41f6226d8f54d0f6cde341012f22"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c8e41f6226d8f54d0f6cde341012f22">&#9670;&nbsp;</a></span>closed</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KDEPlatformFileDialogBase::closed </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">signal</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00027">closeEvent()</a> , 以及 <a class="el" href="../../#l00255">KDEPlatformFileDialogHelper::KDEPlatformFileDialogHelper()</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="../../closed.png" alt="+"/> 这是这个函数的调用关系图:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d3/d57/classKDEPlatformFileDialogBase_a3c8e41f6226d8f54d0f6cde341012f22_icgraph.png" border="0" usemap="#ad3/d57/classKDEPlatformFileDialogBase_a3c8e41f6226d8f54d0f6cde341012f22_icgraph" alt=""/></div>
+<map name="d3/d57/classKDEPlatformFileDialogBase_a3c8e41f6226d8f54d0f6cde341012f22_icgraph" id="ad3/d57/classKDEPlatformFileDialogBase_a3c8e41f6226d8f54d0f6cde341012f22_icgraph">
+<area shape="rect" title=" " alt="" coords="256,39,439,80"/>
+<area shape="rect" href="../../d3/d57/classKDEPlatformFileDialogBase.html#a091947afd08099a0877de3c9cb9b0f14" title=" " alt="" coords="15,5,198,47"/>
+<area shape="rect" href="../../d6/dfa/classKDEPlatformFileDialogHelper.html#a8c401f0868ee4fa24975f643e0995c40" title=" " alt="" coords="5,71,208,112"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a091947afd08099a0877de3c9cb9b0f14"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a091947afd08099a0877de3c9cb9b0f14">&#9670;&nbsp;</a></span>closeEvent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KDEPlatformFileDialogBase::closeEvent </td>
+          <td>(</td>
+          <td class="paramtype">QCloseEvent *&#160;</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="../../d3/d57/classKDEPlatformFileDialogBase.html#a3c8e41f6226d8f54d0f6cde341012f22">closed()</a> , 以及 <a class="el" href="../../#l00091">testscript::e</a>.</p>
+
+</div>
+</div>
+<a id="a666fde45aa76b3ba36eafd4ea564a0f6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a666fde45aa76b3ba36eafd4ea564a0f6">&#9670;&nbsp;</a></span>currentChanged</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KDEPlatformFileDialogBase::currentChanged </td>
+          <td>(</td>
+          <td class="paramtype">const QUrl &amp;&#160;</td>
+          <td class="paramname"><em>path</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">signal</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00255">KDEPlatformFileDialogHelper::KDEPlatformFileDialogHelper()</a> , 以及 <a class="el" href="../../#l00284">KDirSelectDialog::KDirSelectDialog()</a>.</p>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="../../closed.png" alt="+"/> 这是这个函数的调用关系图:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d3/d57/classKDEPlatformFileDialogBase_a666fde45aa76b3ba36eafd4ea564a0f6_icgraph.png" border="0" usemap="#ad3/d57/classKDEPlatformFileDialogBase_a666fde45aa76b3ba36eafd4ea564a0f6_icgraph" alt=""/></div>
+<map name="d3/d57/classKDEPlatformFileDialogBase_a666fde45aa76b3ba36eafd4ea564a0f6_icgraph" id="ad3/d57/classKDEPlatformFileDialogBase_a666fde45aa76b3ba36eafd4ea564a0f6_icgraph">
+<area shape="rect" title=" " alt="" coords="256,39,439,80"/>
+<area shape="rect" href="../../d6/dfa/classKDEPlatformFileDialogHelper.html#a8c401f0868ee4fa24975f643e0995c40" title=" " alt="" coords="5,5,208,47"/>
+<area shape="rect" href="../../d0/d6c/classKDirSelectDialog.html#a285d34564655c0d9d08d6b5ea02b93a0" title=" " alt="" coords="13,71,200,112"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a2309276cea1aae31556c81229ddde9cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2309276cea1aae31556c81229ddde9cb">&#9670;&nbsp;</a></span>currentFilterText()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual QString KDEPlatformFileDialogBase::currentFilterText </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>在 <a class="el" href="../../d0/d6c/classKDirSelectDialog.html#a7461d96c2014d8c30977b050193edf75">KDirSelectDialog</a> , 以及 <a class="el" href="../../dd/d9a/classKDEPlatformFileDialog.html#a861894d745fbebc494284ffeb3414dd7">KDEPlatformFileDialog</a> 内被实现.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00423">KDEPlatformFileDialogHelper::selectedNameFilter()</a>.</p>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="../../closed.png" alt="+"/> 这是这个函数的调用关系图:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d3/d57/classKDEPlatformFileDialogBase_a2309276cea1aae31556c81229ddde9cb_icgraph.png" border="0" usemap="#ad3/d57/classKDEPlatformFileDialogBase_a2309276cea1aae31556c81229ddde9cb_icgraph" alt=""/></div>
+<map name="d3/d57/classKDEPlatformFileDialogBase_a2309276cea1aae31556c81229ddde9cb_icgraph" id="ad3/d57/classKDEPlatformFileDialogBase_a2309276cea1aae31556c81229ddde9cb_icgraph">
+<area shape="rect" title=" " alt="" coords="248,5,431,47"/>
+<area shape="rect" href="../../d6/dfa/classKDEPlatformFileDialogHelper.html#a7591413046f1932d0b5e58fc06b423ab" title=" " alt="" coords="5,5,200,47"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a13594cf8f86e72f803536a05f42ca886"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a13594cf8f86e72f803536a05f42ca886">&#9670;&nbsp;</a></span>directory()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual QUrl KDEPlatformFileDialogBase::directory </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>在 <a class="el" href="../../d0/d6c/classKDirSelectDialog.html#a4158d90924ca88eb06fb84e6f322c86c">KDirSelectDialog</a> , 以及 <a class="el" href="../../dd/d9a/classKDEPlatformFileDialog.html#a2b3d913003f979edc5ece12d9f3e8774">KDEPlatformFileDialog</a> 内被实现.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00428">KDEPlatformFileDialogHelper::directory()</a>.</p>
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="../../closed.png" alt="+"/> 这是这个函数的调用关系图:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d3/d57/classKDEPlatformFileDialogBase_a13594cf8f86e72f803536a05f42ca886_icgraph.png" border="0" usemap="#ad3/d57/classKDEPlatformFileDialogBase_a13594cf8f86e72f803536a05f42ca886_icgraph" alt=""/></div>
+<map name="d3/d57/classKDEPlatformFileDialogBase_a13594cf8f86e72f803536a05f42ca886_icgraph" id="ad3/d57/classKDEPlatformFileDialogBase_a13594cf8f86e72f803536a05f42ca886_icgraph">
+<area shape="rect" title=" " alt="" coords="976,5,1159,47"/>
+<area shape="rect" href="../../d6/dfa/classKDEPlatformFileDialogHelper.html#aa0a30f21f656e11cb55004236633d902" title=" " alt="" coords="733,5,928,47"/>
+<area shape="rect" href="../../d6/dfa/classKDEPlatformFileDialogHelper.html#a19f765ee01947b17c738367accebd5b7" title=" " alt="" coords="491,5,685,47"/>
+<area shape="rect" href="../../d6/dfa/classKDEPlatformFileDialogHelper.html#a4defbe96181076f1d2e58f2fb668fe21" title=" " alt="" coords="248,5,443,47"/>
+<area shape="rect" href="../../d6/dfa/classKDEPlatformFileDialogHelper.html#a82d631d164b00c6e4c0cef678541a235" title=" " alt="" coords="5,5,200,47"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a7f040af8f86f13797d0ce099ac42f5a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7f040af8f86f13797d0ce099ac42f5a4">&#9670;&nbsp;</a></span>directoryEntered</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KDEPlatformFileDialogBase::directoryEntered </td>
+          <td>(</td>
+          <td class="paramtype">const QUrl &amp;&#160;</td>
+          <td class="paramname"><em>directory</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">signal</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00096">KDEPlatformFileDialog::KDEPlatformFileDialog()</a> , 以及 <a class="el" href="../../#l00255">KDEPlatformFileDialogHelper::KDEPlatformFileDialogHelper()</a>.</p>
+<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-6-trigger" src="../../closed.png" alt="+"/> 这是这个函数的调用关系图:</div>
+<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-6-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d3/d57/classKDEPlatformFileDialogBase_a7f040af8f86f13797d0ce099ac42f5a4_icgraph.png" border="0" usemap="#ad3/d57/classKDEPlatformFileDialogBase_a7f040af8f86f13797d0ce099ac42f5a4_icgraph" alt=""/></div>
+<map name="d3/d57/classKDEPlatformFileDialogBase_a7f040af8f86f13797d0ce099ac42f5a4_icgraph" id="ad3/d57/classKDEPlatformFileDialogBase_a7f040af8f86f13797d0ce099ac42f5a4_icgraph">
+<area shape="rect" title=" " alt="" coords="256,39,439,80"/>
+<area shape="rect" href="../../dd/d9a/classKDEPlatformFileDialog.html#a8c60b0afeb17d547221dbcdf2efe60d7" title=" " alt="" coords="25,5,188,47"/>
+<area shape="rect" href="../../d6/dfa/classKDEPlatformFileDialogHelper.html#a8c401f0868ee4fa24975f643e0995c40" title=" " alt="" coords="5,71,208,112"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a6a080e51adfbe4c6cad16c1e3ea2aad3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6a080e51adfbe4c6cad16c1e3ea2aad3">&#9670;&nbsp;</a></span>fileSelected</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KDEPlatformFileDialogBase::fileSelected </td>
+          <td>(</td>
+          <td class="paramtype">const QUrl &amp;&#160;</td>
+          <td class="paramname"><em>file</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">signal</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00255">KDEPlatformFileDialogHelper::KDEPlatformFileDialogHelper()</a>.</p>
+<div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-7-trigger" src="../../closed.png" alt="+"/> 这是这个函数的调用关系图:</div>
+<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-7-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d3/d57/classKDEPlatformFileDialogBase_a6a080e51adfbe4c6cad16c1e3ea2aad3_icgraph.png" border="0" usemap="#ad3/d57/classKDEPlatformFileDialogBase_a6a080e51adfbe4c6cad16c1e3ea2aad3_icgraph" alt=""/></div>
+<map name="d3/d57/classKDEPlatformFileDialogBase_a6a080e51adfbe4c6cad16c1e3ea2aad3_icgraph" id="ad3/d57/classKDEPlatformFileDialogBase_a6a080e51adfbe4c6cad16c1e3ea2aad3_icgraph">
+<area shape="rect" title=" " alt="" coords="256,5,439,47"/>
+<area shape="rect" href="../../d6/dfa/classKDEPlatformFileDialogHelper.html#a8c401f0868ee4fa24975f643e0995c40" title=" " alt="" coords="5,5,208,47"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a55465cbf61f27a7ea4c781d1fdd158f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a55465cbf61f27a7ea4c781d1fdd158f9">&#9670;&nbsp;</a></span>filesSelected</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KDEPlatformFileDialogBase::filesSelected </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../d1/d4a/classQList.html">QList</a>&lt; QUrl &gt; &amp;&#160;</td>
+          <td class="paramname"><em>files</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">signal</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00255">KDEPlatformFileDialogHelper::KDEPlatformFileDialogHelper()</a>.</p>
+<div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-8-trigger" src="../../closed.png" alt="+"/> 这是这个函数的调用关系图:</div>
+<div id="dynsection-8-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-8-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d3/d57/classKDEPlatformFileDialogBase_a55465cbf61f27a7ea4c781d1fdd158f9_icgraph.png" border="0" usemap="#ad3/d57/classKDEPlatformFileDialogBase_a55465cbf61f27a7ea4c781d1fdd158f9_icgraph" alt=""/></div>
+<map name="d3/d57/classKDEPlatformFileDialogBase_a55465cbf61f27a7ea4c781d1fdd158f9_icgraph" id="ad3/d57/classKDEPlatformFileDialogBase_a55465cbf61f27a7ea4c781d1fdd158f9_icgraph">
+<area shape="rect" title=" " alt="" coords="256,5,439,47"/>
+<area shape="rect" href="../../d6/dfa/classKDEPlatformFileDialogHelper.html#a8c401f0868ee4fa24975f643e0995c40" title=" " alt="" coords="5,5,208,47"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a7ca20fd655f655690a97467f113d8e1a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ca20fd655f655690a97467f113d8e1a">&#9670;&nbsp;</a></span>filterSelected</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KDEPlatformFileDialogBase::filterSelected </td>
+          <td>(</td>
+          <td class="paramtype">const QString &amp;&#160;</td>
+          <td class="paramname"><em>filter</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">signal</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00096">KDEPlatformFileDialog::KDEPlatformFileDialog()</a> , 以及 <a class="el" href="../../#l00255">KDEPlatformFileDialogHelper::KDEPlatformFileDialogHelper()</a>.</p>
+<div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-9-trigger" src="../../closed.png" alt="+"/> 这是这个函数的调用关系图:</div>
+<div id="dynsection-9-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-9-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d3/d57/classKDEPlatformFileDialogBase_a7ca20fd655f655690a97467f113d8e1a_icgraph.png" border="0" usemap="#ad3/d57/classKDEPlatformFileDialogBase_a7ca20fd655f655690a97467f113d8e1a_icgraph" alt=""/></div>
+<map name="d3/d57/classKDEPlatformFileDialogBase_a7ca20fd655f655690a97467f113d8e1a_icgraph" id="ad3/d57/classKDEPlatformFileDialogBase_a7ca20fd655f655690a97467f113d8e1a_icgraph">
+<area shape="rect" title=" " alt="" coords="256,39,439,80"/>
+<area shape="rect" href="../../dd/d9a/classKDEPlatformFileDialog.html#a8c60b0afeb17d547221dbcdf2efe60d7" title=" " alt="" coords="25,5,188,47"/>
+<area shape="rect" href="../../d6/dfa/classKDEPlatformFileDialogHelper.html#a8c401f0868ee4fa24975f643e0995c40" title=" " alt="" coords="5,71,208,112"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a9be1ad4fabed70d2661c9eff9dedab08"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9be1ad4fabed70d2661c9eff9dedab08">&#9670;&nbsp;</a></span>selectedFiles()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="../../d1/d4a/classQList.html">QList</a>&lt;QUrl&gt; KDEPlatformFileDialogBase::selectedFiles </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>在 <a class="el" href="../../d0/d6c/classKDirSelectDialog.html#a58322151b8d84ac8dfe7f239461a88aa">KDirSelectDialog</a> , 以及 <a class="el" href="../../dd/d9a/classKDEPlatformFileDialog.html#a5332a4d100d8cb65ebe70cb1e4e5e119">KDEPlatformFileDialog</a> 内被实现.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00408">KDEPlatformFileDialogHelper::selectedFiles()</a>.</p>
+<div id="dynsection-10" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-10-trigger" src="../../closed.png" alt="+"/> 这是这个函数的调用关系图:</div>
+<div id="dynsection-10-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-10-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d3/d57/classKDEPlatformFileDialogBase_a9be1ad4fabed70d2661c9eff9dedab08_icgraph.png" border="0" usemap="#ad3/d57/classKDEPlatformFileDialogBase_a9be1ad4fabed70d2661c9eff9dedab08_icgraph" alt=""/></div>
+<map name="d3/d57/classKDEPlatformFileDialogBase_a9be1ad4fabed70d2661c9eff9dedab08_icgraph" id="ad3/d57/classKDEPlatformFileDialogBase_a9be1ad4fabed70d2661c9eff9dedab08_icgraph">
+<area shape="rect" title=" " alt="" coords="248,5,431,47"/>
+<area shape="rect" href="../../d6/dfa/classKDEPlatformFileDialogHelper.html#a1f03a4010092bf1eda8e94924e22de63" title=" " alt="" coords="5,5,200,47"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a689d52ab8b3b8d7a8d381e56d43c4768"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a689d52ab8b3b8d7a8d381e56d43c4768">&#9670;&nbsp;</a></span>selectedMimeTypeFilter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual QString KDEPlatformFileDialogBase::selectedMimeTypeFilter </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>在 <a class="el" href="../../d0/d6c/classKDirSelectDialog.html#aa451ab22aae3d525fd1489107d51c13b">KDirSelectDialog</a> , 以及 <a class="el" href="../../dd/d9a/classKDEPlatformFileDialog.html#a3f9e6a5ecd1fe17fa070eb1038b76e41">KDEPlatformFileDialog</a> 内被实现.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00413">KDEPlatformFileDialogHelper::selectedMimeTypeFilter()</a>.</p>
+<div id="dynsection-11" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-11-trigger" src="../../closed.png" alt="+"/> 这是这个函数的调用关系图:</div>
+<div id="dynsection-11-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-11-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d3/d57/classKDEPlatformFileDialogBase_a689d52ab8b3b8d7a8d381e56d43c4768_icgraph.png" border="0" usemap="#ad3/d57/classKDEPlatformFileDialogBase_a689d52ab8b3b8d7a8d381e56d43c4768_icgraph" alt=""/></div>
+<map name="d3/d57/classKDEPlatformFileDialogBase_a689d52ab8b3b8d7a8d381e56d43c4768_icgraph" id="ad3/d57/classKDEPlatformFileDialogBase_a689d52ab8b3b8d7a8d381e56d43c4768_icgraph">
+<area shape="rect" title=" " alt="" coords="248,5,431,47"/>
+<area shape="rect" href="../../d6/dfa/classKDEPlatformFileDialogHelper.html#aedce695c68c83954fe214f864ec58dad" title=" " alt="" coords="5,5,200,47"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a9795103223cffbf58460dec1a377ba0a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9795103223cffbf58460dec1a377ba0a">&#9670;&nbsp;</a></span>selectedNameFilter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual QString KDEPlatformFileDialogBase::selectedNameFilter </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>在 <a class="el" href="../../d0/d6c/classKDirSelectDialog.html#a0c2b8b35384387ea1bcf6fed8ba0afc5">KDirSelectDialog</a> , 以及 <a class="el" href="../../dd/d9a/classKDEPlatformFileDialog.html#a29b82c4622976be00122b409752395f3">KDEPlatformFileDialog</a> 内被实现.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00423">KDEPlatformFileDialogHelper::selectedNameFilter()</a>.</p>
+<div id="dynsection-12" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-12-trigger" src="../../closed.png" alt="+"/> 这是这个函数的调用关系图:</div>
+<div id="dynsection-12-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-12-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d3/d57/classKDEPlatformFileDialogBase_a9795103223cffbf58460dec1a377ba0a_icgraph.png" border="0" usemap="#ad3/d57/classKDEPlatformFileDialogBase_a9795103223cffbf58460dec1a377ba0a_icgraph" alt=""/></div>
+<map name="d3/d57/classKDEPlatformFileDialogBase_a9795103223cffbf58460dec1a377ba0a_icgraph" id="ad3/d57/classKDEPlatformFileDialogBase_a9795103223cffbf58460dec1a377ba0a_icgraph">
+<area shape="rect" title=" " alt="" coords="248,5,431,47"/>
+<area shape="rect" href="../../d6/dfa/classKDEPlatformFileDialogHelper.html#a7591413046f1932d0b5e58fc06b423ab" title=" " alt="" coords="5,5,200,47"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="abcda19a8dadc9c3e4a1bb8c1541c13de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abcda19a8dadc9c3e4a1bb8c1541c13de">&#9670;&nbsp;</a></span>selectFile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void KDEPlatformFileDialogBase::selectFile </td>
+          <td>(</td>
+          <td class="paramtype">const QUrl &amp;&#160;</td>
+          <td class="paramname"><em>filename</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>在 <a class="el" href="../../d0/d6c/classKDirSelectDialog.html#ada250ceb60d87b1444b6b167e17c8af9">KDirSelectDialog</a> , 以及 <a class="el" href="../../dd/d9a/classKDEPlatformFileDialog.html#a9b6228d1b0c6344aa78a12b5613b6cc7">KDEPlatformFileDialog</a> 内被实现.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00433">KDEPlatformFileDialogHelper::selectFile()</a>.</p>
+<div id="dynsection-13" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-13-trigger" src="../../closed.png" alt="+"/> 这是这个函数的调用关系图:</div>
+<div id="dynsection-13-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-13-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d3/d57/classKDEPlatformFileDialogBase_abcda19a8dadc9c3e4a1bb8c1541c13de_icgraph.png" border="0" usemap="#ad3/d57/classKDEPlatformFileDialogBase_abcda19a8dadc9c3e4a1bb8c1541c13de_icgraph" alt=""/></div>
+<map name="d3/d57/classKDEPlatformFileDialogBase_abcda19a8dadc9c3e4a1bb8c1541c13de_icgraph" id="ad3/d57/classKDEPlatformFileDialogBase_abcda19a8dadc9c3e4a1bb8c1541c13de_icgraph">
+<area shape="rect" title=" " alt="" coords="248,5,431,47"/>
+<area shape="rect" href="../../d6/dfa/classKDEPlatformFileDialogHelper.html#adb706975633c673039ecd09101298b69" title=" " alt="" coords="5,5,200,47"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a64b4e85d49d51fb4949757d9fbd78bc8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a64b4e85d49d51fb4949757d9fbd78bc8">&#9670;&nbsp;</a></span>selectMimeTypeFilter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void KDEPlatformFileDialogBase::selectMimeTypeFilter </td>
+          <td>(</td>
+          <td class="paramtype">const QString &amp;&#160;</td>
+          <td class="paramname"><em>filter</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>在 <a class="el" href="../../d0/d6c/classKDirSelectDialog.html#aa8ead59a8994cfb4bfafd5e9e5a168e4">KDirSelectDialog</a> , 以及 <a class="el" href="../../dd/d9a/classKDEPlatformFileDialog.html#af49c6f50ef44de26f39c6d13bfea8bc8">KDEPlatformFileDialog</a> 内被实现.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00418">KDEPlatformFileDialogHelper::selectMimeTypeFilter()</a>.</p>
+<div id="dynsection-14" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-14-trigger" src="../../closed.png" alt="+"/> 这是这个函数的调用关系图:</div>
+<div id="dynsection-14-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-14-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d3/d57/classKDEPlatformFileDialogBase_a64b4e85d49d51fb4949757d9fbd78bc8_icgraph.png" border="0" usemap="#ad3/d57/classKDEPlatformFileDialogBase_a64b4e85d49d51fb4949757d9fbd78bc8_icgraph" alt=""/></div>
+<map name="d3/d57/classKDEPlatformFileDialogBase_a64b4e85d49d51fb4949757d9fbd78bc8_icgraph" id="ad3/d57/classKDEPlatformFileDialogBase_a64b4e85d49d51fb4949757d9fbd78bc8_icgraph">
+<area shape="rect" title=" " alt="" coords="733,5,916,47"/>
+<area shape="rect" href="../../d6/dfa/classKDEPlatformFileDialogHelper.html#a859048037e2b4cbab5a580f1422232b9" title=" " alt="" coords="491,5,685,47"/>
+<area shape="rect" href="../../d6/dfa/classKDEPlatformFileDialogHelper.html#a4defbe96181076f1d2e58f2fb668fe21" title=" " alt="" coords="248,5,443,47"/>
+<area shape="rect" href="../../d6/dfa/classKDEPlatformFileDialogHelper.html#a82d631d164b00c6e4c0cef678541a235" title=" " alt="" coords="5,5,200,47"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a2dc1f33077e52f99b0071ef49927f6b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2dc1f33077e52f99b0071ef49927f6b3">&#9670;&nbsp;</a></span>selectNameFilter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void KDEPlatformFileDialogBase::selectNameFilter </td>
+          <td>(</td>
+          <td class="paramtype">const QString &amp;&#160;</td>
+          <td class="paramname"><em>filter</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>在 <a class="el" href="../../d0/d6c/classKDirSelectDialog.html#a6f5aa85c1443a488e699274a7b81fcd4">KDirSelectDialog</a> , 以及 <a class="el" href="../../dd/d9a/classKDEPlatformFileDialog.html#ae50a109a1979296455a80bf110d33fed">KDEPlatformFileDialog</a> 内被实现.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00447">KDEPlatformFileDialogHelper::selectNameFilter()</a>.</p>
+<div id="dynsection-15" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-15-trigger" src="../../closed.png" alt="+"/> 这是这个函数的调用关系图:</div>
+<div id="dynsection-15-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-15-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d3/d57/classKDEPlatformFileDialogBase_a2dc1f33077e52f99b0071ef49927f6b3_icgraph.png" border="0" usemap="#ad3/d57/classKDEPlatformFileDialogBase_a2dc1f33077e52f99b0071ef49927f6b3_icgraph" alt=""/></div>
+<map name="d3/d57/classKDEPlatformFileDialogBase_a2dc1f33077e52f99b0071ef49927f6b3_icgraph" id="ad3/d57/classKDEPlatformFileDialogBase_a2dc1f33077e52f99b0071ef49927f6b3_icgraph">
+<area shape="rect" title=" " alt="" coords="733,5,916,47"/>
+<area shape="rect" href="../../d6/dfa/classKDEPlatformFileDialogHelper.html#ae44d2c645fa6b40f3e9f3fb5f8bbb434" title=" " alt="" coords="491,5,685,47"/>
+<area shape="rect" href="../../d6/dfa/classKDEPlatformFileDialogHelper.html#a4defbe96181076f1d2e58f2fb668fe21" title=" " alt="" coords="248,5,443,47"/>
+<area shape="rect" href="../../d6/dfa/classKDEPlatformFileDialogHelper.html#a82d631d164b00c6e4c0cef678541a235" title=" " alt="" coords="5,5,200,47"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a067d1e81f2104988a593f36f0d2faa97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a067d1e81f2104988a593f36f0d2faa97">&#9670;&nbsp;</a></span>setDirectory()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void KDEPlatformFileDialogBase::setDirectory </td>
+          <td>(</td>
+          <td class="paramtype">const QUrl &amp;&#160;</td>
+          <td class="paramname"><em>directory</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>在 <a class="el" href="../../d0/d6c/classKDirSelectDialog.html#a517b7ba43f96673d6e73f6ee8806dbf0">KDirSelectDialog</a> , 以及 <a class="el" href="../../dd/d9a/classKDEPlatformFileDialog.html#a4d93e3a18988393e649cbb8e0671c906">KDEPlatformFileDialog</a> 内被实现.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00439">KDEPlatformFileDialogHelper::setDirectory()</a>.</p>
+<div id="dynsection-16" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-16-trigger" src="../../closed.png" alt="+"/> 这是这个函数的调用关系图:</div>
+<div id="dynsection-16-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-16-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d3/d57/classKDEPlatformFileDialogBase_a067d1e81f2104988a593f36f0d2faa97_icgraph.png" border="0" usemap="#ad3/d57/classKDEPlatformFileDialogBase_a067d1e81f2104988a593f36f0d2faa97_icgraph" alt=""/></div>
+<map name="d3/d57/classKDEPlatformFileDialogBase_a067d1e81f2104988a593f36f0d2faa97_icgraph" id="ad3/d57/classKDEPlatformFileDialogBase_a067d1e81f2104988a593f36f0d2faa97_icgraph">
+<area shape="rect" title=" " alt="" coords="733,5,916,47"/>
+<area shape="rect" href="../../d6/dfa/classKDEPlatformFileDialogHelper.html#a19f765ee01947b17c738367accebd5b7" title=" " alt="" coords="491,5,685,47"/>
+<area shape="rect" href="../../d6/dfa/classKDEPlatformFileDialogHelper.html#a4defbe96181076f1d2e58f2fb668fe21" title=" " alt="" coords="248,5,443,47"/>
+<area shape="rect" href="../../d6/dfa/classKDEPlatformFileDialogHelper.html#a82d631d164b00c6e4c0cef678541a235" title=" " alt="" coords="5,5,200,47"/>
+</map>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">友元及相关函数文档</h2>
+<a id="a2fcb2984dd1d8cbda6f99ad185a831ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2fcb2984dd1d8cbda6f99ad185a831ec">&#9670;&nbsp;</a></span>KDEPlatformFileDialogHelper</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">friend class <a class="el" href="../../d6/dfa/classKDEPlatformFileDialogHelper.html">KDEPlatformFileDialogHelper</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="ae8dbf3ba74c319250ce164a11d3b6391"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae8dbf3ba74c319250ce164a11d3b6391">&#9670;&nbsp;</a></span>m_buttons</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QDialogButtonBox* KDEPlatformFileDialogBase::m_buttons = nullptr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00096">KDEPlatformFileDialog::KDEPlatformFileDialog()</a>, <a class="el" href="../../#l00284">KDirSelectDialog::KDirSelectDialog()</a>, <a class="el" href="../../#l00571">KDirSelectDialog::setCancelButtonText()</a> , 以及 <a class="el" href="../../#l00566">KDirSelectDialog::setOkButtonText()</a>.</p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>src/platformtheme/<a class="el" href="../../">kdeplatformfiledialogbase_p.h</a></li>
+<li>src/platformtheme/<a class="el" href="../../">kdeplatformfiledialogbase.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+生成于 2021年 一月 3日 星期日 19:22:18 , 为 C library使用 &#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20
+</small></address>
+</body>
+</html>

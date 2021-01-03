@@ -1,0 +1,792 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.20"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>C library: KFileTreeView类 参考</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">C library
+   &#160;<span id="projectnumber">v1.0.0</span>
+   </div>
+   <div id="projectbrief">C/C++常用库整理 + C/C++、基于linux 系统一些例子</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.20 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">类</a> &#124;
+<a href="#pub-slots">Public 槽</a> &#124;
+<a href="#signals">信号</a> &#124;
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pro-methods">Protected 成员函数</a> &#124;
+<a href="#pri-attribs">Private 属性</a> &#124;
+<a href="../../d4/dd7/classKFileTreeView-members.html">所有成员列表</a>  </div>
+  <div class="headertitle">
+<div class="title">KFileTreeView类 参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;<a class="el" href="../../">kfiletreeview_p.h</a>&gt;</code></p>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="../../closed.png" alt="+"/> 类 KFileTreeView 继承关系图:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../da/d7e/classKFileTreeView__inherit__graph.png" border="0" usemap="#aKFileTreeView_inherit__map" alt="Inheritance graph"/></div>
+<map name="KFileTreeView_inherit__map" id="aKFileTreeView_inherit__map">
+<area shape="rect" title=" " alt="" coords="5,131,165,384"/>
+<area shape="rect" title=" " alt="" coords="43,5,127,83"/>
+</map>
+</div>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="../../closed.png" alt="+"/> KFileTreeView 的协作图:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../da/d9c/classKFileTreeView__coll__graph.png" border="0" usemap="#aKFileTreeView_coll__map" alt="Collaboration graph"/></div>
+<map name="KFileTreeView_coll__map" id="aKFileTreeView_coll__map">
+<area shape="rect" title=" " alt="" coords="5,132,165,385"/>
+<area shape="rect" href="../../d7/d92/classKFileTreeView_1_1Private.html" title=" " alt="" coords="8,448,163,599"/>
+<area shape="rect" title=" " alt="" coords="43,5,127,83"/>
+</map>
+</div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+类</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d92/classKFileTreeView_1_1Private.html">Private</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-slots"></a>
+Public 槽</h2></td></tr>
+<tr class="memitem:a701ec5b96fcaf547a219cda77d174cc5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d5c/classKFileTreeView.html#a701ec5b96fcaf547a219cda77d174cc5">setCurrentUrl</a> (const QUrl &amp;url)</td></tr>
+<tr class="separator:a701ec5b96fcaf547a219cda77d174cc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4dba9e39c5f8b93b38dbb9ce225e447b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d5c/classKFileTreeView.html#a4dba9e39c5f8b93b38dbb9ce225e447b">setDirOnlyMode</a> (bool enabled)</td></tr>
+<tr class="separator:a4dba9e39c5f8b93b38dbb9ce225e447b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9dcf3097b35254b9271e1cc2b5151c0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d5c/classKFileTreeView.html#ac9dcf3097b35254b9271e1cc2b5151c0">setRootUrl</a> (const QUrl &amp;url)</td></tr>
+<tr class="separator:ac9dcf3097b35254b9271e1cc2b5151c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07058608b109b053f8ea1b1ff4ff485a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d5c/classKFileTreeView.html#a07058608b109b053f8ea1b1ff4ff485a">setShowHiddenFiles</a> (bool enabled)</td></tr>
+<tr class="separator:a07058608b109b053f8ea1b1ff4ff485a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="signals"></a>
+信号</h2></td></tr>
+<tr class="memitem:a79acdec1a65c3d9643259762d3756d52"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d5c/classKFileTreeView.html#a79acdec1a65c3d9643259762d3756d52">activated</a> (const QUrl &amp;url)</td></tr>
+<tr class="separator:a79acdec1a65c3d9643259762d3756d52"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a49f460dd663fe83852b9a051b7fdd474"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d5c/classKFileTreeView.html#a49f460dd663fe83852b9a051b7fdd474">currentChanged</a> (const QUrl &amp;url)</td></tr>
+<tr class="separator:a49f460dd663fe83852b9a051b7fdd474"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a09f398d78a11337a4448fc417b82c34a"><td class="memItemLeft" align="right" valign="top">QUrl&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d5c/classKFileTreeView.html#a09f398d78a11337a4448fc417b82c34a">currentUrl</a> () const</td></tr>
+<tr class="separator:a09f398d78a11337a4448fc417b82c34a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba86942312b146f6d70114b00ed61859"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d5c/classKFileTreeView.html#aba86942312b146f6d70114b00ed61859">KFileTreeView</a> (QWidget *parent=nullptr)</td></tr>
+<tr class="separator:aba86942312b146f6d70114b00ed61859"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d094d0363a1a753025a4e9f382d5c2a"><td class="memItemLeft" align="right" valign="top">QUrl&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d5c/classKFileTreeView.html#a3d094d0363a1a753025a4e9f382d5c2a">rootUrl</a> () const</td></tr>
+<tr class="separator:a3d094d0363a1a753025a4e9f382d5c2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31294a95a8cc2298a45952ebd7939191"><td class="memItemLeft" align="right" valign="top">QUrl&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d5c/classKFileTreeView.html#a31294a95a8cc2298a45952ebd7939191">selectedUrl</a> () const</td></tr>
+<tr class="separator:a31294a95a8cc2298a45952ebd7939191"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92942aaf7a5536630186fbbfeabff75b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d4a/classQList.html">QList</a>&lt; QUrl &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d5c/classKFileTreeView.html#a92942aaf7a5536630186fbbfeabff75b">selectedUrls</a> () const</td></tr>
+<tr class="separator:a92942aaf7a5536630186fbbfeabff75b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd9d7f39eec9b9b4d9cd0b919b2369fa"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d5c/classKFileTreeView.html#afd9d7f39eec9b9b4d9cd0b919b2369fa">showHiddenFiles</a> () const</td></tr>
+<tr class="separator:afd9d7f39eec9b9b4d9cd0b919b2369fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec7106ad34dae8cc97e49b166c3d9f03"><td class="memItemLeft" align="right" valign="top">QSize&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d5c/classKFileTreeView.html#aec7106ad34dae8cc97e49b166c3d9f03">sizeHint</a> () const override</td></tr>
+<tr class="separator:aec7106ad34dae8cc97e49b166c3d9f03"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4d94b450980b5ca250e0669e7f393ed"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d5c/classKFileTreeView.html#ad4d94b450980b5ca250e0669e7f393ed">~KFileTreeView</a> () override</td></tr>
+<tr class="separator:ad4d94b450980b5ca250e0669e7f393ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
+Protected 成员函数</h2></td></tr>
+<tr class="memitem:a5541c1ed2d784415791f65ac99241c44"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d5c/classKFileTreeView.html#a5541c1ed2d784415791f65ac99241c44">contextMenuEvent</a> (QContextMenuEvent *) override</td></tr>
+<tr class="separator:a5541c1ed2d784415791f65ac99241c44"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private 属性</h2></td></tr>
+<tr class="memitem:a699a2dfc0842f5b743866fd1049e244c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d7/d92/classKFileTreeView_1_1Private.html">Private</a> *const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d5c/classKFileTreeView.html#a699a2dfc0842f5b743866fd1049e244c">d</a></td></tr>
+<tr class="separator:a699a2dfc0842f5b743866fd1049e244c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>The file treeview offers a treeview on the filesystem. </p>
+</div><h2 class="groupheader">构造及析构函数说明</h2>
+<a id="aba86942312b146f6d70114b00ed61859"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aba86942312b146f6d70114b00ed61859">&#9670;&nbsp;</a></span>KFileTreeView()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">KFileTreeView::KFileTreeView </td>
+          <td>(</td>
+          <td class="paramtype">QWidget *&#160;</td>
+          <td class="paramname"><em>parent</em> = <code>nullptr</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Creates a new file tree view. </p>
+
+<p class="reference">引用了 <a class="el" href="../../da/d5c/classKFileTreeView.html#a79acdec1a65c3d9643259762d3756d52">activated()</a>, <a class="el" href="../../da/d5c/classKFileTreeView.html#a49f460dd663fe83852b9a051b7fdd474">currentChanged()</a>, <a class="el" href="../../#l00120">d</a>, <a class="el" href="../../#l00052">KFileTreeView::Private::mProxyModel</a> , 以及 <a class="el" href="../../#l00051">KFileTreeView::Private::mSourceModel</a>.</p>
+
+</div>
+</div>
+<a id="ad4d94b450980b5ca250e0669e7f393ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4d94b450980b5ca250e0669e7f393ed">&#9670;&nbsp;</a></span>~KFileTreeView()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">KFileTreeView::~KFileTreeView </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Destroys the file tree view. </p>
+
+<p class="reference">引用了 <a class="el" href="../../#l00120">d</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="a79acdec1a65c3d9643259762d3756d52"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a79acdec1a65c3d9643259762d3756d52">&#9670;&nbsp;</a></span>activated</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KFileTreeView::activated </td>
+          <td>(</td>
+          <td class="paramtype">const QUrl &amp;&#160;</td>
+          <td class="paramname"><em>url</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">signal</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>This signal is emitted whenever an <code>url</code> has been activated. </p>
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00088">KFileTreeView()</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="../../closed.png" alt="+"/> 这是这个函数的调用关系图:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../da/d5c/classKFileTreeView_a79acdec1a65c3d9643259762d3756d52_icgraph.png" border="0" usemap="#ada/d5c/classKFileTreeView_a79acdec1a65c3d9643259762d3756d52_icgraph" alt=""/></div>
+<map name="da/d5c/classKFileTreeView_a79acdec1a65c3d9643259762d3756d52_icgraph" id="ada/d5c/classKFileTreeView_a79acdec1a65c3d9643259762d3756d52_icgraph">
+<area shape="rect" title=" " alt="" coords="245,5,411,32"/>
+<area shape="rect" href="../../da/d5c/classKFileTreeView.html#aba86942312b146f6d70114b00ed61859" title=" " alt="" coords="5,5,197,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a5541c1ed2d784415791f65ac99241c44"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5541c1ed2d784415791f65ac99241c44">&#9670;&nbsp;</a></span>contextMenuEvent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KFileTreeView::contextMenuEvent </td>
+          <td>(</td>
+          <td class="paramtype">QContextMenuEvent *&#160;</td>
+          <td class="paramname"><em>event</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="../../#l00120">d</a>, <a class="el" href="../../#l00051">KFileTreeView::Private::mSourceModel</a> , 以及 <a class="el" href="../../#l00162">setShowHiddenFiles()</a>.</p>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="../../closed.png" alt="+"/> 函数调用图:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../da/d5c/classKFileTreeView_a5541c1ed2d784415791f65ac99241c44_cgraph.png" border="0" usemap="#ada/d5c/classKFileTreeView_a5541c1ed2d784415791f65ac99241c44_cgraph" alt=""/></div>
+<map name="da/d5c/classKFileTreeView_a5541c1ed2d784415791f65ac99241c44_cgraph" id="ada/d5c/classKFileTreeView_a5541c1ed2d784415791f65ac99241c44_cgraph">
+<area shape="rect" title=" " alt="" coords="5,31,197,72"/>
+<area shape="rect" href="../../da/d5c/classKFileTreeView.html#a07058608b109b053f8ea1b1ff4ff485a" title=" " alt="" coords="245,31,451,72"/>
+<area shape="rect" href="../../da/d5c/classKFileTreeView.html#a09f398d78a11337a4448fc417b82c34a" title=" " alt="" coords="509,13,681,39"/>
+<area shape="rect" href="../../da/d5c/classKFileTreeView.html#a701ec5b96fcaf547a219cda77d174cc5" title=" " alt="" coords="499,63,691,90"/>
+<area shape="rect" href="../../d7/d92/classKFileTreeView_1_1Private.html#ad7ccacd50f6d363405d05a0f1ec726a0" title=" " alt="" coords="739,5,891,47"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a49f460dd663fe83852b9a051b7fdd474"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a49f460dd663fe83852b9a051b7fdd474">&#9670;&nbsp;</a></span>currentChanged</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KFileTreeView::currentChanged </td>
+          <td>(</td>
+          <td class="paramtype">const QUrl &amp;&#160;</td>
+          <td class="paramname"><em>url</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">signal</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>This signal is emitted whenever the current <code>url</code> has been changed. </p>
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00088">KFileTreeView()</a>.</p>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="../../closed.png" alt="+"/> 这是这个函数的调用关系图:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../da/d5c/classKFileTreeView_a49f460dd663fe83852b9a051b7fdd474_icgraph.png" border="0" usemap="#ada/d5c/classKFileTreeView_a49f460dd663fe83852b9a051b7fdd474_icgraph" alt=""/></div>
+<map name="da/d5c/classKFileTreeView_a49f460dd663fe83852b9a051b7fdd474_icgraph" id="ada/d5c/classKFileTreeView_a49f460dd663fe83852b9a051b7fdd474_icgraph">
+<area shape="rect" title=" " alt="" coords="245,5,453,32"/>
+<area shape="rect" href="../../da/d5c/classKFileTreeView.html#aba86942312b146f6d70114b00ed61859" title=" " alt="" coords="5,5,197,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a09f398d78a11337a4448fc417b82c34a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a09f398d78a11337a4448fc417b82c34a">&#9670;&nbsp;</a></span>currentUrl()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QUrl KFileTreeView::currentUrl </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Returns the current url. </p>
+
+<p class="reference">引用了 <a class="el" href="../../#l00120">d</a> , 以及 <a class="el" href="../../#l00055">KFileTreeView::Private::urlForProxyIndex()</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00162">setShowHiddenFiles()</a> , 以及 <a class="el" href="../../#l00426">KDirSelectDialog::url()</a>.</p>
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="../../closed.png" alt="+"/> 函数调用图:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../da/d5c/classKFileTreeView_a09f398d78a11337a4448fc417b82c34a_cgraph.png" border="0" usemap="#ada/d5c/classKFileTreeView_a09f398d78a11337a4448fc417b82c34a_cgraph" alt=""/></div>
+<map name="da/d5c/classKFileTreeView_a09f398d78a11337a4448fc417b82c34a_cgraph" id="ada/d5c/classKFileTreeView_a09f398d78a11337a4448fc417b82c34a_cgraph">
+<area shape="rect" title=" " alt="" coords="5,13,177,39"/>
+<area shape="rect" href="../../d7/d92/classKFileTreeView_1_1Private.html#ad7ccacd50f6d363405d05a0f1ec726a0" title=" " alt="" coords="225,5,377,47"/>
+</map>
+</div>
+<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-6-trigger" src="../../closed.png" alt="+"/> 这是这个函数的调用关系图:</div>
+<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-6-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../da/d5c/classKFileTreeView_a09f398d78a11337a4448fc417b82c34a_icgraph.png" border="0" usemap="#ada/d5c/classKFileTreeView_a09f398d78a11337a4448fc417b82c34a_icgraph" alt=""/></div>
+<map name="da/d5c/classKFileTreeView_a09f398d78a11337a4448fc417b82c34a_icgraph" id="ada/d5c/classKFileTreeView_a09f398d78a11337a4448fc417b82c34a_icgraph">
+<area shape="rect" title=" " alt="" coords="763,265,935,291"/>
+<area shape="rect" href="../../da/d5c/classKFileTreeView.html#a07058608b109b053f8ea1b1ff4ff485a" title=" " alt="" coords="509,115,715,156"/>
+<area shape="rect" href="../../d0/d6c/classKDirSelectDialog.html#a774add03282ecf9a86b3689b0e0b51cb" title=" " alt="" coords="541,326,683,353"/>
+<area shape="rect" href="../../da/d5c/classKFileTreeView.html#a5541c1ed2d784415791f65ac99241c44" title=" " alt="" coords="261,5,453,47"/>
+<area shape="rect" href="../../d0/d6c/classKDirSelectDialog.html#a285d34564655c0d9d08d6b5ea02b93a0" title=" " alt="" coords="12,108,199,149"/>
+<area shape="rect" href="../../d0/d6c/classKDirSelectDialog.html#a6d96e6d04d0481c10acf33903a5e8372" title=" " alt="" coords="253,173,461,199"/>
+<area shape="rect" href="../../d0/d6c/classKDirSelectDialog.html#a517b7ba43f96673d6e73f6ee8806dbf0" title=" " alt="" coords="5,265,205,291"/>
+<area shape="rect" href="../../d6/d33/classKDirSelectDialog__UnitTest.html#a5f83c3ac9f1bab53c25e6661f880de13" title=" " alt="" coords="19,173,192,215"/>
+<area shape="rect" href="../../d0/d6c/classKDirSelectDialog.html#aee1ecaebfa6efe9cd10e7d803f08b87f" title=" " alt="" coords="274,122,441,149"/>
+<area shape="rect" href="../../d0/d6c/classKDirSelectDialog.html#a4158d90924ca88eb06fb84e6f322c86c" title=" " alt="" coords="267,355,448,382"/>
+<area shape="rect" href="../../d0/d6c/classKDirSelectDialog.html#a44ff0b463ab0cc0e1ae71674a5f9db92" title=" " alt="" coords="277,407,438,448"/>
+<area shape="rect" href="../../d0/d6c/classKDirSelectDialog.html#a58322151b8d84ac8dfe7f239461a88aa" title=" " alt="" coords="269,472,445,513"/>
+<area shape="rect" href="../../d4/d95/classKDirSelectDialog_1_1Private.html#aec49007731171f94be455eb710341d67" title=" " alt="" coords="270,537,445,579"/>
+<area shape="rect" href="../../d4/d95/classKDirSelectDialog_1_1Private.html#a23a9a36ebdf8209100cc37b4de8a4684" title=" " alt="" coords="273,603,441,644"/>
+<area shape="rect" href="../../d4/d95/classKDirSelectDialog_1_1Private.html#a0c3dc33661c08df9344d59917411c584" title=" " alt="" coords="273,224,441,265"/>
+<area shape="rect" href="../../d4/d95/classKDirSelectDialog_1_1Private.html#a6dbd2642a081adc1d69936b751be1a5f" title=" " alt="" coords="273,289,441,331"/>
+<area shape="rect" href="../../d4/d95/classKDirSelectDialog_1_1Private.html#a98c5a3e07e49aa4522be03c02d74b857" title=" " alt="" coords="21,348,189,389"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a3d094d0363a1a753025a4e9f382d5c2a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d094d0363a1a753025a4e9f382d5c2a">&#9670;&nbsp;</a></span>rootUrl()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QUrl KFileTreeView::rootUrl </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Returns the current root url of the view. </p>
+
+<p class="reference">引用了 <a class="el" href="../../#l00120">d</a> , 以及 <a class="el" href="../../#l00051">KFileTreeView::Private::mSourceModel</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00284">KDirSelectDialog::KDirSelectDialog()</a>.</p>
+<div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-7-trigger" src="../../closed.png" alt="+"/> 这是这个函数的调用关系图:</div>
+<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-7-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../da/d5c/classKFileTreeView_a3d094d0363a1a753025a4e9f382d5c2a_icgraph.png" border="0" usemap="#ada/d5c/classKFileTreeView_a3d094d0363a1a753025a4e9f382d5c2a_icgraph" alt=""/></div>
+<map name="da/d5c/classKFileTreeView_a3d094d0363a1a753025a4e9f382d5c2a_icgraph" id="ada/d5c/classKFileTreeView_a3d094d0363a1a753025a4e9f382d5c2a_icgraph">
+<area shape="rect" title=" " alt="" coords="240,13,395,39"/>
+<area shape="rect" href="../../d0/d6c/classKDirSelectDialog.html#a285d34564655c0d9d08d6b5ea02b93a0" title=" " alt="" coords="5,5,192,47"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a31294a95a8cc2298a45952ebd7939191"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a31294a95a8cc2298a45952ebd7939191">&#9670;&nbsp;</a></span>selectedUrl()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QUrl KFileTreeView::selectedUrl </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Returns the selected url. </p>
+
+<p class="reference">引用了 <a class="el" href="../../#l00120">d</a> , 以及 <a class="el" href="../../#l00055">KFileTreeView::Private::urlForProxyIndex()</a>.</p>
+<div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-8-trigger" src="../../closed.png" alt="+"/> 函数调用图:</div>
+<div id="dynsection-8-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-8-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../da/d5c/classKFileTreeView_a31294a95a8cc2298a45952ebd7939191_cgraph.png" border="0" usemap="#ada/d5c/classKFileTreeView_a31294a95a8cc2298a45952ebd7939191_cgraph" alt=""/></div>
+<map name="da/d5c/classKFileTreeView_a31294a95a8cc2298a45952ebd7939191_cgraph" id="ada/d5c/classKFileTreeView_a31294a95a8cc2298a45952ebd7939191_cgraph">
+<area shape="rect" title=" " alt="" coords="5,13,183,39"/>
+<area shape="rect" href="../../d7/d92/classKFileTreeView_1_1Private.html#ad7ccacd50f6d363405d05a0f1ec726a0" title=" " alt="" coords="231,5,383,47"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a92942aaf7a5536630186fbbfeabff75b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a92942aaf7a5536630186fbbfeabff75b">&#9670;&nbsp;</a></span>selectedUrls()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d1/d4a/classQList.html">QList</a>&lt; QUrl &gt; KFileTreeView::selectedUrls </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Returns all selected urls. </p>
+
+<p class="reference">引用了 <a class="el" href="../../#l00120">d</a> , 以及 <a class="el" href="../../#l00055">KFileTreeView::Private::urlForProxyIndex()</a>.</p>
+<div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-9-trigger" src="../../closed.png" alt="+"/> 函数调用图:</div>
+<div id="dynsection-9-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-9-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../da/d5c/classKFileTreeView_a92942aaf7a5536630186fbbfeabff75b_cgraph.png" border="0" usemap="#ada/d5c/classKFileTreeView_a92942aaf7a5536630186fbbfeabff75b_cgraph" alt=""/></div>
+<map name="da/d5c/classKFileTreeView_a92942aaf7a5536630186fbbfeabff75b_cgraph" id="ada/d5c/classKFileTreeView_a92942aaf7a5536630186fbbfeabff75b_cgraph">
+<area shape="rect" title=" " alt="" coords="5,13,188,39"/>
+<area shape="rect" href="../../d7/d92/classKFileTreeView_1_1Private.html#ad7ccacd50f6d363405d05a0f1ec726a0" title=" " alt="" coords="236,5,388,47"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a701ec5b96fcaf547a219cda77d174cc5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a701ec5b96fcaf547a219cda77d174cc5">&#9670;&nbsp;</a></span>setCurrentUrl</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KFileTreeView::setCurrentUrl </td>
+          <td>(</td>
+          <td class="paramtype">const QUrl &amp;&#160;</td>
+          <td class="paramname"><em>url</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">slot</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Sets the current <code>url</code> of the view. </p>
+
+<p class="reference">引用了 <a class="el" href="../../#l00120">d</a>, <a class="el" href="../../#l00052">KFileTreeView::Private::mProxyModel</a> , 以及 <a class="el" href="../../#l00051">KFileTreeView::Private::mSourceModel</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00463">KDirSelectDialog::setCurrentUrl()</a> , 以及 <a class="el" href="../../#l00162">setShowHiddenFiles()</a>.</p>
+<div id="dynsection-10" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-10-trigger" src="../../closed.png" alt="+"/> 这是这个函数的调用关系图:</div>
+<div id="dynsection-10-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-10-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../da/d5c/classKFileTreeView_a701ec5b96fcaf547a219cda77d174cc5_icgraph.png" border="0" usemap="#ada/d5c/classKFileTreeView_a701ec5b96fcaf547a219cda77d174cc5_icgraph" alt=""/></div>
+<map name="da/d5c/classKFileTreeView_a701ec5b96fcaf547a219cda77d174cc5_icgraph" id="ada/d5c/classKFileTreeView_a701ec5b96fcaf547a219cda77d174cc5_icgraph">
+<area shape="rect" title=" " alt="" coords="763,101,955,127"/>
+<area shape="rect" href="../../d0/d6c/classKDirSelectDialog.html#a6d96e6d04d0481c10acf33903a5e8372" title=" " alt="" coords="253,71,461,98"/>
+<area shape="rect" href="../../da/d5c/classKFileTreeView.html#a07058608b109b053f8ea1b1ff4ff485a" title=" " alt="" coords="509,123,715,164"/>
+<area shape="rect" href="../../d0/d6c/classKDirSelectDialog.html#a285d34564655c0d9d08d6b5ea02b93a0" title=" " alt="" coords="12,123,199,164"/>
+<area shape="rect" href="../../d0/d6c/classKDirSelectDialog.html#a517b7ba43f96673d6e73f6ee8806dbf0" title=" " alt="" coords="5,71,205,98"/>
+<area shape="rect" href="../../d6/d33/classKDirSelectDialog__UnitTest.html#a5f83c3ac9f1bab53c25e6661f880de13" title=" " alt="" coords="19,5,192,47"/>
+<area shape="rect" href="../../da/d5c/classKFileTreeView.html#a5541c1ed2d784415791f65ac99241c44" title=" " alt="" coords="261,181,453,223"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a4dba9e39c5f8b93b38dbb9ce225e447b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4dba9e39c5f8b93b38dbb9ce225e447b">&#9670;&nbsp;</a></span>setDirOnlyMode</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KFileTreeView::setDirOnlyMode </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>enabled</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">slot</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Sets whether the dir-only mode is <code>enabled</code>.</p>
+<p>In dir-only mode, only directories and subdirectories are listed in the view. </p>
+
+<p class="reference">引用了 <a class="el" href="../../#l00120">d</a> , 以及 <a class="el" href="../../#l00051">KFileTreeView::Private::mSourceModel</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00284">KDirSelectDialog::KDirSelectDialog()</a>.</p>
+<div id="dynsection-11" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-11-trigger" src="../../closed.png" alt="+"/> 这是这个函数的调用关系图:</div>
+<div id="dynsection-11-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-11-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../da/d5c/classKFileTreeView_a4dba9e39c5f8b93b38dbb9ce225e447b_icgraph.png" border="0" usemap="#ada/d5c/classKFileTreeView_a4dba9e39c5f8b93b38dbb9ce225e447b_icgraph" alt=""/></div>
+<map name="da/d5c/classKFileTreeView_a4dba9e39c5f8b93b38dbb9ce225e447b_icgraph" id="ada/d5c/classKFileTreeView_a4dba9e39c5f8b93b38dbb9ce225e447b_icgraph">
+<area shape="rect" title=" " alt="" coords="240,13,449,39"/>
+<area shape="rect" href="../../d0/d6c/classKDirSelectDialog.html#a285d34564655c0d9d08d6b5ea02b93a0" title=" " alt="" coords="5,5,192,47"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ac9dcf3097b35254b9271e1cc2b5151c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac9dcf3097b35254b9271e1cc2b5151c0">&#9670;&nbsp;</a></span>setRootUrl</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KFileTreeView::setRootUrl </td>
+          <td>(</td>
+          <td class="paramtype">const QUrl &amp;&#160;</td>
+          <td class="paramname"><em>url</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">slot</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Sets the root <code>url</code> of the view.</p>
+<p>The default is <a href="file:///">file:///</a>. </p>
+
+<p class="reference">引用了 <a class="el" href="../../#l00120">d</a> , 以及 <a class="el" href="../../#l00051">KFileTreeView::Private::mSourceModel</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00463">KDirSelectDialog::setCurrentUrl()</a>.</p>
+<div id="dynsection-12" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-12-trigger" src="../../closed.png" alt="+"/> 这是这个函数的调用关系图:</div>
+<div id="dynsection-12-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-12-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../da/d5c/classKFileTreeView_ac9dcf3097b35254b9271e1cc2b5151c0_icgraph.png" border="0" usemap="#ada/d5c/classKFileTreeView_ac9dcf3097b35254b9271e1cc2b5151c0_icgraph" alt=""/></div>
+<map name="da/d5c/classKFileTreeView_ac9dcf3097b35254b9271e1cc2b5151c0_icgraph" id="ada/d5c/classKFileTreeView_ac9dcf3097b35254b9271e1cc2b5151c0_icgraph">
+<area shape="rect" title=" " alt="" coords="509,71,684,98"/>
+<area shape="rect" href="../../d0/d6c/classKDirSelectDialog.html#a6d96e6d04d0481c10acf33903a5e8372" title=" " alt="" coords="253,71,461,98"/>
+<area shape="rect" href="../../d0/d6c/classKDirSelectDialog.html#a285d34564655c0d9d08d6b5ea02b93a0" title=" " alt="" coords="12,5,199,47"/>
+<area shape="rect" href="../../d0/d6c/classKDirSelectDialog.html#a517b7ba43f96673d6e73f6ee8806dbf0" title=" " alt="" coords="5,71,205,98"/>
+<area shape="rect" href="../../d6/d33/classKDirSelectDialog__UnitTest.html#a5f83c3ac9f1bab53c25e6661f880de13" title=" " alt="" coords="19,123,192,164"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a07058608b109b053f8ea1b1ff4ff485a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a07058608b109b053f8ea1b1ff4ff485a">&#9670;&nbsp;</a></span>setShowHiddenFiles</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KFileTreeView::setShowHiddenFiles </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>enabled</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">slot</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Sets whether hidden files shall be listed. </p>
+
+<p class="reference">引用了 <a class="el" href="../../#l00115">currentUrl()</a>, <a class="el" href="../../#l00120">d</a>, <a class="el" href="../../#l00051">KFileTreeView::Private::mSourceModel</a> , 以及 <a class="el" href="../../#l00170">setCurrentUrl()</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00190">contextMenuEvent()</a>, <a class="el" href="../../#l00284">KDirSelectDialog::KDirSelectDialog()</a> , 以及 <a class="el" href="../../#l00463">KDirSelectDialog::setCurrentUrl()</a>.</p>
+<div id="dynsection-13" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-13-trigger" src="../../closed.png" alt="+"/> 函数调用图:</div>
+<div id="dynsection-13-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-13-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../da/d5c/classKFileTreeView_a07058608b109b053f8ea1b1ff4ff485a_cgraph.png" border="0" usemap="#ada/d5c/classKFileTreeView_a07058608b109b053f8ea1b1ff4ff485a_cgraph" alt=""/></div>
+<map name="da/d5c/classKFileTreeView_a07058608b109b053f8ea1b1ff4ff485a_cgraph" id="ada/d5c/classKFileTreeView_a07058608b109b053f8ea1b1ff4ff485a_cgraph">
+<area shape="rect" title=" " alt="" coords="5,31,211,72"/>
+<area shape="rect" href="../../da/d5c/classKFileTreeView.html#a09f398d78a11337a4448fc417b82c34a" title=" " alt="" coords="269,13,441,39"/>
+<area shape="rect" href="../../da/d5c/classKFileTreeView.html#a701ec5b96fcaf547a219cda77d174cc5" title=" " alt="" coords="259,63,451,90"/>
+<area shape="rect" href="../../d7/d92/classKFileTreeView_1_1Private.html#ad7ccacd50f6d363405d05a0f1ec726a0" title=" " alt="" coords="499,5,651,47"/>
+</map>
+</div>
+<div id="dynsection-14" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-14-trigger" src="../../closed.png" alt="+"/> 这是这个函数的调用关系图:</div>
+<div id="dynsection-14-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-14-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../da/d5c/classKFileTreeView_a07058608b109b053f8ea1b1ff4ff485a_icgraph.png" border="0" usemap="#ada/d5c/classKFileTreeView_a07058608b109b053f8ea1b1ff4ff485a_icgraph" alt=""/></div>
+<map name="da/d5c/classKFileTreeView_a07058608b109b053f8ea1b1ff4ff485a_icgraph" id="ada/d5c/classKFileTreeView_a07058608b109b053f8ea1b1ff4ff485a_icgraph">
+<area shape="rect" title=" " alt="" coords="509,64,715,105"/>
+<area shape="rect" href="../../da/d5c/classKFileTreeView.html#a5541c1ed2d784415791f65ac99241c44" title=" " alt="" coords="261,5,453,47"/>
+<area shape="rect" href="../../d0/d6c/classKDirSelectDialog.html#a285d34564655c0d9d08d6b5ea02b93a0" title=" " alt="" coords="12,61,199,103"/>
+<area shape="rect" href="../../d0/d6c/classKDirSelectDialog.html#a6d96e6d04d0481c10acf33903a5e8372" title=" " alt="" coords="253,123,461,150"/>
+<area shape="rect" href="../../d0/d6c/classKDirSelectDialog.html#a517b7ba43f96673d6e73f6ee8806dbf0" title=" " alt="" coords="5,127,205,154"/>
+<area shape="rect" href="../../d6/d33/classKDirSelectDialog__UnitTest.html#a5f83c3ac9f1bab53c25e6661f880de13" title=" " alt="" coords="19,179,192,220"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="afd9d7f39eec9b9b4d9cd0b919b2369fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd9d7f39eec9b9b4d9cd0b919b2369fa">&#9670;&nbsp;</a></span>showHiddenFiles()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool KFileTreeView::showHiddenFiles </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Returns true if the view is currently showing hidden files </p><dl class="section since"><dt>自从</dt><dd>4.3 </dd></dl>
+
+<p class="reference">引用了 <a class="el" href="../../#l00120">d</a> , 以及 <a class="el" href="../../#l00051">KFileTreeView::Private::mSourceModel</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00463">KDirSelectDialog::setCurrentUrl()</a>.</p>
+<div id="dynsection-15" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-15-trigger" src="../../closed.png" alt="+"/> 这是这个函数的调用关系图:</div>
+<div id="dynsection-15-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-15-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../da/d5c/classKFileTreeView_afd9d7f39eec9b9b4d9cd0b919b2369fa_icgraph.png" border="0" usemap="#ada/d5c/classKFileTreeView_afd9d7f39eec9b9b4d9cd0b919b2369fa_icgraph" alt=""/></div>
+<map name="da/d5c/classKFileTreeView_afd9d7f39eec9b9b4d9cd0b919b2369fa_icgraph" id="ada/d5c/classKFileTreeView_afd9d7f39eec9b9b4d9cd0b919b2369fa_icgraph">
+<area shape="rect" title=" " alt="" coords="509,64,696,105"/>
+<area shape="rect" href="../../d0/d6c/classKDirSelectDialog.html#a6d96e6d04d0481c10acf33903a5e8372" title=" " alt="" coords="253,71,461,98"/>
+<area shape="rect" href="../../d0/d6c/classKDirSelectDialog.html#a285d34564655c0d9d08d6b5ea02b93a0" title=" " alt="" coords="12,5,199,47"/>
+<area shape="rect" href="../../d0/d6c/classKDirSelectDialog.html#a517b7ba43f96673d6e73f6ee8806dbf0" title=" " alt="" coords="5,71,205,98"/>
+<area shape="rect" href="../../d6/d33/classKDirSelectDialog__UnitTest.html#a5f83c3ac9f1bab53c25e6661f880de13" title=" " alt="" coords="19,123,192,164"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aec7106ad34dae8cc97e49b166c3d9f03"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec7106ad34dae8cc97e49b166c3d9f03">&#9670;&nbsp;</a></span>sizeHint()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QSize KFileTreeView::sizeHint </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>@reimplemented </p>
+
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="a699a2dfc0842f5b743866fd1049e244c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a699a2dfc0842f5b743866fd1049e244c">&#9670;&nbsp;</a></span>d</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d7/d92/classKFileTreeView_1_1Private.html">Private</a>* const KFileTreeView::d</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00190">contextMenuEvent()</a>, <a class="el" href="../../#l00115">currentUrl()</a>, <a class="el" href="../../#l00088">KFileTreeView()</a>, <a class="el" href="../../#l00151">rootUrl()</a>, <a class="el" href="../../#l00120">selectedUrl()</a>, <a class="el" href="../../#l00132">selectedUrls()</a>, <a class="el" href="../../#l00170">setCurrentUrl()</a>, <a class="el" href="../../#l00156">setDirOnlyMode()</a>, <a class="el" href="../../#l00185">setRootUrl()</a>, <a class="el" href="../../#l00162">setShowHiddenFiles()</a>, <a class="el" href="../../#l00201">showHiddenFiles()</a> , 以及 <a class="el" href="../../#l00110">~KFileTreeView()</a>.</p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>src/platformtheme/<a class="el" href="../../">kfiletreeview_p.h</a></li>
+<li>src/platformtheme/<a class="el" href="../../">kfiletreeview.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+生成于 2021年 一月 3日 星期日 19:22:18 , 为 C library使用 &#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20
+</small></address>
+</body>
+</html>

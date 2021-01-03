@@ -1,0 +1,909 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.20"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>C library: QDBusMenuBar类 参考</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">C library
+   &#160;<span id="projectnumber">v1.0.0</span>
+   </div>
+   <div id="projectbrief">C/C++常用库整理 + C/C++、基于linux 系统一些例子</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.20 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#signals">信号</a> &#124;
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pri-methods">Private 成员函数</a> &#124;
+<a href="#pri-static-methods">静态 Private 成员函数</a> &#124;
+<a href="#pri-attribs">Private 属性</a> &#124;
+<a href="../../da/ddf/classQDBusMenuBar-members.html">所有成员列表</a>  </div>
+  <div class="headertitle">
+<div class="title">QDBusMenuBar类 参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;<a class="el" href="../../">qdbusmenubar_p.h</a>&gt;</code></p>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="../../closed.png" alt="+"/> 类 QDBusMenuBar 继承关系图:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../da/dc9/classQDBusMenuBar__inherit__graph.png" border="0" usemap="#aQDBusMenuBar_inherit__map" alt="Inheritance graph"/></div>
+<map name="QDBusMenuBar_inherit__map" id="aQDBusMenuBar_inherit__map">
+<area shape="rect" title=" " alt="" coords="5,131,161,457"/>
+<area shape="rect" title=" " alt="" coords="14,5,153,83"/>
+</map>
+</div>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="../../closed.png" alt="+"/> QDBusMenuBar 的协作图:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../de/d6c/classQDBusMenuBar__coll__graph.png" border="0" usemap="#aQDBusMenuBar_coll__map" alt="Collaboration graph"/></div>
+<map name="QDBusMenuBar_coll__map" id="aQDBusMenuBar_coll__map">
+<area shape="rect" title=" " alt="" coords="5,131,161,457"/>
+<area shape="rect" title=" " alt="" coords="14,5,153,83"/>
+</map>
+</div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="signals"></a>
+信号</h2></td></tr>
+<tr class="memitem:a4850e044ddba8e53b74bac8c0c7cb734"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d70/classQDBusMenuBar.html#a4850e044ddba8e53b74bac8c0c7cb734">windowChanged</a> (QWindow *newWindow, QWindow *oldWindow)</td></tr>
+<tr class="separator:a4850e044ddba8e53b74bac8c0c7cb734"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a9edb8c23579cff7ae57fbe1dc13462f0"><td class="memItemLeft" align="right" valign="top">QPlatformMenu *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d70/classQDBusMenuBar.html#a9edb8c23579cff7ae57fbe1dc13462f0">createMenu</a> () const override</td></tr>
+<tr class="separator:a9edb8c23579cff7ae57fbe1dc13462f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7c8569693e8ed2ad6a84d9274f79d34"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d70/classQDBusMenuBar.html#aa7c8569693e8ed2ad6a84d9274f79d34">handleReparent</a> (QWindow *newParentWindow) override</td></tr>
+<tr class="separator:aa7c8569693e8ed2ad6a84d9274f79d34"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6428a3cf6ef1aff422c1c42e95ca5982"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d70/classQDBusMenuBar.html#a6428a3cf6ef1aff422c1c42e95ca5982">insertMenu</a> (QPlatformMenu *menu, QPlatformMenu *before) override</td></tr>
+<tr class="separator:a6428a3cf6ef1aff422c1c42e95ca5982"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa527e1fcdba42d7822effa18c3dd66a8"><td class="memItemLeft" align="right" valign="top">QPlatformMenu *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d70/classQDBusMenuBar.html#aa527e1fcdba42d7822effa18c3dd66a8">menuForTag</a> (quintptr tag) const override</td></tr>
+<tr class="separator:aa527e1fcdba42d7822effa18c3dd66a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb23910c901d2e80379bbd19b22b7610"><td class="memItemLeft" align="right" valign="top">QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d70/classQDBusMenuBar.html#acb23910c901d2e80379bbd19b22b7610">objectPath</a> () const</td></tr>
+<tr class="separator:acb23910c901d2e80379bbd19b22b7610"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40c6c48a777e1c291005e7419de1bf1b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d70/classQDBusMenuBar.html#a40c6c48a777e1c291005e7419de1bf1b">QDBusMenuBar</a> ()</td></tr>
+<tr class="separator:a40c6c48a777e1c291005e7419de1bf1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae131c9f1b28a6e4d78d50dc9203508f8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d70/classQDBusMenuBar.html#ae131c9f1b28a6e4d78d50dc9203508f8">removeMenu</a> (QPlatformMenu *menu) override</td></tr>
+<tr class="separator:ae131c9f1b28a6e4d78d50dc9203508f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad58b4521fd1bd9a16ccf44b50e07b535"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d70/classQDBusMenuBar.html#ad58b4521fd1bd9a16ccf44b50e07b535">syncMenu</a> (QPlatformMenu *menu) override</td></tr>
+<tr class="separator:ad58b4521fd1bd9a16ccf44b50e07b535"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a372fe5b6d40d576274da45932e94c0d2"><td class="memItemLeft" align="right" valign="top">QWindow *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d70/classQDBusMenuBar.html#a372fe5b6d40d576274da45932e94c0d2">window</a> () const</td></tr>
+<tr class="separator:a372fe5b6d40d576274da45932e94c0d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96e098d144e7ed714fced4ea57fb93a1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d70/classQDBusMenuBar.html#a96e098d144e7ed714fced4ea57fb93a1">~QDBusMenuBar</a> () override</td></tr>
+<tr class="separator:a96e098d144e7ed714fced4ea57fb93a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private 成员函数</h2></td></tr>
+<tr class="memitem:aea3520a3ac62c16d7bed9184a3300c87"><td class="memItemLeft" align="right" valign="top">QDBusPlatformMenuItem *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d70/classQDBusMenuBar.html#aea3520a3ac62c16d7bed9184a3300c87">menuItemForMenu</a> (QPlatformMenu *menu)</td></tr>
+<tr class="separator:aea3520a3ac62c16d7bed9184a3300c87"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65ba25e28a01298cefacb93bce7e931f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d70/classQDBusMenuBar.html#a65ba25e28a01298cefacb93bce7e931f">registerMenuBar</a> ()</td></tr>
+<tr class="separator:a65ba25e28a01298cefacb93bce7e931f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0fe2cecccac7f8b3eb6fa31f657c5c0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d70/classQDBusMenuBar.html#ab0fe2cecccac7f8b3eb6fa31f657c5c0">unregisterMenuBar</a> ()</td></tr>
+<tr class="separator:ab0fe2cecccac7f8b3eb6fa31f657c5c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-methods"></a>
+静态 Private 成员函数</h2></td></tr>
+<tr class="memitem:af98252e4075c27b06ceb718b2968aa43"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d70/classQDBusMenuBar.html#af98252e4075c27b06ceb718b2968aa43">updateMenuItem</a> (QDBusPlatformMenuItem *item, QPlatformMenu *menu)</td></tr>
+<tr class="separator:af98252e4075c27b06ceb718b2968aa43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private 属性</h2></td></tr>
+<tr class="memitem:a8d67a921ebe5842638067c8bbbf8f525"><td class="memItemLeft" align="right" valign="top">QDBusPlatformMenu *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d70/classQDBusMenuBar.html#a8d67a921ebe5842638067c8bbbf8f525">m_menu</a> = nullptr</td></tr>
+<tr class="separator:a8d67a921ebe5842638067c8bbbf8f525"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00f782ba88b04d78fbaf65c7f0f221ac"><td class="memItemLeft" align="right" valign="top">QDBusMenuAdaptor *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d70/classQDBusMenuBar.html#a00f782ba88b04d78fbaf65c7f0f221ac">m_menuAdaptor</a> = nullptr</td></tr>
+<tr class="separator:a00f782ba88b04d78fbaf65c7f0f221ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a62dc6b51114868b813186fbae341a2ea"><td class="memItemLeft" align="right" valign="top">QHash&lt; quintptr, QDBusPlatformMenuItem * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d70/classQDBusMenuBar.html#a62dc6b51114868b813186fbae341a2ea">m_menuItems</a></td></tr>
+<tr class="separator:a62dc6b51114868b813186fbae341a2ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2c556c3820d15f84fe8594749eb8d86"><td class="memItemLeft" align="right" valign="top">QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d70/classQDBusMenuBar.html#ac2c556c3820d15f84fe8594749eb8d86">m_objectPath</a></td></tr>
+<tr class="separator:ac2c556c3820d15f84fe8594749eb8d86"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4798ad89409b5fef2a8549fd432ff2db"><td class="memItemLeft" align="right" valign="top">QPointer&lt; QWindow &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d70/classQDBusMenuBar.html#a4798ad89409b5fef2a8549fd432ff2db">m_window</a></td></tr>
+<tr class="separator:a4798ad89409b5fef2a8549fd432ff2db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"></div><h2 class="groupheader">构造及析构函数说明</h2>
+<a id="a40c6c48a777e1c291005e7419de1bf1b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a40c6c48a777e1c291005e7419de1bf1b">&#9670;&nbsp;</a></span>QDBusMenuBar()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QDBusMenuBar::QDBusMenuBar </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="../../#l00087">m_menu</a> , 以及 <a class="el" href="../../#l00088">m_menuAdaptor</a>.</p>
+
+</div>
+</div>
+<a id="a96e098d144e7ed714fced4ea57fb93a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96e098d144e7ed714fced4ea57fb93a1">&#9670;&nbsp;</a></span>~QDBusMenuBar()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QDBusMenuBar::~QDBusMenuBar </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="../../#l00087">m_menu</a>, <a class="el" href="../../#l00088">m_menuAdaptor</a>, <a class="el" href="../../#l00089">m_menuItems</a> , 以及 <a class="el" href="../../#l00178">unregisterMenuBar()</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="../../closed.png" alt="+"/> 函数调用图:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d7/d70/classQDBusMenuBar_a96e098d144e7ed714fced4ea57fb93a1_cgraph.png" border="0" usemap="#ad7/d70/classQDBusMenuBar_a96e098d144e7ed714fced4ea57fb93a1_cgraph" alt=""/></div>
+<map name="d7/d70/classQDBusMenuBar_a96e098d144e7ed714fced4ea57fb93a1_cgraph" id="ad7/d70/classQDBusMenuBar_a96e098d144e7ed714fced4ea57fb93a1_cgraph">
+<area shape="rect" title=" " alt="" coords="5,13,235,39"/>
+<area shape="rect" href="../../d7/d70/classQDBusMenuBar.html#ab0fe2cecccac7f8b3eb6fa31f657c5c0" title=" " alt="" coords="283,5,469,47"/>
+<area shape="rect" href="../../d7/d70/classQDBusMenuBar.html#a372fe5b6d40d576274da45932e94c0d2" title=" " alt="" coords="517,13,691,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="a9edb8c23579cff7ae57fbe1dc13462f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9edb8c23579cff7ae57fbe1dc13462f0">&#9670;&nbsp;</a></span>createMenu()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QPlatformMenu * QDBusMenuBar::createMenu </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa7c8569693e8ed2ad6a84d9274f79d34"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7c8569693e8ed2ad6a84d9274f79d34">&#9670;&nbsp;</a></span>handleReparent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void QDBusMenuBar::handleReparent </td>
+          <td>(</td>
+          <td class="paramtype">QWindow *&#160;</td>
+          <td class="paramname"><em>newParentWindow</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="../../#l00090">m_window</a>, <a class="el" href="../../#l00154">registerMenuBar()</a>, <a class="el" href="../../#l00178">unregisterMenuBar()</a> , 以及 <a class="el" href="../../d7/d70/classQDBusMenuBar.html#a4850e044ddba8e53b74bac8c0c7cb734">windowChanged()</a>.</p>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="../../closed.png" alt="+"/> 函数调用图:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d7/d70/classQDBusMenuBar_aa7c8569693e8ed2ad6a84d9274f79d34_cgraph.png" border="0" usemap="#ad7/d70/classQDBusMenuBar_aa7c8569693e8ed2ad6a84d9274f79d34_cgraph" alt=""/></div>
+<map name="d7/d70/classQDBusMenuBar_aa7c8569693e8ed2ad6a84d9274f79d34_cgraph" id="ad7/d70/classQDBusMenuBar_aa7c8569693e8ed2ad6a84d9274f79d34_cgraph">
+<area shape="rect" title=" " alt="" coords="5,35,228,61"/>
+<area shape="rect" href="../../d7/d70/classQDBusMenuBar.html#a65ba25e28a01298cefacb93bce7e931f" title=" " alt="" coords="276,5,503,32"/>
+<area shape="rect" href="../../d7/d70/classQDBusMenuBar.html#ab0fe2cecccac7f8b3eb6fa31f657c5c0" title=" " alt="" coords="296,57,483,98"/>
+<area shape="rect" href="../../d7/d70/classQDBusMenuBar.html#a372fe5b6d40d576274da45932e94c0d2" title=" " alt="" coords="551,35,724,61"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a6428a3cf6ef1aff422c1c42e95ca5982"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6428a3cf6ef1aff422c1c42e95ca5982">&#9670;&nbsp;</a></span>insertMenu()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void QDBusMenuBar::insertMenu </td>
+          <td>(</td>
+          <td class="paramtype">QPlatformMenu *&#160;</td>
+          <td class="paramname"><em>menu</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">QPlatformMenu *&#160;</td>
+          <td class="paramname"><em>before</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="../../#l00087">m_menu</a> , 以及 <a class="el" href="../../#l00076">menuItemForMenu()</a>.</p>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="../../closed.png" alt="+"/> 函数调用图:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d7/d70/classQDBusMenuBar_a6428a3cf6ef1aff422c1c42e95ca5982_cgraph.png" border="0" usemap="#ad7/d70/classQDBusMenuBar_a6428a3cf6ef1aff422c1c42e95ca5982_cgraph" alt=""/></div>
+<map name="d7/d70/classQDBusMenuBar_a6428a3cf6ef1aff422c1c42e95ca5982_cgraph" id="ad7/d70/classQDBusMenuBar_a6428a3cf6ef1aff422c1c42e95ca5982_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,200,32"/>
+<area shape="rect" href="../../d7/d70/classQDBusMenuBar.html#aea3520a3ac62c16d7bed9184a3300c87" title=" " alt="" coords="248,5,493,32"/>
+<area shape="rect" href="../../d7/d70/classQDBusMenuBar.html#af98252e4075c27b06ceb718b2968aa43" title=" " alt="" coords="541,5,775,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aa527e1fcdba42d7822effa18c3dd66a8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa527e1fcdba42d7822effa18c3dd66a8">&#9670;&nbsp;</a></span>menuForTag()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QPlatformMenu * QDBusMenuBar::menuForTag </td>
+          <td>(</td>
+          <td class="paramtype">quintptr&#160;</td>
+          <td class="paramname"><em>tag</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="../../#l00089">m_menuItems</a>.</p>
+
+</div>
+</div>
+<a id="aea3520a3ac62c16d7bed9184a3300c87"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea3520a3ac62c16d7bed9184a3300c87">&#9670;&nbsp;</a></span>menuItemForMenu()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QDBusPlatformMenuItem * QDBusMenuBar::menuItemForMenu </td>
+          <td>(</td>
+          <td class="paramtype">QPlatformMenu *&#160;</td>
+          <td class="paramname"><em>menu</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="../../#l00089">m_menuItems</a> , 以及 <a class="el" href="../../#l00092">updateMenuItem()</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00102">insertMenu()</a>, <a class="el" href="../../#l00110">removeMenu()</a> , 以及 <a class="el" href="../../#l00117">syncMenu()</a>.</p>
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="../../closed.png" alt="+"/> 函数调用图:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d7/d70/classQDBusMenuBar_aea3520a3ac62c16d7bed9184a3300c87_cgraph.png" border="0" usemap="#ad7/d70/classQDBusMenuBar_aea3520a3ac62c16d7bed9184a3300c87_cgraph" alt=""/></div>
+<map name="d7/d70/classQDBusMenuBar_aea3520a3ac62c16d7bed9184a3300c87_cgraph" id="ad7/d70/classQDBusMenuBar_aea3520a3ac62c16d7bed9184a3300c87_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,251,32"/>
+<area shape="rect" href="../../d7/d70/classQDBusMenuBar.html#af98252e4075c27b06ceb718b2968aa43" title=" " alt="" coords="299,5,532,32"/>
+</map>
+</div>
+<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-6-trigger" src="../../closed.png" alt="+"/> 这是这个函数的调用关系图:</div>
+<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-6-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d7/d70/classQDBusMenuBar_aea3520a3ac62c16d7bed9184a3300c87_icgraph.png" border="0" usemap="#ad7/d70/classQDBusMenuBar_aea3520a3ac62c16d7bed9184a3300c87_icgraph" alt=""/></div>
+<map name="d7/d70/classQDBusMenuBar_aea3520a3ac62c16d7bed9184a3300c87_icgraph" id="ad7/d70/classQDBusMenuBar_aea3520a3ac62c16d7bed9184a3300c87_icgraph">
+<area shape="rect" title=" " alt="" coords="260,56,505,83"/>
+<area shape="rect" href="../../d7/d70/classQDBusMenuBar.html#a6428a3cf6ef1aff422c1c42e95ca5982" title=" " alt="" coords="11,5,206,32"/>
+<area shape="rect" href="../../d7/d70/classQDBusMenuBar.html#ae131c9f1b28a6e4d78d50dc9203508f8" title=" " alt="" coords="5,56,212,83"/>
+<area shape="rect" href="../../d7/d70/classQDBusMenuBar.html#ad58b4521fd1bd9a16ccf44b50e07b535" title=" " alt="" coords="15,107,203,133"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="acb23910c901d2e80379bbd19b22b7610"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb23910c901d2e80379bbd19b22b7610">&#9670;&nbsp;</a></span>objectPath()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QString QDBusMenuBar::objectPath </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="../../#l00091">m_objectPath</a>.</p>
+
+</div>
+</div>
+<a id="a65ba25e28a01298cefacb93bce7e931f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a65ba25e28a01298cefacb93bce7e931f">&#9670;&nbsp;</a></span>registerMenuBar()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void QDBusMenuBar::registerMenuBar </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="../../#l00087">m_menu</a>, <a class="el" href="../../#l00091">m_objectPath</a>, <a class="el" href="../../#l00090">m_window</a>, <a class="el" href="../../#l00093">testscript::r</a>, <a class="el" href="../../#l00049">REGISTRAR_PATH</a>, <a class="el" href="../../#l00048">REGISTRAR_SERVICE</a> , 以及 <a class="el" href="../../#l00080">window()</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00123">handleReparent()</a>.</p>
+<div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-7-trigger" src="../../closed.png" alt="+"/> 函数调用图:</div>
+<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-7-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d7/d70/classQDBusMenuBar_a65ba25e28a01298cefacb93bce7e931f_cgraph.png" border="0" usemap="#ad7/d70/classQDBusMenuBar_a65ba25e28a01298cefacb93bce7e931f_cgraph" alt=""/></div>
+<map name="d7/d70/classQDBusMenuBar_a65ba25e28a01298cefacb93bce7e931f_cgraph" id="ad7/d70/classQDBusMenuBar_a65ba25e28a01298cefacb93bce7e931f_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,232,32"/>
+<area shape="rect" href="../../d7/d70/classQDBusMenuBar.html#a372fe5b6d40d576274da45932e94c0d2" title=" " alt="" coords="280,5,453,32"/>
+</map>
+</div>
+<div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-8-trigger" src="../../closed.png" alt="+"/> 这是这个函数的调用关系图:</div>
+<div id="dynsection-8-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-8-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d7/d70/classQDBusMenuBar_a65ba25e28a01298cefacb93bce7e931f_icgraph.png" border="0" usemap="#ad7/d70/classQDBusMenuBar_a65ba25e28a01298cefacb93bce7e931f_icgraph" alt=""/></div>
+<map name="d7/d70/classQDBusMenuBar_a65ba25e28a01298cefacb93bce7e931f_icgraph" id="ad7/d70/classQDBusMenuBar_a65ba25e28a01298cefacb93bce7e931f_icgraph">
+<area shape="rect" title=" " alt="" coords="276,5,503,32"/>
+<area shape="rect" href="../../d7/d70/classQDBusMenuBar.html#aa7c8569693e8ed2ad6a84d9274f79d34" title=" " alt="" coords="5,5,228,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ae131c9f1b28a6e4d78d50dc9203508f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae131c9f1b28a6e4d78d50dc9203508f8">&#9670;&nbsp;</a></span>removeMenu()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void QDBusMenuBar::removeMenu </td>
+          <td>(</td>
+          <td class="paramtype">QPlatformMenu *&#160;</td>
+          <td class="paramname"><em>menu</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="../../#l00087">m_menu</a> , 以及 <a class="el" href="../../#l00076">menuItemForMenu()</a>.</p>
+<div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-9-trigger" src="../../closed.png" alt="+"/> 函数调用图:</div>
+<div id="dynsection-9-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-9-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d7/d70/classQDBusMenuBar_ae131c9f1b28a6e4d78d50dc9203508f8_cgraph.png" border="0" usemap="#ad7/d70/classQDBusMenuBar_ae131c9f1b28a6e4d78d50dc9203508f8_cgraph" alt=""/></div>
+<map name="d7/d70/classQDBusMenuBar_ae131c9f1b28a6e4d78d50dc9203508f8_cgraph" id="ad7/d70/classQDBusMenuBar_ae131c9f1b28a6e4d78d50dc9203508f8_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,212,32"/>
+<area shape="rect" href="../../d7/d70/classQDBusMenuBar.html#aea3520a3ac62c16d7bed9184a3300c87" title=" " alt="" coords="260,5,505,32"/>
+<area shape="rect" href="../../d7/d70/classQDBusMenuBar.html#af98252e4075c27b06ceb718b2968aa43" title=" " alt="" coords="553,5,787,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ad58b4521fd1bd9a16ccf44b50e07b535"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad58b4521fd1bd9a16ccf44b50e07b535">&#9670;&nbsp;</a></span>syncMenu()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void QDBusMenuBar::syncMenu </td>
+          <td>(</td>
+          <td class="paramtype">QPlatformMenu *&#160;</td>
+          <td class="paramname"><em>menu</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="../../#l00076">menuItemForMenu()</a> , 以及 <a class="el" href="../../#l00092">updateMenuItem()</a>.</p>
+<div id="dynsection-10" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-10-trigger" src="../../closed.png" alt="+"/> 函数调用图:</div>
+<div id="dynsection-10-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-10-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d7/d70/classQDBusMenuBar_ad58b4521fd1bd9a16ccf44b50e07b535_cgraph.png" border="0" usemap="#ad7/d70/classQDBusMenuBar_ad58b4521fd1bd9a16ccf44b50e07b535_cgraph" alt=""/></div>
+<map name="d7/d70/classQDBusMenuBar_ad58b4521fd1bd9a16ccf44b50e07b535_cgraph" id="ad7/d70/classQDBusMenuBar_ad58b4521fd1bd9a16ccf44b50e07b535_cgraph">
+<area shape="rect" title=" " alt="" coords="5,31,193,57"/>
+<area shape="rect" href="../../d7/d70/classQDBusMenuBar.html#aea3520a3ac62c16d7bed9184a3300c87" title=" " alt="" coords="241,5,487,32"/>
+<area shape="rect" href="../../d7/d70/classQDBusMenuBar.html#af98252e4075c27b06ceb718b2968aa43" title=" " alt="" coords="535,31,768,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ab0fe2cecccac7f8b3eb6fa31f657c5c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab0fe2cecccac7f8b3eb6fa31f657c5c0">&#9670;&nbsp;</a></span>unregisterMenuBar()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void QDBusMenuBar::unregisterMenuBar </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="../../#l00091">m_objectPath</a>, <a class="el" href="../../#l00090">m_window</a>, <a class="el" href="../../#l00093">testscript::r</a>, <a class="el" href="../../#l00049">REGISTRAR_PATH</a>, <a class="el" href="../../#l00048">REGISTRAR_SERVICE</a> , 以及 <a class="el" href="../../#l00080">window()</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00123">handleReparent()</a> , 以及 <a class="el" href="../../#l00068">~QDBusMenuBar()</a>.</p>
+<div id="dynsection-11" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-11-trigger" src="../../closed.png" alt="+"/> 函数调用图:</div>
+<div id="dynsection-11-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-11-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d7/d70/classQDBusMenuBar_ab0fe2cecccac7f8b3eb6fa31f657c5c0_cgraph.png" border="0" usemap="#ad7/d70/classQDBusMenuBar_ab0fe2cecccac7f8b3eb6fa31f657c5c0_cgraph" alt=""/></div>
+<map name="d7/d70/classQDBusMenuBar_ab0fe2cecccac7f8b3eb6fa31f657c5c0_cgraph" id="ad7/d70/classQDBusMenuBar_ab0fe2cecccac7f8b3eb6fa31f657c5c0_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,192,47"/>
+<area shape="rect" href="../../d7/d70/classQDBusMenuBar.html#a372fe5b6d40d576274da45932e94c0d2" title=" " alt="" coords="240,13,413,39"/>
+</map>
+</div>
+<div id="dynsection-12" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-12-trigger" src="../../closed.png" alt="+"/> 这是这个函数的调用关系图:</div>
+<div id="dynsection-12-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-12-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d7/d70/classQDBusMenuBar_ab0fe2cecccac7f8b3eb6fa31f657c5c0_icgraph.png" border="0" usemap="#ad7/d70/classQDBusMenuBar_ab0fe2cecccac7f8b3eb6fa31f657c5c0_icgraph" alt=""/></div>
+<map name="d7/d70/classQDBusMenuBar_ab0fe2cecccac7f8b3eb6fa31f657c5c0_icgraph" id="ad7/d70/classQDBusMenuBar_ab0fe2cecccac7f8b3eb6fa31f657c5c0_icgraph">
+<area shape="rect" title=" " alt="" coords="283,23,469,65"/>
+<area shape="rect" href="../../d7/d70/classQDBusMenuBar.html#aa7c8569693e8ed2ad6a84d9274f79d34" title=" " alt="" coords="9,5,231,32"/>
+<area shape="rect" href="../../d7/d70/classQDBusMenuBar.html#a96e098d144e7ed714fced4ea57fb93a1" title=" " alt="" coords="5,56,235,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="af98252e4075c27b06ceb718b2968aa43"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af98252e4075c27b06ceb718b2968aa43">&#9670;&nbsp;</a></span>updateMenuItem()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void QDBusMenuBar::updateMenuItem </td>
+          <td>(</td>
+          <td class="paramtype">QDBusPlatformMenuItem *&#160;</td>
+          <td class="paramname"><em>item</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">QPlatformMenu *&#160;</td>
+          <td class="paramname"><em>menu</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00076">menuItemForMenu()</a> , 以及 <a class="el" href="../../#l00117">syncMenu()</a>.</p>
+<div id="dynsection-13" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-13-trigger" src="../../closed.png" alt="+"/> 这是这个函数的调用关系图:</div>
+<div id="dynsection-13-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-13-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d7/d70/classQDBusMenuBar_af98252e4075c27b06ceb718b2968aa43_icgraph.png" border="0" usemap="#ad7/d70/classQDBusMenuBar_af98252e4075c27b06ceb718b2968aa43_icgraph" alt=""/></div>
+<map name="d7/d70/classQDBusMenuBar_af98252e4075c27b06ceb718b2968aa43_icgraph" id="ad7/d70/classQDBusMenuBar_af98252e4075c27b06ceb718b2968aa43_icgraph">
+<area shape="rect" title=" " alt="" coords="553,81,787,108"/>
+<area shape="rect" href="../../d7/d70/classQDBusMenuBar.html#aea3520a3ac62c16d7bed9184a3300c87" title=" " alt="" coords="260,56,505,83"/>
+<area shape="rect" href="../../d7/d70/classQDBusMenuBar.html#ad58b4521fd1bd9a16ccf44b50e07b535" title=" " alt="" coords="15,107,203,133"/>
+<area shape="rect" href="../../d7/d70/classQDBusMenuBar.html#a6428a3cf6ef1aff422c1c42e95ca5982" title=" " alt="" coords="11,5,206,32"/>
+<area shape="rect" href="../../d7/d70/classQDBusMenuBar.html#ae131c9f1b28a6e4d78d50dc9203508f8" title=" " alt="" coords="5,56,212,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a372fe5b6d40d576274da45932e94c0d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a372fe5b6d40d576274da45932e94c0d2">&#9670;&nbsp;</a></span>window()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QWindow* QDBusMenuBar::window </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="../../#l00090">m_window</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00154">registerMenuBar()</a> , 以及 <a class="el" href="../../#l00178">unregisterMenuBar()</a>.</p>
+<div id="dynsection-14" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-14-trigger" src="../../closed.png" alt="+"/> 这是这个函数的调用关系图:</div>
+<div id="dynsection-14-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-14-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d7/d70/classQDBusMenuBar_a372fe5b6d40d576274da45932e94c0d2_icgraph.png" border="0" usemap="#ad7/d70/classQDBusMenuBar_a372fe5b6d40d576274da45932e94c0d2_icgraph" alt=""/></div>
+<map name="d7/d70/classQDBusMenuBar_a372fe5b6d40d576274da45932e94c0d2_icgraph" id="ad7/d70/classQDBusMenuBar_a372fe5b6d40d576274da45932e94c0d2_icgraph">
+<area shape="rect" title=" " alt="" coords="557,35,731,61"/>
+<area shape="rect" href="../../d7/d70/classQDBusMenuBar.html#a65ba25e28a01298cefacb93bce7e931f" title=" " alt="" coords="283,5,509,32"/>
+<area shape="rect" href="../../d7/d70/classQDBusMenuBar.html#ab0fe2cecccac7f8b3eb6fa31f657c5c0" title=" " alt="" coords="303,57,489,98"/>
+<area shape="rect" href="../../d7/d70/classQDBusMenuBar.html#aa7c8569693e8ed2ad6a84d9274f79d34" title=" " alt="" coords="9,9,231,36"/>
+<area shape="rect" href="../../d7/d70/classQDBusMenuBar.html#a96e098d144e7ed714fced4ea57fb93a1" title=" " alt="" coords="5,64,235,91"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a4850e044ddba8e53b74bac8c0c7cb734"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4850e044ddba8e53b74bac8c0c7cb734">&#9670;&nbsp;</a></span>windowChanged</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void QDBusMenuBar::windowChanged </td>
+          <td>(</td>
+          <td class="paramtype">QWindow *&#160;</td>
+          <td class="paramname"><em>newWindow</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">QWindow *&#160;</td>
+          <td class="paramname"><em>oldWindow</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">signal</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00342">KdePlatformTheme::createPlatformMenuBar()</a> , 以及 <a class="el" href="../../#l00123">handleReparent()</a>.</p>
+<div id="dynsection-15" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-15-trigger" src="../../closed.png" alt="+"/> 这是这个函数的调用关系图:</div>
+<div id="dynsection-15-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-15-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d7/d70/classQDBusMenuBar_a4850e044ddba8e53b74bac8c0c7cb734_icgraph.png" border="0" usemap="#ad7/d70/classQDBusMenuBar_a4850e044ddba8e53b74bac8c0c7cb734_icgraph" alt=""/></div>
+<map name="d7/d70/classQDBusMenuBar_a4850e044ddba8e53b74bac8c0c7cb734_icgraph" id="ad7/d70/classQDBusMenuBar_a4850e044ddba8e53b74bac8c0c7cb734_icgraph">
+<area shape="rect" title=" " alt="" coords="276,42,503,69"/>
+<area shape="rect" href="../../d6/d13/classKdePlatformTheme.html#a383b8dde4a3b799dc68b261c05d13697" title=" " alt="" coords="25,5,208,47"/>
+<area shape="rect" href="../../d7/d70/classQDBusMenuBar.html#aa7c8569693e8ed2ad6a84d9274f79d34" title=" " alt="" coords="5,71,228,98"/>
+</map>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="a8d67a921ebe5842638067c8bbbf8f525"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d67a921ebe5842638067c8bbbf8f525">&#9670;&nbsp;</a></span>m_menu</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QDBusPlatformMenu* QDBusMenuBar::m_menu = nullptr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00102">insertMenu()</a>, <a class="el" href="../../#l00051">QDBusMenuBar()</a>, <a class="el" href="../../#l00154">registerMenuBar()</a>, <a class="el" href="../../#l00110">removeMenu()</a> , 以及 <a class="el" href="../../#l00068">~QDBusMenuBar()</a>.</p>
+
+</div>
+</div>
+<a id="a00f782ba88b04d78fbaf65c7f0f221ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a00f782ba88b04d78fbaf65c7f0f221ac">&#9670;&nbsp;</a></span>m_menuAdaptor</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QDBusMenuAdaptor* QDBusMenuBar::m_menuAdaptor = nullptr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00051">QDBusMenuBar()</a> , 以及 <a class="el" href="../../#l00068">~QDBusMenuBar()</a>.</p>
+
+</div>
+</div>
+<a id="a62dc6b51114868b813186fbae341a2ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a62dc6b51114868b813186fbae341a2ea">&#9670;&nbsp;</a></span>m_menuItems</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QHash&lt;quintptr, QDBusPlatformMenuItem *&gt; QDBusMenuBar::m_menuItems</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00141">menuForTag()</a>, <a class="el" href="../../#l00076">menuItemForMenu()</a> , 以及 <a class="el" href="../../#l00068">~QDBusMenuBar()</a>.</p>
+
+</div>
+</div>
+<a id="ac2c556c3820d15f84fe8594749eb8d86"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac2c556c3820d15f84fe8594749eb8d86">&#9670;&nbsp;</a></span>m_objectPath</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QString QDBusMenuBar::m_objectPath</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00081">objectPath()</a>, <a class="el" href="../../#l00154">registerMenuBar()</a> , 以及 <a class="el" href="../../#l00178">unregisterMenuBar()</a>.</p>
+
+</div>
+</div>
+<a id="a4798ad89409b5fef2a8549fd432ff2db"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4798ad89409b5fef2a8549fd432ff2db">&#9670;&nbsp;</a></span>m_window</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QPointer&lt;QWindow&gt; QDBusMenuBar::m_window</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00123">handleReparent()</a>, <a class="el" href="../../#l00154">registerMenuBar()</a>, <a class="el" href="../../#l00178">unregisterMenuBar()</a> , 以及 <a class="el" href="../../#l00080">window()</a>.</p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>src/platformtheme/<a class="el" href="../../">qdbusmenubar_p.h</a></li>
+<li>src/platformtheme/<a class="el" href="../../">qdbusmenubar.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+生成于 2021年 一月 3日 星期日 19:22:18 , 为 C library使用 &#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20
+</small></address>
+</body>
+</html>

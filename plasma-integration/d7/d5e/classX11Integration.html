@@ -1,0 +1,403 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.20"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>C library: X11Integration类 参考</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">C library
+   &#160;<span id="projectnumber">v1.0.0</span>
+   </div>
+   <div id="projectbrief">C/C++常用库整理 + C/C++、基于linux 系统一些例子</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.20 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pri-methods">Private 成员函数</a> &#124;
+<a href="#pri-attribs">Private 属性</a> &#124;
+<a href="../../de/de4/classX11Integration-members.html">所有成员列表</a>  </div>
+  <div class="headertitle">
+<div class="title">X11Integration类 参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;<a class="el" href="../../">x11integration.h</a>&gt;</code></p>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="../../closed.png" alt="+"/> 类 X11Integration 继承关系图:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d1/d27/classX11Integration__inherit__graph.png" border="0" usemap="#aX11Integration_inherit__map" alt="Inheritance graph"/></div>
+<map name="X11Integration_inherit__map" id="aX11Integration_inherit__map">
+<area shape="rect" title=" " alt="" coords="5,131,184,296"/>
+<area shape="rect" title=" " alt="" coords="59,5,130,83"/>
+</map>
+</div>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="../../closed.png" alt="+"/> X11Integration 的协作图:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../da/d53/classX11Integration__coll__graph.png" border="0" usemap="#aX11Integration_coll__map" alt="Collaboration graph"/></div>
+<map name="X11Integration_coll__map" id="aX11Integration_coll__map">
+<area shape="rect" title=" " alt="" coords="5,131,184,296"/>
+<area shape="rect" title=" " alt="" coords="59,5,130,83"/>
+</map>
+</div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a0c2b852b40ce5d10ba64cd597924a1af"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d5e/classX11Integration.html#a0c2b852b40ce5d10ba64cd597924a1af">eventFilter</a> (QObject *watched, QEvent *event) override</td></tr>
+<tr class="separator:a0c2b852b40ce5d10ba64cd597924a1af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac29bc475e4479f83f0497dad195747fa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d5e/classX11Integration.html#ac29bc475e4479f83f0497dad195747fa">init</a> ()</td></tr>
+<tr class="separator:ac29bc475e4479f83f0497dad195747fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7fd3907f2fc83bfa05eef270d32cf9da"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d5e/classX11Integration.html#a7fd3907f2fc83bfa05eef270d32cf9da">setWindowProperty</a> (QWindow *window, const QByteArray &amp;name, const QByteArray &amp;value)</td></tr>
+<tr class="separator:a7fd3907f2fc83bfa05eef270d32cf9da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5441cb9fc5032062157a481ef0332c1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d5e/classX11Integration.html#ab5441cb9fc5032062157a481ef0332c1">X11Integration</a> ()</td></tr>
+<tr class="separator:ab5441cb9fc5032062157a481ef0332c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a47feeebe4b4c72a5d4439d0dc8058193"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d5e/classX11Integration.html#a47feeebe4b4c72a5d4439d0dc8058193">~X11Integration</a> () override</td></tr>
+<tr class="separator:a47feeebe4b4c72a5d4439d0dc8058193"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private 成员函数</h2></td></tr>
+<tr class="memitem:a0b9798c072a8e9be214cd4ff30f5eff3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d5e/classX11Integration.html#a0b9798c072a8e9be214cd4ff30f5eff3">installColorScheme</a> (QWindow *w)</td></tr>
+<tr class="separator:a0b9798c072a8e9be214cd4ff30f5eff3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd07b4022b8257acad44a3af2ff56afe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d5e/classX11Integration.html#acd07b4022b8257acad44a3af2ff56afe">installDesktopFileName</a> (QWindow *w)</td></tr>
+<tr class="separator:acd07b4022b8257acad44a3af2ff56afe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private 属性</h2></td></tr>
+<tr class="memitem:a9fee8cf6a2f350dbab6b5369f8aa1929"><td class="memItemLeft" align="right" valign="top">QHash&lt; QByteArray, xcb_atom_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d5e/classX11Integration.html#a9fee8cf6a2f350dbab6b5369f8aa1929">m_atoms</a></td></tr>
+<tr class="separator:a9fee8cf6a2f350dbab6b5369f8aa1929"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"></div><h2 class="groupheader">构造及析构函数说明</h2>
+<a id="ab5441cb9fc5032062157a481ef0332c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab5441cb9fc5032062157a481ef0332c1">&#9670;&nbsp;</a></span>X11Integration()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">X11Integration::X11Integration </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a47feeebe4b4c72a5d4439d0dc8058193"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a47feeebe4b4c72a5d4439d0dc8058193">&#9670;&nbsp;</a></span>~X11Integration()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">X11Integration::~X11Integration </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="a0c2b852b40ce5d10ba64cd597924a1af"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c2b852b40ce5d10ba64cd597924a1af">&#9670;&nbsp;</a></span>eventFilter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool X11Integration::eventFilter </td>
+          <td>(</td>
+          <td class="paramtype">QObject *&#160;</td>
+          <td class="paramname"><em>watched</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">QEvent *&#160;</td>
+          <td class="paramname"><em>event</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="../../#l00086">installColorScheme()</a>, <a class="el" href="../../#l00113">installDesktopFileName()</a>, <a class="el" href="../../#l00035">s_blurBehindPropertyName</a> , 以及 <a class="el" href="../../#l00034">s_schemePropertyName</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="../../closed.png" alt="+"/> 函数调用图:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d7/d5e/classX11Integration_a0c2b852b40ce5d10ba64cd597924a1af_cgraph.png" border="0" usemap="#ad7/d5e/classX11Integration_a0c2b852b40ce5d10ba64cd597924a1af_cgraph" alt=""/></div>
+<map name="d7/d5e/classX11Integration_a0c2b852b40ce5d10ba64cd597924a1af_cgraph" id="ad7/d5e/classX11Integration_a0c2b852b40ce5d10ba64cd597924a1af_cgraph">
+<area shape="rect" title=" " alt="" coords="5,46,188,73"/>
+<area shape="rect" href="../../d7/d5e/classX11Integration.html#a0b9798c072a8e9be214cd4ff30f5eff3" title=" " alt="" coords="245,5,431,47"/>
+<area shape="rect" href="../../d7/d5e/classX11Integration.html#acd07b4022b8257acad44a3af2ff56afe" title=" " alt="" coords="236,71,440,112"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ac29bc475e4479f83f0497dad195747fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac29bc475e4479f83f0497dad195747fa">&#9670;&nbsp;</a></span>init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void X11Integration::init </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0b9798c072a8e9be214cd4ff30f5eff3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0b9798c072a8e9be214cd4ff30f5eff3">&#9670;&nbsp;</a></span>installColorScheme()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void X11Integration::installColorScheme </td>
+          <td>(</td>
+          <td class="paramtype">QWindow *&#160;</td>
+          <td class="paramname"><em>w</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="../../#l00033">conf::name</a> , 以及 <a class="el" href="../../#l00034">s_schemePropertyName</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00049">eventFilter()</a>.</p>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="../../closed.png" alt="+"/> 这是这个函数的调用关系图:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d7/d5e/classX11Integration_a0b9798c072a8e9be214cd4ff30f5eff3_icgraph.png" border="0" usemap="#ad7/d5e/classX11Integration_a0b9798c072a8e9be214cd4ff30f5eff3_icgraph" alt=""/></div>
+<map name="d7/d5e/classX11Integration_a0b9798c072a8e9be214cd4ff30f5eff3_icgraph" id="ad7/d5e/classX11Integration_a0b9798c072a8e9be214cd4ff30f5eff3_icgraph">
+<area shape="rect" title=" " alt="" coords="236,5,423,47"/>
+<area shape="rect" href="../../d7/d5e/classX11Integration.html#a0c2b852b40ce5d10ba64cd597924a1af" title=" " alt="" coords="5,13,188,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="acd07b4022b8257acad44a3af2ff56afe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acd07b4022b8257acad44a3af2ff56afe">&#9670;&nbsp;</a></span>installDesktopFileName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void X11Integration::installDesktopFileName </td>
+          <td>(</td>
+          <td class="paramtype">QWindow *&#160;</td>
+          <td class="paramname"><em>w</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00049">eventFilter()</a>.</p>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="../../closed.png" alt="+"/> 这是这个函数的调用关系图:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d7/d5e/classX11Integration_acd07b4022b8257acad44a3af2ff56afe_icgraph.png" border="0" usemap="#ad7/d5e/classX11Integration_acd07b4022b8257acad44a3af2ff56afe_icgraph" alt=""/></div>
+<map name="d7/d5e/classX11Integration_acd07b4022b8257acad44a3af2ff56afe_icgraph" id="ad7/d5e/classX11Integration_acd07b4022b8257acad44a3af2ff56afe_icgraph">
+<area shape="rect" title=" " alt="" coords="236,5,440,47"/>
+<area shape="rect" href="../../d7/d5e/classX11Integration.html#a0c2b852b40ce5d10ba64cd597924a1af" title=" " alt="" coords="5,13,188,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a7fd3907f2fc83bfa05eef270d32cf9da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7fd3907f2fc83bfa05eef270d32cf9da">&#9670;&nbsp;</a></span>setWindowProperty()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void X11Integration::setWindowProperty </td>
+          <td>(</td>
+          <td class="paramtype">QWindow *&#160;</td>
+          <td class="paramname"><em>window</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const QByteArray &amp;&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const QByteArray &amp;&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="../../#l00045">m_atoms</a> , 以及 <a class="el" href="../../#l00033">conf::name</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="a9fee8cf6a2f350dbab6b5369f8aa1929"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9fee8cf6a2f350dbab6b5369f8aa1929">&#9670;&nbsp;</a></span>m_atoms</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QHash&lt;QByteArray, xcb_atom_t&gt; X11Integration::m_atoms</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00132">setWindowProperty()</a>.</p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>src/platformtheme/<a class="el" href="../../">x11integration.h</a></li>
+<li>src/platformtheme/<a class="el" href="../../">x11integration.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+生成于 2021年 一月 3日 星期日 19:22:18 , 为 C library使用 &#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20
+</small></address>
+</body>
+</html>

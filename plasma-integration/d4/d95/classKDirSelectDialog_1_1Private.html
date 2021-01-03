@@ -1,0 +1,786 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.20"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>C library: KDirSelectDialog::Private类 参考</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">C library
+   &#160;<span id="projectnumber">v1.0.0</span>
+   </div>
+   <div id="projectbrief">C/C++常用库整理 + C/C++、基于linux 系统一些例子</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.20 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="../../d0/d6c/classKDirSelectDialog.html">KDirSelectDialog</a></li><li class="navelem"><a class="el" href="../../d4/d95/classKDirSelectDialog_1_1Private.html">Private</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pub-attribs">Public 属性</a> &#124;
+<a href="../../db/db5/classKDirSelectDialog_1_1Private-members.html">所有成员列表</a>  </div>
+  <div class="headertitle">
+<div class="title">KDirSelectDialog::Private类 参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="../../closed.png" alt="+"/> KDirSelectDialog::Private 的协作图:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d6/d1b/classKDirSelectDialog_1_1Private__coll__graph.png" border="0" usemap="#aKDirSelectDialog_1_1Private_coll__map" alt="Collaboration graph"/></div>
+<map name="KDirSelectDialog_1_1Private_coll__map" id="aKDirSelectDialog_1_1Private_coll__map">
+<area shape="rect" title=" " alt="" coords="231,448,440,877"/>
+<area shape="rect" href="../../d0/d6c/classKDirSelectDialog.html" title=" " alt="" coords="197,940,380,1223"/>
+<area shape="rect" href="../../da/d5c/classKFileTreeView.html" title=" " alt="" coords="413,132,573,385"/>
+<area shape="rect" href="../../d7/d92/classKFileTreeView_1_1Private.html" title=" " alt="" coords="465,587,619,738"/>
+<area shape="rect" title=" " alt="" coords="451,5,535,83"/>
+<area shape="rect" href="../../d3/d57/classKDEPlatformFileDialogBase.html" title=" " alt="" coords="5,551,207,775"/>
+<area shape="rect" title=" " alt="" coords="71,220,141,297"/>
+</map>
+</div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a1d7de1b47a18b10162330311c4744618"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d95/classKDirSelectDialog_1_1Private.html#a1d7de1b47a18b10162330311c4744618">Private</a> (bool <a class="el" href="../../d0/d6c/classKDirSelectDialog.html#afb9753400669257e319fcd2f0d33bad8">localOnly</a>, <a class="el" href="../../d0/d6c/classKDirSelectDialog.html">KDirSelectDialog</a> *parent)</td></tr>
+<tr class="separator:a1d7de1b47a18b10162330311c4744618"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05643ad51362bab2add1fd4dd6d0dfb3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d95/classKDirSelectDialog_1_1Private.html#a05643ad51362bab2add1fd4dd6d0dfb3">readConfig</a> (const KSharedConfigPtr &amp;config, const QString &amp;group)</td></tr>
+<tr class="separator:a05643ad51362bab2add1fd4dd6d0dfb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9bc38e1aa774308da961f80fc5f2a62"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d95/classKDirSelectDialog_1_1Private.html#ab9bc38e1aa774308da961f80fc5f2a62">saveConfig</a> (KSharedConfigPtr config, const QString &amp;group)</td></tr>
+<tr class="separator:ab9bc38e1aa774308da961f80fc5f2a62"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec49007731171f94be455eb710341d67"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d95/classKDirSelectDialog_1_1Private.html#aec49007731171f94be455eb710341d67">slotComboTextChanged</a> (const QString &amp;)</td></tr>
+<tr class="separator:aec49007731171f94be455eb710341d67"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14fef67eaacb814ea2b12d3bbf995345"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d95/classKDirSelectDialog_1_1Private.html#a14fef67eaacb814ea2b12d3bbf995345">slotContextMenuRequested</a> (const QPoint &amp;)</td></tr>
+<tr class="separator:a14fef67eaacb814ea2b12d3bbf995345"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0f075d9d8a44c56fab2d0bdbad0d8c8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d95/classKDirSelectDialog_1_1Private.html#ac0f075d9d8a44c56fab2d0bdbad0d8c8">slotCurrentChanged</a> ()</td></tr>
+<tr class="separator:ac0f075d9d8a44c56fab2d0bdbad0d8c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23a9a36ebdf8209100cc37b4de8a4684"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d95/classKDirSelectDialog_1_1Private.html#a23a9a36ebdf8209100cc37b4de8a4684">slotDelete</a> ()</td></tr>
+<tr class="separator:a23a9a36ebdf8209100cc37b4de8a4684"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a60a96df6fbd6dd02e06595fec3687efc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d95/classKDirSelectDialog_1_1Private.html#a60a96df6fbd6dd02e06595fec3687efc">slotExpand</a> (const QModelIndex &amp;)</td></tr>
+<tr class="separator:a60a96df6fbd6dd02e06595fec3687efc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a98c5a3e07e49aa4522be03c02d74b857"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d95/classKDirSelectDialog_1_1Private.html#a98c5a3e07e49aa4522be03c02d74b857">slotMkdir</a> ()</td></tr>
+<tr class="separator:a98c5a3e07e49aa4522be03c02d74b857"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c3dc33661c08df9344d59917411c584"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d95/classKDirSelectDialog_1_1Private.html#a0c3dc33661c08df9344d59917411c584">slotMoveToTrash</a> ()</td></tr>
+<tr class="separator:a0c3dc33661c08df9344d59917411c584"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a97785a30ea9740b09ea4c780a8431ebc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d95/classKDirSelectDialog_1_1Private.html#a97785a30ea9740b09ea4c780a8431ebc">slotNewFolder</a> ()</td></tr>
+<tr class="separator:a97785a30ea9740b09ea4c780a8431ebc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8b6a4abf296928a1afb75c736a6cebc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d95/classKDirSelectDialog_1_1Private.html#aa8b6a4abf296928a1afb75c736a6cebc">slotProperties</a> ()</td></tr>
+<tr class="separator:aa8b6a4abf296928a1afb75c736a6cebc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6dbd2642a081adc1d69936b751be1a5f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d95/classKDirSelectDialog_1_1Private.html#a6dbd2642a081adc1d69936b751be1a5f">slotUrlActivated</a> (const QString &amp;)</td></tr>
+<tr class="separator:a6dbd2642a081adc1d69936b751be1a5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Public 属性</h2></td></tr>
+<tr class="memitem:aa85d1c25006d94e85df92a230be95b56"><td class="memItemLeft" align="right" valign="top">QAction *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d95/classKDirSelectDialog_1_1Private.html#aa85d1c25006d94e85df92a230be95b56">deleteAction</a> = nullptr</td></tr>
+<tr class="separator:aa85d1c25006d94e85df92a230be95b56"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab51a223b85b835b0e165006a24918ab5"><td class="memItemLeft" align="right" valign="top">KActionCollection *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d95/classKDirSelectDialog_1_1Private.html#ab51a223b85b835b0e165006a24918ab5">m_actions</a> = nullptr</td></tr>
+<tr class="separator:ab51a223b85b835b0e165006a24918ab5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a47aca3d5f0f9fa346bbd8db1fd7c31f4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d95/classKDirSelectDialog_1_1Private.html#a47aca3d5f0f9fa346bbd8db1fd7c31f4">m_comboLocked</a>: 1</td></tr>
+<tr class="separator:a47aca3d5f0f9fa346bbd8db1fd7c31f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaefd3fab0979fefacaa1726fea2a6892"><td class="memItemLeft" align="right" valign="top">QMenu *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d95/classKDirSelectDialog_1_1Private.html#aaefd3fab0979fefacaa1726fea2a6892">m_contextMenu</a> = nullptr</td></tr>
+<tr class="separator:aaefd3fab0979fefacaa1726fea2a6892"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75e1ce224e121446d4f24121ef38f5ca"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d95/classKDirSelectDialog_1_1Private.html#a75e1ce224e121446d4f24121ef38f5ca">m_localOnly</a>: 1</td></tr>
+<tr class="separator:a75e1ce224e121446d4f24121ef38f5ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a21b8afbaff6d00d79e1c9aab70690b28"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d0/d6c/classKDirSelectDialog.html">KDirSelectDialog</a> *const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d95/classKDirSelectDialog_1_1Private.html#a21b8afbaff6d00d79e1c9aab70690b28">m_parent</a></td></tr>
+<tr class="separator:a21b8afbaff6d00d79e1c9aab70690b28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af4098728355811851106990c2c2b80c1"><td class="memItemLeft" align="right" valign="top">KFilePlacesView *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d95/classKDirSelectDialog_1_1Private.html#af4098728355811851106990c2c2b80c1">m_placesView</a> = nullptr</td></tr>
+<tr class="separator:af4098728355811851106990c2c2b80c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a185f90f2594523c7548fb8bf63cd6168"><td class="memItemLeft" align="right" valign="top">QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d95/classKDirSelectDialog_1_1Private.html#a185f90f2594523c7548fb8bf63cd6168">m_recentDirClass</a></td></tr>
+<tr class="separator:a185f90f2594523c7548fb8bf63cd6168"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08af7cd72a07f3920c51c26335e05a2c"><td class="memItemLeft" align="right" valign="top">QUrl&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d95/classKDirSelectDialog_1_1Private.html#a08af7cd72a07f3920c51c26335e05a2c">m_rootUrl</a></td></tr>
+<tr class="separator:a08af7cd72a07f3920c51c26335e05a2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a918f7a7f18ae415b21a06b2d99ba7a7c"><td class="memItemLeft" align="right" valign="top">QUrl&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d95/classKDirSelectDialog_1_1Private.html#a918f7a7f18ae415b21a06b2d99ba7a7c">m_startDir</a></td></tr>
+<tr class="separator:a918f7a7f18ae415b21a06b2d99ba7a7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43bfbf2ef4f10c520a2cc69145bc7223"><td class="memItemLeft" align="right" valign="top">QUrl&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d95/classKDirSelectDialog_1_1Private.html#a43bfbf2ef4f10c520a2cc69145bc7223">m_startURL</a></td></tr>
+<tr class="separator:a43bfbf2ef4f10c520a2cc69145bc7223"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3eacb64ac8cd71f453b4f7db83eeee84"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../da/d5c/classKFileTreeView.html">KFileTreeView</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d95/classKDirSelectDialog_1_1Private.html#a3eacb64ac8cd71f453b4f7db83eeee84">m_treeView</a> = nullptr</td></tr>
+<tr class="separator:a3eacb64ac8cd71f453b4f7db83eeee84"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81d6dac1f45e2010ac3755f2f146892f"><td class="memItemLeft" align="right" valign="top">KHistoryComboBox *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d95/classKDirSelectDialog_1_1Private.html#a81d6dac1f45e2010ac3755f2f146892f">m_urlCombo</a> = nullptr</td></tr>
+<tr class="separator:a81d6dac1f45e2010ac3755f2f146892f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af72bd48c892d8ef4600ebf6ba9480130"><td class="memItemLeft" align="right" valign="top">QAction *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d95/classKDirSelectDialog_1_1Private.html#af72bd48c892d8ef4600ebf6ba9480130">moveToTrash</a> = nullptr</td></tr>
+<tr class="separator:af72bd48c892d8ef4600ebf6ba9480130"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa9c9d2c07d408215a68970fe126877e"><td class="memItemLeft" align="right" valign="top">QAction *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d95/classKDirSelectDialog_1_1Private.html#aaa9c9d2c07d408215a68970fe126877e">showHiddenFoldersAction</a> = nullptr</td></tr>
+<tr class="separator:aaa9c9d2c07d408215a68970fe126877e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"></div><h2 class="groupheader">构造及析构函数说明</h2>
+<a id="a1d7de1b47a18b10162330311c4744618"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d7de1b47a18b10162330311c4744618">&#9670;&nbsp;</a></span>Private()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">KDirSelectDialog::Private::Private </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>localOnly</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d0/d6c/classKDirSelectDialog.html">KDirSelectDialog</a> *&#160;</td>
+          <td class="paramname"><em>parent</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="a05643ad51362bab2add1fd4dd6d0dfb3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05643ad51362bab2add1fd4dd6d0dfb3">&#9670;&nbsp;</a></span>readConfig()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KDirSelectDialog::Private::readConfig </td>
+          <td>(</td>
+          <td class="paramtype">const KSharedConfigPtr &amp;&#160;</td>
+          <td class="paramname"><em>config</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const QString &amp;&#160;</td>
+          <td class="paramname"><em>group</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="../../#l00089">m_parent</a> , 以及 <a class="el" href="../../#l00098">m_urlCombo</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00284">KDirSelectDialog::KDirSelectDialog()</a>.</p>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="../../closed.png" alt="+"/> 这是这个函数的调用关系图:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d4/d95/classKDirSelectDialog_1_1Private_a05643ad51362bab2add1fd4dd6d0dfb3_icgraph.png" border="0" usemap="#ad4/d95/classKDirSelectDialog_1_1Private_a05643ad51362bab2add1fd4dd6d0dfb3_icgraph" alt=""/></div>
+<map name="d4/d95/classKDirSelectDialog_1_1Private_a05643ad51362bab2add1fd4dd6d0dfb3_icgraph" id="ad4/d95/classKDirSelectDialog_1_1Private_a05643ad51362bab2add1fd4dd6d0dfb3_icgraph">
+<area shape="rect" title=" " alt="" coords="240,5,408,47"/>
+<area shape="rect" href="../../d0/d6c/classKDirSelectDialog.html#a285d34564655c0d9d08d6b5ea02b93a0" title=" " alt="" coords="5,5,192,47"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ab9bc38e1aa774308da961f80fc5f2a62"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab9bc38e1aa774308da961f80fc5f2a62">&#9670;&nbsp;</a></span>saveConfig()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KDirSelectDialog::Private::saveConfig </td>
+          <td>(</td>
+          <td class="paramtype">KSharedConfigPtr&#160;</td>
+          <td class="paramname"><em>config</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const QString &amp;&#160;</td>
+          <td class="paramname"><em>group</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00513">KDirSelectDialog::hideEvent()</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="../../closed.png" alt="+"/> 这是这个函数的调用关系图:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d4/d95/classKDirSelectDialog_1_1Private_ab9bc38e1aa774308da961f80fc5f2a62_icgraph.png" border="0" usemap="#ad4/d95/classKDirSelectDialog_1_1Private_ab9bc38e1aa774308da961f80fc5f2a62_icgraph" alt=""/></div>
+<map name="d4/d95/classKDirSelectDialog_1_1Private_ab9bc38e1aa774308da961f80fc5f2a62_icgraph" id="ad4/d95/classKDirSelectDialog_1_1Private_ab9bc38e1aa774308da961f80fc5f2a62_icgraph">
+<area shape="rect" title=" " alt="" coords="240,5,408,47"/>
+<area shape="rect" href="../../d0/d6c/classKDirSelectDialog.html#a625bf541ca2abf29e3e7b57decfee89b" title=" " alt="" coords="5,13,192,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aec49007731171f94be455eb710341d67"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec49007731171f94be455eb710341d67">&#9670;&nbsp;</a></span>slotComboTextChanged()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KDirSelectDialog::Private::slotComboTextChanged </td>
+          <td>(</td>
+          <td class="paramtype">const QString &amp;&#160;</td>
+          <td class="paramname"><em>text</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="../../#l00443">KDirSelectDialog::rootUrl()</a> , 以及 <a class="el" href="../../#l00426">KDirSelectDialog::url()</a>.</p>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="../../closed.png" alt="+"/> 函数调用图:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d4/d95/classKDirSelectDialog_1_1Private_aec49007731171f94be455eb710341d67_cgraph.png" border="0" usemap="#ad4/d95/classKDirSelectDialog_1_1Private_aec49007731171f94be455eb710341d67_cgraph" alt=""/></div>
+<map name="d4/d95/classKDirSelectDialog_1_1Private_aec49007731171f94be455eb710341d67_cgraph" id="ad4/d95/classKDirSelectDialog_1_1Private_aec49007731171f94be455eb710341d67_cgraph">
+<area shape="rect" title=" " alt="" coords="5,23,180,65"/>
+<area shape="rect" href="../../d0/d6c/classKDirSelectDialog.html#ad9524c2a5758def1ec5d32a83a8f1f98" title=" " alt="" coords="228,5,399,32"/>
+<area shape="rect" href="../../d0/d6c/classKDirSelectDialog.html#a774add03282ecf9a86b3689b0e0b51cb" title=" " alt="" coords="242,56,385,83"/>
+<area shape="rect" href="../../da/d5c/classKFileTreeView.html#a09f398d78a11337a4448fc417b82c34a" title=" " alt="" coords="447,56,619,83"/>
+<area shape="rect" href="../../d7/d92/classKFileTreeView_1_1Private.html#ad7ccacd50f6d363405d05a0f1ec726a0" title=" " alt="" coords="667,49,819,90"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a14fef67eaacb814ea2b12d3bbf995345"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a14fef67eaacb814ea2b12d3bbf995345">&#9670;&nbsp;</a></span>slotContextMenuRequested()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KDirSelectDialog::Private::slotContextMenuRequested </td>
+          <td>(</td>
+          <td class="paramtype">const QPoint &amp;&#160;</td>
+          <td class="paramname"><em>pos</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac0f075d9d8a44c56fab2d0bdbad0d8c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0f075d9d8a44c56fab2d0bdbad0d8c8">&#9670;&nbsp;</a></span>slotCurrentChanged()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KDirSelectDialog::Private::slotCurrentChanged </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a23a9a36ebdf8209100cc37b4de8a4684"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23a9a36ebdf8209100cc37b4de8a4684">&#9670;&nbsp;</a></span>slotDelete()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KDirSelectDialog::Private::slotDelete </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="../../#l00426">KDirSelectDialog::url()</a>.</p>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="../../closed.png" alt="+"/> 函数调用图:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d4/d95/classKDirSelectDialog_1_1Private_a23a9a36ebdf8209100cc37b4de8a4684_cgraph.png" border="0" usemap="#ad4/d95/classKDirSelectDialog_1_1Private_a23a9a36ebdf8209100cc37b4de8a4684_cgraph" alt=""/></div>
+<map name="d4/d95/classKDirSelectDialog_1_1Private_a23a9a36ebdf8209100cc37b4de8a4684_cgraph" id="ad4/d95/classKDirSelectDialog_1_1Private_a23a9a36ebdf8209100cc37b4de8a4684_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,173,47"/>
+<area shape="rect" href="../../d0/d6c/classKDirSelectDialog.html#a774add03282ecf9a86b3689b0e0b51cb" title=" " alt="" coords="221,13,364,39"/>
+<area shape="rect" href="../../da/d5c/classKFileTreeView.html#a09f398d78a11337a4448fc417b82c34a" title=" " alt="" coords="412,13,584,39"/>
+<area shape="rect" href="../../d7/d92/classKFileTreeView_1_1Private.html#ad7ccacd50f6d363405d05a0f1ec726a0" title=" " alt="" coords="632,5,784,47"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a60a96df6fbd6dd02e06595fec3687efc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a60a96df6fbd6dd02e06595fec3687efc">&#9670;&nbsp;</a></span>slotExpand()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KDirSelectDialog::Private::slotExpand </td>
+          <td>(</td>
+          <td class="paramtype">const QModelIndex &amp;&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a98c5a3e07e49aa4522be03c02d74b857"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a98c5a3e07e49aa4522be03c02d74b857">&#9670;&nbsp;</a></span>slotMkdir()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KDirSelectDialog::Private::slotMkdir </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="../../#l00556">KDirSelectDialog::directory()</a> , 以及 <a class="el" href="../../#l00033">conf::name</a>.</p>
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="../../closed.png" alt="+"/> 函数调用图:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d4/d95/classKDirSelectDialog_1_1Private_a98c5a3e07e49aa4522be03c02d74b857_cgraph.png" border="0" usemap="#ad4/d95/classKDirSelectDialog_1_1Private_a98c5a3e07e49aa4522be03c02d74b857_cgraph" alt=""/></div>
+<map name="d4/d95/classKDirSelectDialog_1_1Private_a98c5a3e07e49aa4522be03c02d74b857_cgraph" id="ad4/d95/classKDirSelectDialog_1_1Private_a98c5a3e07e49aa4522be03c02d74b857_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,173,47"/>
+<area shape="rect" href="../../d0/d6c/classKDirSelectDialog.html#a4158d90924ca88eb06fb84e6f322c86c" title=" " alt="" coords="221,13,403,39"/>
+<area shape="rect" href="../../d0/d6c/classKDirSelectDialog.html#a774add03282ecf9a86b3689b0e0b51cb" title=" " alt="" coords="451,13,593,39"/>
+<area shape="rect" href="../../da/d5c/classKFileTreeView.html#a09f398d78a11337a4448fc417b82c34a" title=" " alt="" coords="641,13,813,39"/>
+<area shape="rect" href="../../d7/d92/classKFileTreeView_1_1Private.html#ad7ccacd50f6d363405d05a0f1ec726a0" title=" " alt="" coords="861,5,1013,47"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a0c3dc33661c08df9344d59917411c584"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c3dc33661c08df9344d59917411c584">&#9670;&nbsp;</a></span>slotMoveToTrash()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KDirSelectDialog::Private::slotMoveToTrash </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="../../#l00426">KDirSelectDialog::url()</a>.</p>
+<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-6-trigger" src="../../closed.png" alt="+"/> 函数调用图:</div>
+<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-6-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d4/d95/classKDirSelectDialog_1_1Private_a0c3dc33661c08df9344d59917411c584_cgraph.png" border="0" usemap="#ad4/d95/classKDirSelectDialog_1_1Private_a0c3dc33661c08df9344d59917411c584_cgraph" alt=""/></div>
+<map name="d4/d95/classKDirSelectDialog_1_1Private_a0c3dc33661c08df9344d59917411c584_cgraph" id="ad4/d95/classKDirSelectDialog_1_1Private_a0c3dc33661c08df9344d59917411c584_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,173,47"/>
+<area shape="rect" href="../../d0/d6c/classKDirSelectDialog.html#a774add03282ecf9a86b3689b0e0b51cb" title=" " alt="" coords="221,13,364,39"/>
+<area shape="rect" href="../../da/d5c/classKFileTreeView.html#a09f398d78a11337a4448fc417b82c34a" title=" " alt="" coords="412,13,584,39"/>
+<area shape="rect" href="../../d7/d92/classKFileTreeView_1_1Private.html#ad7ccacd50f6d363405d05a0f1ec726a0" title=" " alt="" coords="632,5,784,47"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a97785a30ea9740b09ea4c780a8431ebc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a97785a30ea9740b09ea4c780a8431ebc">&#9670;&nbsp;</a></span>slotNewFolder()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KDirSelectDialog::Private::slotNewFolder </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa8b6a4abf296928a1afb75c736a6cebc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa8b6a4abf296928a1afb75c736a6cebc">&#9670;&nbsp;</a></span>slotProperties()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KDirSelectDialog::Private::slotProperties </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6dbd2642a081adc1d69936b751be1a5f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6dbd2642a081adc1d69936b751be1a5f">&#9670;&nbsp;</a></span>slotUrlActivated()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KDirSelectDialog::Private::slotUrlActivated </td>
+          <td>(</td>
+          <td class="paramtype">const QString &amp;&#160;</td>
+          <td class="paramname"><em>text</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="../../#l00426">KDirSelectDialog::url()</a>.</p>
+<div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-7-trigger" src="../../closed.png" alt="+"/> 函数调用图:</div>
+<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-7-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d4/d95/classKDirSelectDialog_1_1Private_a6dbd2642a081adc1d69936b751be1a5f_cgraph.png" border="0" usemap="#ad4/d95/classKDirSelectDialog_1_1Private_a6dbd2642a081adc1d69936b751be1a5f_cgraph" alt=""/></div>
+<map name="d4/d95/classKDirSelectDialog_1_1Private_a6dbd2642a081adc1d69936b751be1a5f_cgraph" id="ad4/d95/classKDirSelectDialog_1_1Private_a6dbd2642a081adc1d69936b751be1a5f_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,173,47"/>
+<area shape="rect" href="../../d0/d6c/classKDirSelectDialog.html#a774add03282ecf9a86b3689b0e0b51cb" title=" " alt="" coords="221,13,364,39"/>
+<area shape="rect" href="../../da/d5c/classKFileTreeView.html#a09f398d78a11337a4448fc417b82c34a" title=" " alt="" coords="412,13,584,39"/>
+<area shape="rect" href="../../d7/d92/classKFileTreeView_1_1Private.html#ad7ccacd50f6d363405d05a0f1ec726a0" title=" " alt="" coords="632,5,784,47"/>
+</map>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="aa85d1c25006d94e85df92a230be95b56"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa85d1c25006d94e85df92a230be95b56">&#9670;&nbsp;</a></span>deleteAction</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QAction* KDirSelectDialog::Private::deleteAction = nullptr</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00284">KDirSelectDialog::KDirSelectDialog()</a>.</p>
+
+</div>
+</div>
+<a id="ab51a223b85b835b0e165006a24918ab5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab51a223b85b835b0e165006a24918ab5">&#9670;&nbsp;</a></span>m_actions</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">KActionCollection* KDirSelectDialog::Private::m_actions = nullptr</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00284">KDirSelectDialog::KDirSelectDialog()</a>.</p>
+
+</div>
+</div>
+<a id="a47aca3d5f0f9fa346bbd8db1fd7c31f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a47aca3d5f0f9fa346bbd8db1fd7c31f4">&#9670;&nbsp;</a></span>m_comboLocked</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool KDirSelectDialog::Private::m_comboLocked</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aaefd3fab0979fefacaa1726fea2a6892"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaefd3fab0979fefacaa1726fea2a6892">&#9670;&nbsp;</a></span>m_contextMenu</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QMenu* KDirSelectDialog::Private::m_contextMenu = nullptr</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00284">KDirSelectDialog::KDirSelectDialog()</a>.</p>
+
+</div>
+</div>
+<a id="a75e1ce224e121446d4f24121ef38f5ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a75e1ce224e121446d4f24121ef38f5ca">&#9670;&nbsp;</a></span>m_localOnly</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool KDirSelectDialog::Private::m_localOnly</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00453">KDirSelectDialog::localOnly()</a>.</p>
+
+</div>
+</div>
+<a id="a21b8afbaff6d00d79e1c9aab70690b28"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a21b8afbaff6d00d79e1c9aab70690b28">&#9670;&nbsp;</a></span>m_parent</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d0/d6c/classKDirSelectDialog.html">KDirSelectDialog</a>* const KDirSelectDialog::Private::m_parent</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00106">readConfig()</a> , 以及 <a class="el" href="../../#l00426">KDirSelectDialog::url()</a>.</p>
+
+</div>
+</div>
+<a id="af4098728355811851106990c2c2b80c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af4098728355811851106990c2c2b80c1">&#9670;&nbsp;</a></span>m_placesView</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">KFilePlacesView* KDirSelectDialog::Private::m_placesView = nullptr</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00284">KDirSelectDialog::KDirSelectDialog()</a>.</p>
+
+</div>
+</div>
+<a id="a185f90f2594523c7548fb8bf63cd6168"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a185f90f2594523c7548fb8bf63cd6168">&#9670;&nbsp;</a></span>m_recentDirClass</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QString KDirSelectDialog::Private::m_recentDirClass</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00496">KDirSelectDialog::accept()</a> , 以及 <a class="el" href="../../#l00284">KDirSelectDialog::KDirSelectDialog()</a>.</p>
+
+</div>
+</div>
+<a id="a08af7cd72a07f3920c51c26335e05a2c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a08af7cd72a07f3920c51c26335e05a2c">&#9670;&nbsp;</a></span>m_rootUrl</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QUrl KDirSelectDialog::Private::m_rootUrl</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00284">KDirSelectDialog::KDirSelectDialog()</a>, <a class="el" href="../../#l00443">KDirSelectDialog::rootUrl()</a> , 以及 <a class="el" href="../../#l00463">KDirSelectDialog::setCurrentUrl()</a>.</p>
+
+</div>
+</div>
+<a id="a918f7a7f18ae415b21a06b2d99ba7a7c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a918f7a7f18ae415b21a06b2d99ba7a7c">&#9670;&nbsp;</a></span>m_startDir</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QUrl KDirSelectDialog::Private::m_startDir</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00284">KDirSelectDialog::KDirSelectDialog()</a> , 以及 <a class="el" href="../../#l00458">KDirSelectDialog::startDir()</a>.</p>
+
+</div>
+</div>
+<a id="a43bfbf2ef4f10c520a2cc69145bc7223"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a43bfbf2ef4f10c520a2cc69145bc7223">&#9670;&nbsp;</a></span>m_startURL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QUrl KDirSelectDialog::Private::m_startURL</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00284">KDirSelectDialog::KDirSelectDialog()</a>.</p>
+
+</div>
+</div>
+<a id="a3eacb64ac8cd71f453b4f7db83eeee84"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3eacb64ac8cd71f453b4f7db83eeee84">&#9670;&nbsp;</a></span>m_treeView</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../da/d5c/classKFileTreeView.html">KFileTreeView</a>* KDirSelectDialog::Private::m_treeView = nullptr</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00284">KDirSelectDialog::KDirSelectDialog()</a>, <a class="el" href="../../#l00463">KDirSelectDialog::setCurrentUrl()</a>, <a class="el" href="../../#l00426">KDirSelectDialog::url()</a> , 以及 <a class="el" href="../../#l00448">KDirSelectDialog::view()</a>.</p>
+
+</div>
+</div>
+<a id="a81d6dac1f45e2010ac3755f2f146892f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81d6dac1f45e2010ac3755f2f146892f">&#9670;&nbsp;</a></span>m_urlCombo</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">KHistoryComboBox* KDirSelectDialog::Private::m_urlCombo = nullptr</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00496">KDirSelectDialog::accept()</a>, <a class="el" href="../../#l00284">KDirSelectDialog::KDirSelectDialog()</a>, <a class="el" href="../../#l00106">readConfig()</a> , 以及 <a class="el" href="../../#l00426">KDirSelectDialog::url()</a>.</p>
+
+</div>
+</div>
+<a id="af72bd48c892d8ef4600ebf6ba9480130"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af72bd48c892d8ef4600ebf6ba9480130">&#9670;&nbsp;</a></span>moveToTrash</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QAction* KDirSelectDialog::Private::moveToTrash = nullptr</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00284">KDirSelectDialog::KDirSelectDialog()</a>.</p>
+
+</div>
+</div>
+<a id="aaa9c9d2c07d408215a68970fe126877e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa9c9d2c07d408215a68970fe126877e">&#9670;&nbsp;</a></span>showHiddenFoldersAction</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QAction* KDirSelectDialog::Private::showHiddenFoldersAction = nullptr</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00284">KDirSelectDialog::KDirSelectDialog()</a> , 以及 <a class="el" href="../../#l00463">KDirSelectDialog::setCurrentUrl()</a>.</p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>src/platformtheme/<a class="el" href="../../">kdirselectdialog.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+生成于 2021年 一月 3日 星期日 19:22:18 , 为 C library使用 &#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20
+</small></address>
+</body>
+</html>

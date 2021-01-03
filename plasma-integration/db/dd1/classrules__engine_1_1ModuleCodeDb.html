@@ -1,0 +1,382 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.20"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>C library: rules_engine.ModuleCodeDb类 参考</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">C library
+   &#160;<span id="projectnumber">v1.0.0</span>
+   </div>
+   <div id="projectbrief">C/C++常用库整理 + C/C++、基于linux 系统一些例子</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.20 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="../../d8/df1/namespacerules__engine.html">rules_engine</a></li><li class="navelem"><a class="el" href="../../db/dd1/classrules__engine_1_1ModuleCodeDb.html">ModuleCodeDb</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pri-methods">Private 成员函数</a> &#124;
+<a href="#pri-static-attribs">静态 Private 属性</a> &#124;
+<a href="../../d5/d2b/classrules__engine_1_1ModuleCodeDb-members.html">所有成员列表</a>  </div>
+  <div class="headertitle">
+<div class="title">rules_engine.ModuleCodeDb类 参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="../../closed.png" alt="+"/> 类 rules_engine.ModuleCodeDb 继承关系图:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d6/de8/classrules__engine_1_1ModuleCodeDb__inherit__graph.png" border="0" usemap="#arules__engine_8ModuleCodeDb_inherit__map" alt="Inheritance graph"/></div>
+<map name="rules__engine_8ModuleCodeDb_inherit__map" id="arules__engine_8ModuleCodeDb_inherit__map">
+<area shape="rect" title=" " alt="" coords="11,373,206,495"/>
+<area shape="rect" href="../../dd/de9/classrules__engine_1_1AbstractCompiledCodeDb.html" title=" " alt="" coords="5,131,212,325"/>
+<area shape="rect" title=" " alt="" coords="79,5,138,83"/>
+</map>
+</div>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="../../closed.png" alt="+"/> rules_engine.ModuleCodeDb 的协作图:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d7/d03/classrules__engine_1_1ModuleCodeDb__coll__graph.png" border="0" usemap="#arules__engine_8ModuleCodeDb_coll__map" alt="Collaboration graph"/></div>
+<map name="rules__engine_8ModuleCodeDb_coll__map" id="arules__engine_8ModuleCodeDb_coll__map">
+<area shape="rect" title=" " alt="" coords="11,373,206,495"/>
+<area shape="rect" href="../../dd/de9/classrules__engine_1_1AbstractCompiledCodeDb.html" title=" " alt="" coords="5,131,212,325"/>
+<area shape="rect" title=" " alt="" coords="79,5,138,83"/>
+</map>
+</div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a46e33c6c800b21c844c02f24b8ac77d0"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dd1/classrules__engine_1_1ModuleCodeDb.html#a46e33c6c800b21c844c02f24b8ac77d0">__init__</a> (self, <a class="el" href="../../dd/de9/classrules__engine_1_1AbstractCompiledCodeDb.html#a1311928d01f6909067be040d422f0bfa">db</a>)</td></tr>
+<tr class="separator:a46e33c6c800b21c844c02f24b8ac77d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a98f8767a8deff56d9b0eaf1ee13a06ac"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dd1/classrules__engine_1_1ModuleCodeDb.html#a98f8767a8deff56d9b0eaf1ee13a06ac">apply</a> (self, filename, sip)</td></tr>
+<tr class="separator:a98f8767a8deff56d9b0eaf1ee13a06ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a774c7630b5e25dbb0ab1d1e68b2da0e8"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dd1/classrules__engine_1_1ModuleCodeDb.html#a774c7630b5e25dbb0ab1d1e68b2da0e8">dump_usage</a> (self, fn)</td></tr>
+<tr class="separator:a774c7630b5e25dbb0ab1d1e68b2da0e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classrules__engine_1_1AbstractCompiledCodeDb"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classrules__engine_1_1AbstractCompiledCodeDb')"><img src="../../closed.png" alt="-"/>&#160;Public 成员函数 继承自 <a class="el" href="../../dd/de9/classrules__engine_1_1AbstractCompiledCodeDb.html">rules_engine.AbstractCompiledCodeDb</a></td></tr>
+<tr class="memitem:a4d413dddbd2356c82bcd5d44a9410265 inherit pub_methods_classrules__engine_1_1AbstractCompiledCodeDb"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/de9/classrules__engine_1_1AbstractCompiledCodeDb.html#a4d413dddbd2356c82bcd5d44a9410265">__str__</a> (self)</td></tr>
+<tr class="separator:a4d413dddbd2356c82bcd5d44a9410265 inherit pub_methods_classrules__engine_1_1AbstractCompiledCodeDb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a176173afb7e1fd3629556d56fd10fced inherit pub_methods_classrules__engine_1_1AbstractCompiledCodeDb"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/de9/classrules__engine_1_1AbstractCompiledCodeDb.html#a176173afb7e1fd3629556d56fd10fced">trace_result</a> (self, parents, item, original, modified)</td></tr>
+<tr class="separator:a176173afb7e1fd3629556d56fd10fced inherit pub_methods_classrules__engine_1_1AbstractCompiledCodeDb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private 成员函数</h2></td></tr>
+<tr class="memitem:ad53b08f1bbf69041dd2ebe30d699606b"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dd1/classrules__engine_1_1ModuleCodeDb.html#ad53b08f1bbf69041dd2ebe30d699606b">_get</a> (self, filename)</td></tr>
+<tr class="separator:ad53b08f1bbf69041dd2ebe30d699606b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
+静态 Private 属性</h2></td></tr>
+<tr class="memitem:a6147970ee54a8bb6c3dd94af4836d93d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/dd1/classrules__engine_1_1ModuleCodeDb.html#a6147970ee54a8bb6c3dd94af4836d93d">__metaclass__</a> = ABCMeta</td></tr>
+<tr class="separator:a6147970ee54a8bb6c3dd94af4836d93d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
+额外继承的成员函数</h2></td></tr>
+<tr class="inherit_header pub_attribs_classrules__engine_1_1AbstractCompiledCodeDb"><td colspan="2" onclick="javascript:toggleInherit('pub_attribs_classrules__engine_1_1AbstractCompiledCodeDb')"><img src="../../closed.png" alt="-"/>&#160;Public 属性 继承自 <a class="el" href="../../dd/de9/classrules__engine_1_1AbstractCompiledCodeDb.html">rules_engine.AbstractCompiledCodeDb</a></td></tr>
+<tr class="memitem:a1311928d01f6909067be040d422f0bfa inherit pub_attribs_classrules__engine_1_1AbstractCompiledCodeDb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/de9/classrules__engine_1_1AbstractCompiledCodeDb.html#a1311928d01f6909067be040d422f0bfa">db</a></td></tr>
+<tr class="separator:a1311928d01f6909067be040d422f0bfa inherit pub_attribs_classrules__engine_1_1AbstractCompiledCodeDb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b2d5b3a645394e56e5b2d883116ceee inherit pub_attribs_classrules__engine_1_1AbstractCompiledCodeDb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/de9/classrules__engine_1_1AbstractCompiledCodeDb.html#a1b2d5b3a645394e56e5b2d883116ceee">name</a></td></tr>
+<tr class="separator:a1b2d5b3a645394e56e5b2d883116ceee inherit pub_attribs_classrules__engine_1_1AbstractCompiledCodeDb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><pre class="fragment">THE RULES FOR INJECTING MODULE-RELATED CODE (such as %ExportedHeaderCode,
+%ModuleCode, %ModuleHeaderCode or other module-level directives).
+
+These are used to customize the behaviour of the SIP generator by allowing
+module-level code injection.
+
+The raw rule database must be a dictionary as follows:
+
+    0. Each key is the basename of a header file.
+
+    1. Each value has entries which update the declaration as follows:
+
+    "code":         Required. Either a string, with the %XXXCode content,
+                    or a callable.
+
+If "code" is a callable, it is called with the following contract:
+
+    def module_xxx(filename, sip, entry):
+        '''
+        Return a string to insert for the file.
+
+        :param filename:    The filename.
+        :param sip:         A dict with the key "name" for the filename,
+                            "decl" for the module body plus the "code" key
+                            described above.
+        :param entry:       The dictionary entry.
+
+        :return: A string.
+        '''
+
+:return: The compiled form of the rules.
+</pre> </div><h2 class="groupheader">构造及析构函数说明</h2>
+<a id="a46e33c6c800b21c844c02f24b8ac77d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a46e33c6c800b21c844c02f24b8ac77d0">&#9670;&nbsp;</a></span>__init__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def rules_engine.ModuleCodeDb.__init__ </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>db</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>重载 <a class="el" href="../../dd/de9/classrules__engine_1_1AbstractCompiledCodeDb.html#a255bf3162a7367a0561624662a868a62">rules_engine.AbstractCompiledCodeDb</a> .</p>
+
+<p class="reference">引用了 <a class="el" href="../../#l00112">rules_engine.AbstractCompiledRuleDb.db</a> , 以及 <a class="el" href="../../#l00573">rules_engine.AbstractCompiledCodeDb.db</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="ad53b08f1bbf69041dd2ebe30d699606b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad53b08f1bbf69041dd2ebe30d699606b">&#9670;&nbsp;</a></span>_get()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">def rules_engine.ModuleCodeDb._get </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>filename</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="../../#l00112">rules_engine.AbstractCompiledRuleDb.db</a> , 以及 <a class="el" href="../../#l00573">rules_engine.AbstractCompiledCodeDb.db</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00777">rules_engine.ModuleCodeDb.apply()</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="../../closed.png" alt="+"/> 这是这个函数的调用关系图:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../db/dd1/classrules__engine_1_1ModuleCodeDb_ad53b08f1bbf69041dd2ebe30d699606b_icgraph.png" border="0" usemap="#adb/dd1/classrules__engine_1_1ModuleCodeDb_ad53b08f1bbf69041dd2ebe30d699606b_icgraph" alt=""/></div>
+<map name="db/dd1/classrules__engine_1_1ModuleCodeDb_ad53b08f1bbf69041dd2ebe30d699606b_icgraph" id="adb/dd1/classrules__engine_1_1ModuleCodeDb_ad53b08f1bbf69041dd2ebe30d699606b_icgraph">
+<area shape="rect" title=" " alt="" coords="284,5,507,32"/>
+<area shape="rect" href="../../db/dd1/classrules__engine_1_1ModuleCodeDb.html#a98f8767a8deff56d9b0eaf1ee13a06ac" title=" " alt="" coords="5,5,236,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a98f8767a8deff56d9b0eaf1ee13a06ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a98f8767a8deff56d9b0eaf1ee13a06ac">&#9670;&nbsp;</a></span>apply()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def rules_engine.ModuleCodeDb.apply </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>filename</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>sip</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Walk over the code database for modules, applying the first matching transformation.
+
+:param filename:            The file for the module.
+:param sip:                 The SIP dict (may be modified on return).
+:return:                    Modifying rule or None (even if a rule matched, it may not modify things).
+</pre> 
+<p>重载 <a class="el" href="../../dd/de9/classrules__engine_1_1AbstractCompiledCodeDb.html#a27afa0d15996641364efd50997144cab">rules_engine.AbstractCompiledCodeDb</a> .</p>
+
+<p class="reference">引用了 <a class="el" href="../../#l00767">rules_engine.ModuleCodeDb._get()</a>, <a class="el" href="../../#l00673">rules_engine.MethodCodeDb._get()</a>, <a class="el" href="../../#l00082">rules_engine.Rule._trace_result()</a> , 以及 <a class="el" href="../../#l00589">rules_engine.AbstractCompiledCodeDb._trace_result()</a>.</p>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="../../closed.png" alt="+"/> 函数调用图:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../db/dd1/classrules__engine_1_1ModuleCodeDb_a98f8767a8deff56d9b0eaf1ee13a06ac_cgraph.png" border="0" usemap="#adb/dd1/classrules__engine_1_1ModuleCodeDb_a98f8767a8deff56d9b0eaf1ee13a06ac_cgraph" alt=""/></div>
+<map name="db/dd1/classrules__engine_1_1ModuleCodeDb_a98f8767a8deff56d9b0eaf1ee13a06ac_cgraph" id="adb/dd1/classrules__engine_1_1ModuleCodeDb_a98f8767a8deff56d9b0eaf1ee13a06ac_cgraph">
+<area shape="rect" title=" " alt="" coords="5,85,236,112"/>
+<area shape="rect" href="../../db/dd1/classrules__engine_1_1ModuleCodeDb.html#ad53b08f1bbf69041dd2ebe30d699606b" title=" " alt="" coords="285,5,507,32"/>
+<area shape="rect" href="../../dc/d7b/classrules__engine_1_1MethodCodeDb.html#af70d2b7911de23dc021df671aaafe231" title=" " alt="" coords="284,56,508,83"/>
+<area shape="rect" href="../../d2/db5/classrules__engine_1_1Rule.html#a98a86b083c5c43b744b3c7c66547ef40" title=" " alt="" coords="331,107,461,149"/>
+<area shape="rect" href="../../dd/de9/classrules__engine_1_1AbstractCompiledCodeDb.html#a28ab992bb9af710b4fa107aea5475249" title=" " alt="" coords="293,173,499,214"/>
+<area shape="rect" href="../../d8/df1/namespacerules__engine.html#a38305b49826950ea92a421ce92d8ae77" title=" " alt="" coords="556,56,707,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a774c7630b5e25dbb0ab1d1e68b2da0e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a774c7630b5e25dbb0ab1d1e68b2da0e8">&#9670;&nbsp;</a></span>dump_usage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def rules_engine.ModuleCodeDb.dump_usage </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>fn</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment"> Dump the usage counts.</pre> 
+<p>重载 <a class="el" href="../../dd/de9/classrules__engine_1_1AbstractCompiledCodeDb.html#a68825c236c785cef7bdd52a6dbcdd53c">rules_engine.AbstractCompiledCodeDb</a> .</p>
+
+<p class="reference">引用了 <a class="el" href="../../#l00112">rules_engine.AbstractCompiledRuleDb.db</a>, <a class="el" href="../../#l00573">rules_engine.AbstractCompiledCodeDb.db</a> , 以及 <a class="el" href="../../#l00344">generate-fastlane-metadata.str</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="a6147970ee54a8bb6c3dd94af4836d93d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6147970ee54a8bb6c3dd94af4836d93d">&#9670;&nbsp;</a></span>__metaclass__</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">rules_engine.ModuleCodeDb.__metaclass__ = ABCMeta</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>extra-cmake-modules/find-modules/<a class="el" href="../../">rules_engine.py</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+生成于 2021年 一月 3日 星期日 19:22:18 , 为 C library使用 &#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20
+</small></address>
+</body>
+</html>

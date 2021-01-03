@@ -1,0 +1,1253 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.20"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>C library: sip_generator.SipGenerator类 参考</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">C library
+   &#160;<span id="projectnumber">v1.0.0</span>
+   </div>
+   <div id="projectbrief">C/C++常用库整理 + C/C++、基于linux 系统一些例子</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.20 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="../../dc/d41/namespacesip__generator.html">sip_generator</a></li><li class="navelem"><a class="el" href="../../d0/d6a/classsip__generator_1_1SipGenerator.html">SipGenerator</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pub-static-methods">静态 Public 成员函数</a> &#124;
+<a href="#pub-attribs">Public 属性</a> &#124;
+<a href="#pri-methods">Private 成员函数</a> &#124;
+<a href="#pri-static-methods">静态 Private 成员函数</a> &#124;
+<a href="../../dd/dd9/classsip__generator_1_1SipGenerator-members.html">所有成员列表</a>  </div>
+  <div class="headertitle">
+<div class="title">sip_generator.SipGenerator类 参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="../../closed.png" alt="+"/> 类 sip_generator.SipGenerator 继承关系图:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d7/d0f/classsip__generator_1_1SipGenerator__inherit__graph.png" border="0" usemap="#asip__generator_8SipGenerator_inherit__map" alt="Inheritance graph"/></div>
+<map name="sip__generator_8SipGenerator_inherit__map" id="asip__generator_8SipGenerator_inherit__map">
+<area shape="rect" title=" " alt="" coords="5,131,199,501"/>
+<area shape="rect" title=" " alt="" coords="73,5,131,83"/>
+</map>
+</div>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="../../closed.png" alt="+"/> sip_generator.SipGenerator 的协作图:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d0/ded/classsip__generator_1_1SipGenerator__coll__graph.png" border="0" usemap="#asip__generator_8SipGenerator_coll__map" alt="Collaboration graph"/></div>
+<map name="sip__generator_8SipGenerator_coll__map" id="asip__generator_8SipGenerator_coll__map">
+<area shape="rect" title=" " alt="" coords="5,131,199,501"/>
+<area shape="rect" title=" " alt="" coords="73,5,131,83"/>
+</map>
+</div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:ab30550464f9d585df468eda4054da304"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d6a/classsip__generator_1_1SipGenerator.html#ab30550464f9d585df468eda4054da304">__init__</a> (self, project_rules, <a class="el" href="../../d0/d6a/classsip__generator_1_1SipGenerator.html#a10a0e80c41e4f3116f4c1cc972356478">compile_flags</a>, <a class="el" href="../../d0/d6a/classsip__generator_1_1SipGenerator.html#a3bb0f04b325d2709b9521dcaefef5654">verbose</a>=<a class="el" href="../../d1/d90/cmake-modules-styleguide_8txt.html#acb482929bafef6acc9855b577160714a">False</a>, <a class="el" href="../../d0/d6a/classsip__generator_1_1SipGenerator.html#ad6fd504601ec55b1f5f973df3d3b6a87">dump_includes</a>=<a class="el" href="../../d1/d90/cmake-modules-styleguide_8txt.html#acb482929bafef6acc9855b577160714a">False</a>, <a class="el" href="../../d0/d6a/classsip__generator_1_1SipGenerator.html#a0d0a10e1aa0fd65452200a27035e96cd">dump_privates</a>=<a class="el" href="../../d1/d90/cmake-modules-styleguide_8txt.html#acb482929bafef6acc9855b577160714a">False</a>)</td></tr>
+<tr class="separator:ab30550464f9d585df468eda4054da304"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72e9f2e62b8afbbc0c6106778239a0f8"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d6a/classsip__generator_1_1SipGenerator.html#a72e9f2e62b8afbbc0c6106778239a0f8">create_sip</a> (self, h_file, include_filename)</td></tr>
+<tr class="separator:a72e9f2e62b8afbbc0c6106778239a0f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac511e0e85c2b8bf1344da923e322915a"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d6a/classsip__generator_1_1SipGenerator.html#ac511e0e85c2b8bf1344da923e322915a">skippable_attribute</a> (self, parent, member, text, sip)</td></tr>
+<tr class="separator:ac511e0e85c2b8bf1344da923e322915a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+静态 Public 成员函数</h2></td></tr>
+<tr class="memitem:acde8affee53c5ff4ac786e0aa227cf2c"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d6a/classsip__generator_1_1SipGenerator.html#acde8affee53c5ff4ac786e0aa227cf2c">describe</a> (cursor, text=None)</td></tr>
+<tr class="separator:acde8affee53c5ff4ac786e0aa227cf2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Public 属性</h2></td></tr>
+<tr class="memitem:a10a0e80c41e4f3116f4c1cc972356478"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d6a/classsip__generator_1_1SipGenerator.html#a10a0e80c41e4f3116f4c1cc972356478">compile_flags</a></td></tr>
+<tr class="separator:a10a0e80c41e4f3116f4c1cc972356478"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42d59561dc5fbff88b395a1100b4b072"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d6a/classsip__generator_1_1SipGenerator.html#a42d59561dc5fbff88b395a1100b4b072">diagnostics</a></td></tr>
+<tr class="separator:a42d59561dc5fbff88b395a1100b4b072"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6fd504601ec55b1f5f973df3d3b6a87"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d6a/classsip__generator_1_1SipGenerator.html#ad6fd504601ec55b1f5f973df3d3b6a87">dump_includes</a></td></tr>
+<tr class="separator:ad6fd504601ec55b1f5f973df3d3b6a87"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d0a10e1aa0fd65452200a27035e96cd"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d6a/classsip__generator_1_1SipGenerator.html#a0d0a10e1aa0fd65452200a27035e96cd">dump_privates</a></td></tr>
+<tr class="separator:a0d0a10e1aa0fd65452200a27035e96cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a90496b0660864714768a301bba749094"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d6a/classsip__generator_1_1SipGenerator.html#a90496b0660864714768a301bba749094">rules</a></td></tr>
+<tr class="separator:a90496b0660864714768a301bba749094"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11e1bef57214ebdf65ca83ac36db7c72"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d6a/classsip__generator_1_1SipGenerator.html#a11e1bef57214ebdf65ca83ac36db7c72">tu</a></td></tr>
+<tr class="separator:a11e1bef57214ebdf65ca83ac36db7c72"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1e19f038ea3091ff1ea8ca3521a7b04"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d6a/classsip__generator_1_1SipGenerator.html#ae1e19f038ea3091ff1ea8ca3521a7b04">unpreprocessed_source</a></td></tr>
+<tr class="separator:ae1e19f038ea3091ff1ea8ca3521a7b04"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3bb0f04b325d2709b9521dcaefef5654"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d6a/classsip__generator_1_1SipGenerator.html#a3bb0f04b325d2709b9521dcaefef5654">verbose</a></td></tr>
+<tr class="separator:a3bb0f04b325d2709b9521dcaefef5654"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private 成员函数</h2></td></tr>
+<tr class="memitem:ae2212130cc8c142a98c78a9f15a3e4e6"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d6a/classsip__generator_1_1SipGenerator.html#ae2212130cc8c142a98c78a9f15a3e4e6">_container_get</a> (self, container, level, h_file, include_filename)</td></tr>
+<tr class="separator:ae2212130cc8c142a98c78a9f15a3e4e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3157da9a64675bf042bf0a4a9c5ce83f"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d6a/classsip__generator_1_1SipGenerator.html#a3157da9a64675bf042bf0a4a9c5ce83f">_enum_get</a> (self, container, enum, level)</td></tr>
+<tr class="separator:a3157da9a64675bf042bf0a4a9c5ce83f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee57f71e7ee9dcd3e9d2b7798448016b"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d6a/classsip__generator_1_1SipGenerator.html#aee57f71e7ee9dcd3e9d2b7798448016b">_fn_get</a> (self, container, function, level)</td></tr>
+<tr class="separator:aee57f71e7ee9dcd3e9d2b7798448016b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb40a5b10b0f4ff9a67c48e3074467d0"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d6a/classsip__generator_1_1SipGenerator.html#aeb40a5b10b0f4ff9a67c48e3074467d0">_fn_get_decorators</a> (self, function)</td></tr>
+<tr class="separator:aeb40a5b10b0f4ff9a67c48e3074467d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25aec974b906cc8ff128355e7b3a6bb6"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d6a/classsip__generator_1_1SipGenerator.html#a25aec974b906cc8ff128355e7b3a6bb6">_fn_get_parameter_default</a> (self, function, parameter)</td></tr>
+<tr class="separator:a25aec974b906cc8ff128355e7b3a6bb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a408bbdbea2f90a2e09dd9bed90550099"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d6a/classsip__generator_1_1SipGenerator.html#a408bbdbea2f90a2e09dd9bed90550099">_get_access_specifier</a> (self, member, level)</td></tr>
+<tr class="separator:a408bbdbea2f90a2e09dd9bed90550099"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05242d1debcb283e9a60b180b869f9d3"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d6a/classsip__generator_1_1SipGenerator.html#a05242d1debcb283e9a60b180b869f9d3">_read_source</a> (self, extent)</td></tr>
+<tr class="separator:a05242d1debcb283e9a60b180b869f9d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a038976a119c5d9a2c900602f43466f73"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d6a/classsip__generator_1_1SipGenerator.html#a038976a119c5d9a2c900602f43466f73">_typedef_get</a> (self, container, typedef, level)</td></tr>
+<tr class="separator:a038976a119c5d9a2c900602f43466f73"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af4cba0ad9d3bf60d758a93c57897f13e"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d6a/classsip__generator_1_1SipGenerator.html#af4cba0ad9d3bf60d758a93c57897f13e">_var_get</a> (self, container, variable, level)</td></tr>
+<tr class="separator:af4cba0ad9d3bf60d758a93c57897f13e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-methods"></a>
+静态 Private 成员函数</h2></td></tr>
+<tr class="memitem:ae12f17f26ede0917578602a80ae6a4a1"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d6a/classsip__generator_1_1SipGenerator.html#ae12f17f26ede0917578602a80ae6a4a1">_report_ignoring</a> (parent, child, text=None)</td></tr>
+<tr class="separator:ae12f17f26ede0917578602a80ae6a4a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"></div><h2 class="groupheader">构造及析构函数说明</h2>
+<a id="ab30550464f9d585df468eda4054da304"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab30550464f9d585df468eda4054da304">&#9670;&nbsp;</a></span>__init__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def sip_generator.SipGenerator.__init__ </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>project_rules</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>compile_flags</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>verbose</em> = <code><a class="el" href="../../d1/d90/cmake-modules-styleguide_8txt.html#acb482929bafef6acc9855b577160714a">False</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>dump_includes</em> = <code><a class="el" href="../../d1/d90/cmake-modules-styleguide_8txt.html#acb482929bafef6acc9855b577160714a">False</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>dump_privates</em> = <code><a class="el" href="../../d1/d90/cmake-modules-styleguide_8txt.html#acb482929bafef6acc9855b577160714a">False</a></code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Constructor.
+
+:param project_rules:       The rules for the file.
+:param compile_flags:       The compile flags for the file.
+:param dump_includes:       Turn on diagnostics for include files.
+:param dump_privates:       Turn on diagnostics for omitted private items.
+</pre> 
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="ae2212130cc8c142a98c78a9f15a3e4e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae2212130cc8c142a98c78a9f15a3e4e6">&#9670;&nbsp;</a></span>_container_get()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">def sip_generator.SipGenerator._container_get </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>container</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>level</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>h_file</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>include_filename</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<pre class="fragment">Generate the (recursive) translation for a class or namespace.
+
+:param container:           A class or namespace.
+:param h_file:              Name of header file being processed.
+:param level:               Recursion level controls indentation.
+:return:                    A string.
+</pre> 
+<p class="reference">引用了 <a class="el" href="../../#l00153">sip_generator.SipGenerator._container_get()</a>, <a class="el" href="../../#l00400">sip_generator.SipGenerator._enum_get()</a>, <a class="el" href="../../#l00417">sip_generator.SipGenerator._fn_get()</a>, <a class="el" href="../../#l00377">sip_generator.SipGenerator._get_access_specifier()</a>, <a class="el" href="../../#l00719">sip_generator.SipGenerator._read_source()</a>, <a class="el" href="../../#l00644">sip_generator.SipGenerator._typedef_get()</a>, <a class="el" href="../../#l00670">sip_generator.SipGenerator._var_get()</a>, <a class="el" href="../../#l00012">Qt5Ruleset.container_rules()</a>, <a class="el" href="../../#l00084">sip_generator.SipGenerator.dump_privates</a>, <a class="el" href="../../#l00088">Qt5Ruleset.forward_declaration_rules()</a>, <a class="el" href="../../#l00080">sip_generator.SipGenerator.rules</a>, <a class="el" href="../../#l00017">set()</a>, <a class="el" href="../../#l00137">sip_generator.SipGenerator.skippable_attribute()</a>, <a class="el" href="../../#l00086">sip_generator.SipGenerator.tu</a> , 以及 <a class="el" href="../../#l00082">sip_generator.SipGenerator.verbose</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00153">sip_generator.SipGenerator._container_get()</a> , 以及 <a class="el" href="../../#l00095">sip_generator.SipGenerator.create_sip()</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="../../closed.png" alt="+"/> 函数调用图:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d0/d6a/classsip__generator_1_1SipGenerator_ae2212130cc8c142a98c78a9f15a3e4e6_cgraph.png" border="0" usemap="#ad0/d6a/classsip__generator_1_1SipGenerator_ae2212130cc8c142a98c78a9f15a3e4e6_cgraph" alt=""/></div>
+<map name="d0/d6a/classsip__generator_1_1SipGenerator_ae2212130cc8c142a98c78a9f15a3e4e6_cgraph" id="ad0/d6a/classsip__generator_1_1SipGenerator_ae2212130cc8c142a98c78a9f15a3e4e6_cgraph">
+<area shape="rect" title=" " alt="" coords="5,364,196,405"/>
+<area shape="rect" href="../../d0/d6a/classsip__generator_1_1SipGenerator.html#a3157da9a64675bf042bf0a4a9c5ce83f" title=" " alt="" coords="244,93,435,135"/>
+<area shape="rect" href="../../d0/d6a/classsip__generator_1_1SipGenerator.html#aee57f71e7ee9dcd3e9d2b7798448016b" title=" " alt="" coords="244,159,435,200"/>
+<area shape="rect" href="../../d0/d6a/classsip__generator_1_1SipGenerator.html#a05242d1debcb283e9a60b180b869f9d3" title=" " alt="" coords="511,267,701,308"/>
+<area shape="rect" href="../../d1/d26/autotests_2CMakeLists_8txt.html#a71fb52bba5357692a92641d54d54febc" title=" " alt="" coords="586,463,626,490"/>
+<area shape="rect" href="../../d0/d6a/classsip__generator_1_1SipGenerator.html#ac511e0e85c2b8bf1344da923e322915a" title=" " alt="" coords="483,332,729,373"/>
+<area shape="rect" href="../../d0/d6a/classsip__generator_1_1SipGenerator.html#a408bbdbea2f90a2e09dd9bed90550099" title=" " alt="" coords="244,276,435,317"/>
+<area shape="rect" href="../../d0/d6a/classsip__generator_1_1SipGenerator.html#a038976a119c5d9a2c900602f43466f73" title=" " alt="" coords="244,511,435,552"/>
+<area shape="rect" href="../../d0/d6a/classsip__generator_1_1SipGenerator.html#af4cba0ad9d3bf60d758a93c57897f13e" title=" " alt="" coords="244,393,435,435"/>
+<area shape="rect" href="../../d4/db5/namespaceQt5Ruleset.html#ad2cb3d40baca152f841efd2584793235" title=" " alt="" coords="265,576,414,617"/>
+<area shape="rect" href="../../d4/db5/namespaceQt5Ruleset.html#a1d33c168da7252e248e0b9bfad1a42ea" title=" " alt="" coords="270,641,409,683"/>
+<area shape="rect" href="../../d0/d6a/classsip__generator_1_1SipGenerator.html#aeb40a5b10b0f4ff9a67c48e3074467d0" title=" " alt="" coords="511,201,701,243"/>
+<area shape="rect" href="../../d0/d6a/classsip__generator_1_1SipGenerator.html#a25aec974b906cc8ff128355e7b3a6bb6" title=" " alt="" coords="511,5,701,47"/>
+<area shape="rect" href="../../d4/db5/namespaceQt5Ruleset.html#ae65487d5ad2b42c637852a93c6c6f4d3" title=" " alt="" coords="535,71,677,112"/>
+<area shape="rect" href="../../d4/db5/namespaceQt5Ruleset.html#a63259fef577373499bdd0f5f329b7184" title=" " alt="" coords="529,136,683,177"/>
+<area shape="rect" href="../../d4/db5/namespaceQt5Ruleset.html#a0cd7d9ece112c80e1647ef85bb143f76" title=" " alt="" coords="537,515,675,556"/>
+<area shape="rect" href="../../d4/db5/namespaceQt5Ruleset.html#a65751cd315629ed8ebf6dd3f874acb88" title=" " alt="" coords="537,397,675,439"/>
+</map>
+</div>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="../../closed.png" alt="+"/> 这是这个函数的调用关系图:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d0/d6a/classsip__generator_1_1SipGenerator_ae2212130cc8c142a98c78a9f15a3e4e6_icgraph.png" border="0" usemap="#ad0/d6a/classsip__generator_1_1SipGenerator_ae2212130cc8c142a98c78a9f15a3e4e6_icgraph" alt=""/></div>
+<map name="d0/d6a/classsip__generator_1_1SipGenerator_ae2212130cc8c142a98c78a9f15a3e4e6_icgraph" id="ad0/d6a/classsip__generator_1_1SipGenerator_ae2212130cc8c142a98c78a9f15a3e4e6_icgraph">
+<area shape="rect" title=" " alt="" coords="303,29,493,71"/>
+<area shape="rect" href="../../d0/d6a/classsip__generator_1_1SipGenerator.html#a72e9f2e62b8afbbc0c6106778239a0f8" title=" " alt="" coords="5,37,255,63"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a3157da9a64675bf042bf0a4a9c5ce83f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3157da9a64675bf042bf0a4a9c5ce83f">&#9670;&nbsp;</a></span>_enum_get()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">def sip_generator.SipGenerator._enum_get </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>container</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>enum</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>level</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00153">sip_generator.SipGenerator._container_get()</a>.</p>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="../../closed.png" alt="+"/> 这是这个函数的调用关系图:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d0/d6a/classsip__generator_1_1SipGenerator_a3157da9a64675bf042bf0a4a9c5ce83f_icgraph.png" border="0" usemap="#ad0/d6a/classsip__generator_1_1SipGenerator_a3157da9a64675bf042bf0a4a9c5ce83f_icgraph" alt=""/></div>
+<map name="d0/d6a/classsip__generator_1_1SipGenerator_a3157da9a64675bf042bf0a4a9c5ce83f_icgraph" id="ad0/d6a/classsip__generator_1_1SipGenerator_a3157da9a64675bf042bf0a4a9c5ce83f_icgraph">
+<area shape="rect" title=" " alt="" coords="541,29,732,71"/>
+<area shape="rect" href="../../d0/d6a/classsip__generator_1_1SipGenerator.html#ae2212130cc8c142a98c78a9f15a3e4e6" title=" " alt="" coords="303,29,493,71"/>
+<area shape="rect" href="../../d0/d6a/classsip__generator_1_1SipGenerator.html#a72e9f2e62b8afbbc0c6106778239a0f8" title=" " alt="" coords="5,37,255,63"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aee57f71e7ee9dcd3e9d2b7798448016b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee57f71e7ee9dcd3e9d2b7798448016b">&#9670;&nbsp;</a></span>_fn_get()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">def sip_generator.SipGenerator._fn_get </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>container</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>function</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>level</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<pre class="fragment">Generate the translation for a function.
+
+:param container:           A class or namespace.
+:param function:            The function object.
+:param level:               Recursion level controls indentation.
+:return:                    A string.
+</pre> 
+<p class="reference">引用了 <a class="el" href="../../#l00522">sip_generator.SipGenerator._fn_get_decorators()</a>, <a class="el" href="../../#l00547">sip_generator.SipGenerator._fn_get_parameter_default()</a>, <a class="el" href="../../#l00719">sip_generator.SipGenerator._read_source()</a>, <a class="el" href="../../#l00024">Qt5Ruleset.function_rules()</a>, <a class="el" href="../../#l00062">Qt5Ruleset.parameter_rules()</a>, <a class="el" href="../../#l00080">sip_generator.SipGenerator.rules</a>, <a class="el" href="../../#l00017">set()</a> , 以及 <a class="el" href="../../#l00137">sip_generator.SipGenerator.skippable_attribute()</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00153">sip_generator.SipGenerator._container_get()</a>.</p>
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="../../closed.png" alt="+"/> 函数调用图:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d0/d6a/classsip__generator_1_1SipGenerator_aee57f71e7ee9dcd3e9d2b7798448016b_cgraph.png" border="0" usemap="#ad0/d6a/classsip__generator_1_1SipGenerator_aee57f71e7ee9dcd3e9d2b7798448016b_cgraph" alt=""/></div>
+<map name="d0/d6a/classsip__generator_1_1SipGenerator_aee57f71e7ee9dcd3e9d2b7798448016b_cgraph" id="ad0/d6a/classsip__generator_1_1SipGenerator_aee57f71e7ee9dcd3e9d2b7798448016b_cgraph">
+<area shape="rect" title=" " alt="" coords="5,201,196,243"/>
+<area shape="rect" href="../../d0/d6a/classsip__generator_1_1SipGenerator.html#aeb40a5b10b0f4ff9a67c48e3074467d0" title=" " alt="" coords="272,5,463,47"/>
+<area shape="rect" href="../../d0/d6a/classsip__generator_1_1SipGenerator.html#a25aec974b906cc8ff128355e7b3a6bb6" title=" " alt="" coords="272,71,463,112"/>
+<area shape="rect" href="../../d0/d6a/classsip__generator_1_1SipGenerator.html#a05242d1debcb283e9a60b180b869f9d3" title=" " alt="" coords="272,136,463,177"/>
+<area shape="rect" href="../../d4/db5/namespaceQt5Ruleset.html#ae65487d5ad2b42c637852a93c6c6f4d3" title=" " alt="" coords="296,201,439,243"/>
+<area shape="rect" href="../../d4/db5/namespaceQt5Ruleset.html#a63259fef577373499bdd0f5f329b7184" title=" " alt="" coords="290,267,445,308"/>
+<area shape="rect" href="../../d1/d26/autotests_2CMakeLists_8txt.html#a71fb52bba5357692a92641d54d54febc" title=" " alt="" coords="347,333,387,359"/>
+<area shape="rect" href="../../d0/d6a/classsip__generator_1_1SipGenerator.html#ac511e0e85c2b8bf1344da923e322915a" title=" " alt="" coords="244,384,491,425"/>
+</map>
+</div>
+<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-6-trigger" src="../../closed.png" alt="+"/> 这是这个函数的调用关系图:</div>
+<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-6-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d0/d6a/classsip__generator_1_1SipGenerator_aee57f71e7ee9dcd3e9d2b7798448016b_icgraph.png" border="0" usemap="#ad0/d6a/classsip__generator_1_1SipGenerator_aee57f71e7ee9dcd3e9d2b7798448016b_icgraph" alt=""/></div>
+<map name="d0/d6a/classsip__generator_1_1SipGenerator_aee57f71e7ee9dcd3e9d2b7798448016b_icgraph" id="ad0/d6a/classsip__generator_1_1SipGenerator_aee57f71e7ee9dcd3e9d2b7798448016b_icgraph">
+<area shape="rect" title=" " alt="" coords="541,29,732,71"/>
+<area shape="rect" href="../../d0/d6a/classsip__generator_1_1SipGenerator.html#ae2212130cc8c142a98c78a9f15a3e4e6" title=" " alt="" coords="303,29,493,71"/>
+<area shape="rect" href="../../d0/d6a/classsip__generator_1_1SipGenerator.html#a72e9f2e62b8afbbc0c6106778239a0f8" title=" " alt="" coords="5,37,255,63"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aeb40a5b10b0f4ff9a67c48e3074467d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb40a5b10b0f4ff9a67c48e3074467d0">&#9670;&nbsp;</a></span>_fn_get_decorators()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">def sip_generator.SipGenerator._fn_get_decorators </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>function</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<pre class="fragment">The parser does not provide direct access to the complete keywords (explicit, const, static, etc) of a function
+in the displayname. It would be nice to get these from the AST, but I cannot find where they are hiding.
+
+Now, we could resort to using the original source. That does not bode well if you have macros (QOBJECT,
+xxxDEPRECATED?), inlined bodies and the like, using the rule engine could be used to patch corner cases...
+
+...or we can try to guess what SIP cares about, i.e static and maybe const. Luckily (?), we have those to hand!
+
+:param function:                    The function object.
+:return: prefix, suffix             String containing any prefix or suffix keywords.
+</pre> 
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00417">sip_generator.SipGenerator._fn_get()</a>.</p>
+<div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-7-trigger" src="../../closed.png" alt="+"/> 这是这个函数的调用关系图:</div>
+<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-7-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d0/d6a/classsip__generator_1_1SipGenerator_aeb40a5b10b0f4ff9a67c48e3074467d0_icgraph.png" border="0" usemap="#ad0/d6a/classsip__generator_1_1SipGenerator_aeb40a5b10b0f4ff9a67c48e3074467d0_icgraph" alt=""/></div>
+<map name="d0/d6a/classsip__generator_1_1SipGenerator_aeb40a5b10b0f4ff9a67c48e3074467d0_icgraph" id="ad0/d6a/classsip__generator_1_1SipGenerator_aeb40a5b10b0f4ff9a67c48e3074467d0_icgraph">
+<area shape="rect" title=" " alt="" coords="780,29,971,71"/>
+<area shape="rect" href="../../d0/d6a/classsip__generator_1_1SipGenerator.html#aee57f71e7ee9dcd3e9d2b7798448016b" title=" " alt="" coords="541,29,732,71"/>
+<area shape="rect" href="../../d0/d6a/classsip__generator_1_1SipGenerator.html#ae2212130cc8c142a98c78a9f15a3e4e6" title=" " alt="" coords="303,29,493,71"/>
+<area shape="rect" href="../../d0/d6a/classsip__generator_1_1SipGenerator.html#a72e9f2e62b8afbbc0c6106778239a0f8" title=" " alt="" coords="5,37,255,63"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a25aec974b906cc8ff128355e7b3a6bb6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25aec974b906cc8ff128355e7b3a6bb6">&#9670;&nbsp;</a></span>_fn_get_parameter_default()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">def sip_generator.SipGenerator._fn_get_parameter_default </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>function</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>parameter</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<pre class="fragment">The parser does not seem to provide access to the complete text of a parameter.
+This makes it hard to find any default values, so we:
+
+    1. Run the lexer from "here" to the end of the file, bailing out when we see the ","
+    or a ")" marking the end.
+    2. Watch for the assignment.
+</pre> 
+<p class="reference">引用了 <a class="el" href="../../#l00086">sip_generator.SipGenerator.tu</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00417">sip_generator.SipGenerator._fn_get()</a>.</p>
+<div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-8-trigger" src="../../closed.png" alt="+"/> 这是这个函数的调用关系图:</div>
+<div id="dynsection-8-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-8-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d0/d6a/classsip__generator_1_1SipGenerator_a25aec974b906cc8ff128355e7b3a6bb6_icgraph.png" border="0" usemap="#ad0/d6a/classsip__generator_1_1SipGenerator_a25aec974b906cc8ff128355e7b3a6bb6_icgraph" alt=""/></div>
+<map name="d0/d6a/classsip__generator_1_1SipGenerator_a25aec974b906cc8ff128355e7b3a6bb6_icgraph" id="ad0/d6a/classsip__generator_1_1SipGenerator_a25aec974b906cc8ff128355e7b3a6bb6_icgraph">
+<area shape="rect" title=" " alt="" coords="780,29,971,71"/>
+<area shape="rect" href="../../d0/d6a/classsip__generator_1_1SipGenerator.html#aee57f71e7ee9dcd3e9d2b7798448016b" title=" " alt="" coords="541,29,732,71"/>
+<area shape="rect" href="../../d0/d6a/classsip__generator_1_1SipGenerator.html#ae2212130cc8c142a98c78a9f15a3e4e6" title=" " alt="" coords="303,29,493,71"/>
+<area shape="rect" href="../../d0/d6a/classsip__generator_1_1SipGenerator.html#a72e9f2e62b8afbbc0c6106778239a0f8" title=" " alt="" coords="5,37,255,63"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a408bbdbea2f90a2e09dd9bed90550099"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a408bbdbea2f90a2e09dd9bed90550099">&#9670;&nbsp;</a></span>_get_access_specifier()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">def sip_generator.SipGenerator._get_access_specifier </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>member</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>level</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<pre class="fragment">Skip access specifiers embedded in the Q_OBJECT macro.
+</pre> 
+<p class="reference">引用了 <a class="el" href="../../#l00719">sip_generator.SipGenerator._read_source()</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00153">sip_generator.SipGenerator._container_get()</a>.</p>
+<div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-9-trigger" src="../../closed.png" alt="+"/> 函数调用图:</div>
+<div id="dynsection-9-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-9-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d0/d6a/classsip__generator_1_1SipGenerator_a408bbdbea2f90a2e09dd9bed90550099_cgraph.png" border="0" usemap="#ad0/d6a/classsip__generator_1_1SipGenerator_a408bbdbea2f90a2e09dd9bed90550099_cgraph" alt=""/></div>
+<map name="d0/d6a/classsip__generator_1_1SipGenerator_a408bbdbea2f90a2e09dd9bed90550099_cgraph" id="ad0/d6a/classsip__generator_1_1SipGenerator_a408bbdbea2f90a2e09dd9bed90550099_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,196,47"/>
+<area shape="rect" href="../../d0/d6a/classsip__generator_1_1SipGenerator.html#a05242d1debcb283e9a60b180b869f9d3" title=" " alt="" coords="244,5,435,47"/>
+</map>
+</div>
+<div id="dynsection-10" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-10-trigger" src="../../closed.png" alt="+"/> 这是这个函数的调用关系图:</div>
+<div id="dynsection-10-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-10-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d0/d6a/classsip__generator_1_1SipGenerator_a408bbdbea2f90a2e09dd9bed90550099_icgraph.png" border="0" usemap="#ad0/d6a/classsip__generator_1_1SipGenerator_a408bbdbea2f90a2e09dd9bed90550099_icgraph" alt=""/></div>
+<map name="d0/d6a/classsip__generator_1_1SipGenerator_a408bbdbea2f90a2e09dd9bed90550099_icgraph" id="ad0/d6a/classsip__generator_1_1SipGenerator_a408bbdbea2f90a2e09dd9bed90550099_icgraph">
+<area shape="rect" title=" " alt="" coords="541,29,732,71"/>
+<area shape="rect" href="../../d0/d6a/classsip__generator_1_1SipGenerator.html#ae2212130cc8c142a98c78a9f15a3e4e6" title=" " alt="" coords="303,29,493,71"/>
+<area shape="rect" href="../../d0/d6a/classsip__generator_1_1SipGenerator.html#a72e9f2e62b8afbbc0c6106778239a0f8" title=" " alt="" coords="5,37,255,63"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a05242d1debcb283e9a60b180b869f9d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05242d1debcb283e9a60b180b869f9d3">&#9670;&nbsp;</a></span>_read_source()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">def sip_generator.SipGenerator._read_source </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>extent</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<pre class="fragment">Read the given range from the unpre-processed source.
+
+:param extent:              The range of text required.
+</pre> 
+<p class="reference">引用了 <a class="el" href="../../#l00087">sip_generator.SipGenerator.unpreprocessed_source</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00153">sip_generator.SipGenerator._container_get()</a>, <a class="el" href="../../#l00417">sip_generator.SipGenerator._fn_get()</a>, <a class="el" href="../../#l00377">sip_generator.SipGenerator._get_access_specifier()</a> , 以及 <a class="el" href="../../#l00670">sip_generator.SipGenerator._var_get()</a>.</p>
+<div id="dynsection-11" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-11-trigger" src="../../closed.png" alt="+"/> 这是这个函数的调用关系图:</div>
+<div id="dynsection-11-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-11-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d0/d6a/classsip__generator_1_1SipGenerator_a05242d1debcb283e9a60b180b869f9d3_icgraph.png" border="0" usemap="#ad0/d6a/classsip__generator_1_1SipGenerator_a05242d1debcb283e9a60b180b869f9d3_icgraph" alt=""/></div>
+<map name="d0/d6a/classsip__generator_1_1SipGenerator_a05242d1debcb283e9a60b180b869f9d3_icgraph" id="ad0/d6a/classsip__generator_1_1SipGenerator_a05242d1debcb283e9a60b180b869f9d3_icgraph">
+<area shape="rect" title=" " alt="" coords="780,65,971,107"/>
+<area shape="rect" href="../../d0/d6a/classsip__generator_1_1SipGenerator.html#ae2212130cc8c142a98c78a9f15a3e4e6" title=" " alt="" coords="303,65,493,107"/>
+<area shape="rect" href="../../d0/d6a/classsip__generator_1_1SipGenerator.html#aee57f71e7ee9dcd3e9d2b7798448016b" title=" " alt="" coords="541,32,732,73"/>
+<area shape="rect" href="../../d0/d6a/classsip__generator_1_1SipGenerator.html#a408bbdbea2f90a2e09dd9bed90550099" title=" " alt="" coords="541,97,732,139"/>
+<area shape="rect" href="../../d0/d6a/classsip__generator_1_1SipGenerator.html#af4cba0ad9d3bf60d758a93c57897f13e" title=" " alt="" coords="541,163,732,204"/>
+<area shape="rect" href="../../d0/d6a/classsip__generator_1_1SipGenerator.html#a72e9f2e62b8afbbc0c6106778239a0f8" title=" " alt="" coords="5,73,255,99"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ae12f17f26ede0917578602a80ae6a4a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae12f17f26ede0917578602a80ae6a4a1">&#9670;&nbsp;</a></span>_report_ignoring()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">def sip_generator.SipGenerator._report_ignoring </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>parent</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>child</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>text</em> = <code>None</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a038976a119c5d9a2c900602f43466f73"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a038976a119c5d9a2c900602f43466f73">&#9670;&nbsp;</a></span>_typedef_get()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">def sip_generator.SipGenerator._typedef_get </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>container</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>typedef</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>level</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<pre class="fragment">Generate the translation for a typedef.
+
+:param container:           A class or namespace.
+:param typedef:             The typedef object.
+:param level:               Recursion level controls indentation.
+:return:                    A string.
+</pre> 
+<p class="reference">引用了 <a class="el" href="../../#l00080">sip_generator.SipGenerator.rules</a>, <a class="el" href="../../#l00017">set()</a> , 以及 <a class="el" href="../../#l00085">Qt5Ruleset.typedef_rules()</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00153">sip_generator.SipGenerator._container_get()</a>.</p>
+<div id="dynsection-12" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-12-trigger" src="../../closed.png" alt="+"/> 函数调用图:</div>
+<div id="dynsection-12-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-12-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d0/d6a/classsip__generator_1_1SipGenerator_a038976a119c5d9a2c900602f43466f73_cgraph.png" border="0" usemap="#ad0/d6a/classsip__generator_1_1SipGenerator_a038976a119c5d9a2c900602f43466f73_cgraph" alt=""/></div>
+<map name="d0/d6a/classsip__generator_1_1SipGenerator_a038976a119c5d9a2c900602f43466f73_cgraph" id="ad0/d6a/classsip__generator_1_1SipGenerator_a038976a119c5d9a2c900602f43466f73_cgraph">
+<area shape="rect" title=" " alt="" coords="5,27,196,69"/>
+<area shape="rect" href="../../d1/d26/autotests_2CMakeLists_8txt.html#a71fb52bba5357692a92641d54d54febc" title=" " alt="" coords="293,5,333,32"/>
+<area shape="rect" href="../../d4/db5/namespaceQt5Ruleset.html#a0cd7d9ece112c80e1647ef85bb143f76" title=" " alt="" coords="244,57,383,98"/>
+</map>
+</div>
+<div id="dynsection-13" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-13-trigger" src="../../closed.png" alt="+"/> 这是这个函数的调用关系图:</div>
+<div id="dynsection-13-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-13-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d0/d6a/classsip__generator_1_1SipGenerator_a038976a119c5d9a2c900602f43466f73_icgraph.png" border="0" usemap="#ad0/d6a/classsip__generator_1_1SipGenerator_a038976a119c5d9a2c900602f43466f73_icgraph" alt=""/></div>
+<map name="d0/d6a/classsip__generator_1_1SipGenerator_a038976a119c5d9a2c900602f43466f73_icgraph" id="ad0/d6a/classsip__generator_1_1SipGenerator_a038976a119c5d9a2c900602f43466f73_icgraph">
+<area shape="rect" title=" " alt="" coords="541,29,732,71"/>
+<area shape="rect" href="../../d0/d6a/classsip__generator_1_1SipGenerator.html#ae2212130cc8c142a98c78a9f15a3e4e6" title=" " alt="" coords="303,29,493,71"/>
+<area shape="rect" href="../../d0/d6a/classsip__generator_1_1SipGenerator.html#a72e9f2e62b8afbbc0c6106778239a0f8" title=" " alt="" coords="5,37,255,63"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="af4cba0ad9d3bf60d758a93c57897f13e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af4cba0ad9d3bf60d758a93c57897f13e">&#9670;&nbsp;</a></span>_var_get()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">def sip_generator.SipGenerator._var_get </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>container</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>variable</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>level</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<pre class="fragment">Generate the translation for a variable.
+
+:param container:           A class or namespace.
+:param variable:            The variable object.
+:param level:               Recursion level controls indentation.
+:return:                    A string.
+</pre> 
+<p class="reference">引用了 <a class="el" href="../../#l00719">sip_generator.SipGenerator._read_source()</a>, <a class="el" href="../../#l00080">sip_generator.SipGenerator.rules</a>, <a class="el" href="../../#l00137">sip_generator.SipGenerator.skippable_attribute()</a> , 以及 <a class="el" href="../../#l00072">Qt5Ruleset.variable_rules()</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00153">sip_generator.SipGenerator._container_get()</a>.</p>
+<div id="dynsection-14" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-14-trigger" src="../../closed.png" alt="+"/> 函数调用图:</div>
+<div id="dynsection-14-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-14-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d0/d6a/classsip__generator_1_1SipGenerator_af4cba0ad9d3bf60d758a93c57897f13e_cgraph.png" border="0" usemap="#ad0/d6a/classsip__generator_1_1SipGenerator_af4cba0ad9d3bf60d758a93c57897f13e_cgraph" alt=""/></div>
+<map name="d0/d6a/classsip__generator_1_1SipGenerator_af4cba0ad9d3bf60d758a93c57897f13e_cgraph" id="ad0/d6a/classsip__generator_1_1SipGenerator_af4cba0ad9d3bf60d758a93c57897f13e_cgraph">
+<area shape="rect" title=" " alt="" coords="5,71,196,112"/>
+<area shape="rect" href="../../d0/d6a/classsip__generator_1_1SipGenerator.html#a05242d1debcb283e9a60b180b869f9d3" title=" " alt="" coords="272,5,463,47"/>
+<area shape="rect" href="../../d0/d6a/classsip__generator_1_1SipGenerator.html#ac511e0e85c2b8bf1344da923e322915a" title=" " alt="" coords="244,71,491,112"/>
+<area shape="rect" href="../../d4/db5/namespaceQt5Ruleset.html#a65751cd315629ed8ebf6dd3f874acb88" title=" " alt="" coords="298,136,437,177"/>
+</map>
+</div>
+<div id="dynsection-15" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-15-trigger" src="../../closed.png" alt="+"/> 这是这个函数的调用关系图:</div>
+<div id="dynsection-15-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-15-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d0/d6a/classsip__generator_1_1SipGenerator_af4cba0ad9d3bf60d758a93c57897f13e_icgraph.png" border="0" usemap="#ad0/d6a/classsip__generator_1_1SipGenerator_af4cba0ad9d3bf60d758a93c57897f13e_icgraph" alt=""/></div>
+<map name="d0/d6a/classsip__generator_1_1SipGenerator_af4cba0ad9d3bf60d758a93c57897f13e_icgraph" id="ad0/d6a/classsip__generator_1_1SipGenerator_af4cba0ad9d3bf60d758a93c57897f13e_icgraph">
+<area shape="rect" title=" " alt="" coords="541,29,732,71"/>
+<area shape="rect" href="../../d0/d6a/classsip__generator_1_1SipGenerator.html#ae2212130cc8c142a98c78a9f15a3e4e6" title=" " alt="" coords="303,29,493,71"/>
+<area shape="rect" href="../../d0/d6a/classsip__generator_1_1SipGenerator.html#a72e9f2e62b8afbbc0c6106778239a0f8" title=" " alt="" coords="5,37,255,63"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a72e9f2e62b8afbbc0c6106778239a0f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a72e9f2e62b8afbbc0c6106778239a0f8">&#9670;&nbsp;</a></span>create_sip()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def sip_generator.SipGenerator.create_sip </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>h_file</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>include_filename</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Actually convert the given source header file into its SIP equivalent.
+
+:param h_file:              The source (header) file of interest.
+:param include_filename:    The (header) to generate in the sip file.
+</pre> 
+<p class="reference">引用了 <a class="el" href="../../#l00153">sip_generator.SipGenerator._container_get()</a>, <a class="el" href="../../#l00040">sip_generator.clang_diagnostic_to_logging_diagnostic()</a>, <a class="el" href="../../#l00081">sip_generator.SipGenerator.compile_flags</a>, <a class="el" href="../../#l00067">sip_generator.diagnostic_word()</a>, <a class="el" href="../../#l00085">sip_generator.SipGenerator.diagnostics</a>, <a class="el" href="../../#l00083">sip_generator.SipGenerator.dump_includes</a>, <a class="el" href="../../#l00017">set()</a>, <a class="el" href="../../#l00086">sip_generator.SipGenerator.tu</a> , 以及 <a class="el" href="../../#l00087">sip_generator.SipGenerator.unpreprocessed_source</a>.</p>
+<div id="dynsection-16" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-16-trigger" src="../../closed.png" alt="+"/> 函数调用图:</div>
+<div id="dynsection-16-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-16-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d0/d6a/classsip__generator_1_1SipGenerator_a72e9f2e62b8afbbc0c6106778239a0f8_cgraph.png" border="0" usemap="#ad0/d6a/classsip__generator_1_1SipGenerator_a72e9f2e62b8afbbc0c6106778239a0f8_cgraph" alt=""/></div>
+<map name="d0/d6a/classsip__generator_1_1SipGenerator_a72e9f2e62b8afbbc0c6106778239a0f8_cgraph" id="ad0/d6a/classsip__generator_1_1SipGenerator_a72e9f2e62b8afbbc0c6106778239a0f8_cgraph">
+<area shape="rect" title=" " alt="" coords="5,349,255,375"/>
+<area shape="rect" href="../../d0/d6a/classsip__generator_1_1SipGenerator.html#ae2212130cc8c142a98c78a9f15a3e4e6" title=" " alt="" coords="309,304,500,345"/>
+<area shape="rect" href="../../d1/d26/autotests_2CMakeLists_8txt.html#a71fb52bba5357692a92641d54d54febc" title=" " alt="" coords="897,90,937,117"/>
+<area shape="rect" href="../../dc/d41/namespacesip__generator.html#adfcf4091e4edf348a24769cda62d4bbb" title=" " alt="" coords="327,370,482,426"/>
+<area shape="rect" href="../../dc/d41/namespacesip__generator.html#ac740f906dbe6ce328dd8598a65189bc0" title=" " alt="" coords="303,450,507,477"/>
+<area shape="rect" href="../../d0/d6a/classsip__generator_1_1SipGenerator.html#a3157da9a64675bf042bf0a4a9c5ce83f" title=" " alt="" coords="555,369,745,411"/>
+<area shape="rect" href="../../d0/d6a/classsip__generator_1_1SipGenerator.html#aee57f71e7ee9dcd3e9d2b7798448016b" title=" " alt="" coords="555,239,745,280"/>
+<area shape="rect" href="../../d0/d6a/classsip__generator_1_1SipGenerator.html#a05242d1debcb283e9a60b180b869f9d3" title=" " alt="" coords="821,549,1012,591"/>
+<area shape="rect" href="../../d0/d6a/classsip__generator_1_1SipGenerator.html#ac511e0e85c2b8bf1344da923e322915a" title=" " alt="" coords="793,419,1040,460"/>
+<area shape="rect" href="../../d0/d6a/classsip__generator_1_1SipGenerator.html#a408bbdbea2f90a2e09dd9bed90550099" title=" " alt="" coords="555,604,745,645"/>
+<area shape="rect" href="../../d0/d6a/classsip__generator_1_1SipGenerator.html#a038976a119c5d9a2c900602f43466f73" title=" " alt="" coords="555,5,745,47"/>
+<area shape="rect" href="../../d0/d6a/classsip__generator_1_1SipGenerator.html#af4cba0ad9d3bf60d758a93c57897f13e" title=" " alt="" coords="555,487,745,528"/>
+<area shape="rect" href="../../d4/db5/namespaceQt5Ruleset.html#ad2cb3d40baca152f841efd2584793235" title=" " alt="" coords="575,173,725,215"/>
+<area shape="rect" href="../../d4/db5/namespaceQt5Ruleset.html#a1d33c168da7252e248e0b9bfad1a42ea" title=" " alt="" coords="581,304,719,345"/>
+<area shape="rect" href="../../d0/d6a/classsip__generator_1_1SipGenerator.html#aeb40a5b10b0f4ff9a67c48e3074467d0" title=" " alt="" coords="821,281,1012,323"/>
+<area shape="rect" href="../../d0/d6a/classsip__generator_1_1SipGenerator.html#a25aec974b906cc8ff128355e7b3a6bb6" title=" " alt="" coords="821,347,1012,388"/>
+<area shape="rect" href="../../d4/db5/namespaceQt5Ruleset.html#ae65487d5ad2b42c637852a93c6c6f4d3" title=" " alt="" coords="845,151,988,192"/>
+<area shape="rect" href="../../d4/db5/namespaceQt5Ruleset.html#a63259fef577373499bdd0f5f329b7184" title=" " alt="" coords="839,216,994,257"/>
+<area shape="rect" href="../../d4/db5/namespaceQt5Ruleset.html#a0cd7d9ece112c80e1647ef85bb143f76" title=" " alt="" coords="847,5,986,47"/>
+<area shape="rect" href="../../d4/db5/namespaceQt5Ruleset.html#a65751cd315629ed8ebf6dd3f874acb88" title=" " alt="" coords="847,484,986,525"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="acde8affee53c5ff4ac786e0aa227cf2c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acde8affee53c5ff4ac786e0aa227cf2c">&#9670;&nbsp;</a></span>describe()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">def sip_generator.SipGenerator.describe </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>cursor</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>text</em> = <code>None</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac511e0e85c2b8bf1344da923e322915a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac511e0e85c2b8bf1344da923e322915a">&#9670;&nbsp;</a></span>skippable_attribute()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def sip_generator.SipGenerator.skippable_attribute </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>parent</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>member</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>text</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>sip</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">We don't seem to have access to the __attribute__(())s, but at least we can look for stuff we care about.
+
+:param member:          The attribute.
+:param text:            The raw source corresponding to the region of member.
+</pre> 
+<p class="reference">引用了 <a class="el" href="../../#l00084">sip_generator.SipGenerator.dump_privates</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00153">sip_generator.SipGenerator._container_get()</a>, <a class="el" href="../../#l00417">sip_generator.SipGenerator._fn_get()</a> , 以及 <a class="el" href="../../#l00670">sip_generator.SipGenerator._var_get()</a>.</p>
+<div id="dynsection-17" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-17-trigger" src="../../closed.png" alt="+"/> 这是这个函数的调用关系图:</div>
+<div id="dynsection-17-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-17-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d0/d6a/classsip__generator_1_1SipGenerator_ac511e0e85c2b8bf1344da923e322915a_icgraph.png" border="0" usemap="#ad0/d6a/classsip__generator_1_1SipGenerator_ac511e0e85c2b8bf1344da923e322915a_icgraph" alt=""/></div>
+<map name="d0/d6a/classsip__generator_1_1SipGenerator_ac511e0e85c2b8bf1344da923e322915a_icgraph" id="ad0/d6a/classsip__generator_1_1SipGenerator_ac511e0e85c2b8bf1344da923e322915a_icgraph">
+<area shape="rect" title=" " alt="" coords="780,29,1027,71"/>
+<area shape="rect" href="../../d0/d6a/classsip__generator_1_1SipGenerator.html#ae2212130cc8c142a98c78a9f15a3e4e6" title=" " alt="" coords="303,29,493,71"/>
+<area shape="rect" href="../../d0/d6a/classsip__generator_1_1SipGenerator.html#aee57f71e7ee9dcd3e9d2b7798448016b" title=" " alt="" coords="541,29,732,71"/>
+<area shape="rect" href="../../d0/d6a/classsip__generator_1_1SipGenerator.html#af4cba0ad9d3bf60d758a93c57897f13e" title=" " alt="" coords="541,95,732,136"/>
+<area shape="rect" href="../../d0/d6a/classsip__generator_1_1SipGenerator.html#a72e9f2e62b8afbbc0c6106778239a0f8" title=" " alt="" coords="5,37,255,63"/>
+</map>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="a10a0e80c41e4f3116f4c1cc972356478"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a10a0e80c41e4f3116f4c1cc972356478">&#9670;&nbsp;</a></span>compile_flags</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">sip_generator.SipGenerator.compile_flags</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00095">sip_generator.SipGenerator.create_sip()</a>.</p>
+
+</div>
+</div>
+<a id="a42d59561dc5fbff88b395a1100b4b072"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42d59561dc5fbff88b395a1100b4b072">&#9670;&nbsp;</a></span>diagnostics</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">sip_generator.SipGenerator.diagnostics</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00095">sip_generator.SipGenerator.create_sip()</a>.</p>
+
+</div>
+</div>
+<a id="ad6fd504601ec55b1f5f973df3d3b6a87"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad6fd504601ec55b1f5f973df3d3b6a87">&#9670;&nbsp;</a></span>dump_includes</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">sip_generator.SipGenerator.dump_includes</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00095">sip_generator.SipGenerator.create_sip()</a>.</p>
+
+</div>
+</div>
+<a id="a0d0a10e1aa0fd65452200a27035e96cd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d0a10e1aa0fd65452200a27035e96cd">&#9670;&nbsp;</a></span>dump_privates</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">sip_generator.SipGenerator.dump_privates</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00153">sip_generator.SipGenerator._container_get()</a> , 以及 <a class="el" href="../../#l00137">sip_generator.SipGenerator.skippable_attribute()</a>.</p>
+
+</div>
+</div>
+<a id="a90496b0660864714768a301bba749094"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a90496b0660864714768a301bba749094">&#9670;&nbsp;</a></span>rules</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">sip_generator.SipGenerator.rules</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00153">sip_generator.SipGenerator._container_get()</a>, <a class="el" href="../../#l00417">sip_generator.SipGenerator._fn_get()</a>, <a class="el" href="../../#l00644">sip_generator.SipGenerator._typedef_get()</a> , 以及 <a class="el" href="../../#l00670">sip_generator.SipGenerator._var_get()</a>.</p>
+
+</div>
+</div>
+<a id="a11e1bef57214ebdf65ca83ac36db7c72"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a11e1bef57214ebdf65ca83ac36db7c72">&#9670;&nbsp;</a></span>tu</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">sip_generator.SipGenerator.tu</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00153">sip_generator.SipGenerator._container_get()</a>, <a class="el" href="../../#l00547">sip_generator.SipGenerator._fn_get_parameter_default()</a> , 以及 <a class="el" href="../../#l00095">sip_generator.SipGenerator.create_sip()</a>.</p>
+
+</div>
+</div>
+<a id="ae1e19f038ea3091ff1ea8ca3521a7b04"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae1e19f038ea3091ff1ea8ca3521a7b04">&#9670;&nbsp;</a></span>unpreprocessed_source</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">sip_generator.SipGenerator.unpreprocessed_source</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00719">sip_generator.SipGenerator._read_source()</a> , 以及 <a class="el" href="../../#l00095">sip_generator.SipGenerator.create_sip()</a>.</p>
+
+</div>
+</div>
+<a id="a3bb0f04b325d2709b9521dcaefef5654"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3bb0f04b325d2709b9521dcaefef5654">&#9670;&nbsp;</a></span>verbose</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">sip_generator.SipGenerator.verbose</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00153">sip_generator.SipGenerator._container_get()</a>.</p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>extra-cmake-modules/find-modules/<a class="el" href="../../">sip_generator.py</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+生成于 2021年 一月 3日 星期日 19:22:18 , 为 C library使用 &#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20
+</small></address>
+</body>
+</html>

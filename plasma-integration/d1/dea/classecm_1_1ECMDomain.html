@@ -1,0 +1,405 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.20"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>C library: ecm.ECMDomain类 参考</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">C library
+   &#160;<span id="projectnumber">v1.0.0</span>
+   </div>
+   <div id="projectbrief">C/C++常用库整理 + C/C++、基于linux 系统一些例子</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.20 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="../../d1/d8c/namespaceecm.html">ecm</a></li><li class="navelem"><a class="el" href="../../d1/dea/classecm_1_1ECMDomain.html">ECMDomain</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pub-static-attribs">静态 Public 属性</a> &#124;
+<a href="../../d0/d89/classecm_1_1ECMDomain-members.html">所有成员列表</a>  </div>
+  <div class="headertitle">
+<div class="title">ecm.ECMDomain类 参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="../../closed.png" alt="+"/> 类 ecm.ECMDomain 继承关系图:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../de/d4a/classecm_1_1ECMDomain__inherit__graph.png" border="0" usemap="#aecm_8ECMDomain_inherit__map" alt="Inheritance graph"/></div>
+<map name="ecm_8ECMDomain_inherit__map" id="aecm_8ECMDomain_inherit__map">
+<area shape="rect" title=" " alt="" coords="5,131,131,311"/>
+<area shape="rect" title=" " alt="" coords="33,5,103,83"/>
+</map>
+</div>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="../../closed.png" alt="+"/> ecm.ECMDomain 的协作图:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../de/d72/classecm_1_1ECMDomain__coll__graph.png" border="0" usemap="#aecm_8ECMDomain_coll__map" alt="Collaboration graph"/></div>
+<map name="ecm_8ECMDomain_coll__map" id="aecm_8ECMDomain_coll__map">
+<area shape="rect" title=" " alt="" coords="5,131,131,311"/>
+<area shape="rect" title=" " alt="" coords="33,5,103,83"/>
+</map>
+</div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:ab5267721281d41ac96f9cdc6324366b2"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/dea/classecm_1_1ECMDomain.html#ab5267721281d41ac96f9cdc6324366b2">clear_doc</a> (self, docname)</td></tr>
+<tr class="separator:ab5267721281d41ac96f9cdc6324366b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a690e42e02dc70641a4e41f7d840ffbae"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/dea/classecm_1_1ECMDomain.html#a690e42e02dc70641a4e41f7d840ffbae">get_objects</a> (self)</td></tr>
+<tr class="separator:a690e42e02dc70641a4e41f7d840ffbae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac676d343756d63f300dcc1e3d30a7c45"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/dea/classecm_1_1ECMDomain.html#ac676d343756d63f300dcc1e3d30a7c45">resolve_xref</a> (self, env, fromdocname, builder, typ, target, node, contnode)</td></tr>
+<tr class="separator:ac676d343756d63f300dcc1e3d30a7c45"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
+静态 Public 属性</h2></td></tr>
+<tr class="memitem:aa81d8b59707c1bb02d11b5dbffdd9ec9"><td class="memItemLeft" align="right" valign="top">dictionary&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/dea/classecm_1_1ECMDomain.html#aa81d8b59707c1bb02d11b5dbffdd9ec9">directives</a> = {}</td></tr>
+<tr class="separator:aa81d8b59707c1bb02d11b5dbffdd9ec9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae8abb009327d24af2c999bb52a0519f8"><td class="memItemLeft" align="right" valign="top">dictionary&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/dea/classecm_1_1ECMDomain.html#ae8abb009327d24af2c999bb52a0519f8">initial_data</a></td></tr>
+<tr class="separator:ae8abb009327d24af2c999bb52a0519f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6221c460d7c041b591bc9cca8584ee7d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d0/de8/extra-cmake-modules_2tests_2ECMSetupVersionTest_2CMakeLists_8txt.html#a0597a758c58651f0884277dbc716afe0">string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/dea/classecm_1_1ECMDomain.html#a6221c460d7c041b591bc9cca8584ee7d">label</a> = 'ECM'</td></tr>
+<tr class="separator:a6221c460d7c041b591bc9cca8584ee7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a9c61b2e8df10fbf036700020eeea06"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d0/de8/extra-cmake-modules_2tests_2ECMSetupVersionTest_2CMakeLists_8txt.html#a0597a758c58651f0884277dbc716afe0">string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/dea/classecm_1_1ECMDomain.html#a9a9c61b2e8df10fbf036700020eeea06">name</a> = 'ecm'</td></tr>
+<tr class="separator:a9a9c61b2e8df10fbf036700020eeea06"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae449a77ecdf3509a6149b96cf12013c5"><td class="memItemLeft" align="right" valign="top">dictionary&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/dea/classecm_1_1ECMDomain.html#ae449a77ecdf3509a6149b96cf12013c5">object_types</a></td></tr>
+<tr class="separator:ae449a77ecdf3509a6149b96cf12013c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6a0aa3a61e5e0bd32471ef01cb0f96c"><td class="memItemLeft" align="right" valign="top">dictionary&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/dea/classecm_1_1ECMDomain.html#ac6a0aa3a61e5e0bd32471ef01cb0f96c">roles</a></td></tr>
+<tr class="separator:ac6a0aa3a61e5e0bd32471ef01cb0f96c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><pre class="fragment">ECM domain.</pre> </div><h2 class="groupheader">成员函数说明</h2>
+<a id="ab5267721281d41ac96f9cdc6324366b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab5267721281d41ac96f9cdc6324366b2">&#9670;&nbsp;</a></span>clear_doc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def ecm.ECMDomain.clear_doc </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>docname</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a690e42e02dc70641a4e41f7d840ffbae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a690e42e02dc70641a4e41f7d840ffbae">&#9670;&nbsp;</a></span>get_objects()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def ecm.ECMDomain.get_objects </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac676d343756d63f300dcc1e3d30a7c45"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac676d343756d63f300dcc1e3d30a7c45">&#9670;&nbsp;</a></span>resolve_xref()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def ecm.ECMDomain.resolve_xref </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>env</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>fromdocname</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>builder</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>typ</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>target</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>node</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>contnode</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="aa81d8b59707c1bb02d11b5dbffdd9ec9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa81d8b59707c1bb02d11b5dbffdd9ec9">&#9670;&nbsp;</a></span>directives</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">dictionary ecm.ECMDomain.directives = {}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae8abb009327d24af2c999bb52a0519f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae8abb009327d24af2c999bb52a0519f8">&#9670;&nbsp;</a></span>initial_data</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">dictionary ecm.ECMDomain.initial_data</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>初始值:</b><div class="fragment"><div class="line">=  {</div>
+<div class="line">        <span class="stringliteral">&#39;objects&#39;</span>: {},  <span class="comment"># fullname -&gt; docname, objtype</span></div>
+<div class="line">    }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a6221c460d7c041b591bc9cca8584ee7d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6221c460d7c041b591bc9cca8584ee7d">&#9670;&nbsp;</a></span>label</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d0/de8/extra-cmake-modules_2tests_2ECMSetupVersionTest_2CMakeLists_8txt.html#a0597a758c58651f0884277dbc716afe0">string</a> ecm.ECMDomain.label = 'ECM'</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9a9c61b2e8df10fbf036700020eeea06"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a9c61b2e8df10fbf036700020eeea06">&#9670;&nbsp;</a></span>name</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d0/de8/extra-cmake-modules_2tests_2ECMSetupVersionTest_2CMakeLists_8txt.html#a0597a758c58651f0884277dbc716afe0">string</a> ecm.ECMDomain.name = 'ecm'</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00104">rules_engine.Rule.__str__()</a>, <a class="el" href="../../#l00615">rules_engine.AbstractCompiledCodeDb.__str__()</a> , 以及 <a class="el" href="../../#l00065">ecm.ECMModule.run()</a>.</p>
+
+</div>
+</div>
+<a id="ae449a77ecdf3509a6149b96cf12013c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae449a77ecdf3509a6149b96cf12013c5">&#9670;&nbsp;</a></span>object_types</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">dictionary ecm.ECMDomain.object_types</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>初始值:</b><div class="fragment"><div class="line">=  {</div>
+<div class="line">        <span class="stringliteral">&#39;module&#39;</span>:      ObjType(<span class="stringliteral">&#39;module&#39;</span>,      <span class="stringliteral">&#39;module&#39;</span>),</div>
+<div class="line">        <span class="stringliteral">&#39;kde-module&#39;</span>:  ObjType(<span class="stringliteral">&#39;kde-module&#39;</span>,  <span class="stringliteral">&#39;kde-module&#39;</span>),</div>
+<div class="line">        <span class="stringliteral">&#39;find-module&#39;</span>: ObjType(<span class="stringliteral">&#39;find-module&#39;</span>, <span class="stringliteral">&#39;find-module&#39;</span>),</div>
+<div class="line">        <span class="stringliteral">&#39;manual&#39;</span>:      ObjType(<span class="stringliteral">&#39;manual&#39;</span>,      <span class="stringliteral">&#39;manual&#39;</span>),</div>
+<div class="line">        <span class="stringliteral">&#39;toolchain&#39;</span>:   ObjType(<span class="stringliteral">&#39;toolchain&#39;</span>,   <span class="stringliteral">&#39;toolchain&#39;</span>),</div>
+<div class="line">    }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ac6a0aa3a61e5e0bd32471ef01cb0f96c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac6a0aa3a61e5e0bd32471ef01cb0f96c">&#9670;&nbsp;</a></span>roles</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">dictionary ecm.ECMDomain.roles</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>初始值:</b><div class="fragment"><div class="line">=  {</div>
+<div class="line">        <span class="stringliteral">&#39;module&#39;</span>:      XRefRole(),</div>
+<div class="line">        <span class="stringliteral">&#39;kde-module&#39;</span>:  XRefRole(),</div>
+<div class="line">        <span class="stringliteral">&#39;find-module&#39;</span>: XRefRole(),</div>
+<div class="line">        <span class="stringliteral">&#39;manual&#39;</span>:      XRefRole(),</div>
+<div class="line">        <span class="stringliteral">&#39;toolchain&#39;</span>:   XRefRole(),</div>
+<div class="line">    }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>extra-cmake-modules/docs/sphinx/ext/<a class="el" href="../../">ecm.py</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+生成于 2021年 一月 3日 星期日 19:22:18 , 为 C library使用 &#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20
+</small></address>
+</body>
+</html>

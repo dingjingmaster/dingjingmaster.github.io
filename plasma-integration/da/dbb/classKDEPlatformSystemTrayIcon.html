@@ -1,0 +1,568 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.20"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>C library: KDEPlatformSystemTrayIcon类 参考</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">C library
+   &#160;<span id="projectnumber">v1.0.0</span>
+   </div>
+   <div id="projectbrief">C/C++常用库整理 + C/C++、基于linux 系统一些例子</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.20 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pri-attribs">Private 属性</a> &#124;
+<a href="../../d0/d21/classKDEPlatformSystemTrayIcon-members.html">所有成员列表</a>  </div>
+  <div class="headertitle">
+<div class="title">KDEPlatformSystemTrayIcon类 参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;<a class="el" href="../../">kdeplatformsystemtrayicon.h</a>&gt;</code></p>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="../../closed.png" alt="+"/> 类 KDEPlatformSystemTrayIcon 继承关系图:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../de/d70/classKDEPlatformSystemTrayIcon__inherit__graph.png" border="0" usemap="#aKDEPlatformSystemTrayIcon_inherit__map" alt="Inheritance graph"/></div>
+<map name="KDEPlatformSystemTrayIcon_inherit__map" id="aKDEPlatformSystemTrayIcon_inherit__map">
+<area shape="rect" title=" " alt="" coords="5,131,224,369"/>
+<area shape="rect" title=" " alt="" coords="25,5,205,83"/>
+</map>
+</div>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="../../closed.png" alt="+"/> KDEPlatformSystemTrayIcon 的协作图:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d1/d58/classKDEPlatformSystemTrayIcon__coll__graph.png" border="0" usemap="#aKDEPlatformSystemTrayIcon_coll__map" alt="Collaboration graph"/></div>
+<map name="KDEPlatformSystemTrayIcon_coll__map" id="aKDEPlatformSystemTrayIcon_coll__map">
+<area shape="rect" title=" " alt="" coords="5,131,224,369"/>
+<area shape="rect" title=" " alt="" coords="25,5,205,83"/>
+</map>
+</div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:adf43899fb96ef13b83a73f2cb563f203"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dbb/classKDEPlatformSystemTrayIcon.html#adf43899fb96ef13b83a73f2cb563f203">cleanup</a> () override</td></tr>
+<tr class="separator:adf43899fb96ef13b83a73f2cb563f203"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:affb2fcb52d55dce25e5862cd06aa31b7"><td class="memItemLeft" align="right" valign="top">QPlatformMenu *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dbb/classKDEPlatformSystemTrayIcon.html#affb2fcb52d55dce25e5862cd06aa31b7">createMenu</a> () const override</td></tr>
+<tr class="separator:affb2fcb52d55dce25e5862cd06aa31b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58e718c9c2f0b7ac4c40faa33cace1c4"><td class="memItemLeft" align="right" valign="top">QRect&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dbb/classKDEPlatformSystemTrayIcon.html#a58e718c9c2f0b7ac4c40faa33cace1c4">geometry</a> () const override</td></tr>
+<tr class="separator:a58e718c9c2f0b7ac4c40faa33cace1c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2439720b407ac0c17847f3d281a4b77c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dbb/classKDEPlatformSystemTrayIcon.html#a2439720b407ac0c17847f3d281a4b77c">init</a> () override</td></tr>
+<tr class="separator:a2439720b407ac0c17847f3d281a4b77c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56fcfcc5cd583c4938569b9febbd5a0c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dbb/classKDEPlatformSystemTrayIcon.html#a56fcfcc5cd583c4938569b9febbd5a0c">isSystemTrayAvailable</a> () const override</td></tr>
+<tr class="separator:a56fcfcc5cd583c4938569b9febbd5a0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af354c364cb8c7e01b5a9a161a81d5deb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dbb/classKDEPlatformSystemTrayIcon.html#af354c364cb8c7e01b5a9a161a81d5deb">KDEPlatformSystemTrayIcon</a> ()</td></tr>
+<tr class="separator:af354c364cb8c7e01b5a9a161a81d5deb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a173816ab446fa76cfda7e34663be2fbc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dbb/classKDEPlatformSystemTrayIcon.html#a173816ab446fa76cfda7e34663be2fbc">showMessage</a> (const QString &amp;title, const QString &amp;msg, const QIcon &amp;icon, MessageIcon iconType, int secs) override</td></tr>
+<tr class="separator:a173816ab446fa76cfda7e34663be2fbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ddcbce7631b827636893da8b6f9e146"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dbb/classKDEPlatformSystemTrayIcon.html#a5ddcbce7631b827636893da8b6f9e146">supportsMessages</a> () const override</td></tr>
+<tr class="separator:a5ddcbce7631b827636893da8b6f9e146"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4b9326a3fba94049b58d395c03aa0a5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dbb/classKDEPlatformSystemTrayIcon.html#aa4b9326a3fba94049b58d395c03aa0a5">updateIcon</a> (const QIcon &amp;icon) override</td></tr>
+<tr class="separator:aa4b9326a3fba94049b58d395c03aa0a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ccb6eb5c03f77ae914e3ec651e05399"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dbb/classKDEPlatformSystemTrayIcon.html#a6ccb6eb5c03f77ae914e3ec651e05399">updateMenu</a> (QPlatformMenu *menu) override</td></tr>
+<tr class="separator:a6ccb6eb5c03f77ae914e3ec651e05399"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf6d5e54e7ff8bcd2f4f686df17c3a44"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dbb/classKDEPlatformSystemTrayIcon.html#adf6d5e54e7ff8bcd2f4f686df17c3a44">updateToolTip</a> (const QString &amp;tooltip) override</td></tr>
+<tr class="separator:adf6d5e54e7ff8bcd2f4f686df17c3a44"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f5264ff76ccf25afa2b2a4cb8984978"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dbb/classKDEPlatformSystemTrayIcon.html#a0f5264ff76ccf25afa2b2a4cb8984978">~KDEPlatformSystemTrayIcon</a> () override</td></tr>
+<tr class="separator:a0f5264ff76ccf25afa2b2a4cb8984978"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private 属性</h2></td></tr>
+<tr class="memitem:a9fdc3ce445774795eb7532f992c0fbe7"><td class="memItemLeft" align="right" valign="top">KStatusNotifierItem *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dbb/classKDEPlatformSystemTrayIcon.html#a9fdc3ce445774795eb7532f992c0fbe7">m_sni</a> = nullptr</td></tr>
+<tr class="separator:a9fdc3ce445774795eb7532f992c0fbe7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"></div><h2 class="groupheader">构造及析构函数说明</h2>
+<a id="af354c364cb8c7e01b5a9a161a81d5deb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af354c364cb8c7e01b5a9a161a81d5deb">&#9670;&nbsp;</a></span>KDEPlatformSystemTrayIcon()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">KDEPlatformSystemTrayIcon::KDEPlatformSystemTrayIcon </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0f5264ff76ccf25afa2b2a4cb8984978"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f5264ff76ccf25afa2b2a4cb8984978">&#9670;&nbsp;</a></span>~KDEPlatformSystemTrayIcon()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">KDEPlatformSystemTrayIcon::~KDEPlatformSystemTrayIcon </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="adf43899fb96ef13b83a73f2cb563f203"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf43899fb96ef13b83a73f2cb563f203">&#9670;&nbsp;</a></span>cleanup()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KDEPlatformSystemTrayIcon::cleanup </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="../../#l00118">m_sni</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00068">KDEPlatformSystemTrayIcon_UnitTest::testAddActionAfterMenuRecreate()</a> , 以及 <a class="el" href="../../#l00036">KDEPlatformSystemTrayIcon_UnitTest::testMenuRecreate()</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="../../closed.png" alt="+"/> 这是这个函数的调用关系图:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../da/dbb/classKDEPlatformSystemTrayIcon_adf43899fb96ef13b83a73f2cb563f203_icgraph.png" border="0" usemap="#ada/dbb/classKDEPlatformSystemTrayIcon_adf43899fb96ef13b83a73f2cb563f203_icgraph" alt=""/></div>
+<map name="da/dbb/classKDEPlatformSystemTrayIcon_adf43899fb96ef13b83a73f2cb563f203_icgraph" id="ada/dbb/classKDEPlatformSystemTrayIcon_adf43899fb96ef13b83a73f2cb563f203_icgraph">
+<area shape="rect" title=" " alt="" coords="287,50,481,91"/>
+<area shape="rect" href="../../d8/d80/classKDEPlatformSystemTrayIcon__UnitTest.html#a9656fa98b7908e25951330307eb7ca0b" title=" " alt="" coords="5,5,239,61"/>
+<area shape="rect" href="../../d8/d80/classKDEPlatformSystemTrayIcon__UnitTest.html#af71ce6148dda14326563bd5ae65cf464" title=" " alt="" coords="25,86,219,127"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="affb2fcb52d55dce25e5862cd06aa31b7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#affb2fcb52d55dce25e5862cd06aa31b7">&#9670;&nbsp;</a></span>createMenu()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QPlatformMenu * KDEPlatformSystemTrayIcon::createMenu </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00068">KDEPlatformSystemTrayIcon_UnitTest::testAddActionAfterMenuRecreate()</a> , 以及 <a class="el" href="../../#l00036">KDEPlatformSystemTrayIcon_UnitTest::testMenuRecreate()</a>.</p>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="../../closed.png" alt="+"/> 这是这个函数的调用关系图:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../da/dbb/classKDEPlatformSystemTrayIcon_affb2fcb52d55dce25e5862cd06aa31b7_icgraph.png" border="0" usemap="#ada/dbb/classKDEPlatformSystemTrayIcon_affb2fcb52d55dce25e5862cd06aa31b7_icgraph" alt=""/></div>
+<map name="da/dbb/classKDEPlatformSystemTrayIcon_affb2fcb52d55dce25e5862cd06aa31b7_icgraph" id="ada/dbb/classKDEPlatformSystemTrayIcon_affb2fcb52d55dce25e5862cd06aa31b7_icgraph">
+<area shape="rect" title=" " alt="" coords="287,50,481,91"/>
+<area shape="rect" href="../../d8/d80/classKDEPlatformSystemTrayIcon__UnitTest.html#a9656fa98b7908e25951330307eb7ca0b" title=" " alt="" coords="5,5,239,61"/>
+<area shape="rect" href="../../d8/d80/classKDEPlatformSystemTrayIcon__UnitTest.html#af71ce6148dda14326563bd5ae65cf464" title=" " alt="" coords="25,86,219,127"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a58e718c9c2f0b7ac4c40faa33cace1c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a58e718c9c2f0b7ac4c40faa33cace1c4">&#9670;&nbsp;</a></span>geometry()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QRect KDEPlatformSystemTrayIcon::geometry </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2439720b407ac0c17847f3d281a4b77c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2439720b407ac0c17847f3d281a4b77c">&#9670;&nbsp;</a></span>init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KDEPlatformSystemTrayIcon::init </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="../../#l00118">m_sni</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00068">KDEPlatformSystemTrayIcon_UnitTest::testAddActionAfterMenuRecreate()</a> , 以及 <a class="el" href="../../#l00036">KDEPlatformSystemTrayIcon_UnitTest::testMenuRecreate()</a>.</p>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="../../closed.png" alt="+"/> 这是这个函数的调用关系图:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../da/dbb/classKDEPlatformSystemTrayIcon_a2439720b407ac0c17847f3d281a4b77c_icgraph.png" border="0" usemap="#ada/dbb/classKDEPlatformSystemTrayIcon_a2439720b407ac0c17847f3d281a4b77c_icgraph" alt=""/></div>
+<map name="da/dbb/classKDEPlatformSystemTrayIcon_a2439720b407ac0c17847f3d281a4b77c_icgraph" id="ada/dbb/classKDEPlatformSystemTrayIcon_a2439720b407ac0c17847f3d281a4b77c_icgraph">
+<area shape="rect" title=" " alt="" coords="287,50,481,91"/>
+<area shape="rect" href="../../d8/d80/classKDEPlatformSystemTrayIcon__UnitTest.html#a9656fa98b7908e25951330307eb7ca0b" title=" " alt="" coords="5,5,239,61"/>
+<area shape="rect" href="../../d8/d80/classKDEPlatformSystemTrayIcon__UnitTest.html#af71ce6148dda14326563bd5ae65cf464" title=" " alt="" coords="25,86,219,127"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a56fcfcc5cd583c4938569b9febbd5a0c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a56fcfcc5cd583c4938569b9febbd5a0c">&#9670;&nbsp;</a></span>isSystemTrayAvailable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool KDEPlatformSystemTrayIcon::isSystemTrayAvailable </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a173816ab446fa76cfda7e34663be2fbc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a173816ab446fa76cfda7e34663be2fbc">&#9670;&nbsp;</a></span>showMessage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KDEPlatformSystemTrayIcon::showMessage </td>
+          <td>(</td>
+          <td class="paramtype">const QString &amp;&#160;</td>
+          <td class="paramname"><em>title</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const QString &amp;&#160;</td>
+          <td class="paramname"><em>msg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const QIcon &amp;&#160;</td>
+          <td class="paramname"><em>icon</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">MessageIcon&#160;</td>
+          <td class="paramname"><em>iconType</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>secs</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="../../#l00118">m_sni</a>.</p>
+
+</div>
+</div>
+<a id="a5ddcbce7631b827636893da8b6f9e146"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ddcbce7631b827636893da8b6f9e146">&#9670;&nbsp;</a></span>supportsMessages()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool KDEPlatformSystemTrayIcon::supportsMessages </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa4b9326a3fba94049b58d395c03aa0a5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa4b9326a3fba94049b58d395c03aa0a5">&#9670;&nbsp;</a></span>updateIcon()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KDEPlatformSystemTrayIcon::updateIcon </td>
+          <td>(</td>
+          <td class="paramtype">const QIcon &amp;&#160;</td>
+          <td class="paramname"><em>icon</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="../../#l00118">m_sni</a>.</p>
+
+</div>
+</div>
+<a id="a6ccb6eb5c03f77ae914e3ec651e05399"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6ccb6eb5c03f77ae914e3ec651e05399">&#9670;&nbsp;</a></span>updateMenu()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KDEPlatformSystemTrayIcon::updateMenu </td>
+          <td>(</td>
+          <td class="paramtype">QPlatformMenu *&#160;</td>
+          <td class="paramname"><em>menu</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="../../#l00118">m_sni</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00068">KDEPlatformSystemTrayIcon_UnitTest::testAddActionAfterMenuRecreate()</a> , 以及 <a class="el" href="../../#l00036">KDEPlatformSystemTrayIcon_UnitTest::testMenuRecreate()</a>.</p>
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="../../closed.png" alt="+"/> 这是这个函数的调用关系图:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../da/dbb/classKDEPlatformSystemTrayIcon_a6ccb6eb5c03f77ae914e3ec651e05399_icgraph.png" border="0" usemap="#ada/dbb/classKDEPlatformSystemTrayIcon_a6ccb6eb5c03f77ae914e3ec651e05399_icgraph" alt=""/></div>
+<map name="da/dbb/classKDEPlatformSystemTrayIcon_a6ccb6eb5c03f77ae914e3ec651e05399_icgraph" id="ada/dbb/classKDEPlatformSystemTrayIcon_a6ccb6eb5c03f77ae914e3ec651e05399_icgraph">
+<area shape="rect" title=" " alt="" coords="287,50,481,91"/>
+<area shape="rect" href="../../d8/d80/classKDEPlatformSystemTrayIcon__UnitTest.html#a9656fa98b7908e25951330307eb7ca0b" title=" " alt="" coords="5,5,239,61"/>
+<area shape="rect" href="../../d8/d80/classKDEPlatformSystemTrayIcon__UnitTest.html#af71ce6148dda14326563bd5ae65cf464" title=" " alt="" coords="25,86,219,127"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="adf6d5e54e7ff8bcd2f4f686df17c3a44"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf6d5e54e7ff8bcd2f4f686df17c3a44">&#9670;&nbsp;</a></span>updateToolTip()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KDEPlatformSystemTrayIcon::updateToolTip </td>
+          <td>(</td>
+          <td class="paramtype">const QString &amp;&#160;</td>
+          <td class="paramname"><em>tooltip</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="../../#l00118">m_sni</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="a9fdc3ce445774795eb7532f992c0fbe7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9fdc3ce445774795eb7532f992c0fbe7">&#9670;&nbsp;</a></span>m_sni</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">KStatusNotifierItem* KDEPlatformSystemTrayIcon::m_sni = nullptr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00333">cleanup()</a>, <a class="el" href="../../#l00314">init()</a>, <a class="el" href="../../#l00382">showMessage()</a>, <a class="el" href="../../#l00339">updateIcon()</a>, <a class="el" href="../../#l00361">updateMenu()</a> , 以及 <a class="el" href="../../#l00353">updateToolTip()</a>.</p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>src/platformtheme/<a class="el" href="../../">kdeplatformsystemtrayicon.h</a></li>
+<li>src/platformtheme/<a class="el" href="../../">kdeplatformsystemtrayicon.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+生成于 2021年 一月 3日 星期日 19:22:18 , 为 C library使用 &#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20
+</small></address>
+</body>
+</html>

@@ -1,0 +1,961 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.20"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>C library: SystemTrayMenu类 参考</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">C library
+   &#160;<span id="projectnumber">v1.0.0</span>
+   </div>
+   <div id="projectbrief">C/C++常用库整理 + C/C++、基于linux 系统一些例子</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.20 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pri-methods">Private 成员函数</a> &#124;
+<a href="#pri-attribs">Private 属性</a> &#124;
+<a href="../../d1/ddc/classSystemTrayMenu-members.html">所有成员列表</a>  </div>
+  <div class="headertitle">
+<div class="title">SystemTrayMenu类 参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;<a class="el" href="../../">kdeplatformsystemtrayicon.h</a>&gt;</code></p>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="../../closed.png" alt="+"/> 类 SystemTrayMenu 继承关系图:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../de/d20/classSystemTrayMenu__inherit__graph.png" border="0" usemap="#aSystemTrayMenu_inherit__map" alt="Inheritance graph"/></div>
+<map name="SystemTrayMenu_inherit__map" id="aSystemTrayMenu_inherit__map">
+<area shape="rect" title=" " alt="" coords="5,131,180,472"/>
+<area shape="rect" title=" " alt="" coords="33,5,152,83"/>
+</map>
+</div>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="../../closed.png" alt="+"/> SystemTrayMenu 的协作图:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d8/ddd/classSystemTrayMenu__coll__graph.png" border="0" usemap="#aSystemTrayMenu_coll__map" alt="Collaboration graph"/></div>
+<map name="SystemTrayMenu_coll__map" id="aSystemTrayMenu_coll__map">
+<area shape="rect" title=" " alt="" coords="5,285,180,612"/>
+<area shape="rect" title=" " alt="" coords="12,145,131,223"/>
+<area shape="rect" href="../../d1/d4a/classQList.html" title=" " alt="" coords="155,145,371,223"/>
+<area shape="rect" href="../../d1/d4a/classQList.html" title=" " alt="" coords="223,5,303,83"/>
+</map>
+</div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:aa61fc9d4b827cbcf3024d2ab29ce67d0"><td class="memItemLeft" align="right" valign="top">QPlatformMenuItem *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d9b/classSystemTrayMenu.html#aa61fc9d4b827cbcf3024d2ab29ce67d0">createMenuItem</a> () const override</td></tr>
+<tr class="separator:aa61fc9d4b827cbcf3024d2ab29ce67d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af92afc7559f394dd8de8a7b5db79e063"><td class="memItemLeft" align="right" valign="top">QPlatformMenu *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d9b/classSystemTrayMenu.html#af92afc7559f394dd8de8a7b5db79e063">createSubMenu</a> () const override</td></tr>
+<tr class="separator:af92afc7559f394dd8de8a7b5db79e063"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff12852718fb4c7a30bea73e7113cbd4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d9b/classSystemTrayMenu.html#aff12852718fb4c7a30bea73e7113cbd4">insertMenuItem</a> (QPlatformMenuItem *menuItem, QPlatformMenuItem *before) override</td></tr>
+<tr class="separator:aff12852718fb4c7a30bea73e7113cbd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6dfa113aabde319ba4586bd62a933ba2"><td class="memItemLeft" align="right" valign="top">QMenu *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d9b/classSystemTrayMenu.html#a6dfa113aabde319ba4586bd62a933ba2">menu</a> ()</td></tr>
+<tr class="separator:a6dfa113aabde319ba4586bd62a933ba2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd4db53c6dd9e5c99f8cc6517b2694f4"><td class="memItemLeft" align="right" valign="top">QPlatformMenuItem *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d9b/classSystemTrayMenu.html#afd4db53c6dd9e5c99f8cc6517b2694f4">menuItemAt</a> (int position) const override</td></tr>
+<tr class="separator:afd4db53c6dd9e5c99f8cc6517b2694f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5e2a9c2691172f9fb3a523f5c2a32bf4"><td class="memItemLeft" align="right" valign="top">QPlatformMenuItem *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d9b/classSystemTrayMenu.html#a5e2a9c2691172f9fb3a523f5c2a32bf4">menuItemForTag</a> (quintptr <a class="el" href="../../d2/d9b/classSystemTrayMenu.html#aece88797cf5d974ed98a2c835e61dec3">tag</a>) const override</td></tr>
+<tr class="separator:a5e2a9c2691172f9fb3a523f5c2a32bf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aefede38c85a518517bb7b288477c860d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d9b/classSystemTrayMenu.html#aefede38c85a518517bb7b288477c860d">removeMenuItem</a> (QPlatformMenuItem *menuItem) override</td></tr>
+<tr class="separator:aefede38c85a518517bb7b288477c860d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada02f3090827c6803a248cb60da2b893"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d9b/classSystemTrayMenu.html#ada02f3090827c6803a248cb60da2b893">setEnabled</a> (bool enabled) override</td></tr>
+<tr class="separator:ada02f3090827c6803a248cb60da2b893"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b8e6a6191361e648d0640e0a7ce2a2b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d9b/classSystemTrayMenu.html#a2b8e6a6191361e648d0640e0a7ce2a2b">setIcon</a> (const QIcon &amp;icon) override</td></tr>
+<tr class="separator:a2b8e6a6191361e648d0640e0a7ce2a2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac02a697104437399c5b318aee36658ca"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d9b/classSystemTrayMenu.html#ac02a697104437399c5b318aee36658ca">setTag</a> (quintptr <a class="el" href="../../d2/d9b/classSystemTrayMenu.html#aece88797cf5d974ed98a2c835e61dec3">tag</a>) override</td></tr>
+<tr class="separator:ac02a697104437399c5b318aee36658ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea30901692747125d84114a8e9a398fa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d9b/classSystemTrayMenu.html#aea30901692747125d84114a8e9a398fa">setText</a> (const QString &amp;text) override</td></tr>
+<tr class="separator:aea30901692747125d84114a8e9a398fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abbd754a9b42f73e24cf176338313a882"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d9b/classSystemTrayMenu.html#abbd754a9b42f73e24cf176338313a882">setVisible</a> (bool visible) override</td></tr>
+<tr class="separator:abbd754a9b42f73e24cf176338313a882"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a85d75c66558abdd352e97b76999e7254"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d9b/classSystemTrayMenu.html#a85d75c66558abdd352e97b76999e7254">syncMenuItem</a> (QPlatformMenuItem *menuItem) override</td></tr>
+<tr class="separator:a85d75c66558abdd352e97b76999e7254"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a593c780056b1e584747140898a767374"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d9b/classSystemTrayMenu.html#a593c780056b1e584747140898a767374">syncSeparatorsCollapsible</a> (bool enable) override</td></tr>
+<tr class="separator:a593c780056b1e584747140898a767374"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa1bab87b409d0118257afe89a145100"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d9b/classSystemTrayMenu.html#aaa1bab87b409d0118257afe89a145100">SystemTrayMenu</a> ()</td></tr>
+<tr class="separator:aaa1bab87b409d0118257afe89a145100"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aece88797cf5d974ed98a2c835e61dec3"><td class="memItemLeft" align="right" valign="top">quintptr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d9b/classSystemTrayMenu.html#aece88797cf5d974ed98a2c835e61dec3">tag</a> () const override</td></tr>
+<tr class="separator:aece88797cf5d974ed98a2c835e61dec3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a50d88db5b2d50e3c8f195008a0e21ea0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d9b/classSystemTrayMenu.html#a50d88db5b2d50e3c8f195008a0e21ea0">~SystemTrayMenu</a> () override</td></tr>
+<tr class="separator:a50d88db5b2d50e3c8f195008a0e21ea0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private 成员函数</h2></td></tr>
+<tr class="memitem:a208621c5309b8efe6f36b409130890c9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d9b/classSystemTrayMenu.html#a208621c5309b8efe6f36b409130890c9">createMenu</a> ()</td></tr>
+<tr class="separator:a208621c5309b8efe6f36b409130890c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private 属性</h2></td></tr>
+<tr class="memitem:aa24c3410632fbbac5d810d8efbcf9cbf"><td class="memItemLeft" align="right" valign="top">QVariant&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d9b/classSystemTrayMenu.html#aa24c3410632fbbac5d810d8efbcf9cbf">m_enabled</a></td></tr>
+<tr class="separator:aa24c3410632fbbac5d810d8efbcf9cbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad127ebb1571f9674d7c742b31ef3676b"><td class="memItemLeft" align="right" valign="top">QIcon&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d9b/classSystemTrayMenu.html#ad127ebb1571f9674d7c742b31ef3676b">m_icon</a></td></tr>
+<tr class="separator:ad127ebb1571f9674d7c742b31ef3676b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c9cc78fc32fc1d0ef5db9edd250006d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d4a/classQList.html">QList</a>&lt; <a class="el" href="../../d6/d05/classSystemTrayMenuItem.html">SystemTrayMenuItem</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d9b/classSystemTrayMenu.html#a4c9cc78fc32fc1d0ef5db9edd250006d">m_items</a></td></tr>
+<tr class="separator:a4c9cc78fc32fc1d0ef5db9edd250006d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5165439dadce932152391b0dfd7393af"><td class="memItemLeft" align="right" valign="top">QPointer&lt; QMenu &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d9b/classSystemTrayMenu.html#a5165439dadce932152391b0dfd7393af">m_menu</a></td></tr>
+<tr class="separator:a5165439dadce932152391b0dfd7393af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acca9287790224b752ba7d9760cbf8a8d"><td class="memItemLeft" align="right" valign="top">QVariant&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d9b/classSystemTrayMenu.html#acca9287790224b752ba7d9760cbf8a8d">m_separatorsCollapsible</a></td></tr>
+<tr class="separator:acca9287790224b752ba7d9760cbf8a8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a62fa298dac3b4018290f5528167a08b2"><td class="memItemLeft" align="right" valign="top">quintptr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d9b/classSystemTrayMenu.html#a62fa298dac3b4018290f5528167a08b2">m_tag</a></td></tr>
+<tr class="separator:a62fa298dac3b4018290f5528167a08b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a21da3e04110493aa7b1dcdaf2fc53250"><td class="memItemLeft" align="right" valign="top">QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d9b/classSystemTrayMenu.html#a21da3e04110493aa7b1dcdaf2fc53250">m_text</a></td></tr>
+<tr class="separator:a21da3e04110493aa7b1dcdaf2fc53250"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81c3a242bd4399f01886060017fae714"><td class="memItemLeft" align="right" valign="top">QVariant&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d9b/classSystemTrayMenu.html#a81c3a242bd4399f01886060017fae714">m_visible</a></td></tr>
+<tr class="separator:a81c3a242bd4399f01886060017fae714"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"></div><h2 class="groupheader">构造及析构函数说明</h2>
+<a id="aaa1bab87b409d0118257afe89a145100"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa1bab87b409d0118257afe89a145100">&#9670;&nbsp;</a></span>SystemTrayMenu()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SystemTrayMenu::SystemTrayMenu </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00051">createSubMenu()</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="../../closed.png" alt="+"/> 这是这个函数的调用关系图:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d2/d9b/classSystemTrayMenu_aaa1bab87b409d0118257afe89a145100_icgraph.png" border="0" usemap="#ad2/d9b/classSystemTrayMenu_aaa1bab87b409d0118257afe89a145100_icgraph" alt=""/></div>
+<map name="d2/d9b/classSystemTrayMenu_aaa1bab87b409d0118257afe89a145100_icgraph" id="ad2/d9b/classSystemTrayMenu_aaa1bab87b409d0118257afe89a145100_icgraph">
+<area shape="rect" title=" " alt="" coords="283,5,521,32"/>
+<area shape="rect" href="../../d2/d9b/classSystemTrayMenu.html#af92afc7559f394dd8de8a7b5db79e063" title=" " alt="" coords="5,5,235,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a50d88db5b2d50e3c8f195008a0e21ea0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a50d88db5b2d50e3c8f195008a0e21ea0">&#9670;&nbsp;</a></span>~SystemTrayMenu()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">SystemTrayMenu::~SystemTrayMenu </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="../../#l00064">m_menu</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="a208621c5309b8efe6f36b409130890c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a208621c5309b8efe6f36b409130890c9">&#9670;&nbsp;</a></span>createMenu()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SystemTrayMenu::createMenu </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="../../#l00060">m_enabled</a>, <a class="el" href="../../#l00059">m_icon</a>, <a class="el" href="../../#l00065">m_items</a>, <a class="el" href="../../#l00064">m_menu</a>, <a class="el" href="../../#l00062">m_separatorsCollapsible</a>, <a class="el" href="../../#l00058">m_text</a> , 以及 <a class="el" href="../../#l00061">m_visible</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00166">menu()</a>.</p>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="../../closed.png" alt="+"/> 这是这个函数的调用关系图:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d2/d9b/classSystemTrayMenu_a208621c5309b8efe6f36b409130890c9_icgraph.png" border="0" usemap="#ad2/d9b/classSystemTrayMenu_a208621c5309b8efe6f36b409130890c9_icgraph" alt=""/></div>
+<map name="d2/d9b/classSystemTrayMenu_a208621c5309b8efe6f36b409130890c9_icgraph" id="ad2/d9b/classSystemTrayMenu_a208621c5309b8efe6f36b409130890c9_icgraph">
+<area shape="rect" title=" " alt="" coords="504,57,711,84"/>
+<area shape="rect" href="../../d2/d9b/classSystemTrayMenu.html#a6dfa113aabde319ba4586bd62a933ba2" title=" " alt="" coords="287,57,456,84"/>
+<area shape="rect" href="../../d8/d80/classKDEPlatformSystemTrayIcon__UnitTest.html#a9656fa98b7908e25951330307eb7ca0b" title=" " alt="" coords="5,5,239,61"/>
+<area shape="rect" href="../../d8/d80/classKDEPlatformSystemTrayIcon__UnitTest.html#af71ce6148dda14326563bd5ae65cf464" title=" " alt="" coords="25,86,219,127"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aa61fc9d4b827cbcf3024d2ab29ce67d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa61fc9d4b827cbcf3024d2ab29ce67d0">&#9670;&nbsp;</a></span>createMenuItem()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QPlatformMenuItem * SystemTrayMenu::createMenuItem </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af92afc7559f394dd8de8a7b5db79e063"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af92afc7559f394dd8de8a7b5db79e063">&#9670;&nbsp;</a></span>createSubMenu()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QPlatformMenu * SystemTrayMenu::createSubMenu </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="../../#l00030">SystemTrayMenu()</a>.</p>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="../../closed.png" alt="+"/> 函数调用图:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d2/d9b/classSystemTrayMenu_af92afc7559f394dd8de8a7b5db79e063_cgraph.png" border="0" usemap="#ad2/d9b/classSystemTrayMenu_af92afc7559f394dd8de8a7b5db79e063_cgraph" alt=""/></div>
+<map name="d2/d9b/classSystemTrayMenu_af92afc7559f394dd8de8a7b5db79e063_cgraph" id="ad2/d9b/classSystemTrayMenu_af92afc7559f394dd8de8a7b5db79e063_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,235,32"/>
+<area shape="rect" href="../../d2/d9b/classSystemTrayMenu.html#aaa1bab87b409d0118257afe89a145100" title=" " alt="" coords="283,5,521,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aff12852718fb4c7a30bea73e7113cbd4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff12852718fb4c7a30bea73e7113cbd4">&#9670;&nbsp;</a></span>insertMenuItem()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SystemTrayMenu::insertMenuItem </td>
+          <td>(</td>
+          <td class="paramtype">QPlatformMenuItem *&#160;</td>
+          <td class="paramname"><em>menuItem</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">QPlatformMenuItem *&#160;</td>
+          <td class="paramname"><em>before</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="../../#l00065">m_items</a> , 以及 <a class="el" href="../../#l00064">m_menu</a>.</p>
+
+</div>
+</div>
+<a id="a6dfa113aabde319ba4586bd62a933ba2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6dfa113aabde319ba4586bd62a933ba2">&#9670;&nbsp;</a></span>menu()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QMenu * SystemTrayMenu::menu </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="../../#l00174">createMenu()</a> , 以及 <a class="el" href="../../#l00064">m_menu</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00068">KDEPlatformSystemTrayIcon_UnitTest::testAddActionAfterMenuRecreate()</a> , 以及 <a class="el" href="../../#l00036">KDEPlatformSystemTrayIcon_UnitTest::testMenuRecreate()</a>.</p>
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="../../closed.png" alt="+"/> 函数调用图:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d2/d9b/classSystemTrayMenu_a6dfa113aabde319ba4586bd62a933ba2_cgraph.png" border="0" usemap="#ad2/d9b/classSystemTrayMenu_a6dfa113aabde319ba4586bd62a933ba2_cgraph" alt=""/></div>
+<map name="d2/d9b/classSystemTrayMenu_a6dfa113aabde319ba4586bd62a933ba2_cgraph" id="ad2/d9b/classSystemTrayMenu_a6dfa113aabde319ba4586bd62a933ba2_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,175,32"/>
+<area shape="rect" href="../../d2/d9b/classSystemTrayMenu.html#a208621c5309b8efe6f36b409130890c9" title=" " alt="" coords="223,5,429,32"/>
+</map>
+</div>
+<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-6-trigger" src="../../closed.png" alt="+"/> 这是这个函数的调用关系图:</div>
+<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-6-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d2/d9b/classSystemTrayMenu_a6dfa113aabde319ba4586bd62a933ba2_icgraph.png" border="0" usemap="#ad2/d9b/classSystemTrayMenu_a6dfa113aabde319ba4586bd62a933ba2_icgraph" alt=""/></div>
+<map name="d2/d9b/classSystemTrayMenu_a6dfa113aabde319ba4586bd62a933ba2_icgraph" id="ad2/d9b/classSystemTrayMenu_a6dfa113aabde319ba4586bd62a933ba2_icgraph">
+<area shape="rect" title=" " alt="" coords="287,57,456,84"/>
+<area shape="rect" href="../../d8/d80/classKDEPlatformSystemTrayIcon__UnitTest.html#a9656fa98b7908e25951330307eb7ca0b" title=" " alt="" coords="5,5,239,61"/>
+<area shape="rect" href="../../d8/d80/classKDEPlatformSystemTrayIcon__UnitTest.html#af71ce6148dda14326563bd5ae65cf464" title=" " alt="" coords="25,86,219,127"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="afd4db53c6dd9e5c99f8cc6517b2694f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd4db53c6dd9e5c99f8cc6517b2694f4">&#9670;&nbsp;</a></span>menuItemAt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QPlatformMenuItem * SystemTrayMenu::menuItemAt </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>position</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="../../#l00065">m_items</a>.</p>
+
+</div>
+</div>
+<a id="a5e2a9c2691172f9fb3a523f5c2a32bf4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5e2a9c2691172f9fb3a523f5c2a32bf4">&#9670;&nbsp;</a></span>menuItemForTag()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QPlatformMenuItem * SystemTrayMenu::menuItemForTag </td>
+          <td>(</td>
+          <td class="paramtype">quintptr&#160;</td>
+          <td class="paramname"><em>tag</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="../../#l00065">m_items</a> , 以及 <a class="el" href="../../#l00161">tag()</a>.</p>
+<div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-7-trigger" src="../../closed.png" alt="+"/> 函数调用图:</div>
+<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-7-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d2/d9b/classSystemTrayMenu_a5e2a9c2691172f9fb3a523f5c2a32bf4_cgraph.png" border="0" usemap="#ad2/d9b/classSystemTrayMenu_a5e2a9c2691172f9fb3a523f5c2a32bf4_cgraph" alt=""/></div>
+<map name="d2/d9b/classSystemTrayMenu_a5e2a9c2691172f9fb3a523f5c2a32bf4_cgraph" id="ad2/d9b/classSystemTrayMenu_a5e2a9c2691172f9fb3a523f5c2a32bf4_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,204,47"/>
+<area shape="rect" href="../../d2/d9b/classSystemTrayMenu.html#aece88797cf5d974ed98a2c835e61dec3" title=" " alt="" coords="252,13,405,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aefede38c85a518517bb7b288477c860d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aefede38c85a518517bb7b288477c860d">&#9670;&nbsp;</a></span>removeMenuItem()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SystemTrayMenu::removeMenuItem </td>
+          <td>(</td>
+          <td class="paramtype">QPlatformMenuItem *&#160;</td>
+          <td class="paramname"><em>menuItem</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="../../#l00065">m_items</a> , 以及 <a class="el" href="../../#l00064">m_menu</a>.</p>
+
+</div>
+</div>
+<a id="ada02f3090827c6803a248cb60da2b893"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ada02f3090827c6803a248cb60da2b893">&#9670;&nbsp;</a></span>setEnabled()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SystemTrayMenu::setEnabled </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>enabled</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="../../#l00060">m_enabled</a> , 以及 <a class="el" href="../../#l00064">m_menu</a>.</p>
+
+</div>
+</div>
+<a id="a2b8e6a6191361e648d0640e0a7ce2a2b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2b8e6a6191361e648d0640e0a7ce2a2b">&#9670;&nbsp;</a></span>setIcon()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SystemTrayMenu::setIcon </td>
+          <td>(</td>
+          <td class="paramtype">const QIcon &amp;&#160;</td>
+          <td class="paramname"><em>icon</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="../../#l00059">m_icon</a> , 以及 <a class="el" href="../../#l00064">m_menu</a>.</p>
+
+</div>
+</div>
+<a id="ac02a697104437399c5b318aee36658ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac02a697104437399c5b318aee36658ca">&#9670;&nbsp;</a></span>setTag()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SystemTrayMenu::setTag </td>
+          <td>(</td>
+          <td class="paramtype">quintptr&#160;</td>
+          <td class="paramname"><em>tag</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="../../#l00063">m_tag</a> , 以及 <a class="el" href="../../#l00161">tag()</a>.</p>
+<div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-8-trigger" src="../../closed.png" alt="+"/> 函数调用图:</div>
+<div id="dynsection-8-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-8-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d2/d9b/classSystemTrayMenu_ac02a697104437399c5b318aee36658ca_cgraph.png" border="0" usemap="#ad2/d9b/classSystemTrayMenu_ac02a697104437399c5b318aee36658ca_cgraph" alt=""/></div>
+<map name="d2/d9b/classSystemTrayMenu_ac02a697104437399c5b318aee36658ca_cgraph" id="ad2/d9b/classSystemTrayMenu_ac02a697104437399c5b318aee36658ca_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,177,32"/>
+<area shape="rect" href="../../d2/d9b/classSystemTrayMenu.html#aece88797cf5d974ed98a2c835e61dec3" title=" " alt="" coords="225,5,379,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aea30901692747125d84114a8e9a398fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea30901692747125d84114a8e9a398fa">&#9670;&nbsp;</a></span>setText()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SystemTrayMenu::setText </td>
+          <td>(</td>
+          <td class="paramtype">const QString &amp;&#160;</td>
+          <td class="paramname"><em>text</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="../../#l00064">m_menu</a> , 以及 <a class="el" href="../../#l00058">m_text</a>.</p>
+
+</div>
+</div>
+<a id="abbd754a9b42f73e24cf176338313a882"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abbd754a9b42f73e24cf176338313a882">&#9670;&nbsp;</a></span>setVisible()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SystemTrayMenu::setVisible </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>visible</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="../../#l00064">m_menu</a>, <a class="el" href="../../#l00061">m_visible</a> , 以及 <a class="el" href="../../#l00125">testscript::visible</a>.</p>
+
+</div>
+</div>
+<a id="a85d75c66558abdd352e97b76999e7254"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a85d75c66558abdd352e97b76999e7254">&#9670;&nbsp;</a></span>syncMenuItem()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SystemTrayMenu::syncMenuItem </td>
+          <td>(</td>
+          <td class="paramtype">QPlatformMenuItem *&#160;</td>
+          <td class="paramname"><em>menuItem</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a593c780056b1e584747140898a767374"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a593c780056b1e584747140898a767374">&#9670;&nbsp;</a></span>syncSeparatorsCollapsible()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SystemTrayMenu::syncSeparatorsCollapsible </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>enable</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="../../#l00064">m_menu</a> , 以及 <a class="el" href="../../#l00062">m_separatorsCollapsible</a>.</p>
+
+</div>
+</div>
+<a id="aece88797cf5d974ed98a2c835e61dec3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aece88797cf5d974ed98a2c835e61dec3">&#9670;&nbsp;</a></span>tag()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">quintptr SystemTrayMenu::tag </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="../../#l00063">m_tag</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00089">menuItemForTag()</a> , 以及 <a class="el" href="../../#l00126">setTag()</a>.</p>
+<div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-9-trigger" src="../../closed.png" alt="+"/> 这是这个函数的调用关系图:</div>
+<div id="dynsection-9-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-9-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d2/d9b/classSystemTrayMenu_aece88797cf5d974ed98a2c835e61dec3_icgraph.png" border="0" usemap="#ad2/d9b/classSystemTrayMenu_aece88797cf5d974ed98a2c835e61dec3_icgraph" alt=""/></div>
+<map name="d2/d9b/classSystemTrayMenu_aece88797cf5d974ed98a2c835e61dec3_icgraph" id="ad2/d9b/classSystemTrayMenu_aece88797cf5d974ed98a2c835e61dec3_icgraph">
+<area shape="rect" title=" " alt="" coords="252,42,405,69"/>
+<area shape="rect" href="../../d2/d9b/classSystemTrayMenu.html#a5e2a9c2691172f9fb3a523f5c2a32bf4" title=" " alt="" coords="5,5,204,47"/>
+<area shape="rect" href="../../d2/d9b/classSystemTrayMenu.html#ac02a697104437399c5b318aee36658ca" title=" " alt="" coords="19,71,191,98"/>
+</map>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="aa24c3410632fbbac5d810d8efbcf9cbf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa24c3410632fbbac5d810d8efbcf9cbf">&#9670;&nbsp;</a></span>m_enabled</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QVariant SystemTrayMenu::m_enabled</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00174">createMenu()</a> , 以及 <a class="el" href="../../#l00110">setEnabled()</a>.</p>
+
+</div>
+</div>
+<a id="ad127ebb1571f9674d7c742b31ef3676b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad127ebb1571f9674d7c742b31ef3676b">&#9670;&nbsp;</a></span>m_icon</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QIcon SystemTrayMenu::m_icon</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00174">createMenu()</a> , 以及 <a class="el" href="../../#l00118">setIcon()</a>.</p>
+
+</div>
+</div>
+<a id="a4c9cc78fc32fc1d0ef5db9edd250006d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c9cc78fc32fc1d0ef5db9edd250006d">&#9670;&nbsp;</a></span>m_items</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d1/d4a/classQList.html">QList</a>&lt;<a class="el" href="../../d6/d05/classSystemTrayMenuItem.html">SystemTrayMenuItem</a>*&gt; SystemTrayMenu::m_items</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00174">createMenu()</a>, <a class="el" href="../../#l00056">insertMenuItem()</a>, <a class="el" href="../../#l00081">menuItemAt()</a>, <a class="el" href="../../#l00089">menuItemForTag()</a> , 以及 <a class="el" href="../../#l00100">removeMenuItem()</a>.</p>
+
+</div>
+</div>
+<a id="a5165439dadce932152391b0dfd7393af"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5165439dadce932152391b0dfd7393af">&#9670;&nbsp;</a></span>m_menu</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QPointer&lt;QMenu&gt; SystemTrayMenu::m_menu</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00174">createMenu()</a>, <a class="el" href="../../#l00056">insertMenuItem()</a>, <a class="el" href="../../#l00166">menu()</a>, <a class="el" href="../../#l00100">removeMenuItem()</a>, <a class="el" href="../../#l00110">setEnabled()</a>, <a class="el" href="../../#l00118">setIcon()</a>, <a class="el" href="../../#l00131">setText()</a>, <a class="el" href="../../#l00139">setVisible()</a>, <a class="el" href="../../#l00153">syncSeparatorsCollapsible()</a> , 以及 <a class="el" href="../../#l00039">~SystemTrayMenu()</a>.</p>
+
+</div>
+</div>
+<a id="acca9287790224b752ba7d9760cbf8a8d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acca9287790224b752ba7d9760cbf8a8d">&#9670;&nbsp;</a></span>m_separatorsCollapsible</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QVariant SystemTrayMenu::m_separatorsCollapsible</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00174">createMenu()</a> , 以及 <a class="el" href="../../#l00153">syncSeparatorsCollapsible()</a>.</p>
+
+</div>
+</div>
+<a id="a62fa298dac3b4018290f5528167a08b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a62fa298dac3b4018290f5528167a08b2">&#9670;&nbsp;</a></span>m_tag</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">quintptr SystemTrayMenu::m_tag</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00126">setTag()</a> , 以及 <a class="el" href="../../#l00161">tag()</a>.</p>
+
+</div>
+</div>
+<a id="a21da3e04110493aa7b1dcdaf2fc53250"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a21da3e04110493aa7b1dcdaf2fc53250">&#9670;&nbsp;</a></span>m_text</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QString SystemTrayMenu::m_text</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00174">createMenu()</a> , 以及 <a class="el" href="../../#l00131">setText()</a>.</p>
+
+</div>
+</div>
+<a id="a81c3a242bd4399f01886060017fae714"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81c3a242bd4399f01886060017fae714">&#9670;&nbsp;</a></span>m_visible</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QVariant SystemTrayMenu::m_visible</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00174">createMenu()</a> , 以及 <a class="el" href="../../#l00139">setVisible()</a>.</p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>src/platformtheme/<a class="el" href="../../">kdeplatformsystemtrayicon.h</a></li>
+<li>src/platformtheme/<a class="el" href="../../">kdeplatformsystemtrayicon.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+生成于 2021年 一月 3日 星期日 19:22:18 , 为 C library使用 &#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20
+</small></address>
+</body>
+</html>

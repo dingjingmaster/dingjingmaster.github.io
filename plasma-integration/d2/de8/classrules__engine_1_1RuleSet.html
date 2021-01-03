@@ -1,0 +1,580 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.20"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>C library: rules_engine.RuleSet类 参考</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">C library
+   &#160;<span id="projectnumber">v1.0.0</span>
+   </div>
+   <div id="projectbrief">C/C++常用库整理 + C/C++、基于linux 系统一些例子</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.20 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="../../d8/df1/namespacerules__engine.html">rules_engine</a></li><li class="navelem"><a class="el" href="../../d2/de8/classrules__engine_1_1RuleSet.html">RuleSet</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pri-static-attribs">静态 Private 属性</a> &#124;
+<a href="../../dc/d05/classrules__engine_1_1RuleSet-members.html">所有成员列表</a>  </div>
+  <div class="headertitle">
+<div class="title">rules_engine.RuleSet类 参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="../../closed.png" alt="+"/> 类 rules_engine.RuleSet 继承关系图:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d4/db8/classrules__engine_1_1RuleSet__inherit__graph.png" border="0" usemap="#arules__engine_8RuleSet_inherit__map" alt="Inheritance graph"/></div>
+<map name="rules__engine_8RuleSet_inherit__map" id="arules__engine_8RuleSet_inherit__map">
+<area shape="rect" title=" " alt="" coords="17,131,168,369"/>
+<area shape="rect" href="../../db/d3c/classQt5Ruleset_1_1RuleSet.html" title=" " alt="" coords="5,417,180,759"/>
+<area shape="rect" title=" " alt="" coords="63,5,122,83"/>
+<area shape="rect" href="../../d6/deb/classrules__SipTest_1_1RuleSet.html" title=" " alt="" coords="5,807,180,957"/>
+</map>
+</div>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="../../closed.png" alt="+"/> rules_engine.RuleSet 的协作图:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d0/d07/classrules__engine_1_1RuleSet__coll__graph.png" border="0" usemap="#arules__engine_8RuleSet_coll__map" alt="Collaboration graph"/></div>
+<map name="rules__engine_8RuleSet_coll__map" id="arules__engine_8RuleSet_coll__map">
+<area shape="rect" title=" " alt="" coords="5,131,156,369"/>
+<area shape="rect" title=" " alt="" coords="51,5,110,83"/>
+</map>
+</div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a3f0f4b02f6c556deb66868da4e8281d5"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/de8/classrules__engine_1_1RuleSet.html#a3f0f4b02f6c556deb66868da4e8281d5">container_rules</a> (self)</td></tr>
+<tr class="separator:a3f0f4b02f6c556deb66868da4e8281d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae8a70e458a835d15387b720505334f22"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/de8/classrules__engine_1_1RuleSet.html#ae8a70e458a835d15387b720505334f22">dump_unused</a> (self)</td></tr>
+<tr class="separator:ae8a70e458a835d15387b720505334f22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4941045ee6e31ae3b5682ed53865d97c"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/de8/classrules__engine_1_1RuleSet.html#a4941045ee6e31ae3b5682ed53865d97c">forward_declaration_rules</a> (self)</td></tr>
+<tr class="separator:a4941045ee6e31ae3b5682ed53865d97c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8b88ce9428eeb67871c868e39e46262"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/de8/classrules__engine_1_1RuleSet.html#ac8b88ce9428eeb67871c868e39e46262">function_rules</a> (self)</td></tr>
+<tr class="separator:ac8b88ce9428eeb67871c868e39e46262"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a011100e2d997b3794409fa0855ebd9af"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/de8/classrules__engine_1_1RuleSet.html#a011100e2d997b3794409fa0855ebd9af">methodcode</a> (self, container, function)</td></tr>
+<tr class="separator:a011100e2d997b3794409fa0855ebd9af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ec72795f434e6e8d6b4cf244a54264e"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/de8/classrules__engine_1_1RuleSet.html#a9ec72795f434e6e8d6b4cf244a54264e">methodcode_rules</a> (self)</td></tr>
+<tr class="separator:a9ec72795f434e6e8d6b4cf244a54264e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2faa1a10406eb2816339a4ac3faad345"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/de8/classrules__engine_1_1RuleSet.html#a2faa1a10406eb2816339a4ac3faad345">modulecode</a> (self, filename)</td></tr>
+<tr class="separator:a2faa1a10406eb2816339a4ac3faad345"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1dfa00bd46ef161418526a2b2fbb8b7e"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/de8/classrules__engine_1_1RuleSet.html#a1dfa00bd46ef161418526a2b2fbb8b7e">modulecode_rules</a> (self)</td></tr>
+<tr class="separator:a1dfa00bd46ef161418526a2b2fbb8b7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab21d2c151f4cae8f4abb13dfe8a16dcb"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/de8/classrules__engine_1_1RuleSet.html#ab21d2c151f4cae8f4abb13dfe8a16dcb">parameter_rules</a> (self)</td></tr>
+<tr class="separator:ab21d2c151f4cae8f4abb13dfe8a16dcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23d368a5e7828d920792c08e71e6821f"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/de8/classrules__engine_1_1RuleSet.html#a23d368a5e7828d920792c08e71e6821f">typedef_rules</a> (self)</td></tr>
+<tr class="separator:a23d368a5e7828d920792c08e71e6821f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a531535fa50a598bba49ee60a6d6cb0d6"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/de8/classrules__engine_1_1RuleSet.html#a531535fa50a598bba49ee60a6d6cb0d6">variable_rules</a> (self)</td></tr>
+<tr class="separator:a531535fa50a598bba49ee60a6d6cb0d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
+静态 Private 属性</h2></td></tr>
+<tr class="memitem:a6028ce927dd57320f1e3a3132a0c4143"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/de8/classrules__engine_1_1RuleSet.html#a6028ce927dd57320f1e3a3132a0c4143">__metaclass__</a> = ABCMeta</td></tr>
+<tr class="separator:a6028ce927dd57320f1e3a3132a0c4143"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><pre class="fragment">To implement your own binding, create a subclass of RuleSet, also called
+RuleSet in your own Python module. Your subclass will expose the raw rules
+along with other ancilliary data exposed through the subclass methods.
+
+You then simply run the SIP generation and SIP compilation programs passing
+in the name of your rules file
+</pre> </div><h2 class="groupheader">成员函数说明</h2>
+<a id="a3f0f4b02f6c556deb66868da4e8281d5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f0f4b02f6c556deb66868da4e8281d5">&#9670;&nbsp;</a></span>container_rules()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def rules_engine.RuleSet.container_rules </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Return a compiled list of rules for containers.
+
+:return: A ContainerRuleDb instance
+</pre> 
+<p>被 <a class="el" href="../../db/d3c/classQt5Ruleset_1_1RuleSet.html#a67bd59e60531616a9922b8e62f7f7888">Qt5Ruleset.RuleSet</a> 重载.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00894">rules_engine.RuleSet.dump_unused()</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="../../closed.png" alt="+"/> 这是这个函数的调用关系图:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d2/de8/classrules__engine_1_1RuleSet_a3f0f4b02f6c556deb66868da4e8281d5_icgraph.png" border="0" usemap="#ad2/de8/classrules__engine_1_1RuleSet_a3f0f4b02f6c556deb66868da4e8281d5_icgraph" alt=""/></div>
+<map name="d2/de8/classrules__engine_1_1RuleSet_a3f0f4b02f6c556deb66868da4e8281d5_icgraph" id="ad2/de8/classrules__engine_1_1RuleSet_a3f0f4b02f6c556deb66868da4e8281d5_icgraph">
+<area shape="rect" title=" " alt="" coords="239,5,445,47"/>
+<area shape="rect" href="../../d2/de8/classrules__engine_1_1RuleSet.html#ae8a70e458a835d15387b720505334f22" title=" " alt="" coords="5,5,191,47"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ae8a70e458a835d15387b720505334f22"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae8a70e458a835d15387b720505334f22">&#9670;&nbsp;</a></span>dump_unused()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def rules_engine.RuleSet.dump_unused </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Usage statistics, to identify unused rules.</pre> 
+<p class="reference">引用了 <a class="el" href="../../#l00106">Qt5Ruleset.RuleSet.container_rules()</a>, <a class="el" href="../../#l00823">rules_engine.RuleSet.container_rules()</a>, <a class="el" href="../../#l00109">Qt5Ruleset.RuleSet.forward_declaration_rules()</a>, <a class="el" href="../../#l00832">rules_engine.RuleSet.forward_declaration_rules()</a>, <a class="el" href="../../#l00112">Qt5Ruleset.RuleSet.function_rules()</a>, <a class="el" href="../../#l00841">rules_engine.RuleSet.function_rules()</a>, <a class="el" href="../../#l00124">Qt5Ruleset.RuleSet.methodcode_rules()</a>, <a class="el" href="../../#l00877">rules_engine.RuleSet.methodcode_rules()</a>, <a class="el" href="../../#l00127">Qt5Ruleset.RuleSet.modulecode_rules()</a>, <a class="el" href="../../#l00886">rules_engine.RuleSet.modulecode_rules()</a>, <a class="el" href="../../#l00115">Qt5Ruleset.RuleSet.parameter_rules()</a>, <a class="el" href="../../#l00850">rules_engine.RuleSet.parameter_rules()</a>, <a class="el" href="../../#l00118">Qt5Ruleset.RuleSet.typedef_rules()</a>, <a class="el" href="../../#l00859">rules_engine.RuleSet.typedef_rules()</a>, <a class="el" href="../../#l00121">Qt5Ruleset.RuleSet.variable_rules()</a> , 以及 <a class="el" href="../../#l00868">rules_engine.RuleSet.variable_rules()</a>.</p>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="../../closed.png" alt="+"/> 函数调用图:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d2/de8/classrules__engine_1_1RuleSet_ae8a70e458a835d15387b720505334f22_cgraph.png" border="0" usemap="#ad2/de8/classrules__engine_1_1RuleSet_ae8a70e458a835d15387b720505334f22_cgraph" alt=""/></div>
+<map name="d2/de8/classrules__engine_1_1RuleSet_ae8a70e458a835d15387b720505334f22_cgraph" id="ad2/de8/classrules__engine_1_1RuleSet_ae8a70e458a835d15387b720505334f22_cgraph">
+<area shape="rect" title=" " alt="" coords="5,496,191,537"/>
+<area shape="rect" href="../../db/d3c/classQt5Ruleset_1_1RuleSet.html#a67bd59e60531616a9922b8e62f7f7888" title=" " alt="" coords="253,5,451,47"/>
+<area shape="rect" href="../../d2/de8/classrules__engine_1_1RuleSet.html#a3f0f4b02f6c556deb66868da4e8281d5" title=" " alt="" coords="249,71,455,112"/>
+<area shape="rect" href="../../db/d3c/classQt5Ruleset_1_1RuleSet.html#a9033ecdd367024828c0ec64ddd2135f5" title=" " alt="" coords="258,136,446,177"/>
+<area shape="rect" href="../../d2/de8/classrules__engine_1_1RuleSet.html#a4941045ee6e31ae3b5682ed53865d97c" title=" " alt="" coords="254,201,450,243"/>
+<area shape="rect" href="../../db/d3c/classQt5Ruleset_1_1RuleSet.html#a4f2db9da8e80f6e39b84e941c8c26288" title=" " alt="" coords="257,267,447,308"/>
+<area shape="rect" href="../../d2/de8/classrules__engine_1_1RuleSet.html#ac8b88ce9428eeb67871c868e39e46262" title=" " alt="" coords="253,332,451,373"/>
+<area shape="rect" href="../../db/d3c/classQt5Ruleset_1_1RuleSet.html#aa7631a63a23f4488f20c853fb41c29be" title=" " alt="" coords="243,397,461,439"/>
+<area shape="rect" href="../../d2/de8/classrules__engine_1_1RuleSet.html#a9ec72795f434e6e8d6b4cf244a54264e" title=" " alt="" coords="239,463,465,504"/>
+<area shape="rect" href="../../db/d3c/classQt5Ruleset_1_1RuleSet.html#a8369e8d6156efef52cf39929ddfbe42d" title=" " alt="" coords="244,528,460,569"/>
+<area shape="rect" href="../../d2/de8/classrules__engine_1_1RuleSet.html#a1dfa00bd46ef161418526a2b2fbb8b7e" title=" " alt="" coords="240,593,464,635"/>
+<area shape="rect" href="../../db/d3c/classQt5Ruleset_1_1RuleSet.html#a94a2d4207774ef8b52ae2421e23ac053" title=" " alt="" coords="250,659,454,700"/>
+<area shape="rect" href="../../d2/de8/classrules__engine_1_1RuleSet.html#ab21d2c151f4cae8f4abb13dfe8a16dcb" title=" " alt="" coords="246,724,458,765"/>
+<area shape="rect" href="../../db/d3c/classQt5Ruleset_1_1RuleSet.html#ae1f6bca759fad4d4b16b57df73233844" title=" " alt="" coords="259,789,445,831"/>
+<area shape="rect" href="../../d2/de8/classrules__engine_1_1RuleSet.html#a23d368a5e7828d920792c08e71e6821f" title=" " alt="" coords="255,855,449,896"/>
+<area shape="rect" href="../../db/d3c/classQt5Ruleset_1_1RuleSet.html#a73134c40bc28e7bbfc61591007d0eb77" title=" " alt="" coords="259,920,445,961"/>
+<area shape="rect" href="../../d2/de8/classrules__engine_1_1RuleSet.html#a531535fa50a598bba49ee60a6d6cb0d6" title=" " alt="" coords="255,985,449,1027"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a4941045ee6e31ae3b5682ed53865d97c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4941045ee6e31ae3b5682ed53865d97c">&#9670;&nbsp;</a></span>forward_declaration_rules()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def rules_engine.RuleSet.forward_declaration_rules </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Return a compiled list of rules for containers.
+
+:return: A ForwardDeclarationRuleDb instance
+</pre> 
+<p>被 <a class="el" href="../../db/d3c/classQt5Ruleset_1_1RuleSet.html#a9033ecdd367024828c0ec64ddd2135f5">Qt5Ruleset.RuleSet</a> 重载.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00894">rules_engine.RuleSet.dump_unused()</a>.</p>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="../../closed.png" alt="+"/> 这是这个函数的调用关系图:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d2/de8/classrules__engine_1_1RuleSet_a4941045ee6e31ae3b5682ed53865d97c_icgraph.png" border="0" usemap="#ad2/de8/classrules__engine_1_1RuleSet_a4941045ee6e31ae3b5682ed53865d97c_icgraph" alt=""/></div>
+<map name="d2/de8/classrules__engine_1_1RuleSet_a4941045ee6e31ae3b5682ed53865d97c_icgraph" id="ad2/de8/classrules__engine_1_1RuleSet_a4941045ee6e31ae3b5682ed53865d97c_icgraph">
+<area shape="rect" title=" " alt="" coords="239,5,435,47"/>
+<area shape="rect" href="../../d2/de8/classrules__engine_1_1RuleSet.html#ae8a70e458a835d15387b720505334f22" title=" " alt="" coords="5,5,191,47"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ac8b88ce9428eeb67871c868e39e46262"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac8b88ce9428eeb67871c868e39e46262">&#9670;&nbsp;</a></span>function_rules()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def rules_engine.RuleSet.function_rules </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Return a compiled list of rules for functions.
+
+:return: A FunctionRuleDb instance
+</pre> 
+<p>被 <a class="el" href="../../db/d3c/classQt5Ruleset_1_1RuleSet.html#a4f2db9da8e80f6e39b84e941c8c26288">Qt5Ruleset.RuleSet</a> 重载.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00894">rules_engine.RuleSet.dump_unused()</a>.</p>
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="../../closed.png" alt="+"/> 这是这个函数的调用关系图:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d2/de8/classrules__engine_1_1RuleSet_ac8b88ce9428eeb67871c868e39e46262_icgraph.png" border="0" usemap="#ad2/de8/classrules__engine_1_1RuleSet_ac8b88ce9428eeb67871c868e39e46262_icgraph" alt=""/></div>
+<map name="d2/de8/classrules__engine_1_1RuleSet_ac8b88ce9428eeb67871c868e39e46262_icgraph" id="ad2/de8/classrules__engine_1_1RuleSet_ac8b88ce9428eeb67871c868e39e46262_icgraph">
+<area shape="rect" title=" " alt="" coords="239,5,437,47"/>
+<area shape="rect" href="../../d2/de8/classrules__engine_1_1RuleSet.html#ae8a70e458a835d15387b720505334f22" title=" " alt="" coords="5,5,191,47"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a011100e2d997b3794409fa0855ebd9af"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a011100e2d997b3794409fa0855ebd9af">&#9670;&nbsp;</a></span>methodcode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def rules_engine.RuleSet.methodcode </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>container</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>function</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Lookup %MethodCode.
+</pre> 
+<p>被 <a class="el" href="../../db/d3c/classQt5Ruleset_1_1RuleSet.html#a9357f3db954255ed2eaef10b42245b20">Qt5Ruleset.RuleSet</a> 重载.</p>
+
+</div>
+</div>
+<a id="a9ec72795f434e6e8d6b4cf244a54264e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ec72795f434e6e8d6b4cf244a54264e">&#9670;&nbsp;</a></span>methodcode_rules()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def rules_engine.RuleSet.methodcode_rules </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Return a compiled list of rules for method-related code.
+
+:return: A MethodCodeDb instance
+</pre> 
+<p>被 <a class="el" href="../../db/d3c/classQt5Ruleset_1_1RuleSet.html#aa7631a63a23f4488f20c853fb41c29be">Qt5Ruleset.RuleSet</a> 重载.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00894">rules_engine.RuleSet.dump_unused()</a>.</p>
+<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-6-trigger" src="../../closed.png" alt="+"/> 这是这个函数的调用关系图:</div>
+<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-6-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d2/de8/classrules__engine_1_1RuleSet_a9ec72795f434e6e8d6b4cf244a54264e_icgraph.png" border="0" usemap="#ad2/de8/classrules__engine_1_1RuleSet_a9ec72795f434e6e8d6b4cf244a54264e_icgraph" alt=""/></div>
+<map name="d2/de8/classrules__engine_1_1RuleSet_a9ec72795f434e6e8d6b4cf244a54264e_icgraph" id="ad2/de8/classrules__engine_1_1RuleSet_a9ec72795f434e6e8d6b4cf244a54264e_icgraph">
+<area shape="rect" title=" " alt="" coords="239,5,465,47"/>
+<area shape="rect" href="../../d2/de8/classrules__engine_1_1RuleSet.html#ae8a70e458a835d15387b720505334f22" title=" " alt="" coords="5,5,191,47"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a2faa1a10406eb2816339a4ac3faad345"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2faa1a10406eb2816339a4ac3faad345">&#9670;&nbsp;</a></span>modulecode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def rules_engine.RuleSet.modulecode </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>filename</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Lookup %ModuleCode and friends.
+</pre> 
+</div>
+</div>
+<a id="a1dfa00bd46ef161418526a2b2fbb8b7e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1dfa00bd46ef161418526a2b2fbb8b7e">&#9670;&nbsp;</a></span>modulecode_rules()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def rules_engine.RuleSet.modulecode_rules </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Return a compiled list of rules for module-related code.
+
+:return: A ModuleCodeDb instance
+</pre> 
+<p>被 <a class="el" href="../../db/d3c/classQt5Ruleset_1_1RuleSet.html#a8369e8d6156efef52cf39929ddfbe42d">Qt5Ruleset.RuleSet</a> 重载.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00894">rules_engine.RuleSet.dump_unused()</a>.</p>
+<div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-7-trigger" src="../../closed.png" alt="+"/> 这是这个函数的调用关系图:</div>
+<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-7-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d2/de8/classrules__engine_1_1RuleSet_a1dfa00bd46ef161418526a2b2fbb8b7e_icgraph.png" border="0" usemap="#ad2/de8/classrules__engine_1_1RuleSet_a1dfa00bd46ef161418526a2b2fbb8b7e_icgraph" alt=""/></div>
+<map name="d2/de8/classrules__engine_1_1RuleSet_a1dfa00bd46ef161418526a2b2fbb8b7e_icgraph" id="ad2/de8/classrules__engine_1_1RuleSet_a1dfa00bd46ef161418526a2b2fbb8b7e_icgraph">
+<area shape="rect" title=" " alt="" coords="239,5,463,47"/>
+<area shape="rect" href="../../d2/de8/classrules__engine_1_1RuleSet.html#ae8a70e458a835d15387b720505334f22" title=" " alt="" coords="5,5,191,47"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ab21d2c151f4cae8f4abb13dfe8a16dcb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab21d2c151f4cae8f4abb13dfe8a16dcb">&#9670;&nbsp;</a></span>parameter_rules()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def rules_engine.RuleSet.parameter_rules </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Return a compiled list of rules for function parameters.
+
+:return: A ParameterRuleDb instance
+</pre> 
+<p>被 <a class="el" href="../../db/d3c/classQt5Ruleset_1_1RuleSet.html#a94a2d4207774ef8b52ae2421e23ac053">Qt5Ruleset.RuleSet</a> 重载.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00894">rules_engine.RuleSet.dump_unused()</a>.</p>
+<div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-8-trigger" src="../../closed.png" alt="+"/> 这是这个函数的调用关系图:</div>
+<div id="dynsection-8-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-8-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d2/de8/classrules__engine_1_1RuleSet_ab21d2c151f4cae8f4abb13dfe8a16dcb_icgraph.png" border="0" usemap="#ad2/de8/classrules__engine_1_1RuleSet_ab21d2c151f4cae8f4abb13dfe8a16dcb_icgraph" alt=""/></div>
+<map name="d2/de8/classrules__engine_1_1RuleSet_ab21d2c151f4cae8f4abb13dfe8a16dcb_icgraph" id="ad2/de8/classrules__engine_1_1RuleSet_ab21d2c151f4cae8f4abb13dfe8a16dcb_icgraph">
+<area shape="rect" title=" " alt="" coords="239,5,451,47"/>
+<area shape="rect" href="../../d2/de8/classrules__engine_1_1RuleSet.html#ae8a70e458a835d15387b720505334f22" title=" " alt="" coords="5,5,191,47"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a23d368a5e7828d920792c08e71e6821f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23d368a5e7828d920792c08e71e6821f">&#9670;&nbsp;</a></span>typedef_rules()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def rules_engine.RuleSet.typedef_rules </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Return a compiled list of rules for typedefs.
+
+:return: A TypedefRuleDb instance
+</pre> 
+<p>被 <a class="el" href="../../db/d3c/classQt5Ruleset_1_1RuleSet.html#ae1f6bca759fad4d4b16b57df73233844">Qt5Ruleset.RuleSet</a> 重载.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00894">rules_engine.RuleSet.dump_unused()</a>.</p>
+<div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-9-trigger" src="../../closed.png" alt="+"/> 这是这个函数的调用关系图:</div>
+<div id="dynsection-9-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-9-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d2/de8/classrules__engine_1_1RuleSet_a23d368a5e7828d920792c08e71e6821f_icgraph.png" border="0" usemap="#ad2/de8/classrules__engine_1_1RuleSet_a23d368a5e7828d920792c08e71e6821f_icgraph" alt=""/></div>
+<map name="d2/de8/classrules__engine_1_1RuleSet_a23d368a5e7828d920792c08e71e6821f_icgraph" id="ad2/de8/classrules__engine_1_1RuleSet_a23d368a5e7828d920792c08e71e6821f_icgraph">
+<area shape="rect" title=" " alt="" coords="239,5,433,47"/>
+<area shape="rect" href="../../d2/de8/classrules__engine_1_1RuleSet.html#ae8a70e458a835d15387b720505334f22" title=" " alt="" coords="5,5,191,47"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a531535fa50a598bba49ee60a6d6cb0d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a531535fa50a598bba49ee60a6d6cb0d6">&#9670;&nbsp;</a></span>variable_rules()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def rules_engine.RuleSet.variable_rules </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Return a compiled list of rules for variables.
+
+:return: A VariableRuleDb instance
+</pre> 
+<p>被 <a class="el" href="../../db/d3c/classQt5Ruleset_1_1RuleSet.html#a73134c40bc28e7bbfc61591007d0eb77">Qt5Ruleset.RuleSet</a> 重载.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00894">rules_engine.RuleSet.dump_unused()</a>.</p>
+<div id="dynsection-10" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-10-trigger" src="../../closed.png" alt="+"/> 这是这个函数的调用关系图:</div>
+<div id="dynsection-10-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-10-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d2/de8/classrules__engine_1_1RuleSet_a531535fa50a598bba49ee60a6d6cb0d6_icgraph.png" border="0" usemap="#ad2/de8/classrules__engine_1_1RuleSet_a531535fa50a598bba49ee60a6d6cb0d6_icgraph" alt=""/></div>
+<map name="d2/de8/classrules__engine_1_1RuleSet_a531535fa50a598bba49ee60a6d6cb0d6_icgraph" id="ad2/de8/classrules__engine_1_1RuleSet_a531535fa50a598bba49ee60a6d6cb0d6_icgraph">
+<area shape="rect" title=" " alt="" coords="239,5,433,47"/>
+<area shape="rect" href="../../d2/de8/classrules__engine_1_1RuleSet.html#ae8a70e458a835d15387b720505334f22" title=" " alt="" coords="5,5,191,47"/>
+</map>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="a6028ce927dd57320f1e3a3132a0c4143"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6028ce927dd57320f1e3a3132a0c4143">&#9670;&nbsp;</a></span>__metaclass__</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">rules_engine.RuleSet.__metaclass__ = ABCMeta</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>extra-cmake-modules/find-modules/<a class="el" href="../../">rules_engine.py</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+生成于 2021年 一月 3日 星期日 19:22:18 , 为 C library使用 &#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20
+</small></address>
+</body>
+</html>

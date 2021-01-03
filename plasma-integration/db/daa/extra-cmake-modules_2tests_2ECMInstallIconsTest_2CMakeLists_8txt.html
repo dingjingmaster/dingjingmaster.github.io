@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.20"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>C library: extra-cmake-modules/tests/ECMInstallIconsTest/CMakeLists.txt 文件参考</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">C library
+   &#160;<span id="projectnumber">v1.0.0</span>
+   </div>
+   <div id="projectbrief">C/C++常用库整理 + C/C++、基于linux 系统一些例子</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.20 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">函数</a>  </div>
+  <div class="headertitle">
+<div class="title">extra-cmake-modules/tests/ECMInstallIconsTest/CMakeLists.txt 文件参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:a6266d93519c252e66cf360682e5d1690"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dd/d9a/ecm-kde-modules_87_8rst_8txt.html#a322f153a60d41bf0af6e5e75d7f7efe1">modules</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/daa/extra-cmake-modules_2tests_2ECMInstallIconsTest_2CMakeLists_8txt.html#a6266d93519c252e66cf360682e5d1690">file</a> (REMOVE_RECURSE &quot;${CMAKE_INSTALL_PREFIX}&quot;) include(ECMInstallIcons) <a class="el" href="../../d9/da1/extra-cmake-modules_2CMakeLists_8txt.html#a097415cdf344c13102fd1471d1eda120">add_subdirectory</a>(v1-syntax) <a class="el" href="../../d9/da1/extra-cmake-modules_2CMakeLists_8txt.html#a097415cdf344c13102fd1471d1eda120">add_subdirectory</a>(v1-syntax-l10n) <a class="el" href="../../d9/da1/extra-cmake-modules_2CMakeLists_8txt.html#a097415cdf344c13102fd1471d1eda120">add_subdirectory</a>(v1-syntax-no-icons) ecm_install_icons(ICONS 16-actions-computer.png DESTINATION single-file-test) ecm_install_icons(ICONS 16-actions-computer.png 16-animations-loading.mng subdir/16-apps-cmake.png 16-categories-system-help.mng 16-emotes-face-smile.png 16-intl-something.png 16-status-user-online.png 128-devices-drive-removable-media-usb-pendrive.png 128-emblems-emblem-mounted.png 128-places-home.mng sc-mimetypes-fonts-package.svgz DESTINATION multi-file-test) ecm_install_icons(ICONS 16-actions-computer.png 16-animations-loading.mng subdir/16-apps-cmake.png 16-categories-system-help.mng 16-emotes-face-smile.png 16-intl-something.png 16-status-user-online.png 128-devices-drive-removable-media-usb-pendrive.png 128-emblems-emblem-mounted.png 128-places-home.mng sc-mimetypes-fonts-package.svgz DESTINATION themed-test THEME theme-name-2) ecm_install_icons(ICONS 16-actions-computer.png 16-animations-loading.mng subdir/16-apps-cmake.png 16-categories-system-help.mng 16-emotes-face-smile.png 16-intl-something.png 16-status-user-online.png 128-devices-drive-removable-media-usb-pendrive.png 128-emblems-emblem-mounted.png 128-places-home.mng sc-mimetypes-fonts-package.svgz DESTINATION lang-test LANG en_US) ecm_install_icons(ICONS 16-actions-computer.png 16-animations-loading.mng subdir/16-apps-cmake.png 16-categories-system-help.mng 16-emotes-face-smile.png 16-intl-something.png 16-status-user-online.png 128-devices-drive-removable-media-usb-pendrive.png 128-emblems-emblem-mounted.png 128-places-home.mng sc-mimetypes-fonts-package.svgz DESTINATION themed-lang-test THEME oxygen LANG en_US) ecm_install_icons(ICONS aa-actions-badsize.png badlynamedfile.png 16-actions-<a class="el" href="../../d9/d2a/extra-cmake-modules_2tests_2ECMAddTests_2multi__tests_2CMakeLists_8txt.html#a03eea4209fe4bc3bf468b652a6d26ba5">badext.txt</a> hi16-actions-old-style-name.png DESTINATION badly-named-<a class="el" href="../../db/db6/MIT_8txt.html#a230902626bc74ad7e058274476c0ff96">files</a>-test) find_program(icon_cache_generator NAMES gtk-update-icon-<a class="el" href="../../d1/d90/cmake-modules-styleguide_8txt.html#a8d274814c7d3901c3c8a6369b928f47b">cache</a>) <a class="el" href="../../d5/d95/extra-cmake-modules_2tests_2KDEInstallDirsTest_2vars__in__sync_2CMakeLists_8txt.html#af2cbb74125e9f10b7ed169d7144f86fd">if</a>(icon_cache_generator) <a class="el" href="../../d0/d7f/extra-cmake-modules_2tests_2UseFindModules_2CMakeLists_8txt.html#a5cdc0ab85745c7a50952aa846da2858c">set</a>(GENERATE_ICON_CACHE TRUE) <a class="el" href="../../d5/d6e/extra-cmake-modules_2tests_2KDEInstallDirsTest_2relative__or__absolute_2CMakeLists_8txt.html#aa1fe7d570a2b72a1558cc87f6378c6c8">else</a>() <a class="el" href="../../d0/d7f/extra-cmake-modules_2tests_2UseFindModules_2CMakeLists_8txt.html#a5cdc0ab85745c7a50952aa846da2858c">set</a>(GENERATE_ICON_CACHE FALSE) <a class="el" href="../../d5/d6e/extra-cmake-modules_2tests_2KDEInstallDirsTest_2relative__or__absolute_2CMakeLists_8txt.html#ac3a8c39068c3f4f03c279d816ab1bb7c">endif</a>() configure_file(<a class="el" href="../../d7/d33/ecm-modules_87_8rst_8txt.html#ad0c4dce9aecb8dee3889321d2f17dd9e">check_tree.cmake.in</a> &quot;$</td></tr>
+<tr class="separator:a6266d93519c252e66cf360682e5d1690"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a788e2ec08fe92bafe3ff315fd7fa4838"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/daa/extra-cmake-modules_2tests_2ECMInstallIconsTest_2CMakeLists_8txt.html#a788e2ec08fe92bafe3ff315fd7fa4838">project</a> (ECMInstallIconsTest) <a class="el" href="../../d7/d4b/extra-cmake-modules_2tests_2KDEPackageAppTemplatesTest_2qml-plasmoid_2CMakeLists_8txt.html#a1571ac2c452517d9d3b8111f7a7ea6a2">cmake_minimum_required</a>(VERSION 3.5) <a class="el" href="../../d0/d7f/extra-cmake-modules_2tests_2UseFindModules_2CMakeLists_8txt.html#a5cdc0ab85745c7a50952aa846da2858c">set</a>(CMAKE_MODULE_PATH $</td></tr>
+<tr class="separator:a788e2ec08fe92bafe3ff315fd7fa4838"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">函数说明</h2>
+<a id="a6266d93519c252e66cf360682e5d1690"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6266d93519c252e66cf360682e5d1690">&#9670;&nbsp;</a></span>file()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../dd/d9a/ecm-kde-modules_87_8rst_8txt.html#a322f153a60d41bf0af6e5e75d7f7efe1">modules</a> file </td>
+          <td>(</td>
+          <td class="paramtype">REMOVE_RECURSE &quot;${CMAKE_INSTALL_PREFIX}&quot;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a788e2ec08fe92bafe3ff315fd7fa4838"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a788e2ec08fe92bafe3ff315fd7fa4838">&#9670;&nbsp;</a></span>project()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">project </td>
+          <td>(</td>
+          <td class="paramtype">ECMInstallIconsTest&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+生成于 2021年 一月 3日 星期日 19:22:17 , 为 C library使用 &#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20
+</small></address>
+</body>
+</html>

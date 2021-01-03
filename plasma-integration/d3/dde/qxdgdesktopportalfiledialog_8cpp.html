@@ -1,0 +1,270 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.20"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>C library: src/platformtheme/qxdgdesktopportalfiledialog.cpp 文件参考</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">C library
+   &#160;<span id="projectnumber">v1.0.0</span>
+   </div>
+   <div id="projectbrief">C/C++常用库整理 + C/C++、基于linux 系统一些例子</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.20 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_c069c769ce5852d8caa722b235057c27.html">platformtheme</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">类</a> &#124;
+<a href="#func-members">函数</a>  </div>
+  <div class="headertitle">
+<div class="title">qxdgdesktopportalfiledialog.cpp 文件参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="../../">qxdgdesktopportalfiledialog_p.h</a>&quot;</code><br />
+<code>#include &lt;QtCore/qeventloop.h&gt;</code><br />
+<code>#include &lt;QtDBus/QtDBus&gt;</code><br />
+<code>#include &lt;QDBusConnection&gt;</code><br />
+<code>#include &lt;QDBusMessage&gt;</code><br />
+<code>#include &lt;QDBusPendingCall&gt;</code><br />
+<code>#include &lt;QDBusPendingCallWatcher&gt;</code><br />
+<code>#include &lt;QDBusPendingReply&gt;</code><br />
+<code>#include &lt;QFile&gt;</code><br />
+<code>#include &lt;QMetaType&gt;</code><br />
+<code>#include &lt;QMimeType&gt;</code><br />
+<code>#include &lt;QMimeDatabase&gt;</code><br />
+<code>#include &lt;QRandomGenerator&gt;</code><br />
+<code>#include &lt;QWindow&gt;</code><br />
+</div><div class="textblock"><div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="../../closed.png" alt="+"/> qxdgdesktopportalfiledialog.cpp 的引用(Include)关系图:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../dd/de6/qxdgdesktopportalfiledialog_8cpp__incl.png" border="0" usemap="#asrc_2platformtheme_2qxdgdesktopportalfiledialog_8cpp" alt=""/></div>
+<map name="src_2platformtheme_2qxdgdesktopportalfiledialog_8cpp" id="asrc_2platformtheme_2qxdgdesktopportalfiledialog_8cpp">
+<area shape="rect" title=" " alt="" coords="1101,5,1436,32"/>
+<area shape="rect" href="../../d5/d1c/qxdgdesktopportalfiledialog__p_8h.html" title=" " alt="" coords="75,80,289,107"/>
+<area shape="rect" title=" " alt="" coords="313,80,464,107"/>
+<area shape="rect" title=" " alt="" coords="488,80,607,107"/>
+<area shape="rect" title=" " alt="" coords="631,80,763,107"/>
+<area shape="rect" title=" " alt="" coords="787,80,902,107"/>
+<area shape="rect" title=" " alt="" coords="926,80,1059,107"/>
+<area shape="rect" title=" " alt="" coords="1084,80,1267,107"/>
+<area shape="rect" title=" " alt="" coords="1291,80,1436,107"/>
+<area shape="rect" title=" " alt="" coords="1460,80,1512,107"/>
+<area shape="rect" title=" " alt="" coords="1536,80,1628,107"/>
+<area shape="rect" title=" " alt="" coords="1652,80,1747,107"/>
+<area shape="rect" title=" " alt="" coords="1771,80,1894,107"/>
+<area shape="rect" title=" " alt="" coords="1918,80,2062,107"/>
+<area shape="rect" title=" " alt="" coords="2087,80,2168,107"/>
+<area shape="rect" title=" " alt="" coords="5,155,201,181"/>
+<area shape="rect" title=" " alt="" coords="225,155,296,181"/>
+</map>
+</div>
+</div>
+<p><a href="">浏览源代码.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+类</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d05/classQXdgDesktopPortalFileDialogPrivate.html">QXdgDesktopPortalFileDialogPrivate</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:ae161a81243c84d31a189a5ff6fcd42ff"><td class="memItemLeft" align="right" valign="top">QDBusArgument &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/dde/qxdgdesktopportalfiledialog_8cpp.html#ae161a81243c84d31a189a5ff6fcd42ff">operator&lt;&lt;</a> (QDBusArgument &amp;arg, const <a class="el" href="../../da/dc4/structQXdgDesktopPortalFileDialog_1_1Filter.html">QXdgDesktopPortalFileDialog::Filter</a> filter)</td></tr>
+<tr class="separator:ae161a81243c84d31a189a5ff6fcd42ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a546d483e18202105e83613501eed9dd3"><td class="memItemLeft" align="right" valign="top">QT_BEGIN_NAMESPACE QDBusArgument &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/dde/qxdgdesktopportalfiledialog_8cpp.html#a546d483e18202105e83613501eed9dd3">operator&lt;&lt;</a> (QDBusArgument &amp;arg, const <a class="el" href="../../d4/d10/structQXdgDesktopPortalFileDialog_1_1FilterCondition.html">QXdgDesktopPortalFileDialog::FilterCondition</a> &amp;filterCondition)</td></tr>
+<tr class="separator:a546d483e18202105e83613501eed9dd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5cd50b9ee41c8a3b7c062ff946d98a9f"><td class="memItemLeft" align="right" valign="top">const QDBusArgument &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/dde/qxdgdesktopportalfiledialog_8cpp.html#a5cd50b9ee41c8a3b7c062ff946d98a9f">operator&gt;&gt;</a> (const QDBusArgument &amp;arg, <a class="el" href="../../da/dc4/structQXdgDesktopPortalFileDialog_1_1Filter.html">QXdgDesktopPortalFileDialog::Filter</a> &amp;filter)</td></tr>
+<tr class="separator:a5cd50b9ee41c8a3b7c062ff946d98a9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a68543e0da174bb6adfdbd406fd8448"><td class="memItemLeft" align="right" valign="top">const QDBusArgument &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/dde/qxdgdesktopportalfiledialog_8cpp.html#a3a68543e0da174bb6adfdbd406fd8448">operator&gt;&gt;</a> (const QDBusArgument &amp;arg, <a class="el" href="../../d4/d10/structQXdgDesktopPortalFileDialog_1_1FilterCondition.html">QXdgDesktopPortalFileDialog::FilterCondition</a> &amp;filterCondition)</td></tr>
+<tr class="separator:a3a68543e0da174bb6adfdbd406fd8448"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">函数说明</h2>
+<a id="ae161a81243c84d31a189a5ff6fcd42ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae161a81243c84d31a189a5ff6fcd42ff">&#9670;&nbsp;</a></span>operator&lt;&lt;() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QDBusArgument&amp; operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype">QDBusArgument &amp;&#160;</td>
+          <td class="paramname"><em>arg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="../../da/dc4/structQXdgDesktopPortalFileDialog_1_1Filter.html">QXdgDesktopPortalFileDialog::Filter</a>&#160;</td>
+          <td class="paramname"><em>filter</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="../../#l00068">QXdgDesktopPortalFileDialog::Filter::filterConditions</a> , 以及 <a class="el" href="../../#l00067">QXdgDesktopPortalFileDialog::Filter::name</a>.</p>
+
+</div>
+</div>
+<a id="a546d483e18202105e83613501eed9dd3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a546d483e18202105e83613501eed9dd3">&#9670;&nbsp;</a></span>operator&lt;&lt;() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QT_BEGIN_NAMESPACE QDBusArgument&amp; operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype">QDBusArgument &amp;&#160;</td>
+          <td class="paramname"><em>arg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="../../d4/d10/structQXdgDesktopPortalFileDialog_1_1FilterCondition.html">QXdgDesktopPortalFileDialog::FilterCondition</a> &amp;&#160;</td>
+          <td class="paramname"><em>filterCondition</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="../../#l00062">QXdgDesktopPortalFileDialog::FilterCondition::pattern</a> , 以及 <a class="el" href="../../#l00061">QXdgDesktopPortalFileDialog::FilterCondition::type</a>.</p>
+
+</div>
+</div>
+<a id="a5cd50b9ee41c8a3b7c062ff946d98a9f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5cd50b9ee41c8a3b7c062ff946d98a9f">&#9670;&nbsp;</a></span>operator&gt;&gt;() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const QDBusArgument&amp; operator&gt;&gt; </td>
+          <td>(</td>
+          <td class="paramtype">const QDBusArgument &amp;&#160;</td>
+          <td class="paramname"><em>arg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../da/dc4/structQXdgDesktopPortalFileDialog_1_1Filter.html">QXdgDesktopPortalFileDialog::Filter</a> &amp;&#160;</td>
+          <td class="paramname"><em>filter</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="../../#l00068">QXdgDesktopPortalFileDialog::Filter::filterConditions</a>, <a class="el" href="../../#l00033">conf::name</a> , 以及 <a class="el" href="../../#l00067">QXdgDesktopPortalFileDialog::Filter::name</a>.</p>
+
+</div>
+</div>
+<a id="a3a68543e0da174bb6adfdbd406fd8448"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a68543e0da174bb6adfdbd406fd8448">&#9670;&nbsp;</a></span>operator&gt;&gt;() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const QDBusArgument&amp; operator&gt;&gt; </td>
+          <td>(</td>
+          <td class="paramtype">const QDBusArgument &amp;&#160;</td>
+          <td class="paramname"><em>arg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d4/d10/structQXdgDesktopPortalFileDialog_1_1FilterCondition.html">QXdgDesktopPortalFileDialog::FilterCondition</a> &amp;&#160;</td>
+          <td class="paramname"><em>filterCondition</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="../../#l00062">QXdgDesktopPortalFileDialog::FilterCondition::pattern</a>, <a class="el" href="../../#l00344">generate-fastlane-metadata::type</a> , 以及 <a class="el" href="../../#l00061">QXdgDesktopPortalFileDialog::FilterCondition::type</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+生成于 2021年 一月 3日 星期日 19:22:18 , 为 C library使用 &#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20
+</small></address>
+</body>
+</html>

@@ -1,0 +1,277 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.20"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>C library: testscript.Reactor类 参考</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">C library
+   &#160;<span id="projectnumber">v1.0.0</span>
+   </div>
+   <div id="projectbrief">C/C++常用库整理 + C/C++、基于linux 系统一些例子</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.20 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="../../db/d53/namespacetestscript.html">testscript</a></li><li class="navelem"><a class="el" href="../../d6/d12/classtestscript_1_1Reactor.html">Reactor</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pub-attribs">Public 属性</a> &#124;
+<a href="../../d0/d74/classtestscript_1_1Reactor-members.html">所有成员列表</a>  </div>
+  <div class="headertitle">
+<div class="title">testscript.Reactor类 参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="../../closed.png" alt="+"/> 类 testscript.Reactor 继承关系图:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d2/d9a/classtestscript_1_1Reactor__inherit__graph.png" border="0" usemap="#atestscript_8Reactor_inherit__map" alt="Inheritance graph"/></div>
+<map name="testscript_8Reactor_inherit__map" id="atestscript_8Reactor_inherit__map">
+<area shape="rect" title=" " alt="" coords="5,131,216,281"/>
+<area shape="rect" title=" " alt="" coords="75,5,146,83"/>
+</map>
+</div>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="../../closed.png" alt="+"/> testscript.Reactor 的协作图:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d0/d6b/classtestscript_1_1Reactor__coll__graph.png" border="0" usemap="#atestscript_8Reactor_coll__map" alt="Collaboration graph"/></div>
+<map name="testscript_8Reactor_coll__map" id="atestscript_8Reactor_coll__map">
+<area shape="rect" title=" " alt="" coords="5,131,216,281"/>
+<area shape="rect" title=" " alt="" coords="75,5,146,83"/>
+</map>
+</div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a9ef43e3d3eedc22401329901762adb7d"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d12/classtestscript_1_1Reactor.html#a9ef43e3d3eedc22401329901762adb7d">__init__</a> (self, obj)</td></tr>
+<tr class="separator:a9ef43e3d3eedc22401329901762adb7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee132181f0547da80abb68a1672ed271"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d12/classtestscript_1_1Reactor.html#aee132181f0547da80abb68a1672ed271">react_to_privateSlotCalled</a> (self)</td></tr>
+<tr class="separator:aee132181f0547da80abb68a1672ed271"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a187d254b227ceb1e2d438525d78e224e"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d12/classtestscript_1_1Reactor.html#a187d254b227ceb1e2d438525d78e224e">react_to_protectedSlotCalled</a> (self)</td></tr>
+<tr class="separator:a187d254b227ceb1e2d438525d78e224e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a918c6dcbcf4daa1cb8fa63a1ab300e47"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d12/classtestscript_1_1Reactor.html#a918c6dcbcf4daa1cb8fa63a1ab300e47">react_to_publicSlotCalled</a> (self)</td></tr>
+<tr class="separator:a918c6dcbcf4daa1cb8fa63a1ab300e47"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Public 属性</h2></td></tr>
+<tr class="memitem:a2dcdc74a023e32deeec63ba517dbc5ed"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d12/classtestscript_1_1Reactor.html#a2dcdc74a023e32deeec63ba517dbc5ed">gotPrivateSlotCalledSignal</a></td></tr>
+<tr class="separator:a2dcdc74a023e32deeec63ba517dbc5ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3bcc98dc03e2d1070f36063b421656b2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d12/classtestscript_1_1Reactor.html#a3bcc98dc03e2d1070f36063b421656b2">gotProtectedSlotCalledSignal</a></td></tr>
+<tr class="separator:a3bcc98dc03e2d1070f36063b421656b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a28ab77ef26dd4fce2d1895833112ec81"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d12/classtestscript_1_1Reactor.html#a28ab77ef26dd4fce2d1895833112ec81">gotPublicSlotCalledSignal</a></td></tr>
+<tr class="separator:a28ab77ef26dd4fce2d1895833112ec81"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"></div><h2 class="groupheader">构造及析构函数说明</h2>
+<a id="a9ef43e3d3eedc22401329901762adb7d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ef43e3d3eedc22401329901762adb7d">&#9670;&nbsp;</a></span>__init__()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def testscript.Reactor.__init__ </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>obj</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="aee132181f0547da80abb68a1672ed271"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee132181f0547da80abb68a1672ed271">&#9670;&nbsp;</a></span>react_to_privateSlotCalled()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def testscript.Reactor.react_to_privateSlotCalled </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="../../#l00054">testscript.Reactor.gotPrivateSlotCalledSignal</a>.</p>
+
+</div>
+</div>
+<a id="a187d254b227ceb1e2d438525d78e224e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a187d254b227ceb1e2d438525d78e224e">&#9670;&nbsp;</a></span>react_to_protectedSlotCalled()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def testscript.Reactor.react_to_protectedSlotCalled </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="../../#l00055">testscript.Reactor.gotProtectedSlotCalledSignal</a>.</p>
+
+</div>
+</div>
+<a id="a918c6dcbcf4daa1cb8fa63a1ab300e47"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a918c6dcbcf4daa1cb8fa63a1ab300e47">&#9670;&nbsp;</a></span>react_to_publicSlotCalled()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def testscript.Reactor.react_to_publicSlotCalled </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="../../#l00056">testscript.Reactor.gotPublicSlotCalledSignal</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="a2dcdc74a023e32deeec63ba517dbc5ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2dcdc74a023e32deeec63ba517dbc5ed">&#9670;&nbsp;</a></span>gotPrivateSlotCalledSignal</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">testscript.Reactor.gotPrivateSlotCalledSignal</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00062">testscript.Reactor.react_to_privateSlotCalled()</a>.</p>
+
+</div>
+</div>
+<a id="a3bcc98dc03e2d1070f36063b421656b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3bcc98dc03e2d1070f36063b421656b2">&#9670;&nbsp;</a></span>gotProtectedSlotCalledSignal</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">testscript.Reactor.gotProtectedSlotCalledSignal</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00065">testscript.Reactor.react_to_protectedSlotCalled()</a>.</p>
+
+</div>
+</div>
+<a id="a28ab77ef26dd4fce2d1895833112ec81"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a28ab77ef26dd4fce2d1895833112ec81">&#9670;&nbsp;</a></span>gotPublicSlotCalledSignal</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">testscript.Reactor.gotPublicSlotCalledSignal</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00068">testscript.Reactor.react_to_publicSlotCalled()</a>.</p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>extra-cmake-modules/tests/GenerateSipBindings/<a class="el" href="../../">testscript.py</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+生成于 2021年 一月 3日 星期日 19:22:18 , 为 C library使用 &#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20
+</small></address>
+</body>
+</html>

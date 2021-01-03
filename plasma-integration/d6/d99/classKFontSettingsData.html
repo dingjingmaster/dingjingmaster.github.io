@@ -1,0 +1,594 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.20"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>C library: KFontSettingsData类 参考</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">C library
+   &#160;<span id="projectnumber">v1.0.0</span>
+   </div>
+   <div id="projectbrief">C/C++常用库整理 + C/C++、基于linux 系统一些例子</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.20 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Public 类型</a> &#124;
+<a href="#pub-slots">Public 槽</a> &#124;
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pri-slots">Private 槽</a> &#124;
+<a href="#pri-methods">Private 成员函数</a> &#124;
+<a href="#pri-attribs">Private 属性</a> &#124;
+<a href="../../d8/d97/classKFontSettingsData-members.html">所有成员列表</a>  </div>
+  <div class="headertitle">
+<div class="title">KFontSettingsData类 参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;<a class="el" href="../../">kfontsettingsdata.h</a>&gt;</code></p>
+<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="../../closed.png" alt="+"/> 类 KFontSettingsData 继承关系图:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../de/d2a/classKFontSettingsData__inherit__graph.png" border="0" usemap="#aKFontSettingsData_inherit__map" alt="Inheritance graph"/></div>
+<map name="KFontSettingsData_inherit__map" id="aKFontSettingsData_inherit__map">
+<area shape="rect" title=" " alt="" coords="5,131,196,325"/>
+<area shape="rect" title=" " alt="" coords="65,5,136,83"/>
+</map>
+</div>
+<div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="../../closed.png" alt="+"/> KFontSettingsData 的协作图:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d4/de3/classKFontSettingsData__coll__graph.png" border="0" usemap="#aKFontSettingsData_coll__map" alt="Collaboration graph"/></div>
+<map name="KFontSettingsData_coll__map" id="aKFontSettingsData_coll__map">
+<area shape="rect" title=" " alt="" coords="5,131,196,325"/>
+<area shape="rect" title=" " alt="" coords="65,5,136,83"/>
+</map>
+</div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Public 类型</h2></td></tr>
+<tr class="memitem:abfb4ec9179061001c276b4e9e3d016ae"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d99/classKFontSettingsData.html#abfb4ec9179061001c276b4e9e3d016ae">FontTypes</a> { <br />
+&#160;&#160;<a class="el" href="../../d6/d99/classKFontSettingsData.html#abfb4ec9179061001c276b4e9e3d016aea1f85dde21f9f4982bbc12516de11f7a7">GeneralFont</a> = 0, 
+<a class="el" href="../../d6/d99/classKFontSettingsData.html#abfb4ec9179061001c276b4e9e3d016aeaffb7f9d4bc456ef704bae493c5e6ecd3">FixedFont</a>, 
+<a class="el" href="../../d6/d99/classKFontSettingsData.html#abfb4ec9179061001c276b4e9e3d016aea36b771dfefb6de19249d455f6a8b7e53">ToolbarFont</a>, 
+<a class="el" href="../../d6/d99/classKFontSettingsData.html#abfb4ec9179061001c276b4e9e3d016aea0e9a43b6750b0c9aa1fb85b5266896c9">MenuFont</a>, 
+<br />
+&#160;&#160;<a class="el" href="../../d6/d99/classKFontSettingsData.html#abfb4ec9179061001c276b4e9e3d016aea393de385d338605c40d21f1fd30b93ad">WindowTitleFont</a>, 
+<a class="el" href="../../d6/d99/classKFontSettingsData.html#abfb4ec9179061001c276b4e9e3d016aea7870934e58f331217ec0009dcde81e73">TaskbarFont</a>, 
+<a class="el" href="../../d6/d99/classKFontSettingsData.html#abfb4ec9179061001c276b4e9e3d016aea3aa6c8e1f087ec6e9b51af26da9c7eef">SmallestReadableFont</a>, 
+<a class="el" href="../../d6/d99/classKFontSettingsData.html#abfb4ec9179061001c276b4e9e3d016aeadfd981f45e0909e3bf9b6a0276b222ff">FontTypesCount</a>
+<br />
+ }</td></tr>
+<tr class="separator:abfb4ec9179061001c276b4e9e3d016ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-slots"></a>
+Public 槽</h2></td></tr>
+<tr class="memitem:acb6128501d4faf3d38185542a4722556"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d99/classKFontSettingsData.html#acb6128501d4faf3d38185542a4722556">dropFontSettingsCache</a> ()</td></tr>
+<tr class="separator:acb6128501d4faf3d38185542a4722556"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:acfac7ccfecab93386ac79f4d260c9c67"><td class="memItemLeft" align="right" valign="top">QFont *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d99/classKFontSettingsData.html#acfac7ccfecab93386ac79f4d260c9c67">font</a> (<a class="el" href="../../d6/d99/classKFontSettingsData.html#abfb4ec9179061001c276b4e9e3d016ae">FontTypes</a> fontType)</td></tr>
+<tr class="separator:acfac7ccfecab93386ac79f4d260c9c67"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43c89cc7fc8c00003a0ee527b2c1beeb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d99/classKFontSettingsData.html#a43c89cc7fc8c00003a0ee527b2c1beeb">KFontSettingsData</a> ()</td></tr>
+<tr class="separator:a43c89cc7fc8c00003a0ee527b2c1beeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2ad6820e482d1d4d142e1e5480bcb2d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d99/classKFontSettingsData.html#ad2ad6820e482d1d4d142e1e5480bcb2d">~KFontSettingsData</a> () override</td></tr>
+<tr class="separator:ad2ad6820e482d1d4d142e1e5480bcb2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-slots"></a>
+Private 槽</h2></td></tr>
+<tr class="memitem:a27cef2ad32b51150d26965b28dda6ae9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d99/classKFontSettingsData.html#a27cef2ad32b51150d26965b28dda6ae9">delayedDBusConnects</a> ()</td></tr>
+<tr class="separator:a27cef2ad32b51150d26965b28dda6ae9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc36dd98450be6bdba5b6e011e18a65e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d99/classKFontSettingsData.html#abc36dd98450be6bdba5b6e011e18a65e">slotPortalSettingChanged</a> (const QString &amp;group, const QString &amp;key, const QDBusVariant &amp;value)</td></tr>
+<tr class="separator:abc36dd98450be6bdba5b6e011e18a65e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private 成员函数</h2></td></tr>
+<tr class="memitem:a38abbd00a51ada48e63435871bbad6a7"><td class="memItemLeft" align="right" valign="top">QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d99/classKFontSettingsData.html#a38abbd00a51ada48e63435871bbad6a7">readConfigValue</a> (const QString &amp;group, const QString &amp;key, const QString &amp;defaultValue=QString()) const</td></tr>
+<tr class="separator:a38abbd00a51ada48e63435871bbad6a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private 属性</h2></td></tr>
+<tr class="memitem:aaa32822c2e60cfe1072e5457a889bfe1"><td class="memItemLeft" align="right" valign="top">QFont *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d99/classKFontSettingsData.html#aaa32822c2e60cfe1072e5457a889bfe1">mFonts</a> [<a class="el" href="../../d6/d99/classKFontSettingsData.html#abfb4ec9179061001c276b4e9e3d016aeadfd981f45e0909e3bf9b6a0276b222ff">FontTypesCount</a>]</td></tr>
+<tr class="separator:aaa32822c2e60cfe1072e5457a889bfe1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a754eb1efdd1d694ed94dd9a1a796a944"><td class="memItemLeft" align="right" valign="top">KSharedConfigPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d99/classKFontSettingsData.html#a754eb1efdd1d694ed94dd9a1a796a944">mKdeGlobals</a></td></tr>
+<tr class="separator:a754eb1efdd1d694ed94dd9a1a796a944"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a65a85469a801823d0da586cdcdd8fc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d99/classKFontSettingsData.html#a1a65a85469a801823d0da586cdcdd8fc">mUsePortal</a></td></tr>
+<tr class="separator:a1a65a85469a801823d0da586cdcdd8fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"></div><h2 class="groupheader">成员枚举类型说明</h2>
+<a id="abfb4ec9179061001c276b4e9e3d016ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abfb4ec9179061001c276b4e9e3d016ae">&#9670;&nbsp;</a></span>FontTypes</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="../../d6/d99/classKFontSettingsData.html#abfb4ec9179061001c276b4e9e3d016ae">KFontSettingsData::FontTypes</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">枚举值</th></tr><tr><td class="fieldname"><a id="abfb4ec9179061001c276b4e9e3d016aea1f85dde21f9f4982bbc12516de11f7a7"></a>GeneralFont&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="abfb4ec9179061001c276b4e9e3d016aeaffb7f9d4bc456ef704bae493c5e6ecd3"></a>FixedFont&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="abfb4ec9179061001c276b4e9e3d016aea36b771dfefb6de19249d455f6a8b7e53"></a>ToolbarFont&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="abfb4ec9179061001c276b4e9e3d016aea0e9a43b6750b0c9aa1fb85b5266896c9"></a>MenuFont&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="abfb4ec9179061001c276b4e9e3d016aea393de385d338605c40d21f1fd30b93ad"></a>WindowTitleFont&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="abfb4ec9179061001c276b4e9e3d016aea7870934e58f331217ec0009dcde81e73"></a>TaskbarFont&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="abfb4ec9179061001c276b4e9e3d016aea3aa6c8e1f087ec6e9b51af26da9c7eef"></a>SmallestReadableFont&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="abfb4ec9179061001c276b4e9e3d016aeadfd981f45e0909e3bf9b6a0276b222ff"></a>FontTypesCount&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">构造及析构函数说明</h2>
+<a id="a43c89cc7fc8c00003a0ee527b2c1beeb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a43c89cc7fc8c00003a0ee527b2c1beeb">&#9670;&nbsp;</a></span>KFontSettingsData()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">KFontSettingsData::KFontSettingsData </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="../../#l00052">FontTypesCount</a> , 以及 <a class="el" href="../../#l00073">mFonts</a>.</p>
+
+</div>
+</div>
+<a id="ad2ad6820e482d1d4d142e1e5480bcb2d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad2ad6820e482d1d4d142e1e5480bcb2d">&#9670;&nbsp;</a></span>~KFontSettingsData()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">KFontSettingsData::~KFontSettingsData </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="../../#l00052">FontTypesCount</a> , 以及 <a class="el" href="../../#l00073">mFonts</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="a27cef2ad32b51150d26965b28dda6ae9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27cef2ad32b51150d26965b28dda6ae9">&#9670;&nbsp;</a></span>delayedDBusConnects</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KFontSettingsData::delayedDBusConnects </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">slot</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="../../#l00099">dropFontSettingsCache()</a>, <a class="el" href="../../#l00072">mUsePortal</a> , 以及 <a class="el" href="../../#l00127">slotPortalSettingChanged()</a>.</p>
+<div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="../../closed.png" alt="+"/> 函数调用图:</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d6/d99/classKFontSettingsData_a27cef2ad32b51150d26965b28dda6ae9_cgraph.png" border="0" usemap="#ad6/d99/classKFontSettingsData_a27cef2ad32b51150d26965b28dda6ae9_cgraph" alt=""/></div>
+<map name="d6/d99/classKFontSettingsData_a27cef2ad32b51150d26965b28dda6ae9_cgraph" id="ad6/d99/classKFontSettingsData_a27cef2ad32b51150d26965b28dda6ae9_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,161,47"/>
+<area shape="rect" href="../../d6/d99/classKFontSettingsData.html#acb6128501d4faf3d38185542a4722556" title=" " alt="" coords="432,5,595,47"/>
+<area shape="rect" href="../../d6/d99/classKFontSettingsData.html#abc36dd98450be6bdba5b6e011e18a65e" title=" " alt="" coords="209,35,384,76"/>
+<area shape="rect" href="../../d6/d99/classKFontSettingsData.html#acfac7ccfecab93386ac79f4d260c9c67" title=" " alt="" coords="643,13,809,39"/>
+<area shape="rect" href="../../d6/d99/classKFontSettingsData.html#a38abbd00a51ada48e63435871bbad6a7" title=" " alt="" coords="857,5,1000,47"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="acb6128501d4faf3d38185542a4722556"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb6128501d4faf3d38185542a4722556">&#9670;&nbsp;</a></span>dropFontSettingsCache</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KFontSettingsData::dropFontSettingsCache </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">slot</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="../../#l00072">font()</a>, <a class="el" href="../../#l00052">FontTypesCount</a>, <a class="el" href="../../#l00045">GeneralFont</a>, <a class="el" href="../../#l00073">mFonts</a> , 以及 <a class="el" href="../../#l00074">mKdeGlobals</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00116">delayedDBusConnects()</a> , 以及 <a class="el" href="../../#l00127">slotPortalSettingChanged()</a>.</p>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="../../closed.png" alt="+"/> 函数调用图:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d6/d99/classKFontSettingsData_acb6128501d4faf3d38185542a4722556_cgraph.png" border="0" usemap="#ad6/d99/classKFontSettingsData_acb6128501d4faf3d38185542a4722556_cgraph" alt=""/></div>
+<map name="d6/d99/classKFontSettingsData_acb6128501d4faf3d38185542a4722556_cgraph" id="ad6/d99/classKFontSettingsData_acb6128501d4faf3d38185542a4722556_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,168,47"/>
+<area shape="rect" href="../../d6/d99/classKFontSettingsData.html#acfac7ccfecab93386ac79f4d260c9c67" title=" " alt="" coords="216,13,383,39"/>
+<area shape="rect" href="../../d6/d99/classKFontSettingsData.html#a38abbd00a51ada48e63435871bbad6a7" title=" " alt="" coords="431,5,573,47"/>
+</map>
+</div>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="../../closed.png" alt="+"/> 这是这个函数的调用关系图:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d6/d99/classKFontSettingsData_acb6128501d4faf3d38185542a4722556_icgraph.png" border="0" usemap="#ad6/d99/classKFontSettingsData_acb6128501d4faf3d38185542a4722556_icgraph" alt=""/></div>
+<map name="d6/d99/classKFontSettingsData_acb6128501d4faf3d38185542a4722556_icgraph" id="ad6/d99/classKFontSettingsData_acb6128501d4faf3d38185542a4722556_icgraph">
+<area shape="rect" title=" " alt="" coords="432,5,595,47"/>
+<area shape="rect" href="../../d6/d99/classKFontSettingsData.html#a27cef2ad32b51150d26965b28dda6ae9" title=" " alt="" coords="5,5,161,47"/>
+<area shape="rect" href="../../d6/d99/classKFontSettingsData.html#abc36dd98450be6bdba5b6e011e18a65e" title=" " alt="" coords="209,35,384,76"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="acfac7ccfecab93386ac79f4d260c9c67"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acfac7ccfecab93386ac79f4d260c9c67">&#9670;&nbsp;</a></span>font()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QFont * KFontSettingsData::font </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d6/d99/classKFontSettingsData.html#abfb4ec9179061001c276b4e9e3d016ae">FontTypes</a>&#160;</td>
+          <td class="paramname"><em>fontType</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="../../#l00030">KFontData::ConfigGroupKey</a>, <a class="el" href="../../#l00031">KFontData::ConfigKey</a>, <a class="el" href="../../#l00062">DefaultFontData</a>, <a class="el" href="../../#l00032">KFontData::FontName</a>, <a class="el" href="../../#l00073">mFonts</a>, <a class="el" href="../../#l00136">readConfigValue()</a>, <a class="el" href="../../#l00033">KFontData::Size</a>, <a class="el" href="../../#l00035">KFontData::StyleHint</a>, <a class="el" href="../../#l00036">KFontData::StyleName</a> , 以及 <a class="el" href="../../#l00034">KFontData::Weight</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00099">dropFontSettingsCache()</a>, <a class="el" href="../../#l00129">KdePlatformTheme::font()</a>, <a class="el" href="../../#l00076">KFontSettingsData_UnitTest::testFonts()</a> , 以及 <a class="el" href="../../#l00087">KFontSettingsData_UnitTest::testFontsChanged()</a>.</p>
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="../../closed.png" alt="+"/> 函数调用图:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d6/d99/classKFontSettingsData_acfac7ccfecab93386ac79f4d260c9c67_cgraph.png" border="0" usemap="#ad6/d99/classKFontSettingsData_acfac7ccfecab93386ac79f4d260c9c67_cgraph" alt=""/></div>
+<map name="d6/d99/classKFontSettingsData_acfac7ccfecab93386ac79f4d260c9c67_cgraph" id="ad6/d99/classKFontSettingsData_acfac7ccfecab93386ac79f4d260c9c67_cgraph">
+<area shape="rect" title=" " alt="" coords="5,13,172,39"/>
+<area shape="rect" href="../../d6/d99/classKFontSettingsData.html#a38abbd00a51ada48e63435871bbad6a7" title=" " alt="" coords="220,5,363,47"/>
+</map>
+</div>
+<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-6-trigger" src="../../closed.png" alt="+"/> 这是这个函数的调用关系图:</div>
+<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-6-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d6/d99/classKFontSettingsData_acfac7ccfecab93386ac79f4d260c9c67_icgraph.png" border="0" usemap="#ad6/d99/classKFontSettingsData_acfac7ccfecab93386ac79f4d260c9c67_icgraph" alt=""/></div>
+<map name="d6/d99/classKFontSettingsData_acfac7ccfecab93386ac79f4d260c9c67_icgraph" id="ad6/d99/classKFontSettingsData_acfac7ccfecab93386ac79f4d260c9c67_icgraph">
+<area shape="rect" title=" " alt="" coords="668,101,835,127"/>
+<area shape="rect" href="../../d6/d99/classKFontSettingsData.html#acb6128501d4faf3d38185542a4722556" title=" " alt="" coords="445,5,607,47"/>
+<area shape="rect" href="../../d6/d13/classKdePlatformTheme.html#a1c5147a71754943c887d3673f35e76e0" title=" " alt="" coords="441,71,611,98"/>
+<area shape="rect" href="../../db/d4b/classKFontSettingsData__UnitTest.html#a6b1ff4391d1202a66fae501eac82b218" title=" " alt="" coords="432,123,620,164"/>
+<area shape="rect" href="../../db/d4b/classKFontSettingsData__UnitTest.html#a5bdcc74ba993572c0ee77db7e31fb8a9" title=" " alt="" coords="432,188,620,229"/>
+<area shape="rect" href="../../d6/d99/classKFontSettingsData.html#a27cef2ad32b51150d26965b28dda6ae9" title=" " alt="" coords="5,5,161,47"/>
+<area shape="rect" href="../../d6/d99/classKFontSettingsData.html#abc36dd98450be6bdba5b6e011e18a65e" title=" " alt="" coords="209,35,384,76"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a38abbd00a51ada48e63435871bbad6a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a38abbd00a51ada48e63435871bbad6a7">&#9670;&nbsp;</a></span>readConfigValue()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QString KFontSettingsData::readConfigValue </td>
+          <td>(</td>
+          <td class="paramtype">const QString &amp;&#160;</td>
+          <td class="paramname"><em>group</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const QString &amp;&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const QString &amp;&#160;</td>
+          <td class="paramname"><em>defaultValue</em> = <code>QString()</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="../../#l00074">mKdeGlobals</a> , 以及 <a class="el" href="../../#l00072">mUsePortal</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00072">font()</a>.</p>
+<div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-7-trigger" src="../../closed.png" alt="+"/> 这是这个函数的调用关系图:</div>
+<div id="dynsection-7-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-7-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d6/d99/classKFontSettingsData_a38abbd00a51ada48e63435871bbad6a7_icgraph.png" border="0" usemap="#ad6/d99/classKFontSettingsData_a38abbd00a51ada48e63435871bbad6a7_icgraph" alt=""/></div>
+<map name="d6/d99/classKFontSettingsData_a38abbd00a51ada48e63435871bbad6a7_icgraph" id="ad6/d99/classKFontSettingsData_a38abbd00a51ada48e63435871bbad6a7_icgraph">
+<area shape="rect" title=" " alt="" coords="883,93,1025,135"/>
+<area shape="rect" href="../../d6/d99/classKFontSettingsData.html#acfac7ccfecab93386ac79f4d260c9c67" title=" " alt="" coords="668,101,835,127"/>
+<area shape="rect" href="../../d6/d99/classKFontSettingsData.html#acb6128501d4faf3d38185542a4722556" title=" " alt="" coords="445,5,607,47"/>
+<area shape="rect" href="../../d6/d13/classKdePlatformTheme.html#a1c5147a71754943c887d3673f35e76e0" title=" " alt="" coords="441,71,611,98"/>
+<area shape="rect" href="../../db/d4b/classKFontSettingsData__UnitTest.html#a6b1ff4391d1202a66fae501eac82b218" title=" " alt="" coords="432,123,620,164"/>
+<area shape="rect" href="../../db/d4b/classKFontSettingsData__UnitTest.html#a5bdcc74ba993572c0ee77db7e31fb8a9" title=" " alt="" coords="432,188,620,229"/>
+<area shape="rect" href="../../d6/d99/classKFontSettingsData.html#a27cef2ad32b51150d26965b28dda6ae9" title=" " alt="" coords="5,5,161,47"/>
+<area shape="rect" href="../../d6/d99/classKFontSettingsData.html#abc36dd98450be6bdba5b6e011e18a65e" title=" " alt="" coords="209,35,384,76"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="abc36dd98450be6bdba5b6e011e18a65e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc36dd98450be6bdba5b6e011e18a65e">&#9670;&nbsp;</a></span>slotPortalSettingChanged</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void KFontSettingsData::slotPortalSettingChanged </td>
+          <td>(</td>
+          <td class="paramtype">const QString &amp;&#160;</td>
+          <td class="paramname"><em>group</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const QString &amp;&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const QDBusVariant &amp;&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">slot</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">引用了 <a class="el" href="../../#l00099">dropFontSettingsCache()</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00116">delayedDBusConnects()</a>.</p>
+<div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-8-trigger" src="../../closed.png" alt="+"/> 函数调用图:</div>
+<div id="dynsection-8-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-8-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d6/d99/classKFontSettingsData_abc36dd98450be6bdba5b6e011e18a65e_cgraph.png" border="0" usemap="#ad6/d99/classKFontSettingsData_abc36dd98450be6bdba5b6e011e18a65e_cgraph" alt=""/></div>
+<map name="d6/d99/classKFontSettingsData_abc36dd98450be6bdba5b6e011e18a65e_cgraph" id="ad6/d99/classKFontSettingsData_abc36dd98450be6bdba5b6e011e18a65e_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,180,47"/>
+<area shape="rect" href="../../d6/d99/classKFontSettingsData.html#acb6128501d4faf3d38185542a4722556" title=" " alt="" coords="228,5,391,47"/>
+<area shape="rect" href="../../d6/d99/classKFontSettingsData.html#acfac7ccfecab93386ac79f4d260c9c67" title=" " alt="" coords="439,13,605,39"/>
+<area shape="rect" href="../../d6/d99/classKFontSettingsData.html#a38abbd00a51ada48e63435871bbad6a7" title=" " alt="" coords="653,5,796,47"/>
+</map>
+</div>
+<div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-9-trigger" src="../../closed.png" alt="+"/> 这是这个函数的调用关系图:</div>
+<div id="dynsection-9-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-9-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../d6/d99/classKFontSettingsData_abc36dd98450be6bdba5b6e011e18a65e_icgraph.png" border="0" usemap="#ad6/d99/classKFontSettingsData_abc36dd98450be6bdba5b6e011e18a65e_icgraph" alt=""/></div>
+<map name="d6/d99/classKFontSettingsData_abc36dd98450be6bdba5b6e011e18a65e_icgraph" id="ad6/d99/classKFontSettingsData_abc36dd98450be6bdba5b6e011e18a65e_icgraph">
+<area shape="rect" title=" " alt="" coords="209,5,384,47"/>
+<area shape="rect" href="../../d6/d99/classKFontSettingsData.html#a27cef2ad32b51150d26965b28dda6ae9" title=" " alt="" coords="5,5,161,47"/>
+</map>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="aaa32822c2e60cfe1072e5457a889bfe1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa32822c2e60cfe1072e5457a889bfe1">&#9670;&nbsp;</a></span>mFonts</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QFont* KFontSettingsData::mFonts[<a class="el" href="../../d6/d99/classKFontSettingsData.html#abfb4ec9179061001c276b4e9e3d016aeadfd981f45e0909e3bf9b6a0276b222ff">FontTypesCount</a>]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00099">dropFontSettingsCache()</a>, <a class="el" href="../../#l00072">font()</a>, <a class="el" href="../../#l00039">KFontSettingsData()</a> , 以及 <a class="el" href="../../#l00051">~KFontSettingsData()</a>.</p>
+
+</div>
+</div>
+<a id="a754eb1efdd1d694ed94dd9a1a796a944"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a754eb1efdd1d694ed94dd9a1a796a944">&#9670;&nbsp;</a></span>mKdeGlobals</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">KSharedConfigPtr KFontSettingsData::mKdeGlobals</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00099">dropFontSettingsCache()</a> , 以及 <a class="el" href="../../#l00136">readConfigValue()</a>.</p>
+
+</div>
+</div>
+<a id="a1a65a85469a801823d0da586cdcdd8fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1a65a85469a801823d0da586cdcdd8fc">&#9670;&nbsp;</a></span>mUsePortal</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool KFontSettingsData::mUsePortal</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00116">delayedDBusConnects()</a> , 以及 <a class="el" href="../../#l00136">readConfigValue()</a>.</p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>src/platformtheme/<a class="el" href="../../">kfontsettingsdata.h</a></li>
+<li>src/platformtheme/<a class="el" href="../../">kfontsettingsdata.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+生成于 2021年 一月 3日 星期日 19:22:18 , 为 C library使用 &#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20
+</small></address>
+</body>
+</html>

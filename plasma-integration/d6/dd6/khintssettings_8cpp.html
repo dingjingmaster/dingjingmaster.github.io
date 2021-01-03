@@ -1,0 +1,244 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.20"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>C library: src/platformtheme/khintssettings.cpp 文件参考</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">C library
+   &#160;<span id="projectnumber">v1.0.0</span>
+   </div>
+   <div id="projectbrief">C/C++常用库整理 + C/C++、基于linux 系统一些例子</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.20 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_c069c769ce5852d8caa722b235057c27.html">platformtheme</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">函数</a> &#124;
+<a href="#var-members">变量</a>  </div>
+  <div class="headertitle">
+<div class="title">khintssettings.cpp 文件参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="../../">khintssettings.h</a>&quot;</code><br />
+<code>#include &lt;QDebug&gt;</code><br />
+<code>#include &lt;QDir&gt;</code><br />
+<code>#include &lt;QString&gt;</code><br />
+<code>#include &lt;QFileInfo&gt;</code><br />
+<code>#include &lt;QToolBar&gt;</code><br />
+<code>#include &lt;QPalette&gt;</code><br />
+<code>#include &lt;QToolButton&gt;</code><br />
+<code>#include &lt;QMainWindow&gt;</code><br />
+<code>#include &lt;QApplication&gt;</code><br />
+<code>#include &lt;QGuiApplication&gt;</code><br />
+<code>#include &lt;QDialogButtonBox&gt;</code><br />
+<code>#include &lt;QScreen&gt;</code><br />
+<code>#include &lt;QStandardPaths&gt;</code><br />
+<code>#include &lt;QTemporaryFile&gt;</code><br />
+<code>#include &lt;QDBusArgument&gt;</code><br />
+<code>#include &lt;QDBusConnection&gt;</code><br />
+<code>#include &lt;QDBusInterface&gt;</code><br />
+<code>#include &lt;kiconloader.h&gt;</code><br />
+<code>#include &lt;kconfiggroup.h&gt;</code><br />
+<code>#include &lt;ksharedconfig.h&gt;</code><br />
+<code>#include &lt;kcolorscheme.h&gt;</code><br />
+<code>#include &lt;config-platformtheme.h&gt;</code><br />
+</div><div class="textblock"><div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="../../closed.png" alt="+"/> khintssettings.cpp 的引用(Include)关系图:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../dd/d0e/khintssettings_8cpp__incl.png" border="0" usemap="#asrc_2platformtheme_2khintssettings_8cpp" alt=""/></div>
+<map name="src_2platformtheme_2khintssettings_8cpp" id="asrc_2platformtheme_2khintssettings_8cpp">
+<area shape="rect" title=" " alt="" coords="1419,5,1670,32"/>
+<area shape="rect" href="../../d8/db9/khintssettings_8h.html" title=" " alt="" coords="279,80,397,107"/>
+<area shape="rect" title=" " alt="" coords="515,155,633,181"/>
+<area shape="rect" title=" " alt="" coords="543,80,613,107"/>
+<area shape="rect" title=" " alt="" coords="637,80,687,107"/>
+<area shape="rect" title=" " alt="" coords="711,80,778,107"/>
+<area shape="rect" title=" " alt="" coords="802,80,879,107"/>
+<area shape="rect" title=" " alt="" coords="904,80,980,107"/>
+<area shape="rect" title=" " alt="" coords="1005,80,1079,107"/>
+<area shape="rect" title=" " alt="" coords="1103,80,1202,107"/>
+<area shape="rect" title=" " alt="" coords="1227,80,1337,107"/>
+<area shape="rect" title=" " alt="" coords="1362,80,1461,107"/>
+<area shape="rect" title=" " alt="" coords="1485,80,1604,107"/>
+<area shape="rect" title=" " alt="" coords="1629,80,1762,107"/>
+<area shape="rect" title=" " alt="" coords="1786,80,1858,107"/>
+<area shape="rect" title=" " alt="" coords="1883,80,2004,107"/>
+<area shape="rect" title=" " alt="" coords="2028,80,2144,107"/>
+<area shape="rect" title=" " alt="" coords="2169,80,2291,107"/>
+<area shape="rect" title=" " alt="" coords="2316,80,2448,107"/>
+<area shape="rect" title=" " alt="" coords="2473,80,2590,107"/>
+<area shape="rect" title=" " alt="" coords="2614,80,2718,107"/>
+<area shape="rect" title=" " alt="" coords="2743,80,2856,107"/>
+<area shape="rect" title=" " alt="" coords="2881,80,2998,107"/>
+<area shape="rect" title=" " alt="" coords="3022,80,3187,107"/>
+<area shape="rect" title=" " alt="" coords="5,155,111,181"/>
+<area shape="rect" title=" " alt="" coords="135,155,205,181"/>
+<area shape="rect" title=" " alt="" coords="230,155,305,181"/>
+<area shape="rect" title=" " alt="" coords="329,155,491,181"/>
+</map>
+</div>
+</div>
+<p><a href="">浏览源代码.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:a49981e1f25cee7b602e04c16d537df37"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/dd6/khintssettings_8cpp.html#a49981e1f25cee7b602e04c16d537df37">checkUsePortalSupport</a> ()</td></tr>
+<tr class="separator:a49981e1f25cee7b602e04c16d537df37"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9fab7c4557613b6db8395a8afddcfcb"><td class="memItemLeft" align="right" valign="top">const QDBusArgument &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/dd6/khintssettings_8cpp.html#aa9fab7c4557613b6db8395a8afddcfcb">operator&gt;&gt;</a> (const QDBusArgument &amp;argument, QMap&lt; QString, QVariantMap &gt; &amp;map)</td></tr>
+<tr class="separator:aa9fab7c4557613b6db8395a8afddcfcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+变量</h2></td></tr>
+<tr class="memitem:af1be6769b0ae0e8772370f3cb2a5d291"><td class="memItemLeft" align="right" valign="top">static const QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/dd6/khintssettings_8cpp.html#af1be6769b0ae0e8772370f3cb2a5d291">defaultLookAndFeelPackage</a> = QStringLiteral(&quot;org.kde.breeze.desktop&quot;)</td></tr>
+<tr class="separator:af1be6769b0ae0e8772370f3cb2a5d291"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">函数说明</h2>
+<a id="a49981e1f25cee7b602e04c16d537df37"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a49981e1f25cee7b602e04c16d537df37">&#9670;&nbsp;</a></span>checkUsePortalSupport()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static bool checkUsePortalSupport </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa9fab7c4557613b6db8395a8afddcfcb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa9fab7c4557613b6db8395a8afddcfcb">&#9670;&nbsp;</a></span>operator&gt;&gt;()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const QDBusArgument&amp; operator&gt;&gt; </td>
+          <td>(</td>
+          <td class="paramtype">const QDBusArgument &amp;&#160;</td>
+          <td class="paramname"><em>argument</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">QMap&lt; QString, QVariantMap &gt; &amp;&#160;</td>
+          <td class="paramname"><em>map</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">变量说明</h2>
+<a id="af1be6769b0ae0e8772370f3cb2a5d291"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1be6769b0ae0e8772370f3cb2a5d291">&#9670;&nbsp;</a></span>defaultLookAndFeelPackage</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const QString defaultLookAndFeelPackage = QStringLiteral(&quot;org.kde.breeze.desktop&quot;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">被这些函数引用 <a class="el" href="../../#l00084">KHintsSettings::KHintsSettings()</a> , 以及 <a class="el" href="../../#l00443">KHintsSettings::loadPalettes()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+生成于 2021年 一月 3日 星期日 19:22:18 , 为 C library使用 &#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20
+</small></address>
+</body>
+</html>

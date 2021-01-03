@@ -1,0 +1,20 @@
+var searchData=
+[
+  ['_7ekdeplatformfiledialoghelper_1004',['~KDEPlatformFileDialogHelper',['../d6/dfa/classKDEPlatformFileDialogHelper.html#a2cf3155ac8abd26689d9733022bfe1f7',1,'KDEPlatformFileDialogHelper']]],
+  ['_7ekdeplatformsystemtrayicon_1005',['~KDEPlatformSystemTrayIcon',['../da/dbb/classKDEPlatformSystemTrayIcon.html#a0f5264ff76ccf25afa2b2a4cb8984978',1,'KDEPlatformSystemTrayIcon']]],
+  ['_7ekdeplatformtheme_1006',['~KdePlatformTheme',['../d6/d13/classKdePlatformTheme.html#a3e8e3392694323745f9ca9db32f8fbbb',1,'KdePlatformTheme']]],
+  ['_7ekdirselectdialog_1007',['~KDirSelectDialog',['../d0/d6c/classKDirSelectDialog.html#a45fc8e0187f1231345cd1d9ac877fdf6',1,'KDirSelectDialog']]],
+  ['_7ekfiletreeview_1008',['~KFileTreeView',['../da/d5c/classKFileTreeView.html#ad4d94b450980b5ca250e0669e7f393ed',1,'KFileTreeView']]],
+  ['_7ekfontsettingsdata_1009',['~KFontSettingsData',['../d6/d99/classKFontSettingsData.html#ad2ad6820e482d1d4d142e1e5480bcb2d',1,'KFontSettingsData']]],
+  ['_7ekhintssettings_1010',['~KHintsSettings',['../db/df6/classKHintsSettings.html#a14e581663cdcca6b233dfd261d9576fe',1,'KHintsSettings']]],
+  ['_7ekwaylandintegration_1011',['~KWaylandIntegration',['../da/d69/classKWaylandIntegration.html#a21074fd69bcd0f6a8680793bc9a0562d',1,'KWaylandIntegration']]],
+  ['_7enoncopyable_1012',['~NonCopyable',['../dc/d3c/classNonCopyable.html#a41c964e648935f908b8fa28499c27527',1,'NonCopyable']]],
+  ['_7enoncopyableinns_1013',['~NonCopyableInNS',['../d6/dcb/classSomeNS_1_1NonCopyableInNS.html#af679772bfbcd02457d80b6c7a6d402f2',1,'SomeNS::NonCopyableInNS']]],
+  ['_7eplasmaimcontext_1014',['~PlasmaIMContext',['../d6/d1f/classPlasmaIMContext.html#abf0c35930983b379b026994997e00cbe',1,'PlasmaIMContext']]],
+  ['_7eqdbusmenubar_1015',['~QDBusMenuBar',['../d7/d70/classQDBusMenuBar.html#a96e098d144e7ed714fced4ea57fb93a1',1,'QDBusMenuBar']]],
+  ['_7eqxdgdesktopportalfiledialog_1016',['~QXdgDesktopPortalFileDialog',['../d1/db2/classQXdgDesktopPortalFileDialog.html#a724ee203d9c72ce71666a8cb5f0c35b3',1,'QXdgDesktopPortalFileDialog']]],
+  ['_7esystemtraymenu_1017',['~SystemTrayMenu',['../d2/d9b/classSystemTrayMenu.html#a50d88db5b2d50e3c8f195008a0e21ea0',1,'SystemTrayMenu']]],
+  ['_7esystemtraymenuitem_1018',['~SystemTrayMenuItem',['../d6/d05/classSystemTrayMenuItem.html#a92b88e68c271ccc2349726c19c709908',1,'SystemTrayMenuItem']]],
+  ['_7ethread_1019',['~Thread',['../d0/d51/classThread.html#a37d9edd3a1a776cbc27dedff949c9726',1,'Thread']]],
+  ['_7ex11integration_1020',['~X11Integration',['../d7/d5e/classX11Integration.html#a47feeebe4b4c72a5d4439d0dc8058193',1,'X11Integration']]]
+];
