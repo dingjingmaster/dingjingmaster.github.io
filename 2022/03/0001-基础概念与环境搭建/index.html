@@ -5,8 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>imx6ull 基础概念与环境搭建 - 九九</title><meta name="Description" content=""><meta property="og:title" content="imx6ull 基础概念与环境搭建" />
-<meta property="og:description" content="环境搭建准备 pc 和 配置目标: 通过串口可以用 PC 连接到 开发板，查看输出日志 通过ssh可以亚平宁给 PC 连接到 开发板，并进行控制和数据交换 开发板默认登录" />
+        <title>imx6ull pro 基础概念与环境搭建 - 九九</title><meta name="Description" content=""><meta property="og:title" content="imx6ull pro 基础概念与环境搭建" />
+<meta property="og:description" content="环境搭建准备 pc 和 配置目标 通过串口可以用 PC 连接到 开发板，查看输出日志 通过ssh可以让 PC 连接到 开发板，并对开发板进行控制和数据交换 开发板默认登录" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://dingjingmaster.github.io/2022/03/0001-%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E4%B8%8E%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" /><meta property="og:image" content="https://dingjingmaster.github.io/img/logo.jpg"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-03-08T15:48:45+08:00" />
@@ -15,21 +15,21 @@
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://dingjingmaster.github.io/img/logo.jpg"/>
 
-<meta name="twitter:title" content="imx6ull 基础概念与环境搭建"/>
-<meta name="twitter:description" content="环境搭建准备 pc 和 配置目标: 通过串口可以用 PC 连接到 开发板，查看输出日志 通过ssh可以亚平宁给 PC 连接到 开发板，并进行控制和数据交换 开发板默认登录"/>
+<meta name="twitter:title" content="imx6ull pro 基础概念与环境搭建"/>
+<meta name="twitter:description" content="环境搭建准备 pc 和 配置目标 通过串口可以用 PC 连接到 开发板，查看输出日志 通过ssh可以让 PC 连接到 开发板，并对开发板进行控制和数据交换 开发板默认登录"/>
 <meta name="application-name" content="九九">
 <meta name="apple-mobile-web-app-title" content="九九"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://dingjingmaster.github.io/2022/03/0001-%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E4%B8%8E%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://dingjingmaster.github.io/2022/03/0001-%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E4%B8%8E%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" /><link rel="next" href="https://dingjingmaster.github.io/2022/03/0002-%E6%9E%84%E5%BB%BAbootloader%E5%86%85%E6%A0%B8%E5%92%8C%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "imx6ull 基础概念与环境搭建",
+        "headline": "imx6ull pro 基础概念与环境搭建",
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/dingjingmaster.github.io\/2022\/03\/0001-%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E4%B8%8E%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA\/"
-        },"image": ["https:\/\/dingjingmaster.github.io\/img\/logo.jpg"],"genre": "posts","keywords": "linux, imx6ull","wordcount":  1449 ,
+        },"image": ["https:\/\/dingjingmaster.github.io\/img\/logo.jpg"],"genre": "posts","keywords": "linux, imx6ull","wordcount":  1689 ,
         "url": "https:\/\/dingjingmaster.github.io\/2022\/03\/0001-%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E4%B8%8E%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA\/","datePublished": "2022-03-08T15:48:45+08:00","dateModified": "2022-03-08T15:48:45+08:00","publisher": {
             "@type": "Organization",
             "name": "九九","logo": "https:\/\/dingjingmaster.github.io\/img\/logo.jpg"},"author": {
@@ -104,10 +104,10 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">目录</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animated flipInX">imx6ull 基础概念与环境搭建</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animated flipInX">imx6ull pro 基础概念与环境搭建</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>dingjing</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/linux/"><i class="far fa-folder fa-fw"></i>linux</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-03-08">2022-03-08</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1449 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;<span id="/2022/03/0001-%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E4%B8%8E%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" class="leancloud_visitors" data-flag-title="imx6ull 基础概念与环境搭建">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-03-08">2022-03-08</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1689 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;<span id="/2022/03/0001-%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E4%B8%8E%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" class="leancloud_visitors" data-flag-title="imx6ull pro 基础概念与环境搭建">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
@@ -119,6 +119,12 @@
   <ul>
     <li><a href="#环境搭建准备">环境搭建准备</a>
       <ul>
+        <li>
+          <ul>
+            <li><a href="#pc-和-配置目标">pc 和 配置目标</a></li>
+            <li><a href="#pc-开发环境配置与准备">pc 开发环境配置与准备</a></li>
+          </ul>
+        </li>
         <li><a href="#1-先展示开发板">1. 先展示开发板</a></li>
         <li><a href="#2-开发板启动方式上图表号16对应状态">2. 开发板启动方式（上图表号16对应状态）</a></li>
         <li><a href="#3-第一次启动开发板">3. 第一次启动开发板</a></li>
@@ -129,6 +135,7 @@
       <ul>
         <li><a href="#1-配置-make-环境">1. 配置 make 环境</a></li>
         <li><a href="#2-配置arm-gcc交叉编译环境">2. 配置arm gcc交叉编译环境</a></li>
+        <li><a href="#2-配置-arm-gcc-交叉编译环境使用imx6ull资料配置">2. 配置 arm gcc 交叉编译环境(使用imx6ull资料配置)</a></li>
         <li><a href="#3-cortexa7-烧写工具">3. cortexA7 烧写工具</a></li>
         <li><a href="#4-mkimage-工具">4. mkimage 工具</a></li>
       </ul>
@@ -136,25 +143,25 @@
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h2 id="环境搭建准备">环境搭建准备</h2>
-<ol>
-<li>pc 和 配置目标:</li>
-</ol>
+<h4 id="pc-和-配置目标">pc 和 配置目标</h4>
 <ul>
 <li>通过<code>串口</code>可以用 PC 连接到 开发板，查看输出日志</li>
-<li>通过<code>ssh</code>可以亚平宁给 PC 连接到 开发板，并进行控制和数据交换
-开发板默认登录用户名: <code>root</code>，无密码</li>
+<li>通过<code>ssh</code>可以让 PC 连接到 开发板，并对开发板进行控制和数据交换
+<blockquote>
+<p>开发板默认登录用户名: <code>root</code>，无密码</p>
+</blockquote>
+</li>
+<li>linux 下烧写工具</li>
 </ul>
-<ol start="2">
-<li>pc 开发环境配置:</li>
-</ol>
+<h4 id="pc-开发环境配置与准备">pc 开发环境配置与准备</h4>
 <ul>
 <li>arm 交叉编译工具链环境</li>
-<li>开发板引导程序源码 (imx-uboot)</li>
-<li>开发板linux内核源码 (linux 4.19)</li>
+<li>开发板引导程序源码</li>
+<li>开发板linux内核源码</li>
 <li>imx6ull 要使用的文件系统，比如：busybox、buildroot、yocto</li>
 </ul>
 <blockquote>
-<p>我使用 <code>manjaro</code> 作为开发环境；使用 <code>imx6ull pro</code> 作为运行/学习环境</p>
+<p>我使用 <code>manjaro</code> 作为开发环境；使用 <code>imx6ull pro</code> 作为运行/学习环境，开发板下载的工具里没有linux平台的，因此需要从下载资料的 ubuntu 虚拟机里提取。</p>
 </blockquote>
 <h3 id="1-先展示开发板">1. 先展示开发板</h3>
 <p><img
@@ -277,8 +284,23 @@ gcc version 11.2.1 <span class="m">20220111</span> <span class="o">(</span>GNU T
 </code></pre></td></tr></table>
 </div>
 </div><blockquote>
-<p>这里需要注意的是，如果下载的 arm 编译工具链与开发板文件系统的编译工具链 gcc 不一致，则会导致在 pc 上用跨平台编译工具链编译出来的程序无法在 arm 开发板上运行。解决办法：重新编译开发板根文件系统、内核并烧写</p>
+<p>这里需要注意的是，如果下载的 arm 编译工具链与开发板文件系统的编译工具链 gcc 不一致，则会导致在 pc 上用跨平台编译工具链编译出来的程序无法在 arm 开发板上运行。解决办法：1. 重新编译开发板根文件系统、内核并烧写；2. 使用官方提供的交叉编译工具链</p>
 </blockquote>
+<h3 id="2-配置-arm-gcc-交叉编译环境使用imx6ull资料配置">2. 配置 arm gcc 交叉编译环境(使用imx6ull资料配置)</h3>
+<blockquote>
+<p>补充：上述配置的 交叉编译环境链可能并不能用，需要使用imx6ull资料里提供的 交叉编译链，具体操作如下</p>
+</blockquote>
+<ol>
+<li>解压缩 ubuntu 的虚拟机文件（如果压缩文件是多个，需要都选中然后解压）</li>
+<li>查看解压后的文件有几个 <code>*.vmdk</code> 文件，如果是多个则需要使用 <code>vdiskmanager</code> 合并为一个</li>
+<li>使用 <code>qemu-img</code> 把 <code>xxx.vmdk</code> 文件转为 <code>qemu</code> 支持的 <code>qcow2</code> 文件
+<blockquote>
+<p>我的 <code>linux</code> 工作机用 <code>qemu</code> 而不是 <code>vmware</code></p>
+</blockquote>
+</li>
+<li>挂载转换后的文件系统</li>
+<li></li>
+</ol>
 <h3 id="3-cortexa7-烧写工具">3. cortexA7 烧写工具</h3>
 <blockquote>
 <p>imx6ull 目前在 windows 上有带界面的烧写工具。在 imx6ull 资料里的 ubuntu 虚拟机里也有相应的文件
@@ -384,7 +406,8 @@ Use <span class="s1">&#39;-T list&#39;</span> to see a list of available image t
         </section>
     </div>
 
-    <div class="post-nav"></div>
+    <div class="post-nav">
+            <a href="/2022/03/0002-%E6%9E%84%E5%BB%BAbootloader%E5%86%85%E6%A0%B8%E5%92%8C%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" class="next" rel="next" title="构建bootloader、内核和文件系统">构建bootloader、内核和文件系统<i class="fas fa-angle-right fa-fw"></i></a></div>
 </div>
 <div id="comments"><div id="valine" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
