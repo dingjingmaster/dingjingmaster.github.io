@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>linux - 标签 - 九九</title>
+        <link>https://dingjingmaster.github.io/tags/linux/</link>
+        <description>linux - 标签 - 九九</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>dingjing@live.cn (dingjing)</managingEditor>
+            <webMaster>dingjing@live.cn (dingjing)</webMaster><lastBuildDate>Tue, 08 Mar 2022 15:48:45 &#43;0800</lastBuildDate><atom:link href="https://dingjingmaster.github.io/tags/linux/" rel="self" type="application/rss+xml" /><item>
+    <title>imx6ull 基础概念与环境搭建</title>
+    <link>https://dingjingmaster.github.io/2022/03/0001-%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E4%B8%8E%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</link>
+    <pubDate>Tue, 08 Mar 2022 15:48:45 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://dingjingmaster.github.io/2022/03/0001-%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E4%B8%8E%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</guid>
+    <description><![CDATA[环境搭建准备 1. 先展示开发板 各标号硬件含义 2. 开发板启动方式（上图表号16对应状态） boot sw1(lcd_data5) sw2(lcd_data11) sw3(boot_mode0) sw4(boot_mode1) emmc OFF OFF ON OFF sd ON ON ON OFF usb X X OFF ON 注意：当设为 USB 启动时]]></description>
+</item></channel>
+</rss>

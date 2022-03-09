@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>imx6ull 基础概念与环境搭建 - 九九</title><meta name="Description" content=""><meta property="og:title" content="imx6ull 基础概念与环境搭建" />
+<meta property="og:description" content="环境搭建准备 1. 先展示开发板 各标号硬件含义 2. 开发板启动方式（上图表号16对应状态） boot sw1(lcd_data5) sw2(lcd_data11) sw3(boot_mode0) sw4(boot_mode1) emmc OFF OFF ON OFF sd ON ON ON OFF usb X X OFF ON 注意：当设为 USB 启动时" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dingjingmaster.github.io/2022/03/0001-%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E4%B8%8E%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" /><meta property="og:image" content="https://dingjingmaster.github.io/img/logo.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-03-08T15:48:45+08:00" />
+<meta property="article:modified_time" content="2022-03-08T15:48:45+08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://dingjingmaster.github.io/img/logo.jpg"/>
+
+<meta name="twitter:title" content="imx6ull 基础概念与环境搭建"/>
+<meta name="twitter:description" content="环境搭建准备 1. 先展示开发板 各标号硬件含义 2. 开发板启动方式（上图表号16对应状态） boot sw1(lcd_data5) sw2(lcd_data11) sw3(boot_mode0) sw4(boot_mode1) emmc OFF OFF ON OFF sd ON ON ON OFF usb X X OFF ON 注意：当设为 USB 启动时"/>
+<meta name="application-name" content="九九">
+<meta name="apple-mobile-web-app-title" content="九九"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://dingjingmaster.github.io/2022/03/0001-%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E4%B8%8E%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "imx6ull 基础概念与环境搭建",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/dingjingmaster.github.io\/2022\/03\/0001-%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E4%B8%8E%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA\/"
+        },"image": ["https:\/\/dingjingmaster.github.io\/img\/logo.jpg"],"genre": "posts","keywords": "linux, imx6ull","wordcount":  1058 ,
+        "url": "https:\/\/dingjingmaster.github.io\/2022\/03\/0001-%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E4%B8%8E%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA\/","datePublished": "2022-03-08T15:48:45+08:00","dateModified": "2022-03-08T15:48:45+08:00","publisher": {
+            "@type": "Organization",
+            "name": "九九","logo": "https:\/\/dingjingmaster.github.io\/img\/logo.jpg"},"author": {
+                "@type": "Person",
+                "name": "dingjing"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="九九"><span class="header-title-pre"> </span>九九</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="https://github.com/dingjingmaster" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="九九"><span class="header-title-pre"> </span>九九</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="https://github.com/dingjingmaster" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">imx6ull 基础概念与环境搭建</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>dingjing</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/linux/"><i class="far fa-folder fa-fw"></i>linux</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-03-08">2022-03-08</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1058 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;<span id="/2022/03/0001-%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E4%B8%8E%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" class="leancloud_visitors" data-flag-title="imx6ull 基础概念与环境搭建">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#1-先展示开发板">1. 先展示开发板</a></li>
+        <li><a href="#2-开发板启动方式上图表号16对应状态">2. 开发板启动方式（上图表号16对应状态）</a></li>
+        <li><a href="#3-第一次启动开发板">3. 第一次启动开发板</a></li>
+      </ul>
+    </li>
+    <li><a href="#环境配置与工具下载">环境配置与工具下载</a>
+      <ul>
+        <li><a href="#1-配置-make-环境">1. 配置 make 环境</a></li>
+        <li><a href="#2-配置arm-gcc交叉编译环境">2. 配置arm gcc交叉编译环境</a></li>
+        <li><a href="#3-cortexa7-烧写工具">3. cortexA7 烧写工具</a></li>
+        <li><a href="#4-mkimage-工具">4. mkimage 工具</a></li>
+      </ul>
+    </li>
+    <li><a href="#第一个裸机程序">第一个裸机程序</a>
+      <ul>
+        <li><a href="#imx6ull-启动开关">IMX6ULL 启动开关</a></li>
+        <li><a href="#usb-烧写工具">USB 烧写工具</a></li>
+        <li><a href="#下载运行裸机程序不烧写">下载运行裸机程序(不烧写)</a></li>
+        <li><a href="#烧写裸机程序到emmc">烧写裸机程序到EMMC</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="环境搭建准备">环境搭建准备</h1>
+<h3 id="1-先展示开发板">1. 先展示开发板</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/pic/imx6ull/000-banzi.jpg"
+        data-srcset="/pic/imx6ull/000-banzi.jpg, /pic/imx6ull/000-banzi.jpg 1.5x, /pic/imx6ull/000-banzi.jpg 2x"
+        data-sizes="auto"
+        alt="/pic/imx6ull/000-banzi.jpg"
+        title="开发板" />
+各标号硬件含义
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/pic/imx6ull/001-banzi.jpg"
+        data-srcset="/pic/imx6ull/001-banzi.jpg, /pic/imx6ull/001-banzi.jpg 1.5x, /pic/imx6ull/001-banzi.jpg 2x"
+        data-sizes="auto"
+        alt="/pic/imx6ull/001-banzi.jpg"
+        title="开发板" /></p>
+<h3 id="2-开发板启动方式上图表号16对应状态">2. 开发板启动方式（上图表号16对应状态）</h3>
+<table>
+<thead>
+<tr>
+<th>boot</th>
+<th><code>sw1(lcd_data5)</code></th>
+<th><code>sw2(lcd_data11)</code></th>
+<th><code>sw3(boot_mode0)</code></th>
+<th><code>sw4(boot_mode1)</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>emmc</td>
+<td>OFF</td>
+<td>OFF</td>
+<td>ON</td>
+<td>OFF</td>
+</tr>
+<tr>
+<td>sd</td>
+<td>ON</td>
+<td>ON</td>
+<td>ON</td>
+<td>OFF</td>
+</tr>
+<tr>
+<td>usb</td>
+<td>X</td>
+<td>X</td>
+<td>OFF</td>
+<td>ON</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>注意：当设为 USB 启动时候，不能插上SD卡、TF卡；上电之后才可以插卡。刚出厂的板子在 emmc 上烧写了系统，可以设置为 emmc 启动。</p>
+</blockquote>
+<h3 id="3-第一次启动开发板">3. 第一次启动开发板</h3>
+<ol>
+<li>设置开发板的打开方式为 emmc</li>
+<li>下载 linux 串口驱动程序 <a href="https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers" target="_blank" rel="noopener noreffer"><code>https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers</code></a> 并编译之后在源码目录执行<code>insmod ./xxx.ko</code>，插入编译生成的内核模块(xxx.ko文件)</li>
+<li>连接开发板电源线并打开开关，插拔 usb 线观察 <code>/dev/</code> 下设备变化，发现插入 usb 后会多出 <code>ttyUSB0</code> 这一设备</li>
+<li>执行 <code>pacman -S minicom</code> 下载 minicom</li>
+<li>打开串口 <code>minicom -D /dev/ttyUSB0</code> 然后重启开发板(直接断点和上电)，后续就可以通过 minicom 看到串口日志了（需要开发板默认打开串口输出）</li>
+</ol>
+<h2 id="环境配置与工具下载">环境配置与工具下载</h2>
+<h3 id="1-配置-make-环境">1. 配置 make 环境</h3>
+<p>使用包管理器安装 <code>make</code> 包: <code>pacman -S make</code></p>
+<h3 id="2-配置arm-gcc交叉编译环境">2. 配置arm gcc交叉编译环境</h3>
+<ol>
+<li>arm 交叉编译工具下载地址: <a href="https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/downloads" target="_blank" rel="noopener noreffer">arm 交叉编译工具下载地址</a>，或者复制到浏览器下载(这个包宿主机是x86，目标代码编译成arm的): <code>https://armkeil.blob.core.windows.net/developer/Files/downloads/gnu/11.2-2022.02/binrel/gcc-arm-11.2-2022.02-x86_64-arm-none-linux-gnueabihf.tar.xz</code></li>
+<li>下载并解压之后放置指定目录并改名为 <code>gcc-arm</code>，比如: <code>/data/envrionment/gcc-arm/</code></li>
+<li>配置环境变量，编辑 <code>~/.bashrc</code>，在末尾加入如下代码:</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="nv">my_arm_home</span><span class="o">=</span><span class="s1">&#39;/data/environment/gcc-arm&#39;</span>
+<span class="nv">my_path</span><span class="o">=</span><span class="nv">$PATH</span>
+<span class="nv">my_path</span><span class="o">=</span><span class="si">${</span><span class="nv">my_arm_home</span><span class="si">}</span>/bin:<span class="si">${</span><span class="nv">my_path</span><span class="si">}</span>
+<span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="si">${</span><span class="nv">my_path</span><span class="si">}</span> <span class="p">|</span> sed <span class="s1">&#39;s/:/\n/g&#39;</span> <span class="p">|</span> sort <span class="p">|</span> uniq <span class="p">|</span> tr -s <span class="s1">&#39;\n&#39;</span> <span class="s1">&#39;:&#39;</span> <span class="p">|</span> sed <span class="s1">&#39;s/:$//g&#39;</span><span class="k">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><ol start="4">
+<li>配置好后重新打开终端或执行<code>source ~/.bashrc</code> 之后打开终端，运行 <code>arm-none-linux-gnueabihf-gcc -v</code>，查看是否有如下信息输出(如果没有，重新执行这一步):</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">Using built-in specs.
+<span class="nv">COLLECT_GCC</span><span class="o">=</span>arm-none-linux-gnueabihf-gcc
+<span class="nv">COLLECT_LTO_WRAPPER</span><span class="o">=</span>/data/environment/gcc-arm/bin/../libexec/gcc/arm-none-linux-gnueabihf/11.2.1/lto-wrapper
+Target: arm-none-linux-gnueabihf
+Configured with: /data/jenkins/workspace/GNU-toolchain/arm-11/src/gcc/configure --target<span class="o">=</span>arm-none-linux-gnueabihf --prefix<span class="o">=</span> --with-sysroot<span class="o">=</span>/arm-none-linux-gnueabihf/libc --with-build-sysroot<span class="o">=</span>/data/jenkins/workspace/GNU-toolchain/arm-11/build-arm-none-linux-gnueabihf/install//arm-none-linux-gnueabihf/libc --with-bugurl<span class="o">=</span>https://bugs.linaro.org/ --enable-gnu-indirect-function --enable-shared --disable-libssp --disable-libmudflap --enable-checking<span class="o">=</span>release --enable-languages<span class="o">=</span>c,c++,fortran --with-gmp<span class="o">=</span>/data/jenkins/workspace/GNU-toolchain/arm-11/build-arm-none-linux-gnueabihf/host-tools --with-mpfr<span class="o">=</span>/data/jenkins/workspace/GNU-toolchain/arm-11/build-arm-none-linux-gnueabihf/host-tools --with-mpc<span class="o">=</span>/data/jenkins/workspace/GNU-toolchain/arm-11/build-arm-none-linux-gnueabihf/host-tools --with-isl<span class="o">=</span>/data/jenkins/workspace/GNU-toolchain/arm-11/build-arm-none-linux-gnueabihf/host-tools --with-arch<span class="o">=</span>armv7-a --with-fpu<span class="o">=</span>neon --with-float<span class="o">=</span>hard --with-mode<span class="o">=</span>thumb --with-arch<span class="o">=</span>armv7-a --with-pkgversion<span class="o">=</span><span class="s1">&#39;GNU Toolchain for the Arm Architecture 11.2-2022.02 (arm-11.14)&#39;</span>
+Thread model: posix
+Supported LTO compression algorithms: zlib
+gcc version 11.2.1 <span class="m">20220111</span> <span class="o">(</span>GNU Toolchain <span class="k">for</span> the Arm Architecture 11.2-2022.02 <span class="o">(</span>arm-11.14<span class="o">))</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="3-cortexa7-烧写工具">3. cortexA7 烧写工具</h3>
+<blockquote>
+<p>目前在 windows 上有带界面的烧写工具</p>
+</blockquote>
+<h3 id="4-mkimage-工具">4. mkimage 工具</h3>
+<blockquote>
+<p>这一工具来源于 u-boot，用来给一个 bin 文件添加头部信息，芯片固件需要根据头部信息把 bin 文件放到内存中去执行
+执行 <code>pacman -S u-boot</code> 命令后，再次执行 <code>mkimage -h</code> 查看是否正确安装:</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">mkimage: invalid option -- <span class="s1">&#39;h&#39;</span>
+Error: Invalid option
+Usage: mkimage -l image
+          -l <span class="o">==</span>&gt; list image header information
+       mkimage <span class="o">[</span>-x<span class="o">]</span> -A arch -O os -T <span class="nb">type</span> -C comp -a addr -e ep -n name -d data_file<span class="o">[</span>:data_file...<span class="o">]</span> image
+          -A <span class="o">==</span>&gt; <span class="nb">set</span> architecture to <span class="s1">&#39;arch&#39;</span>
+          -O <span class="o">==</span>&gt; <span class="nb">set</span> operating system to <span class="s1">&#39;os&#39;</span>
+          -T <span class="o">==</span>&gt; <span class="nb">set</span> image <span class="nb">type</span> to <span class="s1">&#39;type&#39;</span>
+          -C <span class="o">==</span>&gt; <span class="nb">set</span> compression <span class="nb">type</span> <span class="s1">&#39;comp&#39;</span>
+          -a <span class="o">==</span>&gt; <span class="nb">set</span> load address to <span class="s1">&#39;addr&#39;</span> <span class="o">(</span>hex<span class="o">)</span>
+          -e <span class="o">==</span>&gt; <span class="nb">set</span> entry point to <span class="s1">&#39;ep&#39;</span> <span class="o">(</span>hex<span class="o">)</span>
+          -n <span class="o">==</span>&gt; <span class="nb">set</span> image name to <span class="s1">&#39;name&#39;</span>
+          -d <span class="o">==</span>&gt; use image data from <span class="s1">&#39;datafile&#39;</span>
+          -x <span class="o">==</span>&gt; <span class="nb">set</span> XIP <span class="o">(</span>execute in place<span class="o">)</span>
+       mkimage <span class="o">[</span>-D dtc_options<span class="o">]</span> <span class="o">[</span>-f fit-image.its<span class="p">|</span>-f auto<span class="p">|</span>-F<span class="o">]</span> <span class="o">[</span>-b &lt;dtb&gt; <span class="o">[</span>-b &lt;dtb&gt;<span class="o">]]</span> <span class="o">[</span>-E<span class="o">]</span> <span class="o">[</span>-B size<span class="o">]</span> <span class="o">[</span>-i &lt;ramdisk.cpio.gz&gt;<span class="o">]</span> fit-image
+           &lt;dtb&gt; file is used with -f auto, it may occur multiple times.
+          -D <span class="o">=</span>&gt; <span class="nb">set</span> all options <span class="k">for</span> device tree compiler
+          -f <span class="o">=</span>&gt; input filename <span class="k">for</span> FIT <span class="nb">source</span>
+          -i <span class="o">=</span>&gt; input filename <span class="k">for</span> ramdisk file
+          -E <span class="o">=</span>&gt; place data outside of the FIT structure
+          -B <span class="o">=</span>&gt; align size in hex <span class="k">for</span> FIT structure and header
+Signing / verified boot options: <span class="o">[</span>-k keydir<span class="o">]</span> <span class="o">[</span>-K dtb<span class="o">]</span> <span class="o">[</span> -c &lt;comment&gt;<span class="o">]</span> <span class="o">[</span>-p addr<span class="o">]</span> <span class="o">[</span>-r<span class="o">]</span> <span class="o">[</span>-N engine<span class="o">]</span>
+          -k <span class="o">=</span>&gt; <span class="nb">set</span> directory containing private keys
+          -K <span class="o">=</span>&gt; write public keys to this .dtb file
+          -G <span class="o">=</span>&gt; use this signing key <span class="o">(</span>in lieu of -k<span class="o">)</span>
+          -c <span class="o">=</span>&gt; add comment in signature node
+          -F <span class="o">=</span>&gt; re-sign existing FIT image
+          -p <span class="o">=</span>&gt; place external data at a static position
+          -r <span class="o">=</span>&gt; mark keys used as <span class="s1">&#39;required&#39;</span> in dtb
+          -N <span class="o">=</span>&gt; openssl engine to use <span class="k">for</span> signing
+       mkimage -V <span class="o">==</span>&gt; print version information and <span class="nb">exit</span>
+Use <span class="s1">&#39;-T list&#39;</span> to see a list of available image types
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="第一个裸机程序">第一个裸机程序</h2>
+<h3 id="imx6ull-启动开关">IMX6ULL 启动开关</h3>
+<h3 id="usb-烧写工具">USB 烧写工具</h3>
+<h3 id="下载运行裸机程序不烧写">下载运行裸机程序(不烧写)</h3>
+<h3 id="烧写裸机程序到emmc">烧写裸机程序到EMMC</h3>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2022-03-08</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/2022/03/0001-%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E4%B8%8E%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/index.md" target="_blank">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">linux</a>,&nbsp;<a href="/tags/imx6ull/">imx6ull</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">dingjing</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script type="text/javascript" src="/lib/valine/Valine.min.js"></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/algoliasearch/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/twemoji/twemoji.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"valine":{"appId":"","appKey":"","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"visitor":true}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.zh-cn","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"},"twemoji":true};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
