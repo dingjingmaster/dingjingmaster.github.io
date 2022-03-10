@@ -29,7 +29,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/dingjingmaster.github.io\/2022\/03\/0002-%E6%9E%84%E5%BB%BAbootloader%E5%86%85%E6%A0%B8%E5%92%8C%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F\/"
-        },"image": ["https:\/\/dingjingmaster.github.io\/img\/logo.jpg"],"genre": "posts","keywords": "linux, imx6ull","wordcount":  263 ,
+        },"image": ["https:\/\/dingjingmaster.github.io\/img\/logo.jpg"],"genre": "posts","keywords": "linux, imx6ull","wordcount":  268 ,
         "url": "https:\/\/dingjingmaster.github.io\/2022\/03\/0002-%E6%9E%84%E5%BB%BAbootloader%E5%86%85%E6%A0%B8%E5%92%8C%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F\/","datePublished": "2022-03-09T13:39:38+08:00","dateModified": "2022-03-09T13:39:38+08:00","publisher": {
             "@type": "Organization",
             "name": "九九","logo": "https:\/\/dingjingmaster.github.io\/img\/logo.jpg"},"author": {
@@ -106,7 +106,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">构建bootloader、内核和文件系统</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>丁敬</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/linux/"><i class="far fa-folder fa-fw"></i>linux</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-03-09">2022-03-09</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 263 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-03-09">2022-03-09</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 268 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 1 分钟&nbsp;<span id="/2022/03/0002-%E6%9E%84%E5%BB%BAbootloader%E5%86%85%E6%A0%B8%E5%92%8C%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" class="leancloud_visitors" data-flag-title="构建bootloader、内核和文件系统">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
@@ -118,7 +118,6 @@
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
     <li><a href="#准备环境">准备环境</a></li>
-    <li><a href="#编译buildroot">编译<code>buildroot</code></a></li>
     <li><a href="#编译u-boot">编译<code>u-boot</code></a>
       <ul>
         <li><a href="#u-boot介绍"><code>u-boot</code>介绍</a></li>
@@ -126,6 +125,7 @@
       </ul>
     </li>
     <li><a href="#编译kernel">编译<code>kernel</code></a></li>
+    <li><a href="#编译buildroot">编译<code>buildroot</code></a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h2 id="准备环境">准备环境</h2>
@@ -134,13 +134,24 @@
 <li>工作机 <code>linux</code> 上可以通过串口连接到 <code>arm 开发板</code>(如果没有则看<a href="/2022/03/0001-%e5%9f%ba%e7%a1%80%e6%a6%82%e5%bf%b5%e4%b8%8e%e7%8e%af%e5%a2%83%e6%90%ad%e5%bb%ba/" rel="">imx6ull概念和环境搭建</a>)</li>
 <li>工作机 <code>linux</code> 上准备分别准备好 <code>buildroot</code> <code>u-boot</code> <code>kernel</code> 的源码</li>
 </ol>
-<h2 id="编译buildroot">编译<code>buildroot</code></h2>
 <h2 id="编译u-boot">编译<code>u-boot</code></h2>
 <h3 id="u-boot介绍"><code>u-boot</code>介绍</h3>
 <p><code>u-boot</code>属于 bootloader 的一种实现。bootloader 是在操作系统运行之前运行的一段代码，用于引导操作系统。</p>
 <h3 id="u-boot编译"><code>u-boot</code>编译</h3>
-<p>这次编译使用 imx6ull 资料里提供的 <code>u-boot</code> 源码</p>
-<h2 id="编译kernel">编译<code>kernel</code></h2>
+<p>这次编译使用 imx6ull 资料里提供的 <code>Uboot-2017.03</code> 源码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">make distclean
+
+
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="编译kernel">编译<code>kernel</code></h2>
 <ol>
 <li>找到 <code>imx-linux4.9.88</code> 并执行命令</li>
 </ol>
@@ -165,7 +176,8 @@ make zImage -j8
 make dtbs
 </code></pre></td></tr></table>
 </div>
-</div></div><div class="post-footer" id="post-footer">
+</div><h2 id="编译buildroot">编译<code>buildroot</code></h2>
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
