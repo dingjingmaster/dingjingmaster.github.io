@@ -29,7 +29,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/dingjingmaster.github.io\/2022\/03\/0001-%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E4%B8%8E%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA\/"
-        },"image": ["https:\/\/dingjingmaster.github.io\/img\/logo.jpg"],"genre": "posts","keywords": "linux, imx6ull","wordcount":  1689 ,
+        },"image": ["https:\/\/dingjingmaster.github.io\/img\/logo.jpg"],"genre": "posts","keywords": "linux, imx6ull","wordcount":  2116 ,
         "url": "https:\/\/dingjingmaster.github.io\/2022\/03\/0001-%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E4%B8%8E%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA\/","datePublished": "2022-03-08T15:48:45+08:00","dateModified": "2022-03-08T15:48:45+08:00","publisher": {
             "@type": "Organization",
             "name": "九九","logo": "https:\/\/dingjingmaster.github.io\/img\/logo.jpg"},"author": {
@@ -106,8 +106,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">imx6ull pro 基础概念与环境搭建</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>丁敬</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/linux/"><i class="far fa-folder fa-fw"></i>linux</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-03-08">2022-03-08</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1689 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;<span id="/2022/03/0001-%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E4%B8%8E%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" class="leancloud_visitors" data-flag-title="imx6ull pro 基础概念与环境搭建">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-03-08">2022-03-08</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2116 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 5 分钟&nbsp;<span id="/2022/03/0001-%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E4%B8%8E%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" class="leancloud_visitors" data-flag-title="imx6ull pro 基础概念与环境搭建">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
@@ -134,10 +134,17 @@
     <li><a href="#环境配置与工具下载">环境配置与工具下载</a>
       <ul>
         <li><a href="#1-配置-make-环境">1. 配置 make 环境</a></li>
-        <li><a href="#2-配置arm-gcc交叉编译环境">2. 配置arm gcc交叉编译环境</a></li>
         <li><a href="#2-配置-arm-gcc-交叉编译环境使用imx6ull资料配置">2. 配置 arm gcc 交叉编译环境(使用imx6ull资料配置)</a></li>
+        <li><a href="#2-配置arm-gcc交叉编译环境这个留备后续使用不需要配置">2. 配置arm gcc交叉编译环境(这个留备后续使用，不需要配置)</a></li>
         <li><a href="#3-cortexa7-烧写工具">3. cortexA7 烧写工具</a></li>
         <li><a href="#4-mkimage-工具">4. mkimage 工具</a></li>
+      </ul>
+    </li>
+    <li><a href="#最后来一个例子">最后来一个例子</a>
+      <ul>
+        <li><a href="#在开发机上编写一个例子">在开发机上编写一个例子</a></li>
+        <li><a href="#开发机上的makefile">开发机上的Makefile</a></li>
+        <li><a href="#编译">编译</a></li>
       </ul>
     </li>
   </ul>
@@ -151,14 +158,13 @@
 <p>开发板默认登录用户名: <code>root</code>，无密码</p>
 </blockquote>
 </li>
-<li>linux 下烧写工具</li>
 </ul>
 <h4 id="pc-开发环境配置与准备">pc 开发环境配置与准备</h4>
 <ul>
-<li>arm 交叉编译工具链环境</li>
-<li>开发板引导程序源码</li>
-<li>开发板linux内核源码</li>
-<li>imx6ull 要使用的文件系统，比如：busybox、buildroot、yocto</li>
+<li>arm 交叉编译工具链环境 &lt;重要&gt;</li>
+<li>开发板引导程序源码  &lt;后续可以准备&gt;</li>
+<li>开发板linux内核源码 &lt;后续可以准备&gt;</li>
+<li>imx6ull 要使用的文件系统，比如：busybox、buildroot、yocto  &lt;后续可以准备&gt;</li>
 </ul>
 <blockquote>
 <p>我使用 <code>manjaro</code> 作为开发环境；使用 <code>imx6ull pro</code> 作为运行/学习环境，开发板下载的工具里没有linux平台的，因此需要从下载资料的 ubuntu 虚拟机里提取。</p>
@@ -238,7 +244,25 @@
 </blockquote>
 <h3 id="1-配置-make-环境">1. 配置 make 环境</h3>
 <p>使用包管理器安装 <code>make</code> 包: <code>pacman -S make</code></p>
-<h3 id="2-配置arm-gcc交叉编译环境">2. 配置arm gcc交叉编译环境</h3>
+<h3 id="2-配置-arm-gcc-交叉编译环境使用imx6ull资料配置">2. 配置 arm gcc 交叉编译环境(使用imx6ull资料配置)</h3>
+<blockquote>
+<p>补充：上述配置的 交叉编译环境链可能并不能用，需要使用imx6ull资料里提供的 交叉编译链，具体操作如下</p>
+</blockquote>
+<ol>
+<li>解压缩 ubuntu 的虚拟机文件（如果压缩文件是多个，需要都选中然后解压）</li>
+<li>查看解压后的文件有几个 <code>*.vmdk</code> 文件，如果是多个则需要使用 <code>vdiskmanager</code> 合并为一个</li>
+<li>使用 <code>qemu-img</code> 把 <code>xxx.vmdk</code> 文件转为 <code>qemu</code> 支持的 <code>qcow2</code> 文件
+<blockquote>
+<p>我的 <code>linux</code> 工作机用 <code>qemu</code> 而不是 <code>vmware</code></p>
+</blockquote>
+</li>
+<li>挂载转换后的文件系统</li>
+<li>使用<code>mount</code>挂载虚拟硬盘的家目录，大概是 <code>/dev/nb0p4</code> 挂载后可以通过 <code>ls</code> 命令看到<code>book</code>文件夹，这就是家目录，然后把文件 <code>100ask_imx6ull-sdk</code> 复制出来，在这个文件夹的<code>ToolChain</code>目录下有需要的arm编译链</li>
+</ol>
+<blockquote>
+<p>上述2、3、4步相关教程可以查看<a href="/2022/03/0001-%e5%ae%bf%e4%b8%bb%e6%9c%ba%e6%8c%82%e8%bd%bdqemu%e8%99%9a%e6%8b%9f%e7%9b%98qcow2/" rel="">qcow2虚拟分区挂载</a></p>
+</blockquote>
+<h3 id="2-配置arm-gcc交叉编译环境这个留备后续使用不需要配置">2. 配置arm gcc交叉编译环境(这个留备后续使用，不需要配置)</h3>
 <ol>
 <li>arm 交叉编译工具下载地址: <a href="https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/downloads" target="_blank" rel="noopener noreffer">arm 交叉编译工具下载地址</a>，或者复制到浏览器下载(这个包宿主机是x86，目标代码编译成arm的): <code>https://armkeil.blob.core.windows.net/developer/Files/downloads/gnu/11.2-2022.02/binrel/gcc-arm-11.2-2022.02-x86_64-arm-none-linux-gnueabihf.tar.xz</code></li>
 <li>下载并解压之后放置指定目录并改名为 <code>gcc-arm</code>，比如: <code>/data/envrionment/gcc-arm/</code></li>
@@ -286,25 +310,9 @@ gcc version 11.2.1 <span class="m">20220111</span> <span class="o">(</span>GNU T
 </div><blockquote>
 <p>这里需要注意的是，如果下载的 arm 编译工具链与开发板文件系统的编译工具链 gcc 不一致，则会导致在 pc 上用跨平台编译工具链编译出来的程序无法在 arm 开发板上运行。解决办法：1. 重新编译开发板根文件系统、内核并烧写；2. 使用官方提供的交叉编译工具链</p>
 </blockquote>
-<h3 id="2-配置-arm-gcc-交叉编译环境使用imx6ull资料配置">2. 配置 arm gcc 交叉编译环境(使用imx6ull资料配置)</h3>
-<blockquote>
-<p>补充：上述配置的 交叉编译环境链可能并不能用，需要使用imx6ull资料里提供的 交叉编译链，具体操作如下</p>
-</blockquote>
-<ol>
-<li>解压缩 ubuntu 的虚拟机文件（如果压缩文件是多个，需要都选中然后解压）</li>
-<li>查看解压后的文件有几个 <code>*.vmdk</code> 文件，如果是多个则需要使用 <code>vdiskmanager</code> 合并为一个</li>
-<li>使用 <code>qemu-img</code> 把 <code>xxx.vmdk</code> 文件转为 <code>qemu</code> 支持的 <code>qcow2</code> 文件
-<blockquote>
-<p>我的 <code>linux</code> 工作机用 <code>qemu</code> 而不是 <code>vmware</code></p>
-</blockquote>
-</li>
-<li>挂载转换后的文件系统</li>
-<li></li>
-</ol>
 <h3 id="3-cortexa7-烧写工具">3. cortexA7 烧写工具</h3>
 <blockquote>
-<p>imx6ull 目前在 windows 上有带界面的烧写工具。在 imx6ull 资料里的 ubuntu 虚拟机里也有相应的文件
-打开 ubuntu 虚拟机，按文档取出烧写工具</p>
+<p>imx6ull 目前在 windows 上有带界面的烧写工具。linux 下暂时没找到相关工具</p>
 </blockquote>
 <h3 id="4-mkimage-工具">4. mkimage 工具</h3>
 <blockquote>
@@ -381,7 +389,67 @@ Signing / verified boot options: <span class="o">[</span>-k keydir<span class="o
 Use <span class="s1">&#39;-T list&#39;</span> to see a list of available image types
 </code></pre></td></tr></table>
 </div>
-</div></div><div class="post-footer" id="post-footer">
+</div><h2 id="最后来一个例子">最后来一个例子</h2>
+<h3 id="在开发机上编写一个例子">在开发机上编写一个例子</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1">#include &lt;stdio.h&gt;</span>
+
+int main <span class="o">(</span>int argc, char* argv<span class="o">[])</span>
+<span class="o">{</span>
+    <span class="nb">printf</span> <span class="o">(</span><span class="s2">&#34;Hello World!\n&#34;</span><span class="o">)</span><span class="p">;</span>
+
+    <span class="k">return</span> 0<span class="p">;</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="开发机上的makefile">开发机上的Makefile</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="nv">CC</span> <span class="o">=</span> arm-linux-gnueabihf-gcc
+<span class="nv">CUR_DIR</span> <span class="o">=</span> <span class="k">$(</span>shell <span class="nb">pwd</span><span class="k">)</span>
+<span class="nv">SRC</span> <span class="o">=</span> <span class="k">$(</span>strip <span class="k">$(</span>subst <span class="k">$(</span>CUR_DIR<span class="k">)</span>, ., <span class="k">$(</span>wildcard <span class="k">$(</span>CUR_DIR<span class="k">)</span>/*.c<span class="k">)))</span>
+<span class="nv">TARGET</span> <span class="o">=</span> <span class="k">$(</span>strip <span class="k">$(</span>patsubst %.c, %.run, <span class="k">$(</span>SRC<span class="k">)))</span>
+
+all:<span class="si">${</span><span class="nv">TARGET</span><span class="si">}</span>
+
+%.run:%.c
+        <span class="si">${</span><span class="nv">CC</span><span class="si">}</span> -o <span class="nv">$@</span> $&lt;
+
+clean:
+        rm -f *.run
+        rm -f *.o
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="编译">编译</h3>
+<p>分别保存上述代码为 hello-world.c、makefile脚本为 Makefile，两个文件放在同级目录，执行 <code>make</code> 会在当前目录下生成 <code>hello-world.run</code>，使用 scp ./hello-world.run root@&lt;开发机ip&gt;:~ 把编译好的二进制文件传输到开发机，最后使用 ssh 登录到开发机上家目录执行 <code>./hello-world.run</code> 即可看到输出结果。</p>
+<p>至此，开发环境和开发板打通。</p>
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
