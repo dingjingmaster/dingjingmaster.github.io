@@ -29,7 +29,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/dingjingmaster.github.io\/2022\/03\/0001-%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E4%B8%8E%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA\/"
-        },"image": ["https:\/\/dingjingmaster.github.io\/img\/logo.jpg"],"genre": "posts","keywords": "linux, imx6ull","wordcount":  2116 ,
+        },"image": ["https:\/\/dingjingmaster.github.io\/img\/logo.jpg"],"genre": "posts","keywords": "linux, imx6ull","wordcount":  2166 ,
         "url": "https:\/\/dingjingmaster.github.io\/2022\/03\/0001-%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E4%B8%8E%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA\/","datePublished": "2022-03-08T15:48:45+08:00","dateModified": "2022-03-08T15:48:45+08:00","publisher": {
             "@type": "Organization",
             "name": "九九","logo": "https:\/\/dingjingmaster.github.io\/img\/logo.jpg"},"author": {
@@ -106,7 +106,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">imx6ull pro 基础概念与环境搭建</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>丁敬</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/linux/"><i class="far fa-folder fa-fw"></i>linux</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-03-08">2022-03-08</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2116 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-03-08">2022-03-08</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2166 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 5 分钟&nbsp;<span id="/2022/03/0001-%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E4%B8%8E%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" class="leancloud_visitors" data-flag-title="imx6ull pro 基础概念与环境搭建">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
@@ -311,8 +311,12 @@ gcc version 11.2.1 <span class="m">20220111</span> <span class="o">(</span>GNU T
 <p>这里需要注意的是，如果下载的 arm 编译工具链与开发板文件系统的编译工具链 gcc 不一致，则会导致在 pc 上用跨平台编译工具链编译出来的程序无法在 arm 开发板上运行。解决办法：1. 重新编译开发板根文件系统、内核并烧写；2. 使用官方提供的交叉编译工具链</p>
 </blockquote>
 <h3 id="3-cortexa7-烧写工具">3. cortexA7 烧写工具</h3>
+<ul>
+<li>imx6ull 官方烧写工具是 <code>mfgtools</code> 操作简单，一键烧写整个镜像&lt;用这个就可以&gt;</li>
+<li>nxp 提供的 uuu (Universal Update Utility) 又名 <code>mfgtools 3.0</code></li>
+</ul>
 <blockquote>
-<p>imx6ull 目前在 windows 上有带界面的烧写工具。linux 下暂时没找到相关工具</p>
+<p>这块具体使用后续会有介绍</p>
 </blockquote>
 <h3 id="4-mkimage-工具">4. mkimage 工具</h3>
 <blockquote>
@@ -449,6 +453,9 @@ clean:
 </div><h3 id="编译">编译</h3>
 <p>分别保存上述代码为 hello-world.c、makefile脚本为 Makefile，两个文件放在同级目录，执行 <code>make</code> 会在当前目录下生成 <code>hello-world.run</code>，使用 scp ./hello-world.run root@&lt;开发机ip&gt;:~ 把编译好的二进制文件传输到开发机，最后使用 ssh 登录到开发机上家目录执行 <code>./hello-world.run</code> 即可看到输出结果。</p>
 <p>至此，开发环境和开发板打通。</p>
+<blockquote>
+<p>此处最重要的是，配置好<code>arm交叉编译工具链</code></p>
+</blockquote>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
