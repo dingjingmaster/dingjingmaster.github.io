@@ -20,7 +20,7 @@
 <meta name="application-name" content="九九">
 <meta name="apple-mobile-web-app-title" content="九九"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://dingjingmaster.github.io/2022/03/0001-%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E4%B8%8E%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" /><link rel="next" href="https://dingjingmaster.github.io/2022/03/0002-%E6%9E%84%E5%BB%BAbootloader%E5%86%85%E6%A0%B8%E5%92%8C%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://dingjingmaster.github.io/2022/03/0001-%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E4%B8%8E%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" /><link rel="next" href="https://dingjingmaster.github.io/2022/03/0003-%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -34,7 +34,7 @@
             "@type": "Organization",
             "name": "九九","logo": "https:\/\/dingjingmaster.github.io\/img\/logo.jpg"},"author": {
                 "@type": "Person",
-                "name": "丁敬"
+                "name": "ding jing"
             },"description": ""
     }
     </script></head>
@@ -105,7 +105,7 @@
             <h2 class="toc-title">目录</h2>
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">imx6ull pro 基础概念与环境搭建</h1><div class="post-meta">
-            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>丁敬</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/linux/"><i class="far fa-folder fa-fw"></i>linux</a></span></div>
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>ding jing</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/linux/"><i class="far fa-folder fa-fw"></i>linux</a></span></div>
             <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-03-08">2022-03-08</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2190 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 5 分钟&nbsp;<span id="/2022/03/0001-%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E4%B8%8E%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" class="leancloud_visitors" data-flag-title="imx6ull pro 基础概念与环境搭建">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
@@ -251,11 +251,11 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">export</span> <span class="nv">ARCH</span><span class="o">=</span>arm
-<span class="nb">export</span> <span class="nv">CROSS_COMPILE</span><span class="o">=</span>arm-buildroot-linux-gnueabihf-
-<span class="nv">PATH</span><span class="o">=</span>&lt;arm交叉编译根目录&gt;/bin:<span class="si">${</span><span class="nv">PATH</span><span class="si">}</span>
-<span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="si">${</span><span class="nv">PATH</span><span class="si">}</span> <span class="p">|</span> sed <span class="s1">&#39;s/:/\n/g&#39;</span> <span class="p">|</span> sort <span class="p">|</span> uniq <span class="p">|</span> tr -s <span class="s1">&#39;\n&#39;</span> <span class="s1">&#39;:&#39;</span> <span class="p">|</span> sed <span class="s1">&#39;s/:$//g&#39;</span><span class="k">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">ARCH</span><span class="o">=</span>arm
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">CROSS_COMPILE</span><span class="o">=</span>arm-buildroot-linux-gnueabihf-
+</span></span><span class="line"><span class="cl"><span class="nv">PATH</span><span class="o">=</span>&lt;arm交叉编译根目录&gt;/bin:<span class="si">${</span><span class="nv">PATH</span><span class="si">}</span>
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="si">${</span><span class="nv">PATH</span><span class="si">}</span> <span class="p">|</span> sed <span class="s1">&#39;s/:/\n/g&#39;</span> <span class="p">|</span> sort <span class="p">|</span> uniq <span class="p">|</span> tr -s <span class="s1">&#39;\n&#39;</span> <span class="s1">&#39;:&#39;</span> <span class="p">|</span> sed <span class="s1">&#39;s/:$//g&#39;</span><span class="k">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="7">
 <li>配置好后重新打开终端或执行<code>source ~/.bashrc</code> 之后打开终端，运行 <code>arm-buildroot-linux-gnueabihf-gcc -v</code>，查看是否有如下信息输出(如果没有，重新执行这一步):</li>
@@ -271,14 +271,14 @@
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">Using built-in specs.
-<span class="nv">COLLECT_GCC</span><span class="o">=</span>/data/environment/gcc-arm/bin/arm-buildroot-linux-gnueabihf-gcc.br_real
-<span class="nv">COLLECT_LTO_WRAPPER</span><span class="o">=</span>/data/environment/gcc-arm/bin/../libexec/gcc/arm-buildroot-linux-gnueabihf/7.5.0/lto-wrapper
-Target: arm-buildroot-linux-gnueabihf
-Configured with: ./configure --prefix<span class="o">=</span>/home/book/100ask_imx6ull-sdk/Buildroot_2020.02.x/output/host --sysconfdir<span class="o">=</span>/home/book/100ask_imx6ull-sdk/Buildroot_2020.02.x/output/host/etc --enable-static --target<span class="o">=</span>arm-buildroot-linux-gnueabihf --with-sysroot<span class="o">=</span>/home/book/100ask_imx6ull-sdk/Buildroot_2020.02.x/output/host/arm-buildroot-linux-gnueabihf/sysroot --enable-__cxa_atexit --with-gnu-ld --disable-libssp --disable-multilib --disable-decimal-float --with-gmp<span class="o">=</span>/home/book/100ask_imx6ull-sdk/Buildroot_2020.02.x/output/host --with-mpc<span class="o">=</span>/home/book/100ask_imx6ull-sdk/Buildroot_2020.02.x/output/host --with-mpfr<span class="o">=</span>/home/book/100ask_imx6ull-sdk/Buildroot_2020.02.x/output/host --with-pkgversion<span class="o">=</span><span class="s1">&#39;Buildroot 2020.02-gee85cab&#39;</span> --with-bugurl<span class="o">=</span>http://bugs.buildroot.net/ --disable-libquadmath --enable-tls --enable-plugins --enable-lto --enable-threads --with-isl<span class="o">=</span>/home/book/100ask_imx6ull-sdk/Buildroot_2020.02.x/output/host --with-abi<span class="o">=</span>aapcs-linux --with-cpu<span class="o">=</span>cortex-a7 --with-fpu<span class="o">=</span>neon-vfpv4 --with-float<span class="o">=</span>hard --with-mode<span class="o">=</span>arm --enable-languages<span class="o">=</span>c,c++,fortran --with-build-time-tools<span class="o">=</span>/home/book/100ask_imx6ull-sdk/Buildroot_2020.02.x/output/host/arm-buildroot-linux-gnueabihf/bin --enable-shared --enable-libgomp
-Thread model: posix
-gcc version 7.5.0 <span class="o">(</span>Buildroot 2020.02-gee85cab<span class="o">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">Using built-in specs.
+</span></span><span class="line"><span class="cl"><span class="nv">COLLECT_GCC</span><span class="o">=</span>/data/environment/gcc-arm/bin/arm-buildroot-linux-gnueabihf-gcc.br_real
+</span></span><span class="line"><span class="cl"><span class="nv">COLLECT_LTO_WRAPPER</span><span class="o">=</span>/data/environment/gcc-arm/bin/../libexec/gcc/arm-buildroot-linux-gnueabihf/7.5.0/lto-wrapper
+</span></span><span class="line"><span class="cl">Target: arm-buildroot-linux-gnueabihf
+</span></span><span class="line"><span class="cl">Configured with: ./configure --prefix<span class="o">=</span>/home/book/100ask_imx6ull-sdk/Buildroot_2020.02.x/output/host --sysconfdir<span class="o">=</span>/home/book/100ask_imx6ull-sdk/Buildroot_2020.02.x/output/host/etc --enable-static --target<span class="o">=</span>arm-buildroot-linux-gnueabihf --with-sysroot<span class="o">=</span>/home/book/100ask_imx6ull-sdk/Buildroot_2020.02.x/output/host/arm-buildroot-linux-gnueabihf/sysroot --enable-__cxa_atexit --with-gnu-ld --disable-libssp --disable-multilib --disable-decimal-float --with-gmp<span class="o">=</span>/home/book/100ask_imx6ull-sdk/Buildroot_2020.02.x/output/host --with-mpc<span class="o">=</span>/home/book/100ask_imx6ull-sdk/Buildroot_2020.02.x/output/host --with-mpfr<span class="o">=</span>/home/book/100ask_imx6ull-sdk/Buildroot_2020.02.x/output/host --with-pkgversion<span class="o">=</span><span class="s1">&#39;Buildroot 2020.02-gee85cab&#39;</span> --with-bugurl<span class="o">=</span>http://bugs.buildroot.net/ --disable-libquadmath --enable-tls --enable-plugins --enable-lto --enable-threads --with-isl<span class="o">=</span>/home/book/100ask_imx6ull-sdk/Buildroot_2020.02.x/output/host --with-abi<span class="o">=</span>aapcs-linux --with-cpu<span class="o">=</span>cortex-a7 --with-fpu<span class="o">=</span>neon-vfpv4 --with-float<span class="o">=</span>hard --with-mode<span class="o">=</span>arm --enable-languages<span class="o">=</span>c,c++,fortran --with-build-time-tools<span class="o">=</span>/home/book/100ask_imx6ull-sdk/Buildroot_2020.02.x/output/host/arm-buildroot-linux-gnueabihf/bin --enable-shared --enable-libgomp
+</span></span><span class="line"><span class="cl">Thread model: posix
+</span></span><span class="line"><span class="cl">gcc version 7.5.0 <span class="o">(</span>Buildroot 2020.02-gee85cab<span class="o">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><blockquote>
 <p>上述2、3、4步相关教程可以查看<a href="/2022/03/0001-%e5%ae%bf%e4%b8%bb%e6%9c%ba%e6%8c%82%e8%bd%bdqemu%e8%99%9a%e6%8b%9f%e7%9b%98qcow2/" rel="">qcow2虚拟分区挂载</a></p>
@@ -297,11 +297,11 @@ gcc version 7.5.0 <span class="o">(</span>Buildroot 2020.02-gee85cab<span class=
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">export</span> <span class="nv">ARCH</span><span class="o">=</span>arm
-<span class="nb">export</span> <span class="nv">CROSS_COMPILE</span><span class="o">=</span>arm-buildroot-linux-gnueabihf-
-<span class="nv">PATH</span><span class="o">=</span>&lt;arm交叉编译根目录&gt;/bin:<span class="si">${</span><span class="nv">PATH</span><span class="si">}</span>
-<span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="si">${</span><span class="nv">PATH</span><span class="si">}</span> <span class="p">|</span> sed <span class="s1">&#39;s/:/\n/g&#39;</span> <span class="p">|</span> sort <span class="p">|</span> uniq <span class="p">|</span> tr -s <span class="s1">&#39;\n&#39;</span> <span class="s1">&#39;:&#39;</span> <span class="p">|</span> sed <span class="s1">&#39;s/:$//g&#39;</span><span class="k">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">ARCH</span><span class="o">=</span>arm
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">CROSS_COMPILE</span><span class="o">=</span>arm-buildroot-linux-gnueabihf-
+</span></span><span class="line"><span class="cl"><span class="nv">PATH</span><span class="o">=</span>&lt;arm交叉编译根目录&gt;/bin:<span class="si">${</span><span class="nv">PATH</span><span class="si">}</span>
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="si">${</span><span class="nv">PATH</span><span class="si">}</span> <span class="p">|</span> sed <span class="s1">&#39;s/:/\n/g&#39;</span> <span class="p">|</span> sort <span class="p">|</span> uniq <span class="p">|</span> tr -s <span class="s1">&#39;\n&#39;</span> <span class="s1">&#39;:&#39;</span> <span class="p">|</span> sed <span class="s1">&#39;s/:$//g&#39;</span><span class="k">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="4">
 <li>配置好后重新打开终端或执行<code>source ~/.bashrc</code> 之后打开终端，运行 <code>arm-none-linux-gnueabihf-gcc -v</code>，查看是否有如下信息输出(如果没有，重新执行这一步):</li>
@@ -318,15 +318,15 @@ gcc version 7.5.0 <span class="o">(</span>Buildroot 2020.02-gee85cab<span class=
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">Using built-in specs.
-<span class="nv">COLLECT_GCC</span><span class="o">=</span>arm-none-linux-gnueabihf-gcc
-<span class="nv">COLLECT_LTO_WRAPPER</span><span class="o">=</span>/data/environment/gcc-arm/bin/../libexec/gcc/arm-none-linux-gnueabihf/11.2.1/lto-wrapper
-Target: arm-none-linux-gnueabihf
-Configured with: /data/jenkins/workspace/GNU-toolchain/arm-11/src/gcc/configure --target<span class="o">=</span>arm-none-linux-gnueabihf --prefix<span class="o">=</span> --with-sysroot<span class="o">=</span>/arm-none-linux-gnueabihf/libc --with-build-sysroot<span class="o">=</span>/data/jenkins/workspace/GNU-toolchain/arm-11/build-arm-none-linux-gnueabihf/install//arm-none-linux-gnueabihf/libc --with-bugurl<span class="o">=</span>https://bugs.linaro.org/ --enable-gnu-indirect-function --enable-shared --disable-libssp --disable-libmudflap --enable-checking<span class="o">=</span>release --enable-languages<span class="o">=</span>c,c++,fortran --with-gmp<span class="o">=</span>/data/jenkins/workspace/GNU-toolchain/arm-11/build-arm-none-linux-gnueabihf/host-tools --with-mpfr<span class="o">=</span>/data/jenkins/workspace/GNU-toolchain/arm-11/build-arm-none-linux-gnueabihf/host-tools --with-mpc<span class="o">=</span>/data/jenkins/workspace/GNU-toolchain/arm-11/build-arm-none-linux-gnueabihf/host-tools --with-isl<span class="o">=</span>/data/jenkins/workspace/GNU-toolchain/arm-11/build-arm-none-linux-gnueabihf/host-tools --with-arch<span class="o">=</span>armv7-a --with-fpu<span class="o">=</span>neon --with-float<span class="o">=</span>hard --with-mode<span class="o">=</span>thumb --with-arch<span class="o">=</span>armv7-a --with-pkgversion<span class="o">=</span><span class="s1">&#39;GNU Toolchain for the Arm Architecture 11.2-2022.02 (arm-11.14)&#39;</span>
-Thread model: posix
-Supported LTO compression algorithms: zlib
-gcc version 11.2.1 <span class="m">20220111</span> <span class="o">(</span>GNU Toolchain <span class="k">for</span> the Arm Architecture 11.2-2022.02 <span class="o">(</span>arm-11.14<span class="o">))</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">Using built-in specs.
+</span></span><span class="line"><span class="cl"><span class="nv">COLLECT_GCC</span><span class="o">=</span>arm-none-linux-gnueabihf-gcc
+</span></span><span class="line"><span class="cl"><span class="nv">COLLECT_LTO_WRAPPER</span><span class="o">=</span>/data/environment/gcc-arm/bin/../libexec/gcc/arm-none-linux-gnueabihf/11.2.1/lto-wrapper
+</span></span><span class="line"><span class="cl">Target: arm-none-linux-gnueabihf
+</span></span><span class="line"><span class="cl">Configured with: /data/jenkins/workspace/GNU-toolchain/arm-11/src/gcc/configure --target<span class="o">=</span>arm-none-linux-gnueabihf --prefix<span class="o">=</span> --with-sysroot<span class="o">=</span>/arm-none-linux-gnueabihf/libc --with-build-sysroot<span class="o">=</span>/data/jenkins/workspace/GNU-toolchain/arm-11/build-arm-none-linux-gnueabihf/install//arm-none-linux-gnueabihf/libc --with-bugurl<span class="o">=</span>https://bugs.linaro.org/ --enable-gnu-indirect-function --enable-shared --disable-libssp --disable-libmudflap --enable-checking<span class="o">=</span>release --enable-languages<span class="o">=</span>c,c++,fortran --with-gmp<span class="o">=</span>/data/jenkins/workspace/GNU-toolchain/arm-11/build-arm-none-linux-gnueabihf/host-tools --with-mpfr<span class="o">=</span>/data/jenkins/workspace/GNU-toolchain/arm-11/build-arm-none-linux-gnueabihf/host-tools --with-mpc<span class="o">=</span>/data/jenkins/workspace/GNU-toolchain/arm-11/build-arm-none-linux-gnueabihf/host-tools --with-isl<span class="o">=</span>/data/jenkins/workspace/GNU-toolchain/arm-11/build-arm-none-linux-gnueabihf/host-tools --with-arch<span class="o">=</span>armv7-a --with-fpu<span class="o">=</span>neon --with-float<span class="o">=</span>hard --with-mode<span class="o">=</span>thumb --with-arch<span class="o">=</span>armv7-a --with-pkgversion<span class="o">=</span><span class="s1">&#39;GNU Toolchain for the Arm Architecture 11.2-2022.02 (arm-11.14)&#39;</span>
+</span></span><span class="line"><span class="cl">Thread model: posix
+</span></span><span class="line"><span class="cl">Supported LTO compression algorithms: zlib
+</span></span><span class="line"><span class="cl">gcc version 11.2.1 <span class="m">20220111</span> <span class="o">(</span>GNU Toolchain <span class="k">for</span> the Arm Architecture 11.2-2022.02 <span class="o">(</span>arm-11.14<span class="o">))</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><blockquote>
 <p>这里需要注意的是，如果下载的 arm 编译工具链与开发板文件系统的编译工具链 gcc 不一致，则会导致在 pc 上用跨平台编译工具链编译出来的程序无法在 arm 开发板上运行。解决办法：1. 重新编译开发板根文件系统、内核并烧写；2. 使用官方提供的交叉编译工具链</p>
@@ -381,39 +381,39 @@ gcc version 11.2.1 <span class="m">20220111</span> <span class="o">(</span>GNU T
 </span><span class="lnt">32
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">mkimage: invalid option -- <span class="s1">&#39;h&#39;</span>
-Error: Invalid option
-Usage: mkimage -l image
-          -l <span class="o">==</span>&gt; list image header information
-       mkimage <span class="o">[</span>-x<span class="o">]</span> -A arch -O os -T <span class="nb">type</span> -C comp -a addr -e ep -n name -d data_file<span class="o">[</span>:data_file...<span class="o">]</span> image
-          -A <span class="o">==</span>&gt; <span class="nb">set</span> architecture to <span class="s1">&#39;arch&#39;</span>
-          -O <span class="o">==</span>&gt; <span class="nb">set</span> operating system to <span class="s1">&#39;os&#39;</span>
-          -T <span class="o">==</span>&gt; <span class="nb">set</span> image <span class="nb">type</span> to <span class="s1">&#39;type&#39;</span>
-          -C <span class="o">==</span>&gt; <span class="nb">set</span> compression <span class="nb">type</span> <span class="s1">&#39;comp&#39;</span>
-          -a <span class="o">==</span>&gt; <span class="nb">set</span> load address to <span class="s1">&#39;addr&#39;</span> <span class="o">(</span>hex<span class="o">)</span>
-          -e <span class="o">==</span>&gt; <span class="nb">set</span> entry point to <span class="s1">&#39;ep&#39;</span> <span class="o">(</span>hex<span class="o">)</span>
-          -n <span class="o">==</span>&gt; <span class="nb">set</span> image name to <span class="s1">&#39;name&#39;</span>
-          -d <span class="o">==</span>&gt; use image data from <span class="s1">&#39;datafile&#39;</span>
-          -x <span class="o">==</span>&gt; <span class="nb">set</span> XIP <span class="o">(</span>execute in place<span class="o">)</span>
-       mkimage <span class="o">[</span>-D dtc_options<span class="o">]</span> <span class="o">[</span>-f fit-image.its<span class="p">|</span>-f auto<span class="p">|</span>-F<span class="o">]</span> <span class="o">[</span>-b &lt;dtb&gt; <span class="o">[</span>-b &lt;dtb&gt;<span class="o">]]</span> <span class="o">[</span>-E<span class="o">]</span> <span class="o">[</span>-B size<span class="o">]</span> <span class="o">[</span>-i &lt;ramdisk.cpio.gz&gt;<span class="o">]</span> fit-image
-           &lt;dtb&gt; file is used with -f auto, it may occur multiple times.
-          -D <span class="o">=</span>&gt; <span class="nb">set</span> all options <span class="k">for</span> device tree compiler
-          -f <span class="o">=</span>&gt; input filename <span class="k">for</span> FIT <span class="nb">source</span>
-          -i <span class="o">=</span>&gt; input filename <span class="k">for</span> ramdisk file
-          -E <span class="o">=</span>&gt; place data outside of the FIT structure
-          -B <span class="o">=</span>&gt; align size in hex <span class="k">for</span> FIT structure and header
-Signing / verified boot options: <span class="o">[</span>-k keydir<span class="o">]</span> <span class="o">[</span>-K dtb<span class="o">]</span> <span class="o">[</span> -c &lt;comment&gt;<span class="o">]</span> <span class="o">[</span>-p addr<span class="o">]</span> <span class="o">[</span>-r<span class="o">]</span> <span class="o">[</span>-N engine<span class="o">]</span>
-          -k <span class="o">=</span>&gt; <span class="nb">set</span> directory containing private keys
-          -K <span class="o">=</span>&gt; write public keys to this .dtb file
-          -G <span class="o">=</span>&gt; use this signing key <span class="o">(</span>in lieu of -k<span class="o">)</span>
-          -c <span class="o">=</span>&gt; add comment in signature node
-          -F <span class="o">=</span>&gt; re-sign existing FIT image
-          -p <span class="o">=</span>&gt; place external data at a static position
-          -r <span class="o">=</span>&gt; mark keys used as <span class="s1">&#39;required&#39;</span> in dtb
-          -N <span class="o">=</span>&gt; openssl engine to use <span class="k">for</span> signing
-       mkimage -V <span class="o">==</span>&gt; print version information and <span class="nb">exit</span>
-Use <span class="s1">&#39;-T list&#39;</span> to see a list of available image types
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">mkimage: invalid option -- <span class="s1">&#39;h&#39;</span>
+</span></span><span class="line"><span class="cl">Error: Invalid option
+</span></span><span class="line"><span class="cl">Usage: mkimage -l image
+</span></span><span class="line"><span class="cl">          -l <span class="o">==</span>&gt; list image header information
+</span></span><span class="line"><span class="cl">       mkimage <span class="o">[</span>-x<span class="o">]</span> -A arch -O os -T <span class="nb">type</span> -C comp -a addr -e ep -n name -d data_file<span class="o">[</span>:data_file...<span class="o">]</span> image
+</span></span><span class="line"><span class="cl">          -A <span class="o">==</span>&gt; <span class="nb">set</span> architecture to <span class="s1">&#39;arch&#39;</span>
+</span></span><span class="line"><span class="cl">          -O <span class="o">==</span>&gt; <span class="nb">set</span> operating system to <span class="s1">&#39;os&#39;</span>
+</span></span><span class="line"><span class="cl">          -T <span class="o">==</span>&gt; <span class="nb">set</span> image <span class="nb">type</span> to <span class="s1">&#39;type&#39;</span>
+</span></span><span class="line"><span class="cl">          -C <span class="o">==</span>&gt; <span class="nb">set</span> compression <span class="nb">type</span> <span class="s1">&#39;comp&#39;</span>
+</span></span><span class="line"><span class="cl">          -a <span class="o">==</span>&gt; <span class="nb">set</span> load address to <span class="s1">&#39;addr&#39;</span> <span class="o">(</span>hex<span class="o">)</span>
+</span></span><span class="line"><span class="cl">          -e <span class="o">==</span>&gt; <span class="nb">set</span> entry point to <span class="s1">&#39;ep&#39;</span> <span class="o">(</span>hex<span class="o">)</span>
+</span></span><span class="line"><span class="cl">          -n <span class="o">==</span>&gt; <span class="nb">set</span> image name to <span class="s1">&#39;name&#39;</span>
+</span></span><span class="line"><span class="cl">          -d <span class="o">==</span>&gt; use image data from <span class="s1">&#39;datafile&#39;</span>
+</span></span><span class="line"><span class="cl">          -x <span class="o">==</span>&gt; <span class="nb">set</span> XIP <span class="o">(</span>execute in place<span class="o">)</span>
+</span></span><span class="line"><span class="cl">       mkimage <span class="o">[</span>-D dtc_options<span class="o">]</span> <span class="o">[</span>-f fit-image.its<span class="p">|</span>-f auto<span class="p">|</span>-F<span class="o">]</span> <span class="o">[</span>-b &lt;dtb&gt; <span class="o">[</span>-b &lt;dtb&gt;<span class="o">]]</span> <span class="o">[</span>-E<span class="o">]</span> <span class="o">[</span>-B size<span class="o">]</span> <span class="o">[</span>-i &lt;ramdisk.cpio.gz&gt;<span class="o">]</span> fit-image
+</span></span><span class="line"><span class="cl">           &lt;dtb&gt; file is used with -f auto, it may occur multiple times.
+</span></span><span class="line"><span class="cl">          -D <span class="o">=</span>&gt; <span class="nb">set</span> all options <span class="k">for</span> device tree compiler
+</span></span><span class="line"><span class="cl">          -f <span class="o">=</span>&gt; input filename <span class="k">for</span> FIT <span class="nb">source</span>
+</span></span><span class="line"><span class="cl">          -i <span class="o">=</span>&gt; input filename <span class="k">for</span> ramdisk file
+</span></span><span class="line"><span class="cl">          -E <span class="o">=</span>&gt; place data outside of the FIT structure
+</span></span><span class="line"><span class="cl">          -B <span class="o">=</span>&gt; align size in hex <span class="k">for</span> FIT structure and header
+</span></span><span class="line"><span class="cl">Signing / verified boot options: <span class="o">[</span>-k keydir<span class="o">]</span> <span class="o">[</span>-K dtb<span class="o">]</span> <span class="o">[</span> -c &lt;comment&gt;<span class="o">]</span> <span class="o">[</span>-p addr<span class="o">]</span> <span class="o">[</span>-r<span class="o">]</span> <span class="o">[</span>-N engine<span class="o">]</span>
+</span></span><span class="line"><span class="cl">          -k <span class="o">=</span>&gt; <span class="nb">set</span> directory containing private keys
+</span></span><span class="line"><span class="cl">          -K <span class="o">=</span>&gt; write public keys to this .dtb file
+</span></span><span class="line"><span class="cl">          -G <span class="o">=</span>&gt; use this signing key <span class="o">(</span>in lieu of -k<span class="o">)</span>
+</span></span><span class="line"><span class="cl">          -c <span class="o">=</span>&gt; add comment in signature node
+</span></span><span class="line"><span class="cl">          -F <span class="o">=</span>&gt; re-sign existing FIT image
+</span></span><span class="line"><span class="cl">          -p <span class="o">=</span>&gt; place external data at a static position
+</span></span><span class="line"><span class="cl">          -r <span class="o">=</span>&gt; mark keys used as <span class="s1">&#39;required&#39;</span> in dtb
+</span></span><span class="line"><span class="cl">          -N <span class="o">=</span>&gt; openssl engine to use <span class="k">for</span> signing
+</span></span><span class="line"><span class="cl">       mkimage -V <span class="o">==</span>&gt; print version information and <span class="nb">exit</span>
+</span></span><span class="line"><span class="cl">Use <span class="s1">&#39;-T list&#39;</span> to see a list of available image types
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="最后来一个例子">最后来一个例子</h2>
 <h3 id="在开发机上编写一个例子">在开发机上编写一个例子</h3>
@@ -429,15 +429,15 @@ Use <span class="s1">&#39;-T list&#39;</span> to see a list of available image t
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="c1">#include &lt;stdio.h&gt;</span>
-
-int main <span class="o">(</span>int argc, char* argv<span class="o">[])</span>
-<span class="o">{</span>
-    <span class="nb">printf</span> <span class="o">(</span><span class="s2">&#34;Hello World!\n&#34;</span><span class="o">)</span><span class="p">;</span>
-
-    <span class="k">return</span> 0<span class="p">;</span>
-<span class="o">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1">#include &lt;stdio.h&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">int main <span class="o">(</span>int argc, char* argv<span class="o">[])</span>
+</span></span><span class="line"><span class="cl"><span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">printf</span> <span class="o">(</span><span class="s2">&#34;Hello World!\n&#34;</span><span class="o">)</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> 0<span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="开发机上的makefile">开发机上的Makefile</h3>
 <div class="highlight"><div class="chroma">
@@ -457,20 +457,20 @@ int main <span class="o">(</span>int argc, char* argv<span class="o">[])</span>
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="nv">CC</span> <span class="o">=</span> arm-buildroot-linux-gnueabihf-gcc
-<span class="nv">CUR_DIR</span> <span class="o">=</span> <span class="k">$(</span>shell <span class="nb">pwd</span><span class="k">)</span>
-<span class="nv">SRC</span> <span class="o">=</span> <span class="k">$(</span>strip <span class="k">$(</span>subst <span class="k">$(</span>CUR_DIR<span class="k">)</span>, ., <span class="k">$(</span>wildcard <span class="k">$(</span>CUR_DIR<span class="k">)</span>/*.c<span class="k">)))</span>
-<span class="nv">TARGET</span> <span class="o">=</span> <span class="k">$(</span>strip <span class="k">$(</span>patsubst %.c, %.run, <span class="k">$(</span>SRC<span class="k">)))</span>
-
-all:<span class="si">${</span><span class="nv">TARGET</span><span class="si">}</span>
-
-%.run:%.c
-        <span class="si">${</span><span class="nv">CC</span><span class="si">}</span> -o <span class="nv">$@</span> $&lt;
-
-clean:
-        rm -f *.run
-        rm -f *.o
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nv">CC</span> <span class="o">=</span> arm-buildroot-linux-gnueabihf-gcc
+</span></span><span class="line"><span class="cl"><span class="nv">CUR_DIR</span> <span class="o">=</span> <span class="k">$(</span>shell <span class="nb">pwd</span><span class="k">)</span>
+</span></span><span class="line"><span class="cl"><span class="nv">SRC</span> <span class="o">=</span> <span class="k">$(</span>strip <span class="k">$(</span>subst <span class="k">$(</span>CUR_DIR<span class="k">)</span>, ., <span class="k">$(</span>wildcard <span class="k">$(</span>CUR_DIR<span class="k">)</span>/*.c<span class="k">)))</span>
+</span></span><span class="line"><span class="cl"><span class="nv">TARGET</span> <span class="o">=</span> <span class="k">$(</span>strip <span class="k">$(</span>patsubst %.c, %.run, <span class="k">$(</span>SRC<span class="k">)))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">all:<span class="si">${</span><span class="nv">TARGET</span><span class="si">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">%.run:%.c
+</span></span><span class="line"><span class="cl">        <span class="si">${</span><span class="nv">CC</span><span class="si">}</span> -o <span class="nv">$@</span> $&lt;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">clean:
+</span></span><span class="line"><span class="cl">        rm -f *.run
+</span></span><span class="line"><span class="cl">        rm -f *.o
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="编译">编译</h3>
 <p>分别保存上述代码为 hello-world.c、makefile脚本为 Makefile，两个文件放在同级目录，执行 <code>make</code> 会在当前目录下生成 <code>hello-world.run</code>，使用 scp ./hello-world.run root@&lt;开发机ip&gt;:~ 把编译好的二进制文件传输到开发机，最后使用 ssh 登录到开发机上家目录执行 <code>./hello-world.run</code> 即可看到输出结果。</p>
@@ -501,13 +501,13 @@ clean:
     </div>
 
     <div class="post-nav">
-            <a href="/2022/03/0002-%E6%9E%84%E5%BB%BAbootloader%E5%86%85%E6%A0%B8%E5%92%8C%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" class="next" rel="next" title="构建bootloader、内核和文件系统">构建bootloader、内核和文件系统<i class="fas fa-angle-right fa-fw"></i></a></div>
+            <a href="/2022/03/0003-%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5/" class="next" rel="next" title="嵌入式相关概念">嵌入式相关概念<i class="fas fa-angle-right fa-fw"></i></a></div>
 </div>
 <div id="comments"><div id="valine" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
             </noscript></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">丁敬</a></span></div>
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">ding jing</a></span></div>
         </div>
     </footer></div>
 
@@ -516,5 +516,5 @@ clean:
             </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
                 <i class="fas fa-comment fa-fw"></i>
             </a>
-        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script type="text/javascript" src="/lib/valine/Valine.min.js"></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/algoliasearch/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/twemoji/twemoji.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"valine":{"appId":"","appKey":"","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"visitor":true}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.zh-cn","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"},"twemoji":true};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="/lib/lightgallery/lightgallery.min.css"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script type="text/javascript" src="/lib/valine/Valine.min.js"></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/algoliasearch/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/twemoji/twemoji.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lightgallery.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-thumbnail.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-zoom.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"valine":{"appId":"oGOJ6TSiiaaOrhXD1bEYILk9-gzGzoHsz","appKey":"lbK71uSxpg4XmLmvm2h13JdJ","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"serverURLs":"https://ogoj6tsi.lc-cn-n1-shared.com","visitor":true}},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.zh-cn","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"},"twemoji":true};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
 </html>

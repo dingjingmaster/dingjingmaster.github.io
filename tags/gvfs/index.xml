@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>gvfs - 标签 - 九九</title>
+        <link>https://dingjingmaster.github.io/tags/gvfs/</link>
+        <description>gvfs - 标签 - 九九</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>dingjing@live.cn (ding jing)</managingEditor>
+            <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Mon, 14 Mar 2022 09:06:20 &#43;0800</lastBuildDate><atom:link href="https://dingjingmaster.github.io/tags/gvfs/" rel="self" type="application/rss+xml" /><item>
+    <title>gvfs</title>
+    <link>https://dingjingmaster.github.io/2022/03/0001-gvfs/</link>
+    <pubDate>Mon, 14 Mar 2022 09:06:20 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://dingjingmaster.github.io/2022/03/0001-gvfs/</guid>
+    <description><![CDATA[gvfs 介绍 gvfs 是 GNOME 用户空间虚拟文件系统的缩写，从 GLib 2.15.1 开始加入系统，主要是对 I/O 的一层抽象。gvfs 提供了一些模块，这些模块由使用 libgio 的 API 应用程序自动使]]></description>
+</item></channel>
+</rss>
