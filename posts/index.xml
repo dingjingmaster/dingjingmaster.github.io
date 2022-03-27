@@ -4,7 +4,14 @@
         <link>https://dingjingmaster.github.io/posts/</link>
         <description>所有文章 | 九九</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>dingjing@live.cn (ding jing)</managingEditor>
-            <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Wed, 23 Mar 2022 15:06:39 &#43;0800</lastBuildDate><atom:link href="https://dingjingmaster.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Sun, 27 Mar 2022 10:45:35 &#43;0800</lastBuildDate><atom:link href="https://dingjingmaster.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>文件系统格式转换</title>
+    <link>https://dingjingmaster.github.io/2022/03/0002-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%A0%BC%E5%BC%8F%E8%BD%AC%E6%8D%A2/</link>
+    <pubDate>Sun, 27 Mar 2022 10:45:35 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://dingjingmaster.github.io/2022/03/0002-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%A0%BC%E5%BC%8F%E8%BD%AC%E6%8D%A2/</guid>
+    <description><![CDATA[说明 fstransform 命令可以将文件系统从一种类型转换为另一种类型而不丢失数据(即非破坏性的)。更重要的是它可以直接执行，而无需格式化或者复制数据。 tune2fs 命令可]]></description>
+</item><item>
     <title>Wireshark 使用初步</title>
     <link>https://dingjingmaster.github.io/2022/03/0001-wireshark/</link>
     <pubDate>Wed, 23 Mar 2022 15:06:39 &#43;0800</pubDate>
@@ -67,12 +74,5 @@
     <author>作者</author>
     <guid>https://dingjingmaster.github.io/2022/03/0003-%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5/</guid>
     <description><![CDATA[ARM 简史 ARM公司既不生产芯片也不销售芯片，它只出售芯片技术授权。却做到了在手持设备市场上占有90%以上的份额。 软银在2016年耗资320亿美]]></description>
-</item><item>
-    <title>imx6ull pro 基础概念与环境搭建</title>
-    <link>https://dingjingmaster.github.io/2022/03/0001-%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E4%B8%8E%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</link>
-    <pubDate>Tue, 08 Mar 2022 15:48:45 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://dingjingmaster.github.io/2022/03/0001-%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E4%B8%8E%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</guid>
-    <description><![CDATA[环境搭建目标 pc 可以通过 串口 连接到 开发板，并能查看输出日志 pc 可以通过 ssh 连接到 开发板。开发板默认登录用户名: root，无密码 在 pc 上配置好 arm 交叉编]]></description>
 </item></channel>
 </rss>
