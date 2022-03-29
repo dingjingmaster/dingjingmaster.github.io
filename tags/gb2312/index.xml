@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>gb2312 - 标签 - 九九</title>
+        <link>https://dingjingmaster.github.io/tags/gb2312/</link>
+        <description>gb2312 - 标签 - 九九</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>dingjing@live.cn (ding jing)</managingEditor>
+            <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Tue, 29 Mar 2022 17:02:44 &#43;0800</lastBuildDate><atom:link href="https://dingjingmaster.github.io/tags/gb2312/" rel="self" type="application/rss+xml" /><item>
+    <title>字符编码</title>
+    <link>https://dingjingmaster.github.io/2022/03/0001-%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81/</link>
+    <pubDate>Tue, 29 Mar 2022 17:02:44 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://dingjingmaster.github.io/2022/03/0001-%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81/</guid>
+    <description><![CDATA[字符编码基本概念 字符 字符（Character）：在计算机和电信技术中，一个字符是一个单位的字形、类字形单位或符号的基本信息。说的简单点字符是]]></description>
+</item></channel>
+</rss>

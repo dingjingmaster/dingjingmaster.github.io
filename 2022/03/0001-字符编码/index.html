@@ -1,0 +1,1815 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>字符编码 - 九九</title><meta name="Description" content=""><meta property="og:title" content="字符编码" />
+<meta property="og:description" content="字符编码基本概念 字符 字符（Character）：在计算机和电信技术中，一个字符是一个单位的字形、类字形单位或符号的基本信息。说的简单点字符是" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dingjingmaster.github.io/2022/03/0001-%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81/" /><meta property="og:image" content="https://dingjingmaster.github.io/img/logo.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-03-29T17:02:44+08:00" />
+<meta property="article:modified_time" content="2022-03-29T17:02:44+08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://dingjingmaster.github.io/img/logo.jpg"/>
+
+<meta name="twitter:title" content="字符编码"/>
+<meta name="twitter:description" content="字符编码基本概念 字符 字符（Character）：在计算机和电信技术中，一个字符是一个单位的字形、类字形单位或符号的基本信息。说的简单点字符是"/>
+<meta name="application-name" content="九九">
+<meta name="apple-mobile-web-app-title" content="九九"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://dingjingmaster.github.io/2022/03/0001-%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81/" /><link rel="prev" href="https://dingjingmaster.github.io/2022/03/0002-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%A0%BC%E5%BC%8F%E8%BD%AC%E6%8D%A2/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "字符编码",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/dingjingmaster.github.io\/2022\/03\/0001-%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81\/"
+        },"image": ["https:\/\/dingjingmaster.github.io\/img\/logo.jpg"],"genre": "posts","keywords": "linux, 中文字符编码, utf8, gb2312, unicode","wordcount":  5280 ,
+        "url": "https:\/\/dingjingmaster.github.io\/2022\/03\/0001-%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81\/","datePublished": "2022-03-29T17:02:44+08:00","dateModified": "2022-03-29T17:02:44+08:00","publisher": {
+            "@type": "Organization",
+            "name": "九九","logo": "https:\/\/dingjingmaster.github.io\/img\/logo.jpg"},"author": {
+                "@type": "Person",
+                "name": "ding jing"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="九九"><span class="header-title-pre"> </span>九九</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="https://github.com/dingjingmaster" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="九九"><span class="header-title-pre"> </span>九九</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="https://github.com/dingjingmaster" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">字符编码</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>ding jing</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81/"><i class="far fa-folder fa-fw"></i>字符编码</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-03-29">2022-03-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 5280 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 11 分钟&nbsp;<span id="/2022/03/0001-%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81/" class="leancloud_visitors" data-flag-title="字符编码">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#字符编码基本概念">字符编码基本概念</a>
+      <ul>
+        <li><a href="#字符">字符</a></li>
+        <li><a href="#字符集">字符集</a></li>
+        <li><a href="#字符编码">字符编码</a></li>
+        <li><a href="#码点">码点</a></li>
+      </ul>
+    </li>
+    <li><a href="#字符编码-1">字符编码</a>
+      <ul>
+        <li><a href="#ascii-码">ASCII 码</a></li>
+        <li><a href="#gb2312别名euc-cn">GB2312(别名:EUC-CN)</a>
+          <ul>
+            <li><a href="#gb2312-编码规则">GB2312 编码规则</a></li>
+            <li><a href="#gb2312-编码识别">GB2312 编码识别</a></li>
+            <li><a href="#gb2312识别思路后续补充">GB2312识别思路(后续补充)</a></li>
+          </ul>
+        </li>
+        <li><a href="#unicode-编码">Unicode 编码</a>
+          <ul>
+            <li><a href="#另附unicode中汉字编码">另附unicode中汉字编码</a></li>
+          </ul>
+        </li>
+        <li><a href="#utf8-编码unicode编码的一种实现">utf8 编码(unicode编码的一种实现)</a>
+          <ul>
+            <li><a href="#utf8-编码识别">utf8 编码识别</a></li>
+            <li><a href="#utf8识别思路后续补充">utf8识别思路(后续补充)</a></li>
+          </ul>
+        </li>
+        <li><a href="#utf16-编码unicode编码的一种实现">utf16 编码(unicode编码的一种实现)</a></li>
+        <li><a href="#utf32-编码unicode编码的一种实现">utf32 编码(unicode编码的一种实现)</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="字符编码基本概念">字符编码基本概念</h2>
+<h3 id="字符">字符</h3>
+<p>字符（Character）：在计算机和电信技术中，一个字符是一个单位的字形、类字形单位或符号的基本信息。说的简单点字符是各种文字和符号的总称。一个字符可以是一个中文汉字、一个英文字母、一个阿拉伯数字、一个标点符号、一个图形符号或者控制符号等。</p>
+<h3 id="字符集">字符集</h3>
+<p>字符集（Character Set）：是指多个字符的集合。不同的字符集包含的字符个数不一样、包含的字符不一样、对字符的编码方式也不一样。例如GB2312是中国国家标准的简体中文字符集，GB2312收录简化汉字（6763个）及一般符号、序号、数字、拉丁字母、日文假名、希腊字母、俄文字母、汉语拼音符号、汉语注音字母，共 7445 个图形字符。而ASCII字符集只包含了128字符，这个字符集收录的主要字符是英文字母、阿拉伯字母和一些简单的控制字符。</p>
+<p>另外，还有其他常用的字符集有 GBK字符集、GB18030字符集、Big5字符集、Unicode字符集等。</p>
+<h3 id="字符编码">字符编码</h3>
+<p>字符编码（Character Encoding）：字符编码是指一种映射规则，根据这个映射规则可以将某个字符映射成其他形式的数据以便在计算机中存储和传输。例如ASCII字符编码规定使用单字节中低位的7个比特去编码所有的字符，在这个编码规则下字母A的编号是65（ASCII码），用单字节表示就是0x41，因此写入存储设备的时候就是二进制的 01000001。每种字符集都有自己的字符编码规则，常用的字符集编码规则还有 UTF-8编码、GBK编码、Big5编码等。</p>
+<h3 id="码点">码点</h3>
+<p>码点（Code Point）：有些地方翻译为码值或内码。是指在某个字符集中，根据某种编码规则将字符编码后得到的值。比如在ASCII字符集中，字母A经过ASCII编码得到的值是65，那么65就是字符A在ASCII字符集中的码点。</p>
+<blockquote>
+<p>总结：通俗解释字符集就是把字符放到一起的一个集合。而这个集合的每一个字符都对应一个数字，叫做码点。那么，这样就建立起来数字和字符之间的索引关系。那么，某个字符在计算机中怎么表示，具体占用几个字节等等，这些就需要编码规则来解决了。这个就是字符编码，他来解决根据某个规则来将字符映射到相应的码点上面。</p>
+</blockquote>
+<h2 id="字符编码-1">字符编码</h2>
+<h3 id="ascii-码">ASCII 码</h3>
+<p>ASCII 编码于 1967 年第一次发布，最后一次更新是在 1986 年，迄今为止共收录了 128  个字符，包含了基本的拉丁字母（英文字母）、阿拉伯数字（也就是  1234567890）、标点符号（,.!等）、特殊符号（@#$%^&amp;等）以及一些具有控制功能的字符（往往不会显示出来）。</p>
+<p>ASCII  编码是美国人给自己设计的，他们并没有考虑欧洲那些扩展的拉丁字母，也没有考虑韩语和日语，我大中华几万个汉字更是不可能被重视。计算机也是美国人发明的，起初使用的就是 ASCII 码，只能显示英文字符。各个国家为了让本国公民也能正常使用计算机，开始效仿 ASCII 开发自己的字符编码，例如 ISO/IEC  8859（欧洲字符集）、shift_Jis（日语字符集）、GBK（中文字符集）等。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">二进制</th>
+<th style="text-align:left">十进制</th>
+<th style="text-align:left">十六进制</th>
+<th style="text-align:left">字符/缩写</th>
+<th style="text-align:left">解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">00000000</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">00</td>
+<td style="text-align:left">NUL (NULL)</td>
+<td style="text-align:left">空字符</td>
+</tr>
+<tr>
+<td style="text-align:left">00000001</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">01</td>
+<td style="text-align:left">SOH (Start Of Headling)</td>
+<td style="text-align:left">标题开始</td>
+</tr>
+<tr>
+<td style="text-align:left">00000010</td>
+<td style="text-align:left">2</td>
+<td style="text-align:left">02</td>
+<td style="text-align:left">STX (Start Of Text)</td>
+<td style="text-align:left">正文开始</td>
+</tr>
+<tr>
+<td style="text-align:left">00000011</td>
+<td style="text-align:left">3</td>
+<td style="text-align:left">03</td>
+<td style="text-align:left">ETX (End Of Text)</td>
+<td style="text-align:left">正文结束</td>
+</tr>
+<tr>
+<td style="text-align:left">00000100</td>
+<td style="text-align:left">4</td>
+<td style="text-align:left">04</td>
+<td style="text-align:left">EOT (End Of Transmission)</td>
+<td style="text-align:left">传输结束</td>
+</tr>
+<tr>
+<td style="text-align:left">00000101</td>
+<td style="text-align:left">5</td>
+<td style="text-align:left">05</td>
+<td style="text-align:left">ENQ (Enquiry)</td>
+<td style="text-align:left">请求</td>
+</tr>
+<tr>
+<td style="text-align:left">00000110</td>
+<td style="text-align:left">6</td>
+<td style="text-align:left">06</td>
+<td style="text-align:left">ACK (Acknowledge)</td>
+<td style="text-align:left">回应/响应/收到通知</td>
+</tr>
+<tr>
+<td style="text-align:left">00000111</td>
+<td style="text-align:left">7</td>
+<td style="text-align:left">07</td>
+<td style="text-align:left">BEL (Bell)</td>
+<td style="text-align:left">响铃</td>
+</tr>
+<tr>
+<td style="text-align:left">00001000</td>
+<td style="text-align:left">8</td>
+<td style="text-align:left">08</td>
+<td style="text-align:left">BS (Backspace)</td>
+<td style="text-align:left">退格</td>
+</tr>
+<tr>
+<td style="text-align:left">00001001</td>
+<td style="text-align:left">9</td>
+<td style="text-align:left">09</td>
+<td style="text-align:left">HT (Horizontal Tab)</td>
+<td style="text-align:left">水平制表符</td>
+</tr>
+<tr>
+<td style="text-align:left">00001010</td>
+<td style="text-align:left">10</td>
+<td style="text-align:left">0A</td>
+<td style="text-align:left">LF/NL(Line Feed/New Line)</td>
+<td style="text-align:left">换行键</td>
+</tr>
+<tr>
+<td style="text-align:left">00001011</td>
+<td style="text-align:left">11</td>
+<td style="text-align:left">0B</td>
+<td style="text-align:left">VT (Vertical Tab)</td>
+<td style="text-align:left">垂直制表符</td>
+</tr>
+<tr>
+<td style="text-align:left">00001100</td>
+<td style="text-align:left">12</td>
+<td style="text-align:left">0C</td>
+<td style="text-align:left">FF/NP (Form Feed/New Page)</td>
+<td style="text-align:left">换页键</td>
+</tr>
+<tr>
+<td style="text-align:left">00001101</td>
+<td style="text-align:left">13</td>
+<td style="text-align:left">0D</td>
+<td style="text-align:left">CR (Carriage Return)</td>
+<td style="text-align:left">回车键</td>
+</tr>
+<tr>
+<td style="text-align:left">00001110</td>
+<td style="text-align:left">14</td>
+<td style="text-align:left">0E</td>
+<td style="text-align:left">SO (Shift Out)</td>
+<td style="text-align:left">不用切换</td>
+</tr>
+<tr>
+<td style="text-align:left">00001111</td>
+<td style="text-align:left">15</td>
+<td style="text-align:left">0F</td>
+<td style="text-align:left">SI (Shift In)</td>
+<td style="text-align:left">启用切换</td>
+</tr>
+<tr>
+<td style="text-align:left">00010000</td>
+<td style="text-align:left">16</td>
+<td style="text-align:left">10</td>
+<td style="text-align:left">DLE (Data Link Escape)</td>
+<td style="text-align:left">数据链路转义</td>
+</tr>
+<tr>
+<td style="text-align:left">00010001</td>
+<td style="text-align:left">17</td>
+<td style="text-align:left">11</td>
+<td style="text-align:left">DC1/XON  (Device Control 1/Transmission On)</td>
+<td style="text-align:left">设备控制1/传输开始</td>
+</tr>
+<tr>
+<td style="text-align:left">00010010</td>
+<td style="text-align:left">18</td>
+<td style="text-align:left">12</td>
+<td style="text-align:left">DC2 (Device Control 2)</td>
+<td style="text-align:left">设备控制2</td>
+</tr>
+<tr>
+<td style="text-align:left">00010011</td>
+<td style="text-align:left">19</td>
+<td style="text-align:left">13</td>
+<td style="text-align:left">DC3/XOFF  (Device Control 3/Transmission Off)</td>
+<td style="text-align:left">设备控制3/传输中断</td>
+</tr>
+<tr>
+<td style="text-align:left">00010100</td>
+<td style="text-align:left">20</td>
+<td style="text-align:left">14</td>
+<td style="text-align:left">DC4 (Device Control 4)</td>
+<td style="text-align:left">设备控制4</td>
+</tr>
+<tr>
+<td style="text-align:left">00010101</td>
+<td style="text-align:left">21</td>
+<td style="text-align:left">15</td>
+<td style="text-align:left">NAK (Negative Acknowledge)</td>
+<td style="text-align:left">无响应/非正常响应/拒绝接收</td>
+</tr>
+<tr>
+<td style="text-align:left">00010110</td>
+<td style="text-align:left">22</td>
+<td style="text-align:left">16</td>
+<td style="text-align:left">SYN (Synchronous Idle)</td>
+<td style="text-align:left">同步空闲</td>
+</tr>
+<tr>
+<td style="text-align:left">00010111</td>
+<td style="text-align:left">23</td>
+<td style="text-align:left">17</td>
+<td style="text-align:left">ETB (End of Transmission Block)</td>
+<td style="text-align:left">传输块结束/块传输终止</td>
+</tr>
+<tr>
+<td style="text-align:left">00011000</td>
+<td style="text-align:left">24</td>
+<td style="text-align:left">18</td>
+<td style="text-align:left">CAN (Cancel)</td>
+<td style="text-align:left">取消</td>
+</tr>
+<tr>
+<td style="text-align:left">00011001</td>
+<td style="text-align:left">25</td>
+<td style="text-align:left">19</td>
+<td style="text-align:left">EM (End of Medium)</td>
+<td style="text-align:left">已到介质末端/介质存储已满/介质中断</td>
+</tr>
+<tr>
+<td style="text-align:left">00011010</td>
+<td style="text-align:left">26</td>
+<td style="text-align:left">1A</td>
+<td style="text-align:left">SUB (Substitute)</td>
+<td style="text-align:left">替补/替换</td>
+</tr>
+<tr>
+<td style="text-align:left">00011011</td>
+<td style="text-align:left">27</td>
+<td style="text-align:left">1B</td>
+<td style="text-align:left">ESC (Escape)</td>
+<td style="text-align:left">逃离/取消</td>
+</tr>
+<tr>
+<td style="text-align:left">00011100</td>
+<td style="text-align:left">28</td>
+<td style="text-align:left">1C</td>
+<td style="text-align:left">FS (File Separator)</td>
+<td style="text-align:left">文件分割符</td>
+</tr>
+<tr>
+<td style="text-align:left">00011101</td>
+<td style="text-align:left">29</td>
+<td style="text-align:left">1D</td>
+<td style="text-align:left">GS (Group Separator)</td>
+<td style="text-align:left">组分隔符/分组符</td>
+</tr>
+<tr>
+<td style="text-align:left">00011110</td>
+<td style="text-align:left">30</td>
+<td style="text-align:left">1E</td>
+<td style="text-align:left">RS (Record Separator)</td>
+<td style="text-align:left">记录分离符</td>
+</tr>
+<tr>
+<td style="text-align:left">00011111</td>
+<td style="text-align:left">31</td>
+<td style="text-align:left">1F</td>
+<td style="text-align:left">US (Unit Separator)</td>
+<td style="text-align:left">单元分隔符</td>
+</tr>
+<tr>
+<td style="text-align:left">00100000</td>
+<td style="text-align:left">32</td>
+<td style="text-align:left">20</td>
+<td style="text-align:left">(Space)</td>
+<td style="text-align:left">空格</td>
+</tr>
+<tr>
+<td style="text-align:left">00100001</td>
+<td style="text-align:left">33</td>
+<td style="text-align:left">21</td>
+<td style="text-align:left">!</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">00100010</td>
+<td style="text-align:left">34</td>
+<td style="text-align:left">22</td>
+<td style="text-align:left">&quot;</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">00100011</td>
+<td style="text-align:left">35</td>
+<td style="text-align:left">23</td>
+<td style="text-align:left">#</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">00100100</td>
+<td style="text-align:left">36</td>
+<td style="text-align:left">24</td>
+<td style="text-align:left">$</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">00100101</td>
+<td style="text-align:left">37</td>
+<td style="text-align:left">25</td>
+<td style="text-align:left">%</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">00100110</td>
+<td style="text-align:left">38</td>
+<td style="text-align:left">26</td>
+<td style="text-align:left">&amp;</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">00100111</td>
+<td style="text-align:left">39</td>
+<td style="text-align:left">27</td>
+<td style="text-align:left">'</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">00101000</td>
+<td style="text-align:left">40</td>
+<td style="text-align:left">28</td>
+<td style="text-align:left">(</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">00101001</td>
+<td style="text-align:left">41</td>
+<td style="text-align:left">29</td>
+<td style="text-align:left">)</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">00101010</td>
+<td style="text-align:left">42</td>
+<td style="text-align:left">2A</td>
+<td style="text-align:left">*</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">00101011</td>
+<td style="text-align:left">43</td>
+<td style="text-align:left">2B</td>
+<td style="text-align:left">+</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">00101100</td>
+<td style="text-align:left">44</td>
+<td style="text-align:left">2C</td>
+<td style="text-align:left">,</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">00101101</td>
+<td style="text-align:left">45</td>
+<td style="text-align:left">2D</td>
+<td style="text-align:left">-</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">00101110</td>
+<td style="text-align:left">46</td>
+<td style="text-align:left">2E</td>
+<td style="text-align:left">.</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">00101111</td>
+<td style="text-align:left">47</td>
+<td style="text-align:left">2F</td>
+<td style="text-align:left">/</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">00110000</td>
+<td style="text-align:left">48</td>
+<td style="text-align:left">30</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">00110001</td>
+<td style="text-align:left">49</td>
+<td style="text-align:left">31</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">00110010</td>
+<td style="text-align:left">50</td>
+<td style="text-align:left">32</td>
+<td style="text-align:left">2</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">00110011</td>
+<td style="text-align:left">51</td>
+<td style="text-align:left">33</td>
+<td style="text-align:left">3</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">00110100</td>
+<td style="text-align:left">52</td>
+<td style="text-align:left">34</td>
+<td style="text-align:left">4</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">00110101</td>
+<td style="text-align:left">53</td>
+<td style="text-align:left">35</td>
+<td style="text-align:left">5</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">00110110</td>
+<td style="text-align:left">54</td>
+<td style="text-align:left">36</td>
+<td style="text-align:left">6</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">00110111</td>
+<td style="text-align:left">55</td>
+<td style="text-align:left">37</td>
+<td style="text-align:left">7</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">00111000</td>
+<td style="text-align:left">56</td>
+<td style="text-align:left">38</td>
+<td style="text-align:left">8</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">00111001</td>
+<td style="text-align:left">57</td>
+<td style="text-align:left">39</td>
+<td style="text-align:left">9</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">00111010</td>
+<td style="text-align:left">58</td>
+<td style="text-align:left">3A</td>
+<td style="text-align:left">:</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">00111011</td>
+<td style="text-align:left">59</td>
+<td style="text-align:left">3B</td>
+<td style="text-align:left">;</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">00111100</td>
+<td style="text-align:left">60</td>
+<td style="text-align:left">3C</td>
+<td style="text-align:left">&lt;</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">00111101</td>
+<td style="text-align:left">61</td>
+<td style="text-align:left">3D</td>
+<td style="text-align:left">=</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">00111110</td>
+<td style="text-align:left">62</td>
+<td style="text-align:left">3E</td>
+<td style="text-align:left">&gt;</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">00111111</td>
+<td style="text-align:left">63</td>
+<td style="text-align:left">3F</td>
+<td style="text-align:left">?</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">01000000</td>
+<td style="text-align:left">64</td>
+<td style="text-align:left">40</td>
+<td style="text-align:left">@</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">01000001</td>
+<td style="text-align:left">65</td>
+<td style="text-align:left">41</td>
+<td style="text-align:left">A</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">01000010</td>
+<td style="text-align:left">66</td>
+<td style="text-align:left">42</td>
+<td style="text-align:left">B</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">01000011</td>
+<td style="text-align:left">67</td>
+<td style="text-align:left">43</td>
+<td style="text-align:left">C</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">01000100</td>
+<td style="text-align:left">68</td>
+<td style="text-align:left">44</td>
+<td style="text-align:left">D</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">01000101</td>
+<td style="text-align:left">69</td>
+<td style="text-align:left">45</td>
+<td style="text-align:left">E</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">01000110</td>
+<td style="text-align:left">70</td>
+<td style="text-align:left">46</td>
+<td style="text-align:left">F</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">01000111</td>
+<td style="text-align:left">71</td>
+<td style="text-align:left">47</td>
+<td style="text-align:left">G</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">01001000</td>
+<td style="text-align:left">72</td>
+<td style="text-align:left">48</td>
+<td style="text-align:left">H</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">01001001</td>
+<td style="text-align:left">73</td>
+<td style="text-align:left">49</td>
+<td style="text-align:left">I</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">01001010</td>
+<td style="text-align:left">74</td>
+<td style="text-align:left">4A</td>
+<td style="text-align:left">J</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">01001011</td>
+<td style="text-align:left">75</td>
+<td style="text-align:left">4B</td>
+<td style="text-align:left">K</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">01001100</td>
+<td style="text-align:left">76</td>
+<td style="text-align:left">4C</td>
+<td style="text-align:left">L</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">01001101</td>
+<td style="text-align:left">77</td>
+<td style="text-align:left">4D</td>
+<td style="text-align:left">M</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">01001110</td>
+<td style="text-align:left">78</td>
+<td style="text-align:left">4E</td>
+<td style="text-align:left">N</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">01001111</td>
+<td style="text-align:left">79</td>
+<td style="text-align:left">4F</td>
+<td style="text-align:left">O</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">01010000</td>
+<td style="text-align:left">80</td>
+<td style="text-align:left">50</td>
+<td style="text-align:left">P</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">01010001</td>
+<td style="text-align:left">81</td>
+<td style="text-align:left">51</td>
+<td style="text-align:left">Q</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">01010010</td>
+<td style="text-align:left">82</td>
+<td style="text-align:left">52</td>
+<td style="text-align:left">R</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">01010011</td>
+<td style="text-align:left">83</td>
+<td style="text-align:left">53</td>
+<td style="text-align:left">S</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">01010100</td>
+<td style="text-align:left">84</td>
+<td style="text-align:left">54</td>
+<td style="text-align:left">T</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">01010101</td>
+<td style="text-align:left">85</td>
+<td style="text-align:left">55</td>
+<td style="text-align:left">U</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">01010110</td>
+<td style="text-align:left">86</td>
+<td style="text-align:left">56</td>
+<td style="text-align:left">V</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">01010111</td>
+<td style="text-align:left">87</td>
+<td style="text-align:left">57</td>
+<td style="text-align:left">W</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">01011000</td>
+<td style="text-align:left">88</td>
+<td style="text-align:left">58</td>
+<td style="text-align:left">X</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">01011001</td>
+<td style="text-align:left">89</td>
+<td style="text-align:left">59</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">01011010</td>
+<td style="text-align:left">90</td>
+<td style="text-align:left">5A</td>
+<td style="text-align:left">Z</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">01011011</td>
+<td style="text-align:left">91</td>
+<td style="text-align:left">5B</td>
+<td style="text-align:left">[</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">01011100</td>
+<td style="text-align:left">92</td>
+<td style="text-align:left">5C</td>
+<td style="text-align:left">\</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">01011101</td>
+<td style="text-align:left">93</td>
+<td style="text-align:left">5D</td>
+<td style="text-align:left">]</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">01011110</td>
+<td style="text-align:left">94</td>
+<td style="text-align:left">5E</td>
+<td style="text-align:left">^</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">01011111</td>
+<td style="text-align:left">95</td>
+<td style="text-align:left">5F</td>
+<td style="text-align:left">_</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">01100000</td>
+<td style="text-align:left">96</td>
+<td style="text-align:left">60</td>
+<td style="text-align:left">`</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">01100001</td>
+<td style="text-align:left">97</td>
+<td style="text-align:left">61</td>
+<td style="text-align:left">a</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">01100010</td>
+<td style="text-align:left">98</td>
+<td style="text-align:left">62</td>
+<td style="text-align:left">b</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">01100011</td>
+<td style="text-align:left">99</td>
+<td style="text-align:left">63</td>
+<td style="text-align:left">c</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">01100100</td>
+<td style="text-align:left">100</td>
+<td style="text-align:left">64</td>
+<td style="text-align:left">d</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">01100101</td>
+<td style="text-align:left">101</td>
+<td style="text-align:left">65</td>
+<td style="text-align:left">e</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">01100110</td>
+<td style="text-align:left">102</td>
+<td style="text-align:left">66</td>
+<td style="text-align:left">f</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">01100111</td>
+<td style="text-align:left">103</td>
+<td style="text-align:left">67</td>
+<td style="text-align:left">g</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">01101000</td>
+<td style="text-align:left">104</td>
+<td style="text-align:left">68</td>
+<td style="text-align:left">h</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">01101001</td>
+<td style="text-align:left">105</td>
+<td style="text-align:left">69</td>
+<td style="text-align:left">i</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">01101010</td>
+<td style="text-align:left">106</td>
+<td style="text-align:left">6A</td>
+<td style="text-align:left">j</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">01101011</td>
+<td style="text-align:left">107</td>
+<td style="text-align:left">6B</td>
+<td style="text-align:left">k</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">01101100</td>
+<td style="text-align:left">108</td>
+<td style="text-align:left">6C</td>
+<td style="text-align:left">l</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">01101101</td>
+<td style="text-align:left">109</td>
+<td style="text-align:left">6D</td>
+<td style="text-align:left">m</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">01101110</td>
+<td style="text-align:left">110</td>
+<td style="text-align:left">6E</td>
+<td style="text-align:left">n</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">01101111</td>
+<td style="text-align:left">111</td>
+<td style="text-align:left">6F</td>
+<td style="text-align:left">o</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">01110000</td>
+<td style="text-align:left">112</td>
+<td style="text-align:left">70</td>
+<td style="text-align:left">p</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">01110001</td>
+<td style="text-align:left">113</td>
+<td style="text-align:left">71</td>
+<td style="text-align:left">q</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">01110010</td>
+<td style="text-align:left">114</td>
+<td style="text-align:left">72</td>
+<td style="text-align:left">r</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">01110011</td>
+<td style="text-align:left">115</td>
+<td style="text-align:left">73</td>
+<td style="text-align:left">s</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">01110100</td>
+<td style="text-align:left">116</td>
+<td style="text-align:left">74</td>
+<td style="text-align:left">t</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">01110101</td>
+<td style="text-align:left">117</td>
+<td style="text-align:left">75</td>
+<td style="text-align:left">u</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">01110110</td>
+<td style="text-align:left">118</td>
+<td style="text-align:left">76</td>
+<td style="text-align:left">v</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">01110111</td>
+<td style="text-align:left">119</td>
+<td style="text-align:left">77</td>
+<td style="text-align:left">w</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">01111000</td>
+<td style="text-align:left">120</td>
+<td style="text-align:left">78</td>
+<td style="text-align:left">x</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">01111001</td>
+<td style="text-align:left">121</td>
+<td style="text-align:left">79</td>
+<td style="text-align:left">y</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">01111010</td>
+<td style="text-align:left">122</td>
+<td style="text-align:left">7A</td>
+<td style="text-align:left">z</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">01111011</td>
+<td style="text-align:left">123</td>
+<td style="text-align:left">7B</td>
+<td style="text-align:left">{</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">01111100</td>
+<td style="text-align:left">124</td>
+<td style="text-align:left">7C</td>
+<td style="text-align:left">|</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">01111101</td>
+<td style="text-align:left">125</td>
+<td style="text-align:left">7D</td>
+<td style="text-align:left">}</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">01111110</td>
+<td style="text-align:left">126</td>
+<td style="text-align:left">7E</td>
+<td style="text-align:left">~</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">01111111</td>
+<td style="text-align:left">127</td>
+<td style="text-align:left">7F</td>
+<td style="text-align:left">DEL (Delete)</td>
+<td style="text-align:left">删除</td>
+</tr>
+</tbody>
+</table>
+<h3 id="gb2312别名euc-cn">GB2312(别名:EUC-CN)</h3>
+<p>《信息交换用汉字编码字符集》是由中国国家标准总局1980年发布，1981年5月1日开始实施的一套国家标准，标准号是GB 2312—1980。</p>
+<p>GB2312的出现，基本满足了汉字的计算机处理需要，它所收录的汉字已经覆盖中国大陆99.75%的使用频率。对于人名、古汉语等方面出现的罕用字，GB 2312不能处理，这导致了后来GBK及GB 18030汉字字符集的出现。</p>
+<p>GB2312(1980年)共收录 7445 个字符 &ndash;&gt; GBK1.0(1995年)共收录 21886 个字符 &ndash;&gt; GB18030(2000年)取代GBK1.0共收录 27484 个汉字包含了少数民族语言。</p>
+<blockquote>
+<p>从 ASCII -&gt; GB2312 -&gt; GBK -&gt; GB18030，这些编码都是向下兼容的。区分中文编码的方法是最高字节的最高位不为 0。这些都属于双字节字符集。</p>
+</blockquote>
+<h4 id="gb2312-编码规则">GB2312 编码规则</h4>
+<ul>
+<li>GB2312 规定每个英文字符占1字节(只有这一个特例，为了兼容 ASCII)，中文字符采用两个字节表示</li>
+<li>GB2312 整体分为 94 个区，每个区 94 位，01-09 特殊符号区；16-55一级汉字，按拼音排序；56-87二级汉字，部首/笔划排序；10-15与88-94未定义</li>
+<li>GB2312 是区位编码，编码范围是 0XA1A1-0XFEFE，其中汉字编码范围是 0XB0A1-0XF7FE。</li>
+<li>GB2312 01-09 符号和数字区，16-87是汉字区</li>
+<li>GB2312 编码计算：[区号+0xA0][位号+0xA0]</li>
+</ul>
+<h4 id="gb2312-编码识别">GB2312 编码识别</h4>
+<p>保存为<code>demo-gb2312.c</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="c1">//
+</span></span></span><span class="line"><span class="cl"><span class="c1">// Created by dingjing on 3/28/22.
+</span></span></span><span class="line"><span class="cl"><span class="c1">//
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdint.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdbool.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * 总共 94 个区 94 个位
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
+</span></span><span class="line"><span class="cl"><span class="kt">bool</span> <span class="nf">is_gb2312</span> <span class="p">(</span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">code</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">len</span> <span class="o">=</span> <span class="n">strlen</span> <span class="p">(</span><span class="n">code</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">len</span> <span class="o">!=</span> <span class="mi">2</span> <span class="o">&amp;&amp;</span> <span class="n">len</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kt">uint8_t</span> <span class="n">codeH</span> <span class="o">=</span> <span class="n">code</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">uint8_t</span> <span class="n">codeL</span> <span class="o">=</span> <span class="n">code</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kt">uint8_t</span> <span class="n">area</span> <span class="o">=</span> <span class="n">codeH</span> <span class="o">-</span> <span class="mh">0xA0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">uint8_t</span> <span class="n">pos</span>  <span class="o">=</span> <span class="n">codeL</span> <span class="o">-</span> <span class="mh">0xA0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">((</span><span class="n">len</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="mi">0</span> <span class="o">==</span> <span class="p">(</span><span class="n">codeL</span> <span class="o">&amp;</span> <span class="mh">0x80</span><span class="p">)))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">printf</span> <span class="p">(</span><span class="s">&#34;ascii code: &#39;%-3c&#39; hex code: 0x%-2X</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="o">*</span><span class="n">code</span><span class="p">,</span> <span class="o">*</span><span class="n">code</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">area</span> <span class="o">&gt;=</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">area</span> <span class="o">&lt;=</span> <span class="mi">94</span> <span class="o">&amp;&amp;</span> <span class="n">pos</span> <span class="o">&gt;=</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">pos</span> <span class="o">&lt;=</span> <span class="mi">94</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">printf</span> <span class="p">(</span><span class="s">&#34;gb2312 code: &#39;%-3s&#39; -- area: %-2u, pos: %-2u hex code: 0x%-2X 0x%-2X</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="n">area</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">codeH</span><span class="p">,</span> <span class="n">codeL</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span> <span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span><span class="o">*</span> <span class="n">argv</span><span class="p">[])</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * https://uic.io/en/charset/show_raw/gb2312
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * http://tools.jb51.net/table/gb2312
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 1. &#39;残&#39;   十六进制: B2D0
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 2. &#39;怖&#39;   十六进制: B2C0
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 3. &#39;惭&#39;   十六进制: B2D1
+</span></span></span><span class="line"><span class="cl"><span class="cm">     *
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 4. ascii 里显示的特殊符号 32(space) - 47(/)
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 5. ascii 里数字 30(0) - 39(9)
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 6. ascii 里显示的特殊符号 58(:) - 64(@)
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 7. ascii 里显示的大写字母 65(A) - 90(Z)
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 8. ascii 里显示的标号字符 91([) - 96(`)
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 9. ascii 里显示的大写字母 97(a) - 122(z)
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 10. ascii 其它可显示字符 123({) - 126(~)
+</span></span></span><span class="line"><span class="cl"><span class="cm">     *
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * uint16_t 就足够了
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">arr</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="s">&#34;、&#34;</span><span class="p">,</span> <span class="s">&#34;∩&#34;</span><span class="p">,</span> <span class="s">&#34;〓&#34;</span><span class="p">,</span>                              <span class="cm">/* 第一区 */</span>
+</span></span><span class="line"><span class="cl">            <span class="s">&#34;残&#34;</span><span class="p">,</span> <span class="s">&#34;怖&#34;</span><span class="p">,</span> <span class="s">&#34;惭&#34;</span><span class="p">,</span> <span class="s">&#34;庄&#34;</span><span class="p">,</span> <span class="s">&#34;丽&#34;</span><span class="p">,</span> <span class="s">&#34;君&#34;</span><span class="p">,</span> <span class="s">&#34;齄&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="s">&#34; &#34;</span><span class="p">,</span> <span class="s">&#34;/&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="s">&#34;0&#34;</span><span class="p">,</span> <span class="s">&#34;9&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="s">&#34;:&#34;</span><span class="p">,</span> <span class="s">&#34;@&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="s">&#34;A&#34;</span><span class="p">,</span> <span class="s">&#34;Z&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="s">&#34;[&#34;</span><span class="p">,</span> <span class="s">&#34;`&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="s">&#34;a&#34;</span><span class="p">,</span> <span class="s">&#34;z&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="s">&#34;{&#34;</span><span class="p">,</span> <span class="s">&#34;~&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">printf</span> <span class="p">(</span><span class="s">&#34;array: %lu/%lu</span><span class="se">\n\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="k">sizeof</span> <span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="k">sizeof</span> <span class="n">arr</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">len</span> <span class="o">=</span> <span class="k">sizeof</span> <span class="n">arr</span> <span class="o">/</span> <span class="k">sizeof</span> <span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">len</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">code</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">is_gb2312</span> <span class="p">(</span><span class="n">code</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">printf</span> <span class="p">(</span><span class="s">&#34;index: %d -- code &#39;%-3s&#39; is not gb2312</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">code</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>编译命令:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">gcc -O0 -finput-charset=utf8 -fexec-charset=gb2312 demo-gb2312.run demo-gb2312.c
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="gb2312识别思路后续补充">GB2312识别思路(后续补充)</h4>
+<h3 id="unicode-编码">Unicode 编码</h3>
+<p>Unicode 的使命就是为了统一世界上所有语言的编码，它包含了世界上所有字符的编码，规定了每个字符对应的码点值。</p>
+<blockquote>
+<p>这里需要注意：Unicode 只是一个符号集，它只规定了符号的二进制代码，却没有规定这个二进制代码应该如何存储。<br/>
+问题1: 如何才能区别unicode和ascii <br/>
+问题2: 我们已经知道，英文字母只用一个字节表示就够了，如果 unicode 统一规定，每个符号用三个或四个字节表示，那么每个英文字母前都必然有二到三个字节是 0， 这对于存储来说是极大的浪费，文本文件的大小会因此大出 2-3 倍，这是无法接受的。</p>
+</blockquote>
+<h4 id="另附unicode中汉字编码">另附unicode中汉字编码</h4>
+<table>
+<thead>
+<tr>
+<th>字符集</th>
+<th>字数</th>
+<th>unicode 编码</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>基本汉字</td>
+<td>20902字</td>
+<td>4E00(一) - 9FA5(龥)</td>
+</tr>
+<tr>
+<td>基本汉字扩充</td>
+<td>90字</td>
+<td>9FA6(龦) - 9FFF(&lt;无法显示&gt;) 这些看着不像汉字，先不管</td>
+</tr>
+<tr>
+<td>扩展A</td>
+<td>6592字</td>
+<td>3400 - 4DBF，看着不像汉字</td>
+</tr>
+<tr>
+<td>扩展B</td>
+<td>42720字</td>
+<td>20000-2A6DF</td>
+</tr>
+<tr>
+<td>扩展C</td>
+<td>4153字</td>
+<td>2A700-2B738</td>
+</tr>
+<tr>
+<td>扩展D</td>
+<td>222字</td>
+<td>2B740-2B81D</td>
+</tr>
+<tr>
+<td>扩展E</td>
+<td>5762字</td>
+<td>2B820-2CEA1</td>
+</tr>
+<tr>
+<td>扩展F</td>
+<td>7473字</td>
+<td>2CEB0-2EBE0</td>
+</tr>
+<tr>
+<td>扩展G</td>
+<td>4939字</td>
+<td>30000-3134A</td>
+</tr>
+<tr>
+<td>康熙部首</td>
+<td>214字</td>
+<td>2F00-2FD5</td>
+</tr>
+<tr>
+<td>部首扩展</td>
+<td>115字</td>
+<td>2E80-2EF3</td>
+</tr>
+<tr>
+<td>兼容汉字</td>
+<td>477字</td>
+<td>F900-FAD9</td>
+</tr>
+<tr>
+<td>兼容扩展</td>
+<td>542字</td>
+<td>2F800-2FA1D</td>
+</tr>
+<tr>
+<td>PUA(GBK)部件</td>
+<td>81字</td>
+<td>E815-E86F</td>
+</tr>
+<tr>
+<td>部件扩展</td>
+<td>452字</td>
+<td>E400-E5E8</td>
+</tr>
+<tr>
+<td>PUA增补</td>
+<td>207字</td>
+<td>E600-E6CF</td>
+</tr>
+<tr>
+<td>汉字笔画</td>
+<td>36字</td>
+<td>31C0-31E3</td>
+</tr>
+<tr>
+<td>汉字结构</td>
+<td>12字</td>
+<td>2FF0-2FFB</td>
+</tr>
+<tr>
+<td>汉语注音</td>
+<td>43字</td>
+<td>3105-312F</td>
+</tr>
+<tr>
+<td>注音扩展</td>
+<td>22字</td>
+<td>31A0-31BA</td>
+</tr>
+<tr>
+<td>〇</td>
+<td>1字</td>
+<td>3007</td>
+</tr>
+</tbody>
+</table>
+<h3 id="utf8-编码unicode编码的一种实现">utf8 编码(unicode编码的一种实现)</h3>
+<p>UTF-8 是一种变长字节编码方式，是 Unicode 的一种实现方式，使用 1-4 个字节表示一个符号， 对于某一个字符的 UTF-8 编码，如果只有一个字节则其最高二进制位为 0； 如果是多字节，其第一个字节从最高位开始，连续的二进制位值为 1 的个数决定了其编码的位数，其余各字节均以 10 开头。UTF-8 最多可用到 6 个字节。</p>
+<blockquote>
+<p>注意：这里是utf8编码的核心，它规定了utf8最多可以使用多少字节编码<br/>
+思考：为什么utf8最多只能使用6字节参与编码？<br/>
+实际上 utf-8 编码没用到 6 字节那么多，只用到了 4 字节<br/>
+另外补充：另外补充 utf16，介于 utf8 与 utf32 之间，部分编码定长、部分编码不定长(只有两种) utf32 是定长的，用 4 字节表示一个字符<br/>
+utf8中文汉字占3字节(这种结论不是一直不变的)</p>
+</blockquote>
+<p>以下展示 utf8 分别为 1、2、3、4、5、6字节时候，理论上其它位的编码范围。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">1字节 0xxxxxxx
+</span></span><span class="line"><span class="cl">2字节 110xxxxx 10xxxxxx
+</span></span><span class="line"><span class="cl">3字节 1110xxxx 10xxxxxx 10xxxxxx
+</span></span><span class="line"><span class="cl">4字节 11110xxx 10xxxxxx 10xxxxxx 10xxxxxx
+</span></span><span class="line"><span class="cl">5字节 111110xx 10xxxxxx 10xxxxxx 10xxxxxx 10xxxxxx
+</span></span><span class="line"><span class="cl">6字节 1111110x 10xxxxxx 10xxxxxx 10xxxxxx 10xxxxxx 10xxxxxx
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>与上述等价</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">1字节, utf8-1 0x00-0x7F
+</span></span><span class="line"><span class="cl">2字节, utf8-2 0xC2-0XDF   0X80-0XBF
+</span></span><span class="line"><span class="cl">3字节, utf8-3 0xE0        0xA0-0XBF   0x80-0xBF
+</span></span><span class="line"><span class="cl">             0xE1-0XEC   0x80-0XBF   0x80-0xBF
+</span></span><span class="line"><span class="cl">             0xED        0x80-0x9F   0x80-0xBF
+</span></span><span class="line"><span class="cl">             0xEE-0xEF   0x80-0xBF   0x80-0xBF
+</span></span><span class="line"><span class="cl">4字节, utf8-4 0xF0        0x90-0xBF   0x80-0xBF   0x80-0xBF
+</span></span><span class="line"><span class="cl">             0xF1-0xF3   0x80-0xBF   0x80-0xBF   0x80-0xBF
+</span></span><span class="line"><span class="cl">             0xF4        0x80-0x8F   0x80-0xBF   0x80-0xBF
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="utf8-编码识别">utf8 编码识别</h4>
+<p>保存为<code>demo-utf8.c</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span><span class="lnt">121
+</span><span class="lnt">122
+</span><span class="lnt">123
+</span><span class="lnt">124
+</span><span class="lnt">125
+</span><span class="lnt">126
+</span><span class="lnt">127
+</span><span class="lnt">128
+</span><span class="lnt">129
+</span><span class="lnt">130
+</span><span class="lnt">131
+</span><span class="lnt">132
+</span><span class="lnt">133
+</span><span class="lnt">134
+</span><span class="lnt">135
+</span><span class="lnt">136
+</span><span class="lnt">137
+</span><span class="lnt">138
+</span><span class="lnt">139
+</span><span class="lnt">140
+</span><span class="lnt">141
+</span><span class="lnt">142
+</span><span class="lnt">143
+</span><span class="lnt">144
+</span><span class="lnt">145
+</span><span class="lnt">146
+</span><span class="lnt">147
+</span><span class="lnt">148
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="c1">//
+</span></span></span><span class="line"><span class="cl"><span class="c1">// Created by dingjing on 3/28/22.
+</span></span></span><span class="line"><span class="cl"><span class="c1">//
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdint.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdbool.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="kt">bool</span> <span class="nf">is_utf8_1</span> <span class="p">(</span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">code</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">len</span> <span class="o">=</span> <span class="n">strlen</span><span class="p">(</span><span class="n">code</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">len</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">const</span> <span class="kt">uint8_t</span> <span class="n">code1</span> <span class="o">=</span> <span class="n">code</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="mh">0x80</span> <span class="o">&amp;</span> <span class="n">code1</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">bool</span> <span class="nf">is_utf8_2</span> <span class="p">(</span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">code</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">len</span> <span class="o">=</span> <span class="n">strlen</span><span class="p">(</span><span class="n">code</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">len</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">const</span> <span class="kt">uint8_t</span> <span class="n">code1</span> <span class="o">=</span> <span class="n">code</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="k">const</span> <span class="kt">uint8_t</span> <span class="n">code2</span> <span class="o">=</span> <span class="n">code</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//    printf (&#34;debug2: 0x%-4X\n&#34;, code);
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">is_utf8_1</span> <span class="p">(</span><span class="n">code</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="mh">0xC0</span> <span class="o">==</span> <span class="p">(</span><span class="mh">0xE0</span> <span class="o">&amp;</span> <span class="n">code1</span><span class="p">))</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="mh">0x80</span> <span class="o">==</span> <span class="p">(</span><span class="mh">0xE0</span> <span class="o">&amp;</span> <span class="n">code2</span><span class="p">)))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//        printf (&#34;debug: is utf8-2\n&#34;);
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">if</span> <span class="p">(</span><span class="n">code1</span> <span class="o">&gt;=</span> <span class="mh">0xC0</span> <span class="o">&amp;&amp;</span> <span class="n">code1</span> <span class="o">&lt;=</span> <span class="mh">0xDF</span> <span class="o">&amp;&amp;</span> <span class="n">code2</span> <span class="o">&gt;=</span> <span class="mh">0x80</span> <span class="o">&amp;&amp;</span> <span class="n">code2</span> <span class="o">&lt;=</span> <span class="mh">0xBF</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">bool</span> <span class="nf">is_utf8_3</span> <span class="p">(</span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">code</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 0xE0        0xA0-0XBF   0x80-0xBF
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 0xE1-0XEC   0x80-0XBF   0x80-0xBF
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 0xED        0x80-0x9F   0x80-0xBF
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 0xEE-0xEF   0x80-0xBF   0x80-0xBF
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">len</span> <span class="o">=</span> <span class="n">strlen</span><span class="p">(</span><span class="n">code</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">len</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">const</span> <span class="kt">uint8_t</span> <span class="n">code1</span> <span class="o">=</span> <span class="n">code</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="k">const</span> <span class="kt">uint8_t</span> <span class="n">code2</span> <span class="o">=</span> <span class="n">code</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="k">const</span> <span class="kt">uint8_t</span> <span class="n">code3</span> <span class="o">=</span> <span class="n">code</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">((</span><span class="mh">0xE0</span> <span class="o">==</span> <span class="n">code1</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">((</span><span class="n">code2</span> <span class="o">&gt;=</span> <span class="mh">0xA0</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">code2</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="n">XBF</span><span class="p">))</span> <span class="o">&amp;&amp;</span> <span class="p">((</span><span class="n">code3</span> <span class="o">&gt;=</span> <span class="mh">0x80</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">code3</span> <span class="o">&lt;=</span> <span class="mh">0xBF</span><span class="p">)))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(((</span><span class="n">code1</span> <span class="o">&gt;=</span> <span class="mh">0xE1</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">code1</span> <span class="o">&lt;=</span> <span class="mh">0xEC</span><span class="p">))</span> <span class="o">&amp;&amp;</span> <span class="p">((</span><span class="n">code2</span> <span class="o">&gt;=</span> <span class="mh">0x80</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">code2</span> <span class="o">&lt;=</span> <span class="mh">0xBF</span><span class="p">))</span> <span class="o">&amp;&amp;</span> <span class="p">((</span><span class="n">code3</span> <span class="o">&gt;=</span> <span class="mh">0x80</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">code3</span> <span class="o">&lt;=</span> <span class="mh">0xBF</span><span class="p">)))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">((</span><span class="mh">0xED</span> <span class="o">==</span> <span class="n">code1</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">((</span><span class="n">code2</span> <span class="o">&gt;=</span> <span class="mh">0x80</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">code2</span> <span class="o">&lt;=</span> <span class="mh">0x9F</span><span class="p">))</span> <span class="o">&amp;&amp;</span> <span class="p">((</span><span class="n">code3</span> <span class="o">&gt;=</span> <span class="mh">0x80</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">code3</span> <span class="o">&lt;=</span> <span class="mh">0xBF</span><span class="p">)))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(((</span><span class="n">code1</span> <span class="o">&gt;=</span> <span class="mh">0xEE</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">code1</span> <span class="o">&lt;=</span> <span class="mh">0xEF</span><span class="p">))</span> <span class="o">&amp;&amp;</span> <span class="p">((</span><span class="n">code2</span> <span class="o">&gt;=</span> <span class="mh">0x80</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">code2</span> <span class="o">&lt;=</span> <span class="mh">0xBF</span><span class="p">))</span> <span class="o">&amp;&amp;</span> <span class="p">((</span><span class="n">code3</span> <span class="o">&gt;=</span> <span class="mh">0x80</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">code3</span> <span class="o">&lt;=</span> <span class="mh">0xBF</span><span class="p">)))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">bool</span> <span class="nf">is_utf8_4</span> <span class="p">(</span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">code</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 0xF0        0x90-0xBF   0x80-0xBF   0x80-0xBF
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 0xF1-0xF3   0x80-0xBF   0x80-0xBF   0x80-0xBF
+</span></span></span><span class="line"><span class="cl"><span class="cm">     * 0xF4        0x80-0x8F   0x80-0xBF   0x80-0xBF
+</span></span></span><span class="line"><span class="cl"><span class="cm">     */</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">len</span> <span class="o">=</span> <span class="n">strlen</span><span class="p">(</span><span class="n">code</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">len</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">const</span> <span class="kt">uint8_t</span> <span class="n">code1</span> <span class="o">=</span> <span class="n">code</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="k">const</span> <span class="kt">uint8_t</span> <span class="n">code2</span> <span class="o">=</span> <span class="n">code</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="k">const</span> <span class="kt">uint8_t</span> <span class="n">code3</span> <span class="o">=</span> <span class="n">code</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="k">const</span> <span class="kt">uint8_t</span> <span class="n">code4</span> <span class="o">=</span> <span class="n">code</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//    printf (&#34;debug4: 0x%-4X %-4X\n&#34;, code1H, code1L);
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">is_utf8_1</span> <span class="p">(</span><span class="n">code</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">is_utf8_2</span> <span class="p">(</span><span class="n">code</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">is_utf8_3</span> <span class="p">(</span><span class="n">code</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">((</span><span class="mh">0xF0</span> <span class="o">==</span> <span class="n">code1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="o">&amp;&amp;</span> <span class="p">((</span><span class="n">code2</span> <span class="o">&gt;=</span> <span class="mh">0x90</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">code2</span> <span class="o">&lt;=</span> <span class="mh">0xBF</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">            <span class="o">&amp;&amp;</span> <span class="p">((</span><span class="n">code3</span> <span class="o">&gt;=</span> <span class="mh">0x80</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">code3</span> <span class="o">&lt;=</span> <span class="mh">0xBF</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">            <span class="o">&amp;&amp;</span> <span class="p">((</span><span class="n">code4</span> <span class="o">&gt;=</span> <span class="mh">0x80</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">code4</span> <span class="o">&lt;=</span> <span class="mh">0xBF</span><span class="p">)))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(((</span><span class="n">code1</span> <span class="o">&gt;=</span> <span class="mh">0xF1</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">code1</span> <span class="o">&lt;=</span> <span class="mh">0xF3</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">                   <span class="o">&amp;&amp;</span> <span class="p">((</span><span class="n">code2</span> <span class="o">&gt;=</span> <span class="mh">0x80</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">code2</span> <span class="o">&lt;=</span> <span class="mh">0xBF</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">                   <span class="o">&amp;&amp;</span> <span class="p">((</span><span class="n">code3</span> <span class="o">&gt;=</span> <span class="mh">0x80</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">code3</span> <span class="o">&lt;=</span> <span class="mh">0xBF</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">                   <span class="o">&amp;&amp;</span> <span class="p">((</span><span class="n">code4</span> <span class="o">&gt;=</span> <span class="mh">0x80</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">code4</span> <span class="o">&lt;=</span> <span class="mh">0xBF</span><span class="p">)))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">((</span><span class="mh">0xF4</span> <span class="o">==</span> <span class="n">code1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                   <span class="o">&amp;&amp;</span> <span class="p">((</span><span class="n">code2</span> <span class="o">&gt;=</span> <span class="mh">0x80</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">code2</span> <span class="o">&lt;=</span> <span class="mh">0x8F</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">                   <span class="o">&amp;&amp;</span> <span class="p">((</span><span class="n">code3</span> <span class="o">&gt;=</span> <span class="mh">0x80</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">code3</span> <span class="o">&lt;=</span> <span class="mh">0xBF</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">                   <span class="o">&amp;&amp;</span> <span class="p">((</span><span class="n">code4</span> <span class="o">&gt;=</span> <span class="mh">0x80</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">code4</span> <span class="o">&lt;=</span> <span class="mh">0xBF</span><span class="p">)))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span> <span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span><span class="o">*</span> <span class="n">argv</span><span class="p">[])</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// utf-8 1 - 4 字节
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">arr</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="s">&#34; &#34;</span><span class="p">,</span> <span class="s">&#34;/&#34;</span><span class="p">,</span> <span class="s">&#34;0&#34;</span><span class="p">,</span> <span class="s">&#34;9&#34;</span><span class="p">,</span> <span class="s">&#34;:&#34;</span><span class="p">,</span> <span class="s">&#34;@&#34;</span><span class="p">,</span> <span class="s">&#34;A&#34;</span><span class="p">,</span> <span class="s">&#34;Z&#34;</span><span class="p">,</span> <span class="s">&#34;[&#34;</span><span class="p">,</span> <span class="s">&#34;`&#34;</span><span class="p">,</span> <span class="s">&#34;a&#34;</span><span class="p">,</span> <span class="s">&#34;z&#34;</span><span class="p">,</span> <span class="s">&#34;{&#34;</span><span class="p">,</span> <span class="s">&#34;~&#34;</span><span class="p">,</span>       <span class="cm">/* 以下都是 ASCII */</span>
+</span></span><span class="line"><span class="cl">            <span class="s">&#34;§&#34;</span><span class="p">,</span> <span class="s">&#34;©&#34;</span><span class="p">,</span> <span class="s">&#34;®&#34;</span><span class="p">,</span> <span class="s">&#34;Ą&#34;</span><span class="p">,</span> <span class="s">&#34;Ď&#34;</span><span class="p">,</span> <span class="s">&#34;Đ&#34;</span><span class="p">,</span> <span class="s">&#34;Ő&#34;</span><span class="p">,</span>                                          <span class="cm">/* 2 字节 utf8 编码 */</span>
+</span></span><span class="line"><span class="cl">            <span class="s">&#34;ᥕ&#34;</span><span class="p">,</span> <span class="s">&#34;一&#34;</span><span class="p">,</span> <span class="s">&#34;龥&#34;</span><span class="p">,</span> <span class="s">&#34;庄&#34;</span><span class="p">,</span> <span class="s">&#34;丽&#34;</span><span class="p">,</span> <span class="s">&#34;君&#34;</span><span class="p">,</span>                                            <span class="cm">/* 3 字节 */</span>
+</span></span><span class="line"><span class="cl">            <span class="s">&#34;契&#34;</span><span class="p">,</span> <span class="s">&#34;い&#34;</span><span class="p">,</span> <span class="s">&#34;龜&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">printf</span> <span class="p">(</span><span class="s">&#34;array: %lu/%lu</span><span class="se">\n\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="k">sizeof</span> <span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="k">sizeof</span> <span class="n">arr</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kt">char</span> <span class="n">buf</span><span class="p">[</span><span class="mi">128</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">len</span> <span class="o">=</span> <span class="k">sizeof</span> <span class="n">arr</span> <span class="o">/</span> <span class="k">sizeof</span> <span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">len</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">code</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">is_utf8_1</span> <span class="p">(</span><span class="n">code</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">printf</span> <span class="p">(</span><span class="s">&#34;index: %-2d --&gt; utf8-1 code: &#39;%c&#39;  --  hex code: 0x%-02X &lt;==&gt; dec: %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">code</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">code</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&amp;</span> <span class="mh">0xFF</span><span class="p">,</span> <span class="n">code</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&amp;</span> <span class="mh">0xFF</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="k">continue</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">is_utf8_2</span> <span class="p">(</span><span class="n">code</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">printf</span> <span class="p">(</span><span class="s">&#34;index: %-2d --&gt; utf8-2 code: &#39;%s&#39;  --  hex code: 0x%-02X 0x%-02X</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="n">code</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&amp;</span> <span class="mh">0xFF</span><span class="p">,</span> <span class="n">code</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&amp;</span> <span class="mh">0xFF</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="k">continue</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">is_utf8_3</span> <span class="p">(</span><span class="n">code</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">printf</span> <span class="p">(</span><span class="s">&#34;index: %-2d --&gt; utf8-3 code: &#39;%s&#39;  --  hex code: 0x%-02X 0x%-02X 0x%-02X</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="n">code</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&amp;</span> <span class="mh">0xFF</span><span class="p">,</span> <span class="n">code</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&amp;</span> <span class="mh">0xFF</span><span class="p">,</span> <span class="n">code</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&amp;</span> <span class="mh">0xFF</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">is_utf8_4</span> <span class="p">(</span><span class="n">code</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">printf</span> <span class="p">(</span><span class="s">&#34;index: %-2d --&gt; utf8-4 code: &#39;%s&#39;  --  hex code: 0x%-02X 0x%-02X 0x%-02X 0x%-02X</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="n">code</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&amp;</span> <span class="mh">0xFF</span><span class="p">,</span> <span class="n">code</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&amp;</span> <span class="mh">0xFF</span><span class="p">,</span> <span class="n">code</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&amp;</span> <span class="mh">0xFF</span><span class="p">,</span> <span class="n">code</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">&amp;</span> <span class="mh">0xFF</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>编译方法</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">gcc -O0 -finput-charset<span class="o">=</span>utf8 -fexec-charset<span class="o">=</span>utf8 demo-utf8.run demo-utf8.c
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="utf8识别思路后续补充">utf8识别思路(后续补充)</h4>
+<h3 id="utf16-编码unicode编码的一种实现">utf16 编码(unicode编码的一种实现)</h3>
+<blockquote>
+<p>没用到，后续补充。<br/>
+部分编码定长、部分编码不定长(只有两种)</p>
+</blockquote>
+<h3 id="utf32-编码unicode编码的一种实现">utf32 编码(unicode编码的一种实现)</h3>
+<blockquote>
+<p>utf32 是定长的，用 4 字节表示一个字符<br/></p>
+</blockquote>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2022-03-29</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/2022/03/0001-%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81/index.md" target="_blank">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">linux</a>,&nbsp;<a href="/tags/%E4%B8%AD%E6%96%87%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81/">中文字符编码</a>,&nbsp;<a href="/tags/utf8/">utf8</a>,&nbsp;<a href="/tags/gb2312/">gb2312</a>,&nbsp;<a href="/tags/unicode/">unicode</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/2022/03/0002-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%A0%BC%E5%BC%8F%E8%BD%AC%E6%8D%A2/" class="prev" rel="prev" title="文件系统格式转换"><i class="fas fa-angle-left fa-fw"></i>文件系统格式转换</a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">ding jing</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="/lib/lightgallery/lightgallery.min.css"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script type="text/javascript" src="/lib/valine/Valine.min.js"></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/algoliasearch/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/twemoji/twemoji.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lightgallery.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-thumbnail.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-zoom.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"valine":{"appId":"oGOJ6TSiiaaOrhXD1bEYILk9-gzGzoHsz","appKey":"lbK71uSxpg4XmLmvm2h13JdJ","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"serverURLs":"https://ogoj6tsi.lc-cn-n1-shared.com","visitor":true}},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.zh-cn","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"},"twemoji":true};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
