@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>rfkill - 标签 - 九九</title>
+        <link>https://dingjingmaster.github.io/tags/rfkill/</link>
+        <description>rfkill - 标签 - 九九</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>dingjing@live.cn (ding jing)</managingEditor>
+            <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Wed, 20 Apr 2022 11:19:06 &#43;0800</lastBuildDate><atom:link href="https://dingjingmaster.github.io/tags/rfkill/" rel="self" type="application/rss+xml" /><item>
+    <title>rfkill —— 用户空间控制无线通讯命令</title>
+    <link>https://dingjingmaster.github.io/2022/04/0005-rfkill/</link>
+    <pubDate>Wed, 20 Apr 2022 11:19:06 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://dingjingmaster.github.io/2022/04/0005-rfkill/</guid>
+    <description><![CDATA[rfkill rfkill 是一个小型的用户空间工具，用于查询 rfkill 开关、按钮和子系统接口的状态。 Linux 内核通过 /dev/rfkill 设备文件公开了 rfkill 子系统一些控制功能，允许用户空间模拟/监听]]></description>
+</item></channel>
+</rss>

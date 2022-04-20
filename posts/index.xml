@@ -4,7 +4,14 @@
         <link>https://dingjingmaster.github.io/posts/</link>
         <description>所有文章 | 九九</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>dingjing@live.cn (ding jing)</managingEditor>
-            <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Tue, 29 Mar 2022 17:02:44 &#43;0800</lastBuildDate><atom:link href="https://dingjingmaster.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Wed, 20 Apr 2022 11:19:06 &#43;0800</lastBuildDate><atom:link href="https://dingjingmaster.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>rfkill —— 用户空间控制无线通讯命令</title>
+    <link>https://dingjingmaster.github.io/2022/04/0005-rfkill/</link>
+    <pubDate>Wed, 20 Apr 2022 11:19:06 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://dingjingmaster.github.io/2022/04/0005-rfkill/</guid>
+    <description><![CDATA[rfkill rfkill 是一个小型的用户空间工具，用于查询 rfkill 开关、按钮和子系统接口的状态。 Linux 内核通过 /dev/rfkill 设备文件公开了 rfkill 子系统一些控制功能，允许用户空间模拟/监听]]></description>
+</item><item>
     <title>字符编码</title>
     <link>https://dingjingmaster.github.io/2022/03/0001-%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81/</link>
     <pubDate>Tue, 29 Mar 2022 17:02:44 &#43;0800</pubDate>
@@ -67,12 +74,5 @@
     <author>作者</author>
     <guid>https://dingjingmaster.github.io/2022/03/0001-gvfs/</guid>
     <description><![CDATA[gvfs 介绍 gvfs 是 GNOME 用户空间虚拟文件系统的缩写，从 GLib 2.15.1 开始加入系统，主要是对 I/O 的一层抽象。gvfs 提供了一些模块，这些模块由使用 libgio 的 API 应用程序自动使]]></description>
-</item><item>
-    <title>宿主机挂载qemu虚拟盘(qcow2)</title>
-    <link>https://dingjingmaster.github.io/2022/03/0001-%E5%AE%BF%E4%B8%BB%E6%9C%BA%E6%8C%82%E8%BD%BDqemu%E8%99%9A%E6%8B%9F%E7%9B%98qcow2/</link>
-    <pubDate>Thu, 10 Mar 2022 08:55:26 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://dingjingmaster.github.io/2022/03/0001-%E5%AE%BF%E4%B8%BB%E6%9C%BA%E6%8C%82%E8%BD%BDqemu%E8%99%9A%E6%8B%9F%E7%9B%98qcow2/</guid>
-    <description><![CDATA[在Linux宿主机上挂载 qemu 虚拟盘 下载 qemu-nbd 工具 1 2 3 4 5 pacman -S qemu 或 apt-get install qemu-utils 或 yum install qemu-img 加载nbd模块并挂载 1 2 modprobe nbd max_part=8 qemu-nbd --connect=/dev/nbd0 &lt;xxx.qcow2&gt; 开始挂载nbd磁盘到文件系统 1]]></description>
 </item></channel>
 </rss>
