@@ -2,40 +2,40 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>https://dingjingmaster.github.io/tags/bluetooth/</loc><lastmod>2022-04-20T11:19:06&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://dingjingmaster.github.io/categories/</loc><lastmod>2022-04-20T11:19:06&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://dingjingmaster.github.io/tags/linux/</loc><lastmod>2022-04-20T11:19:06&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://dingjingmaster.github.io/categories/linux/</loc><lastmod>2022-04-20T11:19:06&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://dingjingmaster.github.io/posts/</loc><lastmod>2022-04-20T11:19:06&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://dingjingmaster.github.io/tags/rfkill/</loc><lastmod>2022-04-20T11:19:06&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://dingjingmaster.github.io/2022/04/0005-rfkill/</loc><lastmod>2022-04-20T11:19:06&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://dingjingmaster.github.io/tags/</loc><lastmod>2022-04-20T11:19:06&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://dingjingmaster.github.io/tags/wlan/</loc><lastmod>2022-04-20T11:19:06&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://dingjingmaster.github.io/</loc><lastmod>2022-04-20T11:19:06&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://dingjingmaster.github.io/tags/gb2312/</loc><lastmod>2022-03-29T17:02:44&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
-            <loc>https://dingjingmaster.github.io/tags/unicode/</loc><lastmod>2022-03-29T17:02:44&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
-            <loc>https://dingjingmaster.github.io/tags/utf8/</loc><lastmod>2022-03-29T17:02:44&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
-            <loc>https://dingjingmaster.github.io/tags/%E4%B8%AD%E6%96%87%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81/</loc><lastmod>2022-03-29T17:02:44&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
-            <loc>https://dingjingmaster.github.io/categories/%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81/</loc><lastmod>2022-03-29T17:02:44&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
-            <loc>https://dingjingmaster.github.io/2022/03/0001-%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81/</loc><lastmod>2022-03-29T17:02:44&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
-            <loc>https://dingjingmaster.github.io/tags/fs/</loc><lastmod>2022-03-27T10:45:35&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
-            <loc>https://dingjingmaster.github.io/tags/fstransform/</loc><lastmod>2022-03-27T10:45:35&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
-            <loc>https://dingjingmaster.github.io/tags/shell/</loc><lastmod>2022-03-27T10:45:35&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
-            <loc>https://dingjingmaster.github.io/tags/tune2fs/</loc><lastmod>2022-03-27T10:45:35&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
-            <loc>https://dingjingmaster.github.io/2022/03/0002-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%A0%BC%E5%BC%8F%E8%BD%AC%E6%8D%A2/</loc><lastmod>2022-03-27T10:45:35&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
-            <loc>https://dingjingmaster.github.io/tags/tool/</loc><lastmod>2022-03-23T15:06:39&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
-            <loc>https://dingjingmaster.github.io/2022/03/0001-wireshark/</loc><lastmod>2022-03-23T15:06:39&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
-            <loc>https://dingjingmaster.github.io/tags/samba/</loc><lastmod>2022-03-18T11:30:51&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
-            <loc>https://dingjingmaster.github.io/tags/systemd/</loc><lastmod>2022-03-18T11:30:51&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
-            <loc>https://dingjingmaster.github.io/2022/03/0004-systemd%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BDsamba/</loc><lastmod>2022-03-18T11:30:51&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
-            <loc>https://dingjingmaster.github.io/tags/dd/</loc><lastmod>2022-03-18T09:19:35&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
-            <loc>https://dingjingmaster.github.io/2022/03/0003-%E5%91%BD%E4%BB%A4-dd/</loc><lastmod>2022-03-18T09:19:35&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
-            <loc>https://dingjingmaster.github.io/tags/system/</loc><lastmod>2022-03-17T09:52:40&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
-            <loc>https://dingjingmaster.github.io/categories/system/</loc><lastmod>2022-03-17T09:52:40&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
-            <loc>https://dingjingmaster.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86/</loc><lastmod>2022-03-17T09:52:40&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
-            <loc>https://dingjingmaster.github.io/2022/03/0001-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%95%99%E7%A8%8B/</loc><lastmod>2022-03-17T09:52:40&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
-            <loc>https://dingjingmaster.github.io/tags/imx6ull/</loc><lastmod>2022-03-16T15:46:24&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
-            <loc>https://dingjingmaster.github.io/2022/03/0004-imx6ull%E7%83%A7%E5%86%99%E9%95%9C%E5%83%8F/</loc><lastmod>2022-03-16T15:46:24&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
+            <loc>https://dingjingmaster.github.io/tags/bluetooth/</loc><lastmod>2022-04-20T11:19:06&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
+            <loc>https://dingjingmaster.github.io/categories/</loc><lastmod>2022-04-20T11:19:06&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
+            <loc>https://dingjingmaster.github.io/tags/linux/</loc><lastmod>2022-04-20T11:19:06&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
+            <loc>https://dingjingmaster.github.io/categories/linux/</loc><lastmod>2022-04-20T11:19:06&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
+            <loc>https://dingjingmaster.github.io/posts/</loc><lastmod>2022-04-20T11:19:06&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
+            <loc>https://dingjingmaster.github.io/tags/rfkill/</loc><lastmod>2022-04-20T11:19:06&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
+            <loc>https://dingjingmaster.github.io/2022/04/0005-rfkill/</loc><lastmod>2022-04-20T11:19:06&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
+            <loc>https://dingjingmaster.github.io/tags/</loc><lastmod>2022-04-20T11:19:06&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
+            <loc>https://dingjingmaster.github.io/tags/wlan/</loc><lastmod>2022-04-20T11:19:06&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
+            <loc>https://dingjingmaster.github.io/</loc><lastmod>2022-04-20T11:19:06&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
+            <loc>https://dingjingmaster.github.io/tags/gb2312/</loc><lastmod>2022-03-29T17:02:44&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://dingjingmaster.github.io/tags/unicode/</loc><lastmod>2022-03-29T17:02:44&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://dingjingmaster.github.io/tags/utf8/</loc><lastmod>2022-03-29T17:02:44&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://dingjingmaster.github.io/tags/%E4%B8%AD%E6%96%87%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81/</loc><lastmod>2022-03-29T17:02:44&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://dingjingmaster.github.io/categories/%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81/</loc><lastmod>2022-03-29T17:02:44&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://dingjingmaster.github.io/2022/03/0001-%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81/</loc><lastmod>2022-03-29T17:02:44&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://dingjingmaster.github.io/tags/fs/</loc><lastmod>2022-03-27T10:45:35&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://dingjingmaster.github.io/tags/fstransform/</loc><lastmod>2022-03-27T10:45:35&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://dingjingmaster.github.io/tags/shell/</loc><lastmod>2022-03-27T10:45:35&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://dingjingmaster.github.io/tags/tune2fs/</loc><lastmod>2022-03-27T10:45:35&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://dingjingmaster.github.io/2022/03/0002-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%A0%BC%E5%BC%8F%E8%BD%AC%E6%8D%A2/</loc><lastmod>2022-03-27T10:45:35&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://dingjingmaster.github.io/tags/tool/</loc><lastmod>2022-03-23T15:06:39&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://dingjingmaster.github.io/2022/03/0001-wireshark/</loc><lastmod>2022-03-23T15:06:39&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://dingjingmaster.github.io/tags/samba/</loc><lastmod>2022-03-18T11:30:51&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://dingjingmaster.github.io/tags/systemd/</loc><lastmod>2022-03-18T11:30:51&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://dingjingmaster.github.io/2022/03/0004-systemd%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BDsamba/</loc><lastmod>2022-03-18T11:30:51&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://dingjingmaster.github.io/tags/dd/</loc><lastmod>2022-03-18T09:19:35&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://dingjingmaster.github.io/2022/03/0003-%E5%91%BD%E4%BB%A4-dd/</loc><lastmod>2022-03-18T09:19:35&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://dingjingmaster.github.io/tags/system/</loc><lastmod>2022-03-17T09:52:40&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://dingjingmaster.github.io/categories/system/</loc><lastmod>2022-03-17T09:52:40&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://dingjingmaster.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86/</loc><lastmod>2022-03-17T09:52:40&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://dingjingmaster.github.io/2022/03/0001-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%95%99%E7%A8%8B/</loc><lastmod>2022-03-17T09:52:40&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://dingjingmaster.github.io/tags/imx6ull/</loc><lastmod>2022-03-16T15:46:24&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://dingjingmaster.github.io/2022/03/0004-imx6ull%E7%83%A7%E5%86%99%E9%95%9C%E5%83%8F/</loc><lastmod>2022-03-16T15:46:24&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://dingjingmaster.github.io/2022/03/0002-buildroot/</loc><lastmod>2022-03-15T20:35:39&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://dingjingmaster.github.io/tags/buildroot/</loc><lastmod>2022-03-15T20:35:39&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://dingjingmaster.github.io/tags/gvfs/</loc><lastmod>2022-03-14T09:06:20&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
@@ -45,4 +45,5 @@
             <loc>https://dingjingmaster.github.io/2022/03/0001-%E5%AE%BF%E4%B8%BB%E6%9C%BA%E6%8C%82%E8%BD%BDqemu%E8%99%9A%E6%8B%9F%E7%9B%98qcow2/</loc><lastmod>2022-03-10T08:55:26&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://dingjingmaster.github.io/tags/arm/</loc><lastmod>2022-03-09T15:51:45&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://dingjingmaster.github.io/2022/03/0003-%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5/</loc><lastmod>2022-03-09T15:51:45&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://dingjingmaster.github.io/2022/03/0001-%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E4%B8%8E%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</loc><lastmod>2022-03-08T15:48:45&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url></urlset>
+            <loc>https://dingjingmaster.github.io/2022/03/0001-%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5%E4%B8%8E%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</loc><lastmod>2022-03-08T15:48:45&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://dingjingmaster.github.io/1/01/qt/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url></urlset>
