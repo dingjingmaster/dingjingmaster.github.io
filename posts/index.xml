@@ -4,7 +4,28 @@
         <link>https://dingjingmaster.github.io/posts/</link>
         <description>所有文章 | 九九</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>dingjing@live.cn (ding jing)</managingEditor>
-            <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Wed, 20 Apr 2022 11:19:06 &#43;0800</lastBuildDate><atom:link href="https://dingjingmaster.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Sat, 14 May 2022 20:31:15 &#43;0800</lastBuildDate><atom:link href="https://dingjingmaster.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>C 与 C&#43;&#43; 各个版本</title>
+    <link>https://dingjingmaster.github.io/2022/05/0001-cc-%E5%90%84%E4%B8%AA%E7%89%88%E6%9C%AC/</link>
+    <pubDate>Sat, 14 May 2022 20:31:15 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://dingjingmaster.github.io/2022/05/0001-cc-%E5%90%84%E4%B8%AA%E7%89%88%E6%9C%AC/</guid>
+    <description><![CDATA[C 各个版本说明 C 语言早期 最早由丹尼斯·里奇（Dennis Ritchie）为了在PDP-11电脑上运行的Unix系统所设计出来的编程语言 第一次]]></description>
+</item><item>
+    <title>Samba 服务器配置</title>
+    <link>https://dingjingmaster.github.io/2022/05/0002-samba-%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE/</link>
+    <pubDate>Fri, 13 May 2022 10:53:54 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://dingjingmaster.github.io/2022/05/0002-samba-%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE/</guid>
+    <description><![CDATA[配置文件 配置文件 说明 /etc/samba/smb.conf samba的主要配置文件，可设置全局参数和共享目录的参数 /etc/samba/lmhosts 通过hostname来访问samba /etc/samba/smbusers 由于windows和l]]></description>
+</item><item>
+    <title>Samba 密码设置对象(PSOs)</title>
+    <link>https://dingjingmaster.github.io/2022/05/0001-samba-%E5%AF%86%E7%A0%81%E8%AE%BE%E7%BD%AE%E5%AF%B9%E8%B1%A1psos/</link>
+    <pubDate>Fri, 13 May 2022 09:34:29 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://dingjingmaster.github.io/2022/05/0001-samba-%E5%AF%86%E7%A0%81%E8%AE%BE%E7%BD%AE%E5%AF%B9%E8%B1%A1psos/</guid>
+    <description><![CDATA[Samab密码设置对象 Samab密码设置对象(Password Settings Objects，简称PSOs)，开始于 Samba Version:4.9 密码设置对象(PSO)是一种 AD 功能]]></description>
+</item><item>
     <title>rfkill —— 用户空间控制无线通讯命令</title>
     <link>https://dingjingmaster.github.io/2022/04/0005-rfkill/</link>
     <pubDate>Wed, 20 Apr 2022 11:19:06 &#43;0800</pubDate>
@@ -53,26 +74,5 @@
     <author>作者</author>
     <guid>https://dingjingmaster.github.io/2022/03/0001-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%95%99%E7%A8%8B/</guid>
     <description><![CDATA[前言 致力于传统操作系统基本概念、基本技术、基本方法的阐述 把操作系统成熟的基本原理与当代具有代表性的具体实例紧密地结合起来 涉及内容 操作系统概论]]></description>
-</item><item>
-    <title>Imx6ull烧写镜像</title>
-    <link>https://dingjingmaster.github.io/2022/03/0004-imx6ull%E7%83%A7%E5%86%99%E9%95%9C%E5%83%8F/</link>
-    <pubDate>Wed, 16 Mar 2022 15:46:24 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://dingjingmaster.github.io/2022/03/0004-imx6ull%E7%83%A7%E5%86%99%E9%95%9C%E5%83%8F/</guid>
-    <description><![CDATA[imx6ull emmc镜像制作]]></description>
-</item><item>
-    <title>Buildroot</title>
-    <link>https://dingjingmaster.github.io/2022/03/0002-buildroot/</link>
-    <pubDate>Tue, 15 Mar 2022 20:35:39 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://dingjingmaster.github.io/2022/03/0002-buildroot/</guid>
-    <description><![CDATA[什么是buildroot buildroot 是一个简单、高效、易用的工具，能够利用交叉编译生成嵌入式linux系统 buildroot 项目 拉取buildroot源码 1 https://github.com/imx6ull-pro/buildroot.git buildroot 配置编]]></description>
-</item><item>
-    <title>gvfs</title>
-    <link>https://dingjingmaster.github.io/2022/03/0001-gvfs/</link>
-    <pubDate>Mon, 14 Mar 2022 09:06:20 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://dingjingmaster.github.io/2022/03/0001-gvfs/</guid>
-    <description><![CDATA[gvfs 介绍 gvfs 是 GNOME 用户空间虚拟文件系统的缩写，从 GLib 2.15.1 开始加入系统，主要是对 I/O 的一层抽象。gvfs 提供了一些模块，这些模块由使用 libgio 的 API 应用程序自动使]]></description>
 </item></channel>
 </rss>

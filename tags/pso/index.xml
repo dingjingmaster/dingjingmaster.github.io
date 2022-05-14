@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>PSO - 标签 - 九九</title>
+        <link>https://dingjingmaster.github.io/tags/pso/</link>
+        <description>PSO - 标签 - 九九</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>dingjing@live.cn (ding jing)</managingEditor>
+            <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Fri, 13 May 2022 09:34:29 &#43;0800</lastBuildDate><atom:link href="https://dingjingmaster.github.io/tags/pso/" rel="self" type="application/rss+xml" /><item>
+    <title>Samba 密码设置对象(PSOs)</title>
+    <link>https://dingjingmaster.github.io/2022/05/0001-samba-%E5%AF%86%E7%A0%81%E8%AE%BE%E7%BD%AE%E5%AF%B9%E8%B1%A1psos/</link>
+    <pubDate>Fri, 13 May 2022 09:34:29 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://dingjingmaster.github.io/2022/05/0001-samba-%E5%AF%86%E7%A0%81%E8%AE%BE%E7%BD%AE%E5%AF%B9%E8%B1%A1psos/</guid>
+    <description><![CDATA[Samab密码设置对象 Samab密码设置对象(Password Settings Objects，简称PSOs)，开始于 Samba Version:4.9 密码设置对象(PSO)是一种 AD 功能]]></description>
+</item></channel>
+</rss>
