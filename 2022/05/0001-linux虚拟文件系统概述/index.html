@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Linux虚拟文件系统概述 - 九九</title><meta name="Description" content=""><meta property="og:title" content="Linux虚拟文件系统概述" />
+<meta property="og:description" content="概述 虚拟文件系统(也称为虚拟文件系统交换机)是内核中的软件层，它为用户空间程序提供文件系统接口。它还在内核中提供了一个抽象，允许不同的文件系" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dingjingmaster.github.io/2022/05/0001-linux%E8%99%9A%E6%8B%9F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/" /><meta property="og:image" content="https://dingjingmaster.github.io/img/logo.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-05-18T13:46:53+08:00" />
+<meta property="article:modified_time" content="2022-05-18T13:46:53+08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://dingjingmaster.github.io/img/logo.jpg"/>
+
+<meta name="twitter:title" content="Linux虚拟文件系统概述"/>
+<meta name="twitter:description" content="概述 虚拟文件系统(也称为虚拟文件系统交换机)是内核中的软件层，它为用户空间程序提供文件系统接口。它还在内核中提供了一个抽象，允许不同的文件系"/>
+<meta name="application-name" content="九九">
+<meta name="apple-mobile-web-app-title" content="九九"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://dingjingmaster.github.io/2022/05/0001-linux%E8%99%9A%E6%8B%9F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/" /><link rel="prev" href="https://dingjingmaster.github.io/2022/05/0000-linux%E5%86%85%E6%A0%B8%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Linux虚拟文件系统概述",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/dingjingmaster.github.io\/2022\/05\/0001-linux%E8%99%9A%E6%8B%9F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0\/"
+        },"image": ["https:\/\/dingjingmaster.github.io\/img\/logo.jpg"],"genre": "posts","keywords": "linux, 虚拟文件系统, Linux vfs, vfs","wordcount":  11786 ,
+        "url": "https:\/\/dingjingmaster.github.io\/2022\/05\/0001-linux%E8%99%9A%E6%8B%9F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0\/","datePublished": "2022-05-18T13:46:53+08:00","dateModified": "2022-05-18T13:46:53+08:00","publisher": {
+            "@type": "Organization",
+            "name": "九九","logo": "https:\/\/dingjingmaster.github.io\/img\/logo.jpg"},"author": {
+                "@type": "Person",
+                "name": "ding jing"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="九九"><span class="header-title-pre"> </span>九九</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="https://github.com/dingjingmaster" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="九九"><span class="header-title-pre"> </span>九九</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="https://github.com/dingjingmaster" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Linux虚拟文件系统概述</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>ding jing</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/linux/"><i class="far fa-folder fa-fw"></i>linux</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-05-18">2022-05-18</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 11786 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 24 分钟&nbsp;<span id="/2022/05/0001-linux%E8%99%9A%E6%8B%9F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/" class="leancloud_visitors" data-flag-title="Linux虚拟文件系统概述">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#概述">概述</a></li>
+    <li><a href="#目录条目缓存dcache">目录条目缓存(dcache)</a></li>
+    <li><a href="#inode-对象">inode 对象</a></li>
+    <li><a href="#file-对象">File 对象</a></li>
+    <li><a href="#注册和挂载文件系统">注册和挂载文件系统</a>
+      <ul>
+        <li><a href="#struct-file_system_type"><code>struct file_system_type</code></a></li>
+      </ul>
+    </li>
+    <li><a href="#superblock-对象">superblock 对象</a>
+      <ul>
+        <li><a href="#struct-super_operations"><code>struct super_operations</code></a></li>
+        <li><a href="#struct-xattr_handlers"><code>struct xattr_handlers</code></a></li>
+      </ul>
+    </li>
+    <li><a href="#inode-对象-1">inode 对象</a>
+      <ul>
+        <li><a href="#struct-inode_operations"><code>struct inode_operations</code></a></li>
+      </ul>
+    </li>
+    <li><a href="#地址空间对象the-address-space-object">地址空间对象(The Address Space Object)</a></li>
+    <li><a href="#处理回写期间的错误">处理回写期间的错误</a>
+      <ul>
+        <li><a href="#struct-address_space_operations"><code>struct address_space_operations</code></a></li>
+      </ul>
+    </li>
+    <li><a href="#file-对象-1">File 对象</a>
+      <ul>
+        <li><a href="#struct-file_operations"><code>struct file_operations</code></a></li>
+      </ul>
+    </li>
+    <li><a href="#目录条目缓存dcache-1">目录条目缓存(dcache)</a>
+      <ul>
+        <li><a href="#struct-dentry_operations"><code>struct dentry_operations</code></a></li>
+        <li><a href="#目录条目缓存apidirectory-entry-cache-api">目录条目缓存API(Directory Entry Cache API)</a></li>
+      </ul>
+    </li>
+    <li><a href="#挂载操作mount-options">挂载操作(Mount Options)</a>
+      <ul>
+        <li><a href="#解析挂载配置parsing-options">解析挂载配置(Parsing options)</a></li>
+        <li><a href="#显示挂载配置showing-options">显示挂载配置(Showing options)</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="概述">概述</h2>
+<p>虚拟文件系统(也称为虚拟文件系统交换机)是内核中的软件层，它为用户空间程序提供文件系统接口。它还在内核中提供了一个抽象，允许不同的文件系统实现共存。</p>
+<p>VFS系统调用open(2)、stat(2)、read(2)、write(2)、chmod(2)等等都是从进程上下文中调用的。</p>
+<blockquote>
+<p>文件系统锁在文档&quot;锁&quot;中进行了介绍。</p>
+</blockquote>
+<h2 id="目录条目缓存dcache">目录条目缓存(dcache)</h2>
+<p>VFS实现了open(2)、stat(2)、chmod(2)和类似的系统调用。传递给它们的pathname参数由VFS用于搜索目录条目缓存(也称为dentry缓存或dcache)。这提供了一种非常快速的查找机制，可以将路径名(filename)转换为特定的dentry。dentry存储在RAM中，从不保存到磁盘:它们的存在只是为了性能。</p>
+<p>dentry缓存是整个文件空间的视图。由于大多数计算机不能同时将所有dentry放入RAM中，所以缓存的一些位元会丢失。为了将路径名解析为dentry, VFS可能不得不在过程中创建dentry，然后加载inode。这是通过查找inode来完成的。</p>
+<h2 id="inode-对象">inode 对象</h2>
+<p>单个dentry通常有一个指向inode的指针。inode是文件系统对象，比如普通文件、目录、fifo 和其他东西。它们要么存在于磁盘(对于块设备文件系统)，要么存在于内存(对于伪文件系统)。当需要时，将磁盘上的inode复制到内存中，并将对inode的更改写回磁盘。一个inode可以被多个dentry指向(例如，硬链接就是这样做的)。</p>
+<p>要查找一个inode, VFS需要调用父目录inode的lookup()方法。该方法由inode所在的特定文件系统实现安装。一旦VFS拥有了所需的dentry(以及inode)，我们就可以执行所有无聊的操作，比如打开(2)文件或stat(2)文件以查看inode数据。stat(2)操作相当简单:一旦VFS有了dentry，它就会查看inode数据，并将其中一些数据传递回用户空间。</p>
+<h2 id="file-对象">File 对象</h2>
+<p>打开文件需要另一项操作:分配文件结构(这是文件描述符的内核端实现)。使用指向dentry的指针和一组文件操作成员函数初始化新分配的文件结构。这些数据来自inode数据。然后调用open()文件方法，这样特定的文件系统实现就可以完成它的工作。您可以看到，这是由VFS执行的另一个开关。文件结构被放置到进程的文件描述符表中。</p>
+<p>读取、写入和关闭文件(以及其他各种VFS操作)是通过使用用户空间文件描述符来获取适当的文件结构，然后调用所需的文件结构方法来完成所需的操作。只要文件处于打开状态，它就保持使用dentry，这又意味着VFS inode仍在使用。</p>
+<h2 id="注册和挂载文件系统">注册和挂载文件系统</h2>
+<p>注册和注销文件系统，使用以下API函数:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;linux/fs.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="k">extern</span> <span class="kt">int</span> <span class="nf">register_filesystem</span><span class="p">(</span><span class="k">struct</span> <span class="n">file_system_type</span> <span class="o">*</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">extern</span> <span class="kt">int</span> <span class="nf">unregister_filesystem</span><span class="p">(</span><span class="k">struct</span> <span class="n">file_system_type</span> <span class="o">*</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>传递的<code>struct file_system_type</code>描述了文件系统。当需要将文件系统挂载到名称空间中的目录时，VFS将为特定的文件系统调用适当的<code>mount()</code>方法。新vfmount将把 <code>-&gt;mount()</code> 返回的树形结构附加到挂载点，这样当路径名解析到达挂载点时，它将跳转到该vfmount的根目录。</p>
+<p>您可以在文件<code>/proc/filesystems</code>中看到注册到内核的所有文件系统。</p>
+<h3 id="struct-file_system_type"><code>struct file_system_type</code></h3>
+<p>这描述了文件系统。在2.6.39内核中，定义了以下成员:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">struct</span> <span class="n">file_system_type</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">name</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">fs_flags</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">struct</span> <span class="n">dentry</span> <span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="n">mount</span><span class="p">)</span> <span class="p">(</span><span class="k">struct</span> <span class="n">file_system_type</span> <span class="o">*</span><span class="p">,</span> <span class="kt">int</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">kill_sb</span><span class="p">)</span> <span class="p">(</span><span class="k">struct</span> <span class="n">super_block</span> <span class="o">*</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">struct</span> <span class="n">module</span> <span class="o">*</span><span class="n">owner</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">struct</span> <span class="n">file_system_type</span> <span class="o">*</span> <span class="n">next</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">struct</span> <span class="n">list_head</span> <span class="n">fs_supers</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">struct</span> <span class="n">lock_class_key</span> <span class="n">s_lock_key</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">struct</span> <span class="n">lock_class_key</span> <span class="n">s_umount_key</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>
+<p><code>name</code>
+文件系统类型的名称，例如“ext2”、“iso9660”、“msdos”等。</p>
+</li>
+<li>
+<p><code>fs_flags</code>
+各种标志(例如:<code>FS_REQUIRES_DEV</code>, <code>FS_NO_DCACHE</code>等)。</p>
+</li>
+<li>
+<p><code>mount</code>
+当应该安装该文件系统的新实例时调用的方法。<code>mount()</code>方法必须返回调用者请求的树的根<code>dentry</code>。对其超级块的激活引用必须被抓取，并且超级块必须被锁定。失败时，它应该返回<code>ERR_PTR</code>(错误)。</p>
+<ul>
+<li>参数1(<code>struct file_system_type *</code>):描述由特定文件系统代码部分初始化的文件系统</li>
+<li>参数2(<code>int</code>):挂载flag;</li>
+<li>参数3(<code>const char *</code>): 要挂载的设备名；</li>
+<li>参数4(<code>void*</code>)：任意的挂载选项，通常是ASCII字符串(参见“Mount Options”一节)</li>
+</ul>
+</li>
+<li>
+<p><code>kill_sb</code>
+当该文件系统的实例应该关闭时要调用的方法</p>
+</li>
+<li>
+<p><code>owner</code>
+对于内部VFS使用:你应该在大多数情况下初始化<code>THIS_MODULE</code>。</p>
+</li>
+<li>
+<p><code>next</code>
+对于内部VFS使用:你应该将其初始化为NULL</p>
+</li>
+<li>
+<p><code>s_lock_key</code>, <code>s_umount_key</code>
+lockdep-specific&hellip;</p>
+</li>
+</ul>
+<h2 id="superblock-对象">superblock 对象</h2>
+<p>超级块对象表示一个挂载的文件系统。</p>
+<h3 id="struct-super_operations"><code>struct super_operations</code></h3>
+<p>这描述了VFS如何操作文件系统的超级块。在2.6.22内核中，定义了以下成员:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">struct</span> <span class="n">super_operations</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">struct</span> <span class="n">inode</span> <span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="n">alloc_inode</span><span class="p">)(</span><span class="k">struct</span> <span class="n">super_block</span> <span class="o">*</span><span class="n">sb</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">destroy_inode</span><span class="p">)(</span><span class="k">struct</span> <span class="n">inode</span> <span class="o">*</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">dirty_inode</span><span class="p">)</span> <span class="p">(</span><span class="k">struct</span> <span class="n">inode</span> <span class="o">*</span><span class="p">,</span> <span class="kt">int</span> <span class="n">flags</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">write_inode</span><span class="p">)</span> <span class="p">(</span><span class="k">struct</span> <span class="n">inode</span> <span class="o">*</span><span class="p">,</span> <span class="kt">int</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">drop_inode</span><span class="p">)</span> <span class="p">(</span><span class="k">struct</span> <span class="n">inode</span> <span class="o">*</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">delete_inode</span><span class="p">)</span> <span class="p">(</span><span class="k">struct</span> <span class="n">inode</span> <span class="o">*</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">put_super</span><span class="p">)</span> <span class="p">(</span><span class="k">struct</span> <span class="n">super_block</span> <span class="o">*</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">sync_fs</span><span class="p">)(</span><span class="k">struct</span> <span class="n">super_block</span> <span class="o">*</span><span class="n">sb</span><span class="p">,</span> <span class="kt">int</span> <span class="n">wait</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">freeze_fs</span><span class="p">)</span> <span class="p">(</span><span class="k">struct</span> <span class="n">super_block</span> <span class="o">*</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">unfreeze_fs</span><span class="p">)</span> <span class="p">(</span><span class="k">struct</span> <span class="n">super_block</span> <span class="o">*</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">statfs</span><span class="p">)</span> <span class="p">(</span><span class="k">struct</span> <span class="n">dentry</span> <span class="o">*</span><span class="p">,</span> <span class="k">struct</span> <span class="n">kstatfs</span> <span class="o">*</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">remount_fs</span><span class="p">)</span> <span class="p">(</span><span class="k">struct</span> <span class="n">super_block</span> <span class="o">*</span><span class="p">,</span> <span class="kt">int</span> <span class="o">*</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">clear_inode</span><span class="p">)</span> <span class="p">(</span><span class="k">struct</span> <span class="n">inode</span> <span class="o">*</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">umount_begin</span><span class="p">)</span> <span class="p">(</span><span class="k">struct</span> <span class="n">super_block</span> <span class="o">*</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">show_options</span><span class="p">)(</span><span class="k">struct</span> <span class="n">seq_file</span> <span class="o">*</span><span class="p">,</span> <span class="k">struct</span> <span class="n">dentry</span> <span class="o">*</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">ssize_t</span> <span class="p">(</span><span class="o">*</span><span class="n">quota_read</span><span class="p">)(</span><span class="k">struct</span> <span class="n">super_block</span> <span class="o">*</span><span class="p">,</span> <span class="kt">int</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="p">,</span> <span class="n">size_t</span><span class="p">,</span> <span class="n">loff_t</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ssize_t</span> <span class="p">(</span><span class="o">*</span><span class="n">quota_write</span><span class="p">)(</span><span class="k">struct</span> <span class="n">super_block</span> <span class="o">*</span><span class="p">,</span> <span class="kt">int</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="p">,</span> <span class="n">size_t</span><span class="p">,</span> <span class="n">loff_t</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">nr_cached_objects</span><span class="p">)(</span><span class="k">struct</span> <span class="n">super_block</span> <span class="o">*</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">free_cached_objects</span><span class="p">)(</span><span class="k">struct</span> <span class="n">super_block</span> <span class="o">*</span><span class="p">,</span> <span class="kt">int</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>除非另有说明，否则所有方法都是在不持有任何锁的情况下调用的。这意味着大多数方法都可以安全地阻塞。所有方法只能从进程上下文中调用(即不能从中断处理程序或下半部调用)。</p>
+<ul>
+<li>
+<p><code>alloc_inode</code>
+该方法由<code>alloc_inode()</code>调用，为结构<code>inode</code>分配内存并对其进行初始化。如果未定义此函数，则分配一个简单的<code>struct inode</code>。通常，<code>alloc_inode</code> 会被用来分配一个更大的结构，其中包含一个<code>struct inode</code>嵌入其中。</p>
+</li>
+<li>
+<p><code>destroy_inode</code>
+<code>destroy_inode()</code>调用这个方法来释放分配给结构<code>inode</code>的资源。只有在定义了<code>-&gt;alloc_inode</code>时才需要它，它只是简单地撤销<code>-&gt;alloc_inode</code>所做的任何事情。</p>
+</li>
+<li>
+<p><code>dirty_inode</code>
+当一个<code>inode</code>被标记为dirty时，VFS会调用这个方法。这是专门针对被标记为<code>dirty</code>的<code>inode</code>本身，而不是它的数据。如果<code>fdatasync()</code>需要持久化更新，则<code>I_DIRTY_DATASYNC</code>将在<code>flags</code>参数中设置。</p>
+</li>
+<li>
+<p><code>write_inode</code>
+当VFS需要将一个inode写入磁盘时，调用此方法。第二个参数表示写是否应该是同步的，并不是所有的文件系统都检查这个标志。</p>
+</li>
+<li>
+<p><code>drop_inode</code>
+在删除对inode的最后一次访问时调用，并保持<code>inode-&gt;i_lock</code>自旋锁。
+此方法应该是<code>NULL</code>(普通UNIX文件系统语义)或<code>generic_delete_inode</code>(对于不希望缓存<code>inode</code>的文件系统-导致无论<code>i_nlink</code>的值如何，总是调用<code>delete_inode</code>)
+<code>generic_delete_inode()</code>行为相当于在<code>put_inode()</code>情况下使用<code>force_delete</code>的旧实践，但不具有<code>force_delete()</code>方法所具有的竞争。</p>
+</li>
+<li>
+<p><code>delete_inode</code>
+当VFS想要删除一个inode时调用</p>
+</li>
+<li>
+<p><code>put_super</code>
+当VFS希望释放超级块(即卸载)时调用。在超级块锁被持有时调用</p>
+</li>
+<li>
+<p><code>sync_fs</code>
+当VFS写入与超级块关联的所有脏数据时调用。第二个参数指示方法是否应该等待直到写操作完成。可选的。</p>
+</li>
+<li>
+<p><code>freeze_fs</code>
+当VFS锁定文件系统并强制其进入一致状态时调用。该方法目前由逻辑卷管理器(LVM)使用。</p>
+</li>
+<li>
+<p><code>unfreeze_fs</code>
+当VFS解锁文件系统并使其重新可写时调用。</p>
+</li>
+<li>
+<p><code>statfs</code>
+当VFS需要获取文件系统统计信息时调用。</p>
+</li>
+<li>
+<p><code>remount_fs</code>
+当重新装载文件系统时调用。这是在内核锁被持有时调用的</p>
+</li>
+<li>
+<p><code>clear_inode</code>
+调用，则VFS清除该inode。可选</p>
+</li>
+<li>
+<p><code>umount_begin</code>
+当VFS卸载文件系统时调用。</p>
+</li>
+<li>
+<p><code>show_options</code>
+由VFS调用，以显示<code>/proc//mounts</code>。(参见“安装选项”一节)</p>
+</li>
+<li>
+<p><code>quota_read</code>
+调用VFS来读取文件系统配额文件。</p>
+</li>
+<li>
+<p><code>quota_write</code>
+调用VFS来写入文件系统的配额文件。</p>
+</li>
+<li>
+<p><code>nr_cached_objects</code>
+由sb缓存收缩函数为文件系统调用，以返回它所包含的可释放缓存对象的数量。可选的。</p>
+</li>
+<li>
+<p><code>free_cache_objects</code>
+由sb缓存收缩函数为文件系统调用，以扫描指定的尝试释放对象的数量。可选，但任何实现此方法的文件系统还需要实现<code>-&gt;nr_cached_objects</code>才能正确调用它。
+我们无法处理文件系统可能遇到的任何错误，因此返回类型为void。如果VM尝试在<code>GFP_NOFS</code>条件下回收，则永远不会调用该方法，该方法本身不需要处理这种情况。
+实现必须包括已完成的任何扫描循环内的条件重调度调用。这使得VFS可以确定适当的扫描批处理大小，而不必担心实现是否会由于大的扫描批处理大小而导致延迟问题。</p>
+</li>
+</ul>
+<p>设置inode的人负责填充<code>i_op</code>字段。这是一个指向<code>struct inode_operations</code>的指针，该指针描述了可以在单个<code>inode上</code>执行的方法。</p>
+<h3 id="struct-xattr_handlers"><code>struct xattr_handlers</code></h3>
+<p>在支持扩展属性(<code>xattrs</code>)的文件系统上，<code>s_xattr</code>超级块字段指向一个以null结尾的xattr处理程序数组。扩展属性是 <code>key:value</code> 对。</p>
+<ul>
+<li>
+<p><code>name</code>
+指示处理程序匹配具有指定名称的属性(例如<code>system.posix_acl_access</code>);<code>prefix</code>字段必须为NULL。</p>
+</li>
+<li>
+<p><code>prefix</code>
+指示处理程序匹配所有具有指定名称前缀的属性(如“user.”);名称字段必须为NULL。</p>
+</li>
+<li>
+<p><code>list</code>
+确定是否应该为特定dentry列出与这个xattr处理程序匹配的属性。用于一些<code>listxattr</code>实现，如<code>generic_listxattr</code>。</p>
+</li>
+<li>
+<p><code>get</code>
+由VFS调用以获取特定扩展属性的值。该方法由<code>getxattr(2)</code>系统调用调用。</p>
+</li>
+<li>
+<p><code>set</code>
+由VFS调用，以设置特定扩展属性的值。当新值为NULL时，调用该函数以删除特定的扩展属性。该方法由<code>setxattr(2)</code>和<code>removexattr(2)</code>系统调用调用。</p>
+</li>
+</ul>
+<p>当文件系统的xattr处理程序与指定的属性名不匹配或者文件系统不支持扩展属性时，所有<code>*xattr(2)</code>系统调用将返回<code>-EOPNOTSUPP</code>。</p>
+<h2 id="inode-对象-1">inode 对象</h2>
+<p>inode对象表示文件系统中的一个对象</p>
+<h3 id="struct-inode_operations"><code>struct inode_operations</code></h3>
+<p>这描述了VFS如何操作文件系统中的inode。在2.6.22内核中，定义了以下成员:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">struct</span> <span class="n">inode_operations</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">create</span><span class="p">)</span> <span class="p">(</span><span class="k">struct</span> <span class="n">user_namespace</span> <span class="o">*</span><span class="p">,</span> <span class="k">struct</span> <span class="n">inode</span> <span class="o">*</span><span class="p">,</span><span class="k">struct</span> <span class="n">dentry</span> <span class="o">*</span><span class="p">,</span> <span class="n">umode_t</span><span class="p">,</span> <span class="kt">bool</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">struct</span> <span class="n">dentry</span> <span class="o">*</span> <span class="p">(</span><span class="o">*</span><span class="n">lookup</span><span class="p">)</span> <span class="p">(</span><span class="k">struct</span> <span class="n">inode</span> <span class="o">*</span><span class="p">,</span><span class="k">struct</span> <span class="n">dentry</span> <span class="o">*</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">link</span><span class="p">)</span> <span class="p">(</span><span class="k">struct</span> <span class="n">dentry</span> <span class="o">*</span><span class="p">,</span><span class="k">struct</span> <span class="n">inode</span> <span class="o">*</span><span class="p">,</span><span class="k">struct</span> <span class="n">dentry</span> <span class="o">*</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">unlink</span><span class="p">)</span> <span class="p">(</span><span class="k">struct</span> <span class="n">inode</span> <span class="o">*</span><span class="p">,</span><span class="k">struct</span> <span class="n">dentry</span> <span class="o">*</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">symlink</span><span class="p">)</span> <span class="p">(</span><span class="k">struct</span> <span class="n">user_namespace</span> <span class="o">*</span><span class="p">,</span> <span class="k">struct</span> <span class="n">inode</span> <span class="o">*</span><span class="p">,</span><span class="k">struct</span> <span class="n">dentry</span> <span class="o">*</span><span class="p">,</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">mkdir</span><span class="p">)</span> <span class="p">(</span><span class="k">struct</span> <span class="n">user_namespace</span> <span class="o">*</span><span class="p">,</span> <span class="k">struct</span> <span class="n">inode</span> <span class="o">*</span><span class="p">,</span><span class="k">struct</span> <span class="n">dentry</span> <span class="o">*</span><span class="p">,</span><span class="n">umode_t</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">rmdir</span><span class="p">)</span> <span class="p">(</span><span class="k">struct</span> <span class="n">inode</span> <span class="o">*</span><span class="p">,</span><span class="k">struct</span> <span class="n">dentry</span> <span class="o">*</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">mknod</span><span class="p">)</span> <span class="p">(</span><span class="k">struct</span> <span class="n">user_namespace</span> <span class="o">*</span><span class="p">,</span> <span class="k">struct</span> <span class="n">inode</span> <span class="o">*</span><span class="p">,</span><span class="k">struct</span> <span class="n">dentry</span> <span class="o">*</span><span class="p">,</span><span class="n">umode_t</span><span class="p">,</span><span class="n">dev_t</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">rename</span><span class="p">)</span> <span class="p">(</span><span class="k">struct</span> <span class="n">user_namespace</span> <span class="o">*</span><span class="p">,</span> <span class="k">struct</span> <span class="n">inode</span> <span class="o">*</span><span class="p">,</span> <span class="k">struct</span> <span class="n">dentry</span> <span class="o">*</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                       <span class="k">struct</span> <span class="n">inode</span> <span class="o">*</span><span class="p">,</span> <span class="k">struct</span> <span class="n">dentry</span> <span class="o">*</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">readlink</span><span class="p">)</span> <span class="p">(</span><span class="k">struct</span> <span class="n">dentry</span> <span class="o">*</span><span class="p">,</span> <span class="kt">char</span> <span class="n">__user</span> <span class="o">*</span><span class="p">,</span><span class="kt">int</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="n">get_link</span><span class="p">)</span> <span class="p">(</span><span class="k">struct</span> <span class="n">dentry</span> <span class="o">*</span><span class="p">,</span> <span class="k">struct</span> <span class="n">inode</span> <span class="o">*</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                                 <span class="k">struct</span> <span class="n">delayed_call</span> <span class="o">*</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">permission</span><span class="p">)</span> <span class="p">(</span><span class="k">struct</span> <span class="n">user_namespace</span> <span class="o">*</span><span class="p">,</span> <span class="k">struct</span> <span class="n">inode</span> <span class="o">*</span><span class="p">,</span> <span class="kt">int</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">struct</span> <span class="n">posix_acl</span> <span class="o">*</span> <span class="p">(</span><span class="o">*</span><span class="n">get_acl</span><span class="p">)(</span><span class="k">struct</span> <span class="n">inode</span> <span class="o">*</span><span class="p">,</span> <span class="kt">int</span><span class="p">,</span> <span class="kt">bool</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">setattr</span><span class="p">)</span> <span class="p">(</span><span class="k">struct</span> <span class="n">user_namespace</span> <span class="o">*</span><span class="p">,</span> <span class="k">struct</span> <span class="n">dentry</span> <span class="o">*</span><span class="p">,</span> <span class="k">struct</span> <span class="n">iattr</span> <span class="o">*</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">getattr</span><span class="p">)</span> <span class="p">(</span><span class="k">struct</span> <span class="n">user_namespace</span> <span class="o">*</span><span class="p">,</span> <span class="k">const</span> <span class="k">struct</span> <span class="n">path</span> <span class="o">*</span><span class="p">,</span> <span class="k">struct</span> <span class="n">kstat</span> <span class="o">*</span><span class="p">,</span> <span class="n">u32</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ssize_t</span> <span class="p">(</span><span class="o">*</span><span class="n">listxattr</span><span class="p">)</span> <span class="p">(</span><span class="k">struct</span> <span class="n">dentry</span> <span class="o">*</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="p">,</span> <span class="n">size_t</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">update_time</span><span class="p">)(</span><span class="k">struct</span> <span class="n">inode</span> <span class="o">*</span><span class="p">,</span> <span class="k">struct</span> <span class="n">timespec</span> <span class="o">*</span><span class="p">,</span> <span class="kt">int</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">atomic_open</span><span class="p">)(</span><span class="k">struct</span> <span class="n">inode</span> <span class="o">*</span><span class="p">,</span> <span class="k">struct</span> <span class="n">dentry</span> <span class="o">*</span><span class="p">,</span> <span class="k">struct</span> <span class="n">file</span> <span class="o">*</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                           <span class="kt">unsigned</span> <span class="n">open_flag</span><span class="p">,</span> <span class="n">umode_t</span> <span class="n">create_mode</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">tmpfile</span><span class="p">)</span> <span class="p">(</span><span class="k">struct</span> <span class="n">user_namespace</span> <span class="o">*</span><span class="p">,</span> <span class="k">struct</span> <span class="n">inode</span> <span class="o">*</span><span class="p">,</span> <span class="k">struct</span> <span class="n">dentry</span> <span class="o">*</span><span class="p">,</span> <span class="n">umode_t</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">set_acl</span><span class="p">)(</span><span class="k">struct</span> <span class="n">user_namespace</span> <span class="o">*</span><span class="p">,</span> <span class="k">struct</span> <span class="n">inode</span> <span class="o">*</span><span class="p">,</span> <span class="k">struct</span> <span class="n">posix_acl</span> <span class="o">*</span><span class="p">,</span> <span class="kt">int</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">fileattr_set</span><span class="p">)(</span><span class="k">struct</span> <span class="n">user_namespace</span> <span class="o">*</span><span class="n">mnt_userns</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                            <span class="k">struct</span> <span class="n">dentry</span> <span class="o">*</span><span class="n">dentry</span><span class="p">,</span> <span class="k">struct</span> <span class="n">fileattr</span> <span class="o">*</span><span class="n">fa</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">fileattr_get</span><span class="p">)(</span><span class="k">struct</span> <span class="n">dentry</span> <span class="o">*</span><span class="n">dentry</span><span class="p">,</span> <span class="k">struct</span> <span class="n">fileattr</span> <span class="o">*</span><span class="n">fa</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>同样，调用所有方法时不会持有任何锁，除非另有说明。</p>
+<ul>
+<li>
+<p><code>create</code>
+由<code>open(2)</code>和<code>create(2)</code>系统调用调用。只有在支持常规文件时才需要。你得到的<code>dentry</code>不应该有一个<code>inode</code>(即，它应该是一个负dentry)。在这里，您可能会使用<code>dentry</code>和新创建的<code>inode</code>调用<code>d_instantiate()</code></p>
+</li>
+<li>
+<p><code>lookup</code>
+当VFS需要在父目录中查找一个<code>inode</code>时调用。要查找的名字在<code>dentry</code>中找到。这个方法必须调用<code>d_add()</code>来将找到的<code>inode</code>插入<code>dentry</code>。<code>inode</code>结构中的“<code>i_count</code>”字段应该递增。如果指定的<code>inode</code>不存在，则应该在<code>dentry</code>中插入一个<code>NULL inode</code>(这称为负dentry)。从这个例程返回错误代码必须只在真正发生错误时才可以，否则使用<code>create(2)</code>、<code>mknod(2)</code>、<code>mkdir(2)</code>等系统调用创建索引节点将会失败。如果你希望重载<code>dentry</code>方法，那么你应该初始化<code>dentry</code>中的“<code>d_dop</code>”字段;这是一个指向结构体“<code>dentry_operations</code>”的指针。在保存目录<code>inode</code>信号量的情况下调用此方法</p>
+</li>
+<li>
+<p><code>link</code>
+由<code>link(2)</code>系统调用调用。只有在支持硬链接时才需要。您可能需要调用<code>d_instantiate()</code>，就像在<code>create()</code>方法中那样</p>
+</li>
+<li>
+<p><code>unlink</code></p>
+</li>
+<li>
+<p><code>symlink</code>
+由<code>symlink(2)</code>系统调用调用。只有在希望支持符号链接时才需要。您可能需要调用<code>d_instantiate()</code>，就像在<code>create()</code>方法中那样</p>
+</li>
+<li>
+<p><code>mkdir</code></p>
+</li>
+<li>
+<p><code>rmdir</code></p>
+</li>
+<li>
+<p><code>mknod</code>
+由<code>mknod(2)</code>系统调用来创建一个设备(char, block) inode或一个命名管道(FIFO)或套接字。只有在希望支持创建这些类型的索引节点时才需要。您可能需要调用<code>d_instantiate()</code>，就像在<code>create()</code>方法中那样</p>
+</li>
+<li>
+<p><code>rename</code>
+由<code>rename(2)</code>系统调用调用，重命名对象，使其具有由第二个inode和dentry提供的父节点和名称。对于任何不支持或未知的标志，文件系统必须返回<code>-EINVAL</code>。目前实现了以下标志:</p>
+<ul>
+<li>(1) <code>RENAME_NOREPLACE</code>:该标志表示如果重命名目标存在，重命名将失败，使用<code>-EEXIST</code>代替目标。VFS已经检查是否存在，因此对于本地文件系统，<code>RENAME_NOREPLACE</code>实现等价于普通重命名。</li>
+<li>(2) <code>RENAME_EXCHANGE</code>: <code>exchange</code>源和目标。必须存在;这由VFS检查。与普通重命名不同，源和目标可能具有不同的类型。</li>
+</ul>
+</li>
+<li>
+<p><code>get_link</code>
+由VFS调用，以跟随到它所指向的<code>inode</code>的符号链接。只有在希望支持符号链接时才需要。这个方法返回要遍历的符号链接体(并可能使用<code>nd_jump_link()</code>重置当前位置)。如果在<code>inode</code>消失之前，主体不会消失，那么其他东西就不需要了;如果需要以其他方式固定它，通过让<code>get_link(…，…，done)</code>执行<code>set_delayed_call(done, destructor, argument)</code>来安排它的释放。在这种情况下，一旦VFS处理完您返回的函数体，就会调用<code>estructor(argument)</code>。可以在RCU模式下调用;由NULL dentry参数表示。如果请求不离开RCU模式就不能被处理，让它返回<code>ERR_PTR</code>(<code>-ECHILD</code>)。如果文件系统将符号链接目标存储在<code>-&gt;i_link</code>中，VFS可以直接使用它而不调用<code>-&gt;get_link()</code>;但是，<code>-&gt;get_link()</code>仍然必须提供。<code>—&gt;i_link</code>必须在RCU宽限期后才能释放。</p>
+</li>
+<li>
+<p><code>readlink</code>
+这现在只是<code>readlink(2)</code>在<code>-&gt;get_link</code>使用<code>nd_jump_link()</code>或<code>object</code>实际上不是符号链接的情况下使用的重载。通常文件系统应该只实现<code>-&gt;get_link</code>用于符号链接，<code>readlink(2)</code>将自动使用它。</p>
+</li>
+<li>
+<p><code>permission</code>
+由VFS调用，以检查类<code>posix</code>文件系统上的访问权限。可以在<code>rcu-walk</code>模式下调用(<code>mask &amp; MAY_NOT_BLOCK</code>)。如果在<code>rcu-walk</code>模式下，文件系统必须检查权限，而不能阻塞或存储到<code>inode</code>。如果遇到<code>rcu-walk</code>不能处理的情况，返回<code>-ECHILD</code>，它将在<code>refwalk</code>模式中再次被调用。</p>
+</li>
+<li>
+<p><code>setattr</code></p>
+</li>
+<li>
+<p><code>getattr</code></p>
+</li>
+<li>
+<p><code>listxattr</code></p>
+</li>
+<li>
+<p><code>update_time</code></p>
+</li>
+<li>
+<p><code>atomic_open</code>
+对一个<code>open</code>的最后一个组件调用。使用这个可选的方法，文件系统可以在一个原子操作中查找、创建和打开文件。如果它想把实际打开留给调用者(例如，如果文件是一个符号链接、设备，或者只是文件系统不会原子打开的东西)，它可能通过返回<code>finish_no_open(file, dentry)</code>来发出信号。仅当最后一个组件为负数或需要查找时，才调用此方法。缓存的正向<code>dentry</code>仍然由<code>f_op-&gt;open()</code>处理。如果文件已经创建，<code>FMODE_CREATED</code>标志应该设置在<code>file-&gt;f_mode</code>中。在<code>O_EXCL</code>的情况下，只有在文件不存在的情况下，该方法才会成功，因此<code>FMODE_CREATED</code>总是在成功时设置。</p>
+</li>
+<li>
+<p><code>tmpfile</code>
+在<code>O_TMPFILE</code> <code>open()</code>的末尾调用。可选，相当于在给定目录中自动创建、打开和解链接文件。</p>
+</li>
+<li>
+<p><code>fileattr_get</code>
+调用<code>ioctl(FS_IOC_GETFLAGS)</code>和<code>ioctl(FS_IOC_FSGETXATTR)</code>来检索杂项文件标志和属性。也可以在相关的<code>SET</code>操作之前调用，以检查发生了什么更改(在本例中，<code>i_rwsem</code>是锁独占的)。如果未设置，则退回到<code>f_op-&gt;ioctl()</code>。</p>
+</li>
+<li>
+<p><code>fileattr_set</code></p>
+</li>
+</ul>
+<h2 id="地址空间对象the-address-space-object">地址空间对象(The Address Space Object)</h2>
+<p>地址空间对象用于对页缓存中的页进行分组和管理。它可以用来跟踪文件(或其他文件)中的页面，还可以跟踪文件各部分到进程地址空间的映射。</p>
+<p>地址空间可以提供许多不同但相关的服务。这些方法包括通信内存压力、按地址查找页面以及跟踪标记为<code>Dirty</code>或<code>Writeback</code>的页面。</p>
+<p>第一个可以单独用于其他的。VM可以尝试写入脏页以清除它们，也可以释放干净页以重用它们。为此，它可以在脏页面上调用<code>-&gt;writepage</code>方法，在干净页面上调用<code>-&gt;releasepage</code>方法，并设置<code>pagprivate</code>。没有<code>PagePrivate</code>和没有外部引用的干净页面将在不通知<code>address_space</code>的情况下被释放。</p>
+<p>为了实现此功能，需要将页面放置在<code>LRU</code>上，并在使用页面时调用<code>lru_cache_add</code>和<code>mark_page_active</code>。</p>
+<p>页面通常通过<code>-&gt;index</code>保存在基数树索引中。该树维护每个页面的<code>PG_Dirty</code>和<code>PG_Writeback</code>状态信息，以便快速找到带有这两个标志的页面。</p>
+<p><code>Dirty</code>标记主要由<code>mpage_writpages</code>(默认的<code>-&gt;writpages</code>方法)使用。它使用标记查找脏页并调用<code>-&gt;writepage</code>。如果没有使用<code>mpage_writepages</code>(即地址提供了自己的<code>-&gt;writepages</code>)，那么<code>PAGECACHE_TAG_DIRTY</code>标签几乎没有被使用。<code>Write_inode_now</code>和<code>sync_inode</code>使用它(通过<code>__sync_single_inode</code>)来检查<code>-&gt;writepages</code>是否成功地写出了整个地址空间。</p>
+<p><code>Writeback</code>标记由<code>filemap*</code> <code>wait*</code>和<code>sync_page*</code>函数使用，通过<code>filemap_fdatawait_range</code>函数等待所有的Writeback完成。</p>
+<p><code>address_space</code>处理程序可以附加额外的信息到一个页面，通常使用&rsquo;<code>struct page</code>&lsquo;中的&rsquo;<code>private</code>&lsquo;字段。如果附加了这些信息，则应该设置<code>PG_Private</code>标志。这将导致各种VM例程对<code>address_space</code>处理程序进行额外调用来处理该数据。</p>
+<p>地址空间充当存储和应用程序之间的中介。每次将整个页的数据读入地址空间，并通过复制页或对页进行内存映射的方式提供给应用程序。应用程序将数据写入地址空间，然后通常以整个页面的形式将数据写回存储，但是<code>address_space</code>可以更好地控制写大小。</p>
+<p><code>read</code>进程实际上只需要&rsquo;<code>readpage</code>&rsquo;。写过程更为复杂，使用<code>write_begin</code>/<code>write_end</code>或<code>dirty_folio</code>将数据写入<code>address_space</code>，使用<code>writepage</code>和<code>writepage</code>将数据回写到存储。</p>
+<p>在地址空间中添加和删除页面由<code>inode</code>的<code>i_mutex</code>保护。</p>
+<p>当数据写入一个页面时，应该设置<code>PG_Dirty</code>标志。它通常保持设置状态，直到<code>writepage</code>要求写入它。这应该清除<code>PG_Dirty</code>并设置<code>PG_Writeback</code>。它实际上可以在<code>PG_Dirty</code>被清除后的任何时候被写入。一旦知道它是安全的，就清除<code>PG_Writeback</code>。</p>
+<p><code>Writeback</code>利用<code>writeback_control</code>结构来指导操作。这为<code>writepage</code>和<code>writpages</code>操作提供了一些关于回写请求的性质和原因，以及在哪些约束条件下执行的信息。它还用于向调用者返回关于写页面或写页面请求结果的信息。</p>
+<h2 id="处理回写期间的错误">处理回写期间的错误</h2>
+<p>大多数进行缓冲<code>I/O</code>的应用程序将定期调用文件同步调用(<code>fsync</code>、<code>fdatasync</code>、<code>msync</code>或<code>sync_file_range</code>)，以确保写入的数据已经到达后备存储。当回写过程中出现错误时，他们希望在文件同步请求时报告错误。在报告了一个请求的错误之后，对同一文件描述符的后续请求应该返回<code>0</code>，除非在上一次文件同步之后发生了进一步的回写错误。</p>
+<p>理想情况下，内核只会在文件描述中报告错误，而这些文件描述的写操作后来又没有被写回。但是，通用的页面缓存基础设施不会跟踪已经污染每个单独页面的文件描述，因此不可能确定哪个文件描述符应该返回错误。</p>
+<p>相反，内核中的通用回写错误跟踪基础设施解决了在错误发生时向<code>fsync</code>报告所有打开的文件描述的错误。在有多个写入器的情况下，所有写入器都会在后续的<code>fsync</code>中返回一个错误，即使通过特定文件描述符完成的所有写入都成功了(或者即使对该文件描述符根本没有写入)。</p>
+<p>希望使用此基础结构的文件系统应该调用<code>mapping_set_error</code>，以便在发生错误时在<code>address_space</code>中记录错误。然后，在他们的<code>-&gt;fsync</code>操作中从页面缓存写回数据后，他们应该调用<code>file_check_and_advance_wb_err</code>来确保<code>struct file</code>的错误游标已经前进到由备份设备发出的错误流中的正确点。</p>
+<h3 id="struct-address_space_operations"><code>struct address_space_operations</code></h3>
+<p>这描述了VFS如何操作文件到文件系统中页面缓存的映射。定义了以下成员:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">struct</span> <span class="n">address_space_operations</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">writepage</span><span class="p">)(</span><span class="k">struct</span> <span class="n">page</span> <span class="o">*</span><span class="n">page</span><span class="p">,</span> <span class="k">struct</span> <span class="n">writeback_control</span> <span class="o">*</span><span class="n">wbc</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">readpage</span><span class="p">)(</span><span class="k">struct</span> <span class="n">file</span> <span class="o">*</span><span class="p">,</span> <span class="k">struct</span> <span class="n">page</span> <span class="o">*</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">writepages</span><span class="p">)(</span><span class="k">struct</span> <span class="n">address_space</span> <span class="o">*</span><span class="p">,</span> <span class="k">struct</span> <span class="n">writeback_control</span> <span class="o">*</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">bool</span> <span class="p">(</span><span class="o">*</span><span class="n">dirty_folio</span><span class="p">)(</span><span class="k">struct</span> <span class="n">address_space</span> <span class="o">*</span><span class="p">,</span> <span class="k">struct</span> <span class="n">folio</span> <span class="o">*</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">readahead</span><span class="p">)(</span><span class="k">struct</span> <span class="n">readahead_control</span> <span class="o">*</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">write_begin</span><span class="p">)(</span><span class="k">struct</span> <span class="n">file</span> <span class="o">*</span><span class="p">,</span> <span class="k">struct</span> <span class="n">address_space</span> <span class="o">*</span><span class="n">mapping</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="n">loff_t</span> <span class="n">pos</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="n">len</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="n">flags</span><span class="p">,</span> <span class="k">struct</span> <span class="n">page</span> <span class="o">**</span><span class="n">pagep</span><span class="p">,</span> <span class="kt">void</span> <span class="o">**</span><span class="n">fsdata</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">write_end</span><span class="p">)(</span><span class="k">struct</span> <span class="n">file</span> <span class="o">*</span><span class="p">,</span> <span class="k">struct</span> <span class="n">address_space</span> <span class="o">*</span><span class="n">mapping</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="n">loff_t</span> <span class="n">pos</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="n">len</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="n">copied</span><span class="p">,</span> <span class="k">struct</span> <span class="n">page</span> <span class="o">*</span><span class="n">page</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">fsdata</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">sector_t</span> <span class="p">(</span><span class="o">*</span><span class="n">bmap</span><span class="p">)(</span><span class="k">struct</span> <span class="n">address_space</span> <span class="o">*</span><span class="p">,</span> <span class="n">sector_t</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">invalidate_folio</span><span class="p">)</span> <span class="p">(</span><span class="k">struct</span> <span class="n">folio</span> <span class="o">*</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">start</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">len</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">releasepage</span><span class="p">)</span> <span class="p">(</span><span class="k">struct</span> <span class="n">page</span> <span class="o">*</span><span class="p">,</span> <span class="kt">int</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">freepage</span><span class="p">)(</span><span class="k">struct</span> <span class="n">page</span> <span class="o">*</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ssize_t</span> <span class="p">(</span><span class="o">*</span><span class="n">direct_IO</span><span class="p">)(</span><span class="k">struct</span> <span class="n">kiocb</span> <span class="o">*</span><span class="p">,</span> <span class="k">struct</span> <span class="n">iov_iter</span> <span class="o">*</span><span class="n">iter</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cm">/* isolate a page for migration */</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">bool</span> <span class="p">(</span><span class="o">*</span><span class="n">isolate_page</span><span class="p">)</span> <span class="p">(</span><span class="k">struct</span> <span class="n">page</span> <span class="o">*</span><span class="p">,</span> <span class="n">isolate_mode_t</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cm">/* migrate the contents of a page to the specified target */</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">migratepage</span><span class="p">)</span> <span class="p">(</span><span class="k">struct</span> <span class="n">page</span> <span class="o">*</span><span class="p">,</span> <span class="k">struct</span> <span class="n">page</span> <span class="o">*</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cm">/* put migration-failed page back to right list */</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">putback_page</span><span class="p">)</span> <span class="p">(</span><span class="k">struct</span> <span class="n">page</span> <span class="o">*</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">launder_folio</span><span class="p">)</span> <span class="p">(</span><span class="k">struct</span> <span class="n">folio</span> <span class="o">*</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kt">bool</span> <span class="p">(</span><span class="o">*</span><span class="n">is_partially_uptodate</span><span class="p">)</span> <span class="p">(</span><span class="k">struct</span> <span class="n">folio</span> <span class="o">*</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">from</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">count</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">is_dirty_writeback</span><span class="p">)</span> <span class="p">(</span><span class="k">struct</span> <span class="n">page</span> <span class="o">*</span><span class="p">,</span> <span class="kt">bool</span> <span class="o">*</span><span class="p">,</span> <span class="kt">bool</span> <span class="o">*</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">error_remove_page</span><span class="p">)</span> <span class="p">(</span><span class="k">struct</span> <span class="n">mapping</span> <span class="o">*</span><span class="n">mapping</span><span class="p">,</span> <span class="k">struct</span> <span class="n">page</span> <span class="o">*</span><span class="n">page</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">swap_activate</span><span class="p">)(</span><span class="k">struct</span> <span class="n">file</span> <span class="o">*</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">swap_deactivate</span><span class="p">)(</span><span class="k">struct</span> <span class="n">file</span> <span class="o">*</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li><code>writepage</code>
+由<code>VM</code>调用，将脏页写入后备存储。这可能是由于数据完整性原因(即“同步”)，或为了释放内存(刷新)。这种差异可以从<code>wbc-&gt;sync_mode</code>中看出。<code>PG_Dirty</code>标志已经清除，<code>pagellocked</code>为<code>true</code>。<code>writepage</code>应该启动<code>writeout</code>，应该设置<code>PG_Writeback</code>，并且应该确保在写操作完成时，页面是同步或异步解锁的。如果<code>wbc-&gt;sync_mode</code>为<code>WB_SYNC_NONE</code>，如果出现问题，<code>-&gt;writepage</code>处理起来不会太费劲；如果更容易的话，可以选择从映射中写出其他页面(例如由于内部依赖关系)。如果它选择不启动<code>writeout</code>，它应该返回<code>AOP_WRITEPAGE_ACTIVATE</code>，这样VM就不会一直调用该页上的<code>-&gt;writepage</code>。</li>
+</ul>
+<blockquote>
+<p>有关更多细节，请参阅文件“Locking”。</p>
+</blockquote>
+<ul>
+<li>
+<p><code>readpage</code>
+调用<code>VM</code>从后台存储读取页面。当<code>readpage</code>被调用时，该页面将被锁定，并且应该在读取完成后被解锁并标记为最新。如果<code>-&gt;readpage</code>发现由于某些原因需要解锁页面，它可以这样做，然后返回<code>AOP_TRUNCATED_PAGE</code>。在这种情况下，页面将被重新定位并重新锁定，如果所有操作都成功，则将再次调用<code>-&gt;readpage</code>。</p>
+</li>
+<li>
+<p><code>writepages</code>
+由<code>VM</code>调用，以写出与<code>address_space</code>对象关联的页面。如果<code>wbc-&gt;sync_mode</code>为<code>WB_SYNC_ALL</code>，则<code>writeback_control</code>将指定必须写入的页面范围。如果它是<code>WB_SYNC_NONE</code>，则给出一个<code>nr_to_write</code>，并且如果可能的话应该写入许多页。如果没有给出<code>-&gt;writpages</code>，则使用<code>mpage_writpages</code>。这将从标记为<code>DIRTY</code>的地址空间中选择页面，并将它们传递给<code>-&gt;writepage</code>。</p>
+</li>
+<li>
+<p><code>dirty_folio</code>
+<code>VM</code>调用，将对开本标记为<code>dirty</code>。如果地址空间将私有数据附加到一个 <code>fifo</code>，并且当 <code>fifo</code> 被污染时需要更新该数据，则特别需要这样做。例如，当内存映射页被修改时，就会调用这个函数。如果定义了，它应该在<code>i_pages</code>中设置<code>folio dirty</code>标志和<code>PAGECACHE_TAG_DIRTY</code>搜索标记。</p>
+</li>
+<li>
+<p><code>readahead</code>
+由<code>VM</code>调用，以读取与<code>address_space</code>对象关联的页。在页缓存中，页是连续的，并且被锁定。实现应该在启动每个页面的<code>I/O</code>后减少页面引用计数。通常，该页面将由<code>I/O</code>完成处理程序解锁。页面集被分为一些同步页面和一些异步页面，<code>rac-&gt;ra-&gt;async_size</code>给出了异步页面的数量。文件系统应该尝试读取所有同步页面，但可能在到达异步页面时决定停止。如果它决定停止尝试<code>I/O</code>，它可以简单地返回。调用者将从地址空间中删除剩余的页，解锁它们并减小页引用计数。如果<code>I/O</code>成功完成，设置<code>PageUptodate</code>。在任何页面上设置<code>PageError</code>都将被忽略;如果发生<code>I/O</code>错误，只需解锁页面。</p>
+</li>
+<li>
+<p><code>write_begin</code></p>
+</li>
+<li>
+<p><code>write_end</code></p>
+</li>
+<li>
+<p><code>bmap</code></p>
+</li>
+<li>
+<p><code>invalidate_folio</code></p>
+</li>
+<li>
+<p><code>releasepage</code></p>
+</li>
+<li>
+<p><code>freepage</code></p>
+</li>
+<li>
+<p><code>direct_IO</code></p>
+</li>
+<li>
+<p><code>isolate_page</code></p>
+</li>
+<li>
+<p><code>migrate_page</code></p>
+</li>
+<li>
+<p><code>putback_page</code></p>
+</li>
+<li>
+<p><code>launder_folio</code></p>
+</li>
+<li>
+<p><code>is_partially_uptodate</code></p>
+</li>
+<li>
+<p><code>is_dirty_writeback</code></p>
+</li>
+<li>
+<p><code>error_remove_page</code></p>
+</li>
+<li>
+<p><code>swap_activate</code></p>
+</li>
+<li>
+<p><code>swap_deactivate</code></p>
+</li>
+</ul>
+<h2 id="file-对象-1">File 对象</h2>
+<p>文件对象表示进程打开的文件。在POSIX术语中，这也称为“打开文件描述”。</p>
+<h3 id="struct-file_operations"><code>struct file_operations</code></h3>
+<p>这描述了VFS如何操作打开的文件。在4.18内核中，定义了以下成员:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">struct</span> <span class="n">file_operations</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">struct</span> <span class="n">module</span> <span class="o">*</span><span class="n">owner</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">loff_t</span> <span class="p">(</span><span class="o">*</span><span class="n">llseek</span><span class="p">)</span> <span class="p">(</span><span class="k">struct</span> <span class="n">file</span> <span class="o">*</span><span class="p">,</span> <span class="n">loff_t</span><span class="p">,</span> <span class="kt">int</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ssize_t</span> <span class="p">(</span><span class="o">*</span><span class="n">read</span><span class="p">)</span> <span class="p">(</span><span class="k">struct</span> <span class="n">file</span> <span class="o">*</span><span class="p">,</span> <span class="kt">char</span> <span class="n">__user</span> <span class="o">*</span><span class="p">,</span> <span class="n">size_t</span><span class="p">,</span> <span class="n">loff_t</span> <span class="o">*</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ssize_t</span> <span class="p">(</span><span class="o">*</span><span class="n">write</span><span class="p">)</span> <span class="p">(</span><span class="k">struct</span> <span class="n">file</span> <span class="o">*</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="n">__user</span> <span class="o">*</span><span class="p">,</span> <span class="n">size_t</span><span class="p">,</span> <span class="n">loff_t</span> <span class="o">*</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ssize_t</span> <span class="p">(</span><span class="o">*</span><span class="n">read_iter</span><span class="p">)</span> <span class="p">(</span><span class="k">struct</span> <span class="n">kiocb</span> <span class="o">*</span><span class="p">,</span> <span class="k">struct</span> <span class="n">iov_iter</span> <span class="o">*</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ssize_t</span> <span class="p">(</span><span class="o">*</span><span class="n">write_iter</span><span class="p">)</span> <span class="p">(</span><span class="k">struct</span> <span class="n">kiocb</span> <span class="o">*</span><span class="p">,</span> <span class="k">struct</span> <span class="n">iov_iter</span> <span class="o">*</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">iopoll</span><span class="p">)(</span><span class="k">struct</span> <span class="n">kiocb</span> <span class="o">*</span><span class="n">kiocb</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">spin</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">iterate</span><span class="p">)</span> <span class="p">(</span><span class="k">struct</span> <span class="n">file</span> <span class="o">*</span><span class="p">,</span> <span class="k">struct</span> <span class="n">dir_context</span> <span class="o">*</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">iterate_shared</span><span class="p">)</span> <span class="p">(</span><span class="k">struct</span> <span class="n">file</span> <span class="o">*</span><span class="p">,</span> <span class="k">struct</span> <span class="n">dir_context</span> <span class="o">*</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">__poll_t</span> <span class="p">(</span><span class="o">*</span><span class="n">poll</span><span class="p">)</span> <span class="p">(</span><span class="k">struct</span> <span class="n">file</span> <span class="o">*</span><span class="p">,</span> <span class="k">struct</span> <span class="n">poll_table_struct</span> <span class="o">*</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">long</span> <span class="p">(</span><span class="o">*</span><span class="n">unlocked_ioctl</span><span class="p">)</span> <span class="p">(</span><span class="k">struct</span> <span class="n">file</span> <span class="o">*</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">long</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">long</span> <span class="p">(</span><span class="o">*</span><span class="n">compat_ioctl</span><span class="p">)</span> <span class="p">(</span><span class="k">struct</span> <span class="n">file</span> <span class="o">*</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">long</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">mmap</span><span class="p">)</span> <span class="p">(</span><span class="k">struct</span> <span class="n">file</span> <span class="o">*</span><span class="p">,</span> <span class="k">struct</span> <span class="n">vm_area_struct</span> <span class="o">*</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">open</span><span class="p">)</span> <span class="p">(</span><span class="k">struct</span> <span class="n">inode</span> <span class="o">*</span><span class="p">,</span> <span class="k">struct</span> <span class="n">file</span> <span class="o">*</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">flush</span><span class="p">)</span> <span class="p">(</span><span class="k">struct</span> <span class="n">file</span> <span class="o">*</span><span class="p">,</span> <span class="n">fl_owner_t</span> <span class="n">id</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">release</span><span class="p">)</span> <span class="p">(</span><span class="k">struct</span> <span class="n">inode</span> <span class="o">*</span><span class="p">,</span> <span class="k">struct</span> <span class="n">file</span> <span class="o">*</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">fsync</span><span class="p">)</span> <span class="p">(</span><span class="k">struct</span> <span class="n">file</span> <span class="o">*</span><span class="p">,</span> <span class="n">loff_t</span><span class="p">,</span> <span class="n">loff_t</span><span class="p">,</span> <span class="kt">int</span> <span class="n">datasync</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">fasync</span><span class="p">)</span> <span class="p">(</span><span class="kt">int</span><span class="p">,</span> <span class="k">struct</span> <span class="n">file</span> <span class="o">*</span><span class="p">,</span> <span class="kt">int</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">lock</span><span class="p">)</span> <span class="p">(</span><span class="k">struct</span> <span class="n">file</span> <span class="o">*</span><span class="p">,</span> <span class="kt">int</span><span class="p">,</span> <span class="k">struct</span> <span class="n">file_lock</span> <span class="o">*</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ssize_t</span> <span class="p">(</span><span class="o">*</span><span class="n">sendpage</span><span class="p">)</span> <span class="p">(</span><span class="k">struct</span> <span class="n">file</span> <span class="o">*</span><span class="p">,</span> <span class="k">struct</span> <span class="n">page</span> <span class="o">*</span><span class="p">,</span> <span class="kt">int</span><span class="p">,</span> <span class="n">size_t</span><span class="p">,</span> <span class="n">loff_t</span> <span class="o">*</span><span class="p">,</span> <span class="kt">int</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">unsigned</span> <span class="nf">long</span> <span class="p">(</span><span class="o">*</span><span class="n">get_unmapped_area</span><span class="p">)(</span><span class="k">struct</span> <span class="n">file</span> <span class="o">*</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">long</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="kt">unsigned</span> <span class="kt">long</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">long</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">long</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">check_flags</span><span class="p">)(</span><span class="kt">int</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">flock</span><span class="p">)</span> <span class="p">(</span><span class="k">struct</span> <span class="n">file</span> <span class="o">*</span><span class="p">,</span> <span class="kt">int</span><span class="p">,</span> <span class="k">struct</span> <span class="n">file_lock</span> <span class="o">*</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ssize_t</span> <span class="p">(</span><span class="o">*</span><span class="n">splice_write</span><span class="p">)(</span><span class="k">struct</span> <span class="n">pipe_inode_info</span> <span class="o">*</span><span class="p">,</span> <span class="k">struct</span> <span class="n">file</span> <span class="o">*</span><span class="p">,</span> <span class="n">loff_t</span> <span class="o">*</span><span class="p">,</span> <span class="n">size_t</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ssize_t</span> <span class="p">(</span><span class="o">*</span><span class="n">splice_read</span><span class="p">)(</span><span class="k">struct</span> <span class="n">file</span> <span class="o">*</span><span class="p">,</span> <span class="n">loff_t</span> <span class="o">*</span><span class="p">,</span> <span class="k">struct</span> <span class="n">pipe_inode_info</span> <span class="o">*</span><span class="p">,</span> <span class="n">size_t</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">setlease</span><span class="p">)(</span><span class="k">struct</span> <span class="n">file</span> <span class="o">*</span><span class="p">,</span> <span class="kt">long</span><span class="p">,</span> <span class="k">struct</span> <span class="n">file_lock</span> <span class="o">**</span><span class="p">,</span> <span class="kt">void</span> <span class="o">**</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">long</span> <span class="p">(</span><span class="o">*</span><span class="n">fallocate</span><span class="p">)(</span><span class="k">struct</span> <span class="n">file</span> <span class="o">*</span><span class="n">file</span><span class="p">,</span> <span class="kt">int</span> <span class="n">mode</span><span class="p">,</span> <span class="n">loff_t</span> <span class="n">offset</span><span class="p">,</span> <span class="n">loff_t</span> <span class="n">len</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">show_fdinfo</span><span class="p">)(</span><span class="k">struct</span> <span class="n">seq_file</span> <span class="o">*</span><span class="n">m</span><span class="p">,</span> <span class="k">struct</span> <span class="n">file</span> <span class="o">*</span><span class="n">f</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="cp">#ifndef CONFIG_MMU
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>        <span class="kt">unsigned</span> <span class="p">(</span><span class="o">*</span><span class="n">mmap_capabilities</span><span class="p">)(</span><span class="k">struct</span> <span class="n">file</span> <span class="o">*</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="cp">#endif
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>        <span class="n">ssize_t</span> <span class="p">(</span><span class="o">*</span><span class="n">copy_file_range</span><span class="p">)(</span><span class="k">struct</span> <span class="n">file</span> <span class="o">*</span><span class="p">,</span> <span class="n">loff_t</span><span class="p">,</span> <span class="k">struct</span> <span class="n">file</span> <span class="o">*</span><span class="p">,</span> <span class="n">loff_t</span><span class="p">,</span> <span class="n">size_t</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">loff_t</span> <span class="p">(</span><span class="o">*</span><span class="n">remap_file_range</span><span class="p">)(</span><span class="k">struct</span> <span class="n">file</span> <span class="o">*</span><span class="n">file_in</span><span class="p">,</span> <span class="n">loff_t</span> <span class="n">pos_in</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">                <span class="k">struct</span> <span class="n">file</span> <span class="o">*</span><span class="n">file_out</span><span class="p">,</span> <span class="n">loff_t</span> <span class="n">pos_out</span><span class="p">,</span> <span class="n">loff_t</span> <span class="n">len</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">remap_flags</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">fadvise</span><span class="p">)(</span><span class="k">struct</span> <span class="n">file</span> <span class="o">*</span><span class="p">,</span> <span class="n">loff_t</span><span class="p">,</span> <span class="n">loff_t</span><span class="p">,</span> <span class="kt">int</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>同样，调用所有方法时不会持有任何锁，除非另有说明。</p>
+<ul>
+<li><code>llseek</code></li>
+<li><code>read</code></li>
+<li><code>read_iter</code></li>
+<li><code>write</code></li>
+<li><code>write_iter</code></li>
+<li><code>iopoll</code></li>
+<li><code>iterate</code></li>
+<li><code>iterate_shared</code></li>
+<li><code>poll</code></li>
+<li><code>unlocked_ioctl</code></li>
+<li><code>compat_ioctl</code></li>
+<li><code>mmap</code></li>
+<li><code>open</code></li>
+<li><code>flush</code></li>
+<li><code>release</code></li>
+<li><code>fsync</code></li>
+<li><code>fasync</code></li>
+<li><code>lock</code></li>
+<li><code>get_unmapped_area</code></li>
+<li><code>check_flags</code></li>
+<li><code>flock</code></li>
+<li><code>splice_write</code></li>
+<li><code>splice_read</code></li>
+<li><code>setlease</code></li>
+<li><code>fallocate</code></li>
+<li><code>copy_file_range</code></li>
+<li><code>remap_file_range</code></li>
+<li><code>fadvise</code></li>
+</ul>
+<p>注意，文件操作是由inode所在的特定文件系统实现的。当打开一个设备节点(特殊字符或块)时，大多数文件系统将调用VFS中的特殊支持例程，它将定位所需的设备驱动程序信息。这些支持例程将文件系统文件操作替换为设备驱动程序的操作，然后继续为文件调用新的open()方法。这就是在文件系统中打开设备文件最终如何调用设备驱动程序open()方法的。</p>
+<h2 id="目录条目缓存dcache-1">目录条目缓存(dcache)</h2>
+<h3 id="struct-dentry_operations"><code>struct dentry_operations</code></h3>
+<p>这描述了文件系统如何重载标准<code>dentry</code>操作。<code>dentry</code>和<code>dcache</code>是<code>VFS</code>和各个文件系统实现的域。设备驱动程序在这里没有什么用。这些方法可以设置为NULL，因为它们要么是可选的，要么VFS使用默认值。在2.6.22内核中，定义了以下成员:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">struct</span> <span class="n">dentry_operations</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">d_revalidate</span><span class="p">)(</span><span class="k">struct</span> <span class="n">dentry</span> <span class="o">*</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">d_weak_revalidate</span><span class="p">)(</span><span class="k">struct</span> <span class="n">dentry</span> <span class="o">*</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">d_hash</span><span class="p">)(</span><span class="k">const</span> <span class="k">struct</span> <span class="n">dentry</span> <span class="o">*</span><span class="p">,</span> <span class="k">struct</span> <span class="n">qstr</span> <span class="o">*</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">d_compare</span><span class="p">)(</span><span class="k">const</span> <span class="k">struct</span> <span class="n">dentry</span> <span class="o">*</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="p">,</span> <span class="k">const</span> <span class="k">struct</span> <span class="n">qstr</span> <span class="o">*</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">d_delete</span><span class="p">)(</span><span class="k">const</span> <span class="k">struct</span> <span class="n">dentry</span> <span class="o">*</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">d_init</span><span class="p">)(</span><span class="k">struct</span> <span class="n">dentry</span> <span class="o">*</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">d_release</span><span class="p">)(</span><span class="k">struct</span> <span class="n">dentry</span> <span class="o">*</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">d_iput</span><span class="p">)(</span><span class="k">struct</span> <span class="n">dentry</span> <span class="o">*</span><span class="p">,</span> <span class="k">struct</span> <span class="n">inode</span> <span class="o">*</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">char</span> <span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="n">d_dname</span><span class="p">)(</span><span class="k">struct</span> <span class="n">dentry</span> <span class="o">*</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="p">,</span> <span class="kt">int</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">struct</span> <span class="n">vfsmount</span> <span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="n">d_automount</span><span class="p">)(</span><span class="k">struct</span> <span class="n">path</span> <span class="o">*</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">d_manage</span><span class="p">)(</span><span class="k">const</span> <span class="k">struct</span> <span class="n">path</span> <span class="o">*</span><span class="p">,</span> <span class="kt">bool</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">struct</span> <span class="n">dentry</span> <span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="n">d_real</span><span class="p">)(</span><span class="k">struct</span> <span class="n">dentry</span> <span class="o">*</span><span class="p">,</span> <span class="k">const</span> <span class="k">struct</span> <span class="n">inode</span> <span class="o">*</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li><code>d_revalidate</code></li>
+<li><code>_weak_revalidate</code></li>
+<li><code>d_hash</code></li>
+<li><code>d_compare</code></li>
+<li><code>d_delete</code></li>
+<li><code>d_init</code></li>
+<li><code>d_release</code></li>
+<li><code>d_iput</code></li>
+<li><code>d_dname</code></li>
+<li><code>d_automount</code></li>
+<li><code>d_manage</code></li>
+<li><code>d_real</code></li>
+</ul>
+<p>每个dentry都有一个指向其父dentry的指针，以及子dentry的散列列表。子dentry基本上就像目录中的文件。</p>
+<h3 id="目录条目缓存apidirectory-entry-cache-api">目录条目缓存API(Directory Entry Cache API)</h3>
+<p>定义了许多允许文件系统操作dentry的函数:</p>
+<ul>
+<li><code>dget</code>
+为现有的dentry打开一个新的句柄(这只是增加了使用计数)</li>
+<li><code>dput</code>
+关闭<code>dentry</code>的句柄(减少使用计数)。如果使用计数下降到0, <code>dentry</code>仍然在其父散列中，则调用&quot;<code>d_delete</code>&ldquo;方法来检查是否应该缓存它。如果它不应该被缓存，或者<code>dentry</code>没有被散列，它就会被删除。否则，缓存的dentry将被放入<code>LRU</code>列表中，在内存不足时回收。</li>
+<li><code>d_drop</code>
+这将从其父哈希列表中解算dentry。如果dentry的使用计数下降到0，则对dput()的后续调用将释放该dentry</li>
+<li><code>d_delete</code>
+删除一个dentry。如果没有对dentry的其他开放引用，则dentry被转换为负dentry(调用<code>d_iput()</code>方法)。如果有其他引用，则调用<code>d_drop()</code></li>
+<li><code>d_add</code>
+添加一个dentry到它的父哈希列表，然后调用<code>d_instantiate()</code></li>
+<li><code>d_instantiate</code>
+将<code>dentry</code>添加到<code>inode</code>的别名散列列表中，并更新“<code>d_inode</code>”成员。inode结构中的“<code>i_count</code>”成员应该设置/增加。如果<code>inode</code>指针为NULL, <code>dentry</code>称为“<code>负dentry</code>”。当为现有的<code>负dentry</code>创建一个inode时，通常会调用这个函数</li>
+<li><code>d_lookup</code>
+它从dcache哈希表中查找指定名称的子元素。如果找到，引用计数将增加并返回dentry。调用者在使用完dentry后必须使用dput()来释放它。</li>
+</ul>
+<h2 id="挂载操作mount-options">挂载操作(Mount Options)</h2>
+<h3 id="解析挂载配置parsing-options">解析挂载配置(Parsing options)</h3>
+<p>在挂载和重新挂载时，将向文件系统传递一个字符串，其中包含以逗号分隔的挂载选项列表。选项可以有以下两种形式:<code>option</code> 和 <code>option=value</code></p>
+<p><code>&lt;linux/parser.h&gt;</code>头文件定义了一个API来帮助解析这些选项。有很多关于如何在现有文件系统中使用它的示例。</p>
+<h3 id="显示挂载配置showing-options">显示挂载配置(Showing options)</h3>
+<p>如果文件系统接受挂载选项，它必须定义<code>show_options()</code>来显示所有当前活动的选项。规则是:</p>
+<ul>
+<li>选项必须显示哪些不是默认值，或者它们的值与默认值不同</li>
+<li>选项可以显示为默认启用或具有默认值</li>
+</ul>
+<p>仅在装入帮助程序和内核之间内部使用的选项(如文件描述符)，或者仅在装入过程中起作用的选项(如控制日志创建的选项)不受上述规则的约束。</p>
+<p>使用上述规则的根本原因是确保可以根据在<code>/proc/mounts.conf</code>. 中找到的信息准确地复制一个挂载(例如，卸载和重新挂载)</p>
+<blockquote>
+<p>5.x 内核没找到 <code>/proc/mounts.conf</code></p>
+</blockquote>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2022-05-18</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/2022/05/0001-linux%E8%99%9A%E6%8B%9F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/index.md" target="_blank">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">linux</a>,&nbsp;<a href="/tags/%E8%99%9A%E6%8B%9F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">虚拟文件系统</a>,&nbsp;<a href="/tags/linux-vfs/">Linux vfs</a>,&nbsp;<a href="/tags/vfs/">vfs</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/2022/05/0000-linux%E5%86%85%E6%A0%B8%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" class="prev" rel="prev" title="0000 Linux内核文件系统"><i class="fas fa-angle-left fa-fw"></i>0000 Linux内核文件系统</a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">ding jing</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="/lib/lightgallery/lightgallery.min.css"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script type="text/javascript" src="/lib/valine/Valine.min.js"></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/algoliasearch/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/twemoji/twemoji.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lightgallery.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-thumbnail.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-zoom.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"valine":{"appId":"oGOJ6TSiiaaOrhXD1bEYILk9-gzGzoHsz","appKey":"lbK71uSxpg4XmLmvm2h13JdJ","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"serverURLs":"https://ogoj6tsi.lc-cn-n1-shared.com","visitor":true}},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.zh-cn","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"},"twemoji":true};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
