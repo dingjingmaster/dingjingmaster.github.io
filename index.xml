@@ -29,10 +29,10 @@
     <description><![CDATA[C语言 C是一种通用的、命令式的计算机编程语言，支持结构化编程、词法变量作用域和递归，而静态类型系统可以防止许多意想不到的操作。通过设计，C提]]></description>
 </item><item>
     <title>C 与 C&#43;&#43; 各个版本</title>
-    <link>https://dingjingmaster.github.io/2022/05/0001-cc-%E5%90%84%E4%B8%AA%E7%89%88%E6%9C%AC/</link>
+    <link>https://dingjingmaster.github.io/2022/05/0001-c%E4%B8%8Ec-%E5%90%84%E4%B8%AA%E7%89%88%E6%9C%AC/</link>
     <pubDate>Sat, 14 May 2022 20:31:15 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>https://dingjingmaster.github.io/2022/05/0001-cc-%E5%90%84%E4%B8%AA%E7%89%88%E6%9C%AC/</guid>
+    <guid>https://dingjingmaster.github.io/2022/05/0001-c%E4%B8%8Ec-%E5%90%84%E4%B8%AA%E7%89%88%E6%9C%AC/</guid>
     <description><![CDATA[C 各个版本说明 C 语言早期 最早由丹尼斯·里奇（Dennis Ritchie）为了在PDP-11电脑上运行的Unix系统所设计出来的编程语言 第一次]]></description>
 </item><item>
     <title>Samba 服务器配置</title>
