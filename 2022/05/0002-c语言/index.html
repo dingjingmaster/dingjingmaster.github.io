@@ -29,7 +29,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/dingjingmaster.github.io\/2022\/05\/0002-c%E8%AF%AD%E8%A8%80\/"
-        },"image": ["https:\/\/dingjingmaster.github.io\/img\/logo.jpg"],"genre": "posts","keywords": "linux, C, C\u002b\u002b, C\/C\u002b\u002b","wordcount":  10283 ,
+        },"image": ["https:\/\/dingjingmaster.github.io\/img\/logo.jpg"],"genre": "posts","keywords": "linux, C, C\u002b\u002b, C\/C\u002b\u002b","wordcount":  10236 ,
         "url": "https:\/\/dingjingmaster.github.io\/2022\/05\/0002-c%E8%AF%AD%E8%A8%80\/","datePublished": "2022-05-14T21:13:42+08:00","dateModified": "2022-05-14T21:13:42+08:00","publisher": {
             "@type": "Organization",
             "name": "九九","logo": "https:\/\/dingjingmaster.github.io\/img\/logo.jpg"},"author": {
@@ -106,7 +106,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">C语言</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>ding jing</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/c/"><i class="far fa-folder fa-fw"></i>C</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-05-14">2022-05-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 10283 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-05-14">2022-05-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 10236 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 21 分钟&nbsp;<span id="/2022/05/0002-c%E8%AF%AD%E8%A8%80/" class="leancloud_visitors" data-flag-title="C语言">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
@@ -1046,47 +1046,19 @@
 <h3 id="多维数组">多维数组</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">type name[size1][size2]...[sizeN];
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">type</span> <span class="n">name</span><span class="p">[</span><span class="n">size1</span><span class="p">][</span><span class="n">size2</span><span class="p">]...[</span><span class="n">sizeN</span><span class="p">];</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">int arr[5][10][4];
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">arr</span><span class="p">[</span><span class="mi">5</span><span class="p">][</span><span class="mi">10</span><span class="p">][</span><span class="mi">4</span><span class="p">];</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">// 初始化 3 维数组
-</span></span><span class="line"><span class="cl">double cprogram[3][2][4]={
-</span></span><span class="line"><span class="cl">    {
-</span></span><span class="line"><span class="cl">        {-0.1, 0.22, 0.3, 4.3},
-</span></span><span class="line"><span class="cl">        {2.3, 4.7, -0.9, 2}
-</span></span><span class="line"><span class="cl">    },
-</span></span><span class="line"><span class="cl">    {
-</span></span><span class="line"><span class="cl">        {0.9, 3.6, 4.5, 4},
-</span></span><span class="line"><span class="cl">        {1.2, 2.4, 0.22, -1}
-</span></span><span class="line"><span class="cl">    },
-</span></span><span class="line"><span class="cl">    {
-</span></span><span class="line"><span class="cl">        {8.2, 3.12, 34.2, 0.1},
-</span></span><span class="line"><span class="cl">        {2.1, 3.2, 4.3, -2.0}
-</span></span><span class="line"><span class="cl">    }
-</span></span><span class="line"><span class="cl">};
-</span></span></code></pre></td></tr></table>
+</span></span><span class="line"><span class="cl"><span class="c1">// 初始化 3 维数组
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="断言">断言</h2>
 <p>在软件遇到断言时，提出的条件必须为真。最常见的是在执行时进行验证的简单断言。静态断言是在编译时检查的。</p>
