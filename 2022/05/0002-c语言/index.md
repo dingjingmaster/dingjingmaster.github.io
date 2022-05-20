@@ -82,7 +82,9 @@ typedef struct
 
 chartypes classify(FILE *f) 
 {
-    chartypes types = {0, 0, 0};
+    chartypes types = {
+        0, 0, 0
+    };
     int ch;
 
     while ((ch = fgetc(f)) != EOF) {
@@ -136,9 +138,11 @@ C语言的严格别名规则是指编译器可能假定哪些对象会(或不会
 > 这里必须做的类型转换不包括添加限定符 `const`
 
 ### 例子
+
 #### 不能通过非字符类型访问字符类型
+
 ```c
-int main( void )
+int main(void)
 {
     char a[100];
     int* b = ( int* )&a;
@@ -160,6 +164,7 @@ int main( void )
 这特别意味着，在标准C语言中不可能保留可以通过不同类型的指针使用的字符类型的缓冲区对象，因为您将使用由malloc或类似函数接收的缓冲区。
 
 实现上述目标的正确方法是使用 `union`
+
 ```c
 typedef union bufType bufType;
 union bufType 
@@ -171,28 +176,37 @@ union bufType
 int main( void )
 {
     bufType a = {
-        .c = {0}
+        .c = {
+            0
+        }
     }; // reserve a buffer and initialize
     int* b = a.i; // no cast necessary
     *b = 1;
 
     static bufType a = {
-        .c = {0}
+        .c = {
+            0
+        }
     };
     int* b = a.i;
     *b = 2;
 
     _Thread_local bufType a = {
-        .c = {0}
+        .c = {
+            0
+        }
     };
     int* b = a.i;
     *b = 3;
 }
 ```
+
 这里，union确保编译器从一开始就知道缓冲区可以通过不同的方式访问。这样做的另一个好处是，现在缓冲区有一个a.i，它已经是int类型，不需要进行指针转换。
 
 #### 有效类型
+
 数据对象的有效类型是与之关联的最后一个类型信息(如果有的话)。
+
 ```c
 // 有效类型是 uint32_t
 uint32_t a = 0.0;
@@ -227,6 +241,7 @@ memcpy(s, r, sizeof uint32_t);
 #### 严重违反类型转换规则
 
 在下面的代码中，让我们假设`float`和`uint32_t`有相同的内存大小
+
 ```c
 void fun(uint32_t* u, float* f) 
 {
@@ -235,9 +250,11 @@ void fun(uint32_t* u, float* f)
     print("%g should equal %g\n", a, b);
 }
 ```
+
 u 和 f 具有不同的基类型，因此编译器可以假定它们指向不同的对象。
 
 在a和b的两次初始化之间`*f`不可能发生变化，因此编译器可能会优化代码，使其等价于:
+
 ```c
 void fun(uint32_t* u, float* f) 
 {
@@ -246,8 +263,10 @@ void fun(uint32_t* u, float* f)
     print("%g should equal %g\n", a, a);
 }
 ```
+
 即`*f`的二次加载操作可以完全优化出来。
 如果这样调用:
+
 ```c
 float fval = 4;
 uint32_t uval = 77;
@@ -258,15 +277,19 @@ fun(&uval, &fval);
 ```
 
 但是如果这样调用：
+
 ```c
 float fval = 4;
 uint32_t* up = (uint32_t*)&fval;
 fun(up, &fval);
 ```
+
 我们违反了严格的混叠规则。然后这种行为就变得没有定义了。如果编译器优化了第二次访问，输出可能与上面一样，或者完全不同，从而使程序最终处于完全不可靠的状态。
 
 #### 限制条件
+
 如果有两个相同类型的指针实参，编译器就不能做任何假设，必须总是假设对`*e`的修改可能会改变`*f`:
+
 ```c
 void fun(float* e, float* f) 
 {
@@ -278,9 +301,11 @@ float fval = 4;
 float eval = 77;
 fun(&eval, &fval);
 ```
+
 正常输出是 `is 4 equal to 4?`
 
 如果我们通过一些外部信息知道e和f永远不会指向相同的数据对象，那么这可能是低效的。我们可以通过给指针形参添加限制限定符来反映这一点:
+
 ```c
 void fan(float*restrict e, float*restrict f) 
 {
@@ -292,7 +317,9 @@ void fan(float*restrict e, float*restrict f)
 那么编译器可能总是假设e和f指向不同的对象。
 
 #### 改变字节
+
 一旦对象具有有效类型，就不应该试图通过其他类型的指针修改它，除非其他类型是字符类型、char、signed char或 unsigned char。
+
 ```c
 #include <inttypes.h>
 #include <stdio.h>
@@ -310,6 +337,7 @@ int main(void)
     printf("a now has value %" PRIu32 "\n", a);
 }
 ```
+
 打印结果: `a now has value 707406378`
 正常是因为：
 - 使用unsigned char类型访问单个字节，因此每次修改都有很好的定义。
@@ -351,8 +379,13 @@ void foo(int *a, int n);
 ### 特殊例子
 特殊的初始化：
 ```c
-int array[5] = {[2] = 5, [1] = 2, [4] = 9}; /* array is {0, 2, 5, 0, 9} */
-int array[] = {[3] = 8, [0] = 9}; /* size is 4 */
+int array[5] = {
+    [2] = 5, [1] = 2, [4] = 9
+}; /* array is {0, 2, 5, 0, 9} */
+
+int array[] = {
+    [3] = 8, [0] = 9
+}; /* size is 4 */
 ```
 > 不允许声明零长度的数组
 
@@ -410,9 +443,18 @@ int arr[5][10][4];
 
 // 初始化 3 维数组
 double cprogram[3][2][4]={
-{{-0.1, 0.22, 0.3, 4.3}, {2.3, 4.7, -0.9, 2}},
-{{0.9, 3.6, 4.5, 4}, {1.2, 2.4, 0.22, -1}},
-{{8.2, 3.12, 34.2, 0.1}, {2.1, 3.2, 4.3, -2.0}}
+    {
+        {-0.1, 0.22, 0.3, 4.3},
+        {2.3, 4.7, -0.9, 2}
+    },
+    {
+        {0.9, 3.6, 4.5, 4},
+        {1.2, 2.4, 0.22, -1}
+    },
+    {
+        {8.2, 3.12, 34.2, 0.1},
+        {2.1, 3.2, 4.3, -2.0}
+    }
 };
 ```
 
