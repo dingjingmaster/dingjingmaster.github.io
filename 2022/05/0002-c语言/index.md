@@ -741,11 +741,17 @@ if( 2 == i) //Good-way
 ## 复合类型
 像字符串字面量一样，const限定的复合字面量可以放在只读内存中，甚至可以共享。例如,
 ```c
-(const char []){"abc"} == "abc"
+(const char [])
+{
+    "abc"
+} == "abc"
 ```
 ### 语法
 ```c
-(type){ initializer-list }
+(type)
+{
+    initializer-list 
+}
 ```
 
 ## 头文件包含
