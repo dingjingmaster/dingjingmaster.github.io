@@ -29,7 +29,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/dingjingmaster.github.io\/2022\/05\/0002-c%E8%AF%AD%E8%A8%80\/"
-        },"image": ["https:\/\/dingjingmaster.github.io\/img\/logo.jpg"],"genre": "posts","keywords": "linux, C, C\u002b\u002b, C\/C\u002b\u002b","wordcount":  10244 ,
+        },"image": ["https:\/\/dingjingmaster.github.io\/img\/logo.jpg"],"genre": "posts","keywords": "linux, C, C\u002b\u002b, C\/C\u002b\u002b","wordcount":  10245 ,
         "url": "https:\/\/dingjingmaster.github.io\/2022\/05\/0002-c%E8%AF%AD%E8%A8%80\/","datePublished": "2022-05-14T21:13:42+08:00","dateModified": "2022-05-14T21:13:42+08:00","publisher": {
             "@type": "Organization",
             "name": "九九","logo": "https:\/\/dingjingmaster.github.io\/img\/logo.jpg"},"author": {
@@ -106,7 +106,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">C语言</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>ding jing</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/c/"><i class="far fa-folder fa-fw"></i>C</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-05-14">2022-05-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 10244 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-05-14">2022-05-14</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 10245 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 21 分钟&nbsp;<span id="/2022/05/0002-c%E8%AF%AD%E8%A8%80/" class="leancloud_visitors" data-flag-title="C语言">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
@@ -475,7 +475,7 @@
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="n">chartypes</span> <span class="nf">classify</span><span class="p">(</span><span class="n">FILE</span> <span class="o">*</span><span class="n">f</span><span class="p">)</span> 
 </span></span><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="n">chartypes</span> <span class="n">types</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl">    <span class="n">chartypes</span> <span class="n">types</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">};</span>
 </span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">ch</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="p">((</span><span class="n">ch</span> <span class="o">=</span> <span class="n">fgetc</span><span class="p">(</span><span class="n">f</span><span class="p">))</span> <span class="o">!=</span> <span class="n">EOF</span><span class="p">)</span> <span class="p">{</span>
@@ -616,6 +616,12 @@
 </span><span class="lnt">19
 </span><span class="lnt">20
 </span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">typedef</span> <span class="k">union</span> <span class="n">bufType</span> <span class="n">bufType</span><span class="p">;</span>
@@ -627,15 +633,21 @@
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span> <span class="kt">void</span> <span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="n">bufType</span> <span class="n">a</span> <span class="o">=</span> <span class="p">{</span> <span class="p">.</span><span class="n">c</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">0</span> <span class="p">}</span> <span class="p">};</span> <span class="c1">// reserve a buffer and initialize
+</span></span><span class="line"><span class="cl">    <span class="n">bufType</span> <span class="n">a</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="p">.</span><span class="n">c</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">};</span> <span class="c1">// reserve a buffer and initialize
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kt">int</span><span class="o">*</span> <span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="p">.</span><span class="n">i</span><span class="p">;</span> <span class="c1">// no cast necessary
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="o">*</span><span class="n">b</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="k">static</span> <span class="n">bufType</span> <span class="n">a</span> <span class="o">=</span> <span class="p">{</span> <span class="p">.</span><span class="n">c</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">0</span> <span class="p">}</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl">    <span class="k">static</span> <span class="n">bufType</span> <span class="n">a</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="p">.</span><span class="n">c</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">};</span>
 </span></span><span class="line"><span class="cl">    <span class="kt">int</span><span class="o">*</span> <span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="p">.</span><span class="n">i</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="o">*</span><span class="n">b</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="n">_Thread_local</span> <span class="n">bufType</span> <span class="n">a</span> <span class="o">=</span> <span class="p">{</span> <span class="p">.</span><span class="n">c</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">0</span> <span class="p">}</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl">    <span class="n">_Thread_local</span> <span class="n">bufType</span> <span class="n">a</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="p">.</span><span class="n">c</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">};</span>
 </span></span><span class="line"><span class="cl">    <span class="kt">int</span><span class="o">*</span> <span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="p">.</span><span class="n">i</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="o">*</span><span class="n">b</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
@@ -1194,20 +1206,26 @@
 <p>在<code>C11</code>之前，没有对静态断言的直接支持。但是，在<code>C99</code>中，可以使用宏模拟静态断言，如果编译时条件为假，则会触发编译失败。与<code>_Static_assert</code>不同，第二个参数需要是适当名称，以便可以使用它创建变量名称。如果断言失败，则在编译器错误中可以看到变量名，因为该变量是在语法不正确的数组声明中使用的</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#define STATIC_MSG(msg, l) STATIC_MSG2(msg, l)
 </span></span></span><span class="line"><span class="cl"><span class="cp">#define STATIC_MSG2(msg,l) on_line_##l##__##msg
 </span></span></span><span class="line"><span class="cl"><span class="cp">#define STATIC_ASSERT(x, msg) extern char STATIC_MSG(msg, __LINE__) [(x)?1:-1]
 </span></span></span><span class="line"><span class="cl"><span class="cp"></span>
-</span></span><span class="line"><span class="cl"><span class="k">enum</span> <span class="p">{</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">5</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="k">enum</span> 
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">N</span> <span class="o">=</span> <span class="mi">5</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span><span class="line"><span class="cl"><span class="n">STATIC_ASSERT</span><span class="p">(</span><span class="n">N</span> <span class="o">==</span> <span class="mi">5</span><span class="p">,</span> <span class="n">N_must_equal_5</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="n">STATIC_ASSERT</span><span class="p">(</span><span class="n">N</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">,</span> <span class="n">N_must_be_greater_than_5</span><span class="p">);</span> <span class="cm">/* compile error */</span>
 </span></span></code></pre></td></tr></table>

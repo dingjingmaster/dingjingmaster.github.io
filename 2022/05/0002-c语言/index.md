@@ -82,7 +82,7 @@ typedef struct
 
 chartypes classify(FILE *f) 
 {
-    chartypes types = { 0, 0, 0 };
+    chartypes types = {0, 0, 0};
     int ch;
 
     while ((ch = fgetc(f)) != EOF) {
@@ -170,15 +170,21 @@ union bufType
 
 int main( void )
 {
-    bufType a = { .c = { 0 } }; // reserve a buffer and initialize
+    bufType a = {
+        .c = {0}
+    }; // reserve a buffer and initialize
     int* b = a.i; // no cast necessary
     *b = 1;
 
-    static bufType a = { .c = { 0 } };
+    static bufType a = {
+        .c = {0}
+    };
     int* b = a.i;
     *b = 2;
 
-    _Thread_local bufType a = { .c = { 0 } };
+    _Thread_local bufType a = {
+        .c = {0}
+    };
     int* b = a.i;
     *b = 3;
 }
@@ -505,7 +511,10 @@ static_assert(N > 10, "N is not greater than 10"); /* compiler error */
 #define STATIC_MSG2(msg,l) on_line_##l##__##msg
 #define STATIC_ASSERT(x, msg) extern char STATIC_MSG(msg, __LINE__) [(x)?1:-1]
 
-enum { N = 5 };
+enum 
+{
+    N = 5
+};
 STATIC_ASSERT(N == 5, N_must_equal_5);
 STATIC_ASSERT(N > 5, N_must_be_greater_than_5); /* compile error */
 ```
