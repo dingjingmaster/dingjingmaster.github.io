@@ -1,7 +1,7 @@
 {
 	"version": 3,
 	"file": "style.min.css",
-	"sourceRoot": "/data/blog/blog",
+	"sourceRoot": "/Users/dingjing/data/sources/blog",
 	"sources": [
 		"themes/jiujiu/assets/css/style.scss",
 		"themes/jiujiu/assets/css/_variables.scss",
