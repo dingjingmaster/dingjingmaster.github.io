@@ -5,32 +5,32 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>面试题 - 九九</title><meta name="Description" content=""><meta property="og:title" content="面试题" />
-<meta property="og:description" content="LRU 缓存机制实现 要求 实现一个 LRU(最近最少使用)缓存机制 获取/写入数据时间复杂度是O(1) 获取数据 &ndash; 如果数据存在缓存中，则获取到数据的值，否" />
+        <title>003 路径查询 - 九九</title><meta name="Description" content=""><meta property="og:title" content="003 路径查询" />
+<meta property="og:description" content="路径名查询说明" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://dingjingmaster.github.io/2022/05/0001-%E9%9D%A2%E8%AF%95%E9%A2%98/" /><meta property="og:image" content="https://dingjingmaster.github.io/img/logo.jpg"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2022-05-25T09:45:24+08:00" />
-<meta property="article:modified_time" content="2022-05-25T09:45:24+08:00" />
+<meta property="og:url" content="https://dingjingmaster.github.io/2022/05/003-%E8%B7%AF%E5%BE%84%E6%9F%A5%E8%AF%A2/" /><meta property="og:image" content="https://dingjingmaster.github.io/img/logo.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-05-26T08:47:23+08:00" />
+<meta property="article:modified_time" content="2022-05-26T08:47:23+08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://dingjingmaster.github.io/img/logo.jpg"/>
 
-<meta name="twitter:title" content="面试题"/>
-<meta name="twitter:description" content="LRU 缓存机制实现 要求 实现一个 LRU(最近最少使用)缓存机制 获取/写入数据时间复杂度是O(1) 获取数据 &ndash; 如果数据存在缓存中，则获取到数据的值，否"/>
+<meta name="twitter:title" content="003 路径查询"/>
+<meta name="twitter:description" content="路径名查询说明"/>
 <meta name="application-name" content="九九">
 <meta name="apple-mobile-web-app-title" content="九九"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://dingjingmaster.github.io/2022/05/0001-%E9%9D%A2%E8%AF%95%E9%A2%98/" /><link rel="prev" href="https://dingjingmaster.github.io/2022/05/0008-linux%E5%9F%BA%E7%A1%80-%E6%9C%AF%E8%AF%AD/" /><link rel="next" href="https://dingjingmaster.github.io/2022/05/003-%E8%B7%AF%E5%BE%84%E6%9F%A5%E8%AF%A2/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://dingjingmaster.github.io/2022/05/003-%E8%B7%AF%E5%BE%84%E6%9F%A5%E8%AF%A2/" /><link rel="prev" href="https://dingjingmaster.github.io/2022/05/0001-%E9%9D%A2%E8%AF%95%E9%A2%98/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "面试题",
+        "headline": "003 路径查询",
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/dingjingmaster.github.io\/2022\/05\/0001-%E9%9D%A2%E8%AF%95%E9%A2%98\/"
-        },"image": ["https:\/\/dingjingmaster.github.io\/img\/logo.jpg"],"genre": "posts","keywords": "linux, 算法","wordcount":  425 ,
-        "url": "https:\/\/dingjingmaster.github.io\/2022\/05\/0001-%E9%9D%A2%E8%AF%95%E9%A2%98\/","datePublished": "2022-05-25T09:45:24+08:00","dateModified": "2022-05-25T09:45:24+08:00","publisher": {
+            "@id": "https:\/\/dingjingmaster.github.io\/2022\/05\/003-%E8%B7%AF%E5%BE%84%E6%9F%A5%E8%AF%A2\/"
+        },"image": ["https:\/\/dingjingmaster.github.io\/img\/logo.jpg"],"genre": "posts","keywords": "linux, kernel, vfs","wordcount":  7 ,
+        "url": "https:\/\/dingjingmaster.github.io\/2022\/05\/003-%E8%B7%AF%E5%BE%84%E6%9F%A5%E8%AF%A2\/","datePublished": "2022-05-26T08:47:23+08:00","dateModified": "2022-05-26T08:47:23+08:00","publisher": {
             "@type": "Organization",
             "name": "九九","logo": "https:\/\/dingjingmaster.github.io\/img\/logo.jpg"},"author": {
                 "@type": "Person",
@@ -104,10 +104,10 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">目录</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animated flipInX">面试题</h1><div class="post-meta">
-            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>ding jing</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/"><i class="far fa-folder fa-fw"></i>面试题</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-05-25">2022-05-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 425 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 1 分钟&nbsp;<span id="/2022/05/0001-%E9%9D%A2%E8%AF%95%E9%A2%98/" class="leancloud_visitors" data-flag-title="面试题">
+        </div><article class="page single"><h1 class="single-title animated flipInX">003 路径查询</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>ding jing</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/linux/"><i class="far fa-folder fa-fw"></i>linux</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-05-26">2022-05-26</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 7 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 1 分钟&nbsp;<span id="/2022/05/003-%E8%B7%AF%E5%BE%84%E6%9F%A5%E8%AF%A2/" class="leancloud_visitors" data-flag-title="003 路径查询">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
@@ -117,64 +117,21 @@
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#lru-缓存机制实现">LRU 缓存机制实现</a>
-      <ul>
-        <li><a href="#要求">要求</a></li>
-        <li><a href="#实现思路">实现思路</a></li>
-      </ul>
-    </li>
+    <li><a href="#路径名查询说明">路径名查询说明</a></li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><h2 id="lru-缓存机制实现">LRU 缓存机制实现</h2>
-<h3 id="要求">要求</h3>
-<ol>
-<li>实现一个 LRU(最近最少使用)缓存机制</li>
-<li>获取/写入数据时间复杂度是O(1)</li>
-<li>获取数据 &ndash; 如果数据存在缓存中，则获取到数据的值，否则返回 -1</li>
-<li>写入数据 &ndash; 如果密钥不存在则写入数据值，当缓存容量达到上限时候，它应该在写入之前删除最近最少使用的数据值，从而为新的数据值留出空间。</li>
-</ol>
-<h3 id="实现思路">实现思路</h3>
-<ol>
-<li>要想O(1)一定要用hash了</li>
-<li>有容量大小限制，构造函数需要传入容量限制值</li>
-</ol>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">构造函数:
-</span></span><span class="line"><span class="cl">    1. 传入容量大小限制的值
-</span></span><span class="line"><span class="cl">    2. 再定义属性 size 表示当前使用的容量
-</span></span><span class="line"><span class="cl">    3. 定义一个hashmap + 一个双向链表; hashmap存放键+双向链表节点、 双向链表保存键对应的值 + 引用次数
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">get函数:
-</span></span><span class="line"><span class="cl">    判断“键”是否存在于 hashmap，存在则获取对应的值，根据值获取到 hashmap 对应的值，然后更新引用计数，更新后与后一个节点比较，看看是否调整链表位置。
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">set函数:
-</span></span><span class="line"><span class="cl">    判断&#34;键&#34;是否存在于 hashmap，存在则直接退出，不存在则创建新节点，插入 hashmap，并把节点放入 双向链表头部
-</span></span></code></pre></td></tr></table>
-</div>
-</div></div><div class="post-footer" id="post-footer">
+            </div><div class="content" id="content"><h2 id="路径名查询说明">路径名查询说明</h2>
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2022-05-25</span>
+                <span>更新于 2022-05-26</span>
             </div>
             <div class="post-info-license"></div>
         </div>
         <div class="post-info-line">
             <div class="post-info-md"><span>
-                            <a class="link-to-markdown" href="/2022/05/0001-%E9%9D%A2%E8%AF%95%E9%A2%98/index.md" target="_blank">阅读原始文档</a>
+                            <a class="link-to-markdown" href="/2022/05/003-%E8%B7%AF%E5%BE%84%E6%9F%A5%E8%AF%A2/index.md" target="_blank">阅读原始文档</a>
                         </span></div>
             <div class="post-info-share">
                 <span></span>
@@ -183,14 +140,13 @@
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">linux</a>,&nbsp;<a href="/tags/%E7%AE%97%E6%B3%95/">算法</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">linux</a>,&nbsp;<a href="/tags/kernel/">kernel</a>,&nbsp;<a href="/tags/vfs/">vfs</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/2022/05/0008-linux%E5%9F%BA%E7%A1%80-%E6%9C%AF%E8%AF%AD/" class="prev" rel="prev" title="Linux基础-术语"><i class="fas fa-angle-left fa-fw"></i>Linux基础-术语</a>
-            <a href="/2022/05/003-%E8%B7%AF%E5%BE%84%E6%9F%A5%E8%AF%A2/" class="next" rel="next" title="003 路径查询">003 路径查询<i class="fas fa-angle-right fa-fw"></i></a></div>
+    <div class="post-nav"><a href="/2022/05/0001-%E9%9D%A2%E8%AF%95%E9%A2%98/" class="prev" rel="prev" title="面试题"><i class="fas fa-angle-left fa-fw"></i>面试题</a></div>
 </div>
 <div id="comments"><div id="valine" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.

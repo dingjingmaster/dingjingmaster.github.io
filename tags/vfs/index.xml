@@ -4,7 +4,14 @@
         <link>https://dingjingmaster.github.io/tags/vfs/</link>
         <description>vfs - 标签 - 九九</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>dingjing@live.cn (ding jing)</managingEditor>
-            <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Wed, 18 May 2022 13:46:53 &#43;0800</lastBuildDate><atom:link href="https://dingjingmaster.github.io/tags/vfs/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Thu, 26 May 2022 08:47:23 &#43;0800</lastBuildDate><atom:link href="https://dingjingmaster.github.io/tags/vfs/" rel="self" type="application/rss+xml" /><item>
+    <title>003 路径查询</title>
+    <link>https://dingjingmaster.github.io/2022/05/003-%E8%B7%AF%E5%BE%84%E6%9F%A5%E8%AF%A2/</link>
+    <pubDate>Thu, 26 May 2022 08:47:23 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://dingjingmaster.github.io/2022/05/003-%E8%B7%AF%E5%BE%84%E6%9F%A5%E8%AF%A2/</guid>
+    <description><![CDATA[路径名查询说明]]></description>
+</item><item>
     <title>Linux虚拟文件系统概述</title>
     <link>https://dingjingmaster.github.io/2022/05/0001-linux%E8%99%9A%E6%8B%9F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/</link>
     <pubDate>Wed, 18 May 2022 13:46:53 &#43;0800</pubDate>

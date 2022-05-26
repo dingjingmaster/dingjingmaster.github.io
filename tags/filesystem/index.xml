@@ -5,11 +5,11 @@
         <description>filesystem - 标签 - 九九</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>dingjing@live.cn (ding jing)</managingEditor>
             <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Wed, 18 May 2022 11:14:55 &#43;0800</lastBuildDate><atom:link href="https://dingjingmaster.github.io/tags/filesystem/" rel="self" type="application/rss+xml" /><item>
-    <title>Linux内核文件系统</title>
-    <link>https://dingjingmaster.github.io/2022/05/0000-linux%E5%86%85%E6%A0%B8%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/</link>
+    <title>Linux内核</title>
+    <link>https://dingjingmaster.github.io/2022/05/0000-linux%E5%86%85%E6%A0%B8/</link>
     <pubDate>Wed, 18 May 2022 11:14:55 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>https://dingjingmaster.github.io/2022/05/0000-linux%E5%86%85%E6%A0%B8%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/</guid>
+    <guid>https://dingjingmaster.github.io/2022/05/0000-linux%E5%86%85%E6%A0%B8/</guid>
     <description><![CDATA[linux虚拟文件系统概述 linux虚拟文件系统概述]]></description>
 </item></channel>
 </rss>
