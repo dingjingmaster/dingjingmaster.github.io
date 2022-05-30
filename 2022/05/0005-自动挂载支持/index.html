@@ -20,7 +20,7 @@
 <meta name="application-name" content="九九">
 <meta name="apple-mobile-web-app-title" content="九九"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://dingjingmaster.github.io/2022/05/0005-%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD%E6%94%AF%E6%8C%81/" /><link rel="prev" href="https://dingjingmaster.github.io/2022/05/0003-%E8%B7%AF%E5%BE%84%E6%9F%A5%E8%AF%A2/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://dingjingmaster.github.io/2022/05/0005-%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD%E6%94%AF%E6%8C%81/" /><link rel="prev" href="https://dingjingmaster.github.io/2022/05/0003-%E8%B7%AF%E5%BE%84%E6%9F%A5%E8%AF%A2/" /><link rel="next" href="https://dingjingmaster.github.io/2022/05/0006-ldmappings-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9D%83%E9%99%90/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -29,7 +29,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/dingjingmaster.github.io\/2022\/05\/0005-%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD%E6%94%AF%E6%8C%81\/"
-        },"image": ["https:\/\/dingjingmaster.github.io\/img\/logo.jpg"],"genre": "posts","keywords": "linux, kernel, automount, 自动挂载, filesystem, 文件系统","wordcount":  1047 ,
+        },"image": ["https:\/\/dingjingmaster.github.io\/img\/logo.jpg"],"genre": "posts","keywords": "linux, kernel, automount, 自动挂载, filesystem, 文件系统","wordcount":  1062 ,
         "url": "https:\/\/dingjingmaster.github.io\/2022\/05\/0005-%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD%E6%94%AF%E6%8C%81\/","datePublished": "2022-05-30T17:18:31+08:00","dateModified": "2022-05-30T17:18:31+08:00","publisher": {
             "@type": "Organization",
             "name": "九九","logo": "https:\/\/dingjingmaster.github.io\/img\/logo.jpg"},"author": {
@@ -106,7 +106,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">自动挂载支持</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>ding jing</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/linux/"><i class="far fa-folder fa-fw"></i>linux</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-05-30">2022-05-30</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1047 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-05-30">2022-05-30</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1062 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;<span id="/2022/05/0005-%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD%E6%94%AF%E6%8C%81/" class="leancloud_visitors" data-flag-title="自动挂载支持">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
@@ -130,14 +130,7 @@
 <p>希望实现自动挂载支持的文件系统也可以获得支持(例如可以在 <code>fs/afs/</code> 中找到kAFS，在 <code>fs/nfs/</code> 中找到NFS)。这个功能包括允许执行核内挂载以及请求降级挂载点。降级后的挂载点用户空间也可以访问。</p>
 <h3 id="核内自动挂载">核内自动挂载</h3>
 <blockquote>
-<p>参见: <img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="https://www.kernel.org/doc/html/latest/filesystems/autofs.html"
-        data-srcset="https://www.kernel.org/doc/html/latest/filesystems/autofs.html, https://www.kernel.org/doc/html/latest/filesystems/autofs.html 1.5x, https://www.kernel.org/doc/html/latest/filesystems/autofs.html 2x"
-        data-sizes="auto"
-        alt="https://www.kernel.org/doc/html/latest/filesystems/autofs.html"
-        title="autofs的“挂载陷阱”部分" />-它是如何工作的</p>
+<p>参见: <a href="https://www.kernel.org/doc/html/latest/filesystems/autofs.html" target="_blank" rel="noopener noreffer">autofs的“挂载陷阱”部分</a>-它是如何工作的</p>
 </blockquote>
 <p>在用户空间中，你可以这样做:</p>
 <div class="highlight"><div class="chroma">
@@ -231,7 +224,8 @@
         </section>
     </div>
 
-    <div class="post-nav"><a href="/2022/05/0003-%E8%B7%AF%E5%BE%84%E6%9F%A5%E8%AF%A2/" class="prev" rel="prev" title="linux kernel 路径查询"><i class="fas fa-angle-left fa-fw"></i>linux kernel 路径查询</a></div>
+    <div class="post-nav"><a href="/2022/05/0003-%E8%B7%AF%E5%BE%84%E6%9F%A5%E8%AF%A2/" class="prev" rel="prev" title="linux kernel 路径查询"><i class="fas fa-angle-left fa-fw"></i>linux kernel 路径查询</a>
+            <a href="/2022/05/0006-ldmappings-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9D%83%E9%99%90/" class="next" rel="next" title="ldmappings 文件系统权限">ldmappings 文件系统权限<i class="fas fa-angle-right fa-fw"></i></a></div>
 </div>
 <div id="comments"><div id="valine" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
