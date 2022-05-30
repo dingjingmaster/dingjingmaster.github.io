@@ -4,7 +4,14 @@
         <link>https://dingjingmaster.github.io/categories/linux/</link>
         <description>linux - 分类 - 九九</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>dingjing@live.cn (ding jing)</managingEditor>
-            <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Thu, 26 May 2022 08:47:23 &#43;0800</lastBuildDate><atom:link href="https://dingjingmaster.github.io/categories/linux/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Mon, 30 May 2022 17:18:31 &#43;0800</lastBuildDate><atom:link href="https://dingjingmaster.github.io/categories/linux/" rel="self" type="application/rss+xml" /><item>
+    <title>自动挂载支持</title>
+    <link>https://dingjingmaster.github.io/2022/05/0005-%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD%E6%94%AF%E6%8C%81/</link>
+    <pubDate>Mon, 30 May 2022 17:18:31 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://dingjingmaster.github.io/2022/05/0005-%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD%E6%94%AF%E6%8C%81/</guid>
+    <description><![CDATA[自动挂载支持 希望实现自动挂载支持的文件系统也可以获得支持(例如可以在 fs/afs/ 中找到kAFS，在 fs/nfs/ 中找到NFS)。这个功能包括允许执行核内挂载以及请]]></description>
+</item><item>
     <title>linux kernel 路径查询</title>
     <link>https://dingjingmaster.github.io/2022/05/0003-%E8%B7%AF%E5%BE%84%E6%9F%A5%E8%AF%A2/</link>
     <pubDate>Thu, 26 May 2022 08:47:23 &#43;0800</pubDate>
@@ -67,12 +74,5 @@
     <author>作者</author>
     <guid>https://dingjingmaster.github.io/2022/03/0004-systemd%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BDsamba/</guid>
     <description><![CDATA[samba 挂载 目前有一个需求，系统重启时候需要自动挂载远程 samba 文件系统，起初使用 fstab 发现并不能成功挂载，考虑应该是和启动顺序有关系，当没有网络的时候是无]]></description>
-</item><item>
-    <title>Linux 命令 —— dd</title>
-    <link>https://dingjingmaster.github.io/2022/03/0003-%E5%91%BD%E4%BB%A4-dd/</link>
-    <pubDate>Fri, 18 Mar 2022 09:19:35 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://dingjingmaster.github.io/2022/03/0003-%E5%91%BD%E4%BB%A4-dd/</guid>
-    <description><![CDATA[说明 dd：用指定大小的块拷贝一个文件，并在拷贝的同时进行指定的转换。 块大小可以使用的计量表 单元大小 表示 字节(1B) c 字节(2B) w 块(512]]></description>
 </item></channel>
 </rss>

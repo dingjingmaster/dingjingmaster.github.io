@@ -4,7 +4,14 @@
         <link>https://dingjingmaster.github.io/tags/linux/</link>
         <description>linux - 标签 - 九九</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>dingjing@live.cn (ding jing)</managingEditor>
-            <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Thu, 26 May 2022 08:47:23 &#43;0800</lastBuildDate><atom:link href="https://dingjingmaster.github.io/tags/linux/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Mon, 30 May 2022 17:18:31 &#43;0800</lastBuildDate><atom:link href="https://dingjingmaster.github.io/tags/linux/" rel="self" type="application/rss+xml" /><item>
+    <title>自动挂载支持</title>
+    <link>https://dingjingmaster.github.io/2022/05/0005-%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD%E6%94%AF%E6%8C%81/</link>
+    <pubDate>Mon, 30 May 2022 17:18:31 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://dingjingmaster.github.io/2022/05/0005-%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD%E6%94%AF%E6%8C%81/</guid>
+    <description><![CDATA[自动挂载支持 希望实现自动挂载支持的文件系统也可以获得支持(例如可以在 fs/afs/ 中找到kAFS，在 fs/nfs/ 中找到NFS)。这个功能包括允许执行核内挂载以及请]]></description>
+</item><item>
     <title>linux kernel 路径查询</title>
     <link>https://dingjingmaster.github.io/2022/05/0003-%E8%B7%AF%E5%BE%84%E6%9F%A5%E8%AF%A2/</link>
     <pubDate>Thu, 26 May 2022 08:47:23 &#43;0800</pubDate>
@@ -67,12 +74,5 @@
     <author>作者</author>
     <guid>https://dingjingmaster.github.io/2022/04/0005-rfkill/</guid>
     <description><![CDATA[rfkill rfkill 是一个小型的用户空间工具，用于查询 rfkill 开关、按钮和子系统接口的状态。 Linux 内核通过 /dev/rfkill 设备文件公开了 rfkill 子系统一些控制功能，允许用户空间模拟/监听]]></description>
-</item><item>
-    <title>字符编码</title>
-    <link>https://dingjingmaster.github.io/2022/03/0001-%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81/</link>
-    <pubDate>Tue, 29 Mar 2022 17:02:44 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://dingjingmaster.github.io/2022/03/0001-%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81/</guid>
-    <description><![CDATA[字符编码基本概念 字符 字符（Character）：在计算机和电信技术中，一个字符是一个单位的字形、类字形单位或符号的基本信息。说的简单点字符是]]></description>
 </item></channel>
 </rss>
