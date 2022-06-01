@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>c&#43;&#43;20 - 标签 - 九九</title>
+        <link>https://dingjingmaster.github.io/tags/c&#43;&#43;20/</link>
+        <description>c&#43;&#43;20 - 标签 - 九九</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>dingjing@live.cn (ding jing)</managingEditor>
+            <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Wed, 01 Jun 2022 08:01:52 &#43;0800</lastBuildDate><atom:link href="https://dingjingmaster.github.io/tags/c&#43;&#43;20/" rel="self" type="application/rss+xml" /><item>
+    <title>现代c&#43;&#43;</title>
+    <link>https://dingjingmaster.github.io/2022/06/0003-%E7%8E%B0%E4%BB%A3c-/</link>
+    <pubDate>Wed, 01 Jun 2022 08:01:52 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://dingjingmaster.github.io/2022/06/0003-%E7%8E%B0%E4%BB%A3c-/</guid>
+    <description><![CDATA[现代C++，快速上手 C++11、C++14、C++17、C++20 概述 C++98 是C++第一个版本 C++98 之后积累十年出现 C++11 C++14/17 对C++11做了重要补充和优]]></description>
+</item></channel>
+</rss>
