@@ -4,7 +4,14 @@
         <link>https://dingjingmaster.github.io/posts/</link>
         <description>所有文章 | 九九</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>dingjing@live.cn (ding jing)</managingEditor>
-            <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Tue, 07 Jun 2022 19:55:26 &#43;0800</lastBuildDate><atom:link href="https://dingjingmaster.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Tue, 21 Jun 2022 09:15:28 &#43;0800</lastBuildDate><atom:link href="https://dingjingmaster.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Golang无法识别GOROOT</title>
+    <link>https://dingjingmaster.github.io/2022/06/0003-golang%E6%97%A0%E6%B3%95%E8%AF%86%E5%88%ABgoroot/</link>
+    <pubDate>Tue, 21 Jun 2022 09:15:28 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://dingjingmaster.github.io/2022/06/0003-golang%E6%97%A0%E6%B3%95%E8%AF%86%E5%88%ABgoroot/</guid>
+    <description><![CDATA[问题 已经安装好go并配置好GOROOT和GOPATH之后，在Goland无法自动识别出GOROOT。在Goland设置选择go安装目录下，提]]></description>
+</item><item>
     <title>polkit 相关命令</title>
     <link>https://dingjingmaster.github.io/2022/06/0003-polkit-%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4/</link>
     <pubDate>Tue, 07 Jun 2022 19:55:26 &#43;0800</pubDate>
@@ -67,12 +74,5 @@
     <author>作者</author>
     <guid>https://dingjingmaster.github.io/2022/05/0005-%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD%E6%94%AF%E6%8C%81/</guid>
     <description><![CDATA[自动挂载支持 希望实现自动挂载支持的文件系统也可以获得支持(例如可以在 fs/afs/ 中找到kAFS，在 fs/nfs/ 中找到NFS)。这个功能包括允许执行核内挂载以及请]]></description>
-</item><item>
-    <title>linux kernel 路径查询</title>
-    <link>https://dingjingmaster.github.io/2022/05/0003-%E8%B7%AF%E5%BE%84%E6%9F%A5%E8%AF%A2/</link>
-    <pubDate>Thu, 26 May 2022 08:47:23 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://dingjingmaster.github.io/2022/05/0003-%E8%B7%AF%E5%BE%84%E6%9F%A5%E8%AF%A2/</guid>
-    <description><![CDATA[路径名查询说明 路径名查找几乎没有可以取巧的方法，因此反而比较复杂。有许多规则、特殊情况和实现替代方案，所有这些都使读者感到困惑。 然而，计算机]]></description>
 </item></channel>
 </rss>

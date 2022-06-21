@@ -9,8 +9,8 @@
 <meta property="og:description" content="问题 已经安装好go并配置好GOROOT和GOPATH之后，在Goland无法自动识别出GOROOT。在Goland设置选择go安装目录下，提" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://dingjingmaster.github.io/2022/06/0003-golang%E6%97%A0%E6%B3%95%E8%AF%86%E5%88%ABgoroot/" /><meta property="og:image" content="https://dingjingmaster.github.io/img/logo.jpg"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2022-06-21T08:56:54+08:00" />
-<meta property="article:modified_time" content="2022-06-21T08:56:54+08:00" />
+<meta property="article:published_time" content="2022-06-21T09:15:28+08:00" />
+<meta property="article:modified_time" content="2022-06-21T09:15:28+08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://dingjingmaster.github.io/img/logo.jpg"/>
@@ -20,7 +20,7 @@
 <meta name="application-name" content="九九">
 <meta name="apple-mobile-web-app-title" content="九九"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://dingjingmaster.github.io/2022/06/0003-golang%E6%97%A0%E6%B3%95%E8%AF%86%E5%88%ABgoroot/" /><link rel="prev" href="https://dingjingmaster.github.io/2022/06/0003-%E7%8E%B0%E4%BB%A3c-/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://dingjingmaster.github.io/2022/06/0003-golang%E6%97%A0%E6%B3%95%E8%AF%86%E5%88%ABgoroot/" /><link rel="prev" href="https://dingjingmaster.github.io/2022/06/0003-polkit-%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -29,8 +29,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/dingjingmaster.github.io\/2022\/06\/0003-golang%E6%97%A0%E6%B3%95%E8%AF%86%E5%88%ABgoroot\/"
-        },"image": ["https:\/\/dingjingmaster.github.io\/img\/logo.jpg"],"genre": "posts","keywords": "linux, GOROOT, Goland","wordcount":  160 ,
-        "url": "https:\/\/dingjingmaster.github.io\/2022\/06\/0003-golang%E6%97%A0%E6%B3%95%E8%AF%86%E5%88%ABgoroot\/","datePublished": "2022-06-21T08:56:54+08:00","dateModified": "2022-06-21T08:56:54+08:00","publisher": {
+        },"image": ["https:\/\/dingjingmaster.github.io\/img\/logo.jpg"],"genre": "posts","keywords": "go, goland, GOROOT","wordcount":  160 ,
+        "url": "https:\/\/dingjingmaster.github.io\/2022\/06\/0003-golang%E6%97%A0%E6%B3%95%E8%AF%86%E5%88%ABgoroot\/","datePublished": "2022-06-21T09:15:28+08:00","dateModified": "2022-06-21T09:15:28+08:00","publisher": {
             "@type": "Organization",
             "name": "九九","logo": "https:\/\/dingjingmaster.github.io\/img\/logo.jpg"},"author": {
                 "@type": "Person",
@@ -124,7 +124,7 @@
             </div><div class="content" id="content"><h2 id="问题">问题</h2>
 <p>已经安装好go并配置好GOROOT和GOPATH之后，在Goland无法自动识别出GOROOT。在Goland设置选择go安装目录下，提示&quot;Go SDK 非法的家目录&quot;</p>
 <h2 id="解决">解决</h2>
-<p>修改 <code>${GROOT}/src/runtime/internal/sys/zversion.go</code>，添加go SDK 对应的版本号信息: <code>const TheVersion = 'go1.18.3'</code></p>
+<p>修改<code>${GROOT}/src/runtime/internal/sys/zversion.go</code>，添加go SDK 对应的版本号信息: <code>const TheVersion = 'go1.18.3'</code></p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
@@ -142,13 +142,13 @@
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">linux</a>,&nbsp;<a href="/tags/goroot/">GOROOT</a>,&nbsp;<a href="/tags/goland/">Goland</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/go/">go</a>,&nbsp;<a href="/tags/goland/">goland</a>,&nbsp;<a href="/tags/goroot/">GOROOT</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/2022/06/0003-%E7%8E%B0%E4%BB%A3c-/" class="prev" rel="prev" title="现代c&#43;&#43;"><i class="fas fa-angle-left fa-fw"></i>现代c&#43;&#43;</a></div>
+    <div class="post-nav"><a href="/2022/06/0003-polkit-%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4/" class="prev" rel="prev" title="polkit 相关命令"><i class="fas fa-angle-left fa-fw"></i>polkit 相关命令</a></div>
 </div>
 <div id="comments"><div id="valine" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
