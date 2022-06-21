@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Polkit 介绍 - 九九</title><meta name="Description" content=""><meta property="og:title" content="Polkit 介绍" />
+<meta property="og:description" content="polkit是什么? polkit提供了一个授权API，旨在由特权程序(“机制”)使用，为非特权程序(“客户端”)提供服务。查看polkit手" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dingjingmaster.github.io/2022/06/0001-polkit%E4%BB%8B%E7%BB%8D/" /><meta property="og:image" content="https://dingjingmaster.github.io/img/logo.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-06-07T18:50:53+08:00" />
+<meta property="article:modified_time" content="2022-06-07T18:50:53+08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://dingjingmaster.github.io/img/logo.jpg"/>
+
+<meta name="twitter:title" content="Polkit 介绍"/>
+<meta name="twitter:description" content="polkit是什么? polkit提供了一个授权API，旨在由特权程序(“机制”)使用，为非特权程序(“客户端”)提供服务。查看polkit手"/>
+<meta name="application-name" content="九九">
+<meta name="apple-mobile-web-app-title" content="九九"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://dingjingmaster.github.io/2022/06/0001-polkit%E4%BB%8B%E7%BB%8D/" /><link rel="prev" href="https://dingjingmaster.github.io/2022/06/0007-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%8C%82%E8%BD%BDapi/" /><link rel="next" href="https://dingjingmaster.github.io/2022/06/0002-polkit/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Polkit 介绍",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/dingjingmaster.github.io\/2022\/06\/0001-polkit%E4%BB%8B%E7%BB%8D\/"
+        },"image": ["https:\/\/dingjingmaster.github.io\/img\/logo.jpg"],"genre": "posts","keywords": "linux, polkit","wordcount":  3194 ,
+        "url": "https:\/\/dingjingmaster.github.io\/2022\/06\/0001-polkit%E4%BB%8B%E7%BB%8D\/","datePublished": "2022-06-07T18:50:53+08:00","dateModified": "2022-06-07T18:50:53+08:00","publisher": {
+            "@type": "Organization",
+            "name": "九九","logo": "https:\/\/dingjingmaster.github.io\/img\/logo.jpg"},"author": {
+                "@type": "Person",
+                "name": "ding jing"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="九九"><span class="header-title-pre"> </span>九九</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="https://github.com/dingjingmaster" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="九九"><span class="header-title-pre"> </span>九九</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="https://github.com/dingjingmaster" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Polkit 介绍</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>ding jing</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/linux/"><i class="far fa-folder fa-fw"></i>linux</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-06-07">2022-06-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 3194 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 7 分钟&nbsp;<span id="/2022/06/0001-polkit%E4%BB%8B%E7%BB%8D/" class="leancloud_visitors" data-flag-title="Polkit 介绍">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#polkit是什么">polkit是什么?</a>
+      <ul>
+        <li><a href="#polkit-程序">polkit 程序</a></li>
+        <li><a href="#polkit-适用场景">polkit 适用场景</a></li>
+        <li><a href="#polkit-不适用的场景">polkit 不适用的场景</a></li>
+        <li><a href="#在非特权程序中的使用">在非特权程序中的使用</a></li>
+        <li><a href="#没有身份验证代理">没有身份验证代理</a></li>
+      </ul>
+    </li>
+    <li><a href="#编写polkit认证代理">编写polkit认证代理</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="polkit是什么">polkit是什么?</h2>
+<p>polkit提供了一个授权API，旨在由特权程序(“机制”)使用，为非特权程序(“客户端”)提供服务。查看polkit手册页面了解系统架构和总体情况。</p>
+<h3 id="polkit-程序">polkit 程序</h3>
+<p>Polkit 应用程序是使用 Polkit 权限作为决策组件的应用程序(polkitd)。他们通过将<code>.policy</code>文件安装到<code>/usr/share/polkit-1/actions</code>目录中，并在运行时与<code>polkitd</code>进行通信(通过D-Bus API或间接通过libpolkit-gobject-1库或pkcheck命令)。</p>
+<h3 id="polkit-适用场景">polkit 适用场景</h3>
+<ul>
+<li>如果您正在编写特权机制(即以root身份运行或具有特殊权限)，打算由非特权程序使用，则使用polkit。</li>
+<li>认真考虑定义什么行为。在许多情况下，操作和polkit动作之间没有1:1的映射。通常，polkit操作与操作所处理的对象的关系比操作本身的关系更大。在粒度过细和粒度过粗之间取得适当的平衡是很重要的。</li>
+<li>尝试选择操作和隐式授权，以便使用您的机制的应用程序能够为在控制台登录的用户开箱即用。应该优先考虑不使用身份验证对话框打断控制台用户。例如，对于添加打印机队列这样的普通任务，要求控制台用户进行身份验证是不明智的(如果管理员真的希望操作系统以这种方式工作，他总是可以部署合适的授权规则)。</li>
+<li>考虑所选择的隐式授权对多用户系统的影响。一般情况下，普通用户既不能为其他用户修改重要系统的行为/配置，也不能查看其他用户的私人数据。如果您的应用程序需要授权框架，那么至少在某些情况下，默认配置很可能会拒绝授权。默认使用<code>auth_admin</code> 而不是<code>auth_self</code>。(在单用户桌面中，单个用户通常被配置为polkit管理员，因此这两种变体的行为是相同的。在多用户系统中，非管理员用户将受到默认配置的限制。)</li>
+<li>将polkit变量与<code>CheckAuthorization()</code>请求一起传递，这样就可以编写与这些请求匹配的授权规则。还要在文档中记录这些变量(例如，请参阅udisks2操作和变量)。</li>
+<li>传递一个定制的身份验证消息(使用<code>polkit.message</code> 和 <code> polkit.gettext_domain</code> 变量)，它包含比<code>.policy</code>文件的<code>message</code>元素中声明的请求更详细的信息。例如：显示 “需要身份验证来格式化INTEL SSDSA2MH080G1GC (/dev/sda)”，而不是仅仅显示“需要身份验证来格式化设备”。</li>
+<li>确保您的应用程序工作，即使当<code>org.freedesktop.PolicyKit1 D-Bus</code> 服务不可用(这可能发生，如<code>polkitd(8)</code>没有安装或<code>polkit.service</code>被屏蔽)。如果你使用libpolkit-gobject-1库，这意味着处理<code>polkit_authority_get_sync()</code>或<code>polkit_authority_get_finish(</code>)返回<code>NULL</code>或<code>polkit_authority_check_authorization()</code> / <code>polkit_authority_check_authorization_sync()</code>失败，返回错误不在<code>POLKIT_ERROR</code>域。处理polkit权限不可用的一种适当方法可以是只允许uid 0执行操作，禁止所有操作或其他操作。</li>
+</ul>
+<h3 id="polkit-不适用的场景">polkit 不适用的场景</h3>
+<ul>
+<li>如果您的程序不打算供非特权程序使用，则不要使用polkit。例如，如果您正在编写开发人员工具或低级核心OS命令行工具，那么只要求用户是root就可以了。用户可以通过sudo(8)， pkexec(1)或编写一个简单的使用polkit的机制来访问工具的(安全)子集。</li>
+<li>除非必要，否则不要使用polkit。换句话说，并不是每个为非特权程序提供服务的特权程序都必须使用polkit。</li>
+<li>不要在每次授权机构发出<code>change</code>信号时对所有操作调用<code>CheckAuthorization()</code>。这不仅是对资源的浪费，结果也可能不准确，因为授权规则可以在任何时候返回它们想要的任何内容。</li>
+<li>在等待权限回复时，不要阻塞你的主线程(例如用于服务来自非特权程序的IPC请求的主线程)——<code>CheckAuthorization()</code>调用可能需要很长时间(秒，甚至分钟)才能完成，因为可能涉及用户交互。相反，可以使用异步API，或者使用带有同步API的专用线程。</li>
+<li>不要在应用程序中包含任何授权规则，因为这只适用于管理员和特殊用途的操作系统/环境。有关更多信息，请参阅“授权规则”一节。</li>
+</ul>
+<h3 id="在非特权程序中的使用">在非特权程序中的使用</h3>
+<p>非特权程序通常不直接使用polkit——它只是调用特权机制，该机制在使用polkit进行检查(可能包括显示身份验证对话框)后呈现服务(或拒绝请求)。在这种设置中，非特权程序不知道正在使用polkit—它只是等待特权机制执行请求(如果涉及身份验证对话框，这可能需要许多秒)。这是一件好事，因为不必担心诸如polkit之类的实现细节，这有助于简化非特权程序。</p>
+<p>有时，没有特权的程序需要禁用、修改或删除UI元素，以向用户传达某些操作无法执行(例如，用户没有获得授权)或需要验证(例如，在UI中显示挂锁图标)。在这种情况下，最好的方法通常是让非特权程序从特权机制(而不是polkit)获得该信息。这一点尤其正确，因为通常没有可靠的方法可以让非特权程序知道将要使用什么polkit操作。一般来说,不能保证操作(如d-bus方法)映射 <code>1:1:</code> 到 polkit 的某个 action ——例如,一个磁盘管理器服务的<code>Format()</code>方法可能检查<code>net.company.diskmanager.format-removable</code> 磁盘是否可移除 和 <code>net.company.diskmanager.format-fixed</code> 磁盘是固定的格式。</p>
+<p>然而，在某些情况下，例如在使用<code>org.freedesktop.policykit.imply</code> (参见polkit(8)手册页)时，对于非特权程序查询polkit权限它是有意义的(如更新UI元素),只要无特权的程序不通过任何变量随着<code>CheckAuthorization()</code>调用，这种查询操作是被允许的(否则很容易欺骗身份验证对话框和旁路授权规则)。事实上，由于这个用例是如此常见，<code>libpolkit-gobject-1</code>提供了可以与<code>GtkLockButton</code>一起使用的<code>PolkitPermission</code>类型(它派生自GPermission)。注意，要使GtkLockButton正常工作，支持它的polkit操作应该使用<code>auth_admin_keep</code>作为隐式授权(或者很少使用<code>auth_self_keep</code>作为不影响其他用户的服务)。这通常用于实现一个即时应用范例，用户解锁(通过身份验证)，例如一个首选项窗格窗口，然后可以自由更改设置，直到授权过期或被撤销。</p>
+<h3 id="没有身份验证代理">没有身份验证代理</h3>
+<p>如果一个polkit应用程序想要处理没有身份验证代理存在的情况(例如，如果应用程序是通过ssh(1)登录启动的)，应用程序可以使用PolkitAgentTextListener类型来根据需要生成自己的身份验证代理。另外，也可以使用pkttyagent(1) helper来完成此任务。</p>
+<h2 id="编写polkit认证代理">编写polkit认证代理</h2>
+<p>认证代理由桌面环境提供。当用户会话开始时，代理使用<code>RegisterAuthenticationAgent()</code>方法向<code>polkit Authority</code>注册。当需要服务时，机构将调用<code>org.freedesktop.PolicyKit1.AuthenticationAgent</code> D-Bus接口上的方法。一旦用户通过身份验证，(特权部分)代理将调用<code>AuthenticationAgentResponse2()</code>方法。这个方法应该被视为内部实现细节，调用者应该使用<code>PolkitAgentSession</code> API来调用它，它目前使用一个setuid助手程序。</p>
+<p>libpolkit-agent-1库提供了帮助程序，使构建使用本机身份验证系统的身份验证代理变得容易，例如pam(8)。</p>
+<p>如果设置了环境变量<code>POLKIT_DEBUG</code>，则<code>libpolkit-agent-1</code>库将在标准输出中输出诊断信息。</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2022-06-07</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">linux</a>,&nbsp;<a href="/tags/polkit/">polkit</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/2022/06/0007-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%8C%82%E8%BD%BDapi/" class="prev" rel="prev" title="文件系统挂载API"><i class="fas fa-angle-left fa-fw"></i>文件系统挂载API</a>
+            <a href="/2022/06/0002-polkit/" class="next" rel="next" title="polkit 授权管理器">polkit 授权管理器<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">ding jing</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="/lib/lightgallery/lightgallery.min.css"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script type="text/javascript" src="/lib/valine/Valine.min.js"></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/algoliasearch/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/twemoji/twemoji.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lightgallery.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-thumbnail.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-zoom.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"valine":{"appId":"oGOJ6TSiiaaOrhXD1bEYILk9-gzGzoHsz","appKey":"lbK71uSxpg4XmLmvm2h13JdJ","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"serverURLs":"https://ogoj6tsi.lc-cn-n1-shared.com","visitor":true}},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.zh-cn","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"},"twemoji":true};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

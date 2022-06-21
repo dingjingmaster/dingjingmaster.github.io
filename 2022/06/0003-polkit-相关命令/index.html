@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>polkit 相关命令 - 九九</title><meta name="Description" content=""><meta property="og:title" content="polkit 相关命令" />
+<meta property="og:description" content="pkcheck 检查进程是否被授权 说明 pkcheck用于检查进程(由&ndash;process(见下文)或&ndash;system-bus-name指" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dingjingmaster.github.io/2022/06/0003-polkit-%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4/" /><meta property="og:image" content="https://dingjingmaster.github.io/img/logo.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-06-07T19:55:26+08:00" />
+<meta property="article:modified_time" content="2022-06-07T19:55:26+08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://dingjingmaster.github.io/img/logo.jpg"/>
+
+<meta name="twitter:title" content="polkit 相关命令"/>
+<meta name="twitter:description" content="pkcheck 检查进程是否被授权 说明 pkcheck用于检查进程(由&ndash;process(见下文)或&ndash;system-bus-name指"/>
+<meta name="application-name" content="九九">
+<meta name="apple-mobile-web-app-title" content="九九"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://dingjingmaster.github.io/2022/06/0003-polkit-%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4/" /><link rel="prev" href="https://dingjingmaster.github.io/2022/06/0002-polkit/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "polkit 相关命令",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/dingjingmaster.github.io\/2022\/06\/0003-polkit-%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4\/"
+        },"image": ["https:\/\/dingjingmaster.github.io\/img\/logo.jpg"],"genre": "posts","keywords": "linux, polkit","wordcount":  3581 ,
+        "url": "https:\/\/dingjingmaster.github.io\/2022\/06\/0003-polkit-%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4\/","datePublished": "2022-06-07T19:55:26+08:00","dateModified": "2022-06-07T19:55:26+08:00","publisher": {
+            "@type": "Organization",
+            "name": "九九","logo": "https:\/\/dingjingmaster.github.io\/img\/logo.jpg"},"author": {
+                "@type": "Person",
+                "name": "ding jing"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="九九"><span class="header-title-pre"> </span>九九</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="https://github.com/dingjingmaster" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="九九"><span class="header-title-pre"> </span>九九</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="https://github.com/dingjingmaster" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">polkit 相关命令</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>ding jing</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/linux/"><i class="far fa-folder fa-fw"></i>linux</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-06-07">2022-06-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 3581 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 8 分钟&nbsp;<span id="/2022/06/0003-polkit-%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4/" class="leancloud_visitors" data-flag-title="polkit 相关命令">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#pkcheck">pkcheck</a>
+      <ul>
+        <li><a href="#说明">说明</a></li>
+        <li><a href="#返回值">返回值</a></li>
+        <li><a href="#注意">注意</a></li>
+      </ul>
+    </li>
+    <li><a href="#pkaction">pkaction</a>
+      <ul>
+        <li><a href="#说明-1">说明</a></li>
+        <li><a href="#返回值-1">返回值</a></li>
+      </ul>
+    </li>
+    <li><a href="#pkexec">pkexec</a>
+      <ul>
+        <li><a href="#说明-2">说明</a></li>
+        <li><a href="#返回值-2">返回值</a></li>
+        <li><a href="#认证代理">认证代理</a></li>
+        <li><a href="#安全方面">安全方面</a></li>
+        <li><a href="#action和授权">action和授权</a></li>
+        <li><a href="#包装使用">包装使用</a></li>
+        <li><a href="#变量">变量</a></li>
+      </ul>
+    </li>
+    <li><a href="#pkttyagent">pkttyagent</a>
+      <ul>
+        <li><a href="#说明-3">说明</a></li>
+        <li><a href="#返回值-3">返回值</a></li>
+        <li><a href="#注意-1">注意</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="pkcheck">pkcheck</h2>
+<blockquote>
+<p>检查进程是否被授权</p>
+</blockquote>
+<h3 id="说明">说明</h3>
+<p>pkcheck用于检查进程(由&ndash;process(见下文)或&ndash;system-bus-name指定)是否被授权执行操作。可以多次使用&ndash;detail选项传递有关操作的细节。如果&ndash;allow-user-interaction被传递，pkcheck在等待身份验证时阻塞。</p>
+<p>调用pkcheck &ndash;list-temp将列出当前会话的所有临时授权，而pkcheck &ndash;revoke-temp将撤销当前会话的所有临时授权。</p>
+<p>这个命令是对polkit D-Bus接口的简单包装;详细信息请参见D-Bus接口文档。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Usage:
+</span></span><span class="line"><span class="cl">  pkcheck [OPTION...]
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Help Options:
+</span></span><span class="line"><span class="cl">  -h, --help                         Show help options
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Application Options:
+</span></span><span class="line"><span class="cl">  -a, --action-id=ACTION             Check authorization to perform ACTION
+</span></span><span class="line"><span class="cl">  -u, --allow-user-interaction       Interact with the user if necessary
+</span></span><span class="line"><span class="cl">  -d, --details=KEY VALUE            Add (KEY, VALUE) to information about the action
+</span></span><span class="line"><span class="cl">  --enable-internal-agent            Use an internal authentication agent if necessary
+</span></span><span class="line"><span class="cl">  --list-temp                        List temporary authorizations for current session
+</span></span><span class="line"><span class="cl">  -p, --process=PID[,START_TIME,UID] Check authorization of specified process
+</span></span><span class="line"><span class="cl">  --revoke-temp                      Revoke all temporary authorizations for current session
+</span></span><span class="line"><span class="cl">  -s, --system-bus-name=BUS_NAME     Check authorization of owner of BUS_NAME
+</span></span><span class="line"><span class="cl">  --version                          Show version
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Report bugs to: http://lists.freedesktop.org/mailman/listinfo/polkit-devel
+</span></span><span class="line"><span class="cl">polkit home page: &lt;http://www.freedesktop.org/wiki/Software/polkit&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="返回值">返回值</h3>
+<p>如果指定的进程被授权，pkcheck将以0的返回值退出。如果授权结果包含任何详细信息，它们将使用环境样式的报告作为键/值对打印在标准输出上，例如，首先键后跟一个等号，然后值后跟一个换行符。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">KEY1=VALUE1
+</span></span><span class="line"><span class="cl">KEY2=VALUE2
+</span></span><span class="line"><span class="cl">KEY3=VALUE3
+</span></span><span class="line"><span class="cl">...
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>不包含在[a-zA-Z0-9_]中的八进制代码使用以\为前缀的八进制代码进行转义。例如,utf-8字符串<code>flø你好将</code> 将显示为: <code>\303\270l\54\344\275\240\345\245\275</code>。</p>
+<p>如果指定的进程未被授权，pkcheck将退出，返回值为1，并在标准错误时打印诊断消息。详细信息打印在标准输出上。</p>
+<p>如果指定的进程没有获得授权，因为没有合适的身份验证代理可用，或者没有通过 &ndash;allow-user-interaction，那么pkcheck将退出，返回值为2，并在标准错误时打印一条诊断消息。详细信息打印在标准输出上。</p>
+<p>如果指定的进程没有被授权，因为身份验证对话框/请求被用户驳回，pkcheck退出，返回值为3，并在标准错误上打印诊断消息。详细信息打印在标准输出上。</p>
+<p>如果在检查授权时发生错误，pkcheck退出，返回值为127，并在标准错误上打印诊断消息。</p>
+<p>如果传递的一个或多个选项是不规范的，则pkcheck退出，返回值为126。如果stdin是一个tty，那么也会显示此手册页。</p>
+<h3 id="注意">注意</h3>
+<p>不要针对 &ndash;process 选项仅仅使用pid或pid,start-time 语法。新代码应该总是使用pid,pid-start-time,uid。start-time的值可以通过参考proc(5)文件系统来确定，具体取决于操作系统。如果传入的参数少于3个，pkcheck将尝试在内部查找它们，但注意这可能是不正常的。</p>
+<h2 id="pkaction">pkaction</h2>
+<blockquote>
+<p>获取已注册操作的详细信息</p>
+</blockquote>
+<h3 id="说明-1">说明</h3>
+<p>pkaction用于获取关于已注册polkit操作的信息。如果调用时没有使用&ndash;action-id，则显示所有操作。如果调用时不带&ndash;verbose选项，则只显示操作的名称。否则将显示有关操作的详细信息。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Usage:
+</span></span><span class="line"><span class="cl">  pkaction [OPTION?] [--action-id ACTION]
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Help Options:
+</span></span><span class="line"><span class="cl">  -h, --help                 Show help options
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Application Options:
+</span></span><span class="line"><span class="cl">  -a, --action-id=ACTION     Only output information about ACTION
+</span></span><span class="line"><span class="cl">  -v, --verbose              Output detailed action information
+</span></span><span class="line"><span class="cl">  --version                  Show version
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Report bugs to: http://lists.freedesktop.org/mailman/listinfo/polkit-devel
+</span></span><span class="line"><span class="cl">polkit home page: &lt;http://www.freedesktop.org/wiki/Software/polkit&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="返回值-1">返回值</h3>
+<p>如果成功，pkaction返回0。否则将返回非零值，并在标准错误时打印诊断消息。</p>
+<h2 id="pkexec">pkexec</h2>
+<blockquote>
+<p>以其他用户身份执行命令</p>
+</blockquote>
+<h3 id="说明-2">说明</h3>
+<p>pkexec允许授权用户作为另一个用户执行PROGRAM。如果没有指定PROGRAM，将运行默认的shell。如果没有指定用户名，那么程序将以管理超级用户root执行。</p>
+<h3 id="返回值-2">返回值</h3>
+<p>成功完成后，返回值就是PROGRAM的返回值。如果调用进程未被授权或无法通过身份验证获得授权或发生错误，则pkexec退出，返回值为127。如果由于用户取消了身份验证对话框而无法获得授权，则pkexec退出，返回值为126。</p>
+<h3 id="认证代理">认证代理</h3>
+<p>与任何其他polkit应用程序一样，pkexec将使用为调用进程或会话注册的身份验证代理。但是，如果没有可用的身份验证代理，那么pkexec将注册它自己的文本身份验证代理。可以通过传递&ndash;disable-internal-agent选项来关闭此行为。</p>
+<h3 id="安全方面">安全方面</h3>
+<p>作为另一个用户执行程序是一种特权操作。默认情况下，要检查的操作(请参阅“action AND AUTHORIZATIONS”一节)需要管理员身份验证。此外，呈现给用户的身份验证对话框将显示要执行的程序的完整路径，以便用户知道将发生什么。</p>
+<p>PROGRAM运行它的环境将被设置为最小已知和安全的环境，以避免通过<code>LD_LIBRARY_PATH</code>或类似机制注入代码。另外，<code>PKEXEC_UID</code>环境变量被设置为调用<code>pkexec</code>的进程的用户id。因此，pkexec默认情况下不允许您以另一个用户的身份运行X11应用程序，因为没有设置<code>$DISPLAY</code>和<code>$XAUTHORITY</code>环境变量。如果action上的<code>org.freedesktop.policykit.exec.allow_gui</code>注释被设置为非空值，那么这两个变量将被保留;但是，这是不鼓励的，应该只用于遗留程序。</p>
+<p>注意，pkexec不验证传递给<code>PROGRAM</code>的<code>ARGUMENTS</code>。在正常情况下(每次使用pkexec时都需要管理员身份验证)，这不是问题，因为如果用户是管理员，他可能只需要运行pkexec bash来获得根用户。</p>
+<p>但是，如果使用了用户可以保留授权的操作(或者用户是隐式授权的)，这可能是一个安全漏洞。因此，根据经验，更改默认所需授权的程序永远不应该隐式信任用户输入(例如，像任何其他编写良好的suid程序)。</p>
+<h3 id="action和授权">action和授权</h3>
+<p>默认使用“<code>org.freedesktop.policykit.exec</code>”动作。要使用另一个操作，请在一个action上使用<code>org.freedesktop.policykit.exec.path</code>注释，该注释的值设置为程序的完整路径。除了指定程序之外，还可以指定身份验证消息、描述、图标和默认值。如果有<code>org.freedesktop.policykitexec.argv1</code>注释，则只有当程序的第一个参数与注释的值匹配时，才会选择该操作。</p>
+<p>请注意，身份验证消息可能会引用变量(请参阅“变量”一节)，例如$(user)将被扩展为用户变量的值。</p>
+<h3 id="包装使用">包装使用</h3>
+<p>为了避免修改现有软件以使用pkexec作为命令行调用的前缀，可以在she-bang包装器中使用pkexec，如下所示:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="ch">#!/usr/bin/pkexec /usr/bin/python</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">os</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">sys</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span> <span class="s2">&#34;Hello, I&#39;m running as uid </span><span class="si">%d</span><span class="s2">&#34;</span><span class="o">%</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getuid</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)):</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span> <span class="s2">&#34;arg[</span><span class="si">%d</span><span class="s2">]=`</span><span class="si">%s</span><span class="s2">&#39;&#34;</span><span class="o">%</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="n">n</span><span class="p">])</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>如果这个脚本被安装到/usr/bin/my-pk-test，那么下面的注释</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[...]
+</span></span><span class="line"><span class="cl">&lt;annotate key=&#34;org.freedesktop.policykit.exec.path&#34;&gt;/usr/bin/python&lt;/annotate&gt;
+</span></span><span class="line"><span class="cl">&lt;annotate key=&#34;org.freedesktop.policykit.exec.argv1&#34;&gt;/usr/bin/my-pk-test&lt;/annotate&gt;
+</span></span><span class="line"><span class="cl">[...]
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>可以用来选择合适的polkit动作。注意正确使用后面的注释，否则它将匹配<code>/usr/bin/python</code>脚本的任何pkexec调用。</p>
+<h3 id="变量">变量</h3>
+<p>以下变量是由pkexec设置的。它们可以用于授权规则和身份验证对话框中显示的消息:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">参数</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>program</code></td>
+<td style="text-align:left">要执行程序的完全限定路径。例如:“/bin/cat”</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>command_line</code></td>
+<td style="text-align:left">请求的命令行(不要将其用于任何安全检查，它不安全)。示例:“cat /srv/xyz/foobar”</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>user</code></td>
+<td style="text-align:left">执行程序的用户的用户名</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>user.gecos</code></td>
+<td style="text-align:left">执行程序的用户的全名</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>user.display</code></td>
+<td style="text-align:left">用户执行程序的一种表示形式，适合在身份验证对话框中显示。通常设置为用户名和全名的组合。例如:“David Zeuthen (davidz)”</td>
+</tr>
+</tbody>
+</table>
+<h2 id="pkttyagent">pkttyagent</h2>
+<blockquote>
+<p>文本验证助手</p>
+</blockquote>
+<h3 id="说明-3">说明</h3>
+<p>pkttyagent用于启动由 &ndash;process 或 &ndash;system-bus-name指定的主题的文本身份验证代理。如果没有提供这两个选项，则使用父进程。</p>
+<p>要在注册身份验证代理时获得通知，可以侦听changed D-Bus信号，或使用&ndash;notify-fd传递已传递给程序的文件描述符的编号。当身份验证代理成功注册后，将关闭此文件描述符。</p>
+<p>如果使用 &ndash;fallback，文本身份验证代理将不会替换现有的身份验证代理。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Usage:
+</span></span><span class="line"><span class="cl">  pkttyagent [OPTION?]
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Help Options:
+</span></span><span class="line"><span class="cl">  -h, --help                         Show help options
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Application Options:
+</span></span><span class="line"><span class="cl">  --fallback                         Don&#39;t replace existing agent if any
+</span></span><span class="line"><span class="cl">  --notify-fd=FD                     Close FD when the agent is registered
+</span></span><span class="line"><span class="cl">  -p, --process=PID[,START_TIME]     Register the agent for the specified process
+</span></span><span class="line"><span class="cl">  -s, --system-bus-name=BUS_NAME     Register the agent for the owner of BUS_NAME
+</span></span><span class="line"><span class="cl">  --version                          Show version
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Report bugs to: http://lists.freedesktop.org/mailman/listinfo/polkit-devel
+</span></span><span class="line"><span class="cl">polkit home page: &lt;http://www.freedesktop.org/wiki/Software/polkit&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="返回值-3">返回值</h3>
+<p>如果无法注册身份验证代理，pkttyagent将退出，退出码为127。诊断消息在标准错误时打印。</p>
+<p>如果传递的一个或多个选项是不正确的，pkttyagent将退出，退出代码为126。如果stdin是一个tty，那么也会显示此手册页。</p>
+<p>如果成功注册了身份验证代理，pkttyagent将继续运行，根据需要与用户交互。当不再需要它的服务时，可以终止该进程。</p>
+<h3 id="注意-1">注意</h3>
+<p>因为进程标识符可以循环使用，所以在使用 &ndash;process选项时，调用者应该始终使用pid,pid-start-time。pid-start-time的值可以通过参考proc(5)文件系统来确定，具体取决于操作系统。如果只将pid传递给&ndash;process选项，那么pkttyagent将查找启动时间本身，但请注意，这可能是不正常的。</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2022-06-07</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">linux</a>,&nbsp;<a href="/tags/polkit/">polkit</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/2022/06/0002-polkit/" class="prev" rel="prev" title="polkit 授权管理器"><i class="fas fa-angle-left fa-fw"></i>polkit 授权管理器</a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">ding jing</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="/lib/lightgallery/lightgallery.min.css"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script type="text/javascript" src="/lib/valine/Valine.min.js"></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/algoliasearch/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/twemoji/twemoji.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lightgallery.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-thumbnail.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-zoom.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"valine":{"appId":"oGOJ6TSiiaaOrhXD1bEYILk9-gzGzoHsz","appKey":"lbK71uSxpg4XmLmvm2h13JdJ","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"serverURLs":"https://ogoj6tsi.lc-cn-n1-shared.com","visitor":true}},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.zh-cn","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"},"twemoji":true};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
