@@ -12,6 +12,13 @@
     <guid>https://dingjingmaster.github.io/2022/07/0005-%E7%94%A8%E6%88%B7%E7%A9%BA%E9%97%B4%E6%8B%A6%E6%88%AA%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/</guid>
     <description><![CDATA[原理 Linux 允许让我们自己的动态库加载在其它动态库之前，甚至是系统库(libc.so.6)，如此我们可以通过自己实现动态库并提前加载来拦截系统调用]]></description>
 </item><item>
+    <title>BPF与eBPF</title>
+    <link>https://dingjingmaster.github.io/2022/06/0001-bpf%E4%B8%8Eebpf/</link>
+    <pubDate>Wed, 29 Jun 2022 11:02:30 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://dingjingmaster.github.io/2022/06/0001-bpf%E4%B8%8Eebpf/</guid>
+    <description><![CDATA[BPF与eBPF是什么 BPF(Berkeley Packet Filter)，伯克利数据包过滤器，这项技术诞生于 1992 年，其作用是提升网络包过滤工具的性能，2014年正式加入Lin]]></description>
+</item><item>
     <title>polkit 相关命令</title>
     <link>https://dingjingmaster.github.io/2022/06/0003-polkit-%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4/</link>
     <pubDate>Tue, 07 Jun 2022 19:55:26 &#43;0800</pubDate>
@@ -67,12 +74,5 @@
     <author>作者</author>
     <guid>https://dingjingmaster.github.io/2022/05/0001-%E9%9D%A2%E8%AF%95%E9%A2%98/</guid>
     <description><![CDATA[LRU 缓存机制实现 要求 实现一个 LRU(最近最少使用)缓存机制 获取/写入数据时间复杂度是O(1) 获取数据 &ndash; 如果数据存在缓存中，则获取到数据的值，否]]></description>
-</item><item>
-    <title>Linux基础-术语</title>
-    <link>https://dingjingmaster.github.io/2022/05/0008-linux%E5%9F%BA%E7%A1%80-%E6%9C%AF%E8%AF%AD/</link>
-    <pubDate>Tue, 24 May 2022 10:56:34 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://dingjingmaster.github.io/2022/05/0008-linux%E5%9F%BA%E7%A1%80-%E6%9C%AF%E8%AF%AD/</guid>
-    <description><![CDATA[cpu 相关术语 工作频率（外频和倍频） 早期的 CPU 架构主要通过北桥来链接系统最重要的 CPU、内存与显卡设备。因为所有的设 备都得通过北桥来链接，因此每个]]></description>
 </item></channel>
 </rss>

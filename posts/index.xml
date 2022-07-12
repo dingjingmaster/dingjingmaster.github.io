@@ -12,6 +12,13 @@
     <guid>https://dingjingmaster.github.io/2022/07/0005-%E7%94%A8%E6%88%B7%E7%A9%BA%E9%97%B4%E6%8B%A6%E6%88%AA%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/</guid>
     <description><![CDATA[原理 Linux 允许让我们自己的动态库加载在其它动态库之前，甚至是系统库(libc.so.6)，如此我们可以通过自己实现动态库并提前加载来拦截系统调用]]></description>
 </item><item>
+    <title>BPF与eBPF</title>
+    <link>https://dingjingmaster.github.io/2022/06/0001-bpf%E4%B8%8Eebpf/</link>
+    <pubDate>Wed, 29 Jun 2022 11:02:30 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://dingjingmaster.github.io/2022/06/0001-bpf%E4%B8%8Eebpf/</guid>
+    <description><![CDATA[BPF与eBPF是什么 BPF(Berkeley Packet Filter)，伯克利数据包过滤器，这项技术诞生于 1992 年，其作用是提升网络包过滤工具的性能，2014年正式加入Lin]]></description>
+</item><item>
     <title>Golang无法识别GOROOT</title>
     <link>https://dingjingmaster.github.io/2022/06/0003-golang%E6%97%A0%E6%B3%95%E8%AF%86%E5%88%ABgoroot/</link>
     <pubDate>Tue, 21 Jun 2022 09:15:28 &#43;0800</pubDate>
@@ -67,12 +74,5 @@
     <author>作者</author>
     <guid>https://dingjingmaster.github.io/2022/05/0001-fetch%E4%B8%8Epull%E5%8C%BA%E5%88%AB/</guid>
     <description><![CDATA[简单概括 git fetch 是将远程主机的最新内容拉到本地，用户在检查了以后决定是否合并到工作本机分支中。 git pull 则是将远程主机的最新内容拉下来后直接合并，即：]]></description>
-</item><item>
-    <title>ldmappings 文件系统权限</title>
-    <link>https://dingjingmaster.github.io/2022/05/0006-ldmappings-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9D%83%E9%99%90/</link>
-    <pubDate>Mon, 30 May 2022 17:48:05 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://dingjingmaster.github.io/2022/05/0006-ldmappings-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9D%83%E9%99%90/</guid>
-    <description><![CDATA[ldmappings 大多数文件系统开发人员都遇到过idmapping。当从磁盘读取或写入权限、向用户空间报告所有权或用于权限检查时使用它们。本文的目标读者是想]]></description>
 </item></channel>
 </rss>
