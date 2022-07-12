@@ -4,9 +4,16 @@
         <link>https://dingjingmaster.github.io/</link>
         <description>九九</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>dingjing@live.cn (ding jing)</managingEditor>
-            <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Tue, 21 Jun 2022 09:15:28 &#43;0800</lastBuildDate>
+            <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Tue, 12 Jul 2022 11:03:09 &#43;0800</lastBuildDate>
             <atom:link href="https://dingjingmaster.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>用户空间拦截系统调用</title>
+    <link>https://dingjingmaster.github.io/2022/07/0005-%E7%94%A8%E6%88%B7%E7%A9%BA%E9%97%B4%E6%8B%A6%E6%88%AA%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/</link>
+    <pubDate>Tue, 12 Jul 2022 11:03:09 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://dingjingmaster.github.io/2022/07/0005-%E7%94%A8%E6%88%B7%E7%A9%BA%E9%97%B4%E6%8B%A6%E6%88%AA%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/</guid>
+    <description><![CDATA[原理 Linux 允许让我们自己的动态库加载在其它动态库之前，甚至是系统库(libc.so.6)，如此我们可以通过自己实现动态库并提前加载来拦截系统调用]]></description>
+</item><item>
     <title>Golang无法识别GOROOT</title>
     <link>https://dingjingmaster.github.io/2022/06/0003-golang%E6%97%A0%E6%B3%95%E8%AF%86%E5%88%ABgoroot/</link>
     <pubDate>Tue, 21 Jun 2022 09:15:28 &#43;0800</pubDate>
@@ -69,12 +76,5 @@
     <author>作者</author>
     <guid>https://dingjingmaster.github.io/2022/05/0006-ldmappings-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9D%83%E9%99%90/</guid>
     <description><![CDATA[ldmappings 大多数文件系统开发人员都遇到过idmapping。当从磁盘读取或写入权限、向用户空间报告所有权或用于权限检查时使用它们。本文的目标读者是想]]></description>
-</item><item>
-    <title>自动挂载支持</title>
-    <link>https://dingjingmaster.github.io/2022/05/0005-%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD%E6%94%AF%E6%8C%81/</link>
-    <pubDate>Mon, 30 May 2022 17:18:31 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://dingjingmaster.github.io/2022/05/0005-%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD%E6%94%AF%E6%8C%81/</guid>
-    <description><![CDATA[自动挂载支持 希望实现自动挂载支持的文件系统也可以获得支持(例如可以在 fs/afs/ 中找到kAFS，在 fs/nfs/ 中找到NFS)。这个功能包括允许执行核内挂载以及请]]></description>
 </item></channel>
 </rss>
