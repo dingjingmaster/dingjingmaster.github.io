@@ -4,7 +4,14 @@
         <link>https://dingjingmaster.github.io/tags/git/</link>
         <description>git - 标签 - 九九</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>dingjing@live.cn (ding jing)</managingEditor>
-            <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Tue, 31 May 2022 10:32:59 &#43;0800</lastBuildDate><atom:link href="https://dingjingmaster.github.io/tags/git/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Tue, 19 Jul 2022 22:38:41 &#43;0800</lastBuildDate><atom:link href="https://dingjingmaster.github.io/tags/git/" rel="self" type="application/rss+xml" /><item>
+    <title>Linux终端git无法联网</title>
+    <link>https://dingjingmaster.github.io/2022/07/0003-linux%E7%BB%88%E7%AB%AFgit%E6%97%A0%E6%B3%95%E8%81%94%E7%BD%91/</link>
+    <pubDate>Tue, 19 Jul 2022 22:38:41 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://dingjingmaster.github.io/2022/07/0003-linux%E7%BB%88%E7%AB%AFgit%E6%97%A0%E6%B3%95%E8%81%94%E7%BD%91/</guid>
+    <description><![CDATA[问题描述 电脑使用了clash代理工具，配好环境之后浏览器可以访问谷歌和github，但是终端无法推送代码到github 解决方法 打开终端执行如]]></description>
+</item><item>
     <title>git rebase与merge的区别</title>
     <link>https://dingjingmaster.github.io/2022/05/0002-rebase%E4%B8%8Emerge%E7%9A%84%E5%8C%BA%E5%88%AB/</link>
     <pubDate>Tue, 31 May 2022 10:32:59 &#43;0800</pubDate>
