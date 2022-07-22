@@ -29,7 +29,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/dingjingmaster.github.io\/2022\/07\/0003-linux%E7%BB%88%E7%AB%AFgit%E6%97%A0%E6%B3%95%E8%81%94%E7%BD%91\/"
-        },"image": ["https:\/\/dingjingmaster.github.io\/img\/logo.jpg"],"genre": "posts","keywords": "git","wordcount":  86 ,
+        },"image": ["https:\/\/dingjingmaster.github.io\/img\/logo.jpg"],"genre": "posts","keywords": "git","wordcount":  113 ,
         "url": "https:\/\/dingjingmaster.github.io\/2022\/07\/0003-linux%E7%BB%88%E7%AB%AFgit%E6%97%A0%E6%B3%95%E8%81%94%E7%BD%91\/","datePublished": "2022-07-19T22:38:41+08:00","dateModified": "2022-07-19T22:38:41+08:00","publisher": {
             "@type": "Organization",
             "name": "九九","logo": "https:\/\/dingjingmaster.github.io\/img\/logo.jpg"},"author": {
@@ -106,7 +106,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Linux终端git无法联网</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>ding jing</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/git/"><i class="far fa-folder fa-fw"></i>git</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-07-19">2022-07-19</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 86 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-07-19">2022-07-19</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 113 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 1 分钟&nbsp;<span id="/2022/07/0003-linux%E7%BB%88%E7%AB%AFgit%E6%97%A0%E6%B3%95%E8%81%94%E7%BD%91/" class="leancloud_visitors" data-flag-title="Linux终端git无法联网">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
@@ -129,13 +129,22 @@
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">git config --global http.proxy &#39;sockets5://127.0.0.1:7891&#39;
 </span></span><span class="line"><span class="cl">git config --global https.proxy &#39;sockets5://127.0.0.1:7891&#39;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># 或者
+</span></span><span class="line"><span class="cl">git config --global http.proxy &#39;http://127.0.0.1:7890&#39;
+</span></span><span class="line"><span class="cl">git config --global https.proxy &#39;https://127.0.0.1:7890&#39;
 </span></span></code></pre></td></tr></table>
 </div>
-</div></div><div class="post-footer" id="post-footer">
+</div><p>具体看使用啥代理方式</p>
+</div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
