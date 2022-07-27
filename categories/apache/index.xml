@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>apache - 分类 - 九九</title>
+        <link>https://dingjingmaster.github.io/categories/apache/</link>
+        <description>apache - 分类 - 九九</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>dingjing@live.cn (ding jing)</managingEditor>
+            <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Fri, 22 Jul 2022 22:46:56 &#43;0800</lastBuildDate><atom:link href="https://dingjingmaster.github.io/categories/apache/" rel="self" type="application/rss+xml" /><item>
+    <title>解析各种文件格式 Tika</title>
+    <link>https://dingjingmaster.github.io/2022/07/0001-%E8%A7%A3%E6%9E%90%E5%90%84%E7%A7%8D%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F-tika/</link>
+    <pubDate>Fri, 22 Jul 2022 22:46:56 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://dingjingmaster.github.io/2022/07/0001-%E8%A7%A3%E6%9E%90%E5%90%84%E7%A7%8D%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F-tika/</guid>
+    <description><![CDATA[tika 是什么 Apache Tika 用于文件类型检测和从各种格式的文件内容提取的库。在内部，Tika使用现有的各种文件解析器和文档类型的检测技术来检测和提取数据。使]]></description>
+</item></channel>
+</rss>
