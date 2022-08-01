@@ -29,7 +29,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/dingjingmaster.github.io\/2022\/07\/0006-%E9%AB%98%E6%95%88%E7%9A%84%E5%BA%8F%E5%88%97%E5%8C%96%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%B7%A5%E5%85%B7protocol-buffers\/"
-        },"image": ["https:\/\/dingjingmaster.github.io\/img\/logo.jpg"],"genre": "posts","keywords": "c, c\u002b\u002b, protobuf, 序列化, 反序列化","wordcount":  1791 ,
+        },"image": ["https:\/\/dingjingmaster.github.io\/img\/logo.jpg"],"genre": "posts","keywords": "c, c\u002b\u002b, protobuf, 序列化, 反序列化","wordcount":  1909 ,
         "url": "https:\/\/dingjingmaster.github.io\/2022\/07\/0006-%E9%AB%98%E6%95%88%E7%9A%84%E5%BA%8F%E5%88%97%E5%8C%96%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%B7%A5%E5%85%B7protocol-buffers\/","datePublished": "2022-07-21T23:01:45+08:00","dateModified": "2022-07-21T23:01:45+08:00","publisher": {
             "@type": "Organization",
             "name": "九九","logo": "https:\/\/dingjingmaster.github.io\/img\/logo.jpg"},"author": {
@@ -106,7 +106,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">高效的序列化、反序列化工具——ProtoBuf</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>ding jing</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/cc++/"><i class="far fa-folder fa-fw"></i>c&c++</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-07-21">2022-07-21</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1791 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-07-21">2022-07-21</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1909 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;<span id="/2022/07/0006-%E9%AB%98%E6%95%88%E7%9A%84%E5%BA%8F%E5%88%97%E5%8C%96%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%B7%A5%E5%85%B7protocol-buffers/" class="leancloud_visitors" data-flag-title="高效的序列化、反序列化工具——ProtoBuf">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
@@ -119,6 +119,16 @@
   <ul>
     <li><a href="#protobuf-简介">ProtoBuf 简介</a></li>
     <li><a href="#protobuf-数据结构">ProtoBuf 数据结构</a></li>
+    <li><a href="#proto-文件"><code>.proto</code> 文件</a>
+      <ul>
+        <li><a href="#一些例子">一些例子</a>
+          <ul>
+            <li><a href="#指定一个版本">指定一个版本</a></li>
+            <li><a href="#定义一个服务和方法">定义一个服务和方法</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
     <li><a href="#protobuf使用一般步骤">ProtoBuf使用一般步骤</a>
       <ul>
         <li><a href="#1-定义proto文件">1. 定义proto文件</a></li>
@@ -225,7 +235,91 @@
 </tr>
 </tbody>
 </table>
-<h2 id="protobuf使用一般步骤">ProtoBuf使用一般步骤</h2>
+<h2 id="proto-文件"><code>.proto</code> 文件</h2>
+<table>
+<thead>
+<tr>
+<th>关键字</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>syntax</td>
+<td>指定<code>proto</code>语言版本</td>
+</tr>
+<tr>
+<td>option</td>
+<td>修改配置选项</td>
+</tr>
+<tr>
+<td>service</td>
+<td>声明一个服务</td>
+</tr>
+<tr>
+<td>rpc</td>
+<td>声明一个方法</td>
+</tr>
+<tr>
+<td>resturns</td>
+<td>方法的返回值</td>
+</tr>
+<tr>
+<td>message</td>
+<td>定义一个消息类型</td>
+</tr>
+<tr>
+<td>repeated</td>
+<td>数组</td>
+</tr>
+<tr>
+<td>stream</td>
+<td>用流来交互</td>
+</tr>
+</tbody>
+</table>
+<h3 id="一些例子">一些例子</h3>
+<h4 id="指定一个版本">指定一个版本</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">syntax = &#34;proto3&#34;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="定义一个服务和方法">定义一个服务和方法</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">service TestService 
+</span></span><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">    rpc testMethod(Request) returns (Result) {}
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">message Request
+</span></span><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">message Result
+</span></span><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="protobuf使用一般步骤">ProtoBuf使用一般步骤</h2>
 <h3 id="1-定义proto文件">1. 定义proto文件</h3>
 <p>proto文件中就是定义了我们需要存储或传输的数据结构/传输协议</p>
 <br/>
