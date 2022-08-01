@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>qcow2 - 标签 - 九九</title>
+        <link>https://dingjingmaster.github.io/tags/qcow2/</link>
+        <description>qcow2 - 标签 - 九九</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>dingjing@live.cn (ding jing)</managingEditor>
+            <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Sun, 24 Jul 2022 22:02:25 &#43;0800</lastBuildDate><atom:link href="https://dingjingmaster.github.io/tags/qcow2/" rel="self" type="application/rss+xml" /><item>
+    <title>0010 Linux挂载qcow2</title>
+    <link>https://dingjingmaster.github.io/2022/07/0010-linux%E6%8C%82%E8%BD%BDqcow2/</link>
+    <pubDate>Sun, 24 Jul 2022 22:02:25 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://dingjingmaster.github.io/2022/07/0010-linux%E6%8C%82%E8%BD%BDqcow2/</guid>
+    <description><![CDATA[确定linux是否有nbd模块 1 modinfo nbd 插入nbd 模块 1 sudo modprobe nbd 使用qemu-nbd 工具关联 qcow2 文件和 nbd 设备节点 1 sudo qemu-nbd -c /dev/nbd0 &lt;qcow2的路径&]]></description>
+</item></channel>
+</rss>

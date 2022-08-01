@@ -4,13 +4,27 @@
         <link>https://dingjingmaster.github.io/tags/linux/</link>
         <description>linux - 标签 - 九九</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>dingjing@live.cn (ding jing)</managingEditor>
-            <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Sun, 24 Jul 2022 22:44:23 &#43;0800</lastBuildDate><atom:link href="https://dingjingmaster.github.io/tags/linux/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Mon, 01 Aug 2022 17:17:36 &#43;0800</lastBuildDate><atom:link href="https://dingjingmaster.github.io/tags/linux/" rel="self" type="application/rss+xml" /><item>
+    <title>Linux Fstab配置每列含义</title>
+    <link>https://dingjingmaster.github.io/2022/08/0011-linux-fstab%E9%85%8D%E7%BD%AE%E6%AF%8F%E5%88%97%E5%90%AB%E4%B9%89/</link>
+    <pubDate>Mon, 01 Aug 2022 17:17:36 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://dingjingmaster.github.io/2022/08/0011-linux-fstab%E9%85%8D%E7%BD%AE%E6%AF%8F%E5%88%97%E5%90%AB%E4%B9%89/</guid>
+    <description><![CDATA[列数 含义 1 设备名 2 挂载点 3 文件系统格式(比如:ext, ext2, msdos, iso9660, nfs, swap), 字段来源:/proc/filesytems 4 挂载参数，详细看 man mount，不]]></description>
+</item><item>
     <title>Vmware转qemu</title>
     <link>https://dingjingmaster.github.io/2022/07/0009-vmware%E8%BD%ACqemu/</link>
     <pubDate>Sun, 24 Jul 2022 22:44:23 &#43;0800</pubDate>
     <author>作者</author>
     <guid>https://dingjingmaster.github.io/2022/07/0009-vmware%E8%BD%ACqemu/</guid>
     <description><![CDATA[从 windows 换成 linux 之后发现 vmware 在linux 下运行很卡，于是考虑使用 qemu，图形界面开源安装 virt-manager 方便使用，而 vmware 的虚拟磁盘用的是 vmdk， 需要转为qemu]]></description>
+</item><item>
+    <title>0010 Linux挂载qcow2</title>
+    <link>https://dingjingmaster.github.io/2022/07/0010-linux%E6%8C%82%E8%BD%BDqcow2/</link>
+    <pubDate>Sun, 24 Jul 2022 22:02:25 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://dingjingmaster.github.io/2022/07/0010-linux%E6%8C%82%E8%BD%BDqcow2/</guid>
+    <description><![CDATA[确定linux是否有nbd模块 1 modinfo nbd 插入nbd 模块 1 sudo modprobe nbd 使用qemu-nbd 工具关联 qcow2 文件和 nbd 设备节点 1 sudo qemu-nbd -c /dev/nbd0 &lt;qcow2的路径&]]></description>
 </item><item>
     <title>用户空间拦截系统调用</title>
     <link>https://dingjingmaster.github.io/2022/07/0005-%E7%94%A8%E6%88%B7%E7%A9%BA%E9%97%B4%E6%8B%A6%E6%88%AA%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/</link>
@@ -60,19 +74,5 @@
     <author>作者</author>
     <guid>https://dingjingmaster.github.io/2022/05/0006-ldmappings-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%9D%83%E9%99%90/</guid>
     <description><![CDATA[ldmappings 大多数文件系统开发人员都遇到过idmapping。当从磁盘读取或写入权限、向用户空间报告所有权或用于权限检查时使用它们。本文的目标读者是想]]></description>
-</item><item>
-    <title>自动挂载支持</title>
-    <link>https://dingjingmaster.github.io/2022/05/0005-%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD%E6%94%AF%E6%8C%81/</link>
-    <pubDate>Mon, 30 May 2022 17:18:31 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://dingjingmaster.github.io/2022/05/0005-%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD%E6%94%AF%E6%8C%81/</guid>
-    <description><![CDATA[自动挂载支持 希望实现自动挂载支持的文件系统也可以获得支持(例如可以在 fs/afs/ 中找到kAFS，在 fs/nfs/ 中找到NFS)。这个功能包括允许执行核内挂载以及请]]></description>
-</item><item>
-    <title>linux kernel 路径查询</title>
-    <link>https://dingjingmaster.github.io/2022/05/0003-%E8%B7%AF%E5%BE%84%E6%9F%A5%E8%AF%A2/</link>
-    <pubDate>Thu, 26 May 2022 08:47:23 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://dingjingmaster.github.io/2022/05/0003-%E8%B7%AF%E5%BE%84%E6%9F%A5%E8%AF%A2/</guid>
-    <description><![CDATA[路径名查询说明 路径名查找几乎没有可以取巧的方法，因此反而比较复杂。有许多规则、特殊情况和实现替代方案，所有这些都使读者感到困惑。 然而，计算机]]></description>
 </item></channel>
 </rss>
