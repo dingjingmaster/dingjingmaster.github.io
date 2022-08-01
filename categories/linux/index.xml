@@ -4,7 +4,14 @@
         <link>https://dingjingmaster.github.io/categories/linux/</link>
         <description>linux - 分类 - 九九</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>dingjing@live.cn (ding jing)</managingEditor>
-            <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Wed, 29 Jun 2022 11:02:30 &#43;0800</lastBuildDate><atom:link href="https://dingjingmaster.github.io/categories/linux/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Sun, 24 Jul 2022 22:44:23 &#43;0800</lastBuildDate><atom:link href="https://dingjingmaster.github.io/categories/linux/" rel="self" type="application/rss+xml" /><item>
+    <title>Vmware转qemu</title>
+    <link>https://dingjingmaster.github.io/2022/07/0009-vmware%E8%BD%ACqemu/</link>
+    <pubDate>Sun, 24 Jul 2022 22:44:23 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://dingjingmaster.github.io/2022/07/0009-vmware%E8%BD%ACqemu/</guid>
+    <description><![CDATA[从 windows 换成 linux 之后发现 vmware 在linux 下运行很卡，于是考虑使用 qemu，图形界面开源安装 virt-manager 方便使用，而 vmware 的虚拟磁盘用的是 vmdk， 需要转为qemu]]></description>
+</item><item>
     <title>BPF与eBPF</title>
     <link>https://dingjingmaster.github.io/2022/06/0001-bpf%E4%B8%8Eebpf/</link>
     <pubDate>Wed, 29 Jun 2022 11:02:30 &#43;0800</pubDate>
@@ -67,12 +74,5 @@
     <author>作者</author>
     <guid>https://dingjingmaster.github.io/2022/03/0001-wireshark/</guid>
     <description><![CDATA[wireshark 是什么 Wireshark(前称Ethereal)是一个网络封包分析软件。网络封包软件的功能主要是截取网络封包，并尽可能显示出最为详细的网络]]></description>
-</item><item>
-    <title>systemd 自动挂载samba</title>
-    <link>https://dingjingmaster.github.io/2022/03/0004-systemd%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BDsamba/</link>
-    <pubDate>Fri, 18 Mar 2022 11:30:51 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://dingjingmaster.github.io/2022/03/0004-systemd%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BDsamba/</guid>
-    <description><![CDATA[samba 挂载 目前有一个需求，系统重启时候需要自动挂载远程 samba 文件系统，起初使用 fstab 发现并不能成功挂载，考虑应该是和启动顺序有关系，当没有网络的时候是无]]></description>
 </item></channel>
 </rss>

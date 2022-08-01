@@ -4,7 +4,14 @@
         <link>https://dingjingmaster.github.io/tags/qemu/</link>
         <description>qemu - 标签 - 九九</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>dingjing@live.cn (ding jing)</managingEditor>
-            <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Thu, 10 Mar 2022 08:55:26 &#43;0800</lastBuildDate><atom:link href="https://dingjingmaster.github.io/tags/qemu/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Sun, 24 Jul 2022 22:44:23 &#43;0800</lastBuildDate><atom:link href="https://dingjingmaster.github.io/tags/qemu/" rel="self" type="application/rss+xml" /><item>
+    <title>Vmware转qemu</title>
+    <link>https://dingjingmaster.github.io/2022/07/0009-vmware%E8%BD%ACqemu/</link>
+    <pubDate>Sun, 24 Jul 2022 22:44:23 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://dingjingmaster.github.io/2022/07/0009-vmware%E8%BD%ACqemu/</guid>
+    <description><![CDATA[从 windows 换成 linux 之后发现 vmware 在linux 下运行很卡，于是考虑使用 qemu，图形界面开源安装 virt-manager 方便使用，而 vmware 的虚拟磁盘用的是 vmdk， 需要转为qemu]]></description>
+</item><item>
     <title>宿主机挂载qemu虚拟盘(qcow2)</title>
     <link>https://dingjingmaster.github.io/2022/03/0001-%E5%AE%BF%E4%B8%BB%E6%9C%BA%E6%8C%82%E8%BD%BDqemu%E8%99%9A%E6%8B%9F%E7%9B%98qcow2/</link>
     <pubDate>Thu, 10 Mar 2022 08:55:26 &#43;0800</pubDate>
