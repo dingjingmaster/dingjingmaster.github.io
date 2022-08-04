@@ -1,4 +1,4 @@
-# 0010 Linux挂载qcow2
+# Linux挂载qcow2
 
 
 1. 确定linux是否有`nbd`模块
