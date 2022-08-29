@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>C&#43;&#43;11智能指针 - 九九</title><meta name="Description" content=""><meta property="og:title" content="C&#43;&#43;11智能指针" />
+<meta property="og:description" content="智能指针的作用 在使用C/C&#43;&#43;时候，使用指针理由之一就是希望变量在需要的时候突破作用域边界的限制。然而，实际使用中，确保“指针的寿命”和“其" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dingjingmaster.github.io/2022/08/0009-c-11%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88/" /><meta property="og:image" content="https://dingjingmaster.github.io/img/logo.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-08-29T14:33:42+08:00" />
+<meta property="article:modified_time" content="2022-08-29T14:33:42+08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://dingjingmaster.github.io/img/logo.jpg"/>
+
+<meta name="twitter:title" content="C&#43;&#43;11智能指针"/>
+<meta name="twitter:description" content="智能指针的作用 在使用C/C&#43;&#43;时候，使用指针理由之一就是希望变量在需要的时候突破作用域边界的限制。然而，实际使用中，确保“指针的寿命”和“其"/>
+<meta name="application-name" content="九九">
+<meta name="apple-mobile-web-app-title" content="九九"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://dingjingmaster.github.io/2022/08/0009-c-11%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88/" /><link rel="prev" href="https://dingjingmaster.github.io/2022/08/0007-grpc-c-hello-world/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "C++11智能指针",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/dingjingmaster.github.io\/2022\/08\/0009-c-11%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88\/"
+        },"image": ["https:\/\/dingjingmaster.github.io\/img\/logo.jpg"],"genre": "posts","keywords": "c\u002b\u002b, smart pointer, pointer, c\u002b\u002b11, 智能指针","wordcount":  3172 ,
+        "url": "https:\/\/dingjingmaster.github.io\/2022\/08\/0009-c-11%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88\/","datePublished": "2022-08-29T14:33:42+08:00","dateModified": "2022-08-29T14:33:42+08:00","publisher": {
+            "@type": "Organization",
+            "name": "九九","logo": "https:\/\/dingjingmaster.github.io\/img\/logo.jpg"},"author": {
+                "@type": "Person",
+                "name": "ding jing"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="九九"><span class="header-title-pre"> </span>九九</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="https://github.com/dingjingmaster" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="九九"><span class="header-title-pre"> </span>九九</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="https://github.com/dingjingmaster" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">C&#43;&#43;11智能指针</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>ding jing</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/cc++/"><i class="far fa-folder fa-fw"></i>c&c++</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-08-29">2022-08-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 3172 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 7 分钟&nbsp;<span id="/2022/08/0009-c-11%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88/" class="leancloud_visitors" data-flag-title="C&#43;&#43;11智能指针">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#智能指针的作用">智能指针的作用</a></li>
+    <li><a href="#两类智能指针的使用">两类智能指针的使用</a>
+      <ul>
+        <li><a href="#class-shared_ptr"><code>class shared_ptr</code></a>
+          <ul>
+            <li><a href="#创建-shared_ptr-指针">创建 <code>shared_ptr</code> 指针</a></li>
+            <li><a href="#使用-shared_ptr-指针">使用 <code>shared_ptr</code> 指针</a></li>
+            <li><a href="#shared_ptr-对应的删除操作"><code>shared_ptr</code> 对应的删除操作</a></li>
+            <li><a href="#shared_ptr-定义自己的delete操作"><code>shared_ptr</code> 定义自己的delete操作</a></li>
+            <li><a href="#错误用法">错误用法</a></li>
+          </ul>
+        </li>
+        <li><a href="#class-weak_ptr"><code>class weak_ptr</code></a></li>
+        <li><a href="#class-unique_ptr"><code>class unique_ptr</code></a>
+          <ul>
+            <li><a href="#class-unique_ptr的目的"><code>class unique_ptr</code>的目的</a></li>
+            <li><a href="#unique_ptr-使用"><code>unique_ptr</code> 使用</a></li>
+            <li><a href="#转移unique_ptr所有权">转移<code>unique_ptr</code>所有权</a></li>
+            <li><a href="#源头和去处">源头和去处</a></li>
+            <li><a href="#unique_ptr被当成成员"><code>unique_ptr</code>被当成成员</a></li>
+            <li><a href="#针对-array-使用unique_ptr">针对 array 使用<code>unique_ptr</code></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="智能指针的作用">智能指针的作用</h2>
+<p>在使用C/C++时候，使用指针理由之一就是希望变量在需要的时候突破作用域边界的限制。然而，实际使用中，确保“指针的寿命”和“其所指对象的寿命”一致是件很棘手的事情，特别是多个指针指向同一个对象时候。</p>
+<br/>
+避免上述问题的一个通常做法就是使用智能指针(smart pointer)。
+<br/>
+自C++11起，C++标准库提供了两大类型的 smart pointer:
+<ol>
+<li><a href="#class-shared_ptr" rel=""><code>class shared_ptr</code></a> 实现共享式拥有概念。多个 smart pointer 可以指向相同对象，该对象和其相关资源会在最后一个引用被销毁时候释放。此类指针有：<code>weak_ptr</code>、<code>bad_weak_ptr</code></li>
+<li><a href="#class-unique_ptr" rel=""><code>class unique_ptr</code></a> 实现独占式拥有或严格拥有概念。保证同一时间内只有一个 smart pointer 可以指向该对象。你只可以移交拥有权。它对于避免内存泄漏(以new创建对象后忘记调用delete)特别有用。</li>
+</ol>
+<blockquote>
+<p>c++98标准库中提供给了一个smart pointer: <code>auto_ptr&lt;&gt;</code>，其设计是为了执行现今<code>unique_ptr</code>的功能。但是，它缺乏现代语言特性支持，比如：“针对构造和赋值”的<code>move语义</code>，以及其它瑕疵，在C++11之后被正式反对使用。
+<br/></p>
+</blockquote>
+<blockquote>
+<p>所有 smart pointer 类都被定义于头文件 <code>&lt;memory&gt;</code> 内。</p>
+</blockquote>
+<h2 id="两类智能指针的使用">两类智能指针的使用</h2>
+<h3 id="class-shared_ptr"><code>class shared_ptr</code></h3>
+<p><code>shared_ptr</code>主要应用场景是 —— 同一时间在多处地点使用同一个对象实例，当最后一个对象实例不再被需要时候才释放内存资源。
+<br/></p>
+<p>顾名思义，多个 <code>shared_ptr</code> 共享同一个对象(多个<code>shared_ptr</code>指向同一个被共享的对象)，对象最后一个拥有者销毁对象时候，调用此对象的析构函数，在此之前，其它<code>shared_ptr</code>的销毁并不会触发对象的销毁操作(引用计数，每多一个共享对象，引用计数<code>+1</code>，每销毁一个对象，引用计数<code>-1</code>，当引用计数是<code>0</code>则销毁对象资源)。
+<br/></p>
+<p>如果对象以 <code>new</code> 产生，默认清理工作由 <code>delete</code> 完成，若对象以 <code>new[]</code> 分配，则必须由 <code>delete[]</code> 加以清理，当然还有其它情况，因此<code>shared_ptr</code>智能指针在创建时候可以定义其对象销毁的方式。</p>
+<h4 id="创建-shared_ptr-指针">创建 <code>shared_ptr</code> 指针</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="c1">// 1.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">ptr1</span><span class="p">(</span><span class="k">new</span> <span class="n">string</span><span class="p">(</span><span class="s">&#34;shared ptr&#34;</span><span class="p">));</span>              <span class="c1">// OK
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">ptr2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">string</span><span class="p">(</span><span class="s">&#34;shared ptr&#34;</span><span class="p">);</span>             <span class="c1">// 错误，单一参数构造函数是 explicit
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">ptr3</span><span class="p">{</span><span class="k">new</span> <span class="nf">string</span><span class="p">(</span><span class="s">&#34;shared ptr&#34;</span><span class="p">)};</span>              <span class="c1">// OK
+</span></span></span><span class="line"><span class="cl"><span class="c1">// 2.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">ptr4</span> <span class="o">=</span> <span class="n">make_shared</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&#34;shared ptr&#34;</span><span class="p">);</span>    <span class="c1">// OK
+</span></span></span><span class="line"><span class="cl"><span class="c1">// 3.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">ptr5</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">ptr5</span><span class="p">.</span><span class="n">reset</span><span class="p">(</span><span class="k">new</span><span class="p">(</span><span class="s">&#34;shared ptr&#34;</span><span class="p">));</span>                                  <span class="c1">// OK
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">ptr5</span> <span class="o">=</span> <span class="k">new</span> <span class="n">string</span><span class="p">(</span><span class="s">&#34;shared ptr&#34;</span><span class="p">);</span>                                <span class="c1">// 错误，
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>上述三种创建 <code>shared_ptr</code> 指针的方式，推荐使用 第二种：<code>make_shared&lt;&gt;()</code>。这种方式比较快、安全。</p>
+<h4 id="使用-shared_ptr-指针">使用 <code>shared_ptr</code> 指针</h4>
+<ol>
+<li>
+<p>一般使用</p>
+<p>使用智能指针与使用普通指针是一样的，因为它重载了 <code>operator*</code> 和 <code>operator-&gt;</code>，<strong>但是 shared_ptr 不提供 <code>operator[]</code> 和 指针运算</strong>，因此要想访问内存，必须使用<code>get()</code>获得被 <code>shared_ptr</code> 包裹的内部指针。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="n">smp</span><span class="p">.</span><span class="n">get</span><span class="p">()[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="mi">42</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 等价
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">(</span><span class="o">&amp;*</span><span class="n">smp</span><span class="p">)[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="mi">42</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+<br/>
+<ol start="2">
+<li>
+<p>放入容器</p>
+<p>但凡容器，总为传入的元素创建属于容器自己的copy，直接插入string，插入的实际上是 string 的拷贝，然而放进去的是指向 string 的指针，被复制的就是指针，于是容器内涵多个“指向同一对象”的引用。</p>
+</li>
+</ol>
+<h4 id="shared_ptr-对应的删除操作"><code>shared_ptr</code> 对应的删除操作</h4>
+<ol>
+<li>程序终点处，当 <code>string</code> 最后一个拥有者被销毁时候，shared pointer 对其所指向的对象调用 delete。</li>
+<li>当最后一个 <code>shared pointer</code> 被赋值 <code>nullptr</code> 时候也会使 shared pointer 对其所指向的对象调用 delete。</li>
+</ol>
+<h4 id="shared_ptr-定义自己的delete操作"><code>shared_ptr</code> 定义自己的delete操作</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="k">auto</span> <span class="n">del</span> <span class="o">=</span> <span class="p">[]</span> <span class="p">(</span><span class="n">string</span><span class="o">*</span> <span class="n">p</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">count</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;delete &#34;</span> <span class="o">&lt;&lt;</span> <span class="o">*</span><span class="n">p</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">delete</span> <span class="n">p</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">ptr</span> <span class="p">(</span><span class="k">new</span> <span class="n">string</span><span class="p">(</span><span class="s">&#34;shared ptr&#34;</span><span class="p">),</span> <span class="n">del</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">ptr</span> <span class="o">=</span> <span class="k">nullptr</span><span class="p">;</span>      <span class="c1">// 这里会导致 shared ptr 调用销毁操作
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>注意：<code>shared_ptr</code> 提供的默认 delete 操作调用的是 delete，不是 delete[]，因此，当你使用 new[] 创建的数组对象，则必须自定义<code>shared_ptr</code>的销毁操作，否则会造成内存泄漏。
+<br/>
+<br/>也可以使用 <code>unique_ptr</code> 提供的辅助函数作为 deleter，其内调用 delete[]：
+<br/><code>std::shared_ptr&lt;int&gt; p(new int[10], std::default_delete&lt;int[]&gt;());</code>
+<br/></p>
+</blockquote>
+<p><code>shared_ptr</code>和<code>unique_ptr</code>以稍稍不同的方式处理deleter。例如：<code>unique_ptr</code>允许你只传递对应的元素类型作为<code>模板</code>实参，但对 <code>shared_ptr</code> 就不可行：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">[]</span><span class="o">&gt;</span> <span class="n">p</span><span class="p">(</span><span class="k">new</span> <span class="kt">int</span><span class="p">[</span><span class="mi">10</span><span class="p">]);</span>      <span class="c1">// OK
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">[]</span><span class="o">&gt;</span> <span class="n">p</span><span class="p">(</span><span class="k">new</span> <span class="kt">int</span><span class="p">[</span><span class="mi">10</span><span class="p">]);</span>      <span class="c1">// 错误 &lt;我这边亲测可以了...&gt;
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="错误用法">错误用法</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="kt">int</span><span class="o">*</span> <span class="n">p</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">sp1</span><span class="p">(</span><span class="n">p</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">sp2</span><span class="p">(</span><span class="n">p</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 会出错，因为两个shared_ptr 都会在作用域之外释放对象`p`，导致对象被两次释放。
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="class-weak_ptr"><code>class weak_ptr</code></h3>
+<p><code>weak_ptr</code> 是解决<code>shared_ptr</code>以下两种情况下无法正常使用的问题而引入的。
+<br/></p>
+<ol>
+<li>
+<p>环式指向：</p>
+<p>如果两个对象使用 <code>shared_ptr</code> 互相指向对方，一旦不存在其它引用指向它们时候，shared_ptr 并不会自动释放资源，因为每个<code>shared_ptr</code>对象的<code>use_count()</code>仍然是1.</p>
+</li>
+<li>
+<p>明确想共享对象，但并不想拥有对象的情况：</p>
+<p>引用(引用指的是<code>shared_ptr</code>智能指针)的寿命比其所指对象的寿命更长，因此通过使用智能指针可以获取到其指向对象是否还有效```class weak_ptr<code>允许你&quot;共享但不拥有&quot;某对象，一旦最末一个拥有该对象的 shared_ptr 失去了拥有权(对象释放)，任何</code>weak_ptr` 都会自动成空(empty)。</p>
+</li>
+</ol>
+<blockquote>
+<p>在默认的default和copy构造函数外，<code>class weak_ptr</code>只提供一个<code>shared_ptr</code>构造函数。</p>
+</blockquote>
+<blockquote>
+<p>注意：你不能直接使用操作符<code>*</code>和<code>-&gt;</code>访问 <code>weak_ptr</code>指向的对象，而是必须另外建立一个<code>shared_pointer</code>，原因如下：
+<br/>1. 在<code>weak pointer</code>之外建立一个<code>shared pointer</code>可因此检查是否存在一个相应的对象。如果不，操作会抛出异常或建立一个空的共享指针。
+<br/>2. 当指向的对象正被操作时候，shared pointer 无法被释放。
+<br/>基于以上所述，<code>class weak_ptr</code> 只提供小量操作，只够用来创建、赋值、赋值weak pointer，以及转换为一个shared pointer，或检查自己是否指向某对象。</p>
+</blockquote>
+<h3 id="class-unique_ptr"><code>class unique_ptr</code></h3>
+<p><code>unique_ptr</code> 是C++标准库自 C++11 起开始提供的类型。它避免在异常发生时候造成资源泄漏。一般而言，这个 smart pointer 实现了独占式拥有概念，意味着它可能确保一个对象和其相应资源同一时间只被一个 pointer 拥有。一旦拥有者被销毁或编程empty，或开始拥有另一个对象，先前拥有的那个对象就会被销毁，其任何相应资源亦会被释放。</p>
+<h4 id="class-unique_ptr的目的"><code>class unique_ptr</code>的目的</h4>
+<p>通常往往以下列方式运作：</p>
+<ol>
+<li>获得某些资源</li>
+<li>执行某些操作</li>
+<li>将取得的资源是放掉</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;memory&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">f</span> <span class="p">()</span> 
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">unique</span><span class="o">&lt;</span><span class="n">ClassA</span><span class="o">&gt;</span> <span class="n">ptr</span><span class="p">(</span><span class="k">new</span> <span class="n">ClassA</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 其它操作
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="unique_ptr-使用"><code>unique_ptr</code> 使用</h4>
+<p><code>unique_ptr</code>和寻常指针接口很相似，<code>*</code>用来提取指向对象；<code>-&gt;</code>用来访问成员；不提供<code>++</code>操作。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">up</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="p">;</span>  <span class="c1">// 错误，不允许
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">up</span> <span class="p">(</span><span class="k">new</span> <span class="kt">int</span><span class="p">);</span>  <span class="c1">// OK
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">up</span><span class="p">;</span>            <span class="c1">// unique_ptr 不必一定拥有对象，也可以是 empty
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="转移unique_ptr所有权">转移<code>unique_ptr</code>所有权</h4>
+<ol>
+<li><code>std::move()</code> 可以将拥有权转移给另一个 <code>unique_ptr</code></li>
+</ol>
+<blockquote>
+<p>不可对<code>unique_ptr</code>执行<code>copy</code>和<code>assign</code>，<code>unique_ptr</code>唯一的独占一个对象&hellip;
+<br/><code>auto_ptr</code>使用 <code>copy</code> 来移交拥有权，后续不再使用 <code>auto_ptr</code>，这块需要了解。</p>
+</blockquote>
+<h4 id="源头和去处">源头和去处</h4>
+<p>函数可利用它们将拥有权转移给其它函数。这会发生在两种情况下：</p>
+<ol>
+<li>
+<p>函数是接收端。如果将一个由<code>std::move()</code>建立起来的<code>unique_ptr</code>以右值引用身份当作函数参数，那么被调用函数的参数将会取得<code>unique_ptr</code>的拥有权。因此，如果该函数不再转移拥有权，对象会在函数结束时候被deleted。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">sink</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">ClassA</span><span class="o">&gt;</span> <span class="n">up</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// ....
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">sink</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">up</span><span class="p">));</span> <span class="c1">// up 将失去所有权
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>函数是供应端。当函数返回一个<code>unique_ptr</code>，其拥有权会转移至调用端场景内。下面的例子展示了这项技术：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">ClassA</span><span class="o">&gt;</span> <span class="n">source</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">ClassA</span><span class="o">&gt;</span> <span class="n">ptr</span><span class="p">(</span><span class="k">new</span> <span class="n">ClassA</span><span class="p">);</span>    <span class="c1">// ptr 拥有新对象
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">return</span> <span class="n">ptr</span><span class="p">;</span> <span class="c1">// 把所有权转移给函数调用者
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">g</span> <span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">ClassA</span><span class="o">&gt;</span> <span class="n">p</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">p</span> <span class="o">=</span> <span class="n">source</span><span class="p">();</span>   <span class="c1">// p 将得到返回对象的所有权
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span> <span class="c1">// 此后，p对象指向的指针将会被删除
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+<h4 id="unique_ptr被当成成员"><code>unique_ptr</code>被当成成员</h4>
+<p>在 class 内使用<code>unique_ptr</code>可避免资源泄漏，因为只有已经完全构造好的对象，其析构函数才会被调用，所以对于拥有多个指针的类，构造期间，第一个new成功而第二个new失败就可能导致资源泄漏。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">B</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">private</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ClassA</span><span class="o">*</span> <span class="n">ptr1</span><span class="p">;</span>       <span class="c1">// 使用 std::unique_ptr&lt;ClassA&gt; ptr1;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">ClassA</span><span class="o">*</span> <span class="n">ptr2</span><span class="p">;</span>       <span class="c1">// 使用 std::unique_ptr&lt;ClassA&gt; ptr2;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">B</span> <span class="p">(</span><span class="kt">int</span> <span class="n">val1</span><span class="p">,</span> <span class="kt">int</span> <span class="n">val2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="o">:</span> <span class="n">ptr1</span><span class="p">(</span><span class="k">new</span> <span class="n">ClassA</span><span class="p">(</span><span class="n">val1</span><span class="p">)),</span> <span class="n">ptr2</span><span class="p">(</span><span class="k">new</span> <span class="n">ClassA</span><span class="p">(</span><span class="n">val2</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// 构造时候，第一个new成功，第二个new失败，则会导致内存泄漏
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="o">~</span><span class="n">B</span> <span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="n">ptr1</span><span class="p">)</span>   <span class="k">delete</span> <span class="n">ptr1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="n">ptr2</span><span class="p">)</span>   <span class="k">delete</span> <span class="n">ptr2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="针对-array-使用unique_ptr">针对 array 使用<code>unique_ptr</code></h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">up</span> <span class="p">(</span><span class="k">new</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">[</span><span class="mi">10</span><span class="p">]);</span>      <span class="c1">// 运行时候出错，无法正确被析构
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">[]</span><span class="o">&gt;</span> <span class="n">up</span><span class="p">(</span><span class="k">new</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">[</span><span class="mi">10</span><span class="p">]);</span>     <span class="c1">// OK
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="o">*</span><span class="n">up</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>                              <span class="c1">// 错误, * 没有针对数组的定义
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2022-08-29</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/c&#43;&#43;/">C&#43;&#43;</a>,&nbsp;<a href="/tags/smart-pointer/">smart pointer</a>,&nbsp;<a href="/tags/pointer/">pointer</a>,&nbsp;<a href="/tags/c&#43;&#43;11/">c&#43;&#43;11</a>,&nbsp;<a href="/tags/%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88/">智能指针</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/2022/08/0007-grpc-c-hello-world/" class="prev" rel="prev" title="gRPC C&#43;&#43; 例子"><i class="fas fa-angle-left fa-fw"></i>gRPC C&#43;&#43; 例子</a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">ding jing</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="/lib/lightgallery/lightgallery.min.css"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script type="text/javascript" src="/lib/valine/Valine.min.js"></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/algoliasearch/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/twemoji/twemoji.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lightgallery.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-thumbnail.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-zoom.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"valine":{"appId":"oGOJ6TSiiaaOrhXD1bEYILk9-gzGzoHsz","appKey":"lbK71uSxpg4XmLmvm2h13JdJ","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"serverURLs":"https://ogoj6tsi.lc-cn-n1-shared.com","visitor":true}},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.zh-cn","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"},"twemoji":true};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
