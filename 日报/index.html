@@ -5,36 +5,32 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title> - 九九</title><meta name="Description" content=""><meta property="og:title" content="" />
-<meta property="og:description" content="日报
-2022-09 开始写日志，勉励自己不断提高技术能力
-主要 Linux 文件系统学习，通过实践来梳理文件系统相关知识点 业余 hugo自制模板学习 &#43; hugo 文档翻译 " />
+        <title>日报 - 九九</title><meta name="Description" content=""><meta property="og:title" content="日报" />
+<meta property="og:description" content="2022-09-06 6.0.0内核发布了，编译安装新版内核后尝试根据《Linux内核探秘——文件系统》中例子实现 aufs，不成功！取新版本内核模块 btfs 代码，改为" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://dingjingmaster.github.io/timeline/" /><meta property="og:image" content="https://dingjingmaster.github.io/img/logo.jpg"/><meta property="article:section" content="" />
+<meta property="og:url" content="https://dingjingmaster.github.io/%E6%97%A5%E6%8A%A5/" /><meta property="og:image" content="https://dingjingmaster.github.io/img/logo.jpg"/><meta property="article:section" content="" />
 
 
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://dingjingmaster.github.io/img/logo.jpg"/>
 
-<meta name="twitter:title" content=""/>
-<meta name="twitter:description" content="日报
-2022-09 开始写日志，勉励自己不断提高技术能力
-主要 Linux 文件系统学习，通过实践来梳理文件系统相关知识点 业余 hugo自制模板学习 &#43; hugo 文档翻译 "/>
+<meta name="twitter:title" content="日报"/>
+<meta name="twitter:description" content="2022-09-06 6.0.0内核发布了，编译安装新版内核后尝试根据《Linux内核探秘——文件系统》中例子实现 aufs，不成功！取新版本内核模块 btfs 代码，改为"/>
 <meta name="application-name" content="九九">
 <meta name="apple-mobile-web-app-title" content="九九"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://dingjingmaster.github.io/timeline/" /><link rel="prev" href="https://dingjingmaster.github.io/%E6%97%A5%E6%8A%A5/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://dingjingmaster.github.io/%E6%97%A5%E6%8A%A5/" /><link rel="next" href="https://dingjingmaster.github.io/timeline/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "",
+        "headline": "日报",
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/dingjingmaster.github.io\/timeline\/"
-        },"image": ["https:\/\/dingjingmaster.github.io\/img\/logo.jpg"],"genre": "page","wordcount":  11 ,
-        "url": "https:\/\/dingjingmaster.github.io\/timeline\/","publisher": {
+            "@id": "https:\/\/dingjingmaster.github.io\/%E6%97%A5%E6%8A%A5\/"
+        },"image": ["https:\/\/dingjingmaster.github.io\/img\/logo.jpg"],"genre": "page","wordcount":  94 ,
+        "url": "https:\/\/dingjingmaster.github.io\/%E6%97%A5%E6%8A%A5\/","publisher": {
             "@type": "Organization",
             "name": "九九","logo": "https:\/\/dingjingmaster.github.io\/img\/logo.jpg"},"author": {
                 "@type": "Person",
@@ -50,7 +46,7 @@
             <a href="/" title="九九"><span class="header-title-pre"> </span>九九</a>
         </div>
         <div class="menu">
-            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item active" href="/timeline/"> 时间轴 </a><a class="menu-item" href="https://github.com/dingjingmaster" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/timeline/"> 时间轴 </a><a class="menu-item" href="https://github.com/dingjingmaster" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
                         <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
                         <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
                             <i class="fas fa-search fa-fw"></i>
@@ -105,12 +101,13 @@
     <div id="search-dropdown-mobile"></div>
 </div>
 <main class="main">
-                <div class="container"><div class="page single special"><h1 class="single-title animated pulse faster"></h1><div class="content" id="content"><p><a href="/%e6%97%a5%e6%8a%a5" rel="">日报</a></p>
-<h1 id="2022-09">2022-09</h1>
-<p>开始写日志，勉励自己不断提高技术能力</p>
-<ul>
-<li><i class="far fa-square fa-fw"></i> <font color='red'>主要</font> Linux 文件系统学习，通过实践来梳理文件系统相关知识点</li>
-<li><i class="far fa-square fa-fw"></i> <font color='yellow'>业余</font> hugo自制模板学习 + hugo 文档翻译</li>
+                <div class="container"><div class="page single special"><h1 class="single-title animated pulse faster">日报</h1><div class="content" id="content"><ul>
+<li><font color="red">2022-09-06</font>
+<ol>
+<li>6.0.0内核发布了，编译安装新版内核后尝试根据《Linux内核探秘——文件系统》中例子实现 aufs，不成功！取新版本内核模块 btfs 代码，改为 aufs OK.</li>
+<li>搭建ycm环境，加强vim自动补全方面的功能</li>
+</ol>
+</li>
 </ul>
 </div><div id="comments"><div id="valine" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
