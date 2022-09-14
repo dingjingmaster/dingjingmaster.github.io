@@ -4,7 +4,14 @@
         <link>https://dingjingmaster.github.io/categories/linux/</link>
         <description>linux - 分类 - 九九</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>dingjing@live.cn (ding jing)</managingEditor>
-            <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Mon, 01 Aug 2022 17:17:36 &#43;0800</lastBuildDate><atom:link href="https://dingjingmaster.github.io/categories/linux/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Fri, 09 Sep 2022 08:47:11 &#43;0800</lastBuildDate><atom:link href="https://dingjingmaster.github.io/categories/linux/" rel="self" type="application/rss+xml" /><item>
+    <title>Linux内核设计与实现</title>
+    <link>https://dingjingmaster.github.io/2022/09/0008-linux%E5%86%85%E6%A0%B8%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/</link>
+    <pubDate>Fri, 09 Sep 2022 08:47:11 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://dingjingmaster.github.io/2022/09/0008-linux%E5%86%85%E6%A0%B8%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/</guid>
+    <description><![CDATA[书中内容基于 kernel-2.6.34 版本内核，书籍名《Linux内核设计与实现》 Linux内核简介 kernel许可协议 linux kernel 基于 (GPL v2)作为限制条款，保障每个人都可]]></description>
+</item><item>
     <title>Linux Fstab配置每列含义</title>
     <link>https://dingjingmaster.github.io/2022/08/0011-linux-fstab%E9%85%8D%E7%BD%AE%E6%AF%8F%E5%88%97%E5%90%AB%E4%B9%89/</link>
     <pubDate>Mon, 01 Aug 2022 17:17:36 &#43;0800</pubDate>
@@ -67,12 +74,5 @@
     <author>作者</author>
     <guid>https://dingjingmaster.github.io/2022/05/0001-c%E4%B8%8Ec-%E5%90%84%E4%B8%AA%E7%89%88%E6%9C%AC/</guid>
     <description><![CDATA[C 各个版本说明 C 语言早期 最早由丹尼斯·里奇（Dennis Ritchie）为了在PDP-11电脑上运行的Unix系统所设计出来的编程语言 第一次]]></description>
-</item><item>
-    <title>rfkill —— 用户空间控制无线通讯命令</title>
-    <link>https://dingjingmaster.github.io/2022/04/0005-rfkill/</link>
-    <pubDate>Wed, 20 Apr 2022 11:19:06 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://dingjingmaster.github.io/2022/04/0005-rfkill/</guid>
-    <description><![CDATA[rfkill rfkill 是一个小型的用户空间工具，用于查询 rfkill 开关、按钮和子系统接口的状态。 Linux 内核通过 /dev/rfkill 设备文件公开了 rfkill 子系统一些控制功能，允许用户空间模拟/监听]]></description>
 </item></channel>
 </rss>

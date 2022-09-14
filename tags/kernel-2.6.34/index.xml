@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>kernel-2.6.34 - 标签 - 九九</title>
+        <link>https://dingjingmaster.github.io/tags/kernel-2.6.34/</link>
+        <description>kernel-2.6.34 - 标签 - 九九</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>dingjing@live.cn (ding jing)</managingEditor>
+            <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Fri, 09 Sep 2022 08:47:11 &#43;0800</lastBuildDate><atom:link href="https://dingjingmaster.github.io/tags/kernel-2.6.34/" rel="self" type="application/rss+xml" /><item>
+    <title>Linux内核设计与实现</title>
+    <link>https://dingjingmaster.github.io/2022/09/0008-linux%E5%86%85%E6%A0%B8%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/</link>
+    <pubDate>Fri, 09 Sep 2022 08:47:11 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://dingjingmaster.github.io/2022/09/0008-linux%E5%86%85%E6%A0%B8%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/</guid>
+    <description><![CDATA[书中内容基于 kernel-2.6.34 版本内核，书籍名《Linux内核设计与实现》 Linux内核简介 kernel许可协议 linux kernel 基于 (GPL v2)作为限制条款，保障每个人都可]]></description>
+</item></channel>
+</rss>

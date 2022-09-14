@@ -1,0 +1,1648 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Linux内核设计与实现 - 九九</title><meta name="Description" content=""><meta property="og:title" content="Linux内核设计与实现" />
+<meta property="og:description" content="书中内容基于 kernel-2.6.34 版本内核，书籍名《Linux内核设计与实现》 Linux内核简介 kernel许可协议 linux kernel 基于 (GPL v2)作为限制条款，保障每个人都可" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dingjingmaster.github.io/2022/09/0008-linux%E5%86%85%E6%A0%B8%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/" /><meta property="og:image" content="https://dingjingmaster.github.io/img/logo.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-09-09T08:47:11+08:00" />
+<meta property="article:modified_time" content="2022-09-09T08:47:11+08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://dingjingmaster.github.io/img/logo.jpg"/>
+
+<meta name="twitter:title" content="Linux内核设计与实现"/>
+<meta name="twitter:description" content="书中内容基于 kernel-2.6.34 版本内核，书籍名《Linux内核设计与实现》 Linux内核简介 kernel许可协议 linux kernel 基于 (GPL v2)作为限制条款，保障每个人都可"/>
+<meta name="application-name" content="九九">
+<meta name="apple-mobile-web-app-title" content="九九"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://dingjingmaster.github.io/2022/09/0008-linux%E5%86%85%E6%A0%B8%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/" /><link rel="prev" href="https://dingjingmaster.github.io/2022/08/0009-c-11%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Linux内核设计与实现",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/dingjingmaster.github.io\/2022\/09\/0008-linux%E5%86%85%E6%A0%B8%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0\/"
+        },"image": ["https:\/\/dingjingmaster.github.io\/img\/logo.jpg"],"genre": "posts","keywords": "linux, kernel, kernel-2.6.34","wordcount":  24957 ,
+        "url": "https:\/\/dingjingmaster.github.io\/2022\/09\/0008-linux%E5%86%85%E6%A0%B8%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0\/","datePublished": "2022-09-09T08:47:11+08:00","dateModified": "2022-09-09T08:47:11+08:00","publisher": {
+            "@type": "Organization",
+            "name": "九九","logo": "https:\/\/dingjingmaster.github.io\/img\/logo.jpg"},"author": {
+                "@type": "Person",
+                "name": "ding jing"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="九九"><span class="header-title-pre"> </span>九九</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/timeline/"> 时间轴 </a><a class="menu-item" href="https://github.com/dingjingmaster" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="九九"><span class="header-title-pre"> </span>九九</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/timeline/" title="">时间轴</a><a class="menu-item" href="https://github.com/dingjingmaster" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Linux内核设计与实现</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>ding jing</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/linux/"><i class="far fa-folder fa-fw"></i>linux</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-09-09">2022-09-09</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 24957 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 50 分钟&nbsp;<span id="/2022/09/0008-linux%E5%86%85%E6%A0%B8%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/" class="leancloud_visitors" data-flag-title="Linux内核设计与实现">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#linux内核简介">Linux内核简介</a>
+      <ul>
+        <li><a href="#kernel许可协议">kernel许可协议</a></li>
+      </ul>
+    </li>
+    <li><a href="#从内核出发">从内核出发</a>
+      <ul>
+        <li><a href="#内核源码树">内核源码树</a></li>
+        <li><a href="#配置内核">配置内核</a></li>
+        <li><a href="#编译内核">编译内核</a></li>
+        <li><a href="#安装内核">安装内核</a></li>
+        <li><a href="#安装内核模块">安装内核模块</a></li>
+        <li><a href="#生成initramfs">生成initramfs</a></li>
+        <li><a href="#更新引导">更新引导</a></li>
+        <li><a href="#内核开发的特点">内核开发的特点</a></li>
+        <li><a href="#kernel头文件使用">Kernel头文件使用</a></li>
+        <li><a href="#kernel-打印日志">kernel 打印日志</a></li>
+        <li><a href="#gnu-c">GNU C</a>
+          <ul>
+            <li><a href="#内联函数inline">内联函数(inline)</a></li>
+            <li><a href="#汇编内联">汇编内联</a></li>
+            <li><a href="#分支声明">分支声明</a></li>
+            <li><a href="#没有内存保护机制">没有内存保护机制</a></li>
+            <li><a href="#不要轻易在内核中使用浮点数">不要轻易在内核中使用浮点数</a></li>
+            <li><a href="#容积小而固定的栈">容积小而固定的栈</a></li>
+            <li><a href="#同步和并发">同步和并发</a></li>
+            <li><a href="#可移植性的重要性">可移植性的重要性</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#进程管理">进程管理</a>
+      <ul>
+        <li><a href="#进程">进程</a></li>
+        <li><a href="#进程描述符及任务结构">进程描述符及任务结构</a>
+          <ul>
+            <li><a href="#分配进程描述符">分配进程描述符</a></li>
+            <li><a href="#进程描述符的存放">进程描述符的存放</a></li>
+            <li><a href="#进程状态">进程状态</a></li>
+            <li><a href="#设置当前进程状态">设置当前进程状态</a></li>
+            <li><a href="#进程上下文">进程上下文</a></li>
+            <li><a href="#进程家族树">进程家族树</a></li>
+          </ul>
+        </li>
+        <li><a href="#进程创建">进程创建</a>
+          <ul>
+            <li><a href="#写时拷贝">写时拷贝</a></li>
+            <li><a href="#fork"><code>fork()</code></a></li>
+            <li><a href="#vfork"><code>vfork()</code></a></li>
+          </ul>
+        </li>
+        <li><a href="#线程在linux中的实现">线程在Linux中的实现</a>
+          <ul>
+            <li><a href="#创建线程">创建线程</a></li>
+            <li><a href="#内核线程">内核线程</a></li>
+          </ul>
+        </li>
+        <li><a href="#进程终结">进程终结</a>
+          <ul>
+            <li><a href="#删除进程描述符">删除进程描述符</a></li>
+            <li><a href="#孤儿进程造成的进退维谷">孤儿进程造成的进退维谷</a></li>
+          </ul>
+        </li>
+        <li><a href="#小结">小结</a></li>
+      </ul>
+    </li>
+    <li><a href="#进程调度">进程调度</a>
+      <ul>
+        <li><a href="#多任务">多任务</a></li>
+        <li><a href="#linux的进程调度">Linux的进程调度</a></li>
+        <li><a href="#策略">策略</a>
+          <ul>
+            <li><a href="#io消耗型和处理器消耗型的进程">I/O消耗型和处理器消耗型的进程</a></li>
+            <li><a href="#进程优先级">进程优先级</a></li>
+            <li><a href="#时间片">时间片</a></li>
+            <li><a href="#调度策略的活动">调度策略的活动</a></li>
+          </ul>
+        </li>
+        <li><a href="#linux-调度算法">Linux 调度算法</a>
+          <ul>
+            <li><a href="#调度器类">调度器类</a></li>
+            <li><a href="#unix系统中的进程调度">Unix系统中的进程调度</a></li>
+            <li><a href="#公平调度">公平调度</a></li>
+          </ul>
+        </li>
+        <li><a href="#linux-调度的实现">Linux 调度的实现</a>
+          <ul>
+            <li><a href="#时间记账">时间记账</a>
+              <ul>
+                <li><a href="#调度器实体结构">调度器实体结构</a></li>
+                <li><a href="#虚拟实时">虚拟实时</a></li>
+              </ul>
+            </li>
+            <li><a href="#进程选择">进程选择</a>
+              <ul>
+                <li><a href="#挑选下一个任务">挑选下一个任务</a></li>
+                <li><a href="#向树中加入进程">向树中加入进程</a></li>
+                <li><a href="#从树中删除进程">从树中删除进程</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><blockquote>
+<p>书中内容基于 <code>kernel-2.6.34</code> 版本内核，书籍名《Linux内核设计与实现》</p>
+</blockquote>
+<h2 id="linux内核简介">Linux内核简介</h2>
+<h3 id="kernel许可协议">kernel许可协议</h3>
+<p>linux kernel 基于 (GPL v2)作为限制条款，保障每个人都可以自由获取、修改内核，但是也要让得到你修改内核的人同时也享有你曾经享有的权利——开源全部源代码。</p>
+<h2 id="从内核出发">从内核出发</h2>
+<h3 id="内核源码树">内核源码树</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">目录</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">arch</td>
+<td style="text-align:left">特定体系结构的源码</td>
+</tr>
+<tr>
+<td style="text-align:left">block</td>
+<td style="text-align:left">块设备I/O层</td>
+</tr>
+<tr>
+<td style="text-align:left">crypto</td>
+<td style="text-align:left">加密API</td>
+</tr>
+<tr>
+<td style="text-align:left">Documentation</td>
+<td style="text-align:left">内核源码文档</td>
+</tr>
+<tr>
+<td style="text-align:left">drivers</td>
+<td style="text-align:left">设备驱动程序</td>
+</tr>
+<tr>
+<td style="text-align:left">firmware</td>
+<td style="text-align:left">使用某些驱动程序而需要的设备固件</td>
+</tr>
+<tr>
+<td style="text-align:left">fs</td>
+<td style="text-align:left">VFS和各种文件系统</td>
+</tr>
+<tr>
+<td style="text-align:left">include</td>
+<td style="text-align:left">内核头文件</td>
+</tr>
+<tr>
+<td style="text-align:left">init</td>
+<td style="text-align:left">内核引导和初始化</td>
+</tr>
+<tr>
+<td style="text-align:left">ipc</td>
+<td style="text-align:left">进程间通信代码</td>
+</tr>
+<tr>
+<td style="text-align:left">kernel</td>
+<td style="text-align:left">像调度程序这样的核心子系统</td>
+</tr>
+<tr>
+<td style="text-align:left">lib</td>
+<td style="text-align:left">通用内核函数</td>
+</tr>
+<tr>
+<td style="text-align:left">mm</td>
+<td style="text-align:left">内存管理子系统和VM</td>
+</tr>
+<tr>
+<td style="text-align:left">net</td>
+<td style="text-align:left">网络子系统</td>
+</tr>
+<tr>
+<td style="text-align:left">samples</td>
+<td style="text-align:left">示例代码</td>
+</tr>
+<tr>
+<td style="text-align:left">scripts</td>
+<td style="text-align:left">编译内核所用的脚本</td>
+</tr>
+<tr>
+<td style="text-align:left">security</td>
+<td style="text-align:left">Linux安全模块</td>
+</tr>
+<tr>
+<td style="text-align:left">sound</td>
+<td style="text-align:left">语音子系统</td>
+</tr>
+<tr>
+<td style="text-align:left">usr</td>
+<td style="text-align:left">早期用户空间代码(所谓的initramfs)</td>
+</tr>
+<tr>
+<td style="text-align:left">tools</td>
+<td style="text-align:left">在linux开发中有用的工具</td>
+</tr>
+<tr>
+<td style="text-align:left">virt</td>
+<td style="text-align:left">虚拟化基础结构</td>
+</tr>
+</tbody>
+</table>
+<h3 id="配置内核">配置内核</h3>
+<ol>
+<li><code>make config</code></li>
+<li><code>make menuconfig</code></li>
+<li><code>make gconfig</code></li>
+<li><code>make defconfig</code>：基于默认配置来编译内核</li>
+<li><code>make oldconfig</code>：基于已有配置来编译内核</li>
+</ol>
+<h3 id="编译内核">编译内核</h3>
+<h3 id="安装内核">安装内核</h3>
+<h3 id="安装内核模块">安装内核模块</h3>
+<h3 id="生成initramfs">生成initramfs</h3>
+<h3 id="更新引导">更新引导</h3>
+<blockquote>
+<p>编译内核时候会在内核代码根目录下创建一个 System.map 文件，这是一份符号对照表，用来将内核符号和他们的起始地址对应起来，调试时候用来把内存地址翻译成容易理解的函数名和变量名。</p>
+</blockquote>
+<h3 id="内核开发的特点">内核开发的特点</h3>
+<ul>
+<li>内核编程时候既不能访问C库，也不能访问标准的C头文件(常用C库函数在linux内核中已经被实现)</li>
+<li>内核编程时候必须使用 GNU C。</li>
+<li>内核编程时缺乏用户空间那样的内存保护机制。</li>
+<li>内核编程时候难以执行浮点运算。</li>
+<li>内核给每个进程只有一个很小的定长堆栈。</li>
+<li>由于内核支持异步中断、抢占和SMP，因此必须时刻注意同步和并发。</li>
+<li>要考虑可移植性</li>
+</ul>
+<h3 id="kernel头文件使用">Kernel头文件使用</h3>
+<ul>
+<li>基本的头文件位于内核源码顶级目录下的<code>include</code> 目录中。例如：头文件&lt;linux/inotify.h&gt;对应内核源码树中的<code>include/linux/inotify.h</code></li>
+<li>体系结构相关的头文件集位于内核源代码树的 <code>arch/&lt;archiecture&gt;/include/asm</code>目录下。梅核代码通过以 <code>asm/</code>为前缀的方式包含这些头文件，例如：&lt;asm/ioctl.h&gt;</li>
+</ul>
+<h3 id="kernel-打印日志">kernel 打印日志</h3>
+<p>内核中无<code>printf()</code>函数，但是它提供了<code>printk()</code>，<code>printk()</code>负责把格式化好的字符串拷贝到内核日志缓冲区上，<code>printf()</code>和<code>printk()</code>之间的一个显著区别在于，<code>printk()</code>允许你通过指定一个标志来设置优先级。syslogd会根据这个优先级标志来决定在什么地方显示这条系统信息。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">printk(KERN_ERR &#34;this is an error\n&#34;);
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="gnu-c">GNU C</h3>
+<p>Linux内核是用C语言编写的，但是内核不完全符合ANSIC标准，只要有可能，内核开发者总是要用到 gcc 提供的多语言扩展部分(gcc是多种GNU编译器的集合，它包含的C编译器既可以编译内核，也可以编译Linux系统上用C语言写的其它代码)。
+<br/></p>
+<p>内核开发者使用的C语言涵盖了ISO C99标准和GNU C扩展特性，最早只有 gcc 提供足够多的扩展特性，才可以用来编译linux内核。
+<br/></p>
+<p>以下是一些内核代码中使用到的C语言扩展部分：</p>
+<h4 id="内联函数inline">内联函数(inline)</h4>
+<p>C99 和 GNU C 都支持内联函数。函数会在调用位置展开，消除函数调用和返回带来的开销(寄存器存储和恢复)。不过也有缺点，这会导致代码变长，意味着占用更多的内存空间或者占用更多的指令缓存。内核开发者通常把那些对事件要求比较高，本身长度又比较短的函数定义成内联函数。如果一个函数较大，会被反复调用，且没有特别的时间上的限制，我们不赞成把它做成内联函数。</p>
+<p>定义一个内联函数时候，需要使用<code>static</code>作为关键字，并且用<code>inline</code>限定它。比如：<code>static inline void wolf(unsigned long tail_size);</code></p>
+<p>内核中，为了类型安全和易读性，有限使用内联函数，而不是复杂的宏。</p>
+<h4 id="汇编内联">汇编内联</h4>
+<p>gcc 编译器支持在C函数中嵌入汇编指令。当然在内核编程的时候，只有知道对应的体系结构才能使用这个功能。</p>
+<p>通常使用 asm() 指令嵌入汇编代码，例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">;</span> <span class="c1">// low 和 high 分别包含64位时间戳的低32位和高32位
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">asm</span> <span class="nf">volatile</span><span class="p">(</span><span class="s">&#34;rdtsc&#34;</span> <span class="o">:</span> <span class="s">&#34;=a&#34;</span> <span class="p">(</span><span class="n">low</span><span class="p">),</span> <span class="s">&#34;=d&#34;</span> <span class="p">(</span><span class="n">high</span><span class="p">));</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Linux 内核混合使用了C语言和汇编语言。在偏近体系结构的底层或对执行事件要求严格的地方，一般使用的是汇编语言。而内核其它部分的大部分代码是用C语言编写的。</p>
+<h4 id="分支声明">分支声明</h4>
+<p>对于条件选择语句，gcc内建了一条指令用于优化，在一个条件经常出现，或者该条件很少出现的时候，编译器可以根据这条指令对条件分支选择进行优化。内核把这条指令封装成了宏，比如<code>likely()</code>和<code>unlikely()</code>，这样使用起来比较方便。
+<br/></p>
+<p>例如下面是一个条件选择语句：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="cm">/* ... */</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>如果想要把这个选择标记成绝少发生的分支：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="c1">// 我们认为 error 绝大部分事件都会是0
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">if</span> <span class="p">(</span><span class="n">unlikely</span><span class="p">(</span><span class="n">error</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="cm">/* ... */</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>如果想要把一个分支标记位通常为真的选择：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="c1">// 我们认为 success 通常都不会为0
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">if</span> <span class="p">(</span><span class="n">likely</span><span class="p">(</span><span class="n">success</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="cm">/* ... */</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>在使用这两个宏之前，一定要搞清楚这个条件，如果判断不准确，那么性能反而会下降。</p>
+</blockquote>
+<h4 id="没有内存保护机制">没有内存保护机制</h4>
+<p>如果用户程序访问非法内存，内核会发现这个错误，发送 SIGSEGV 信号，并结束整个进程。</p>
+<p>如果内核自己非法访问内存，就会导致 oops，且结果很难控制。</p>
+<p>另外内核中的内存并不分页，也就是说，你每用掉一个字节，物理内存就减少一个字节。所以，在你想往内核里加入新功能时候要记住这一点。</p>
+<h4 id="不要轻易在内核中使用浮点数">不要轻易在内核中使用浮点数</h4>
+<p>在用户空间的进程内使用浮点操作的时候，内核会完成从整数操作模式到浮点数操作模式转换。在执行浮点指令时候因体系结构不同，内核的选择也不同，但是，内核通常捕获陷阱并着手于整数到浮点方式的转变。</p>
+<p>与用户空间进程不同，内核并不能完美地支持浮点操作，因为它本身不能陷入。在内核中使用浮点数时候，除了要人工保存和恢复浮点寄存器，还有其它一些琐碎的事情要做。如果要直截了当的回答，那就是：别这样做，除非一些极少情况，否则别在内核中使用浮点操作。</p>
+<h4 id="容积小而固定的栈">容积小而固定的栈</h4>
+<p>用户空间的程序可以从栈上分配大量的空间来存放变量，甚至巨大的结构体或者是包含数以千计的数据项的数组都没问题。之所以可以这么做，是因为用户空间的栈本身比较打，而且还能动态增长。</p>
+<p>内核堆栈的准确大小随体系结构而变。在 X86 上，栈的大小在编译时候配置，可以是 4KB 也可以是 8KB。</p>
+<p>历史上说，内核栈的大小是两页，32位机器内核栈是 8KB，而 64位机器是 16KB，这个固定不变的，每个处理器都有自己的栈。</p>
+<h4 id="同步和并发">同步和并发</h4>
+<p>内核很容易产生竞争条件。和单线程的用户空间程序不同，内核的许多特性都要求能够并发地访问共享数据，这就要求有同步机制以保证不出现竞争条件，特别是：</p>
+<ul>
+<li>Linux是抢占多任务操作系统。内核的进程调度程序即兴对进程进行调度和重新调度。内核必须和这些任务同步。</li>
+<li>Linux内核支持对称多处理器系统(SMP)。所以，如果没有适当的保护，同时在两个或两个以上的处理器上执行的内核代码很可能会同时访问共享的同一个资源。</li>
+<li>中断是异步到来的，完全不顾及当前正在执行的代码。也就是说，如果不加以适当的保护，中断完全有可能在代码访问资源的时候到来，这样，中断处理程序就有可能访问同一资源。</li>
+<li>Linux内核可以抢占。所以，如果不加以适当的保护，内核中一段正在执行的代码可能会被另外一段代码抢占，从而有可能导致几段代码同时访问相同的资源。</li>
+</ul>
+<p>常用的解决竞争的办法是<code>自旋锁</code>和<code>信号量</code>。</p>
+<h4 id="可移植性的重要性">可移植性的重要性</h4>
+<p>大部分 C 代码应该与体系结构无关，在许多不同体系结构的计算机上都能编译和执行，因此，必须把与体系结构相关的代码从内核代码树的特定目录中适当地分离出来。</p>
+<p>诸如保持字节序、64位对齐、不假定字长和页面长度等一系列准则都有助于移植性。</p>
+<h2 id="进程管理">进程管理</h2>
+<ul>
+<li>进程定义和相关概念，比如：线程</li>
+<li>Linux内核如何管理进程</li>
+<li>进程在内核中的生命周期</li>
+</ul>
+<p><strong>进程管理是整个操作系统的心脏所在</strong></p>
+<h3 id="进程">进程</h3>
+<p>进程是处于执行期的程序(目标码存放在某种介质上)。但进程并不仅仅局限于一段可执行程序代码(Unix称其为代码段，text section)。通常进程还要包含其它资源，
+像打开的文件、挂起的信号，内核内部数据，处理器状态，一个或多个具有内存映射的内存地址空间及一个或多个执行线程，当然还包括用来存放全局变量的数据段等。
+实际上，进程就是正在执行的程序代码的实时结果。内核需要有效而又透明的管理所有细节。</p>
+<p>执行线程，简称线程，是在进程中活动的对象。每个线程都拥有一个独立的程序计数器、进程栈和一组进程寄存器。内核调度的对象是线程，而不是进程。
+在传统的Unix系统中，一个进程只包含一个线程，但现在的系统中，包含多个线程的多线程程序司空见惯。对Linux而言，并不特别区分线程和进程。
+<br/></p>
+<p>在现代操作系统中，进程提供两种虚拟机制：<strong>虚拟处理器</strong>和<strong>虚拟内存</strong>。虽然实际上可能是许多进程正在分享一个处理器，但是虚拟处理器给进程一个假象，
+让这些进程觉得自己在独享处理器。
+<br/></p>
+<p>程序不是进程，进程是处于执行期间程序及其相关资源的总称。
+<br/></p>
+<p>Linux通过调用 <code>fork()</code> 复制一个现有进程来创建一个全新的进程。调用 <code>fork()</code> 的进程称为父进程，新产生的进程称为 <code>子进程</code>。在调用结束时候，
+在返回点这个相同位置上，父进程恢复执行，子进程开始执行。 <code>fork()</code> 系统调用从内核返回两次：一次回到父进程，另一次回到新产生的子进程。
+<br/></p>
+<p>通常，创建新的进程都是为了立即执行新的、不同的程序，接着调用 <code>exec()</code> 这组函数就可以创建新的地址空间，并把新的程序载入其中。
+在现代 Linux 内核中， <code>fork()</code> 实际上是由 <code>clone()</code> 系统调用完成的，后者将在后面讨论。
+<br/></p>
+<p>最终，程序通过 <code>exit()</code> 系统调用退出执行。这个函数会终结进程并将其占用的资源释放掉。父进程可以通过 <code>wait()</code> 系统调用查询子进程是否终结，
+这其实使得进程拥有了等待特定进程执行完毕的能力。进程退出执行后被设置为僵死状态，直到它的父进程调用 <code>wait()</code> 或者 <code>waitpid()</code> 为止。</p>
+<blockquote>
+<p>注意：进程的另一个名字是 <code>任务</code>。Linux 内核通常把进程也叫做任务，两个术语是一样的。</p>
+</blockquote>
+<h3 id="进程描述符及任务结构">进程描述符及任务结构</h3>
+<p>内核把进程的列表存放在叫做任务队列(task list)的双向循环列表中。链表中的每一项都是类型为 <code>task_struct</code>、称为进程描述符的结构，该结构定义在
+<code>&lt;linux/sched.h&gt;</code> 文件中。进程描述符中包含一个具体进程的所有信息。
+<br/></p>
+<p><code>task_struct</code> 相对较大，在 32 位机器上，它大约有 1.7KB。但如果考虑到该结构内包含了内核管理一个进程所需的所有信息，那么它的大小也就算
+相当小了。进程描述符中包含的数据能完整描述一个正在执行的程序：此进程打开的文件、进程的地址空间、挂起的信号、进程的状态、还有其它更多信息。</p>
+<h4 id="分配进程描述符">分配进程描述符</h4>
+<p>Linux 通过 <code>slab</code> 分配器分配 <code>task_struct</code> 结构，这样能达到对象复用和缓存着色的目的。在 2.6 以前的内核中，各个进程的 <code>task_struct</code>
+存放在它们内核栈的尾端。这样做是为了让那些像X86那样寄存器较少的硬件体系结构只要通过栈指针就能计算出它的位置，从而避免使用额外的寄存器专门记录。
+由于现在用 slab 分配器动态生成 <code>task_struct</code>，所以只需在栈底(对于向下增长的栈来说)或栈顶(对于向上增长的栈来说)创建一个新的结构 <code>struct thread_info</code>
+在 x86 上， <code>struct thread_info</code>在文件 <code>&lt;asm/thread_info.h&gt;</code>中定义如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">struct</span> <span class="n">thread_info</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">struct</span> <span class="n">task_struct</span><span class="o">*</span>         <span class="n">task</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">struct</span> <span class="n">exec_domain</span><span class="o">*</span>         <span class="n">exec_domain</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">__u32</span>                       <span class="n">flags</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">__u32</span>                       <span class="n">status</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">__u32</span>                       <span class="n">cpu</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span>                         <span class="n">preempt_count</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">mm_segment_t</span>                <span class="n">addr_limit</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">struct</span> <span class="n">restart_block</span>        <span class="n">restart_block</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span><span class="o">*</span>                       <span class="n">sysenter_return</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span>                         <span class="n">uaccess_err</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div align=center><img src='/pic/linux/kernel-process-1.png'/></div>
+<center>进程描述符和内核栈</center>
+<p>每个任务的 <code>thread_info</code> 结构在它的内核栈的末尾端分配。结构中 task 域中存放的是指向该任务实际 <code>task_struct</code> 的指针。</p>
+<blockquote>
+<p>通过预先分配和重复使用 <code>task_struct</code>，可以避免动态分配和释放带来的资源消耗。</p>
+</blockquote>
+<blockquote>
+<p>寄存器较弱的体系结构不是引入 <code>thread_info</code> 结构的唯一原因。这个新建的结构使在汇编代码中计算其偏移变得非常容易。</p>
+</blockquote>
+<h4 id="进程描述符的存放">进程描述符的存放</h4>
+<p>内核通过一个唯一的进程标识值(process identification value) 或 PID 来标识每个进程。PID 是一个数，标识为 pid_t 隐含类型(隐含类型标识隐藏了该类型实现，用句柄替代类型实现)，
+实际上就是一个int类型。为了与老版本的Unix和Linux兼容，PID 的最大值默认设置为 32768 (short int 短整型的最大值)，当然这个值也可以增加到
+400万(受 <code>&lt;linux/threads.h&gt;</code> 中所定义PID最大值的限制)。</p>
+<p>内核把每个进程 PID 存放在它们各自的进程描述符中。</p>
+<blockquote>
+<p>PID 最大值表明了系统中允许同时存在的进程的最大数目。32768一般来说够用了，而且这个值越小，进程调度一圈就越快。</p>
+</blockquote>
+<p>在内核中，访问任务/进程通常需要获得指向其 <code>task_struct</code> 的指针。实际上，内核中大部分处理进程的代码都是直接通过
+<code>task_struct</code> 进行的。因此，通过 <code>current</code> 宏查找到当前正在运行进程的进程描述符的速度就显得尤为重要。硬件体系结构不同，
+该宏的实现也不同，它必须针对专门的硬件体系结构做处理。有的硬件体系结构可以拿出一个专门寄存器来存放指向当前进程
+<code>task_struct</code> 的指针，用于加快访问速度。而有些像x86这样的体系结构(其寄存器并不富余)，就只能在内核栈的尾端创建
+<code>thread_info</code> 结构，通过计算偏移间接地查找 <code>task_struct</code> 结构。</p>
+<p>在 X86 系统上，current 把栈指针的后 13 个有效位屏蔽掉，用来计算出 <code>thread_info</code> 的偏移。该操作是通过 <code>current_thread_info()</code>
+函数完成的。汇编代码如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="nf">mov1</span> <span class="no">$-8192</span><span class="p">,</span> <span class="nv">%eax</span>
+</span></span><span class="line"><span class="cl"><span class="nf">andl</span> <span class="nv">%esp</span><span class="p">,</span> <span class="nv">%eax</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>这里假定栈的大小为 8KB。当 4KB 的栈启用时候，就要用 4096，而不是 8192.</p>
+</blockquote>
+<p>最后，current再从 <code>thread_info</code> 的 <code>task</code> 域中提取并返回 <code>task_struct</code> 的地址：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">current_thread_info</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">task</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>对比一下这部分在 PowerPC (IBM基于RISC 的现代微处理器)，我呢把可以发现 PPC 当前的 <code>task_struct</code> 是保存在一个寄存器中。
+也就是说，在 PPC 上， current 宏只需要把 r2 寄存器中的值返回就行了。与 X86 不一样，PPC 有足够多的寄存器，所以它的实现有这样选择的余地。
+而访问进程描述符是一个重要的频繁操作，所以 PPC 的内核开发者觉得完全有必要为此使用一个专门的寄存器。</p>
+</blockquote>
+<h4 id="进程状态">进程状态</h4>
+<p>进程描述符中的 <code>state</code> 域描述了进程的当前状态。系统中的每个进程都必然处于五种进程状态中的一种。该域的值也必为以下五种状态标识之一：</p>
+<ul>
+<li>TASK_RUNNING(运行) —— 进程是可执行的：它或者正在执行，或者在运行队列中等待执行。这是进程在用户空间中执行的唯一可能的状态；这种状态也可以应用到内核空间中正在执行的进程。</li>
+<li>TASK_INTERRUPTIBLE(可中断) —— 进程正在睡眠(也就是说它被阻塞)，等待某些条件的达成。一旦这些条件达成，内核就会把
+进程状态设置为可运行。处于此状态的进程也会因为接收到信号而提前被唤醒并随时准备投入运行。</li>
+<li>TASK_UNINTERRUPTIBLE(不可中断) —— 除了就算是接收到信号也不会被唤醒或者准备投入运行外，这个状态与可打断状态相同。这个状态通常在进程必须等待时不受干扰或等待事件很快就会发生时候出现。由于处于此状态的任务对信号不做响应，所以较之可中断状态使用的比较少。</li>
+<li>__TASK_TRACED —— 被其它进程跟踪的进程，例如通过 <code>ptrace</code> 对调试程序进行跟踪。</li>
+<li>__TASK_STOPPED(停止) —— 进程停止执行；进程没有投入运行也不能投入运行。通常这种状态发生在接收到 <code>SIGSTOP</code>、<code>SIGTSTP</code>、<code>SIGTTOU</code> 等信号的时候，此外在调试期间收到任何信号，都会使进程进入这种状态。</li>
+</ul>
+<div align=center><img src='/pic/linux/kernel-process-2.png'/></div>
+<center>进程状态转化</center>
+<h4 id="设置当前进程状态">设置当前进程状态</h4>
+<p>内核经常需要调整某个进程的状态。这时最好使用 <code>set_task_state(task, state)</code> 函数：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">set_task_state</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="n">state</span><span class="p">);</span>    <span class="c1">// 将任务 task 的状态设置为 state
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>该函数将指定的进程设置为指定状态。必要的时候下，它会设置内存屏障来强制其它处理器做重新排序(一般只有在 SMP 系统中有此必要)。否则，它等价于：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">task</span><span class="o">-&gt;</span><span class="n">state</span> <span class="o">=</span> <span class="n">state</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>set_current_state(state) 和 set_task_state(current, state) 含义是等同的。参看 <code>&lt;linux/sched.h&gt;</code> 中相关函数的说明。</p>
+</blockquote>
+<h4 id="进程上下文">进程上下文</h4>
+<p>可执行程序代码是进程的重要组成部分。这些代码从一个可执行文件载入到进程的地址空间执行。一般程序在用户空间执行。当一个程序执行了系统调用或者触发了某个异常，它就陷入了内核空间。
+此时，我们称内核 “代表进程执行”并处于进程上下文中。在此上下文中 <code>current</code> 宏是有效的。除非在此间隙有更高优先级的进程需要执行并由调度器做出了相应调整，否则在内核退出的时候，程序恢复在用户空间会继续执行。</p>
+<p>系统调用和异常处理程序是对内核明确定义的接口。进程只有通过这些接口才能陷入内核执行 —— 对内核的所有访问都必须通过这些接口。</p>
+<h4 id="进程家族树">进程家族树</h4>
+<p>Unix 系统的进程之间存在一个明显的继承关系，在linux系统中也是如此。所有的进程都是 PID 为 1 的 init 进程的后代。
+内核在系统启动的最后阶段启动 init 进程。该进程读取系统的初始化脚本(initscript) 并执行其它的相关程序，最终完成系统启动的整个过程。</p>
+<p>系统中的每个进程必有一个父进程，每个进程也可以拥有零个或多个子进程。拥有同一个父进程的所有进程都被称为<strong>兄弟</strong>。进程的关系存放在进程描述符中。每个
+<code>task_struct</code> 都包含一个指向其父进程的 <code>task_struct</code>、叫做 <code>parent</code> 的指针，还包含一个称为 <code>children</code> 的子进程链表。所以，对于
+当前进程，可以通过下面的代码获得其父进程的进程描述符：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">struct</span> <span class="n">task_struct</span><span class="o">*</span>         <span class="n">myParent</span> <span class="o">=</span> <span class="n">current</span><span class="o">-&gt;</span><span class="n">parent</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>同样，也可以按以下方式依次访问子进程：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">struct</span> <span class="n">task_struct</span><span class="o">*</span> <span class="n">task</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">struct</span> <span class="n">list_head</span><span class="o">*</span> <span class="n">list</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">list_for_each</span><span class="p">(</span><span class="n">list</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">current</span><span class="o">-&gt;</span><span class="n">children</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">task</span> <span class="o">=</span> <span class="n">list_entry</span><span class="p">(</span><span class="n">list</span><span class="p">,</span> <span class="k">struct</span> <span class="n">task_struct</span><span class="p">,</span> <span class="n">sibling</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="cm">/* task 现在指向当前的某个子进程 */</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>init 进程的描述符是作为 <code>init_task</code> 静态分配的。下面的代码可以很好的演示所有进程之间的关系：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">struct</span> <span class="n">task_struct</span><span class="o">*</span> <span class="n">task</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="p">(</span><span class="n">task</span> <span class="o">=</span> <span class="n">current</span><span class="p">;</span> <span class="n">task</span> <span class="o">!=</span> <span class="o">&amp;</span><span class="n">init_task</span><span class="p">;</span> <span class="n">task</span> <span class="o">=</span> <span class="n">task</span><span class="o">-&gt;</span><span class="n">parent</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// task 现在指向 init
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>实际上，你可以通过这种继承体系从系统的任何一个进程出发查找到任意指定的其它进程。但大多数时候，只需要通过简单的重复的方式就
+可以遍历系统中的所有进程。这非常容易做到，因为一个任务队列本来就是一个双向的循环链表。对于给定的进程，获取链表中的下一个进程：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">list_entry</span><span class="p">(</span><span class="n">task</span><span class="o">-&gt;</span><span class="n">tasks</span><span class="p">.</span><span class="n">next</span><span class="p">,</span> <span class="k">struct</span> <span class="n">task_struct</span><span class="p">,</span> <span class="n">tasks</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>获取前一个进程的方法与之相同：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">list_entry</span><span class="p">(</span><span class="n">task</span><span class="o">-&gt;</span><span class="n">tasks</span><span class="p">.</span><span class="n">prev</span><span class="p">,</span> <span class="k">struct</span> <span class="n">tsak_struct</span><span class="p">,</span> <span class="n">tasks</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这两个例程分别通过<code>next_task(task)</code>宏和<code>prev_task(task)</code>宏实现。而实际上，<code>for_each_process(task)</code>宏提供了依次访问整个任务队列的能力。
+每次访问，任务指针都指向链表中的下一个元素：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">struct</span> <span class="n">task_struct</span><span class="o">*</span> <span class="n">task</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">for_each_process</span><span class="p">(</span><span class="n">task</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 它打印出每一个任务的名称和PID
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">printk</span><span class="p">(</span><span class="s">&#34;%s [%d]</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">task</span><span class="o">-&gt;</span><span class="n">comm</span><span class="p">,</span> <span class="n">task</span><span class="o">-&gt;</span><span class="n">pid</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>在一个拥有大量进程的系统中通过重复来遍历所有进程的代价是很大的。因此，如果没有必须这样做的理由，不要这样做。</p>
+</blockquote>
+<h3 id="进程创建">进程创建</h3>
+<p>Unix 的进程创建很特别。许多其它的操作系统都提供了产生(spawn)进程的机制，首先在新的地址空间里创建进程，读入可执行文件，最后开始执行。</p>
+<p>Unix采用了与众不同的实现方式，它把上述步骤分解到两个单独的函数中去执行： <code>fork()</code> 和 <code>exec()</code>。</p>
+<p>首先， <code>fork()</code> 通过拷贝当前进程创建一个子进程。子进程与父进程的区别仅仅在于 PID(每个进程唯一)、PPID(父进程的进程号，子进程将其设置为被拷贝进程的PID)
+和某些资源和统计量(例如，挂起的信号，它没有必要被继承)。</p>
+<p><code>exec()</code>函数负责读取可执行文件并将其载入地址空间开始运行。把这两个函数组合起来使用的效果跟其它系统使用的单一函数的效果相似。</p>
+<h4 id="写时拷贝">写时拷贝</h4>
+<p>传统的 <code>fork()</code> 系统调用直接把所有资源复制给新创建的进程。这种实现过于简单且效率低下，因为它拷贝的数据也许并不共享，更糟糕的是，如果新进程打算立即执行一个新的映像，那么所有的拷贝都将前功尽弃。
+Linux 的 <code>fork()</code> 十一鸥鸟更写时拷贝页实现。写时拷贝是一种可以推迟甚至免除拷贝数据的技术。内核此时并不复制整个进程地址空间，而是让父进程和子进程共享同一个拷贝。</p>
+<p>只有在需要写入的时候，数据才会被复制，从而使各个进程拥有各自的拷贝。也就是说，资源的复制只有在需要写入的时候才进行，在此之前，只是以只读方式共享。这种技术使地址空间上的页的拷贝被推迟到实际发生写入的时候才进行。
+在页根本不会被写入的情况下(距离来说，<code>fork()</code>后立即调用<code>exec()</code>)他们就无需复制了。</p>
+<p><code>fork()</code>的实际开销就是复制父进程的页表以及给子进程创建唯一的进程描述符。在一般情况下，进程创建后会马上运行一个可执行文件，这种优化可以避免拷贝大量根本都不会被使用的数据(地址空间里常常包含数十兆的数据)。
+由于Unix强调进程快速执行的能力，所以这个优化是很重要的。</p>
+<h4 id="fork"><code>fork()</code></h4>
+<p>Linux 通过 clone() 系统调用实现 <code>fork()</code>。这个调用通过一系列的参数标志来指明父、子进程需要共享的资源。
+<code>fork()</code>、<code>vfork()</code>和<code>__clone()</code>库函数都根据各自需要的参数标志去调用 <code>clone()</code>，然后由 <code>clone()</code> 去调用 <code>do_fork()</code>。</p>
+<p><code>do_fork()</code>完成创建中的大部分工作(定义在 <code>kernel/fork.c</code> 中)，该函数调用 <code>copy_process()</code> 函数，然后让进程开始运行。 <code>copy_process()</code>完成以下主要工作：</p>
+<ol>
+<li>调用 <code>dup_task_struct()</code> 为新进程创建一个内核栈、<code>thread_info</code> 结构和 <code>task_struct</code>，这些值与当前进程的值相同。此时，子进程和父进程的描述符是完全相同的。</li>
+<li>检查并确保新创建这个子进程后，当前用户拥有的进程数目没有超出给它分配的资源的限制。</li>
+<li>子进程着手使自己与父进程区别开来。进程描述符内的许多成员都要被清零或设为初始值。那些不是继承而来的进程描述符成员，主要是统计信息。task_struct中的大多数数据都依然未被修改。</li>
+<li>子进程的状态被设置为 <code>TASK_UNINTERRUPTIBLE</code>，以保证它不会投入运行。</li>
+<li><code>copy_process()</code>调用 <code>copy_flags()</code> 以更新 <code>task_struct</code> 的 flags 成员。表明进程是否拥有超级用户权限的
+<code>PF_SUPERPRIV</code>标志被清零。表明进程还没有调用 <code>exec()</code> 函数的 <code>PF_FORKNOEXEC</code> 标志被设置。</li>
+<li>调用 <code>alloc_pid()</code> 为新进程分配一个有效的 PID。</li>
+<li>根据传递给 <code>clone()</code> 的参数标志，<code>copy_process()</code>拷贝或共享打开的文件、文件系统信息、信号处理函数、进程地址空间和命名空间等。
+在一般情况下，这些资源会被给定进程的所有线程共享；否则，这些资源对每个进程是不同的，因此被拷贝在这里。</li>
+<li>最后，<code>copy_process()</code>做收尾工作并返回一个指向子进程的指针。</li>
+</ol>
+<p>再回到 <code>do_fork()</code>函数，如果 <code>copy_process()</code> 函数返回成功，新创建的子进程被唤醒并让其投入运行。内核有意选择子进程首先执行。因为一般子进程都会马上调用 <code>exec()</code>函数，这样可以避免写时拷贝的额外开销，如果父进程首先
+执行的话，有可能会开始向地址空间写入。</p>
+<h4 id="vfork"><code>vfork()</code></h4>
+<p>除了不拷贝父进程的页表项外，<code>vfork()</code>系统调用和<code>fork()</code>的功能相同。子进程作为父进程的一个单独的线程在它的地址空间里运行，父进程被阻塞，直到子进程退出或执行
+<code>exec()</code>。子进程不能向地址空间写入。在过去的 3BSD 时期，这个优化是有意义的，那时并未使用写时拷贝页来实现
+<code>fork()</code>。现在由于在执行<code>fork()</code>十引入了写时拷贝页而且明确了子进程先执行，<code>vfork()</code>的好处就仅限于不拷贝父进程的页表项了。
+如果 Linux 将来<code>fork()</code>有了写时拷贝页表项，那么<code>vfork()</code>就彻底没用了。另外由于<code>vfork()</code>语义非常微妙(试想，如果<code>exec()</code>调用失败会发生什么)，
+所以理想情况下，系统最后不要调用 <code>vfork()</code>，内核也不用实现它。完全可以把 <code>vfork()</code> 实现成一个普普通通的 <code>fork()</code> —— 实际上，Linux2.2以前就是这么做的。
+<br/></p>
+<p><code>vfork()</code>系统调用的实现是通过向 <code>clone()</code> 系统调用传递一个特殊标志来进行的。</p>
+<ol>
+<li>在调用 <code>copy_process()</code> 时候，<code>task_struct</code> 的 <code>vfork_done</code>成员被设置为 <code>NULL</code>。</li>
+<li>在执行 <code>do_fork()</code> 时，如果给定特别标志，则 <code>vfork_done</code>会指向一个特定地址。</li>
+<li>子进程先开始执行后，父进程不是马上恢复执行，而是一直等待，直到子进程通过<code>vfork_done</code>指针向他发送信号。</li>
+<li>在调用 mm_release() 时候，该函数用于进程退出内存地址空间，并且检查 <code>vfork_done</code> 是否为空，如果不为空，则会向父进程发送信号。</li>
+<li>回到 <code>do_fork()</code>，父进程醒来并返回。
+如果一切执行顺利，子进程在新的地址空间里运行而父进程也恢复了在原地址空间的运行。这样，开销确实降低了，不过它的实现并不是优良的。</li>
+</ol>
+<h3 id="线程在linux中的实现">线程在Linux中的实现</h3>
+<p>线程机制是现代编程技术中非常常用的一种抽象概念。该机制提供了在同一个程序内共享内存地址空间运行的一组线程。这些线程还可以共享打开的文件和其它资源线程机制支持并发程序设计技术，在多处理器系统上，它也能保证真正的并行处理。</p>
+<p>Linux 实现线程的机制非常独特。从内核角度来说，它并没有线程这个概念。Linux把所有的线程都当作进程来实现。内核并没有准备特别的调度算法或者定义特别的数据结构来表征线程。
+相反，线程仅仅被视为一个与其它进程共享某些资源的进程。每个线程都拥有唯一隶属于自己的 <code>task_struct</code>，素以在内核中，它看起来就像是一个普通的进程
+(只是线程和其它一些进程共享某些资源，如地址空间)。</p>
+<p>上述线程机制的实现与<code>Windows</code> 或是 <code>Sun Solaris</code> 等操作系统的实现差异非常大。这些系统都在内核中提供了专门支持线程的机制(这写系统常常把线程称作轻量级进程)。
+“轻量级进程”这种叫法本身就概括了Linux在此处与其它系统的差异。</p>
+<p>在其它系统中，相较于重量级的进程，线程被抽象成一种耗费较少资源，运行迅速的执行单元。而对于linux来说，它只是一种进程间共享资源的手段(Linux进程本身就够轻量级的来)。
+举个例子来说，假如我们有一个包含四个线程的进程，在提供专门线程支持的系统中，通常会有一个包含指向四个不同线程的指针的进程描述符。
+该描述符负责描述像地址空间、打开的文件这样的共享资源。线程本身再去描述它独占的资源。相反，Linux仅仅创建四个进程并分配四个普通的
+<code>task_struct</code>结构。建立这四个进程时候指定他们共享某些资源，这是相当高雅的做法。</p>
+<h4 id="创建线程">创建线程</h4>
+<p>线程的创建和普通进程的创建类似，只不过在调用 <code>clone()</code> 的时候需要传递一些参数标志来指明需要共享的资源：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">clone</span><span class="p">(</span><span class="n">CLONE_VM</span><span class="o">|</span><span class="n">CLONE_FS</span><span class="o">|</span><span class="n">CLONE_FILES</span><span class="o">|</span><span class="n">CLONE_SIGHAND</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>上面的代码产生的结果和调用<code>fork()</code>差不多，只是父子俩共享地址空间、文件系统资源、文件描述符和信号处理程序。换个说法就是，新建的进程和它的父进程就是流行的所谓线程。</p>
+<p>对比以下，一个普通的 <code>fork()</code> 的实现是：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">clone</span><span class="p">(</span><span class="n">CLONE_VFORK</span><span class="o">|</span><span class="n">CLONE_VM</span><span class="o">|</span><span class="n">SIGCHLE</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>传递给 <code>clone()</code> 的参数标志决定了新创建进程的行为方式和父子进程之间共享的资源种类。
+表3-1列举了这些<code>clone()</code>用到的参数标志以及他们的作用，这些是在<code>&lt;linux/sched.h&gt;</code>中定义的。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">参数标志</th>
+<th style="text-align:left">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">CLONE_FILES</td>
+<td style="text-align:left">父子进程共享打开的文件</td>
+</tr>
+<tr>
+<td style="text-align:left">CLONE_FS</td>
+<td style="text-align:left">父子进程共享文件系统信息</td>
+</tr>
+<tr>
+<td style="text-align:left">CLONE_IDLETASK</td>
+<td style="text-align:left">将PID设置为0(只供idle进程使用)</td>
+</tr>
+<tr>
+<td style="text-align:left">CLONE_NEWNS</td>
+<td style="text-align:left">为子进程创建新的命名空间</td>
+</tr>
+<tr>
+<td style="text-align:left">CLONE_PARENT</td>
+<td style="text-align:left">指定子进程与父进程拥有同一个父进程</td>
+</tr>
+<tr>
+<td style="text-align:left">CLONE_PTRACE</td>
+<td style="text-align:left">继续调试子进程</td>
+</tr>
+<tr>
+<td style="text-align:left">CLONE_SETTID</td>
+<td style="text-align:left">将 TID 回写至用户空间</td>
+</tr>
+<tr>
+<td style="text-align:left">CLONE_SETTLS</td>
+<td style="text-align:left">为子进程创建新的 TLS(thread-local storage)</td>
+</tr>
+<tr>
+<td style="text-align:left">CLONE_SIGHAND</td>
+<td style="text-align:left">为父进程共享信号处理函数及被阻断的信号</td>
+</tr>
+<tr>
+<td style="text-align:left">CLONE_SYSVSEM</td>
+<td style="text-align:left">父子进程共享 System V SEM_UNDO 语义</td>
+</tr>
+<tr>
+<td style="text-align:left">CLONE_THREAD</td>
+<td style="text-align:left">父子进程放入相同的线程组</td>
+</tr>
+<tr>
+<td style="text-align:left">CLONE_VFORK</td>
+<td style="text-align:left">调用<code>vfork()</code>，所以父进程准备睡眠等待子进程将其唤醒</td>
+</tr>
+<tr>
+<td style="text-align:left">CLONE_UNTRACED</td>
+<td style="text-align:left">防止跟踪进程在子进程上强制执行 <code>CLONE_PTRACE</code></td>
+</tr>
+<tr>
+<td style="text-align:left">CLONE_STOP</td>
+<td style="text-align:left">以TASK_STOPPED状态开始进程</td>
+</tr>
+<tr>
+<td style="text-align:left">CLONE_CHILD_CLEARTID</td>
+<td style="text-align:left">清除子进程的TID</td>
+</tr>
+<tr>
+<td style="text-align:left">CLONE_CHILD_SETTID</td>
+<td style="text-align:left">设置子进程的TID</td>
+</tr>
+<tr>
+<td style="text-align:left">CLONE_PARENT_SETTID</td>
+<td style="text-align:left">设置父进程的TID</td>
+</tr>
+<tr>
+<td style="text-align:left">CLONE_VM</td>
+<td style="text-align:left">父子进程共享地址空间</td>
+</tr>
+</tbody>
+</table>
+<h4 id="内核线程">内核线程</h4>
+<p>内核经常需要在后台执行一些操作。这种任务可以通过内核线程完成 —— 独立运行在内核空间的标准进程。
+<br/></p>
+<p>内核线程与普通进程间的区别在于内核线程没有独立的地址空间(实际上指向地址空间的mm指针被设置为NULL)。
+它们只在内核空间运行，从来不切换到用户空间去，内核进程和普通进程一样，可以被调度，也可以被抢占。</p>
+<blockquote>
+<p>Linux确实会把一些任务交给内核线程去做，像<code>flush</code>和<code>ksofirqd</code>这些任务就是明显的例子。</p>
+</blockquote>
+<p>内核线程是在系统启动时候由其它内核线程创建。内核是通过从kthreadd内核进程中衍生出所有新的内核线程来自动处理这一点的。在
+<code>&lt;linux/kthread.h&gt;</code>中声明有接口，于是，从现有内核线程中创建一个新的内核线程的方法如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">struct</span> <span class="n">task_struct</span><span class="o">*</span> <span class="n">kthread_create</span> <span class="p">(</span><span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">threadfn</span><span class="p">)</span> <span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">data</span><span class="p">),</span> <span class="kt">void</span><span class="o">*</span> <span class="n">data</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="n">namefmt</span><span class="p">[],</span> <span class="p">...)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>新的任务是由 kthread 内核进程通过 <code>clone()</code>系统调用而创建的。新的进程将运行 <code>threadfn</code> 函数，给其传递的参数是data。
+进程会被命名为 namefmt, namefmt接受可变参数列表类似于 <code>printf()</code> 的格式化参数。新创建的进程处于不可运行状态，如果不通过调用
+<code>wake_up_process()</code>明确地唤醒它，它不会主动运行。创建一个进程并让它运行起来，可以通过调用 <code>kthread_run()</code>来达到：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">struct</span> <span class="n">task_struct</span><span class="o">*</span> <span class="n">kthread_run</span> <span class="p">(</span><span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">threadfn</span><span class="p">)</span> <span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">data</span><span class="p">),</span> <span class="kt">void</span><span class="o">*</span> <span class="n">data</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="n">namefmt</span><span class="p">[],</span> <span class="p">...)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这个例程是以宏实现的，只是简单地调用了 <code>kthread_create()</code> 和 <code>wake_up_process()</code>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#define kthread_run(threadfn, data, namefmt, ...)               \
+</span></span></span><span class="line"><span class="cl"><span class="cp">({                                                              \
+</span></span></span><span class="line"><span class="cl"><span class="cp">    struct task_struct* k;                                      \
+</span></span></span><span class="line"><span class="cl"><span class="cp">    k = kthread_create(threadfn,data,namefmt,## __VA_ARGS__);   \
+</span></span></span><span class="line"><span class="cl"><span class="cp">    if (!IS_ERR(k))                                             \
+</span></span></span><span class="line"><span class="cl"><span class="cp">        wake_up_process(k);                                     \
+</span></span></span><span class="line"><span class="cl"><span class="cp">    k;                                                          \
+</span></span></span><span class="line"><span class="cl"><span class="cp">})
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>内核线程启动后就一直运行直到调用 <code>do_exit()</code> 退出，或者内核的其它部分调用 <code>kthread_stop()</code>退出，传递给
+<code>kthread_stop()</code>的参数为<code>kthread_create()</code>函数返回的 <code>task_struct</code>结构的地址：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">kthread_stop</span><span class="p">(</span><span class="k">struct</span> <span class="n">task_struct</span><span class="o">*</span> <span class="n">k</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="进程终结">进程终结</h3>
+<p>进程终结时候，内核必须释放它所占有的资源，并把这一消息告知父进程。</p>
+<p>一般来说，进程的析构是自身引起的。它发生在进程调用<code>exit()</code>系统调用时候，既可能显示地调用这个系统调用，也可能显示地从某个程序的主函数返回
+(其实C语言编译器会在main()函数的返回点后面放置调用<code>exit()</code>的代码)。当进程接受到它既不能处理也不能忽略的信号或异常时候，它还可能主动被终结。不管进程是怎么终结的，该任务
+大部分要靠<code>do_exit()</code>(定义于kernel/exit.c)来完成，它要做下面这些繁琐工作：</p>
+<ol>
+<li>将 <code>task_struct</code> 中的标志成员设置为 <code>PF_EXITING</code></li>
+<li>调用 <code>del_timer_sync()</code> 删除任一内核定时器。根据返回的结果，它确保没有定时器在排队，也没有定时器处理程序在运行。</li>
+<li>如果 BSD 的进程记账功能是开启的，<code>do_exit()</code> 调用 <code>acct_update_integrals()</code> 来输出记账信息。</li>
+<li>然后调用 <code>exit_mm()</code>函数释放进程占用的 <code>mm_struct</code>，如果没有别的进程使用它们(也就是说，这些地址空间没有被共享)，就彻底释放它们。</li>
+<li>接下来调用 <code>sem_exit()</code> 函数。如果进程排队等候 IPC 信号，它则离开队列。</li>
+<li>调用 <code>exit_files()</code> 和 <code>exit_fs()</code>，以分别递减文件描述符、文件系统数据的引用计数。如果某个引用计数值为0，那么就代表没有进程在使用相应的资源，此时可以释放。</li>
+<li>接着把存放在 <code>task_struct</code> 的 <code>exit_code</code> 成员中的任务退出代码置为由 <code>exit()</code> 提供的退出代码，或者去完成任何其它由内核机制规定的退出动作。退出代码存放在这里供父进程随时检索。</li>
+<li>调用 <code>exit_notify()</code> 向父进程发送信号，给子进程重新找养父，养父为线程组中的其它线程或者为 <code>init</code> 进程，并把进程状态(存放在<code>task_struct</code>结构的
+<code>exit_state</code>中)设成 <code>EXIT_ZOMBIE</code>。</li>
+<li><code>do_exit()</code>调用 <code>schedule()</code> 切换到新的进程。因为处于 <code>EXIT_ZOMBIE</code> 状态的进程不会再被调度，所以这时进程所执行的最后一段代码。<code>do_exit()</code> 永不返回。</li>
+</ol>
+<p>至此，与进程相关联的所有资源都被释放掉了(假设该进程是这些资源的唯一使用者)。进程不可运行(实际上也没有地址空间让他运行)并处于<code>EXIT_ZOMBIE</code>
+退出状态。它占用的所有内存就是内核栈、thread_info结构和task_struct结构。此时进程存在的唯一目的就是向它的父进程提供信息。父进程检索到信息后，或者通知内核那是无关的信息后，由进程所持有的剩余内存被释放，归还给系统使用。</p>
+<h4 id="删除进程描述符">删除进程描述符</h4>
+<p>在调用了 <code>do_exit()</code> 之后，尽管线程已经僵死不能再运行了，但是系统还是保留了它的进程描述符。前面说过，这样做可以让系统有办法在子进程终结后仍然获得它的信息。因此，进程终结时候所需的清理工作和进程描述符的删除被分开执行。
+在父进程获得已终结的子进程的信息后，或者通知内核它并不关注那些信息后，子进程的<code>task_struct</code>结构才被释放。
+<br/></p>
+<p><code>wait()</code>这一族函数都是通过唯一(但是很复杂)的一个系统调用 <code>wait4()</code>来实现的。它的标准动作是挂起调用它的进程，直到其中的一个子进程退出，此时函数会返回该子进程的PID。
+此外，调用该函数时候提供的指针会包含子函数退出时候的退出码。
+<br/></p>
+<p>当最终需要释放进程描述符时候，<code>release_task()</code>会被调用，用以完成以下工作：</p>
+<ol>
+<li>它调用 <code>__exit_signal()</code>，该函数调用<code>__unhash_process()</code>，后者又调用 <code>detach_pid()</code> 从 <code>pidhash</code> 上删除该进程，同时也要从任务列表中删除该进程。</li>
+<li><code>_exit_signal()</code>释放目前僵死进程所使用的所有剩余资源，并进行最终统计和记录。</li>
+<li>如果这个进程是线程组最后一个进程，并且领头进程已经死掉，那么 <code>release_task()</code> 就要通知僵死的领头进程的父进程。</li>
+<li><code>release_task()</code> 调用<code>put_task_struct()</code>释放进程内核栈和<code>thread_info</code>结构所占的页，并释放<code>task_struct</code>所占的 slab 高速缓存。</li>
+</ol>
+<p>至此，进程描述符和所有进程独享的资源全部被释放掉。</p>
+<h4 id="孤儿进程造成的进退维谷">孤儿进程造成的进退维谷</h4>
+<p>如果父进程在子进程之前退出，必须有机制来保证子进程能找到一个新的父亲，否则这些成为孤儿的进程就会在退出时候永远处于僵死状态，白白地耗费内存。
+前面的部分已经有所暗示，对于这个问题，解决方法是给子进程在当前线程组内找一个线程作为父亲，如果不行，就让 init 做它们的父进程。在 <code>do_exit()</code>
+中会调用 <code>exit_notify()</code>，该函数会调用 <code>forget_original_parent()</code>，而后者会调用 <code>find_new_reaper()</code> 来执行寻父过程：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">static</span> <span class="k">struct</span> <span class="n">task_struct</span><span class="o">*</span> <span class="nf">find_new_reaper</span> <span class="p">(</span><span class="k">struct</span> <span class="n">task_struct</span><span class="o">*</span> <span class="n">father</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">struct</span> <span class="n">pid_namespace</span><span class="o">*</span> <span class="n">pid_ns</span> <span class="o">=</span> <span class="n">task_active_pid_ns</span> <span class="p">(</span><span class="n">father</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">struct</span> <span class="n">task_struct</span><span class="o">*</span> <span class="kr">thread</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kr">thread</span> <span class="o">=</span> <span class="n">father</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">while_each_thread</span><span class="p">(</span><span class="n">father</span><span class="p">,</span> <span class="kr">thread</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="kr">thread</span><span class="o">-&gt;</span><span class="n">flags</span> <span class="o">&amp;</span> <span class="n">PF_EXITING</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">continue</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">unlikely</span><span class="p">(</span><span class="n">pid_ns</span><span class="o">-&gt;</span><span class="n">child_reaper</span> <span class="o">==</span> <span class="n">father</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">            <span class="n">pid_ns</span><span class="o">-&gt;</span><span class="n">child_reaper</span> <span class="o">=</span> <span class="kr">thread</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="kr">thread</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">unlikely</span> <span class="p">(</span><span class="n">pid_ns</span><span class="o">-&gt;</span><span class="n">child_reaper</span> <span class="o">==</span> <span class="n">father</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">write_unlock_irq</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">tasklist_lock</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">unlikely</span><span class="p">(</span><span class="n">pid_ns</span> <span class="o">==</span> <span class="o">&amp;</span><span class="n">init_pid_ns</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">            <span class="n">panic</span> <span class="p">(</span><span class="s">&#34;Attempted to kill init!&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">zap_pid_ns_processes</span> <span class="p">(</span><span class="n">pid_ns</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">write_lock_irq</span><span class="p">(</span><span class="o">&amp;</span><span class="n">tasklist_lock</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">pid_ns</span><span class="o">-&gt;</span><span class="n">child_reaper</span> <span class="o">=</span> <span class="n">init_pid_ns</span><span class="p">.</span><span class="n">child_reaper</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">pid_ns</span><span class="o">-&gt;</span><span class="n">child_reaper</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这段代码试图找到进程所在线程组内的其它进程。如果线程组内没有其它进程，他就找到并返回的是 init 进程。现在，给子进程找到合适的养父进程来，
+只需遍历所有子进程并为它们设置新的父进程：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">reaper</span> <span class="o">=</span> <span class="n">find_new_reaper</span><span class="p">(</span><span class="n">father</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">list_for_each_entry_safe</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">father</span><span class="o">-&gt;</span><span class="n">children</span><span class="p">,</span> <span class="n">sibling</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">p</span><span class="o">-&gt;</span><span class="n">real_parent</span> <span class="o">=</span> <span class="n">reaper</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">parent</span> <span class="o">==</span> <span class="n">father</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">BUG_ON</span><span class="p">(</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">ptrace</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">p</span><span class="o">-&gt;</span><span class="n">parent</span> <span class="o">=</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">real_parent</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="n">reparent_thread</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">father</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>然后调用 <code>ptrace_exit_finish()</code> 同样进行新的寻父过程，不过这次是给 <code>ptraced</code> 的子进程寻找父亲。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">exit_ptrace</span><span class="p">(</span><span class="k">struct</span> <span class="n">task_struct</span><span class="o">*</span> <span class="n">tracer</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">struct</span> <span class="n">task_struct</span> <span class="o">*</span><span class="n">p</span><span class="p">,</span> <span class="o">*</span><span class="n">n</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">LIST_HEAD</span><span class="p">(</span><span class="n">ptrace_dead</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="n">write_lock_irq</span><span class="p">(</span><span class="o">&amp;</span><span class="n">tasklist_lock</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">list_for_each_entry_safe</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">tracer</span><span class="o">-&gt;</span><span class="n">ptraced</span><span class="p">,</span> <span class="n">ptrace_entry</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">__ptrace_detach</span><span class="p">(</span><span class="n">tracer</span><span class="p">,</span> <span class="n">p</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">list_add</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">ptrace_entry</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">ptrace_dead</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">write_unlock_irq</span><span class="p">(</span><span class="o">&amp;</span><span class="n">tasklist_lock</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">BUG_ON</span><span class="p">(</span><span class="o">!</span><span class="n">list_empty</span><span class="p">(</span><span class="o">&amp;</span><span class="n">tracer</span><span class="o">-&gt;</span><span class="n">ptraced</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">list_for_each_entry_safe</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">ptrace_dead</span><span class="p">,</span> <span class="n">ptrace_entry</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">list_del_init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">p</span><span class="o">-&gt;</span><span class="n">ptrace_entry</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">release_task</span><span class="p">(</span><span class="n">p</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这段代码遍历了两个链表：子进程链表和<code>ptrace</code>子进程链表，给每个子进程设置新的父进程。这两个链表同时存在的原因很有意思，它也是2.6内核的一个新特性。
+当一个进程被跟踪时，它的临时父亲设定为调试进程。此时如果它的父进程退出了，系统会为它和它的所有兄弟重新找一个父进程。在以前的内核中，这就需要遍历系统所有
+的进程来找这些子进程。现在的解决方法是在一个单独的被<code>ptrace</code>跟踪的子进程链表中搜索相关的兄弟进程 —— 用两个相对较小的链表减轻了遍历带来的消耗。
+<br/></p>
+<p>一旦系统为进程成功地找到和设置了新的父进程，就不会再有出现驻留僵死进程的危险了。<code>init</code>进程会例行调用<code>wait()</code>来检查其子进程，清除所有与其相关的僵死进程。</p>
+<h3 id="小结">小结</h3>
+<p>本章主要考察了系统中的核心概念 —— 进程。讨论了进程的一般特性，它为何如此重要，以及进程和线程之间的关系
+<br/></p>
+<p>讨论了Linux如何存放和表示进程(<code>task_struct</code>和<code>thread_info</code>)，如何创建进程(通过 <code>fork()</code>，实际上最终是 <code>clone()</code>)，如何把新的执行镜像装入到地址空间
+(通过 <code>exec()</code> 系统调用族)，如何表示进程的层次关系，父进程又是如何收集其后代的信息(通过 <code>wait()</code> 系统调用族)，以及进程最终如何消亡
+(强制或者自愿地调用<code>exit()</code>)。进程是一个非常基础、非常关键的抽象概念，位于每一种现代操作系统的核心位置，也是我们拥有操作系统(用来运行程序)的最终原因。</p>
+<h2 id="进程调度">进程调度</h2>
+<p>上边讲到的<strong>进程</strong>，他在操作系统看来是程序的运行态表现形式。接下来讨论进程调度，它是确保进程能有效工作的一个内核子系统。
+<br/></p>
+<p>调度程序负责决定将哪个进程投入运行，何时运行以及运行多长时间。进程调度程序(常常简称调度程序)可看做在可运行态进程之间分配有限的处理器事件资源
+的内核子系统。调度程序是像Linux这样的多任务操作系统的基础。只有通过调度程序的合理调度，系统资源才能最大限度地发挥作用，多进程才会有并发执行的效果。
+<br/></p>
+<p>调度程序没有太复杂的原理。最大限度地利用处理器时间的原则是，只要有可以执行的进程，那么就总会有进程正在执行。但是只要系统中可运行的进程数目比处理器
+的个数多，就注定某一个给定时刻会有一些进程不能执行。这些进程在等待运行。在一组处于可运行状态的进程中选择一个来执行，是调度程序所需完成的基本工作。</p>
+<h3 id="多任务">多任务</h3>
+<p>多任务操作系统就是能同时并发地交互执行多个进程的操作系统，但是这些进程并不都处于运行状态。
+<br/></p>
+<p>多任务系统可以分为两类：<strong>非抢占式多任务</strong> 和 <strong>抢占式多任务</strong>。像所有 Unix 的变体和许多其它现代操作系统一样，Linux提供了抢占式的多任务模式。
+在此模式下，由调度程序来决定什么时候停止一个进程的运行，以便其它进程能够得到执行机会。这个强制的挂起动作就叫做<strong>抢占</strong>。进程在被抢占之前能够运行的时间
+是预先设置好的，而且有一个专门的名字，叫做<strong>进程的时间片</strong>。时间片实际上就是分配给每个可运行进程的处理器时间段。有效管理时间片能使调度程序从系统全局的
+角度作出调度决定，这样做还可以避免个别进程独占系统资源。当今众多现代操作系统对程序运行都采用了动态时间片计算的方式，并且引入了可配置的计算策略。不过我们
+将看到，Linux独一无二的“公平”调度程序本身并没有采取时间片来达到公平调度。
+<br/></p>
+<p>相反，在非抢占式多任务模式下，除非进程自己主动停止运行，否则它会一直执行。进程主动挂起自己的操作称为<strong>让步</strong>。理想情况下，进程通常作出让步，以便让每个可运行进程享有足够的处理器时间。但这种机制有很多缺陷：
+调度程序无法对每个进程该执行多长时间作出统一规定，所以进程独占的处理器时间可能超出用户的预料；更糟的是，一个决不做出让步的悬挂进程就能使系统崩溃。
+Unix从一开始采用的就是抢先式的多任务，Mac OS 9(以及其前身)、Windows3.1(以及其前身)这些不是。</p>
+<h3 id="linux的进程调度">Linux的进程调度</h3>
+<p>从 1991 年 Linux 的第一版到后来的 2.4 内核系列，Linux 的调度程序都相当简陋，设计近乎原始。当然它容易理解，但是它在众多可运行进程或者多处理器的环境下都
+难以胜任。
+<br/></p>
+<p>正因为如此，在 Linux2.5 开发系列的内核中，调度程序做了大手术。开始采用一种叫做 O(1) 调度程序的新调度程序 —— 它是因为其算法的行为而得名。它解决了先前版本
+Linux 调度程序的许多不足，引入了许多强大的新特性和性能特征。这里主要要感谢静态时间片算法和针对每一处理器的运行队列，它们帮助我们摆脱了先前调度程序设计上的限制。
+<br/></p>
+<p>O(1)调度器虽然在拥有数以十计(不是数以百计)的多处理器环境下尚能表现出近乎完美的性能和可扩展性，但是时间证明该调度算法对于调度那些响应时间敏感的程序却
+有一些先天不足。这些程序我们称其为交互进程 —— 它无疑包括了所有需要用户交互的程序。正因为如此，O(1)调度程序虽然对于大服务器的工作负载很理想，但是在有
+很多交互程序要运行的桌面系统上则表现不佳，因为其缺少交互进程。自 2.6 内核系统开发初期，开发人员为了提高对交互程序的调度性能引入了新的进程调度算法。
+其中最为著名的是**“反转楼梯最后期限调度算法(RSDL)”**，该算法吸取了队列理论，将公平调度的概念引入了Linux调度程序。并且最终在 2.6.23 内核版本中替代了
+O(1) 调度算法，它此刻被称为 “完全公平调度算法”，简称 CFS。
+<br/></p>
+<p>接下来讲解调度程序设计的基础和完全公平调度程序如何运用、如何设计、如何实现以及与它相关的系统调用。我们当然也会讲解O(1)调度程序，因为它毕竟是
+经典Unix调度程序模型的实现方式。</p>
+<h3 id="策略">策略</h3>
+<p>策略决定调度程序在何时让什么进程运行。调度器的策略往往就决定系统的整体印象，并且，还要负责优化使用处理器时间。无论从哪个方面来看，它都是至关重要的。</p>
+<h4 id="io消耗型和处理器消耗型的进程">I/O消耗型和处理器消耗型的进程</h4>
+<p>进程可被分为<strong>I/O消耗型</strong>和<strong>处理器消耗型</strong>。前者指进程的大部分时间用来提交 I/O 请求或是等待 I/O 请求。因此，这样的进程经常处于可运行状态，但通常都是运行短短的一会儿，因为
+它在等待更多的I/O请求时候最后总会阻塞(这里所说的I/O是指任何类型的可阻塞资源，比如键盘输入，或者是网络I/O)。举例来说，多数用户图形界面程序(GUI)
+都属于I/O密集型，即便它们从不读取或者写入磁盘，它们也会在多数时间里都在等待来自鼠标或者键盘的用户交互操作。
+<br/></p>
+<p>相反，处理器耗费型进程把时间大多用在执行代码上。除非被抢占，否则它们通常都一直不停的运行，因为它们没有太多的I/O需求。但是，因为它们不属于
+I/O驱动型，所以从系统响应速度考虑，调度器不应该经常让它们运行。对于这类处理器消耗型的进程，调度策略往往是尽量降低它们的调度频率，而延长其运行时间。处理器消耗型进程的
+极端例子就是无线循环地执行。更具代表性的例子就是那些执行大量数学计算的程序，如 sshkeygen 或者 MATLAB。
+<br/></p>
+<p>当然，这种划分方法并非是绝对的。进程可以同时展示这两种行为：比如，X Window 服务器既是 I/O 消耗型，也是处理器消耗型。
+还有些进程可以是I/O消耗型，但不属于处理器消耗型活动范围。其典型例子就是字处理器，其通常以等待键盘输入。但在任一时刻可能又粘住处理器疯狂地进行
+拼写检查或者宏计算。
+<br/></p>
+<p>调度撤略通常需要在两个矛盾的目标中寻找平衡：进程响应迅速(响应时间短)和最大系统利用率(高吞吐量)。为了满足上述需求，调度程序通常采用一套非常复杂的
+算法来决定最值得运行的进程投入运行，但是它往往并不保证低优先级进程会被公平对待。Unix系统的调度程序更倾向于 I/O 消耗型程序，以便提供更好的程序
+响应速度。Linux为了保证交互式应用和桌面系统的性能，所以对进程的响应做了优化(缩短响应时间)，更倾向于有限调度I/O消耗型进程。虽然如此，但在下面你会看到，
+调度程序也并未忽略处理器消耗型的进程。
+<br/></p>
+<h4 id="进程优先级">进程优先级</h4>
+<p>调度算法中最基本的一类就是基于优先级的调度。这时一种根据进程的价值和其对处理器时间的需求来对进程分级的想法，通常做法是(其并未被Linux系统完全采用)
+优先级高的进程先运行，低的后运行，相同优先级的进程按轮询的方式进行调度(一个接一个，重复进行)。在某些系统中，优先级高的进程使用的时间片也较长。调度程序总是选择时间片未用尽而且优先级最高的进程运行。用户和系统都可以通过设置进程的优先级来影响系统的调度。
+<br/></p>
+<p>Linux采用了两种不同的优先级范围。第一种是 <strong>nice值</strong>，它的范围是从 <strong>-20</strong> 到 <strong>+19</strong>，默认值为0；越大的nice值意味着更低的优先级(nice意味着你对其它系统中的进程更&quot;优待&quot;&quot;)。
+相比高 nice 值的进程，低 nice 值的进程可以获得更多的处理器时间。nice 值是所有 Unix 系统中的标准化概念——但不同的 Unix 系统由于调度算法不同，因此 nice 值的运用方式有所差异。比如一些基于Unix的操作系统，
+如 Mac OS X，进程的 nice 值代表分配给进程的时间片的绝对值；而 Linux 系统中，nice 值则代表了时间片的比例。
+<br/></p>
+<p>第二种范围是<strong>实时优先级</strong>，其值的可配置的，默认情况下它的变化范围是 0 到 99(包括 0 和 99).与 nice 值意义相反，越高的实时优先级数值意味着进程优先级越高。
+任何实时进程的优先级都高于普通进程，也就是说实时优先级和nice优先级处于互补相交的两个范畴。Linux 实时优先级的实现参考了 Unix 相关标准 —— 特别是 POSIX.1b。
+大部分现代的 Unix 操作系统也都提供类似的机制。你可以通过命令：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ps -eo state,uid,pid,ppid,rtprio,time,comm
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>查看你系统中的进程列表，以及它们对应的实时优先级(位于RTPRIO列下)，其中如果有进程对应列显示 “-”，则说明它不是实时进程。</p>
+<h4 id="时间片">时间片</h4>
+<p>时间片是一个数值，它表明进程在被抢占前所能持续运行的时间。调度策略必须规定一个默认的时间偏，但这并不是件简单的事情。时间片过长会导致系统对交互的
+响应表现欠佳，让人觉得系统无法并发执行应用程序；时间片太短会明显增大进程切换带来的处理器耗时，因为肯定会有相当一部分系统时间用在进程切换上，而这些进程能够用来运行的时间片却很短。此外，I/O
+消耗型和处理器消耗型的进程之间的矛盾在这里也再次显露出来；I/O消耗型不需要长的时间片，而处理器消耗型的进程则希望越长越好(比如这样可以让它们的高速缓存命中率更高)。
+<br/></p>
+<p>从上面的争论中可以看出，任何长时间片都将导致系统交互表现欠佳。很多操作系统中都特别重视这一点，所以默认的时间片很短，如 10ms。但是
+Linux 的 CFS 调度器并没有直接分配时间片到进程，它是将处理器的使用比例划分给了进程。这样一来，进程所获的的处理器时间其实是和系统负载密切相关的。
+这个比例进一步还会受进程 nice 值的影响， nice 值作为权重将调整进程所使用的处理器时间使用比。具有更高 nice 值(更低优先权) 的进程将被赋予低权重，从而
+丧失了一小部分的处理器使用比；而具有更小nice值(更高优先级)的进程则会被赋予高权重，从而抢得更多的处理器使用比。
+<br/></p>
+<p>像前面所说的，Linux系统是抢占式的。当一个进程进入可运行态，他就被准许投入运行。在多数操作系统中，是否要将一个进程立刻投入运行(也就是抢占当前进程)，
+是完全由进程优先级和是否有时间片决定的。而在 Linux 中使用新的 CFS 调度器，其抢占时机取决于新的可运行程序消耗了多少处理器使用比。如果消耗的使用比比当前进程小，则新
+进程立刻投入运行，抢占当前进程。肉则，将推迟其运行。</p>
+<h4 id="调度策略的活动">调度策略的活动</h4>
+<p>想象下面这样一个系统，它拥有两个可运行的进程：一个文字编辑程序和一个视频编码程序。文字编辑程序很明显是 I/O 消耗型的，因为大多数时间都在等待用户的键盘输入
+(无论用户的输入速度有多快，都不可能赶上处理的速度)。用户总是希望按下键系统能马上响应。</p>
+<p>相反，视频编码程序是处理器消耗型的。除了最开始从磁盘上读出原始数据流和最后把处理好的视频输出外，程序所有的时间都用来对原始数据进行视频编码，处理器
+很轻易地被 100% 使用。它对什么时间开始运行并没有太严格的要求 —— 用户几乎分辨不出也并不关心它到底是立刻就运行还是半秒钟以后才开始的。当然，它完成的越早越好，至于所花时间并不是我们关注的主要问题。
+<br/></p>
+<p>在这样的场景中，理想情况是调度器应该给予文本编辑器程序相比视频编码程序更多的处理器时间，因为它属于交互式应用。对于文本编辑器而言，我们有两个目标。第一是希望系统给它更多的处理器时间，这并非因为它需要更多的处理器时间
+(其实它并不需要)，是因为我们我们希望在它需要时总能得到处理器；第二是我们希望文本编辑器能在其被唤醒时候(也就是当用户打字时候)抢占视频解码程序。
+这样才能确保文本编辑器具有很好的交互性能，以便能响应用户输入。
+<br/></p>
+<p>在多数操作系统中，上述目标达成是要依赖系统分配给文本编辑器比视频解码程序更高的优先级和更多的时间片，先进的操作系统可以自动发现文本编辑器是交互型程序，
+从而自动地完成上述分配动作。
+<br/></p>
+<p>Linux操作系统同样需要追求上述目标，但是它采用不同的方法。它不再通过给文本编辑器分配给定的优先级和时间片，而是分配一个给定的处理器使用比。加入文本编辑器和视频编码程序是仅有的两个运行程序，并且又具有同样的 nice 值，
+那么处理器的使用比将都是 50% —— 它们平分了处理器时间。但是因为文本编辑器将更多的时间用于等待用户输入，因此它肯定不会用到处理器的 50%。同时，
+视频解码程序无疑将能有机会用到超过 50% 的处理器时间，以便它能更快速的完成解码任务。
+<br/></p>
+<p>这里关键的问题是，当文本编辑器程序被唤醒的时候将会发生什么。我们首先目标是确保其能在用户输入发生时候立刻运行。在上述场景中，一旦文本编辑器被唤醒，
+CFS发现文本编辑器比视频解码器运行的时间短的多。这种情况下，为了兑现让所有进程都能公平分享处理器的承诺，它会立即抢占视频解码程序，让文本编辑器
+投入运行。文本编辑器运行后，立即处理了用户的击键输入后，又一次进入睡眠等待用户下一次输入。因为文本编辑器并没消费掉承诺给它的50%处理器使用比，因此情况依旧，CFS总会毫不犹豫的让文本编辑器在需要时候被投入运行，而让视频处理程序
+只能在剩余下的时刻运行。</p>
+<h3 id="linux-调度算法">Linux 调度算法</h3>
+<p>在前面内容中，我们抽象地讨论了进程调度原理，只是偶尔提及 Linux 如何把给定的理论应用到实际中。在已有的调度原理基础上，我们进一步探讨具有Linux特色的进程调度程序。</p>
+<h4 id="调度器类">调度器类</h4>
+<p>Linux 调度器是以模块方式提供的，这样做的目的是运行不同类型的进程可以又针对性的选择调度算法。
+<br/></p>
+<p>这种模块化结构被称为<strong>调度器类</strong>，它允许多种不同的可动态添加的调度算法并存，调度属于自己范畴的进程。每个调度器都有一个优先级，基础的调度器代码定义在
+<code>kernel/sched.c</code>文件中，它会按照优先级顺序遍历调度类，拥有一个可执行进程的最高优先级的调度器类胜出，去选择下面要执行的那一个程序。
+<br/></p>
+<p>完全公平调度(CFS)是一个针对普通进程的调度类，在 Linux 中称为 SCHED_NORMAL (在 POSIX 中称为 SCHED_OTHER)，CFS 算法实现定义在文件 <code>kernel/sched_fair.c</code>
+中。本节下面的内容将重点介绍 CFS 算法。</p>
+<h4 id="unix系统中的进程调度">Unix系统中的进程调度</h4>
+<p>在讨论公平调度算法前，我们必须首先认识一下传统 Unix 系统的调度过程。正如前面所述，现代进程调度器有两个通用的概念：进程优先级和时间片。时间片是指进程运行多少时间，
+进程一旦启动就会有一个默认时间片。具有更高优先级的进程将运行的更频繁，而且(在多数系统上)也会被赋予更多的时间片。在 Unix 系统上，优先级以 nice 值形式
+输出给用户空间。这点听起来简单，但是在现实中，却会导致许多反常的问题，我们下面具体讨论。
+<br/></p>
+<p><strong>第一个问题</strong>，若要将 nice 值映射到时间片，就必然需要将 nice 单位值对应到处理器的绝对时间。但这样做将导致进程切换无法最优化进行。举例说明，
+假定我们将默认 nice 值(0) 分配给一个进程 —— 对应的是一个 100ms 的时间片：同时再分配一个最高 nice 值(+20，最低的优先级)给另一个进程 ——
+对应的时间片是 5ms。我们接着假定上述两个进程都处于可运行状态。那么默认优先级的进程将获得 20/21 (105ms中的100ms) 的处理器时间，而低优先级的进程会获得
+1/21(105ms中的5ms)的处理器时间。我们可以选择任意数值用于本例子中。现在，我们看看如果运行两个同等低优先级的进程的情况将如何。我们是希望它们能各自获得
+一半的处理器时间，事实上也确实如此。但是另一个进程每次只能获得 5ms 的处理器时间(10ms中各占一般)。也就是说，相比刚才例子中 105ms 内进行一次上下文切换，现在则需要在 10ms 内继续进行两次上下文切换。类推，如果是两个具有普通优先级的进程，它们同样会每个获得 50% 的处理器时间，但是是在 100ms 内各获得一般。显然，我们看到这些时间片的分配方式并不很理想：它们是给定
+nice 值到时间片映射与进程运行优先级混合的共同作用结果。事实上，给定高 nice 值(低优先级)的进程往往是后台进程，且多是计算密集型；而普通优先级的进程则更多的是前台用户任务。所以这种时间片分配方式显然是和初衷背道而驰的。
+<br/></p>
+<p><strong>第二个问题</strong> 设计相对 nice 值，同时和前面的 nice 值到时间片映射关系也脱不了关系。假设我们有两个进程，分别具有不同的优先级。第一个假设 nice 值只是0，
+第二个假设是1。它们将被分别映射到时间片 100ms 和 95ms (O(1)调度算法确实就这么干类)。它们的时间片几乎一样，差别微乎其微。但是如果我们的进程分别赋予 18 和 19
+的 nice 值，那么它们则分别被映射为 10ms 和 5ms 的时间片。如果这样，前者相比后者获得了两倍的处理器时间！不过 nice 值通常都使用相对值(nice系统调用是在原值上
+增加或减少，而不是在绝对值上操作)，也就是说：“把进程的nice值减少1”所带来的效果极大的取决于其 nice 的初始值。
+<br/></p>
+<p><strong>第三个问题</strong> 如果执行 nice 值到时间片的映射，我们需要能分配一个绝对时间片，而且这个绝对时间片必须能在内核的测试范围内。在多数操作系统中，上述要求意味着时间片必须是
+定时器节拍的整数倍。但是这么做必然会引发了几个问题。首先，最小时间片必然是定时器节拍的整数倍，也就是 10ms 或者 1ms 的倍数。</p>
+<p>其次，系统定时器限制了两个时间片的差异：连续的 nice 值映射到时间片，其差别范围多至 10ms 或者 少则 1ms。最后，时间偏还会随着定时器节拍改变。
+<br/></p>
+<p><strong>第四个问题</strong> 也是最后一个关于基于优先级的调度器为了优化交互任务而唤醒相关进程的问题。这种系统中，你可能为了进程能更快的投入运行，而去对新要唤醒的进程提升优先级，即便它们的
+时间片已经用尽了。虽然上述方法确实能提升不少交互性能，但是一些例外情况也有可能发生，因为它同时也给某些特殊的睡眠/唤醒用例一个玩弄调度器的后门，
+使得给定进程打破公平原则，获得更多处理器时间，顺还系统中其它进程的利益。
+<br/></p>
+<p>上述问题中的绝大多数都可以通过对传统 Unix 调度器进行改造解决，虽然这种改造修改不小，但是也并非是结构性的调整。比如，将 nice 值呈几何增加而非算数增加
+的方式解决第二个问题：采用一个新的度量机制将从 nice 值到时间片的映射与定时器节拍分离开来，一次解决第三个问题。但是这些解决方案都回避了实质问题 —— 即
+分配绝对的时间片引发的固定的切换频率，给公平性造成了很大变数。CFS采用的方法是对时间片分配方式进行根本性的重新设计(就进程调度器而言)：完全摒弃时间片
+而是分配给进程一个处理器使用比重。这种方式下，CFS 确保了进程调度中能有恒定的公平性，而将切换频率置于不断变动中。</p>
+<h4 id="公平调度">公平调度</h4>
+<p>CFS 的出发点基于一个简单的理念：进程调度的效果应如同系统具备一个理想中的完美多任务处理器。在这种系统中，每个进程将获得 $1/n$ 的处理器时间 —— n 是指可运行进程的数量。
+同时，我们可以调度给它们无限小的时间周期，所以在任何可测量周期内，我们给予 n 和进程中每个进程同样多的运行时间。距离说明，加入我们有两个运行进程，在标准 Unix
+调度模型中，我们先运行其中一个 5ms，然后再运行另一个 5ms。但它们任何一个运行时候都将占有 100% 的处理器，它们各自使用处理器一半的能力。
+<br/></p>
+<p>当然，上述理想模型并非显示，因为我们无法在一个处理器上真的同时运行多个进程。而且如果每个进程运行无限小的时间周期也是不高效的 —— 因为调度时进程抢占会带来一定的
+代价：将一个进程换出，另一个换入本身有消耗，同时还会影响到缓存的效率。因此虽然我们希望所有进程能值运行一个非常短的周期，但是 CFS 充分考虑了这将带来的额外消耗，现实中首先要
+确保系统新能不受损失。CFS的做法是允许每一个进程运行一段时间、循环轮转、选择运行最少的进程作为下一个运行进程，而不再采用分配给每个进程时间片的做法了，</p>
+<p>CFS 在所有可运行进程总数基础上计算出一个进程应该运行多久，而不是依靠 nice 值来计算时间片。nice值在 CFS 中被作为进程获得的处理器运行比的权重，这是相对默认 nice 值
+进程的进程而言的；相反，更低的 nice 值(越高的优先级)的进程获得更好的处理器使用权重。
+<br/></p>
+<p>每个进程都按其权重在全部可运行进程中所占的 “时间片” 来运行，为了计算准确的时间片，CFS 为完美多任务中的无限小调度周期的近似值设立了一个目标。而这个目标称作 “目标延迟”，
+越小的调度周期将带来越好的交互性，同时也更接近完美的多任务。但是你必须承受更高的切换代价和更差的系统总吞吐能力。让我们假定目标延迟值是 20ms，我们有两个同样优先级
+的可运行任务(无论这些任务的优先级是多少)。每个任务在被其它任务抢占前运行 10ms，如果我们有 4 个这样的任务，则每个智能运行 5ms。进一步设想，
+如果有 20 个这样的任务，那么每个仅仅只能获得 1ms 的运行时间。
+<br/></p>
+<p>你一定注意到了，当可运行任务数量趋于无限时候，它们各自获得的处理器时间比和时间片都将趋于0.这样无疑造成了不可接收的切换消耗。CFS 为此引入每个进程获得的
+时间片底线，这个底线称为最小粒度。默认情况下这个值是 1ms。如此依赖，即便是可运行进程数量趋于无穷，每个最少也能获得 1ms 的运行时间，确保切换消耗被限制在一定
+范围内(敏锐的读者会注意到假如在进程数量变得非常多的情况下，CFS并非一个完美的公平制度，因为这时处理器时间片再小也无法突破最小粒度。的却如此，
+尽管修改过的公平队列方法确实能提高这方面的公平性，但是 CFS 的算法本身其实已经决定在这方面折中了。但还好，因为通常情况下系统中只会有几百个可运行进程，无疑，
+这时 CFS 的相当公平的)。
+<br/></p>
+<p>现在，让我们再看看具有不同 nice 值的两个可运行进程的运行情况 —— 比如一个具有默认 nice 值(0)，另一个具有额 nice 值为 5.这些不同的 nice 值对应不同的权重，
+所以上述两个进程将获得不同的处理器使用比。这个例子中，nice 值是 5 的进程的权重是默认 nice 进程的 1/3.如果我们的目标延迟是 20ms，那么这两个进程将分别获得 15ms 和 5ms 的
+处理器时间。再比如我们的两个可运行进程的 nice 值分别是 10 和 15，它们分配的时间片将是多少呢？还是 15ms 和 5ms！可见，绝对的 nice 值不再影响调度决策：只有相对值才会影响处理器时间的分配比例。
+<br/></p>
+<p>总结以下，任何进程所获得的处理器时间是由它自己和其它所有可运行进程 nice 值的相对差值决定的。nice值对时间片的作用不再是算数加权，而是几何加权。任何nice值对应的绝对时间不再是一个绝对值，而是处理器的使用比。
+CFS 称为公平调度器是因为它确保给每个进程公平的处理器使用比。正如我们知道的，CFS 不是完美的公平，它只是近乎完美的多任务。但是它确实在多进程环境下，降低了调度延迟带来的不公平性。</p>
+<h3 id="linux-调度的实现">Linux 调度的实现</h3>
+<p>在讨论了采用 CFS 调度算法的动机和其内部逻辑后，我们现在可以开始具体探索 CFS 是如何得以实现的。其相关代码位于文件 <code>kernel/sched_fair.c</code> 中。我们将特别关注其四个组成部分：</p>
+<ul>
+<li>时间记账</li>
+<li>进程选择</li>
+<li>调度器入口</li>
+<li>睡眠和唤醒</li>
+</ul>
+<h4 id="时间记账">时间记账</h4>
+<p>所有的调度器都必须对进程运行时间做记账。多数 Unix 系统，正如我们前面所说，分配一个时间片给每一个进程。那么每次系统时钟节拍发生时候，时间片都被减少一个节拍周期。
+当一个进程的时间片被减少到0时候，它就会被另一个尚未减到 0 的时间片可运行进程抢占。</p>
+<h5 id="调度器实体结构">调度器实体结构</h5>
+<p>CSF 不再有时间片的概念，但是它也必须维护每个进程运行的时间记账，因为它需要确保每个进程只在公平分配给它的处理器时间内运行。CFS使用调度器实体结构
+(定义在文件<code>&lt;linux/sched.h&gt;</code>的 <code>struct_sched_entity</code> 中)来追踪进程运行记账：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">struct</span> <span class="n">sched_entity</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">struct</span> <span class="n">load_weight</span>              <span class="n">load</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">struct</span> <span class="n">rb_node</span>                  <span class="n">run_node</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">struct</span> <span class="n">list_head</span>                <span class="n">group_node</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">unsigned</span> <span class="kt">int</span>                    <span class="n">on_rq</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">u64</span>                             <span class="n">exec_start</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">u64</span>                             <span class="n">sum_exec_runntime</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">u64</span>                             <span class="n">vruntime</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">u64</span>                             <span class="n">prev_sum_exec_runtime</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">u64</span>                             <span class="n">last_wakeup</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">u64</span>                             <span class="n">avg_overlap</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">u64</span>                             <span class="n">nr_migrations</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">u64</span>                             <span class="n">start_runtime</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">u64</span>                             <span class="n">avg_wakeup</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">// 这里省略了很多统计变量，只有在设置了 CONFIG_SCHEDSTATS 时候才启用这些变量
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>调度器实体结构作为一个名为 se 的成员变量，嵌入在进程描述符 <code>struct task_struct</code> 内。
+<br/></p>
+<h5 id="虚拟实时">虚拟实时</h5>
+<p>vruntime 变量存放进程的虚拟运行时间，该运行时间(华仔运行上的时间和)的计算是经过了所有可运行进程总数的标准化(或者说是被加权的)。虚拟时间是以 ns 为单位的，
+所以 vruntime 和定时器节拍不再相关。虚拟运行时间可以帮助我们逼近 CFS 模型所追求的 “理想多任务处理器”。如果我们真有这样一个理想的处理器，那么我们就不再需要
+vruntime 了。因为优先级相同的所有进程的虚拟运行时间都是相同的 —— 所有任务都被接收到相等的处理器份额。但是因为处理器无法实现完美的多任务，它必须依次运行每个任务。
+因此 CFS 使用 vruntime 变量来记录一个程序到底运行了多长时间以及它还应该再运行多久。</p>
+<p>定义在 <code>kernel/sched_fair.c</code> 文件中的 <code>update_curr()</code> 函数实现了该记账功能：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">static</span> <span class="kt">void</span> <span class="nf">update_curr</span> <span class="p">(</span><span class="k">struct</span> <span class="n">cfs_rq</span><span class="o">*</span> <span class="n">cfs_rq</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">struct</span> <span class="n">sched_entity</span><span class="o">*</span> <span class="n">curr</span> <span class="o">=</span> <span class="n">cfs_rq</span><span class="o">-&gt;</span><span class="n">curr</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">u64</span> <span class="n">now</span> <span class="o">=</span> <span class="n">rq_of</span><span class="p">(</span><span class="n">cfs_rq</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">clock</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">delta_exec</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">unlikely</span><span class="p">(</span><span class="o">!</span><span class="n">curr</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 获得从最后依次修改负载后当前任务所占用的运行总时间(在 32 位系统上这不会溢出)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">delta_exec</span> <span class="o">=</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">long</span><span class="p">)</span> <span class="p">(</span><span class="n">now</span> <span class="o">-</span> <span class="n">curr</span><span class="o">-&gt;</span><span class="n">exec_start</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">delta_exec</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">__update_curr</span><span class="p">(</span><span class="n">cfs_rq</span><span class="p">,</span> <span class="n">curr</span><span class="p">,</span> <span class="n">delta_exec</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">curr</span><span class="o">-&gt;</span><span class="n">exec_start</span> <span class="o">=</span> <span class="n">now</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">entity_is_task</span><span class="p">(</span><span class="n">curr</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">struct</span> <span class="n">task_struct</span><span class="o">*</span> <span class="n">curtask</span> <span class="o">=</span> <span class="n">task_of</span> <span class="p">(</span><span class="n">curr</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">trace_shced_stat_runtime</span><span class="p">(</span><span class="n">curtask</span><span class="p">,</span> <span class="n">delta_exec</span><span class="p">,</span> <span class="n">curr</span><span class="o">-&gt;</span><span class="n">vruntime</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">cpuacct_charge</span><span class="p">(</span><span class="n">curtask</span><span class="p">,</span> <span class="n">delta_exec</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">account_group_exec_runtime</span><span class="p">(</span><span class="n">curtask</span><span class="p">,</span> <span class="n">delta_exec</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>update_curr()</code> 计算了当前进程的执行时间，并且将其存放在变量 delta_exec 中。然后它又将运行时间传递给了 <code>__update_curr()</code>，由后者再根据当前可运行进程总数对运行时间进行加权计算。
+最终将上述的权重值与当前运行进程的 vrunntime 相加。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="c1">// 更新当前任务的运行时统计数据。跳过不在调度类中的当前任务
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">static</span> <span class="kr">inline</span> <span class="kt">void</span> <span class="nf">__update_curr</span> <span class="p">(</span><span class="k">struct</span> <span class="n">cfs_rq</span><span class="o">*</span> <span class="n">cfs_rq</span><span class="p">,</span> <span class="k">struct</span> <span class="n">shced_entity</span><span class="o">*</span> <span class="n">curr</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">delta_Exec</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">delta_exec_weighted</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">schedstat_set</span> <span class="p">(</span><span class="n">curr</span><span class="o">-&gt;</span><span class="n">exec_max</span><span class="p">,</span> <span class="n">max</span><span class="p">((</span><span class="n">u64</span><span class="p">)</span><span class="n">delta_exec</span><span class="p">,</span><span class="n">curr</span><span class="o">-&gt;</span><span class="n">exec_max</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">curr</span><span class="o">-&gt;</span><span class="n">sum_exec_runtime</span> <span class="o">+=</span> <span class="n">delta_exec</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">schedstat_add</span> <span class="p">(</span><span class="n">cfs_rq</span><span class="p">,</span> <span class="n">exec_clock</span><span class="p">,</span> <span class="n">delta_Exec</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">delta_exec_weighted</span> <span class="o">=</span> <span class="n">calc_delta_fair</span> <span class="p">(</span><span class="n">delta_exec</span><span class="p">,</span> <span class="n">curr</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">curr</span><span class="o">-&gt;</span><span class="n">vruntime</span> <span class="o">+=</span> <span class="n">delta_exec_weighted</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">update_min_vruntime</span><span class="p">(</span><span class="n">cfs_rq</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>update_curr()</code>是由系统定时器周期性调用，无论在进程处于可运行状态，还是被阻塞处于不可运行状态。根据这种方式，vruntime 可以准确地测量给定进程的运行时间，
+而且可直到谁应该是下一个被运行的进程。</p>
+<h4 id="进程选择">进程选择</h4>
+<p>在前面内容中我们的讨论中谈到若存在一个完美的多任务处理器。所有可运行进程的 vruntime 值将一致。但事实上我们没有找到完美的多任务处理器，因此 CFS 试图利用一个简单的
+规则去均衡进程的虚拟运行时间：当 CFS 需要选择下一个运行时间时候，它会挑一个具有最小 vruntime 的进程。这其实就是 CFS 调度算法的核心：选择具有最小 vruntime 的任务。
+那么剩下的内容我们就来讨论到底是如何实现选择具有最小 vruntime 值的进程。</p>
+<p>CFS 使用红黑树来组织可运行进程队列，并利用其迅速找到最小 vruntime 值的进程</p>
+<blockquote>
+<p>在 linux 中，红黑树被称为 btree，它是一个自平衡二叉搜索树。</p>
+</blockquote>
+<h5 id="挑选下一个任务">挑选下一个任务</h5>
+<p>我们先假设，有那么一个红黑树存储了系统中所有的可运行进程，其中节点的键值便是可运行进程的虚拟运行时间。稍后我们将看到如何生成该树，但现在我们假定已经拥有它来。CFS 调度器选取待运行的下一个进程，
+是所有进程中 vruntime 最小的哪个，它对应的便是在树中最左侧的叶子节点。实现这一过程的函数是：<code>__pick_next_entity()</code>，它定义在文件 <code>kernel/sched_fair.c</code> 中：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">static</span> <span class="k">struct</span> <span class="n">sched_entity</span><span class="o">*</span> <span class="nf">__pick_next_entity</span><span class="p">(</span><span class="k">struct</span> <span class="n">cfs</span><span class="o">*</span> <span class="n">cfs_rq</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">struct</span> <span class="n">rb_node</span><span class="o">*</span> <span class="n">left</span> <span class="o">=</span> <span class="n">cfs_rq</span><span class="o">-&gt;</span><span class="n">rb_leftmost</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">left</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">rb_entry</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="k">struct</span> <span class="n">sched_entity</span><span class="p">,</span> <span class="n">run_node</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>注意 __pick_next_entity() 函数本身并不会遍历树找到最左叶子节点，因为该值已经缓存在 rb_leftmost 字段中。虽然红黑树让我们可以很有效地找到最左叶子节点(O(树的高度))等于
+树节点总数的 O(log n)，这是平衡树的优势)，但是更容易的做法是把最左叶子节点缓存起来。这个函数的返回值便是 CFS 调度选择的下一个运行进程。如果该函数返回值是 NULL， 那么表示没有最
+左叶子节点，那就是说树中没有任何节点了。这种情况下，表示没有可运行进程， CFS 调度器便选择 idle 任务运行。</p>
+</blockquote>
+<h5 id="向树中加入进程">向树中加入进程</h5>
+<p>现在，我们来看 CFS 如何将进程加入 rbtree 中，以及如何缓存最左叶子节点。这一切发生在进程变为可运行状态(被唤醒)或者是通过<code>fork()</code>调用第一次创建进程时。<code>enqueue_entity()</code>函数实现了这一目的：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">static</span> <span class="kt">void</span> <span class="nf">enqueue_entity</span> <span class="p">(</span><span class="k">struct</span> <span class="n">cfs_rq</span><span class="o">*</span> <span class="n">cfs_rq</span><span class="p">,</span> <span class="k">struct</span> <span class="n">sched_entity</span><span class="o">*</span> <span class="n">se</span><span class="p">,</span> <span class="kt">int</span> <span class="n">flags</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 通过调用 update_curr()，在更新 min_vruntime 之前先更新规范化的 vruntime
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">flags</span> <span class="o">&amp;</span> <span class="n">ENQUEUE_WAKEUP</span><span class="p">)</span> <span class="o">||</span> <span class="p">(</span><span class="n">flags</span> <span class="o">&amp;</span> <span class="n">ENQUEUE_MIGRATE</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="n">se</span><span class="o">-&gt;</span><span class="n">vruntime</span> <span class="o">+=</span> <span class="n">cfs_rq</span><span class="o">-&gt;</span><span class="n">min_vruntime</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 更新 当前任务 的运行时统计数据
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">update_curr</span><span class="p">(</span><span class="n">cfs_rq</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">account_entity_enqueue</span><span class="p">(</span><span class="n">cfs_rq</span><span class="p">,</span> <span class="n">se</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">flags</span> <span class="o">&amp;</span> <span class="n">ENQUEUE_WAKEUP</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">place_entity</span><span class="p">(</span><span class="n">cfs_rq</span><span class="p">,</span> <span class="n">se</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">enqueue_sleeper</span><span class="p">(</span><span class="n">cfs_rq</span><span class="p">,</span> <span class="n">se</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">update_stats_enqueue</span><span class="p">(</span><span class="n">cfs_rq</span><span class="p">,</span> <span class="n">se</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">check_spread</span><span class="p">(</span><span class="n">cfs_rq</span><span class="p">,</span> <span class="n">se</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">se</span> <span class="o">!=</span> <span class="n">cfs_rq</span><span class="o">-&gt;</span><span class="n">curr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">__enqueue_entity</span><span class="p">(</span><span class="n">cfs_rq</span><span class="p">,</span> <span class="n">se</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>该函数更新运行时间和其它一些统计数据，然后调用 <code>__enqueue_entity()</code> 进行繁重的插入操作，把数据项真正插入到红黑树中：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="c1">// 把一个调度实体插入 红黑树中
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="k">static</span> <span class="kt">void</span> <span class="nf">__enqueue_entity</span> <span class="p">(</span><span class="k">struct</span> <span class="n">cfs_rq</span><span class="o">*</span> <span class="n">cfs_rq</span><span class="p">,</span> <span class="k">struct</span> <span class="n">sched_entity</span><span class="o">*</span> <span class="n">se</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">struct</span> <span class="n">rb_node</span><span class="o">**</span> <span class="n">link</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">cfs_rq</span><span class="o">-&gt;</span><span class="n">tasks_timeline</span><span class="p">.</span><span class="n">rb_node</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">struct</span> <span class="n">rb_node</span><span class="o">*</span> <span class="n">parent</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">struct</span> <span class="n">sched_entity</span><span class="o">*</span> <span class="n">entity</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="n">s64</span> <span class="n">key</span> <span class="o">=</span> <span class="n">entity_key</span><span class="p">(</span><span class="n">cfs_rq</span><span class="p">,</span> <span class="n">se</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">leftmost</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="p">(</span><span class="o">*</span><span class="n">link</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">parent</span> <span class="o">=</span> <span class="o">*</span><span class="n">link</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">entry</span> <span class="o">=</span> <span class="n">rb_entry</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="k">struct</span> <span class="n">sched_entity</span><span class="p">,</span> <span class="n">run_node</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 我们并不关心冲突，具有相同键值的节点呆在一起
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">if</span> <span class="p">(</span><span class="n">key</span> <span class="o">&lt;</span> <span class="n">entity_key</span><span class="p">(</span><span class="n">cfs_rq</span><span class="p">,</span> <span class="n">entry</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">link</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">rb_left</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">link</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">rb_right</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">leftmost</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 维护一个缓冲，其中存放树最左叶子节点(也就是最长使用的)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">if</span> <span class="p">(</span><span class="n">leftmost</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">cfs_rq</span><span class="o">-&gt;</span><span class="n">rb_leftmost</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">se</span><span class="o">-&gt;</span><span class="n">run_node</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="n">rb_link_node</span><span class="p">(</span><span class="o">&amp;</span><span class="n">se</span><span class="o">-&gt;</span><span class="n">run_node</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="n">link</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">rb_insert_color</span><span class="p">(</span><span class="o">&amp;</span><span class="n">se</span><span class="o">-&gt;</span><span class="n">run_node</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">cfs_rq</span><span class="o">-&gt;</span><span class="n">tasks_timeline</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>我们来看看上述函数，<code>while()</code>循环中遍历树以寻找合适的匹配键值，该值就是被插入进程的 vruntime。平衡二叉树的基本规则是，如果键值小于当前节点的键值，则需转向树的左分支；相反如果大于当前节点的键值，则需转向右分支。
+如果一旦走过右边分支，哪怕一次，也说明插入的进程不会是新的最左节点，因此可以设置 leftmost 为 0.如果一致都是向左移动，那么 leftmost 维持 1，这说明
+我们有一个新的最左节点，并且可以更新缓存 —— 设置 rb_leftmost 指向被插入的进程。当我们沿着一个方向和一个没有自节点的节点比较后：link如果这时是 NULL，循环随之终止。当退出循环后，接着在父节点上调用 <code>rb_link_node()</code>，
+以使得新插入的进程成为其子节点。最后函数 <code>rb_insert_color()</code> 更新树的自平衡相关的属性。</p>
+<h5 id="从树中删除进程">从树中删除进程</h5>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2022-09-09</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">linux</a>,&nbsp;<a href="/tags/kernel/">kernel</a>,&nbsp;<a href="/tags/kernel-2.6.34/">kernel-2.6.34</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/2022/08/0009-c-11%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88/" class="prev" rel="prev" title="C&#43;&#43;11智能指针"><i class="fas fa-angle-left fa-fw"></i>C&#43;&#43;11智能指针</a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">ding jing</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="/lib/lightgallery/lightgallery.min.css"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script type="text/javascript" src="/lib/valine/Valine.min.js"></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/algoliasearch/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/twemoji/twemoji.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lightgallery.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-thumbnail.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-zoom.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":100},"comment":{"valine":{"appId":"oGOJ6TSiiaaOrhXD1bEYILk9-gzGzoHsz","appKey":"lbK71uSxpg4XmLmvm2h13JdJ","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"serverURLs":"https://ogoj6tsi.lc-cn-n1-shared.com","visitor":true}},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.zh-cn","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":80,"type":"algolia"},"twemoji":true};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
