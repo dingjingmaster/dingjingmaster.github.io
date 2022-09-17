@@ -29,7 +29,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/dingjingmaster.github.io\/2022\/09\/0008-linux%E5%86%85%E6%A0%B8%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0\/"
-        },"image": ["https:\/\/dingjingmaster.github.io\/img\/logo.jpg"],"genre": "posts","keywords": "linux, kernel, kernel-2.6.34","wordcount":  24957 ,
+        },"image": ["https:\/\/dingjingmaster.github.io\/img\/logo.jpg"],"genre": "posts","keywords": "linux, kernel, kernel-2.6.34","wordcount":  38191 ,
         "url": "https:\/\/dingjingmaster.github.io\/2022\/09\/0008-linux%E5%86%85%E6%A0%B8%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0\/","datePublished": "2022-09-09T08:47:11+08:00","dateModified": "2022-09-09T08:47:11+08:00","publisher": {
             "@type": "Organization",
             "name": "九九","logo": "https:\/\/dingjingmaster.github.io\/img\/logo.jpg"},"author": {
@@ -106,8 +106,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Linux内核设计与实现</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>ding jing</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/linux/"><i class="far fa-folder fa-fw"></i>linux</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-09-09">2022-09-09</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 24957 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 50 分钟&nbsp;<span id="/2022/09/0008-linux%E5%86%85%E6%A0%B8%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/" class="leancloud_visitors" data-flag-title="Linux内核设计与实现">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-09-09">2022-09-09</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 38191 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 77 分钟&nbsp;<span id="/2022/09/0008-linux%E5%86%85%E6%A0%B8%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/" class="leancloud_visitors" data-flag-title="Linux内核设计与实现">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
@@ -219,6 +219,53 @@
             </li>
           </ul>
         </li>
+        <li><a href="#调度器入口">调度器入口</a></li>
+        <li><a href="#睡眠和唤醒">睡眠和唤醒</a>
+          <ul>
+            <li><a href="#1-等待队列">1. 等待队列</a></li>
+            <li><a href="#2-唤醒">2. 唤醒</a></li>
+          </ul>
+        </li>
+        <li><a href="#抢占和上下文切换">抢占和上下文切换</a>
+          <ul>
+            <li><a href="#1-用户抢占">1. 用户抢占</a></li>
+            <li><a href="#2-内核抢占">2. 内核抢占</a></li>
+          </ul>
+        </li>
+        <li><a href="#实时调度策略">实时调度策略</a></li>
+        <li><a href="#与调度相关的系统调用">与调度相关的系统调用</a>
+          <ul>
+            <li><a href="#与调度策略和优先级相关的系统调用">与调度策略和优先级相关的系统调用</a></li>
+            <li><a href="#与处理器绑定有关的系统调用">与处理器绑定有关的系统调用</a></li>
+            <li><a href="#放弃处理器时间">放弃处理器时间</a></li>
+          </ul>
+        </li>
+        <li><a href="#小结-1">小结</a></li>
+      </ul>
+    </li>
+    <li><a href="#系统调用">系统调用</a>
+      <ul>
+        <li><a href="#与内核通信">与内核通信</a></li>
+        <li><a href="#apiposix和c库">API、POSIX和C库</a></li>
+        <li><a href="#系统调用-1">系统调用</a>
+          <ul>
+            <li><a href="#系统调用号">系统调用号</a></li>
+            <li><a href="#系统调用的性能">系统调用的性能</a></li>
+          </ul>
+        </li>
+        <li><a href="#系统调用处理程序">系统调用处理程序</a>
+          <ul>
+            <li><a href="#指定恰当的系统调用">指定恰当的系统调用</a></li>
+            <li><a href="#参数传递">参数传递</a></li>
+          </ul>
+        </li>
+        <li><a href="#系统调用的实现">系统调用的实现</a>
+          <ul>
+            <li><a href="#实现系统调用">实现系统调用</a></li>
+            <li><a href="#参数验证">参数验证</a></li>
+          </ul>
+        </li>
+        <li><a href="#系统调用上下文">系统调用上下文</a></li>
       </ul>
     </li>
   </ul>
@@ -1606,6 +1653,859 @@ vruntime 了。因为优先级相同的所有进程的虚拟运行时间都是�
 我们有一个新的最左节点，并且可以更新缓存 —— 设置 rb_leftmost 指向被插入的进程。当我们沿着一个方向和一个没有自节点的节点比较后：link如果这时是 NULL，循环随之终止。当退出循环后，接着在父节点上调用 <code>rb_link_node()</code>，
 以使得新插入的进程成为其子节点。最后函数 <code>rb_insert_color()</code> 更新树的自平衡相关的属性。</p>
 <h5 id="从树中删除进程">从树中删除进程</h5>
+<p>最后我们看看 CFS 是如何从红黑树中删除进程的。删除动作发生在进程堵塞(变为不可运行态)或者终止时(结束运行)：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">static</span> <span class="kt">void</span> <span class="nf">dequeue_entity</span> <span class="p">(</span><span class="k">struct</span> <span class="n">cfs_rq</span><span class="o">*</span> <span class="n">cfs_rq</span><span class="p">,</span> <span class="k">struct</span> <span class="n">sched</span><span class="p">)</span><span class="n">entity</span><span class="o">*</span> <span class="n">se</span><span class="p">,</span> <span class="kt">int</span> <span class="n">sleep</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// 更新 “当前任务” 的运行时统计数据
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">update_curr</span><span class="p">(</span><span class="n">cfs_rq</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">update_stats_dequeue</span><span class="p">(</span><span class="n">cfs_rq</span><span class="p">,</span> <span class="n">se</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">clear_buddies</span><span class="p">(</span><span class="n">cfs_rq</span><span class="p">,</span> <span class="n">se</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">se</span> <span class="o">!=</span> <span class="n">cfs_rq</span><span class="o">-&gt;</span><span class="n">curr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">__dqueue_entity</span> <span class="p">(</span><span class="n">cfs_rq</span><span class="p">,</span> <span class="n">se</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">update_min_vruntime</span><span class="p">(</span><span class="n">cfs_rq</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 在更新 min_vruntime 之后对调度实体进行规范化，因为更新可以指向 &#34;-&gt;curr&#34; 项，我们需要在规范化的位置反映这一变化
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">sleep</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">se</span><span class="o">-&gt;</span><span class="n">vruntime</span> <span class="o">-=</span> <span class="n">cfs_rq</span><span class="o">-&gt;</span><span class="n">min_vruntime</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>和给红黑树添加进程一样，实际工作是由辅助函数 <code>__dequeue_entity()</code> 完成的。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">static</span> <span class="kt">void</span> <span class="nf">__dequeue_entity</span><span class="p">(</span><span class="k">struct</span> <span class="n">cfs_rq</span><span class="o">*</span> <span class="n">cfs_rq</span><span class="p">,</span> <span class="k">struct</span> <span class="n">sched_entity</span><span class="o">*</span> <span class="n">se</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">cfs_rq</span><span class="o">-&gt;</span><span class="n">rb_leftmost</span> <span class="o">==</span> <span class="o">&amp;</span><span class="n">se</span><span class="o">-&gt;</span><span class="n">run_node</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">struct</span> <span class="n">rb_node</span><span class="o">*</span> <span class="n">next_node</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">next_node</span> <span class="o">=</span> <span class="n">rb_next</span><span class="p">(</span><span class="o">&amp;</span><span class="n">se</span><span class="o">-&gt;</span><span class="n">run_node</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">cfs_rq</span><span class="o">-&gt;</span><span class="n">rb_leftmost</span> <span class="o">=</span> <span class="n">next_node</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">rb_erase</span><span class="p">(</span><span class="o">&amp;</span><span class="n">se</span><span class="o">-&gt;</span><span class="n">run_node</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">cfs_rq</span><span class="o">-&gt;</span><span class="n">task_timeline</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>从红黑树中删除进程要容易得多，因为 rbtree 实现了 rb_erase() 函数，它可完成所有工作。该函数的剩下工作是更新 rb_leftmost 缓存。如果要删除的进程是最左节点，那么该
+函数要调用 rb_next() 按顺序遍历，找到谁是下一个节点，也就是当前最左节点被删除后，新的最左节点。</p>
+<h3 id="调度器入口">调度器入口</h3>
+<p>进程调度的主要入口点是函数 <code>schedule()</code>，它定义在文件 <code>kernel/sched.c</code> 中。它正是内核其它部分用于调度进程调度器的入口：选择哪个进程可以运行，合适将其投入运行。
+<code>Schedule()</code> 通常都需要和一个具体的调度类相关联，也就是说，它会找到一个最高优先级的调度类 —— 后者需要由自己的可运行队列，然后问后者谁才是下一个该运行的进程。
+知道了这个背景就不会吃惊 <code>schedule()</code> 函数为何实现得如此简单。该函数中唯一重要的事情是，它会调用 <code>pick_next_task()</code>(也定义在文件 <code>kernel/sched.c</code>中)。
+<code>pick_next_task()</code> 会以优先级为序，从高到低，依次检查每一个调度类，并且从最高优先级的调度类中，选择最高优先级的进程：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="c1">// 挑选最高优先级的任务
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">static</span> <span class="kr">inline</span> <span class="k">struct</span> <span class="n">task_struct</span><span class="o">*</span> <span class="nf">pick_next_task</span> <span class="p">(</span><span class="k">struct</span> <span class="n">rq</span><span class="o">*</span> <span class="n">rq</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">const</span> <span class="k">struct</span> <span class="n">sched_class</span><span class="o">*</span> <span class="n">class</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">struct</span> <span class="n">task_struct</span><span class="o">*</span> <span class="n">p</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 优化：我们知道如果所有任务都在公平类中，那么我们就可以直接调用哪个函数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">if</span> <span class="p">(</span><span class="n">likely</span><span class="p">(</span><span class="n">rq</span><span class="o">-&gt;</span><span class="n">nr_running</span> <span class="o">==</span> <span class="n">rq</span><span class="o">-&gt;</span><span class="n">cfs</span><span class="p">.</span><span class="n">nr_running</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">p</span> <span class="o">=</span> <span class="n">fair_sched_class</span><span class="p">.</span><span class="n">pick_next_task</span><span class="p">(</span><span class="n">rq</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">likely</span><span class="p">(</span><span class="n">p</span><span class="p">))</span>  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">p</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">class</span> <span class="o">=</span> <span class="n">sched_class_highest</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(;;)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">p</span> <span class="o">=</span> <span class="n">class</span><span class="o">-&gt;</span><span class="n">pick_next_task</span><span class="p">(</span><span class="n">req</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">p</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">p</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// 永不会 NULL，因为 idle 类总会返回非 NULL 的 p 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">class</span> <span class="o">=</span> <span class="n">class</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>注意该函数开始部分的优化。因为 CFS 是普通进程的调度类，而系统运行的绝大多数进程都是普通进程，因此这里有一个小技巧用来加速选择下一个 CFS 提供的进程，
+前提是所有可运行进程数量等于 CFS 类对应的可运行进程数(这样就说明所有的可运行进程就是 CFS 类的)。</p>
+<p>该函数的核心是 <code>for()</code> 循环，它以优先级为序，从最高的优先级类开始，遍历了每一个调度类。每一个调度类都实现了 <code>pick_next_task()</code> 函数，它会
+返回指向下一个可运行进程的指针，或者没有时返回 NULL。我们会从第一个返回非 NULL 值的类中选择下一个可运行进程。 CFS 中 <code>pick_next_task()</code>
+实现会调用 <code>pick_next_entity()</code>，而该函数会再来调用我们前面内容中讨论过的 <code>__pick_next_entity()</code> 函数。</p>
+<h3 id="睡眠和唤醒">睡眠和唤醒</h3>
+<p>休眠(被阻塞) 的进程处于一个特殊的不可执行状态。这点非常重要，如果没有这种特殊状态的话，调度器程序就可能选出一个本不愿意被执行的进程，更糟糕的是，
+休眠就必须以轮询的方式实现了。进程休眠由多种原因，但肯定都是为了等待一些事件。事件可能是一段时间从文件 I/O 读更多数据，或者是某个硬件事件。
+<br/></p>
+<p>一个进程还有可能在尝试获取一个已被占用的内核信号量时被迫进入休眠。休眠的一个常见原因就是文件 I/O —— 如进程对一个文件执行了 <code>read()</code> 操作，
+而这需要从磁盘里读取。还有，进程在获取键盘输入的时候也许要等待。无论哪种情况，内核的操作都相同：进程把自己标记成休眠状态，从可执行红黑树中移出，放入
+等待队列，然后调用 <code>schedule()</code> 选择和执行一个其它进程。唤醒的过程刚高相反：进程被设置为可执行状态，然后再从等待队列中移到可执行红黑树中。
+<br/></p>
+<p>之前讨论过，休眠有两种相关的进程状态：<code>TASK_INTERRUPTIBLE</code> 和 <code>TASK_UNINTERRUPTIBLE</code>。它们的唯一区别是处于 <code>TASK_UNINTERRUPTIBLE</code> 的进程
+会忽略信号，而处于 <code>TASK_INTERRUPTIBLE</code>状态的进程如果接收到一个信号，会被提前唤醒并响应该信号。两种状态的进程位于同一个等待队列上，等待某些事件，不能够运行。</p>
+<h4 id="1-等待队列">1. 等待队列</h4>
+<p>休眠通过等待队列进行处理。等待队列是由等待某些事件发生的进程组成的简单链表。内核用 <code>wake_queue_head_t</code> 来代表等待队列。等待队列可以通过 <code>DECLARE_WAITQUEUE()</code>
+静态创建，也可以由 <code>init_waitqueue_head()</code> 动态创建。进程把自己放入等待队列中并设置成不可执行状态。当与等待队列相关的事件发生的时候，队列上的进程会被唤醒。
+为了避免产生竞争条件，休眠和唤醒的实现不能有纰漏。
+<br/></p>
+<p>针对休眠，以前曾经使用过一些简单的接口。但那些接口会带来竞争条件：有可能导致在判定条件变为真后，进程却开始了休眠，那样就会使进程无限期的休眠下去。所以，在内核中进行休眠的推荐操作就相对复杂了一些：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="c1">// &#39;q&#39; 是我们希望休眠的等待队列
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">DEFINE_WAIT</span><span class="p">(</span><span class="n">wait</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">add_wait_queue</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">wait</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">while</span><span class="p">(</span><span class="o">!</span><span class="n">condition</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// condition 是我们在等待的事件
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">prepare_to_Wait</span><span class="p">(</span><span class="o">&amp;</span><span class="n">q</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">wait</span><span class="p">,</span> <span class="n">TASK_INTERRUPTIBLE</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">signal_pending</span><span class="p">(</span><span class="n">current</span><span class="p">))</span> 
+</span></span><span class="line"><span class="cl">        <span class="c1">// 处理信号
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">schedule</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">finish_Wait</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">q</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">wait</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>进程通过执行下面几个步骤将自己加入到一个等待队列中：</p>
+<ol>
+<li>调用宏 DEFINE_WAIT() 创建一个等待队列的项。</li>
+<li>调用宏 <code>add_wait_queue()</code> 把自己加入到队列中。该队列会在进程等待的条件满足时候唤醒它。当然我们必须在其它地方撰写相关代码，在事件发生时候，对等待队列执行 <code>wake_up()</code> 操作。</li>
+<li>调用 <code>prepare_to_wait()</code> 方法将进程的状态变为 <code>TASK_INTERRUPTIBLE</code> 或 <code>TASK_UNINTERRUPTIBLE</code>。而且该函数如果有必要的话会将进程加回到等待队列，这时在接下来的循环遍历中所需的</li>
+<li>如果状态被设置为 <code>TASK_INTERRUPTIBLE</code>，则信号唤醒进程。这就是所谓的伪唤醒(唤醒不是因为事件的发生)，因此检查并处理信号。</li>
+<li>当进程被唤醒的时候，它会再次检查条件是否为真。如果是，它会退出循环；如果不是，它再次调用 <code>schedule()</code> 并一直重复这步操作。</li>
+<li>当条件满足后，进程将自己设置为 <code>TASK_RUNNING</code> 并调用 <code>finish_wait()</code> 方法把自己移出等待队列。</li>
+</ol>
+<p>如果在进程开始休眠之前条件就已经达成了，那么循环会退出，进程不会存在错误地进入休眠的倾向。需要注意的是，内核代码在循环体内常常需要完成一些其它任务，比如，它可能在调用 <code>schedule()</code> 之前需要
+释放掉锁，而在这以后再重新获取它们，或者响应其它事件。
+<br/></p>
+<p>函数 <code>inotify_read()</code>，位于文件 <code>fs/notify/inotify/inotify_user.c</code> 中，负责从通知文件描述符中读取信息，它的实现无疑是等待队列的一个典型用法：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">static</span> <span class="n">ssize_t</span> <span class="nf">inotify_read</span> <span class="p">(</span><span class="k">struct</span> <span class="n">file</span><span class="o">*</span> <span class="n">file</span><span class="p">,</span> <span class="kt">char</span> <span class="n">__user</span><span class="o">*</span> <span class="n">buf</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">count</span><span class="p">,</span> <span class="n">loff_t</span><span class="o">*</span> <span class="n">pos</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">struct</span> <span class="n">fsnotify_group</span><span class="o">*</span> <span class="n">group</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">struct</span> <span class="n">fsnotify_event</span><span class="o">*</span> <span class="n">kevent</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">char</span> <span class="n">__user</span><span class="o">*</span> <span class="n">start</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span>    <span class="n">ret</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">DEFINE_WAIT</span><span class="p">(</span><span class="n">wait</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">start</span> <span class="o">=</span> <span class="n">buf</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">group</span> <span class="o">=</span> <span class="n">file</span><span class="o">-&gt;</span><span class="n">private_data</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">prepare_to_wait</span><span class="p">(</span><span class="o">&amp;</span><span class="n">group</span><span class="o">-&gt;</span><span class="n">notification_waitq</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">wait</span><span class="p">,</span> <span class="n">TASK_INTERRUPTIBLE</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">mutex_lock</span><span class="p">(</span><span class="o">&amp;</span><span class="n">group</span><span class="o">-&gt;</span><span class="n">notification_mutex</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">kevent</span> <span class="o">=</span> <span class="n">get_one_event</span><span class="p">(</span><span class="n">group</span><span class="p">,</span> <span class="n">count</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">mutex_unlock</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">group</span><span class="o">-&gt;</span><span class="n">notification_mutex</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">kevent</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">ret</span> <span class="o">=</span> <span class="n">PTR_ERR</span><span class="p">(</span><span class="n">kevent</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="n">IS_ERR</span><span class="p">(</span><span class="n">kevnet</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">                <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="n">ret</span> <span class="o">=</span> <span class="n">copy_event_to_user</span><span class="p">(</span><span class="n">group</span><span class="p">,</span> <span class="n">kevent</span><span class="p">,</span> <span class="n">buf</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">fsnotify_put_event</span><span class="p">(</span><span class="n">kevent</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="n">ret</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="n">buf</span> <span class="o">+=</span> <span class="n">ret</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">count</span> <span class="o">-=</span> <span class="n">ret</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="k">continue</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ret</span> <span class="o">=</span> <span class="o">-</span><span class="n">EAGAIN</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">file</span><span class="o">-&gt;</span><span class="n">f_flags</span> <span class="o">&amp;</span> <span class="n">O_NONBLOCK</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ret</span> <span class="o">=</span> <span class="o">-</span> <span class="n">EINTR</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">signal_pending</span><span class="p">(</span><span class="n">current</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">start</span> <span class="o">!=</span> <span class="n">buf</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">schedule</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="n">finish_wait</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">group</span><span class="o">-&gt;</span><span class="n">notification_waitq</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">wait</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">start</span> <span class="o">!=</span> <span class="n">buf</span> <span class="o">&amp;&amp;</span> <span class="n">ret</span> <span class="o">!=</span> <span class="o">-</span><span class="n">EFAULT</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ret</span> <span class="o">=</span> <span class="n">buf</span> <span class="o">-</span> <span class="n">start</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">ret</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这个函数遵循了我们例子中的使用模式，主要的区别是它在 <code>while</code> 循环中检查了状态，而不是在 <code>while</code> 循环条件语句中。原因是该条件的检测更复杂一些，而且需要
+获得锁。也正因为如此，循环退出是通过 <code>break</code> 完成的。</p>
+<h4 id="2-唤醒">2. 唤醒</h4>
+<p>唤醒操作是通过函数 <code>wake_up()</code> 进行，它会唤醒指定的等待队列上的所有进程。它调用函数 <code>tray_to_wake_up()</code>，该函数负责将进程设置为
+<code>TASK_RUNNING</code>状态，调用 <code>enqueue_task()</code> 将此进程放入红黑树中，如果被唤醒的进程优先级比当前正在执行的进程的优先级高，还要设置
+<code>need_resched</code>标志。通常哪段代码促使等待条件达成，它就要负责随后调用 <code>wake_up()</code> 函数。举例来说，当磁盘数据到来时候，VFS就要负责对等待队列调用
+<code>wake_up()</code>，以唤醒队列中等待这些数据的进程。
+<br/></p>
+<p>关于休眠有一点需要注意，存在虚假的唤醒。有时候进程被唤醒并不是因为它所等待的条件达成了才需要用一个循环处理来保证它等待的条件真正达成。</p>
+<h3 id="抢占和上下文切换">抢占和上下文切换</h3>
+<p>上下文切换，也就是从一个可执行进程切换到另一个可执行进程，由定义在 <code>kernel/sched.c</code> 中的 <code>context_switch()</code> 函数负责处理。每当一个新的进程被选出来准备投入运行的时候，
+schedule()就会调用该函数。它完成了两项基本的工作：</p>
+<ul>
+<li>调用声明在 <code>&lt;asm/mmu_context.h&gt;</code> 中的 <code>switch_mm()</code>，该函数负责把虚拟内存从上一个进程映射切换到新进程中。</li>
+<li>调用声明在 <code>&lt;asm/system.h&gt;</code> 中的 <code>switch_to()</code>，该函数负责从上一个进程的处理器状态切换到新进程的处理器状态。这包括保存、恢复栈信息和寄存器信息，还有其它任何与体系结构相关的状态信息，都必须以每个进程为对象进行管理和保存。</li>
+</ul>
+<div align=center><img src='/pic/linux/kernel-process-3.png'/></div>
+<center>休眠和唤醒</center>
+<p>内核必须知道在什么时候调用 <code>schedule()</code>。如果仅靠用户程序代码显式调用 <code>schedule()</code>，它们可能会永远地执行下去。相反，内核提供了一个
+<code>need_resched</code> 标志来表明是否需要重新执行一次调度。当某个进程应该被抢占时候，<code>scheduler_tick()</code> 就会设置这个标志：当一个优先级高的进程
+进入可执行状态的时候，<code>try_to_wake_up()</code>也会设置这个标志，内核检查该标志，确认其被设置，调用 <code>schedule()</code> 来切换到一个新的进程。该标志对于
+内核来讲是一个信息，它表示有其它进程应当被运行来，要尽快调用调度程序。
+<br/>
+<br/></p>
+<p>以下是用于访问和操作 <code>need_resched</code> 的函数</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">函数</th>
+<th style="text-align:left">目的</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>set_tsk_need_resched()</code></td>
+<td style="text-align:left">设置指定进程中的 <code>need_resched</code> 标志</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>clear_tsk_need_resched()</code></td>
+<td style="text-align:left">清除指定进程中的 <code>need_resched</code> 标志</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>need_resched()</code></td>
+<td style="text-align:left">检查 <code>need_resched</code> 标志的值，如果被设置就返回真，否则返回假</td>
+</tr>
+</tbody>
+</table>
+<p>再返回用户空间以及从中断返回的时候，内核也会检查 <code>need_resched</code> 标志。如果已被设置，内核会在继续执行之前调用调度程序。
+<br/>
+<br/></p>
+<p>每个进程都包含一个 <code>need_resched</code> 标志，这时因为访问进程描述符内的数值要比访问一个全局变量快(因为 <code>current</code> 宏速度很快并且描述符通常都在
+高速缓存中)。在 2.2 以前的内核版本中，该标志曾经是一个全局变量。 2.2 到 2.4 版内核中它在 <code>task_struct</code> 中。而在 2.6 版中，它被移到
+<code>thread_info</code> 结构体中，用一个特别的标志变量中的一位来表示。</p>
+<h4 id="1-用户抢占">1. 用户抢占</h4>
+<p>内核即将返回用户空间的时候，如果 <code>need_resched</code> 标志被设置，会导致 <code>schedule()</code> 被调用，此时就会发生用户抢占。在内核返回用户空间的时候，它
+知道自己是安全的，因为既然它可以继续去执行当前进程，那么它自然可以再去选择一个新的进程去执行。所以，内核无论是在中断处理程序还是在系统调用后返回，
+都会检查 <code>need_resched</code> 标志。如果它被设置来，那么，内核会选择一个其它(更合适的)进程投入运行。从中断处理程序或系统调用返回的返回路径都是跟体系结构相关的
+在 <code>entry.S</code> (此文件不仅包含内核入口部分的程序，内核退出部分的相关代码也在其中)文件中通过汇编语言来实现。
+<br/>
+<br/>
+简而言之，用户抢占在以下情况时候产生：</p>
+<ul>
+<li>从系统调用返回用户空间时候</li>
+<li>从中断处理程序返回用户空间时候</li>
+</ul>
+<h4 id="2-内核抢占">2. 内核抢占</h4>
+<p>与其它大部分的 Unix 变体和其它大部分操作系统不同， Linux 完整地支持内核抢占。在不支持内核抢占的内核中，内核代码可以一直执行，到它完成为止。也就是说，调度程序没有办法在一个内核级
+的任务正在执行的时候重新调度 —— 内核中的各任务是以协作方式调度的，不具备抢占性。内核代码一致要执行到完成(返回用户空间)或明显的阻塞为止。
+在 2.6 版的内核中，内核引入来抢占能力。现在，只要重新调度是安全的，内核就可以在任何时间抢占正在执行的任务。
+<br/>
+<br/>
+那么，什么时候重新调度才是安全的呢？只要没有持有锁，内核就可以进行抢占。锁是非抢占区域的标志。由于内核是支持 SMP 的，所以，如果没有持有锁，
+正在执行的代码就是可重新导入的，也就是可以抢占的。
+<br/>
+<br/>
+为了支持内核抢占所做的第一处变动，就是为每个进程的 <code>thread_info</code> 引入 <code>preempt_count</code> 计数器。该计数器初始值为0，每当使用锁的时候数值
+加1，释放锁的时候数值减1.当数值为0的时候，内核就可执行抢占。从中断返回内核空间的时候，内核会检查 <code>need_resched</code> 和 <code>preempt_count</code> 的
+值。如果 <code>need_resched</code> 被设置，并且 <code>preempt_count</code> 为零的话，这说明有一个更为重要的任务需要执行并且可以安全的抢占，此时，调度程序就会被调用。
+如果 <code>need_resched</code> 被设置，并且 <code>preempt_count</code> 为 0 的话，这说明有一个更为重要的任务需要执行并且可以安全的抢占，此时，调度程序就会被调用。
+如果 <code>preempt_count</code> 不为0，说明当前任务持有锁，所以抢占是不安全的。这时，内核就会像通常那样直接从中断返回当前执行过程。如果当前进程持有的
+所有的锁都被释放掉来，<code>preempt_count</code>都会重新为0.此时，释放锁的代码会检查 <code>need_resched</code> 是否被设置。如果是的话，就会调用调度程序。
+有些内核代码需要允许或禁止内核抢占。
+<br/>
+<br/>
+如果内核中的进程被阻塞了，或者它显式的调用了 <code>schedule()</code>，内核抢占也会显式地发生。这种形式的内核抢占从来都是受支持的，因为根本无须额外的逻辑来
+保证内核可以安全地被抢占。如果代码显式的调用了 <code>schedule()</code>，那么它应该清除自己是可以安全地被抢占的。
+<br/>
+<br/>
+内核抢占会发生在：</p>
+<ul>
+<li>中断处理程序正在执行，且返回内核空间之前。</li>
+<li>内核代码再一次具有可强占性的时候。</li>
+<li>如果内核中的任务显式地调用 <code>schedule()</code>。</li>
+<li>如果内核中的任务阻塞(这同样也会导致调用schedule())。</li>
+</ul>
+<h3 id="实时调度策略">实时调度策略</h3>
+<p>Linux 提供了两种实时调度策略：<code>SCHED_FIFO</code>和<code>SCHED_RR</code> 。而普通的、非实时的调度策略是 <code>SCHED_NORMAL</code>。借助调度类的框架，这些实时策略并不被完全公平调度器来管理，
+而是被一个特殊的实时调度器管理。具体实现定义在文件 <code>kernel/sched_rt.c</code> 中，在接下来的内容中我们将讨论实时调度策略和算法。
+<br/>
+<br/>
+<code>SCHED_FIFO</code>实现了一种简单的、先入先出的调度算法：它不使用时间片。处于可运行状态的 <code>SCHED_FIFO</code>级的进程会比任何 <code>SCHED_NORMAL</code> 级的进程都先得到调度。一旦
+一个 <code>SCHED_FIFO</code>级进程处于可执行状态，就会一直执行，直到它自己受阻塞或显式地释放处理器为止：它不基于时间片，可以一直执行下去。只有更高优先级的
+<code>SCHED_FIFO</code>或者<code>SCHED_RR</code>任务才能抢占 <code>SCHED_FIFO</code> 任务。如果有两个或者更多的同优先级的 <code>SCHED_FIFO</code> 级进程，它们会轮流执行，但是依然只有在它们愿意
+让出处理器时候才会退出。只要有 <code>SCHED_FIFO</code> 级进程在执行，其它级别较低的进程就只能等待它变为不可运行态后才有机会执行。
+<br/>
+<br/>
+<code>SCHED_RR</code>和<code>SCHED_FIFO</code>大体相同，只是 <code>SCHED_RR</code> 级的进程在耗尽实现分配给它的时间后就不能在继续执行了。也就是说， <code>SCHED_RR</code>是带有时间片的
+<code>SCHED_FIFO</code> —— 这时一种实时轮流调度算法。当 <code>SCHED_RR</code> 任务耗尽它的时间片时，在同一优先级的其它实时进程被轮流调度。时间片只用来重新调度同一
+优先级的进程。对于 <code>SCHED_FIFO</code> 进程，高优先级总是立即抢占低优先级，但低优先级决不能抢占 <code>SCHED_RR</code> 任务，即使它的时间片耗尽。
+<br/>
+<br/>
+这两种实时算法实现的都是静态优先级。内核不为实时进程计算动态优先级。这能保证给定优先级别的实时进程总能抢占优先级比它低的进程。</p>
+<p>Linux 的实时调度算法提供了一种软实时工作方式。软实时的含义是，内核调度进程，尽力使进程在它的限定时间到来前运行，但内核不保证总能满足这些进程的要求。相反，硬实时系统保证在一定条件下，
+可以满足任何调度的要求。Linux对于实时任务的调度不做任何保证。虽然不能保证硬实时工作方式，但 Linux 的实时调度算法的性能还是不错的。2.6版本的内核可以满足严格的时间要求。
+<br/>
+<br/>
+实时优先级范围从 0 到 <code>MAX_RT_PRIO</code> 减1.默认情况下，<code>MAX_RT_PRIO</code> 为 100 —— 所以默认的实时优先级范围是从 0 到 99。<code>SCHED_NORMAL</code>
+级进程的 <code>nice</code> 值共享了这个取值空间；它的取值范围是从 <code>MAX_RT_PRIO</code> 到(<code>MAX_RT_PRIO + 40</code>)。也就是说，在默认情况下，nice 值从
+<code>-20 到 +19</code>直接对应的是从 100 到 139 的实时优先级范围。</p>
+<h3 id="与调度相关的系统调用">与调度相关的系统调用</h3>
+<p>Linux 提供了一个系统调用族，用于管理与调度程序相关的参数。这些系统调用可以用来操作和处理进程优先级、调度策略以及处理器绑定，同时还提供了显式的将处理器交给其它进程的机制。
+<br/>
+<br/>
+与调度有关的系统调用：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">系统调用</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>nice()</code></td>
+<td style="text-align:left">设置进程的<code>nice</code>值</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>sched_setscheduler()</code></td>
+<td style="text-align:left">设置进程的调度策略</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>sched_getscheduler()</code></td>
+<td style="text-align:left">获取进程的调度策略</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>sched_setparam()</code></td>
+<td style="text-align:left">设置进程的实时优先级</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>sched_getparam()</code></td>
+<td style="text-align:left">获取进程的实时优先级</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>sched_get_priority_max()</code></td>
+<td style="text-align:left">获取实时优先级的最大值</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>sched_get_priority_min()</code></td>
+<td style="text-align:left">获取实时优先级的最小值</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>sched_rr_get_interval()</code></td>
+<td style="text-align:left">获取进程的时间片值</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>sched_setaffinity()</code></td>
+<td style="text-align:left">设置进程的处理器的亲和力</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>sched_getaffinity()</code></td>
+<td style="text-align:left">获取进程的处理器的亲和力</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>sched_yield()</code></td>
+<td style="text-align:left">暂时让出处理器</td>
+</tr>
+</tbody>
+</table>
+<h4 id="与调度策略和优先级相关的系统调用">与调度策略和优先级相关的系统调用</h4>
+<p><code>sched_setscheduler()</code> 和 <code>sched_getscheduler()</code> 分别用于设置和获取进程的调度策略和实时优先级。与其它的系统调用相似，它们的实现也是
+由许多参数检查、初始化和清理构成的。其实最重要的工作在于读取或改写进程<code>task_struct</code>的<code>policy</code>和<code>rt_priority</code>的值。
+<br/>
+<br/>
+<code>sched_setparam()</code>和<code>sched_getparam()</code>分别用于设置和获取进程的实时优先级。这两个系统调用获取封装在<code>sched_param</code>特殊结构体的
+<code>rt_priority</code>中。<code>sched_get_priority_max()</code>和<code>sched_get_priority_min()</code>分别用于返回给定调度策略的最大和最小优先级。实时调度策略
+的最大优先级是 <code>MAX_USER_RT_PRIO</code> 减1，最小优先级等于1.
+<br/>
+<br/>
+对于一个普通的进程，<code>nice()</code>函数可以将给定进程的静态优先级增加一个给定的量。只有超级用户才能在调用它时候使用负值，从而提高进程的优先级。
+<code>nice()</code>函数会调用内核的 <code>set_user_nice()</code>函数，这个函数会设置进程的 <code>task_struct</code> 的 <code>static_prio</code> 和 <code>prio</code>值。</p>
+<h4 id="与处理器绑定有关的系统调用">与处理器绑定有关的系统调用</h4>
+<p>Linux 调度程序提供强制的处理器绑定机制。也就是说，虽然它尽力通过一种软的(或者说自然的)亲和性试图使进程尽量在同一个处理器上运行，但是它也
+允许用户强制指定“这个进程无论如何都必须在这些处理器上运行”。这种强制的亲和性保存在进程 <code>task_struct</code> 的 <code>cpus_allowed</code>这个位掩码标志中。
+该掩码标志的每一位对应一个系统可用的处理器。默认情况下，所有的位都被设置，进程可以在系统中所有可用的处理器上执行。用户可以通过 <code>sched_setaffinity()</code>
+设置不同的一个或几个位组合的位掩码，而调用 <code>sched_getaffinity()</code> 则返回当前的 <code>cpu_allowed</code> 位掩码。
+<br/>
+<br/>
+内核提供的强制处理器绑定的方法很简单。首先，当处理进行第一次创建时候，它继承了其父进程的相关掩码。由于父进程运行在指定处理器上，子进程也运行在
+相应处理器上。最后，加载平衡器只把任务拉到允许的处理器上，因此，进程只运行在指定处理器上，对处理器的指定是由该进程描述符的<code>cpus_allowed</code>域设置的。</p>
+<h4 id="放弃处理器时间">放弃处理器时间</h4>
+<p>Linux 通过 <code>sched_yield()</code> 系统调用，提供了一种让进程显式将处理器时间让给其它等待执行进程的机制。它是通过将进程从活动队列中(因为进程正在执行，
+所以它肯定位于此队列当中)移到过期队列中实现的。有此产生的效果不仅抢占了该进程并将其放入优先级队列的最后面，还将其放入过期队列中——这样能确保在
+一段时间内它都不再被执行了。由于实时进程不会过期，所以属于例外。它们只被移动到其优先级队列的最后面(不会放到过期队列中)。在Linux的早期版本中，
+<code>sched_yield()</code>的语义有所不同，进程只会被放置到优先级队列的末尾，放弃的时间往往不会太长。现在，应用程序甚至内核代码在调用 <code>sched_yield()</code>前，
+应该仔细考虑是否真的希望舍弃处理器时间。
+<br/>
+<br/>
+内核代码为了方便，可以直接调用 <code>yield()</code>，先要确定给定进程确实处于可执行状态，然后再调用 <code>sched_yield()</code>。用户空间的应用程序直接使用
+<code>sched_yield()</code>系统调用就可以了。</p>
+<h3 id="小结-1">小结</h3>
+<p>进程调度程序是内核重要的组成部分，因为运行着的进程首先在使用计算机。然而，满足进程调度的各种需要绝不是轻而易举的：很难找到“一刀切”的算法，
+既适合众多的可运行进程，又具有可伸缩性，还能在调度周期和吞吐量之间求得平衡，同时还满足各种负载的需求。不过，Linux 内核的新 CFS 调度程序
+尽量满足了各个方面的需求，并以较完善的可伸缩性和新颖的方法提供了最佳的解决方案。</p>
+<h2 id="系统调用">系统调用</h2>
+<p>在现代操作系统中，内核提供了用户进程与内核进行交互的一组接口。这些接口让应用程序受限的访问硬件设备，提供了创建新进程并与已有进程进行通信的机制，也提供了申请操作系统其它资源的能力。这些接口在应用程序
+和内核之间扮演了使者的角色，应用程序发出各种请求，而内核负责满足这些请求(或者无法满足时候返回一个错误)。实际上提供这些接口主要是为了保证系统稳定可靠，避免应用程序恣意妄行。</p>
+<h3 id="与内核通信">与内核通信</h3>
+<p>系统调用在用户空间进程和硬件设备之间添加了一个中间层。该层主要作用由三个。受限，它位用户空间提供了一种硬件的抽象接口。距离来说，当需要读写文件的时候，应用程序就可以不去管理磁盘类型和介质，
+甚至不用去管文件所在的文件系统到底是哪种类型。第二，系统调用包整了系统的稳定性和安全。作为硬件设备和应用程序之间的中间人，内核可以基于权限、用户类型和其它一些
+规则对需要进行的访问进行裁决。举例来说，这样可以避免应用程序不正确的使用硬件设备，窃取其它进程的资源，或是作出其它危害操作系统的事情。
+第三，之前曾经提到过，每个基础南横都运行在虚拟系统中，而在用户空间和系统的其余部分提供这样一层公共接口，也是出于这种考虑。如果应用程序可以随意访问硬件而内核又对此一无所知的话，几乎就没法实现
+多任务和虚拟内存，当然也不可能实现良好的稳定性和安全性。在 Linux 中，系统调用是用户空间访问内核的唯一手段，除了异常和陷入之外，它们是内核唯一的合法入口，实际上，其它的像
+设备文件和<code>/proc</code>之类的方式，最终还是要通过系统调用进行访问的。而有趣的是，Linux提供的系统调用却比大部分操作系统都少得多。
+<br/>
+<br/>
+接下来讨论Linux系统调用的规则和实现方法</p>
+<h3 id="apiposix和c库">API、POSIX和C库</h3>
+<p>一般情况下，应用程序通过在用户空间实现的应用编程接口(API)而不是直接通过系统调用来编程。这点很重要，因为应用程序使用的这种编程接口实际上并不需要和内核提供的系统调用对应。
+一个 API 定义了一组应用程序使用的编程接口。它们可以实现成一个系统调用，也可以通过调用多个系统调用来实现，而完全不使用任何系统调用也不存在问题。实际上，API可以在各种不同
+的操作系统上实现，给应用程序提供完全相同的接口，而它们本身在这些系统上的实现却可能迥异。下图给出了 POSIX、API、C库以及系统调用之间的关系。</p>
+<div align=center><img src='/pic/linux/kernel-process-4.png'/></div>
+<center>调用printf()函数时，应用程序、C库和内核之间的关系</center>
+<p>在 Unix 世界中，最流行的应用编程接口是基于 POSIX 标准的。从纯技术的角度来看，POSIX 是由 IEEE 的一组标准组成，其目标是提供一套大体上基于 Unix 的可移植
+操作系统标准。在应用场合，Linux尽力与POSIX和SUSv3兼容。
+<br/>
+<br/>
+POSIX是说明 API 和系统调用之间关系的一个极好例子。在大多数 Unix 系统上，根据 POSIX 定义的 API 函数和系统调用之间有着直接关系。实际上，POSIX标准就是仿照早期 Unix
+系统的接口建立的。另一方面，许多操作系统，像微软的 Windows，尽管是非 Unix 系统，也提供了与 POSIX 兼容的库。
+<br/>
+Linux的系统调用像绝大多数 Unix 系统一样，作为 C 库的一部分提供。C库实现了 Unix 系统的主要 API， 包括标准C库函数和系统调用接口。所有的 C
+程序都可以使用 C 库，而由于 C 语言本身的特点，其它语言也可以很方便的把它们封装起来使用。此外， C 库提供了 POSIX 的绝大部分 API。
+<br/>
+从程序员的角度来看，系统调用无关紧要，它们只需要跟 API 打交道就可以了。相反，内核只跟系统调用打交道；库函数及应用程序是怎么使用系统调用，不是内核
+所关心的。但是，内核必须时刻牢记系统调用所有潜在的用途，并保证它们由良好的通用性和灵活性。
+<br/>
+关于 Unix 的接口设计由一句格言 “提供机制而不是策略”。换句话说，Unix的系统调用抽象出了用于完成某种确定的目的的函数。至于这些函数怎么用完全不需要内核去关心。</p>
+<h3 id="系统调用-1">系统调用</h3>
+<p>要访问系统调用(在Linux中常称为 <code>syscall</code>)，通常通过 C 库中定义的函数调用来进行。它们通常都需要定义零个、一个或几个参数(输入)而且可能产生一些副作用，
+例如：写某个文件或向给定的指针拷贝数据等。系统调用还会通过一个 long 类型的返回值来表示成功或者错误。通常，但也不绝对，用一个负的返回值来表明错误。返回一个 0 值通常
+表示成功。系统调用在出现错误的时候 C 库会把错误码写入 errno 全局变量。通过调用 <code>perror()</code> 库函数，可以把变量翻译成用户可以理解的错误字符串。
+<br/></p>
+<p>当然，系统调用最终具有一种明确的操作。例如 <code>getpid()</code> 系统调用，根据定义它会返回当前进程的 PID。内核中它的实现非常简单：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">SYSCALL_DEFINED</span><span class="p">(</span><span class="n">getpid</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">task_tgid_vnr</span><span class="p">(</span><span class="n">current</span><span class="p">);</span>  <span class="c1">// returns current-&gt;tgid
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>注意，定义中并没有规定它要如何实现。内核必须提供系统调用所希望完成的功能，但它完全可以按照自己预期的方式去实现，只要最后的结果正确就行了。当然，上面的系统调用
+太简单，也没有什么更多的实现手段。</p>
+<p><code>SYSCALL_DEFINE0</code> 只是一个宏，它定义一个无参数的系统调用(因此这里为数字0)，展开后的代码如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">asmlinkage</span> <span class="kt">long</span> <span class="n">sys_getpid</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>我们看一下如何定义系统调用。首先，注意函数声明中的 <code>asmlinkage</code>限定词，这是一个编译指令，通知编译器仅从栈中提取该函数的参数。所有的系统调用都需要这个限定词。</p>
+<p>其次，函数返回 long。为了保证 32位和64位系统的兼容，系统调用在用户空间和内核空间由不同的返回值类型，在用户空间为 int，在内核空间为 long。</p>
+<p>最后，注意系统调用 <code>get_pid()</code> 在内核中被定义成 <code>sys_getpid()</code>。这是 Linux 中所有系统调用都应该遵守的命名规则</p>
+<h4 id="系统调用号">系统调用号</h4>
+<p>在 Linux 中，每个系统调用被赋予一个系统调用号。这样，通过这个独一无二的号就可以关联系统调用。当用户空间的进程执行一个系统调用的时候，这个系统
+调用号就用来指明到底是要执行哪个系统调用；进程不会提及系统调用的名称。
+<br/>
+<br/>
+系统调用号相当重要，一旦分配就不能再有任何变更，否则编译好的应用程序就会崩溃。此外，如果一个系统调用被删除，它所占用的系统调用号也不允许被回收利用，
+否则，以前编译过的代码会调用这个系统调用，但事实上却调用的是另一个系统调用。Linux 有一个“未实现”系统调用 <code>sys_ni_syscall()</code> 它返回
+除了 <code>-ENOSYS</code> 外不做任何其它工作，这个错误号就是专门针对无效的系统调用而设的。虽然很罕见，但是如果一个系统调用被删除，或者变得不可用，这个函数就要负责
+“填补空缺”。
+<br/></p>
+<p>内核记录了系统调用表中的所有已注册过的系统调用的列表，存储在 <code>sys_call_table</code> 中。每一种体系结构中，都明确定义了这个表，在 <code>X86-64</code> 中，它定义于
+<code>arch/i386/kernel/syscall_64.c</code> 文件中。这个表为每一个有效的系统调用指定了唯一的系统调用号。</p>
+<h4 id="系统调用的性能">系统调用的性能</h4>
+<p>Linux 系统调用比其它许多系统执行的要快。Linux很短的上下文切换时间是一个重要原因，进出内核都被优化得简洁高效。另外一个原因是系统调用处理程序和
+每个系统调用本身也都非常简洁。</p>
+<h3 id="系统调用处理程序">系统调用处理程序</h3>
+<p>用户空间的程序无法直接执行内核代码。它们不能直接调用内核空间中的函数，因为内核驻留在受保护的地址空间上。如果进程可以直接在内核的地址空间上读写的话，系统的安全性和稳定性
+将不复存在。</p>
+<p>所以，应用程序应该以某种方式通知系统，告诉内核自己需要执行一个系统调用，希望系统切换到内核态，这样内核就可以代表应用程序在内核空间执行系统调用。
+<br/></p>
+<p>通知内核的机制是靠软中断实现的：通过引发一个异常来促使系统切换到内核态去执行异常处理函数。此时的异常处理程序实际上就是系统调用处理程序。
+在 X86 系统上预定义的软中断是中断号 <code>128</code>，通过 <code>int $0x80</code> 指令触发该中断。这条指令会触发一个异常导致系统切换到内核态并执行第 <code>128</code> 号
+异常处理程序，而该程序正是系统调用处理程序。这个处理程序名字叫 <code>system_call()</code>。它与硬件体系紧密相关， <code>x86-64</code> 的系统上在 <code>entry_64.S</code> 文件
+中用汇编语言编写。最近，x86 处理器增加了一条叫做 <code>sysenter</code> 的指令。与 int 中断指令相比，这条指令提供了更快、更专业的陷入内核执行系统调用的方式。
+对这条指令的支持很快被加入内核。且不管系统调用处理程序被如何调用，用户空间引起异常或陷入内核就是一个重要的概念。</p>
+<h4 id="指定恰当的系统调用">指定恰当的系统调用</h4>
+<p>因为所有的系统调用陷入内核的方式都一样，所以仅仅是陷入内核空间是不够的。因此必须把系统调用号一并传给内核。在 x86 上，系统调用号是通过 eax 寄存器传递给内核的。
+在陷入内核之前，用户空间就把相应系统调用所对应的号放入 eax 中。这样系统调用处理程序一旦运行，就可以从 eax 中得到数据。其它体系结构上的实现
+也都类似。
+<br/></p>
+<p><code>system_call()</code>函数通过将给定的系统调用号与 <code>NR_syscalls</code> 做比较来检查其有效性。如果它大于或者等于 <code>NR_syscalls</code>，该函数就返回 <code>-ENOSYS</code>。
+否则，就执行相应的系统调用：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">call</span><span class="o">*</span> <span class="n">sys_call_table</span><span class="p">(,</span><span class="o">%</span><span class="n">rax</span><span class="p">,</span><span class="mi">8</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>由于系统调用表中的表项是以64位(8字节)类型存放的，所以内核需要将给定的系统调用号乘以 4，然后用所得的结果在该表中查询其位置。在 x86-32 系统上，代码很类似，只是用 4 代替 8</p>
+<h4 id="参数传递">参数传递</h4>
+<p>除了系统调用号以外，大部分系统调用都还需要一些外部的参数输入。所以，在发生陷入的时候，应该把这些参数从用户空间传给内核。最简单的办法就是像传递系统调用号一样，把这些
+参数也存放在寄存器里。在 x86-32 系统上， ebx、ecx、edx 和 edi 按照顺序存放前五个参数。
+需要六个或六个以上参数的情况不多见，此时，应该用一个单独的寄存器存放指向所有这些参数在用户空间地址的指针。</p>
+<div align=center><img src='/pic/linux/kernel-process-5.png'/></div>
+<center>调用系统调用处理程序以执行一个系统调用</center>
+<p>给用户空间的返回值也通过寄存器传递。在 X86 系统上，它存放在 eax 寄存器中。</p>
+<h3 id="系统调用的实现">系统调用的实现</h3>
+<p>实际上，一个 Linux 的系统调用在实现时候并不需要太关心它和系统调用处理程序之间的关系。给 Linux 添加一个新的系统调用是件相对容易的工作。
+怎样设计和实现一个系统调用是难题所在，而把它加到内核里却无须太多周折。
+<br/>
+接下来关注实现一个新的 Linux 系统调用所需的步骤。</p>
+<h4 id="实现系统调用">实现系统调用</h4>
+<p>实现一个新的系统调用的第一步是决定它的用途。<strong>每个系统调用都应该有一个明确的用途，Linux中不提倡多用途的系统调用(一个系统调用通过传递不同的参数值来选择完成不同的工作)</strong>。
+<code>ioctl()</code> 就是一个很好的例子，告诉了我们不应该去做什么。
+增加新的系统调用应该考虑以下要求：</p>
+<ul>
+<li>调用参数、返回值、错误码</li>
+<li>接口力求简洁、参数尽量少</li>
+<li>系统调用的语义和行为力求稳定，不做改动</li>
+<li>设计接口时候尽量为将来多做考虑，系统调用设计的越通用越好(不要设想这个系统调用现在怎么用将来也一定就这么用，系统调用的目的可能不变，但用法可能改变)</li>
+<li>系统调用的可移植性(别对机器的字节长度和字节序做假设)</li>
+</ul>
+<blockquote>
+<p>记住 Unix 的格言：“提供机制而不是策略”。</p>
+</blockquote>
+<h4 id="参数验证">参数验证</h4>
+<p>系统调用必须仔细检查它们所有的参数是否合法有效。系统调用都在内核空间执行，如果任由用户将不合法的输入传递给内核，那么系统的安全和稳定将面临极大的考验。
+<br/></p>
+<p>举例来说，<strong>与文件I/O相关的系统调用必须检查文件描述符是否有效</strong>、<strong>与进程相关的函数必须检查提供的PID是否有效</strong>，必须检查每个参数，保证它们不但合法有效，而且正确。
+进程不应当让内核去访问那些无权访问的资源。
+<br/></p>
+<p>最重要的一种检查就是检查用户提供的指针是否有效，在接收一个用户空间的指针之前，内核必须保证：</p>
+<ul>
+<li>指针指向的内存区域属于用户空间。进程决不能哄骗内核去读取内核空间的数据。</li>
+<li>指针指向的内存区域在进程的地址空间里。进程决不能哄骗内核去读取其它进程的数据。</li>
+<li>如果是读，该内存应被标记为可读；如果是写，该内存应该被标记为可写；如果是可执行，该内存被标记为可执行。进程决不能绕过内存访问限制。
+<br/></li>
+</ul>
+<p>内核提供了两个方法来完成必须的检查和内核空间与用户空间之间数据的来回拷贝。注意，内核无论合适都不能轻率的接收来自用户空间的指针！</p>
+<ul>
+<li>为了向用户空间写入数据，内核提供了 <code>copy_to_user()</code>，它需要三个参数，第一个是进程空间中的目的内存地址；第二个是内核空间内的源地址；最后
+一个参数是需要拷贝的数据长度(字节数)</li>
+<li>为了从用户空间读取数据，内核提供了 <code>copy_from_user()</code>，它和 <code>copy_to_user()</code> 相似。该函数把第二个参数指定的位置上的数据拷贝到第一个参数指定的位置上，拷贝的数据长度
+由第三个参数决定。</li>
+</ul>
+<p>如果执行失败，这两个函数返回的都是没能完成拷贝的数据的字节数，如果成功，则返回0.让出现上述错误时候，系统调用返回标准的 <code>-EFAULT</code>。
+<br/>
+系统调用 <code>silly_copy()</code>中既有 <code>copy_from_user()</code> 又有 <code>copy_to_user()</code>，它毫无实际用处，让内核空间作为中转站，把用户空间的数据从一个位置复制到另一个位置</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">SYSCALL_DEFINE3</span><span class="p">(</span><span class="n">silly_copy</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">long</span><span class="o">*</span><span class="p">,</span> <span class="n">src</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">long</span><span class="o">*</span><span class="p">,</span> <span class="n">dst</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">long</span><span class="p">,</span> <span class="n">len</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">buf</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 将用户地址空间中的 src 拷贝金 buf
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">if</span> <span class="p">(</span><span class="n">copy_from_user</span><span class="p">(</span><span class="o">&amp;</span><span class="n">buf</span><span class="p">,</span> <span class="n">src</span><span class="p">,</span> <span class="n">len</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="o">-</span><span class="n">EFAULT</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">// 将 buf 拷贝进用户地址空间中的 dst
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">if</span> <span class="p">(</span><span class="n">copy_to_user</span><span class="p">(</span><span class="n">dst</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">buf</span><span class="p">,</span> <span class="n">len</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="o">-</span><span class="n">EFAULT</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 返回拷贝的数据量
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">return</span> <span class="n">len</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>注意，<code>copy_to_user()</code>和<code>copy_from_user()</code>都有可能引起阻塞。当包含用户数据的页被换出到硬盘上而不是在物理内存上的时候，这种情况就会发生。此时，进程就会休眠，直到
+缺页处理程序将该页从硬盘重新换回物理内存。
+<br/>
+最后一项检查针对是否合法权限。老版本的Linux内核中，需要超级用户权限的系统调用才可以通过调用 <code>suser()</code> 函数这个标准动作来完成检查。这个函数智能检查
+用户是否为超级用户；现在它已经被一个更细粒度的“权能”机制代替。新的系统允许检查针对特定资源的特殊权限。调用者可以使用 <code>capable()</code> 函数来
+检查是否有权能对指定的资源进行操作，如果它返回非0值，调用这就有权进行操作，返回0则无权操作。举个例子，<code>capable(CAP_SYS_NICE)</code>可以检查
+调用者是否有权改变其它进程的 nice 值。
+<br/>
+下面是 <code>reboot*()</code> 系统调用</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">SYSCALL_DEFINE4</span><span class="p">(</span><span class="n">reboot</span><span class="p">,</span> <span class="kt">int</span><span class="p">,</span> <span class="n">magic1</span><span class="p">,</span> <span class="kt">int</span><span class="p">,</span> <span class="n">magic2</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">int</span><span class="p">,</span> <span class="n">cmd</span><span class="p">,</span> <span class="kt">void</span> <span class="n">__user</span><span class="o">*</span><span class="p">,</span> <span class="n">arg</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">char</span> <span class="n">buffer</span><span class="p">[</span><span class="mi">256</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">capable</span><span class="p">(</span><span class="n">CAP_SYS_BOOT</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="o">-</span><span class="n">EPERM</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 为了安全起见，我们需要 “magic” 参数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">if</span> <span class="p">(</span><span class="n">magic1</span> <span class="o">!=</span> <span class="n">LINUX_REBOOT_MAGIC1</span> 
+</span></span><span class="line"><span class="cl">        <span class="o">||</span> <span class="p">(</span><span class="n">magic2</span> <span class="o">!=</span> <span class="n">LINUX_REBOOT_MAGIC2</span>
+</span></span><span class="line"><span class="cl">             <span class="o">&amp;&amp;</span> <span class="n">magic2</span> <span class="o">!=</span> <span class="n">LINUX_REBOOT_MAGIC2A</span> 
+</span></span><span class="line"><span class="cl">             <span class="o">&amp;&amp;</span> <span class="n">magic2</span> <span class="o">!=</span> <span class="n">LINUX_REBOOT_MAGIC2B</span>
+</span></span><span class="line"><span class="cl">             <span class="o">&amp;&amp;</span> <span class="n">magic2</span> <span class="o">!=</span> <span class="n">LINUX_REBOOT_MAGIC2C</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="o">-</span><span class="n">EINVAL</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// 当未设置 pm_power_off 时候，请不要试图让 power_off 的代码看起来像是可以停机，而应该采用更简单的方式
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">if</span> <span class="p">((</span><span class="n">cmd</span> <span class="o">==</span> <span class="n">LINUX_REBOOT_CMD_POWER_OFF</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">pm_power_off</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">cmd</span> <span class="o">=</span> <span class="n">LINUX_REBOOT_CMD_HALT</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">lock_kernel</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="k">switch</span> <span class="p">(</span><span class="n">cmd</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">case</span> <span class="nl">LINUX_REBOOT_CMD_RESTART</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">kernel_restart</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">case</span> <span class="nl">LINUX_REBOOT_CMD_CAD_ON</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">C_A_D</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">case</span> <span class="nl">LINUX_REBOOT_CMD_CAD_OFF</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">C_A_D</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">case</span> <span class="nl">LINUX_REBOOT_CMD_HALT</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">kernel_halt</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">unlock_kernel</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">do_exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">case</span> <span class="nl">LINUX_REBOOT_CMD_POWER_OFF</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">kernel_power_off</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">unlock_kernel</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">do_exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">case</span> <span class="nl">LINUX_REBOOT_CMD_RESTART2</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">strncpy_from_user</span><span class="p">(</span><span class="o">&amp;</span><span class="n">buffer</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">arg</span><span class="p">,</span><span class="k">sizeof</span><span class="p">(</span><span class="n">buffer</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">unlock_kernel</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="o">-</span><span class="n">EFAULT</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">buffer</span><span class="p">[</span><span class="k">sizeof</span><span class="p">(</span><span class="n">buffer</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="sc">&#39;\0&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">kernel_restart</span><span class="p">(</span><span class="n">buffer</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">default</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">unlock_kernel</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="o">-</span><span class="n">EINVAL</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="n">unlock_kernel</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>参见&lt;linux/capability.h&gt;，其中包含一份所有这些权能和其对应的权限的列表。</p>
+</blockquote>
+<h3 id="系统调用上下文">系统调用上下文</h3>
+<p>内核在执行系统调用的时候处于进程上下文。current 指针指向当前任务，即引发系统调用的那个进程。</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
