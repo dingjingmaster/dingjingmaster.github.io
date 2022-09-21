@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>设计模式 - 标签 - 九九</title>
+        <link>https://dingjingmaster.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</link>
+        <description>设计模式 - 标签 - 九九</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>dingjing@live.cn (ding jing)</managingEditor>
+            <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Sun, 19 Sep 2021 09:37:37 &#43;0800</lastBuildDate><atom:link href="https://dingjingmaster.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="self" type="application/rss+xml" /><item>
+    <title>设计模式</title>
+    <link>https://dingjingmaster.github.io/2021/09/0010-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</link>
+    <pubDate>Sun, 19 Sep 2021 09:37:37 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://dingjingmaster.github.io/2021/09/0010-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</guid>
+    <description><![CDATA[设计模式简介 设计模式是一套被反复使用的、多数人知晓的、经过分类编目的、代码设计经验的总结。 使用设计模式是为了重用代码、让代码更容易被他人理解]]></description>
+</item></channel>
+</rss>
