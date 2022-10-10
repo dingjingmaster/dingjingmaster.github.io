@@ -4,7 +4,14 @@
         <link>https://dingjingmaster.github.io/tags/c&#43;&#43;/</link>
         <description>C&#43;&#43; - 标签 - 九九</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>dingjing@live.cn (ding jing)</managingEditor>
-            <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Mon, 29 Aug 2022 14:33:42 &#43;0800</lastBuildDate><atom:link href="https://dingjingmaster.github.io/tags/c&#43;&#43;/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Sat, 10 Sep 2022 21:24:46 &#43;0800</lastBuildDate><atom:link href="https://dingjingmaster.github.io/tags/c&#43;&#43;/" rel="self" type="application/rss+xml" /><item>
+    <title>std::future</title>
+    <link>https://dingjingmaster.github.io/2022/09/0011-stdfuture/</link>
+    <pubDate>Sat, 10 Sep 2022 21:24:46 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://dingjingmaster.github.io/2022/09/0011-stdfuture/</guid>
+    <description><![CDATA[功能 类模板std::future提供了一个访问异步操作结果的机制: 异步操作(通过std::async、std::packaged_task或]]></description>
+</item><item>
     <title>C&#43;&#43;11智能指针</title>
     <link>https://dingjingmaster.github.io/2022/08/0009-c-11%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88/</link>
     <pubDate>Mon, 29 Aug 2022 14:33:42 &#43;0800</pubDate>
