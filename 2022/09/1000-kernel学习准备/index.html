@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Linux Kernel学习准备 - 九九</title><meta name="Description" content=""><meta property="og:title" content="Linux Kernel学习准备" />
+<meta property="og:description" content="Linux 内核工程师 岗位分布 互联网 云计算 安全 OS发行商 芯片原厂 技能点 内存管理、调度、实时性 进程、同步与并发 存储、文件系统 网络子系统 虚拟化、区块链、容" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dingjingmaster.github.io/2022/09/1000-kernel%E5%AD%A6%E4%B9%A0%E5%87%86%E5%A4%87/" /><meta property="og:image" content="https://dingjingmaster.github.io/img/logo.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-09-30T21:49:23+08:00" />
+<meta property="article:modified_time" content="2022-09-30T21:49:23+08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://dingjingmaster.github.io/img/logo.jpg"/>
+
+<meta name="twitter:title" content="Linux Kernel学习准备"/>
+<meta name="twitter:description" content="Linux 内核工程师 岗位分布 互联网 云计算 安全 OS发行商 芯片原厂 技能点 内存管理、调度、实时性 进程、同步与并发 存储、文件系统 网络子系统 虚拟化、区块链、容"/>
+<meta name="application-name" content="九九">
+<meta name="apple-mobile-web-app-title" content="九九"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://dingjingmaster.github.io/2022/09/1000-kernel%E5%AD%A6%E4%B9%A0%E5%87%86%E5%A4%87/" /><link rel="prev" href="https://dingjingmaster.github.io/2022/09/0011-stdfuture/" /><link rel="next" href="https://dingjingmaster.github.io/2022/10/0003-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Linux Kernel学习准备",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/dingjingmaster.github.io\/2022\/09\/1000-kernel%E5%AD%A6%E4%B9%A0%E5%87%86%E5%A4%87\/"
+        },"image": ["https:\/\/dingjingmaster.github.io\/img\/logo.jpg"],"genre": "posts","keywords": "linux, kernel","wordcount":  1874 ,
+        "url": "https:\/\/dingjingmaster.github.io\/2022\/09\/1000-kernel%E5%AD%A6%E4%B9%A0%E5%87%86%E5%A4%87\/","datePublished": "2022-09-30T21:49:23+08:00","dateModified": "2022-09-30T21:49:23+08:00","publisher": {
+            "@type": "Organization",
+            "name": "九九","logo": "https:\/\/dingjingmaster.github.io\/img\/logo.jpg"},"author": {
+                "@type": "Person",
+                "name": "ding jing"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="九九"><span class="header-title-pre"> </span>九九</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/timeline/"> 时间轴 </a><a class="menu-item" href="https://github.com/dingjingmaster" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="九九"><span class="header-title-pre"> </span>九九</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/timeline/" title="">时间轴</a><a class="menu-item" href="https://github.com/dingjingmaster" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Linux Kernel学习准备</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>ding jing</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/kernel/"><i class="far fa-folder fa-fw"></i>kernel</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-09-30">2022-09-30</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1874 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 4 分钟&nbsp;<span id="/2022/09/1000-kernel%E5%AD%A6%E4%B9%A0%E5%87%86%E5%A4%87/" class="leancloud_visitors" data-flag-title="Linux Kernel学习准备">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#linux-内核工程师">Linux 内核工程师</a>
+      <ul>
+        <li><a href="#岗位分布">岗位分布</a></li>
+        <li><a href="#技能点">技能点</a></li>
+      </ul>
+    </li>
+    <li><a href="#驱动工程师">驱动工程师</a>
+      <ul>
+        <li><a href="#岗位分布-1">岗位分布</a></li>
+        <li><a href="#技能点-1">技能点</a></li>
+        <li><a href="#驱动的衍化">驱动的衍化</a></li>
+      </ul>
+    </li>
+    <li><a href="#驱动与内核的关系">驱动与内核的关系</a>
+      <ul>
+        <li><a href="#驱动主要用来驱动各种硬件">驱动主要用来驱动各种硬件</a></li>
+        <li><a href="#内核一般用来提供os的各种服务">内核一般用来提供OS的各种服务</a></li>
+      </ul>
+    </li>
+    <li><a href="#linux内核版本变化">Linux内核版本变化</a>
+      <ul>
+        <li><a href="#lnux-001">Lnux-0.01</a></li>
+        <li><a href="#linux-54">Linux-5.4</a></li>
+      </ul>
+    </li>
+    <li><a href="#知识体系">知识体系</a>
+      <ul>
+        <li><a href="#linux开发工具">Linux开发工具</a></li>
+        <li><a href="#工具链">工具链</a></li>
+        <li><a href="#程序主战场">程序主战场</a></li>
+        <li><a href="#处理器架构">处理器架构</a></li>
+      </ul>
+    </li>
+    <li><a href="#基于arch搭建实验平台arm-a9-vexpress">基于Arch搭建实验平台(ARM A9 vexpress)</a>
+      <ul>
+        <li><a href="#安装qemu-system">安装qemu-system</a></li>
+        <li><a href="#编译内核镜像510">编译内核镜像(5.10)</a></li>
+        <li><a href="#制作根文件系统">制作根文件系统</a>
+          <ul>
+            <li><a href="#编译安装根文件系统">编译、安装根文件系统</a></li>
+            <li><a href="#完成完整的根文件系统构建">完成完整的根文件系统构建</a></li>
+            <li><a href="#封装构建好的根文件系统并挂载">封装构建好的根文件系统并挂载</a></li>
+          </ul>
+        </li>
+        <li><a href="#使用u-boot加载内核">使用u-boot加载内核</a>
+          <ul>
+            <li><a href="#u-boot编译和安装">u-boot编译和安装</a></li>
+            <li><a href="#安装tftp">安装tftp</a></li>
+            <li><a href="#修改网卡信息设置桥接">修改网卡信息，设置桥接</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#未完待续">未完待续&hellip;</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="linux-内核工程师">Linux 内核工程师</h2>
+<h3 id="岗位分布">岗位分布</h3>
+<ul>
+<li>互联网</li>
+<li>云计算</li>
+<li>安全</li>
+<li>OS发行商</li>
+<li>芯片原厂</li>
+</ul>
+<h3 id="技能点">技能点</h3>
+<ul>
+<li>内存管理、调度、实时性</li>
+<li>进程、同步与并发</li>
+<li>存储、文件系统</li>
+<li>网络子系统</li>
+<li>虚拟化、区块链、容器</li>
+</ul>
+<h2 id="驱动工程师">驱动工程师</h2>
+<h3 id="岗位分布-1">岗位分布</h3>
+<ul>
+<li>芯片原厂、方案厂商</li>
+<li>嵌入式设备厂商</li>
+</ul>
+<h3 id="技能点-1">技能点</h3>
+<ul>
+<li>内核编译、移植</li>
+<li>设备模型、驱动框架</li>
+<li>USB、PCI、I2C、UART</li>
+<li>芯片手册、硬件电路</li>
+<li>音视频编解码</li>
+</ul>
+<h3 id="驱动的衍化">驱动的衍化</h3>
+<ul>
+<li>Misc驱动：一个驱动对应一个硬件、兼容性最差</li>
+<li>字符驱动、设备驱动：读写方式</li>
+<li>总线性驱动
+<ul>
+<li>物理总线：USB、I2C、PCI</li>
+<li>虚拟总线：platform、device tree</li>
+</ul>
+</li>
+<li>驱动框架：framebuffer、input、DRM</li>
+<li>用户态驱动：硬件抽象层HAL</li>
+</ul>
+<h2 id="驱动与内核的关系">驱动与内核的关系</h2>
+<h3 id="驱动主要用来驱动各种硬件">驱动主要用来驱动各种硬件</h3>
+<ul>
+<li>驱动是内核代码的一部分：内核中80%的代码都是驱动</li>
+<li>驱动不同的CPU、硬件平台、外设、热插拔设备</li>
+</ul>
+<h3 id="内核一般用来提供os的各种服务">内核一般用来提供OS的各种服务</h3>
+<ul>
+<li>Linux内核划分为：BSP、驱动、基础服务、应用服务</li>
+<li>基础服务：进程、调度、内存管理、同步机制、中断</li>
+<li>应用服务：虚拟化、容器、网络、存储、文件系统</li>
+<li>随着应用场景的变化，新的功能会不断添加进来</li>
+</ul>
+<h2 id="linux内核版本变化">Linux内核版本变化</h2>
+<h3 id="lnux-001">Lnux-0.01</h3>
+<ul>
+<li>源文件: 88个文件、10239行代码</li>
+<li>支持平台：X86</li>
+</ul>
+<h3 id="linux-54">Linux-5.4</h3>
+<ul>
+<li>源文件：48815个文件、超过2500万行代码（.h|.c|.S）</li>
+<li>支持平台：X86、ARM、RISC-V、MIPS等20多个平台</li>
+</ul>
+<h2 id="知识体系">知识体系</h2>
+<h3 id="linux开发工具">Linux开发工具</h3>
+<ul>
+<li>vim</li>
+<li>Makefile</li>
+<li>IDE</li>
+<li>debug</li>
+</ul>
+<h3 id="工具链">工具链</h3>
+<ul>
+<li>编译</li>
+<li>链接</li>
+<li>重定位</li>
+<li>安装</li>
+<li>运行</li>
+</ul>
+<h3 id="程序主战场">程序主战场</h3>
+<ul>
+<li>内存管理</li>
+<li>堆</li>
+<li>栈</li>
+<li>堆栈溢出</li>
+</ul>
+<h3 id="处理器架构">处理器架构</h3>
+<ul>
+<li>指令集</li>
+<li>CPU 工作原理</li>
+</ul>
+<h2 id="基于arch搭建实验平台arm-a9-vexpress">基于Arch搭建实验平台(ARM A9 vexpress)</h2>
+<h3 id="安装qemu-system">安装qemu-system</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo pacman -S qemu-system-arm
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="编译内核镜像510">编译内核镜像(5.10)</h3>
+<ol>
+<li>下载linux-5.10镜像:<a href="https://mirrors.tuna.tsinghua.edu.cn/kernel/v5.x" target="_blank" rel="noopener noreffer">https://mirrors.tuna.tsinghua.edu.cn/kernel/v5.x</a>（注意拉到最下边找内核源码压缩包）</li>
+<li>编译</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 1. 创建文件夹</span>
+</span></span><span class="line"><span class="cl">mkdir tftpboot
+</span></span><span class="line"><span class="cl">chmod <span class="m">0777</span> tftpboot
+</span></span><span class="line"><span class="cl">tar xf linux-5.10.99tar.gz
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> linux-5.10.99
+</span></span><span class="line"><span class="cl"><span class="c1"># vim Makefile +371 ; 将 ARCH 变量赋值为 arm，即：ARCH ?= arm</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># vim Makefile +372 ; 将 CROCESS_COMPILE=arm-none-linux-gnueabihf-</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">make vexpress_defconfig
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">make zImage -j32
+</span></span><span class="line"><span class="cl">make modules -j32
+</span></span><span class="line"><span class="cl">make dtbs -j32
+</span></span><span class="line"><span class="cl">make <span class="nv">LOADADDR</span><span class="o">=</span>0x60003000 uImage -j32
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">cp arch/arm/boot/zImage ../tftpboot/
+</span></span><span class="line"><span class="cl">cp arch/arm/boot/uImage ../tftpboot/
+</span></span><span class="line"><span class="cl">cp arch/arm/boot/dts/vexpress-v2p-ca9.dtb ../tftpboot/
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li><code>zImage</code> 为通用内核文件</li>
+<li><code>modules</code> 内核模块</li>
+<li><code>dtbs</code> 编译的设备树</li>
+<li><code>uImage</code> 为专供 u-boot引导的内核</li>
+</ul>
+<ol start="3">
+<li>启动脚本
+<code>vim start.sh</code></li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl">qemu-system-arm                 <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -M vexpress-a9              <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -m 512M                     <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -kernel zImage              <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -dtb vexpress-v2p-ca9.dtb   <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -nographic                  <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -append <span class="s2">&#34;console=ttyAMA0&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="制作根文件系统">制作根文件系统</h3>
+<blockquote>
+<p>使用 busybox 制作根文件系统</p>
+</blockquote>
+<h4 id="编译安装根文件系统">编译、安装根文件系统</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo mkdir -p arm-rootfs
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 下载 busybox 1.35.0 并解压</span>
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> busybox-1.35.0
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 修改busybox的Makefile +191</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># ARCH ?= arm</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># CROCESS_COMPILE=arm-none-linux-gnueabihf-</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># make menuconfig 设置安装路径，输入自己的 rootfs 根路径 `/data/learn-kernel/arm-rootfs`</span>
+</span></span><span class="line"><span class="cl">make install
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="完成完整的根文件系统构建">完成完整的根文件系统构建</h4>
+<ol>
+<li>安装动态链接库</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">mkdir arm-rootfs/lib
+</span></span><span class="line"><span class="cl">cp /usr/arm-none-linux-xxx/lib/*.so* arm-rootfs/lib -d
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>创建设备节点</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">cd</span> /data/learn-kernel/arm-rootfs/
+</span></span><span class="line"><span class="cl">mkdir dev
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> dev
+</span></span><span class="line"><span class="cl">sudo mknod -m <span class="m">666</span> tty1 c <span class="m">4</span> <span class="m">1</span>
+</span></span><span class="line"><span class="cl">sudo mknod -m <span class="m">666</span> tty2 c <span class="m">4</span> <span class="m">2</span>
+</span></span><span class="line"><span class="cl">sudo mknod -m <span class="m">666</span> tty3 c <span class="m">4</span> <span class="m">3</span>
+</span></span><span class="line"><span class="cl">sudo mknod -m <span class="m">666</span> tty4 c <span class="m">4</span> <span class="m">4</span>
+</span></span><span class="line"><span class="cl">sudo mknod -m <span class="m">666</span> console c <span class="m">5</span> <span class="m">1</span>
+</span></span><span class="line"><span class="cl">sudo mknod -m <span class="m">666</span> null c <span class="m">1</span> <span class="m">3</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="3">
+<li>设置初始化进程/etc/rcS</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">cd</span> /data/learn-kernel/arm-rootfs
+</span></span><span class="line"><span class="cl">mkdir -p etc/init.d
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> etc/init.d
+</span></span><span class="line"><span class="cl">touch rcS
+</span></span><span class="line"><span class="cl">chmod <span class="m">777</span> rcS
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>vim rcS</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="cp">#!/bin/sh
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="nv">PATH</span><span class="o">=</span>/bin:/sbin:/usr/bin:/usr/sbin
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>/lib:/usr/lib
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">/bin/mount -n -t ramfs ramfs /var
+</span></span><span class="line"><span class="cl">/bin/mount -n -t ramfs ramfs /tmp
+</span></span><span class="line"><span class="cl">/bin/mount -n -t sysfs none  /sys
+</span></span><span class="line"><span class="cl">/bin/mount -n -t ramfs none  /dev
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">/bin/mkdir /var/tmp
+</span></span><span class="line"><span class="cl">/bin/mkdir /var/modules
+</span></span><span class="line"><span class="cl">/bin/mkdir /var/run
+</span></span><span class="line"><span class="cl">/bin/mkdir /var/log
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">/bin/mkdir -p /dev/pts
+</span></span><span class="line"><span class="cl">/bin/mkdir -p /dev/shm
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">/sbin/mdev -s
+</span></span><span class="line"><span class="cl">/bin/mount -a
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;----------------------------------------------&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;******** welcome to vexpress board ***********&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;----------------------------------------------&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="4">
+<li>设置文件系统<code>/etc/fstab</code></li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">cd</span> /data/learn-kernel/arm-rootfs/etc
+</span></span><span class="line"><span class="cl">touch fstab
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>vim fstab</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">proc        /proc       proc        defaults        <span class="m">0</span>   <span class="m">0</span>
+</span></span><span class="line"><span class="cl">none        /dev/pts    devpts      <span class="nv">mode</span><span class="o">=</span><span class="m">0622</span>       <span class="m">0</span>   <span class="m">0</span>
+</span></span><span class="line"><span class="cl">mdev        /dev        ramfs       defaults        <span class="m">0</span>   <span class="m">0</span>
+</span></span><span class="line"><span class="cl">sysfs       /sys        sysfs       defaults        <span class="m">0</span>   <span class="m">0</span>
+</span></span><span class="line"><span class="cl">tmpfs       /dev/shm    tmpfs       defaults        <span class="m">0</span>   <span class="m">0</span>
+</span></span><span class="line"><span class="cl">tmpfs       /dev        tmpfs       defaults        <span class="m">0</span>   <span class="m">0</span>
+</span></span><span class="line"><span class="cl">tmpfs       /mnt        tmpfs       defaults        <span class="m">0</span>   <span class="m">0</span>
+</span></span><span class="line"><span class="cl">var         /dev        tmpfs       defaults        <span class="m">0</span>   <span class="m">0</span>
+</span></span><span class="line"><span class="cl">tamfs       /dev        ramfs       defaults        <span class="m">0</span>   <span class="m">0</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="5">
+<li>设置初始化脚本 <code>/etc/inittab</code></li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">::sysinit:/etc/init.d/rcS
+</span></span><span class="line"><span class="cl">::askfirst:-/bin/sh
+</span></span><span class="line"><span class="cl">::ctrlaltdel:/bin/umount -a -r
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="6">
+<li>设置环境变量 <code>/etc/profile</code></li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nv">USER</span><span class="o">=</span><span class="s2">&#34;root&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">LOGNAME</span><span class="o">=</span><span class="nv">$USER</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">HOSTNAME</span><span class="o">=</span><span class="sb">`</span>cat /etc/sysconfig/HOSTNAME<span class="sb">`</span>
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">USER</span><span class="o">=</span>root
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">HOME</span><span class="o">=</span>/root
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">PS1</span><span class="o">=</span><span class="s2">&#34;[</span><span class="nv">$USER</span><span class="s2">@</span><span class="nv">$HOSTNAME</span><span class="s2">\w]\#&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">PATH</span><span class="o">=</span>/bin:/usr/bin:/sbin:/usr/sbin
+</span></span><span class="line"><span class="cl"><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>/lib:/usr/lib:<span class="nv">$LD_LIBRARY_PATH</span>
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> PATHLD_LIBRARY_PATH
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="7">
+<li>增加主机名 <code>/etc/sysconfig/HOSTNAME</code></li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">vexpress
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="8">
+<li>创建剩余文件夹</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">mkdir mnt proc root sys tmp var
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="封装构建好的根文件系统并挂载">封装构建好的根文件系统并挂载</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">mkdir temp
+</span></span><span class="line"><span class="cl">sudo dd if=/dev/zero of=rootfs.ext3 bs=1M count=32
+</span></span><span class="line"><span class="cl">sudo mkfs.ext3 rootfs.ext3
+</span></span><span class="line"><span class="cl">sudo mount -t ext3 rootfs.ext3 temp/ -o temp
+</span></span><span class="line"><span class="cl">sudo cp -r /data/learn-kernel/arm-rootfs/* temp/
+</span></span><span class="line"><span class="cl">sudo umount temp
+</span></span><span class="line"><span class="cl">sudo mv rootfs.ext3 tftpboot
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>修改 <code>start.sh</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl">qemu-system-arm                 <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -M vexpress-a9              <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -m 512M                     <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -kernel zImage              <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -dtb vexpress-v2p-ca9.dtb   <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -nographic                  <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -append <span class="s2">&#34;root=/dev/mmcblk0 rw console=ttyAMA0&#34;</span>      <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -sd rootfs.ext3
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>至此，环境搭建完成</strong></p>
+<h3 id="使用u-boot加载内核">使用u-boot加载内核</h3>
+<blockquote>
+<p>完成上述步骤后之所以能直接引导内核是因为 qemu 自带bootloader功能。</p>
+</blockquote>
+<h4 id="u-boot编译和安装">u-boot编译和安装</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">mkdir u-boot
+</span></span><span class="line"><span class="cl"><span class="c1"># 下载并解压u-boot</span>
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> u-boot-2022.07
+</span></span><span class="line"><span class="cl">vim Makefile +272
+</span></span><span class="line"><span class="cl"><span class="c1"># 修改: ARCH = arm</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 修改: CROSS_COMPILE=arm-none-linux-gnueabihf-</span>
+</span></span><span class="line"><span class="cl">make vexpress_ca9x4_defconfig
+</span></span><span class="line"><span class="cl">make -j32
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>将编译好的<code>u-boot</code> 放到<code>tftpboot</code>目录下(与start.sh同级)修改 <code>start.sh</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 使用 u-boot</span>
+</span></span><span class="line"><span class="cl">qemu-system-arm                 <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -M vexpress-a9              <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -kernel u-boot              <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -nographic                  <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    -m 512M
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>可以看到 <code>qemu</code> 可以加载 <code>u-boot</code></p>
+<br/>
+接下来使 u-boot 启动后，让 u-boot 通过 tftp 引导内核。
+<p><code>qemu</code> &ndash;加载&ndash;&gt; <code>u-boot</code> &ndash;加载&ndash;&gt; <code>kernel+根文件系统</code></p>
+<p>为此需要实体机中安装:</p>
+<ol>
+<li>tftp环境</li>
+<li>构建网桥，让qemu虚拟机内部可以访问</li>
+</ol>
+<h4 id="安装tftp">安装tftp</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">pacman -S tftp-hpa bridge-utils
+</span></span><span class="line"><span class="cl"><span class="c1"># 设置 tftp 路径 </span>
+</span></span><span class="line"><span class="cl">vim /etc/default/tftpd-hpa
+</span></span><span class="line"><span class="cl"><span class="c1"># 修改内容如下：</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># TFTP_USERNAME=&#34;tftp&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># TFTP_DIRECTORY=&#34;/data/learn-kernel/fs&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># TFTP_ADDRESS=&#34;0.0.0.0&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># TFTP_OPTIONS=&#34;-l -c -s&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>文件复制</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">cd</span> /data/learn-kernel/tftpboot/fs
+</span></span><span class="line"><span class="cl">cp /&lt;path&gt;/uImage .
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>重启tftpd</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">systemctl restart tftpd.service
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="修改网卡信息设置桥接">修改网卡信息，设置桥接</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ifconfig <span class="c1"># 查看网卡名 我的是:`wlo1`</span>
+</span></span><span class="line"><span class="cl">sudo vim /etc/netplan/0
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="未完待续">未完待续&hellip;</h2>
+<blockquote>
+<p>需要补课 Linux 网络部分&hellip;</p>
+</blockquote>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2022-09-30</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">linux</a>,&nbsp;<a href="/tags/kernel/">kernel</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/2022/09/0011-stdfuture/" class="prev" rel="prev" title="std::future"><i class="fas fa-angle-left fa-fw"></i>std::future</a>
+            <a href="/2022/10/0003-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" class="next" rel="next" title="计算机网络组成原理">计算机网络组成原理<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">ding jing</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="/lib/lightgallery/lightgallery.min.css"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script type="text/javascript" src="/lib/valine/Valine.min.js"></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/algoliasearch/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/twemoji/twemoji.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lightgallery.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-thumbnail.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-zoom.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":100},"comment":{"valine":{"appId":"oGOJ6TSiiaaOrhXD1bEYILk9-gzGzoHsz","appKey":"lbK71uSxpg4XmLmvm2h13JdJ","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"serverURLs":"https://ogoj6tsi.lc-cn-n1-shared.com","visitor":true}},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.zh-cn","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":80,"type":"algolia"},"twemoji":true};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

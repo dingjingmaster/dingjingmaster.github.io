@@ -4,12 +4,12 @@
         <link>https://dingjingmaster.github.io/tags/kernel/</link>
         <description>kernel - 标签 - 九九</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>dingjing@live.cn (ding jing)</managingEditor>
-            <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Mon, 10 Oct 2022 15:49:23 &#43;0800</lastBuildDate><atom:link href="https://dingjingmaster.github.io/tags/kernel/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Fri, 30 Sep 2022 21:49:23 &#43;0800</lastBuildDate><atom:link href="https://dingjingmaster.github.io/tags/kernel/" rel="self" type="application/rss+xml" /><item>
     <title>Linux Kernel学习准备</title>
-    <link>https://dingjingmaster.github.io/2022/10/1000-kernel%E5%AD%A6%E4%B9%A0%E5%87%86%E5%A4%87/</link>
-    <pubDate>Mon, 10 Oct 2022 15:49:23 &#43;0800</pubDate>
+    <link>https://dingjingmaster.github.io/2022/09/1000-kernel%E5%AD%A6%E4%B9%A0%E5%87%86%E5%A4%87/</link>
+    <pubDate>Fri, 30 Sep 2022 21:49:23 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>https://dingjingmaster.github.io/2022/10/1000-kernel%E5%AD%A6%E4%B9%A0%E5%87%86%E5%A4%87/</guid>
+    <guid>https://dingjingmaster.github.io/2022/09/1000-kernel%E5%AD%A6%E4%B9%A0%E5%87%86%E5%A4%87/</guid>
     <description><![CDATA[Linux 内核工程师 岗位分布 互联网 云计算 安全 OS发行商 芯片原厂 技能点 内存管理、调度、实时性 进程、同步与并发 存储、文件系统 网络子系统 虚拟化、区块链、容]]></description>
 </item><item>
     <title>Linux内核设计与实现</title>
