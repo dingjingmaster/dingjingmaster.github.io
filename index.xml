@@ -4,9 +4,16 @@
         <link>https://dingjingmaster.github.io/</link>
         <description>九九</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>dingjing@live.cn (ding jing)</managingEditor>
-            <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Sat, 01 Oct 2022 21:23:03 &#43;0800</lastBuildDate>
+            <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Wed, 16 Nov 2022 14:34:21 &#43;0800</lastBuildDate>
             <atom:link href="https://dingjingmaster.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>防止程序被Hook的方法</title>
+    <link>https://dingjingmaster.github.io/2022/11/0012-%E9%98%B2%E6%AD%A2%E7%A8%8B%E5%BA%8F%E8%A2%ABhook%E7%9A%84%E6%96%B9%E6%B3%95/</link>
+    <pubDate>Wed, 16 Nov 2022 14:34:21 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://dingjingmaster.github.io/2022/11/0012-%E9%98%B2%E6%AD%A2%E7%A8%8B%E5%BA%8F%E8%A2%ABhook%E7%9A%84%E6%96%B9%E6%B3%95/</guid>
+    <description><![CDATA[最近需要实现一个外发阻断的功能，简单点就是给要外发的程序添加Hook，在外发前做数据检查，检查通过后才允许外发，然而实现过程中才发现，给某个]]></description>
+</item><item>
     <title>计算机网络组成原理</title>
     <link>https://dingjingmaster.github.io/2022/10/0003-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/</link>
     <pubDate>Sat, 01 Oct 2022 21:23:03 &#43;0800</pubDate>
@@ -69,12 +76,5 @@
     <author>作者</author>
     <guid>https://dingjingmaster.github.io/2022/07/0010-linux%E6%8C%82%E8%BD%BDqcow2/</guid>
     <description><![CDATA[确定linux是否有nbd模块 1 modinfo nbd 插入nbd 模块 1 sudo modprobe nbd 使用qemu-nbd 工具关联 qcow2 文件和 nbd 设备节点 1 sudo qemu-nbd -c /dev/nbd0 &lt;qcow2的路径&]]></description>
-</item><item>
-    <title>解析各种文件格式 Tika</title>
-    <link>https://dingjingmaster.github.io/2022/07/0001-%E8%A7%A3%E6%9E%90%E5%90%84%E7%A7%8D%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F-tika/</link>
-    <pubDate>Fri, 22 Jul 2022 22:46:56 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://dingjingmaster.github.io/2022/07/0001-%E8%A7%A3%E6%9E%90%E5%90%84%E7%A7%8D%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F-tika/</guid>
-    <description><![CDATA[tika 是什么 Apache Tika 用于文件类型检测和从各种格式的文件内容提取的库。在内部，Tika使用现有的各种文件解析器和文档类型的检测技术来检测和提取数据。使]]></description>
 </item></channel>
 </rss>

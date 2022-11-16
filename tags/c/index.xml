@@ -4,7 +4,14 @@
         <link>https://dingjingmaster.github.io/tags/c/</link>
         <description>C - 标签 - 九九</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>dingjing@live.cn (ding jing)</managingEditor>
-            <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Thu, 21 Jul 2022 23:01:45 &#43;0800</lastBuildDate><atom:link href="https://dingjingmaster.github.io/tags/c/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Wed, 16 Nov 2022 14:34:21 &#43;0800</lastBuildDate><atom:link href="https://dingjingmaster.github.io/tags/c/" rel="self" type="application/rss+xml" /><item>
+    <title>防止程序被Hook的方法</title>
+    <link>https://dingjingmaster.github.io/2022/11/0012-%E9%98%B2%E6%AD%A2%E7%A8%8B%E5%BA%8F%E8%A2%ABhook%E7%9A%84%E6%96%B9%E6%B3%95/</link>
+    <pubDate>Wed, 16 Nov 2022 14:34:21 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://dingjingmaster.github.io/2022/11/0012-%E9%98%B2%E6%AD%A2%E7%A8%8B%E5%BA%8F%E8%A2%ABhook%E7%9A%84%E6%96%B9%E6%B3%95/</guid>
+    <description><![CDATA[最近需要实现一个外发阻断的功能，简单点就是给要外发的程序添加Hook，在外发前做数据检查，检查通过后才允许外发，然而实现过程中才发现，给某个]]></description>
+</item><item>
     <title>高效的序列化、反序列化工具——ProtoBuf</title>
     <link>https://dingjingmaster.github.io/2022/07/0006-%E9%AB%98%E6%95%88%E7%9A%84%E5%BA%8F%E5%88%97%E5%8C%96%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%B7%A5%E5%85%B7protocol-buffers/</link>
     <pubDate>Thu, 21 Jul 2022 23:01:45 &#43;0800</pubDate>
