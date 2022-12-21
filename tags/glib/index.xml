@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>GLib - 标签 - 九九</title>
+        <link>https://dingjingmaster.github.io/tags/glib/</link>
+        <description>GLib - 标签 - 九九</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>dingjing@live.cn (ding jing)</managingEditor>
+            <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Tue, 20 Dec 2022 21:56:13 &#43;0800</lastBuildDate><atom:link href="https://dingjingmaster.github.io/tags/glib/" rel="self" type="application/rss+xml" /><item>
+    <title>GVariant规范1.0</title>
+    <link>https://dingjingmaster.github.io/2022/12/0001-gvariant%E8%A7%84%E8%8C%831.0/</link>
+    <pubDate>Tue, 20 Dec 2022 21:56:13 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://dingjingmaster.github.io/2022/12/0001-gvariant%E8%A7%84%E8%8C%831.0/</guid>
+    <description><![CDATA[概念 根据需求，GVariant必须与DBus消息总线系统(在[DBus]中指定)基本兼容。 为此，GVariant中使用的类型系统与DBus中]]></description>
+</item></channel>
+</rss>

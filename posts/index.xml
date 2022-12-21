@@ -4,7 +4,14 @@
         <link>https://dingjingmaster.github.io/posts/</link>
         <description>所有文章 | 九九</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>dingjing@live.cn (ding jing)</managingEditor>
-            <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Wed, 16 Nov 2022 14:34:21 &#43;0800</lastBuildDate><atom:link href="https://dingjingmaster.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Tue, 20 Dec 2022 21:56:13 &#43;0800</lastBuildDate><atom:link href="https://dingjingmaster.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>GVariant规范1.0</title>
+    <link>https://dingjingmaster.github.io/2022/12/0001-gvariant%E8%A7%84%E8%8C%831.0/</link>
+    <pubDate>Tue, 20 Dec 2022 21:56:13 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://dingjingmaster.github.io/2022/12/0001-gvariant%E8%A7%84%E8%8C%831.0/</guid>
+    <description><![CDATA[概念 根据需求，GVariant必须与DBus消息总线系统(在[DBus]中指定)基本兼容。 为此，GVariant中使用的类型系统与DBus中]]></description>
+</item><item>
     <title>防止程序被Hook的方法</title>
     <link>https://dingjingmaster.github.io/2022/11/0012-%E9%98%B2%E6%AD%A2%E7%A8%8B%E5%BA%8F%E8%A2%ABhook%E7%9A%84%E6%96%B9%E6%B3%95/</link>
     <pubDate>Wed, 16 Nov 2022 14:34:21 &#43;0800</pubDate>
@@ -67,12 +74,5 @@
     <author>作者</author>
     <guid>https://dingjingmaster.github.io/2022/07/0009-vmware%E8%BD%ACqemu/</guid>
     <description><![CDATA[从 windows 换成 linux 之后发现 vmware 在linux 下运行很卡，于是考虑使用 qemu，图形界面开源安装 virt-manager 方便使用，而 vmware 的虚拟磁盘用的是 vmdk， 需要转为qemu]]></description>
-</item><item>
-    <title>Linux挂载qcow2</title>
-    <link>https://dingjingmaster.github.io/2022/07/0010-linux%E6%8C%82%E8%BD%BDqcow2/</link>
-    <pubDate>Sun, 24 Jul 2022 22:02:25 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://dingjingmaster.github.io/2022/07/0010-linux%E6%8C%82%E8%BD%BDqcow2/</guid>
-    <description><![CDATA[确定linux是否有nbd模块 1 modinfo nbd 插入nbd 模块 1 sudo modprobe nbd 使用qemu-nbd 工具关联 qcow2 文件和 nbd 设备节点 1 sudo qemu-nbd -c /dev/nbd0 &lt;qcow2的路径&]]></description>
 </item></channel>
 </rss>

@@ -11,7 +11,6 @@
 <meta property="og:url" content="https://dingjingmaster.github.io/2022/05/0002-c%E8%AF%AD%E8%A8%80/" /><meta property="og:image" content="https://dingjingmaster.github.io/img/logo.jpg"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-05-14T21:13:42+08:00" />
 <meta property="article:modified_time" content="2022-05-14T21:13:42+08:00" />
-
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://dingjingmaster.github.io/img/logo.jpg"/>
 
@@ -390,7 +389,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="cp"></span>
 </span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="n">puts</span><span class="p">(</span><span class="s">&#34;Hello, World&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">puts</span><span class="p">(</span><span class="s">&#34;Hello, World&#34;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
@@ -423,9 +422,9 @@
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
 </span></span></span><span class="line"><span class="cl"><span class="cp"></span>
-</span></span><span class="line"><span class="cl"><span class="n">main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="nf">main</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="n">printf</span><span class="p">(</span><span class="s">&#34;hello, world</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;hello, world</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
@@ -470,9 +469,9 @@
 </span></span></span><span class="line"><span class="cl"><span class="cp"></span>
 </span></span><span class="line"><span class="cl"><span class="k">typedef</span> <span class="k">struct</span> 
 </span></span><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="n">size_t</span> <span class="n">space</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="n">size_t</span> <span class="n">alnum</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="n">size_t</span> <span class="n">punct</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">size_t</span> <span class="n">space</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">size_t</span> <span class="n">alnum</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">size_t</span> <span class="n">punct</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span> <span class="n">chartypes</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="n">chartypes</span> <span class="nf">classify</span><span class="p">(</span><span class="n">FILE</span> <span class="o">*</span><span class="n">f</span><span class="p">)</span> 
@@ -482,10 +481,10 @@
 </span></span><span class="line"><span class="cl">    <span class="p">};</span>
 </span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">ch</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="p">((</span><span class="n">ch</span> <span class="o">=</span> <span class="n">fgetc</span><span class="p">(</span><span class="n">f</span><span class="p">))</span> <span class="o">!=</span> <span class="n">EOF</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="n">types</span><span class="p">.</span><span class="n">space</span> <span class="o">+=</span> <span class="o">!!</span><span class="n">isspace</span><span class="p">(</span><span class="n">ch</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">types</span><span class="p">.</span><span class="n">alnum</span> <span class="o">+=</span> <span class="o">!!</span><span class="n">isalnum</span><span class="p">(</span><span class="n">ch</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">types</span><span class="p">.</span><span class="n">punct</span> <span class="o">+=</span> <span class="o">!!</span><span class="n">ispunct</span><span class="p">(</span><span class="n">ch</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="p">((</span><span class="n">ch</span> <span class="o">=</span> <span class="nf">fgetc</span><span class="p">(</span><span class="n">f</span><span class="p">))</span> <span class="o">!=</span> <span class="n">EOF</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">types</span><span class="p">.</span><span class="n">space</span> <span class="o">+=</span> <span class="o">!!</span><span class="nf">isspace</span><span class="p">(</span><span class="n">ch</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">types</span><span class="p">.</span><span class="n">alnum</span> <span class="o">+=</span> <span class="o">!!</span><span class="nf">isalnum</span><span class="p">(</span><span class="n">ch</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">types</span><span class="p">.</span><span class="n">punct</span> <span class="o">+=</span> <span class="o">!!</span><span class="nf">ispunct</span><span class="p">(</span><span class="n">ch</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">types</span><span class="p">;</span>
@@ -521,20 +520,20 @@
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="sc">&#39;A&#39;</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">isalpha</span><span class="p">(</span><span class="n">c</span><span class="p">);</span>  <span class="cm">/* Checks if c is alphabetic (A-Z, a-z), returns non-zero here. */</span>
-</span></span><span class="line"><span class="cl"><span class="n">isalnum</span><span class="p">(</span><span class="n">c</span><span class="p">);</span>  <span class="cm">/* Checks if c is alphanumeric (A-Z, a-z, 0-9), returns non-zero here. */</span>
-</span></span><span class="line"><span class="cl"><span class="n">iscntrl</span><span class="p">(</span><span class="n">c</span><span class="p">);</span>  <span class="cm">/* Checks is c is a control character (0x00-0x1F, 0x7F), returns zero here. */</span>
-</span></span><span class="line"><span class="cl"><span class="n">isdigit</span><span class="p">(</span><span class="n">c</span><span class="p">);</span>  <span class="cm">/* Checks if c is a digit (0-9), returns zero here. */</span>
-</span></span><span class="line"><span class="cl"><span class="n">isgraph</span><span class="p">(</span><span class="n">c</span><span class="p">);</span>  <span class="cm">/* Checks if c has a graphical representation (any printing character except space), returns non-zero here. */</span>
-</span></span><span class="line"><span class="cl"><span class="n">islower</span><span class="p">(</span><span class="n">c</span><span class="p">);</span>  <span class="cm">/* Checks if c is a lower-case letter (a-z), returns zero here. */</span>
-</span></span><span class="line"><span class="cl"><span class="n">isprint</span><span class="p">(</span><span class="n">c</span><span class="p">);</span>  <span class="cm">/* Checks if c is any printable character (including space), returns non-zero here. */</span>
-</span></span><span class="line"><span class="cl"><span class="n">ispunct</span><span class="p">(</span><span class="n">c</span><span class="p">);</span>  <span class="cm">/* Checks if c is a punctuation character, returns zero here. */</span>
-</span></span><span class="line"><span class="cl"><span class="n">isspace</span><span class="p">(</span><span class="n">c</span><span class="p">);</span>  <span class="cm">/* Checks if c is a white-space character, returns zero here. */</span>
-</span></span><span class="line"><span class="cl"><span class="n">isupper</span><span class="p">(</span><span class="n">c</span><span class="p">);</span>  <span class="cm">/* Checks if c is an upper-case letter (A-Z), returns non-zero here. */</span>
-</span></span><span class="line"><span class="cl"><span class="n">isxdigit</span><span class="p">(</span><span class="n">c</span><span class="p">);</span> <span class="cm">/* Checks if c is a hexadecimal digit (A-F, a-f, 0-9), returns non-zero here.*/</span>
+</span></span><span class="line"><span class="cl"><span class="nf">isalpha</span><span class="p">(</span><span class="n">c</span><span class="p">);</span>  <span class="cm">/* Checks if c is alphabetic (A-Z, a-z), returns non-zero here. */</span>
+</span></span><span class="line"><span class="cl"><span class="nf">isalnum</span><span class="p">(</span><span class="n">c</span><span class="p">);</span>  <span class="cm">/* Checks if c is alphanumeric (A-Z, a-z, 0-9), returns non-zero here. */</span>
+</span></span><span class="line"><span class="cl"><span class="nf">iscntrl</span><span class="p">(</span><span class="n">c</span><span class="p">);</span>  <span class="cm">/* Checks is c is a control character (0x00-0x1F, 0x7F), returns zero here. */</span>
+</span></span><span class="line"><span class="cl"><span class="nf">isdigit</span><span class="p">(</span><span class="n">c</span><span class="p">);</span>  <span class="cm">/* Checks if c is a digit (0-9), returns zero here. */</span>
+</span></span><span class="line"><span class="cl"><span class="nf">isgraph</span><span class="p">(</span><span class="n">c</span><span class="p">);</span>  <span class="cm">/* Checks if c has a graphical representation (any printing character except space), returns non-zero here. */</span>
+</span></span><span class="line"><span class="cl"><span class="nf">islower</span><span class="p">(</span><span class="n">c</span><span class="p">);</span>  <span class="cm">/* Checks if c is a lower-case letter (a-z), returns zero here. */</span>
+</span></span><span class="line"><span class="cl"><span class="nf">isprint</span><span class="p">(</span><span class="n">c</span><span class="p">);</span>  <span class="cm">/* Checks if c is any printable character (including space), returns non-zero here. */</span>
+</span></span><span class="line"><span class="cl"><span class="nf">ispunct</span><span class="p">(</span><span class="n">c</span><span class="p">);</span>  <span class="cm">/* Checks if c is a punctuation character, returns zero here. */</span>
+</span></span><span class="line"><span class="cl"><span class="nf">isspace</span><span class="p">(</span><span class="n">c</span><span class="p">);</span>  <span class="cm">/* Checks if c is a white-space character, returns zero here. */</span>
+</span></span><span class="line"><span class="cl"><span class="nf">isupper</span><span class="p">(</span><span class="n">c</span><span class="p">);</span>  <span class="cm">/* Checks if c is an upper-case letter (A-Z), returns non-zero here. */</span>
+</span></span><span class="line"><span class="cl"><span class="nf">isxdigit</span><span class="p">(</span><span class="n">c</span><span class="p">);</span> <span class="cm">/* Checks if c is a hexadecimal digit (A-F, a-f, 0-9), returns non-zero here.*/</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// C99
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">isblank</span><span class="p">(</span><span class="n">c</span><span class="p">);</span> <span class="cm">/* Checks if c is a blank character (space or tab), returns non-zero here. */</span>
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">isblank</span><span class="p">(</span><span class="n">c</span><span class="p">);</span> <span class="cm">/* Checks if c is a blank character (space or tab), returns non-zero here. */</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="别名和有效类型">别名和有效类型</h2>
@@ -712,7 +711,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">uint32_t</span><span class="o">*</span> <span class="n">pa</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// 目前 *q 并不是一个有效类型
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">void</span><span class="o">*</span> <span class="n">q</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span> <span class="kt">uint32_t</span><span class="p">);</span>
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">void</span><span class="o">*</span> <span class="n">q</span> <span class="o">=</span> <span class="nf">malloc</span><span class="p">(</span><span class="k">sizeof</span> <span class="kt">uint32_t</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// 这里的 q 仍然不是一个有效类型，因为还没有数据写入
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">uint32_t</span><span class="o">*</span> <span class="n">qb</span> <span class="o">=</span> <span class="n">q</span><span class="p">;</span>
@@ -721,7 +720,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">*</span><span class="n">qb</span> <span class="o">=</span> <span class="mi">37</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// r 指向的对象尽管已经初始化了，但还不是有效类型
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">void</span><span class="o">*</span> <span class="n">r</span> <span class="o">=</span> <span class="n">calloc</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="k">sizeof</span> <span class="kt">uint32_t</span><span class="p">);</span>
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">void</span><span class="o">*</span> <span class="n">r</span> <span class="o">=</span> <span class="nf">calloc</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="k">sizeof</span> <span class="kt">uint32_t</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// 不是有效类型
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">uint32_t</span><span class="o">*</span> <span class="n">rc</span> <span class="o">=</span> <span class="n">r</span><span class="p">;</span>
@@ -731,9 +730,9 @@
 </span></span></span><span class="line"><span class="cl"><span class="c1">// 此时尽管我们没有写它的值，但是 *rc 已经是一个有效类型了
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">uint32_t</span> <span class="n">c</span> <span class="o">=</span> <span class="o">*</span><span class="n">rc</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kt">void</span><span class="o">*</span> <span class="n">s</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span> <span class="kt">uint32_t</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span><span class="o">*</span> <span class="n">s</span> <span class="o">=</span> <span class="nf">malloc</span><span class="p">(</span><span class="k">sizeof</span> <span class="kt">uint32_t</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="c1">// 因为有 uint32_t 类型复制到指定对象里，所以 *s 已经是有效类型了
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">memcpy</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="k">sizeof</span> <span class="kt">uint32_t</span><span class="p">);</span>
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">memcpy</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="k">sizeof</span> <span class="kt">uint32_t</span><span class="p">);</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="严重违反类型转换规则">严重违反类型转换规则</h4>
@@ -752,7 +751,7 @@
 </span></span><span class="line"><span class="cl"><span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="kt">float</span> <span class="n">a</span> <span class="o">=</span> <span class="o">*</span><span class="n">f</span><span class="p">,</span> <span class="o">*</span><span class="n">u</span> <span class="o">=</span> <span class="mi">22</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="kt">float</span> <span class="n">b</span> <span class="o">=</span> <span class="o">*</span><span class="n">f</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="n">print</span><span class="p">(</span><span class="s">&#34;%g should equal %g</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">print</span><span class="p">(</span><span class="s">&#34;%g should equal %g</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
@@ -772,7 +771,7 @@
 </span></span><span class="line"><span class="cl"><span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="kt">float</span> <span class="n">a</span> <span class="o">=</span> <span class="o">*</span><span class="n">f</span><span class="p">,</span> <span class="o">*</span><span class="n">u</span> <span class="o">=</span> <span class="mi">22</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="n">print</span><span class="p">(</span><span class="s">&#34;%g should equal %g</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">a</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">print</span><span class="p">(</span><span class="s">&#34;%g should equal %g</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">a</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
@@ -790,7 +789,7 @@
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">float</span> <span class="n">fval</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="kt">uint32_t</span> <span class="n">uval</span> <span class="o">=</span> <span class="mi">77</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="n">fun</span><span class="p">(</span><span class="o">&amp;</span><span class="n">uval</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">fval</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nf">fun</span><span class="p">(</span><span class="o">&amp;</span><span class="n">uval</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">fval</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">// 输出:
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="mi">4</span> <span class="n">should</span> <span class="n">equal</span> <span class="mi">4</span>
@@ -806,7 +805,7 @@
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">float</span> <span class="n">fval</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="kt">uint32_t</span><span class="o">*</span> <span class="n">up</span> <span class="o">=</span> <span class="p">(</span><span class="kt">uint32_t</span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">fval</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="n">fun</span><span class="p">(</span><span class="n">up</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">fval</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nf">fun</span><span class="p">(</span><span class="n">up</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">fval</span><span class="p">);</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>我们违反了严格的混叠规则。然后这种行为就变得没有定义了。如果编译器优化了第二次访问，输出可能与上面一样，或者完全不同，从而使程序最终处于完全不可靠的状态。</p>
@@ -829,11 +828,11 @@
 </span></span><span class="line"><span class="cl"><span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="kt">float</span> <span class="n">a</span> <span class="o">=</span> <span class="o">*</span><span class="n">f</span> <span class="o">*</span><span class="n">e</span> <span class="o">=</span> <span class="mi">22</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="kt">float</span> <span class="n">b</span> <span class="o">=</span> <span class="o">*</span><span class="n">f</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="n">print</span><span class="p">(</span><span class="s">&#34;is %g equal to %g?</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">print</span><span class="p">(</span><span class="s">&#34;is %g equal to %g?</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="kt">float</span> <span class="n">fval</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="kt">float</span> <span class="n">eval</span> <span class="o">=</span> <span class="mi">77</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="n">fun</span><span class="p">(</span><span class="o">&amp;</span><span class="n">eval</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">fval</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nf">fun</span><span class="p">(</span><span class="o">&amp;</span><span class="n">eval</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">fval</span><span class="p">);</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>正常输出是 <code>is 4 equal to 4?</code></p>
@@ -852,7 +851,7 @@
 </span></span><span class="line"><span class="cl"><span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="kt">float</span> <span class="n">a</span> <span class="o">=</span> <span class="o">*</span><span class="n">f</span> <span class="o">*</span><span class="n">e</span> <span class="o">=</span> <span class="mi">22</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="kt">float</span> <span class="n">b</span> <span class="o">=</span> <span class="o">*</span><span class="n">f</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="n">print</span><span class="p">(</span><span class="s">&#34;is %g equal to %g?</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">print</span><span class="p">(</span><span class="s">&#34;is %g equal to %g?</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
@@ -887,11 +886,11 @@
 </span></span><span class="line"><span class="cl">    <span class="c1">// conversion from incompatible types needs a cast !
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kt">unsigned</span> <span class="kt">char</span><span class="o">*</span> <span class="n">ap</span> <span class="o">=</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">a</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="n">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="k">sizeof</span> <span class="n">a</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="k">sizeof</span> <span class="n">a</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="cm">/* set each byte of a to 42 */</span>
 </span></span><span class="line"><span class="cl">        <span class="n">ap</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">42</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="n">printf</span><span class="p">(</span><span class="s">&#34;a now has value %&#34;</span> <span class="n">PRIu32</span> <span class="s">&#34;</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">a</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;a now has value %&#34;</span> <span class="n">PRIu32</span> <span class="s">&#34;</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">a</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
@@ -966,7 +965,7 @@
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">size_t</span> <span class="n">m</span> <span class="o">=</span> <span class="n">calc_length</span><span class="p">();</span> <span class="cm">/* calculate array length at runtime */</span>
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">size_t</span> <span class="n">m</span> <span class="o">=</span> <span class="nf">calc_length</span><span class="p">();</span> <span class="cm">/* calculate array length at runtime */</span>
 </span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">vla</span><span class="p">[</span><span class="n">m</span><span class="p">];</span> <span class="cm">/* create array with calculated length */</span>
 </span></span></code></pre></td></tr></table>
 </div>
@@ -1002,7 +1001,7 @@
 </span></span><span class="line"><span class="cl"><span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">array</span><span class="p">[</span><span class="n">ARRLEN</span><span class="p">];</span> <span class="cm">/* Allocated but not initialised, as not defined static or global. */</span>
 </span></span><span class="line"><span class="cl">    
-</span></span><span class="line"><span class="cl">    <span class="n">size_t</span> <span class="n">i</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">size_t</span> <span class="n">i</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="k">for</span><span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">ARRLEN</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="n">array</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
@@ -1144,10 +1143,10 @@
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="cm">/* Precondition: */</span>
 </span></span><span class="line"><span class="cl">    <span class="cm">/* NULL is an invalid vector */</span>
-</span></span><span class="line"><span class="cl">    <span class="n">assert</span> <span class="p">(</span><span class="n">a</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">assert</span> <span class="p">(</span><span class="n">a</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="cm">/* Number of dimensions can not be negative.*/</span>
-</span></span><span class="line"><span class="cl">    <span class="n">assert</span> <span class="p">(</span><span class="n">count</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">assert</span> <span class="p">(</span><span class="n">count</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="cm">/* Calculation */</span>
 </span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">count</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
@@ -1156,7 +1155,7 @@
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="cm">/* Postcondition: */</span>
 </span></span><span class="line"><span class="cl">    <span class="cm">/* Resulting length can not be negative. */</span>
-</span></span><span class="line"><span class="cl">    <span class="n">assert</span> <span class="p">(</span><span class="n">result</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">assert</span> <span class="p">(</span><span class="n">result</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
@@ -1186,8 +1185,8 @@
 </span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="n">assert</span><span class="p">(</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="n">printf</span><span class="p">(</span><span class="s">&#34;x = %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">x</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">assert</span><span class="p">(</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;x = %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">x</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
@@ -1214,8 +1213,8 @@
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;assert.h&gt;</span><span class="cp">
 </span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="k">enum</span> <span class="p">{</span><span class="n">N</span> <span class="o">=</span> <span class="mi">5</span><span class="p">};</span>
-</span></span><span class="line"><span class="cl"><span class="n">_Static_assert</span><span class="p">(</span><span class="n">N</span> <span class="o">==</span> <span class="mi">5</span><span class="p">,</span> <span class="s">&#34;N does not equal 5&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="n">static_assert</span><span class="p">(</span><span class="n">N</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">,</span> <span class="s">&#34;N is not greater than 10&#34;</span><span class="p">);</span> <span class="cm">/* compiler error */</span>
+</span></span><span class="line"><span class="cl"><span class="nf">_Static_assert</span><span class="p">(</span><span class="n">N</span> <span class="o">==</span> <span class="mi">5</span><span class="p">,</span> <span class="s">&#34;N does not equal 5&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nf">static_assert</span><span class="p">(</span><span class="n">N</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">,</span> <span class="s">&#34;N is not greater than 10&#34;</span><span class="p">);</span> <span class="cm">/* compiler error */</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h4 id="静态断言c99">静态断言(c99)</h4>
@@ -1242,8 +1241,8 @@
 </span></span><span class="line"><span class="cl"><span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="n">N</span> <span class="o">=</span> <span class="mi">5</span>
 </span></span><span class="line"><span class="cl"><span class="p">};</span>
-</span></span><span class="line"><span class="cl"><span class="n">STATIC_ASSERT</span><span class="p">(</span><span class="n">N</span> <span class="o">==</span> <span class="mi">5</span><span class="p">,</span> <span class="n">N_must_equal_5</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="n">STATIC_ASSERT</span><span class="p">(</span><span class="n">N</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">,</span> <span class="n">N_must_be_greater_than_5</span><span class="p">);</span> <span class="cm">/* compile error */</span>
+</span></span><span class="line"><span class="cl"><span class="nf">STATIC_ASSERT</span><span class="p">(</span><span class="n">N</span> <span class="o">==</span> <span class="mi">5</span><span class="p">,</span> <span class="n">N_must_equal_5</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nf">STATIC_ASSERT</span><span class="p">(</span><span class="n">N</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">,</span> <span class="n">N_must_be_greater_than_5</span><span class="p">);</span> <span class="cm">/* compile error */</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>在C99之前，不能在块中的任意位置声明变量，因此在使用这个宏时必须非常谨慎，确保它只出现在变量声明有效的地方</p>
@@ -1275,7 +1274,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="cp">#endif•
 </span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdatomic.h&gt;</span><span class="cp">
 </span></span></span><span class="line"><span class="cl"><span class="cp"></span>
-</span></span><span class="line"><span class="cl"><span class="kt">unsigned</span> <span class="n">_Atomic</span> <span class="n">counter</span> <span class="o">=</span> <span class="n">ATOMIC_VAR_INIT</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="kt">unsigned</span> <span class="n">_Atomic</span> <span class="n">counter</span> <span class="o">=</span> <span class="nf">ATOMIC_VAR_INIT</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="例子-2">例子</h3>
@@ -1297,7 +1296,7 @@
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">static</span> <span class="kt">unsigned</span> <span class="n">_Atomic</span> <span class="n">active</span> <span class="o">=</span> <span class="n">ATOMIC_VAR_INIT</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">static</span> <span class="kt">unsigned</span> <span class="n">_Atomic</span> <span class="n">active</span> <span class="o">=</span> <span class="nf">ATOMIC_VAR_INIT</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">myThread</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">a</span><span class="p">)</span> 
 </span></span><span class="line"><span class="cl"><span class="p">{</span>
@@ -1498,11 +1497,11 @@
 </span></span><span class="line"><span class="cl">    <span class="cm">/* extract the right 3 bits from a value */</span>
 </span></span><span class="line"><span class="cl">    <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">value</span> <span class="o">=</span> <span class="mi">255</span> <span class="o">-</span> <span class="mi">2</span><span class="p">;</span> <span class="cm">/* Binary 11111101 */</span>
 </span></span><span class="line"><span class="cl">    <span class="n">small</span><span class="p">.</span><span class="n">uint3</span> <span class="o">=</span> <span class="n">value</span><span class="p">;</span> <span class="cm">/* Binary 101 */</span>
-</span></span><span class="line"><span class="cl">    <span class="n">printf</span><span class="p">(</span><span class="s">&#34;%d&#34;</span><span class="p">,</span> <span class="n">small</span><span class="p">.</span><span class="n">uint3</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;%d&#34;</span><span class="p">,</span> <span class="n">small</span><span class="p">.</span><span class="n">uint3</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="cm">/* This is in effect an infinite loop */</span>
 </span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="n">small</span><span class="p">.</span><span class="n">uint3</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">small</span><span class="p">.</span><span class="n">uint3</span> <span class="o">&lt;</span> <span class="mi">8</span><span class="p">;</span> <span class="n">small</span><span class="p">.</span><span class="n">uint3</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="n">printf</span><span class="p">(</span><span class="s">&#34;%d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">small</span><span class="p">.</span><span class="n">uint3</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;%d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">small</span><span class="p">.</span><span class="n">uint3</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
@@ -1591,7 +1590,7 @@
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="例子-5">例子</h3>
@@ -1694,10 +1693,10 @@
 </span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="kt">int</span> <span class="n">errno</span><span class="p">;</span> <span class="cm">/* implementation defined */</span><span class="err">•</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;string.h&gt;•</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="kt">char</span> <span class="o">*</span><span class="n">strerror</span><span class="p">(</span><span class="kt">int</span> <span class="n">errnum</span><span class="p">);</span><span class="err">•</span>
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="kt">char</span> <span class="o">*</span><span class="nf">strerror</span><span class="p">(</span><span class="kt">int</span> <span class="n">errnum</span><span class="p">);</span><span class="err">•</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;•</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="kt">void</span> <span class="n">perror</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">s</span><span class="p">);</span>
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="kt">void</span> <span class="nf">perror</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">s</span><span class="p">);</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="文件和-io-流">文件和 I/O 流</h2>
@@ -1741,11 +1740,11 @@
 </span></span></span><span class="line"><span class="cl"><span class="cm">stream on the file at path with the specified mode */</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">fclose</span><span class="p">(</span><span class="n">FILE</span> <span class="o">*</span><span class="n">stream</span><span class="p">);</span> <span class="cm">/* Close an opened stream */</span><span class="err">•</span>
-</span></span><span class="line"><span class="cl"><span class="n">size_t</span> <span class="n">fread</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">ptr</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">size</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">nmemb</span><span class="p">,</span> <span class="n">FILE</span> <span class="o">*</span><span class="n">stream</span><span class="p">);</span> <span class="cm">/* Read at most nmemb
+</span></span><span class="line"><span class="cl"><span class="kt">size_t</span> <span class="nf">fread</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">ptr</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">size</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">nmemb</span><span class="p">,</span> <span class="n">FILE</span> <span class="o">*</span><span class="n">stream</span><span class="p">);</span> <span class="cm">/* Read at most nmemb
 </span></span></span><span class="line"><span class="cl"><span class="cm">elements of size bytes each from the stream and write them in ptr. Returns the number of
 </span></span></span><span class="line"><span class="cl"><span class="cm">read elements. */</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">size_t</span> <span class="nf">fwrite</span><span class="p">(</span><span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">ptr</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">size</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">nmemb</span><span class="p">,</span> <span class="n">FILE</span> <span class="o">*</span><span class="n">stream</span><span class="p">);</span> <span class="cm">/* Write nmemb
+</span></span><span class="line"><span class="cl"><span class="kt">size_t</span> <span class="nf">fwrite</span><span class="p">(</span><span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">ptr</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">size</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">nmemb</span><span class="p">,</span> <span class="n">FILE</span> <span class="o">*</span><span class="n">stream</span><span class="p">);</span> <span class="cm">/* Write nmemb
 </span></span></span><span class="line"><span class="cl"><span class="cm">elements of size bytes each from ptr to the stream. Returns the number of written elements.
 </span></span></span><span class="line"><span class="cl"><span class="cm">*/</span>
 </span></span><span class="line"><span class="cl">
@@ -1756,7 +1755,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="cm">of the stream. */</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">rewind</span><span class="p">(</span><span class="n">FILE</span> <span class="o">*</span><span class="n">stream</span><span class="p">);</span> <span class="cm">/* Set the cursor position to the beginning of the file. */</span><span class="err">•</span>
-</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">fprintf</span><span class="p">(</span><span class="n">FILE</span> <span class="o">*</span><span class="n">fout</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">fmt</span><span class="p">,</span> <span class="p">...);</span> <span class="cm">/* Writes printf format string on fout */</span><span class="err">•</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">fprintf</span><span class="p">(</span><span class="n">FILE</span> <span class="o">*</span><span class="n">fout</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">fmt</span><span class="p">,</span> <span class="p">...);</span> <span class="cm">/* Writes printf format string on fout */</span><span class="err">•</span>
 </span></span><span class="line"><span class="cl"><span class="n">FILE</span> <span class="o">*</span><span class="n">stdin</span><span class="p">;</span> <span class="cm">/* Standard input stream */</span><span class="err">•</span>
 </span></span><span class="line"><span class="cl"><span class="n">FILE</span> <span class="o">*</span><span class="n">stdout</span><span class="p">;</span> <span class="cm">/* Standard output stream */</span><span class="err">•</span>
 </span></span><span class="line"><span class="cl"><span class="n">FILE</span> <span class="o">*</span><span class="n">stderr</span><span class="p">;</span> <span class="cm">/* Standard error stream */</span>
@@ -1776,11 +1775,11 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="o">-</span> <span class="err">`</span><span class="n">returnType</span> <span class="p">(</span><span class="o">*</span><span class="n">name</span><span class="p">)(</span><span class="n">parameters</span><span class="p">);</span><span class="err">`</span>
-</span></span><span class="line"><span class="cl"><span class="o">-</span> <span class="err">`</span><span class="k">typedef</span> <span class="n">returnType</span> <span class="p">(</span><span class="o">*</span><span class="n">name</span><span class="p">)(</span><span class="n">parameters</span><span class="p">);</span><span class="err">`</span>
-</span></span><span class="line"><span class="cl"><span class="o">-</span> <span class="err">`</span><span class="k">typedef</span> <span class="n">returnType</span> <span class="n">Name</span><span class="p">(</span><span class="n">parameters</span><span class="p">);</span><span class="err">`</span>
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="o">-</span> <span class="err">`</span><span class="nf">returnType</span> <span class="p">(</span><span class="o">*</span><span class="n">name</span><span class="p">)(</span><span class="n">parameters</span><span class="p">);</span><span class="err">`</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span> <span class="err">`</span><span class="k">typedef</span> <span class="nf">returnType</span> <span class="p">(</span><span class="o">*</span><span class="n">name</span><span class="p">)(</span><span class="n">parameters</span><span class="p">);</span><span class="err">`</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span> <span class="err">`</span><span class="k">typedef</span> <span class="n">returnType</span> <span class="nf">Name</span><span class="p">(</span><span class="n">parameters</span><span class="p">);</span><span class="err">`</span>
 </span></span><span class="line"><span class="cl">    <span class="n">Name</span> <span class="o">*</span><span class="n">name</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="o">-</span> <span class="err">`</span><span class="k">typedef</span> <span class="n">returnType</span> <span class="n">Name</span><span class="p">(</span><span class="n">parameters</span><span class="p">);</span><span class="err">`</span>
+</span></span><span class="line"><span class="cl"><span class="o">-</span> <span class="err">`</span><span class="k">typedef</span> <span class="n">returnType</span> <span class="nf">Name</span><span class="p">(</span><span class="n">parameters</span><span class="p">);</span><span class="err">`</span>
 </span></span><span class="line"><span class="cl">  <span class="err">`</span><span class="k">typedef</span> <span class="n">Name</span> <span class="o">*</span><span class="n">NamePtr</span><span class="p">;</span><span class="err">`</span>
 </span></span></code></pre></td></tr></table>
 </div>
@@ -1861,12 +1860,12 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">void</span> <span class="o">*</span><span class="nf">aligned_alloc</span><span class="p">(</span><span class="n">size_t</span> <span class="n">alignment</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">size</span><span class="p">);</span> <span class="cm">/* Only since C11 */</span><span class="err">•</span>
-</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="o">*</span><span class="n">calloc</span><span class="p">(</span><span class="n">size_t</span> <span class="n">nelements</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">size</span><span class="p">);</span><span class="err">•</span>
-</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">free</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">ptr</span><span class="p">);</span><span class="err">•</span>
-</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="o">*</span><span class="n">malloc</span><span class="p">(</span><span class="n">size_t</span> <span class="n">size</span><span class="p">);</span><span class="err">•</span>
-</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="o">*</span><span class="n">realloc</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">ptr</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">size</span><span class="p">);</span><span class="err">•</span>
-</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="o">*</span><span class="n">alloca</span><span class="p">(</span><span class="n">size_t</span> <span class="n">size</span><span class="p">);</span> <span class="cm">/* from alloca.h, not standard, not portable, dangerous. */</span>
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">void</span> <span class="o">*</span><span class="nf">aligned_alloc</span><span class="p">(</span><span class="kt">size_t</span> <span class="n">alignment</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">size</span><span class="p">);</span> <span class="cm">/* Only since C11 */</span><span class="err">•</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="o">*</span><span class="nf">calloc</span><span class="p">(</span><span class="kt">size_t</span> <span class="n">nelements</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">size</span><span class="p">);</span><span class="err">•</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">free</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">ptr</span><span class="p">);</span><span class="err">•</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="o">*</span><span class="nf">malloc</span><span class="p">(</span><span class="kt">size_t</span> <span class="n">size</span><span class="p">);</span><span class="err">•</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="o">*</span><span class="nf">realloc</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">ptr</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">size</span><span class="p">);</span><span class="err">•</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="o">*</span><span class="nf">alloca</span><span class="p">(</span><span class="kt">size_t</span> <span class="n">size</span><span class="p">);</span> <span class="cm">/* from alloca.h, not standard, not portable, dangerous. */</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="多字字符序列">多字字符序列</h2>
@@ -1887,17 +1886,17 @@
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">thrd_t</span> <span class="c1">// Implementation-defined complete object type identifying a thread•
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">int</span> <span class="n">thrd_create</span><span class="p">(</span> <span class="n">thrd_t</span> <span class="o">*</span><span class="n">thr</span><span class="p">,</span> <span class="n">thrd_start_t</span> <span class="n">func</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">arg</span> <span class="p">);</span> <span class="c1">// Creates a thread•
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">int</span> <span class="nf">thrd_equal</span><span class="p">(</span> <span class="n">thrd_t</span> <span class="n">thr0</span><span class="p">,</span> <span class="n">thrd_t</span> <span class="n">thr1</span> <span class="p">);</span> <span class="c1">// Check if arguments refer to the same thread•
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">thr_t</span> <span class="nf">thrd_current</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span> <span class="c1">// Returns identifier of the thread that calls it•
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">thrd_t</span> <span class="c1">// Implementation-defined complete object type identifying a thread•
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">int</span> <span class="nf">thrd_create</span><span class="p">(</span> <span class="kt">thrd_t</span> <span class="o">*</span><span class="n">thr</span><span class="p">,</span> <span class="kt">thrd_start_t</span> <span class="n">func</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">arg</span> <span class="p">);</span> <span class="c1">// Creates a thread•
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">int</span> <span class="nf">thrd_equal</span><span class="p">(</span> <span class="kt">thrd_t</span> <span class="n">thr0</span><span class="p">,</span> <span class="kt">thrd_t</span> <span class="n">thr1</span> <span class="p">);</span> <span class="c1">// Check if arguments refer to the same thread•
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">thr_t</span> <span class="nf">thrd_current</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span> <span class="c1">// Returns identifier of the thread that calls it•
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">int</span> <span class="nf">thrd_sleep</span><span class="p">(</span> <span class="k">const</span> <span class="k">struct</span> <span class="n">timespec</span> <span class="o">*</span><span class="n">duration</span><span class="p">,</span> <span class="k">struct</span> <span class="n">timespec</span> <span class="o">*</span><span class="n">remaining</span> <span class="p">);</span> <span class="c1">// Suspend call
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">thread</span> <span class="n">execution</span> <span class="k">for</span> <span class="n">at</span> <span class="n">least</span> <span class="n">a</span> <span class="n">given</span> <span class="n">time</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">thrd_yield</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span> <span class="c1">// Permit other threads to run instead of the thread that calls it•
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">_Noreturn</span> <span class="kt">void</span> <span class="nf">thrd_exit</span><span class="p">(</span> <span class="kt">int</span> <span class="n">res</span> <span class="p">);</span> <span class="c1">// Terminates the thread the thread that calls it•
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">int</span> <span class="n">thrd_detatch</span><span class="p">(</span> <span class="n">thrd_t</span> <span class="n">thr</span><span class="p">;</span> <span class="c1">// Detaches a given thread from the current environment•
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">int</span> <span class="nf">thrd_join</span><span class="p">(</span> <span class="n">thrd_t</span> <span class="n">thr</span><span class="p">,</span> <span class="kt">int</span> <span class="o">*</span><span class="n">res</span> <span class="p">);</span> <span class="c1">// Blocks the current thread until the given thread finishes
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">int</span> <span class="nf">thrd_detatch</span><span class="p">(</span> <span class="kt">thrd_t</span> <span class="n">thr</span><span class="p">;</span> <span class="c1">// Detaches a given thread from the current environment•
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">int</span> <span class="nf">thrd_join</span><span class="p">(</span> <span class="kt">thrd_t</span> <span class="n">thr</span><span class="p">,</span> <span class="kt">int</span> <span class="o">*</span><span class="n">res</span> <span class="p">);</span> <span class="c1">// Blocks the current thread until the given thread finishes
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="操作符">操作符</h2>
@@ -1951,9 +1950,9 @@
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">arc4random</span><span class="p">()</span> <span class="p">(</span><span class="n">available</span> <span class="n">on</span> <span class="n">OS</span> <span class="n">X</span> <span class="n">and</span> <span class="n">BSD</span><span class="p">)</span><span class="err">•</span>
-</span></span><span class="line"><span class="cl"><span class="n">random</span><span class="p">()</span> <span class="p">(</span><span class="n">available</span> <span class="n">on</span> <span class="n">Linux</span><span class="p">)</span><span class="err">•</span>
-</span></span><span class="line"><span class="cl"><span class="n">drand48</span><span class="p">()</span> <span class="p">(</span><span class="n">available</span> <span class="n">on</span> <span class="n">POSIX</span><span class="p">)</span>
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="nf">arc4random</span><span class="p">()</span> <span class="p">(</span><span class="n">available</span> <span class="n">on</span> <span class="n">OS</span> <span class="n">X</span> <span class="n">and</span> <span class="n">BSD</span><span class="p">)</span><span class="err">•</span>
+</span></span><span class="line"><span class="cl"><span class="nf">random</span><span class="p">()</span> <span class="p">(</span><span class="n">available</span> <span class="n">on</span> <span class="n">Linux</span><span class="p">)</span><span class="err">•</span>
+</span></span><span class="line"><span class="cl"><span class="nf">drand48</span><span class="p">()</span> <span class="p">(</span><span class="n">available</span> <span class="n">on</span> <span class="n">POSIX</span><span class="p">)</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="条件">条件</h2>
@@ -1975,8 +1974,8 @@
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;CppUTest/CommandLineTestRunner.h&gt;</span><span class="cp">
 </span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;CppUTest/TestHarness.h&gt;</span><span class="cp">
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="n">TEST_GROUP</span><span class="p">(</span><span class="n">Foo_Group</span><span class="p">)</span> <span class="p">{}</span>
-</span></span><span class="line"><span class="cl"><span class="n">TEST</span><span class="p">(</span><span class="n">Foo_Group</span><span class="p">,</span> <span class="n">Foo_TestOne</span><span class="p">)</span> <span class="p">{}</span>
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="nf">TEST_GROUP</span><span class="p">(</span><span class="n">Foo_Group</span><span class="p">)</span> <span class="p">{}</span>
+</span></span><span class="line"><span class="cl"><span class="nf">TEST</span><span class="p">(</span><span class="n">Foo_Group</span><span class="p">,</span> <span class="n">Foo_TestOne</span><span class="p">)</span> <span class="p">{}</span>
 </span></span><span class="line"><span class="cl"><span class="cm">/* Test runner may be provided options, such
 </span></span></span></code></pre></td></tr></table>
 </div>
@@ -2019,31 +2018,31 @@
 </span></span></span><span class="line"><span class="cl"><span class="cp"># include &lt;threads.h&gt;•
 </span></span></span><span class="line"><span class="cl"><span class="cp">#endif•
 </span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="kt">void</span> <span class="nf">call_once</span><span class="p">(</span><span class="n">once_flag</span> <span class="o">*</span><span class="n">flag</span><span class="p">,</span> <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">func</span><span class="p">)(</span><span class="kt">void</span><span class="p">));</span><span class="err">•</span>
-</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">cnd_broadcast</span><span class="p">(</span><span class="n">cnd_t</span> <span class="o">*</span><span class="n">cond</span><span class="p">);</span><span class="err">•</span>
-</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">cnd_destroy</span><span class="p">(</span><span class="n">cnd_t</span> <span class="o">*</span><span class="n">cond</span><span class="p">);</span><span class="err">•</span>
-</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">cnd_init</span><span class="p">(</span><span class="n">cnd_t</span> <span class="o">*</span><span class="n">cond</span><span class="p">);</span><span class="err">•</span>
-</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">cnd_signal</span><span class="p">(</span><span class="n">cnd_t</span> <span class="o">*</span><span class="n">cond</span><span class="p">);</span><span class="err">•</span>
-</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">cnd_timedwait</span><span class="p">(</span><span class="n">cnd_t</span> <span class="o">*</span><span class="kr">restrict</span> <span class="n">cond</span><span class="p">,</span> <span class="n">mtx_t</span> <span class="o">*</span><span class="kr">restrict</span> <span class="n">mtx</span><span class="p">,</span> <span class="k">const</span> <span class="k">struct</span> <span class="n">timespec</span> <span class="o">*</span><span class="kr">restrict</span> <span class="n">ts</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">cnd_broadcast</span><span class="p">(</span><span class="kt">cnd_t</span> <span class="o">*</span><span class="n">cond</span><span class="p">);</span><span class="err">•</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">cnd_destroy</span><span class="p">(</span><span class="kt">cnd_t</span> <span class="o">*</span><span class="n">cond</span><span class="p">);</span><span class="err">•</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">cnd_init</span><span class="p">(</span><span class="kt">cnd_t</span> <span class="o">*</span><span class="n">cond</span><span class="p">);</span><span class="err">•</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">cnd_signal</span><span class="p">(</span><span class="kt">cnd_t</span> <span class="o">*</span><span class="n">cond</span><span class="p">);</span><span class="err">•</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">cnd_timedwait</span><span class="p">(</span><span class="kt">cnd_t</span> <span class="o">*</span><span class="kr">restrict</span> <span class="n">cond</span><span class="p">,</span> <span class="kt">mtx_t</span> <span class="o">*</span><span class="kr">restrict</span> <span class="n">mtx</span><span class="p">,</span> <span class="k">const</span> <span class="k">struct</span> <span class="n">timespec</span> <span class="o">*</span><span class="kr">restrict</span> <span class="n">ts</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">cnd_wait</span><span class="p">(</span><span class="n">cnd_t</span> <span class="o">*</span><span class="n">cond</span><span class="p">,</span> <span class="n">mtx_t</span> <span class="o">*</span><span class="n">mtx</span><span class="p">);</span><span class="err">•</span>
-</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">mtx_destroy</span><span class="p">(</span><span class="n">mtx_t</span> <span class="o">*</span><span class="n">mtx</span><span class="p">);</span><span class="err">•</span>
-</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">mtx_init</span><span class="p">(</span><span class="n">mtx_t</span> <span class="o">*</span><span class="n">mtx</span><span class="p">,</span> <span class="kt">int</span> <span class="n">type</span><span class="p">);</span><span class="err">•</span>
-</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">mtx_lock</span><span class="p">(</span><span class="n">mtx_t</span> <span class="o">*</span><span class="n">mtx</span><span class="p">);</span><span class="err">•</span>
-</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">mtx_timedlock</span><span class="p">(</span><span class="n">mtx_t</span> <span class="o">*</span><span class="kr">restrict</span> <span class="n">mtx</span><span class="p">,</span> <span class="k">const</span> <span class="k">struct</span> <span class="n">timespec</span> <span class="o">*</span><span class="kr">restrict</span> <span class="n">ts</span><span class="p">);</span><span class="err">•</span>
-</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">mtx_trylock</span><span class="p">(</span><span class="n">mtx_t</span> <span class="o">*</span><span class="n">mtx</span><span class="p">);</span><span class="err">•</span>
-</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">mtx_unlock</span><span class="p">(</span><span class="n">mtx_t</span> <span class="o">*</span><span class="n">mtx</span><span class="p">);</span><span class="err">•</span>
-</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">thrd_create</span><span class="p">(</span><span class="n">thrd_t</span> <span class="o">*</span><span class="n">thr</span><span class="p">,</span> <span class="n">thrd_start_t</span> <span class="n">func</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">arg</span><span class="p">);</span><span class="err">•</span>
-</span></span><span class="line"><span class="cl"><span class="n">thrd_t</span> <span class="n">thrd_current</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span><span class="err">•</span>
-</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">thrd_detach</span><span class="p">(</span><span class="n">thrd_t</span> <span class="n">thr</span><span class="p">);</span><span class="err">•</span>
-</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">thrd_equal</span><span class="p">(</span><span class="n">thrd_t</span> <span class="n">thr0</span><span class="p">,</span> <span class="n">thrd_t</span> <span class="n">thr1</span><span class="p">);</span><span class="err">•</span>
-</span></span><span class="line"><span class="cl"><span class="n">_Noreturn</span> <span class="kt">void</span> <span class="n">thrd_exit</span><span class="p">(</span><span class="kt">int</span> <span class="n">res</span><span class="p">);</span><span class="err">•</span>
-</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">thrd_join</span><span class="p">(</span><span class="n">thrd_t</span> <span class="n">thr</span><span class="p">,</span> <span class="kt">int</span> <span class="o">*</span><span class="n">res</span><span class="p">);</span><span class="err">•</span>
-</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">thrd_sleep</span><span class="p">(</span><span class="k">const</span> <span class="k">struct</span> <span class="n">timespec</span> <span class="o">*</span><span class="n">duration</span><span class="p">,</span> <span class="k">struct</span> <span class="n">timespec</span><span class="o">*</span> <span class="n">remaining</span><span class="p">);</span><span class="err">•</span>
-</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">thrd_yield</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span><span class="err">•</span>
-</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">tss_create</span><span class="p">(</span><span class="n">tss_t</span> <span class="o">*</span><span class="n">key</span><span class="p">,</span> <span class="n">tss_dtor_t</span> <span class="n">dtor</span><span class="p">);</span><span class="err">•</span>
-</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">tss_delete</span><span class="p">(</span><span class="n">tss_t</span> <span class="n">key</span><span class="p">);</span><span class="err">•</span>
-</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="o">*</span><span class="n">tss_get</span><span class="p">(</span><span class="n">tss_t</span> <span class="n">key</span><span class="p">);</span><span class="err">•</span>
-</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">tss_set</span><span class="p">(</span><span class="n">tss_t</span> <span class="n">key</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">val</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">cnd_wait</span><span class="p">(</span><span class="kt">cnd_t</span> <span class="o">*</span><span class="n">cond</span><span class="p">,</span> <span class="kt">mtx_t</span> <span class="o">*</span><span class="n">mtx</span><span class="p">);</span><span class="err">•</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">mtx_destroy</span><span class="p">(</span><span class="kt">mtx_t</span> <span class="o">*</span><span class="n">mtx</span><span class="p">);</span><span class="err">•</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">mtx_init</span><span class="p">(</span><span class="kt">mtx_t</span> <span class="o">*</span><span class="n">mtx</span><span class="p">,</span> <span class="kt">int</span> <span class="n">type</span><span class="p">);</span><span class="err">•</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">mtx_lock</span><span class="p">(</span><span class="kt">mtx_t</span> <span class="o">*</span><span class="n">mtx</span><span class="p">);</span><span class="err">•</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">mtx_timedlock</span><span class="p">(</span><span class="kt">mtx_t</span> <span class="o">*</span><span class="kr">restrict</span> <span class="n">mtx</span><span class="p">,</span> <span class="k">const</span> <span class="k">struct</span> <span class="n">timespec</span> <span class="o">*</span><span class="kr">restrict</span> <span class="n">ts</span><span class="p">);</span><span class="err">•</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">mtx_trylock</span><span class="p">(</span><span class="kt">mtx_t</span> <span class="o">*</span><span class="n">mtx</span><span class="p">);</span><span class="err">•</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">mtx_unlock</span><span class="p">(</span><span class="kt">mtx_t</span> <span class="o">*</span><span class="n">mtx</span><span class="p">);</span><span class="err">•</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">thrd_create</span><span class="p">(</span><span class="kt">thrd_t</span> <span class="o">*</span><span class="n">thr</span><span class="p">,</span> <span class="kt">thrd_start_t</span> <span class="n">func</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">arg</span><span class="p">);</span><span class="err">•</span>
+</span></span><span class="line"><span class="cl"><span class="kt">thrd_t</span> <span class="nf">thrd_current</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span><span class="err">•</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">thrd_detach</span><span class="p">(</span><span class="kt">thrd_t</span> <span class="n">thr</span><span class="p">);</span><span class="err">•</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">thrd_equal</span><span class="p">(</span><span class="kt">thrd_t</span> <span class="n">thr0</span><span class="p">,</span> <span class="kt">thrd_t</span> <span class="n">thr1</span><span class="p">);</span><span class="err">•</span>
+</span></span><span class="line"><span class="cl"><span class="n">_Noreturn</span> <span class="kt">void</span> <span class="nf">thrd_exit</span><span class="p">(</span><span class="kt">int</span> <span class="n">res</span><span class="p">);</span><span class="err">•</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">thrd_join</span><span class="p">(</span><span class="kt">thrd_t</span> <span class="n">thr</span><span class="p">,</span> <span class="kt">int</span> <span class="o">*</span><span class="n">res</span><span class="p">);</span><span class="err">•</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">thrd_sleep</span><span class="p">(</span><span class="k">const</span> <span class="k">struct</span> <span class="n">timespec</span> <span class="o">*</span><span class="n">duration</span><span class="p">,</span> <span class="k">struct</span> <span class="n">timespec</span><span class="o">*</span> <span class="n">remaining</span><span class="p">);</span><span class="err">•</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">thrd_yield</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span><span class="err">•</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">tss_create</span><span class="p">(</span><span class="kt">tss_t</span> <span class="o">*</span><span class="n">key</span><span class="p">,</span> <span class="kt">tss_dtor_t</span> <span class="n">dtor</span><span class="p">);</span><span class="err">•</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">tss_delete</span><span class="p">(</span><span class="kt">tss_t</span> <span class="n">key</span><span class="p">);</span><span class="err">•</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="o">*</span><span class="nf">tss_get</span><span class="p">(</span><span class="kt">tss_t</span> <span class="n">key</span><span class="p">);</span><span class="err">•</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">tss_set</span><span class="p">(</span><span class="kt">tss_t</span> <span class="n">key</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">val</span><span class="p">);</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="类型限定符">类型限定符</h2>

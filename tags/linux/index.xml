@@ -4,7 +4,14 @@
         <link>https://dingjingmaster.github.io/tags/linux/</link>
         <description>linux - 标签 - 九九</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>dingjing@live.cn (ding jing)</managingEditor>
-            <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Fri, 30 Sep 2022 21:49:23 &#43;0800</lastBuildDate><atom:link href="https://dingjingmaster.github.io/tags/linux/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Tue, 20 Dec 2022 21:56:13 &#43;0800</lastBuildDate><atom:link href="https://dingjingmaster.github.io/tags/linux/" rel="self" type="application/rss+xml" /><item>
+    <title>GVariant规范1.0</title>
+    <link>https://dingjingmaster.github.io/2022/12/0001-gvariant%E8%A7%84%E8%8C%831.0/</link>
+    <pubDate>Tue, 20 Dec 2022 21:56:13 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://dingjingmaster.github.io/2022/12/0001-gvariant%E8%A7%84%E8%8C%831.0/</guid>
+    <description><![CDATA[概念 根据需求，GVariant必须与DBus消息总线系统(在[DBus]中指定)基本兼容。 为此，GVariant中使用的类型系统与DBus中]]></description>
+</item><item>
     <title>Linux Kernel学习准备</title>
     <link>https://dingjingmaster.github.io/2022/09/1000-kernel%E5%AD%A6%E4%B9%A0%E5%87%86%E5%A4%87/</link>
     <pubDate>Fri, 30 Sep 2022 21:49:23 &#43;0800</pubDate>
@@ -67,12 +74,5 @@
     <author>作者</author>
     <guid>https://dingjingmaster.github.io/2022/06/0002-polkit/</guid>
     <description><![CDATA[说明 polkit提供了一个授权API，特权程序(&ldquo;MECHANISMS&rdquo;)使用它为非特权程序(&ldquo;SUBJ]]></description>
-</item><item>
-    <title>Polkit 介绍</title>
-    <link>https://dingjingmaster.github.io/2022/06/0001-polkit%E4%BB%8B%E7%BB%8D/</link>
-    <pubDate>Tue, 07 Jun 2022 18:50:53 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://dingjingmaster.github.io/2022/06/0001-polkit%E4%BB%8B%E7%BB%8D/</guid>
-    <description><![CDATA[polkit是什么? polkit提供了一个授权API，旨在由特权程序(“机制”)使用，为非特权程序(“客户端”)提供服务。查看polkit手]]></description>
 </item></channel>
 </rss>

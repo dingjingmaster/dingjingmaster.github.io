@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>GVariant规范1.0 - 九九</title><meta name="Description" content=""><meta property="og:title" content="GVariant规范1.0" />
+<meta property="og:description" content="概念 根据需求，GVariant必须与DBus消息总线系统(在[DBus]中指定)基本兼容。 为此，GVariant中使用的类型系统与DBus中" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dingjingmaster.github.io/2022/12/0001-gvariant%E8%A7%84%E8%8C%831.0/" /><meta property="og:image" content="https://dingjingmaster.github.io/img/logo.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-12-20T21:56:13+08:00" />
+<meta property="article:modified_time" content="2022-12-20T21:56:13+08:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://dingjingmaster.github.io/img/logo.jpg"/>
+
+<meta name="twitter:title" content="GVariant规范1.0"/>
+<meta name="twitter:description" content="概念 根据需求，GVariant必须与DBus消息总线系统(在[DBus]中指定)基本兼容。 为此，GVariant中使用的类型系统与DBus中"/>
+<meta name="application-name" content="九九">
+<meta name="apple-mobile-web-app-title" content="九九"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://dingjingmaster.github.io/2022/12/0001-gvariant%E8%A7%84%E8%8C%831.0/" /><link rel="prev" href="https://dingjingmaster.github.io/2022/11/0012-%E9%98%B2%E6%AD%A2%E7%A8%8B%E5%BA%8F%E8%A2%ABhook%E7%9A%84%E6%96%B9%E6%B3%95/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "GVariant规范1.0",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/dingjingmaster.github.io\/2022\/12\/0001-gvariant%E8%A7%84%E8%8C%831.0\/"
+        },"image": ["https:\/\/dingjingmaster.github.io\/img\/logo.jpg"],"genre": "posts","keywords": "GLib, GIO, gnome, linux","wordcount":  10098 ,
+        "url": "https:\/\/dingjingmaster.github.io\/2022\/12\/0001-gvariant%E8%A7%84%E8%8C%831.0\/","datePublished": "2022-12-20T21:56:13+08:00","dateModified": "2022-12-20T21:56:13+08:00","publisher": {
+            "@type": "Organization",
+            "name": "九九","logo": "https:\/\/dingjingmaster.github.io\/img\/logo.jpg"},"author": {
+                "@type": "Person",
+                "name": "ding jing"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="九九"><span class="header-title-pre"> </span>九九</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/timeline/"> 时间轴 </a><a class="menu-item" href="https://github.com/dingjingmaster" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="九九"><span class="header-title-pre"> </span>九九</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/timeline/" title="">时间轴</a><a class="menu-item" href="https://github.com/dingjingmaster" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">GVariant规范1.0</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>ding jing</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/gnome/"><i class="far fa-folder fa-fw"></i>gnome</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2022-12-20">2022-12-20</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 10098 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 21 分钟&nbsp;<span id="/2022/12/0001-gvariant%E8%A7%84%E8%8C%831.0/" class="leancloud_visitors" data-flag-title="GVariant规范1.0">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#概念">概念</a>
+      <ul>
+        <li><a href="#gvariant与dbus类型不同点">GVariant与DBus类型不同点</a></li>
+        <li><a href="#各种类型">各种类型</a>
+          <ul>
+            <li><a href="#基础类型">基础类型</a>
+              <ul>
+                <li><a href="#boolean">Boolean</a></li>
+                <li><a href="#byte">Byte</a></li>
+                <li><a href="#integer-types">Integer Types</a></li>
+                <li><a href="#double-precision-floating-point">Double Precision Floating Point</a></li>
+                <li><a href="#string">String</a></li>
+                <li><a href="#object-path">Object Path</a></li>
+                <li><a href="#signature">Signature</a></li>
+              </ul>
+            </li>
+            <li><a href="#容器类型">容器类型</a>
+              <ul>
+                <li><a href="#variant">Variant</a></li>
+                <li><a href="#maybe">Maybe</a></li>
+                <li><a href="#array">Array</a></li>
+                <li><a href="#structure">Structure</a></li>
+                <li><a href="#dictionary-entry">Dictionary entry</a></li>
+              </ul>
+            </li>
+            <li><a href="#strings-类型">Strings 类型</a>
+              <ul>
+                <li><a href="#语法">语法</a></li>
+                <li><a href="#语义">语义</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#序列化格式">序列化格式</a>
+      <ul>
+        <li><a href="#why-not-dbus">Why not DBus?</a></li>
+        <li><a href="#符号">符号</a></li>
+        <li><a href="#概念-1">概念</a>
+          <ul>
+            <li><a href="#字节序列">字节序列</a></li>
+            <li><a href="#字节边界">字节边界</a></li>
+            <li><a href="#简单限制">简单限制</a></li>
+            <li><a href="#对齐">对齐</a></li>
+            <li><a href="#固定大小">固定大小</a></li>
+            <li><a href="#帧偏移">帧偏移</a></li>
+            <li><a href="#字节序">字节序</a></li>
+          </ul>
+        </li>
+        <li><a href="#基础类型序列化">基础类型序列化</a>
+          <ul>
+            <li><a href="#boolean-1">Boolean</a></li>
+            <li><a href="#bytes">Bytes</a></li>
+            <li><a href="#integers">Integers</a></li>
+            <li><a href="#双精度浮点型">双精度浮点型</a></li>
+            <li><a href="#strings">Strings</a></li>
+          </ul>
+        </li>
+        <li><a href="#容器序列化">容器序列化</a>
+          <ul>
+            <li><a href="#variants">Variants</a></li>
+            <li><a href="#maybes">Maybes</a></li>
+            <li><a href="#固定大小元素的-maybe">固定大小元素的 Maybe</a></li>
+            <li><a href="#非固定大小元素的-maybe">非固定大小元素的 Maybe</a></li>
+            <li><a href="#arrays">Arrays</a></li>
+            <li><a href="#固定宽度的-arrays">固定宽度的 Arrays</a></li>
+            <li><a href="#可变宽度-arrays">可变宽度 Arrays</a></li>
+            <li><a href="#structures">Structures</a></li>
+            <li><a href="#dictionary-entries">Dictionary Entries</a></li>
+          </ul>
+        </li>
+        <li><a href="#例子">例子</a></li>
+        <li><a href="#非正常序列化数据">非正常序列化数据</a>
+          <ul>
+            <li><a href="#反对错误的观点">反对错误的观点</a></li>
+            <li><a href="#默认值">默认值</a></li>
+            <li><a href="#处理非正常序列化数据">处理非正常序列化数据</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="概念">概念</h2>
+<p>根据需求，GVariant必须与DBus消息总线系统(在[DBus]中指定)基本兼容。</p>
+<p>为此，GVariant中使用的类型系统与DBus中使用的类型系统几乎相同。然而，为了提供一个更好的系统，同时仍然保持高度兼容性，做了一些非常微小的更改;具体来说，可以通过DBus发送的每个消息都可以表示为GVariant。</p>
+<p>如果从头开始设计类型系统，则从DBus带入的一些包袱不会出现在类型系统中。例如，对象路径和签名类型是高度特定于dbus的，如果从头创建，则不会出现在通用类型系统中。</p>
+<h3 id="gvariant与dbus类型不同点">GVariant与DBus类型不同点</h3>
+<p>为了增加概念的清晰度，一些限制已经被取消，允许调用“永不失败”，而不是必须检查这些特殊情况。</p>
+<ol>
+<li>DBus限制了容器类型嵌套的最大深度，而GVariant没有这样的限制;嵌套支持任意深度。</li>
+<li>DBus通过将“签名字符串”限制为不超过255个字符来限制其消息的最大复杂度，而GVariant没有这样的限制;支持任意长度的类型字符串，允许创建具有任意复杂类型的值。</li>
+<li>DBus只允许字典条目类型作为数组类型的元素类型出现，而GVariant没有这样的限制;字典条目类型可以单独存在，也可以作为任何其他类型构造函数的子类型存在。</li>
+<li>DBus要求结构类型至少包含一个子类型，而GVariant没有这样的限制;单元类型在GVariant中是完全有效的类型。</li>
+</ol>
+<p>DBus的一些限制是出于安全考虑而施加的(例如，限制处理来自不可信发送方的消息可能导致的递归深度)。如果GVariant的使用方式对这些考虑非常敏感，那么程序员应该在从不可信源输入值到程序时对这些情况进行检查。</p>
+<p>此外，DBus没有用于表示可空性概念的类型构造函数。为此，添加了Maybe类型构造函数(在类型字符串中由m表示)。</p>
+<p>正在考虑将其中一些更改包含到DBus 2中。</p>
+<blockquote>
+<ol>
+<li>“nullable type”是一种类型，除了包含其正常值范围外，还包含该范围之外的特殊值，称为NULL、Nothing、None或类似的值。在大多数具有引用或指针类型的语言中，这些类型都是可空的。有些语言能够拥有任何类型的可空版本(例如，Haskell中的“Maybe Int”和“Int ?”i; &ldquo;在c#中)。</li>
+<li>在面对面的会议中进行了大量讨论，在DBus邮件列表(<a href="http://lists.freedesktop.org/archives/dbus/2007-August/008290.html" target="_blank" rel="noopener noreffer">http://lists.freedesktop.org/archives/dbus/2007-August/008290.html</a>)上也进行了一些讨论</li>
+</ol>
+</blockquote>
+<h3 id="各种类型">各种类型</h3>
+<h4 id="基础类型">基础类型</h4>
+<h5 id="boolean">Boolean</h5>
+<p>取值必为 <code>True</code> 或 <code>False</code> 的一种类型</p>
+<h5 id="byte">Byte</h5>
+<p>可以转为 <code>unsigned</code> 类型，取值范围：<code>0 - 255</code></p>
+<h5 id="integer-types">Integer Types</h5>
+<p>共有六种类型：16、32和64整数的字节有符号和无符号版本，带符号的版本具有与二补表示一致的值范围。</p>
+<h5 id="double-precision-floating-point">Double Precision Floating Point</h5>
+<p>双精度浮点值由IEEE 754精确定义。</p>
+<h5 id="string">String</h5>
+<p>字符串是零个或多个字节。官方上，GVariant是编码不可知的，但是使用UTF-8是被期望和鼓励的。</p>
+<h5 id="object-path">Object Path</h5>
+<p>DBus对象路径，与DBus规范中描述的完全相同。</p>
+<h5 id="signature">Signature</h5>
+<p>与DBus规范中描述的完全相同的DBus签名字符串。由于仅为了与DBus兼容而保留了此类型，因此适用于此类型值范围的所有DBus限制(例如:嵌套深度和最大长度限制)。</p>
+<h4 id="容器类型">容器类型</h4>
+<h5 id="variant">Variant</h5>
+<p>变体类型是一个类型(本章描述的任何类型，包括变体类型本身)和该类型的值的依赖对。您可以使用此类型来克服数组的所有元素必须具有相同类型的限制。</p>
+<h5 id="maybe">Maybe</h5>
+<p>maybe类型构造函数为任何其他单一类型提供了可空性。区分非空情况，这样当多个maybe类型构造函数应用于一个类型时，可以检测到不同级别的null。</p>
+<h5 id="array">Array</h5>
+<p>数组类型构造函数允许创建与所提供的元素类型对应的数组(或列表)类型。必须只提供一种元素类型，并且该数组类型的任何实例中的所有数组元素都必须具有该元素类型。</p>
+<h5 id="structure">Structure</h5>
+<p>结构类型构造函数允许创建与所提供的元素类型相对应的结构类型。这些“结构”实际上更接近元组，因为它们的字段没有命名，但是使用“结构”是因为DBus规范是这样称呼它们的。</p>
+<p>结构类型构造函数是唯一可变的类型构造函数——可以给出任意自然数的类型(包括0和1)。</p>
+<h5 id="dictionary-entry">Dictionary entry</h5>
+<p>字典条目类型构造函数允许创建一种特殊类型的结构，当该结构用作数组的元素类型时，意味着数组的内容是键/值对的列表。为了与DBus兼容，这个二进制类型构造函数需要一个基本类型作为它的第一个参数(按照惯例，它被视为键)，但任何类型都可以作为第二个参数(按照惯例，值)。</p>
+<p>字典条目只是按照惯例这样做;这包括将它们放入数组中以形成“字典”。GVariant没有对字典施加通常期望的限制(例如键的唯一性)。</p>
+<h4 id="strings-类型">Strings 类型</h4>
+<p>与DBus一样，使用简洁的字符串表示来表示类型。</p>
+<p>在直接将值作为一阶对象处理的GVariant中，类型字符串(按此名称)是表示单一类型的字符串。</p>
+<p>这与DBus中的“签名字符串”形成对比，后者应用于消息，包含零个或多个类型(对应于消息的参数)。</p>
+<h5 id="语法">语法</h5>
+<p>string类型的语言与上下文无关。它也是前缀代码，是语言本身的递归结构使用的属性。</p>
+<p>类型字符串可以用无歧义上下文语法来描述。</p>
+<div align=center><img src='/pic/gnome/g-1-0.png'/></div>
+<center></center>
+<h5 id="语义">语义</h5>
+<p>用于从给定语法获取类型字符串的派生将创建描述类型的抽象语法树。通过右边每个包含终端的项推导的效果如下所示:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">表示</th>
+<th style="text-align:left">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">b</td>
+<td style="text-align:left">boolean 类型</td>
+</tr>
+<tr>
+<td style="text-align:center">y</td>
+<td style="text-align:left">byte 类型</td>
+</tr>
+<tr>
+<td style="text-align:center">n</td>
+<td style="text-align:left">16-bit 整型</td>
+</tr>
+<tr>
+<td style="text-align:center">q</td>
+<td style="text-align:left">16-bit 无符号整型</td>
+</tr>
+<tr>
+<td style="text-align:center">i</td>
+<td style="text-align:left">32-bit 整型</td>
+</tr>
+<tr>
+<td style="text-align:center">u</td>
+<td style="text-align:left">32-bit 无符号整型</td>
+</tr>
+<tr>
+<td style="text-align:center">x</td>
+<td style="text-align:left">64-bit 整型</td>
+</tr>
+<tr>
+<td style="text-align:center">t</td>
+<td style="text-align:left">64-bit 无符号整型</td>
+</tr>
+<tr>
+<td style="text-align:center">d</td>
+<td style="text-align:left">双精度浮点类型</td>
+</tr>
+<tr>
+<td style="text-align:center">s</td>
+<td style="text-align:left">字符串类型</td>
+</tr>
+<tr>
+<td style="text-align:center">o</td>
+<td style="text-align:left">object path 类型</td>
+</tr>
+<tr>
+<td style="text-align:center">g</td>
+<td style="text-align:left">signature 类型</td>
+</tr>
+<tr>
+<td style="text-align:center">v</td>
+<td style="text-align:left">variant 类型</td>
+</tr>
+<tr>
+<td style="text-align:center">m <type></td>
+<td style="text-align:left">Maybe类型</td>
+</tr>
+<tr>
+<td style="text-align:center">a <type></td>
+<td style="text-align:left">数组类型</td>
+</tr>
+<tr>
+<td style="text-align:center">(types)</td>
+<td style="text-align:left">structure 类型</td>
+</tr>
+<tr>
+<td style="text-align:center">{base_type type}</td>
+<td style="text-align:left">key-value 类型</td>
+</tr>
+</tbody>
+</table>
+<h2 id="序列化格式">序列化格式</h2>
+<p>本章描述了GVariant使用的序列化格式。这种序列化格式是新开发的，在这里是第一次描述。</p>
+<h3 id="why-not-dbus">Why not DBus?</h3>
+<p>由于GVariant在很大程度上与DBus兼容，因此使用DBus的序列化格式(加上适当的修改)作为GVariant的序列化格式是有意义的。</p>
+<p>然而，这样做会与为GVariant建立的许多需求相冲突。</p>
+<p>最根本的是，需求将被违反。DBus消息以这样一种方式编码:为了从数组中取出第100个项目，您首先必须遍历前99个项目以发现第100个项目的位置。这种迭代的副作用是对需求的违反。</p>
+<p>此外，将DBus序列化格式与需求要求的API一起使用可能意味着违反需求，因为DBus消息的子部分在受到不同的起始对齐时可能会改变含义。在简单包含中对此进行了更详细的讨论。</p>
+<h3 id="符号">符号</h3>
+<p>在本节中，将使用一种通用的类型和值表示法提供一些示例。</p>
+<p>用于类型的表示法正是类型中描述的类型字符串。</p>
+<p>用于值的符号对于Python或Haskell的用户来说都很熟悉。数组(列表)用方括号表示，结构(元组)用圆括号表示。逗号分隔元素。字符串是单引号的。前缀为0x的数字被视为十六进制。</p>
+<p>常量True和False表示布尔常数。maybe类型的空值数据构造函数表示为Nothing，一元类型的空值数据构造函数表示为Just。</p>
+<h3 id="概念-1">概念</h3>
+<p>GVariant值序列化是一个从值到字节序列对和类型字符串的总和单射函数。序列化是确定性的，因为序列化给定值只会产生一种可接受的“标准形式”。序列化是非满射的:非正规形式存在。</p>
+<p>如果没有类型string，序列化产生的字节序列是无用的。换句话说，反序列化字节序列需要知道这种类型。</p>
+<p>在讨论序列化的细节之前，有一些在格式设计中普遍存在的概念应该被理解。</p>
+<h4 id="字节序列">字节序列</h4>
+<p>字节序列被定义为一个长度已知的字节序列。在所有情况下，在GVariant中，知道长度对于成功地反序列化一个值是至关重要的。</p>
+<h4 id="字节边界">字节边界</h4>
+<p>GVariant中使用的开始偏移量和结束偏移量不是指字节位置，而是指字节边界。与长度为n的字符串可以有n + 1个前缀一样，大小为n的字节序列也有n + 1个字节边界。</p>
+<div align=center><img src='/pic/gnome/g-1-1.png'/></div>
+<center>字节边界</center>
+<p>当谈到字节序列的开始位置时，开始边界的索引恰好对应于第一个字节的索引。然而，当谈到结束位置时，结束边界的索引将是最后一个字节的索引，加1。这个范例非常常用，并且允许指定零长度的字节序列。</p>
+<h4 id="简单限制">简单限制</h4>
+<p>存在许多具有子值能力的容器类型。在所有情况下，容器的每个子值的序列化字节序列将作为该容器的序列化字节序列的连续子序列出现——与它单独出现时的形式完全相同。子字节序列将按照它们在容器中的位置顺序出现。</p>
+<p>容器的职责是能够确定每个子元素的开始和结束(或等价地，长度)。</p>
+<p>此属性允许将容器分解为子值，只需引用容器字节序列的子序列作为子值，这是满足需求的有效方法。</p>
+<p>此属性不是DBus序列化格式的情况。在许多情况下(例如，数组)，DBus消息的子值的编码将根据该值出现的上下文而改变。举个例子:在双精度数组的例子中，如果紧挨着数组前面的值的偏移量是8的偶数倍，那么该数组将包含4个填充字节，如果前一个值的结束偏移量向任何一个方向移动了4个字节，则该数组将不包含这些填充字节。</p>
+<h4 id="对齐">对齐</h4>
+<p>为了满足这一要求，我们必须为程序员提供一个他们可以舒适使用的指针。在许多机器上，程序员不能直接解引用未对齐的值，即使在可以解引用的机器上，性能也经常受到影响。</p>
+<p>因此，序列化格式中的所有类型都有与之相关的对齐方式。对于字符串或单个字节，这种对齐方式是简单的1，但对于32位整数(例如)，这种对齐方式是4。对齐是类型的一个属性——类型的所有实例都具有相同的对齐方式。</p>
+<p>所有对齐的值在内存中的起始地址必须是其对齐的整数倍。</p>
+<p>容器类型的对齐方式等于该容器的任何潜在子容器的最大对齐方式。这意味着，即使一个32位整数数组是空的，它仍然必须对齐到最近的4字节倍数。这也意味着变体类型(如下所述)的对齐值为8(因为它可能包含任何其他类型的值，并且最大对齐值为8)。</p>
+<h4 id="固定大小">固定大小</h4>
+<p>为了避免大量的帧开销，可以利用这样一个事实，即对于某些类型，所有实例都具有相同的大小。在本例中，该类型被称为固定大小的类型，其所有值都是固定大小的值。例如单个整数和由整数和浮点数组成的元组。反例是一个字符串和一个整数数组。</p>
+<p>如果一个类型具有固定大小，那么这个固定大小必须是该类型对齐方式的整数倍。类型的大小永远不会固定为0。</p>
+<p>如果容器类型总是保存固定数量的固定大小的项(例如某些结构体或字典项)，那么该容器类型也将是固定大小的。</p>
+<h4 id="帧偏移">帧偏移</h4>
+<p>如果容器包含非固定大小的子元素，则容器有责任确定它们的大小。这是使用帧偏移量完成的。</p>
+<p>帧偏移量是某个预定大小的整数。大小总是2的幂。大小由容器字节序列的总体大小决定。它被选择为足够大，以引用容器中的每个字节边界。</p>
+<p>例如，大小为0的容器的帧偏移量为0(因为不需要比特来表示没有选择)。大小从1到255的容器的帧偏移量为1(因为256个选择可以用一个字节表示)。从256到65535的容器的帧偏移量为2。大小为65536的容器的帧偏移量为4。</p>
+<p>帧偏移量的大小没有理论上的上限。这一事实(以及序列化格式中没有其他限制)允许任意大小的值。</p>
+<p>当序列化时，正确的帧偏移大小必须通过“试错”来确定——检查每个大小以确定它是否有效。由于偏移量的大小包含在容器的大小中，因此较大的偏移量可能会使容器的大小上升到下一个类别，这将需要更大的偏移量。但是，这种容器不被认为是“正常形式”。如果序列化的数据是正常形式，则必须使用尽可能小的偏移量。</p>
+<p>框架偏移总是出现在容器的末尾，并且是未对齐的。它们总是以小端字节顺序存储。</p>
+<h4 id="字节序">字节序</h4>
+<p>尽管序列化数据的帧偏移始终以小端字节序存储，但用户可见的数据(通过要求的接口)允许以大端字节序或小端字节序存储。这被称为“编码字节顺序”。在传输消息时，如果没有明确约定，则应该指定这个字节顺序。</p>
+<p>编码字节顺序只影响7种类型值的表示:6种(16、32和64位，有符号和无符号)整型和双精度浮点型。不同编码字节顺序之间的转换是一个简单的操作，通常可以就地执行(但有关例外情况，请参阅Byteswapping注释)。</p>
+<h3 id="基础类型序列化">基础类型序列化</h3>
+<h4 id="boolean-1">Boolean</h4>
+<p>布尔值的大小固定为1，对齐方式为1。它的值为True为1,False为0。</p>
+<h4 id="bytes">Bytes</h4>
+<p>一个字节的固定大小为1，对齐方式为1。它可以有任何有效的字节值。按照惯例，字节是无符号的。</p>
+<h4 id="integers">Integers</h4>
+<p>有16位，32位，64位有符号整数和无符号整数。每个整数类型的大小都是固定的(到它的自然大小)。每个整型都有与固定大小相等的对齐方式。整数按编码字节顺序存储。有符号整数用2的补数表示。</p>
+<h4 id="双精度浮点型">双精度浮点型</h4>
+<p>双精度浮点数的对齐方式和固定大小为8。双精度值按编码字节顺序存储。</p>
+<h4 id="strings">Strings</h4>
+<p>包括对象路径和签名字符串，字符串的大小不是固定的，对齐方式为1。任何给定的序列化字符串的大小等于字符串的长度加1，最后一个序列化字节是一个null(0)结束符。没有指定字符串的字符集编码，但是不允许在字符串的内容中出现null字节。</p>
+<h3 id="容器序列化">容器序列化</h3>
+<h4 id="variants">Variants</h4>
+<p>Variant 是通过存储子对象的序列化数据，加上一个零字节，再加上子对象的类型字符串来序列化的。</p>
+<p>零字节是必需的，因为尽管类型字符串是前缀代码，但它们不是后缀代码。在没有此分隔符的情况下，考虑序列化为两个字节的变体的情况- &ldquo;ay&rdquo;,这是一个字节，&lsquo;a&rsquo;，还是一个空的字节数组?</p>
+<h4 id="maybes">Maybes</h4>
+<p>可能编码不同，取决于它们的元素类型是否固定大小。
+maybe类型的对齐方式始终等于其元素类型的对齐方式。</p>
+<h4 id="固定大小元素的-maybe">固定大小元素的 Maybe</h4>
+<p>对于Nothing情况，序列化的数据是空字节序列。</p>
+<p>对于Just情况，序列化的数据完全等于子对象的序列化数据。这总是与Nothing情况相区别，因为所有固定大小的值都具有非零大小。</p>
+<h4 id="非固定大小元素的-maybe">非固定大小元素的 Maybe</h4>
+<p>对于Nothing情况，序列化的数据同样是空字节序列。</p>
+<p>对于Just情况，序列化形式是子元素的序列化数据，后面跟着一个0字节。这个额外的字节确保即使在子值的大小为0的情况下，也可以将Just大小写与Nothing大小写区分开来。</p>
+<h4 id="arrays">Arrays</h4>
+<p>数组被称为固定宽度数组或可变宽度数组，取决于它们的元素类型是否是固定大小的类型。这两种情况的编码非常不同。</p>
+<p>数组类型的对齐方式始终等于其元素类型的对齐方式。</p>
+<h4 id="固定宽度的-arrays">固定宽度的 Arrays</h4>
+<p>在这种情况下，每个数组元素的序列化形式被按顺序打包，没有额外的填充或框架，以获得数组。因为所有固定大小的值的大小都是其对齐要求的倍数，而且数组中的所有元素都有相同的对齐要求，所以所有元素都会自动对齐。</p>
+<div align=center><img src='/pic/gnome/g-1-2.png'/></div>
+<center>16-bit 整型数组</center>
+<p>数组的长度可以通过取数组的大小并除以固定的元素大小来确定。这将始终工作，因为所有固定大小的值都有一个非零大小。</p>
+<h4 id="可变宽度-arrays">可变宽度 Arrays</h4>
+<p>在这种情况下，每个数组元素的序列化形式再次按顺序打包。不过，与固定宽度的情况不同的是，为了对齐的目的，可能需要在元素之间添加填充字节。这些填充字节必须为零。</p>
+<p>添加完所有元素后，将按顺序为每个元素添加一个帧偏移量。帧偏移量指定该元素的结束边界。</p>
+<div align=center><img src='/pic/gnome/g-1-3.png'/></div>
+<center>可变宽度数组</center>
+<p>每个帧偏移量的大小是数组的序列化大小和最终帧偏移量的函数，通过识别数组中最终元素的结束边界也可以识别帧偏移量的开始边界。由于数组中的每个元素都有一个帧偏移量，我们可以很容易地确定数组的长度。</p>
+<p>$$ length = (size - last_offset) / offset_size $$</p>
+<p>要找到任何元素的开始，只需取前一个元素的结束边界，并四舍五入到数组(因此也是元素)对齐的最近整数倍。第一个元素的开始就是数组的开始。</p>
+<p>由于确定数组的长度依赖于我们计算帧偏移量的能力，而帧偏移量的数量是由它们占用的空间决定的，因此零字节的帧偏移量在数组中是不允许的，即使在所有其他序列化数据的大小为零的情况下也是如此。这个特殊的异常避免了用0除以0问题。</p>
+<h4 id="structures">Structures</h4>
+<p>与数组一样，结构是通过存储每个子项来序列化的，顺序与填充字节正确对齐，填充字节必须为零。</p>
+<p>在添加了所有项之后，对于结构中不是最后一项的每个非固定大小的项，将以相反的顺序追加一个框架偏移量。帧偏移量指定该元素的结束边界。</p>
+<p>帧偏移量以相反的顺序存储，以允许基于迭代器的接口开始迭代结构中的项，而无需首先测量类型字符串所隐含的项的数量(该操作所需的时间与字符串的大小成线性)。</p>
+<div align=center><img src='/pic/gnome/g-1-4.png'/></div>
+<center>结构体容器保存 16-bit 整数和字符串</center>
+<p>没有为结构中的最后一项存储框架偏移量的原因是，可以通过从结构的大小中减去框架偏移量的大小来确定其结束边界。在给定类型的结构的任何实例中出现的帧偏移量可以完全由类型确定(遵循上面给出的规则)。</p>
+<p>固定大小的项目不存储帧偏移量的原因是，通过将固定大小添加到开始边界，始终可以找到它们的结束边界。</p>
+<p>要找到结构中任何项的起始边界，只需从前面最近的非固定大小项的结束边界开始(如果没有前面的非固定大小项，则从0开始)。从这里开始，四舍五入对齐，并为每个中间项添加固定大小。最后，舍入到所需项目的对齐位置。</p>
+<p>对于随机访问，似乎这个过程所花费的时间与结构中元素的数量成线性关系，但实际上它可以在非常小的常数时间内完成。参见计算结构项地址。</p>
+<p>如果结构中包含的所有项都是固定大小的，那么结构本身就是固定大小的。必须考虑满足这个固定大小值的约束条件。</p>
+<p>首先，固定大小必须是非零的。这种情况只会发生在单元类型的结构或只包含这种结构的结构(递归地)。这个问题可以通过任意声明单元类型实例的序列化编码为单个零字节(大小为1)来解决。</p>
+<p>第二，固定尺寸必须是结构对齐的倍数。这是通过在任何固定宽度结构的末尾添加零填充字节来实现的，直到此属性为真。这些字节永远不会在定位帧偏移量或可变大小子对象的结束时造成混淆，因为根据定义，这些事情都不会发生在固定大小的结构中。</p>
+<p>图2.4描述了类型(nsns)和值[257，&lsquo;xx&rsquo;， 514， &ldquo;]的结构。对于不是最终项的非固定大小的项(即字符串&rsquo;xx&rsquo;)，存在一个帧偏移。说明了“舍入”以找到第二个整数的开始的过程。</p>
+<h4 id="dictionary-entries">Dictionary Entries</h4>
+<p>字典条目被视为只有两个项的结构——首先是键，然后是值。在键大小固定的情况下，将没有帧偏移，而在键大小非固定的情况下，将只有一个帧偏移。由于该值被视为结构中的最后一项，因此它永远不会有帧偏移。</p>
+<h3 id="例子">例子</h3>
+<p>本节包含一些说明序列化格式的示例。所有示例都是小端字节顺序。</p>
+<p>示例数据每行给出16个字节，每个字节的值由两个字符表示。为了清晰起见，根据不同的目的，字节值使用了许多不同的表示法。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">&#39;A shows that a byte has the ASCII value of A (65).
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">sp shows that a byte is an ASCII space character (32).
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">\0 shows that a byte is a zero byte used to mark the end of a string.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">-- shows that the byte is a zero-filled padding byte used as part of a structure or dictionary entry.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">## shows that the byte is a zero-filled padding byte used as part of an array.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">@@ shows that the byte is the zero-filled padding byte at the end of a Just value.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">any two hexadecimal digits show that a byte has that value.
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>每个例子都指定了一种类型、一个字节序列，以及当用给定类型反序列化时，这个字节序列所代表的值。</p>
+<ul>
+<li>String Example</li>
+</ul>
+<p>使用类型<code>'s'</code>，表示<code>'hellow world'</code>:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">&#39;h &#39;e &#39;l &#39;l   &#39;o sp &#39;w &#39;o   &#39;r &#39;l &#39;d \0
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>Maybe String</li>
+</ul>
+<p>使用类型 <code>'ms'</code>， 表示 <code>Just 'hello world'</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">&#39;h &#39;e &#39;l &#39;l   &#39;o sp &#39;w &#39;o   &#39;r &#39;l &#39;d \0   @@
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>Array of Booleans Example</li>
+</ul>
+<p>使用类型 <code>'ab'</code>，表示<code>[True, False, False, True, Ture]</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">01 00 00 01   01
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>Structure Example</li>
+</ul>
+<p>使用类型<code>'(si)'</code>，表示<code>('foo', -1)</code>.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">&#39;f &#39;o &#39;o \0   ff ff ff ff   04
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>Structure Array Example</li>
+</ul>
+<p>With type <code>'a(si)'</code>，has a value of <code>[('hi', -2), ('bye', -1)]</code>.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">&#39;h &#39;i \0 --   fe ff ff ff   03 ## ## ##   &#39;b &#39;y &#39;e \0
+</span></span><span class="line"><span class="cl">ff ff ff ff   04 09
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>String Array Example</li>
+</ul>
+<p>With type <code>'as'</code>，has a value of <code>['i', 'can', 'has', 'strings?']</code>.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">&#39;i \0 &#39;c &#39;a   &#39;n \0 &#39;h &#39;a   &#39;s \0 &#39;s &#39;t   &#39;r &#39;i &#39;n &#39;g
+</span></span><span class="line"><span class="cl">&#39;s &#39;? \0 02   06 0a 13
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>Nested Structure Example</li>
+</ul>
+<p>With type <code>'((ys)as)'</code>，has a value of <code>(('i', 'can'), ['has', 'strings?'])</code> :</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">&#39;i &#39;c &#39;a &#39;n   \0 &#39;h &#39;a &#39;s   \0 &#39;s &#39;t &#39;r   &#39;i &#39;n &#39;g &#39;s
+</span></span><span class="line"><span class="cl">&#39;? \0 04 05
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>Simple Structure Example</li>
+</ul>
+<p>With type <code>'(yy)'</code>，has a value of <code>(0x70, 0x80)</code>.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">70 80
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>Padded Structure Example 1</li>
+</ul>
+<p>With type <code>'(iy)'</code>，has a value of <code>(96, 0x70)</code>.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">60 00 00 00   70 -- -- --
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>Padded Structure Example 2</li>
+</ul>
+<p>With type <code>'(yi)'</code>，has a value of <code>(0x70, 96)</code>.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">70 -- -- --   60 00 00 00
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>Array of Structures Example</li>
+</ul>
+<p>With type <code>'a(iy)'</code>，has a value of <code>[(96, 0x70), (648, 0xf7)]</code>.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">60 00 00 00   70 -- -- --   88 02 00 00   f7 -- -- --
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>Array of Bytes Example</li>
+</ul>
+<p>With type <code>'ay'</code>，has a value of <code>[0x04, 0x05, 0x06, 0x07]</code>.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">04 05 06 07
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>Array of Integers Example</li>
+</ul>
+<p>With type <code>'ai'</code>，has a value of <code>[4, 258]</code>.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">04 00 00 00   02 01 00 00
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>Dictionary Entry Example</li>
+</ul>
+<p>With type <code>'{si}'</code>，has a value of <code>{'a key', 514}</code>.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">&#39;a sp &#39;k &#39;e   &#39;y \0 -- --   02 02 00 00   06
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="非正常序列化数据">非正常序列化数据</h3>
+<p>名义上，反序列化是序列化的逆操作。这意味着反序列化应该是一个双射部分函数。</p>
+<p>如果反序列化是一个局部函数，则必须对序列化的数据不是正常形式的情况进行处理。通常这将导致引发一个错误。</p>
+<h4 id="反对错误的观点">反对错误的观点</h4>
+<p>要求XXX禁止我们在加载时扫描整个序列化的字节序列;我们现在不能检查是否正常，也不能发布错误。这使得任何可能发生的错误在访问值时作为异常引发。</p>
+<p>由于C语言对异常的支持很差(几乎不存在)，并且考虑到对简单数据值的任何访问都可能失败，这种解决方案也很快变得站不住脚。</p>
+<p>在给定约束条件下，处理错误的唯一合理解决方案是将它们定义为不存在。接受非正规形式的序列化数据使反序列化成为一个满射(但非单射)的总函数。所有字节序列反序列化为某个有效值。</p>
+<p>出于安全考虑，对非正常值执行的操作是精确指定的。可以很容易地想象这样一种情况:内容过滤器对消息的内容起作用，调节对安全敏感组件的访问。如果可以创建一个由过滤器中的反序列化程序和安全敏感组件中的反序列化程序以不同方式解释的消息的非标准形式，则可以“偷偷通过”过滤器。</p>
+<h4 id="默认值">默认值</h4>
+<p>当反序列化过程中遇到错误，无法引发异常时，我们被迫进入必须返回预期类型的有效值的情况。因此，为每种类型定义了一个“默认值”。这个值通常是在反序列化过程中遇到错误的结果。</p>
+<p>有人可能会说，健壮性的降低是因为忽略错误并向用户返回任意值。不过，应该指出的是，对于大多数类型的序列化数据，一个随机字节错误更有可能导致数据保持正常形式，但值不同。我们无法捕获这些情况，并且这些情况可能导致将给定类型的任何可能值返回给用户。我们被迫接受这样一个事实:在存在损坏的情况下，我们所能做的最好的事情就是确保用户接收到正确类型的一些值。</p>
+<p>每种类型的默认值为:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">类型</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Boolean</td>
+<td>False</td>
+</tr>
+<tr>
+<td style="text-align:center">Bytes</td>
+<td>nul</td>
+</tr>
+<tr>
+<td style="text-align:center">Integers</td>
+<td>0</td>
+</tr>
+<tr>
+<td style="text-align:center">Floats</td>
+<td>0</td>
+</tr>
+<tr>
+<td style="text-align:center">String</td>
+<td>空字符串</td>
+</tr>
+<tr>
+<td style="text-align:center">Object Paths</td>
+<td>&lsquo;/&rsquo;</td>
+</tr>
+<tr>
+<td style="text-align:center">Signatures</td>
+<td>空字符串</td>
+</tr>
+<tr>
+<td style="text-align:center">Arrays</td>
+<td>空</td>
+</tr>
+<tr>
+<td style="text-align:center">Maybes</td>
+<td>类型的Nothing</td>
+</tr>
+<tr>
+<td style="text-align:center">Structures</td>
+<td>每个元素的默认值</td>
+</tr>
+<tr>
+<td style="text-align:center">Dictionary Entries</td>
+<td>每个元素的默认值</td>
+</tr>
+<tr>
+<td style="text-align:center">Variants</td>
+<td>包含单元类型的子变量</td>
+</tr>
+</tbody>
+</table>
+<h4 id="处理非正常序列化数据">处理非正常序列化数据</h4>
+<p>在一个正常运行的系统上，通常不会遇到非正常值，因此一旦检测到问题，即使性能任意差也是可以接受的。但是，出于安全原因，在访问不受信任的数据时，必须始终检查其是否正常。由于这些检查的频率，它们必须是快速的。</p>
+<p>本节中包含的几乎所有用于非正常数据反序列化的规则都要记住这一要求。具体来说，所有规则都可以在一个很小的常数时间内确定(有几个非常小的例外)。这是不允许的，例如，要求在其帧偏移量中任何地方都不一致的数组被视为空数组，因为这将需要扫描所有偏移量(数组的大小是线性的)，只是为了确定数组的大小。</p>
+<p>在序列化的字节序列中，只会发生少量不同种类的异常。每一个问题，以及该怎么做，都将在本节中讨论。</p>
+<p>下面的列表是一个明确的列表。如果一个序列化的字节序列没有这些问题，那么它就是正常的形式。如果一个序列化的字节序列有任何这些问题，那么它就不是正常的形式。</p>
+<ul>
+<li>
+<p>固定大小值中错误的大小：如果用户尝试使用固定宽度类型的类型和错误长度的字节序列进行反序列化，则将使用该类型的默认值。</p>
+</li>
+<li>
+<p>非零填充字节：当任何填充字节非零时，会发生此异常。这适用于数组、maybe、结构和字典条目。这种异常永远不会被检查——子值从它们的容器中反序列化，就好像填充是零一样。</p>
+</li>
+<li>
+<p>布尔值超出范围：如果一个布尔值中包含的数字不是0或1，那么它就会被视为真值。这是为了与用户直接在C中访问一个布尔数组保持一致。例如，数组中的一个字节包含数字5，在C中这将计算为True。</p>
+</li>
+<li>
+<p>可能未终止字符串：如果字符串的序列化形式的最后一个字节不是零字节，则字符串的值将被视为空字符串。</p>
+</li>
+<li>
+<p>带有嵌入式空字符的字符串：如果一个字符串的最后一个字节是null字符，但在这个最终结束符之前还包含另一个null字符，则该字符串的值将被取为嵌入的nul之前的字符串的一部分。这意味着获取一个指向字符串的C指针仍然是一个常数时间操作。</p>
+</li>
+<li>
+<p>无效对象路径：如果对象路径的序列化形式不是一个有效的对象路径，后面跟着一个零字节，则使用默认值。</p>
+</li>
+<li>
+<p>无效的签名：如果签名字符串的序列化形式不是一个有效的DBus签名，后面跟着一个零字节，则使用默认值。</p>
+</li>
+<li>
+<p>可能是固定尺寸的尺寸错了：如果具有固定元素大小的实例不完全等于该元素的大小，则将该值取为Nothing。</p>
+</li>
+<li>
+<p>固定宽度数组的大小错误：如果固定宽度数组的序列化大小不是固定元素大小的整数倍，则取该值为空数组。</p>
+</li>
+<li>
+<p>子对象的开始或结束边界落在容器之外：如果帧偏移量(或基于帧偏移量的计算)表明子值的字节序列的任何部分将落在父值的字节序列之外，则为子值提供其类型的默认值。</p>
+</li>
+<li>
+<p>结束边界先于开始边界：如果帧偏移量(或基于帧偏移量的计算)表明子值的字节序列的结束边界在其开始边界之前，则为子值提供其类型的默认值。在开始边界之前的子节点的结束边界可能导致两个或多个子节点的字节序列重叠。其他子节点将忽略此错误。这些子节点的值对应于在这些字节序列上执行的正常反序列化过程，该过程具有子节点类型。如果容器中的子容器顺序不一致，则表示存在这种异常。没有对顺序不一致的子节点执行其他特定的检查。</p>
+</li>
+<li>
+<p>子值重叠帧偏移：如果子值的字节序列与其所在容器的帧偏移量重叠，则此错误将被忽略。子进程被赋予一个值，这个值对应于在这个字节序列上执行的正常反序列化过程(包括来自帧偏移的字节)，该字节序列具有子进程的类型。</p>
+</li>
+<li>
+<p>非固定宽度数组的无意义长度：如果非固定宽度数组的最终分帧偏移量指向数组字节序列之外的边界，或者表明数组中存在非整数值的分帧偏移量，则将该值视为空数组。</p>
+</li>
+<li>
+<p>结构帧偏移空间不足：如果序列化结构包含的空间不足以存储所需的帧偏移量，则只要正在访问的项具有所需的帧偏移量，错误就会被无声地忽略。试图访问需要偏移量超过可用偏移量的项将导致默认值。</p>
+</li>
+</ul>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2022-12-20</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/glib/">GLib</a>,&nbsp;<a href="/tags/gio/">GIO</a>,&nbsp;<a href="/tags/gnome/">gnome</a>,&nbsp;<a href="/tags/linux/">linux</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/2022/11/0012-%E9%98%B2%E6%AD%A2%E7%A8%8B%E5%BA%8F%E8%A2%ABhook%E7%9A%84%E6%96%B9%E6%B3%95/" class="prev" rel="prev" title="防止程序被Hook的方法"><i class="fas fa-angle-left fa-fw"></i>防止程序被Hook的方法</a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">ding jing</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="/lib/lightgallery/lightgallery.min.css"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script type="text/javascript" src="/lib/valine/Valine.min.js"></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/algoliasearch/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/twemoji/twemoji.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lightgallery.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-thumbnail.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-zoom.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":100},"comment":{"valine":{"appId":"oGOJ6TSiiaaOrhXD1bEYILk9-gzGzoHsz","appKey":"lbK71uSxpg4XmLmvm2h13JdJ","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"serverURLs":"https://ogoj6tsi.lc-cn-n1-shared.com","visitor":true}},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.zh-cn","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":80,"type":"algolia"},"twemoji":true};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
