@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>ncurses - 分类 - 九九</title>
+        <link>https://dingjingmaster.github.io/categories/ncurses/</link>
+        <description>ncurses - 分类 - 九九</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>dingjing@live.cn (ding jing)</managingEditor>
+            <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Wed, 11 Jan 2023 21:03:48 &#43;0800</lastBuildDate><atom:link href="https://dingjingmaster.github.io/categories/ncurses/" rel="self" type="application/rss+xml" /><item>
+    <title>ncurses入门</title>
+    <link>https://dingjingmaster.github.io/2023/01/0001-ncurses%E5%85%A5%E9%97%A8/</link>
+    <pubDate>Wed, 11 Jan 2023 21:03:48 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://dingjingmaster.github.io/2023/01/0001-ncurses%E5%85%A5%E9%97%A8/</guid>
+    <description><![CDATA[简介 在电传终端的旧时代，终端远离计算机，通过串行电缆与计算机连接。终端可以通过发送一系列字节来配置。终端的所有功能(如移动光标到一个新的位置]]></description>
+</item></channel>
+</rss>

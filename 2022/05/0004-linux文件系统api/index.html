@@ -11,7 +11,6 @@
 <meta property="og:url" content="https://dingjingmaster.github.io/2022/05/0004-linux%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9Fapi/" /><meta property="og:image" content="https://dingjingmaster.github.io/img/logo.jpg"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-05-30T16:57:08+08:00" />
 <meta property="article:modified_time" content="2022-05-30T16:57:08+08:00" />
-
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://dingjingmaster.github.io/img/logo.jpg"/>
 
@@ -179,19 +178,19 @@
 </span></span><span class="line"><span class="cl">  <span class="k">struct</span> <span class="n">inode</span>            <span class="o">*</span><span class="n">host</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">  <span class="k">struct</span> <span class="n">xarray</span>           <span class="n">i_pages</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">  <span class="k">struct</span> <span class="n">rw_semaphore</span>     <span class="n">invalidate_lock</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="n">gfp_t</span> <span class="n">gfp_mask</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="n">atomic_t</span> <span class="n">i_mmap_writable</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">gfp_t</span> <span class="n">gfp_mask</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">atomic_t</span> <span class="n">i_mmap_writable</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="cp">#ifdef CONFIG_READ_ONLY_THP_FOR_FS;
-</span></span></span><span class="line"><span class="cl"><span class="cp"></span>  <span class="n">atomic_t</span> <span class="n">nr_thps</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>  <span class="kt">atomic_t</span> <span class="n">nr_thps</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="cp">#endif;
 </span></span></span><span class="line"><span class="cl"><span class="cp"></span>  <span class="k">struct</span> <span class="n">rb_root_cached</span>   <span class="n">i_mmap</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">  <span class="k">struct</span> <span class="n">rw_semaphore</span>     <span class="n">i_mmap_rwsem</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">  <span class="kt">unsigned</span> <span class="kt">long</span>           <span class="n">nrpages</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="n">pgoff_t</span> <span class="n">writeback_index</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">pgoff_t</span> <span class="n">writeback_index</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">  <span class="k">const</span> <span class="k">struct</span> <span class="n">address_space_operations</span> <span class="o">*</span><span class="n">a_ops</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">  <span class="kt">unsigned</span> <span class="kt">long</span>           <span class="n">flags</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="n">errseq_t</span> <span class="n">wb_err</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="n">spinlock_t</span> <span class="n">private_lock</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">errseq_t</span> <span class="n">wb_err</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">spinlock_t</span> <span class="n">private_lock</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">  <span class="k">struct</span> <span class="n">list_head</span>        <span class="n">private_list</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">  <span class="kt">void</span> <span class="o">*</span><span class="n">private_data</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">};</span>
@@ -214,12 +213,12 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">struct</span> <span class="n">file_ra_state</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="n">pgoff_t</span> <span class="n">start</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">pgoff_t</span> <span class="n">start</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">  <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">size</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">  <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">async_size</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">  <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">ra_pages</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">  <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">mmap_miss</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="n">loff_t</span> <span class="n">prev_pos</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kt">loff_t</span> <span class="n">prev_pos</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">};</span>
 </span></span></code></pre></td></tr></table>
 </div>
@@ -285,7 +284,7 @@
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
             </noscript></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">ding jing</a></span></div>
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">ding jing</a></span></div>
         </div>
     </footer></div>
 

@@ -11,7 +11,6 @@
 <meta property="og:url" content="https://dingjingmaster.github.io/2022/08/0008-c-%E8%B0%83%E7%94%A8python/" /><meta property="og:image" content="https://dingjingmaster.github.io/img/logo.jpg"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-08-06T08:52:54+08:00" />
 <meta property="article:modified_time" content="2022-08-06T08:52:54+08:00" />
-
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://dingjingmaster.github.io/img/logo.jpg"/>
 
@@ -1162,7 +1161,7 @@ c++用户应该注意，API完全是用C定义的，头文件已经将入口点�
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">Py_DEPRECATED</span><span class="p">(</span><span class="mf">3.8</span><span class="p">)</span> <span class="n">PyAPI_FUNC</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="n">Py_OldFunction</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="nf">Py_DEPRECATED</span><span class="p">(</span><span class="mf">3.8</span><span class="p">)</span> <span class="nf">PyAPI_FUNC</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="nf">Py_OldFunction</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><blockquote>
@@ -1184,7 +1183,7 @@ c++用户应该注意，API完全是用C定义的，头文件已经将入口点�
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">PyDoc_STRVAR</span><span class="p">(</span><span class="n">pop_doc</span><span class="p">,</span> <span class="s">&#34;Remove and return the rightmost element.&#34;</span><span class="p">);</span>
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="nf">PyDoc_STRVAR</span><span class="p">(</span><span class="n">pop_doc</span><span class="p">,</span> <span class="s">&#34;Remove and return the rightmost element.&#34;</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">static</span> <span class="n">PyMethodDef</span> <span class="n">deque_methods</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="c1">// ...
@@ -1240,10 +1239,10 @@ static PyMethodDef pysqlite_row_methods[] = {
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">PyObject</span> <span class="o">*</span><span class="n">t</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">t</span> <span class="o">=</span> <span class="n">PyTuple_New</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="n">PyTuple_SetItem</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">PyLong_FromLong</span><span class="p">(</span><span class="mi">1L</span><span class="p">));</span>
-</span></span><span class="line"><span class="cl"><span class="n">PyTuple_SetItem</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">PyLong_FromLong</span><span class="p">(</span><span class="mi">2L</span><span class="p">));</span>
-</span></span><span class="line"><span class="cl"><span class="n">PyTuple_SetItem</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">PyUnicode_FromString</span><span class="p">(</span><span class="s">&#34;three&#34;</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl"><span class="n">t</span> <span class="o">=</span> <span class="nf">PyTuple_New</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="nf">PyTuple_SetItem</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nf">PyLong_FromLong</span><span class="p">(</span><span class="mi">1L</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl"><span class="nf">PyTuple_SetItem</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="nf">PyLong_FromLong</span><span class="p">(</span><span class="mi">2L</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl"><span class="nf">PyTuple_SetItem</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="nf">PyUnicode_FromString</span><span class="p">(</span><span class="s">&#34;three&#34;</span><span class="p">));</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>在这里，<code>PyLong_FromLong()</code>返回一个新的引用，该引用立即被<code>PyTuple_SetItem()</code>窃取。当您想继续使用一个对象，尽管它的引用将被窃取时，请在调用引用窃取函数之前使用<code>Py_INCREF()</code>获取另一个引用。
@@ -1263,8 +1262,8 @@ static PyMethodDef pysqlite_row_methods[] = {
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">PyObject</span> <span class="o">*</span><span class="n">tuple</span><span class="p">,</span> <span class="o">*</span><span class="n">list</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">tuple</span> <span class="o">=</span> <span class="n">Py_BuildValue</span><span class="p">(</span><span class="s">&#34;(iis)&#34;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s">&#34;three&#34;</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl"><span class="n">list</span> <span class="o">=</span> <span class="n">Py_BuildValue</span><span class="p">(</span><span class="s">&#34;[iis]&#34;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s">&#34;three&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">tuple</span> <span class="o">=</span> <span class="nf">Py_BuildValue</span><span class="p">(</span><span class="s">&#34;(iis)&#34;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s">&#34;three&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">list</span> <span class="o">=</span> <span class="nf">Py_BuildValue</span><span class="p">(</span><span class="s">&#34;[iis]&#34;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s">&#34;three&#34;</span><span class="p">);</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>更常见的做法是使用<code>PyObject_SetItem()</code>和友项，它们的引用只是借用，比如传递给正在编写的函数的参数。在这种情况下，它们关于引用计数的行为更合理，因为你不必增加引用计数，所以你可以给出一个引用(“让它被窃取”)。例如，这个函数将列表中的所有项(实际上是任何可变序列)设置为给定项:</p>
@@ -1295,18 +1294,18 @@ static PyMethodDef pysqlite_row_methods[] = {
 </span></span><span class="line"><span class="cl"><span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="n">Py_ssize_t</span> <span class="n">i</span><span class="p">,</span> <span class="n">n</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="n">n</span> <span class="o">=</span> <span class="n">PyObject_Length</span><span class="p">(</span><span class="n">target</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">n</span> <span class="o">=</span> <span class="nf">PyObject_Length</span><span class="p">(</span><span class="n">target</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="n">PyObject</span> <span class="o">*</span><span class="n">index</span> <span class="o">=</span> <span class="n">PyLong_FromSsize_t</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">PyObject</span> <span class="o">*</span><span class="n">index</span> <span class="o">=</span> <span class="nf">PyLong_FromSsize_t</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">index</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">PyObject_SetItem</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">            <span class="n">Py_DECREF</span><span class="p">(</span><span class="n">index</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="nf">PyObject_SetItem</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nf">Py_DECREF</span><span class="p">(</span><span class="n">index</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">        <span class="p">}</span>
-</span></span><span class="line"><span class="cl">        <span class="n">Py_DECREF</span><span class="p">(</span><span class="n">index</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">Py_DECREF</span><span class="p">(</span><span class="n">index</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
@@ -1348,14 +1347,14 @@ static PyMethodDef pysqlite_row_methods[] = {
 </span></span><span class="line"><span class="cl">    <span class="kt">long</span> <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">value</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="n">PyObject</span> <span class="o">*</span><span class="n">item</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="n">n</span> <span class="o">=</span> <span class="n">PyList_Size</span><span class="p">(</span><span class="n">list</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">n</span> <span class="o">=</span> <span class="nf">PyList_Size</span><span class="p">(</span><span class="n">list</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="cm">/* Not a list */</span>
 </span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="n">item</span> <span class="o">=</span> <span class="n">PyList_GetItem</span><span class="p">(</span><span class="n">list</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span> <span class="cm">/* Can&#39;t fail */</span>
-</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">PyLong_Check</span><span class="p">(</span><span class="n">item</span><span class="p">))</span> <span class="k">continue</span><span class="p">;</span> <span class="cm">/* Skip non-integers */</span>
-</span></span><span class="line"><span class="cl">        <span class="n">value</span> <span class="o">=</span> <span class="n">PyLong_AsLong</span><span class="p">(</span><span class="n">item</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">value</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">PyErr_Occurred</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">        <span class="n">item</span> <span class="o">=</span> <span class="nf">PyList_GetItem</span><span class="p">(</span><span class="n">list</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span> <span class="cm">/* Can&#39;t fail */</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nf">PyLong_Check</span><span class="p">(</span><span class="n">item</span><span class="p">))</span> <span class="k">continue</span><span class="p">;</span> <span class="cm">/* Skip non-integers */</span>
+</span></span><span class="line"><span class="cl">        <span class="n">value</span> <span class="o">=</span> <span class="nf">PyLong_AsLong</span><span class="p">(</span><span class="n">item</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">value</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="nf">PyErr_Occurred</span><span class="p">())</span>
 </span></span><span class="line"><span class="cl">            <span class="cm">/* Integer too big to fit in a C long, bail out */</span>
 </span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">        <span class="n">total</span> <span class="o">+=</span> <span class="n">value</span><span class="p">;</span>
@@ -1398,22 +1397,22 @@ static PyMethodDef pysqlite_row_methods[] = {
 </span></span><span class="line"><span class="cl">    <span class="n">Py_ssize_t</span> <span class="n">i</span><span class="p">,</span> <span class="n">n</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="kt">long</span> <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">value</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="n">PyObject</span> <span class="o">*</span><span class="n">item</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="n">n</span> <span class="o">=</span> <span class="n">PySequence_Length</span><span class="p">(</span><span class="n">sequence</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">n</span> <span class="o">=</span> <span class="nf">PySequence_Length</span><span class="p">(</span><span class="n">sequence</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="cm">/* Has no length */</span>
 </span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="n">item</span> <span class="o">=</span> <span class="n">PySequence_GetItem</span><span class="p">(</span><span class="n">sequence</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">item</span> <span class="o">=</span> <span class="nf">PySequence_GetItem</span><span class="p">(</span><span class="n">sequence</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">item</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="cm">/* Not a sequence, or other failure */</span>
-</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">PyLong_Check</span><span class="p">(</span><span class="n">item</span><span class="p">))</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">            <span class="n">value</span> <span class="o">=</span> <span class="n">PyLong_AsLong</span><span class="p">(</span><span class="n">item</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">            <span class="n">Py_DECREF</span><span class="p">(</span><span class="n">item</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="n">value</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">PyErr_Occurred</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="nf">PyLong_Check</span><span class="p">(</span><span class="n">item</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">value</span> <span class="o">=</span> <span class="nf">PyLong_AsLong</span><span class="p">(</span><span class="n">item</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="nf">Py_DECREF</span><span class="p">(</span><span class="n">item</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="n">value</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="nf">PyErr_Occurred</span><span class="p">())</span>
 </span></span><span class="line"><span class="cl">                <span class="cm">/* Integer too big to fit in a C long, bail out */</span>
 </span></span><span class="line"><span class="cl">                <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">            <span class="n">total</span> <span class="o">+=</span> <span class="n">value</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">            <span class="n">Py_DECREF</span><span class="p">(</span><span class="n">item</span><span class="p">);</span> <span class="cm">/* Discard reference ownership */</span>
+</span></span><span class="line"><span class="cl">            <span class="nf">Py_DECREF</span><span class="p">(</span><span class="n">item</span><span class="p">);</span> <span class="cm">/* Discard reference ownership */</span>
 </span></span><span class="line"><span class="cl">        <span class="p">}</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">total</span><span class="p">;</span>
@@ -1508,27 +1507,27 @@ static PyMethodDef pysqlite_row_methods[] = {
 </span></span><span class="line"><span class="cl">    <span class="n">PyObject</span> <span class="o">*</span><span class="n">item</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">,</span> <span class="o">*</span><span class="n">const_one</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">,</span> <span class="o">*</span><span class="n">incremented_item</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">rv</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="cm">/* Return value initialized to -1 (failure) */</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="n">item</span> <span class="o">=</span> <span class="n">PyObject_GetItem</span><span class="p">(</span><span class="n">dict</span><span class="p">,</span> <span class="n">key</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">item</span> <span class="o">=</span> <span class="nf">PyObject_GetItem</span><span class="p">(</span><span class="n">dict</span><span class="p">,</span> <span class="n">key</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">item</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="cm">/* Handle KeyError only: */</span>
-</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">PyErr_ExceptionMatches</span><span class="p">(</span><span class="n">PyExc_KeyError</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nf">PyErr_ExceptionMatches</span><span class="p">(</span><span class="n">PyExc_KeyError</span><span class="p">))</span>
 </span></span><span class="line"><span class="cl">            <span class="k">goto</span> <span class="n">error</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">        <span class="cm">/* Clear the error and use zero: */</span>
-</span></span><span class="line"><span class="cl">        <span class="n">PyErr_Clear</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl">        <span class="n">item</span> <span class="o">=</span> <span class="n">PyLong_FromLong</span><span class="p">(</span><span class="mi">0L</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">PyErr_Clear</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">item</span> <span class="o">=</span> <span class="nf">PyLong_FromLong</span><span class="p">(</span><span class="mi">0L</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">item</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">            <span class="k">goto</span> <span class="n">error</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="n">const_one</span> <span class="o">=</span> <span class="n">PyLong_FromLong</span><span class="p">(</span><span class="mi">1L</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">const_one</span> <span class="o">=</span> <span class="nf">PyLong_FromLong</span><span class="p">(</span><span class="mi">1L</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">const_one</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">        <span class="k">goto</span> <span class="n">error</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="n">incremented_item</span> <span class="o">=</span> <span class="n">PyNumber_Add</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">const_one</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">incremented_item</span> <span class="o">=</span> <span class="nf">PyNumber_Add</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">const_one</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">incremented_item</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">        <span class="k">goto</span> <span class="n">error</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">PyObject_SetItem</span><span class="p">(</span><span class="n">dict</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">incremented_item</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="nf">PyObject_SetItem</span><span class="p">(</span><span class="n">dict</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">incremented_item</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">        <span class="k">goto</span> <span class="n">error</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="n">rv</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="cm">/* Success */</span>
 </span></span><span class="line"><span class="cl">    <span class="cm">/* Continue with cleanup code */</span>
@@ -1537,9 +1536,9 @@ static PyMethodDef pysqlite_row_methods[] = {
 </span></span><span class="line"><span class="cl">    <span class="cm">/* Cleanup code, shared by success and failure path */</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="cm">/* Use Py_XDECREF() to ignore NULL references */</span>
-</span></span><span class="line"><span class="cl">    <span class="n">Py_XDECREF</span><span class="p">(</span><span class="n">item</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="n">Py_XDECREF</span><span class="p">(</span><span class="n">const_one</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="n">Py_XDECREF</span><span class="p">(</span><span class="n">incremented_item</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">Py_XDECREF</span><span class="p">(</span><span class="n">item</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">Py_XDECREF</span><span class="p">(</span><span class="n">const_one</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">Py_XDECREF</span><span class="p">(</span><span class="n">incremented_item</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">rv</span><span class="p">;</span> <span class="cm">/* -1 for error, 0 for success */</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
@@ -2687,7 +2686,7 @@ static PyMethodDef pysqlite_row_methods[] = {
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
             </noscript></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">ding jing</a></span></div>
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">ding jing</a></span></div>
         </div>
     </footer></div>
 
