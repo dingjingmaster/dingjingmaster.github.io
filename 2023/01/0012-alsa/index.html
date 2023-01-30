@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Linux音频体系结构——ALSA - 九九</title><meta name="Description" content=""><meta property="og:title" content="Linux音频体系结构——ALSA" />
+<meta property="og:description" content="ALSA是什么 ALSA(Advanced Linux Sound Architecture)是linux上主流的音频结构，提供了对音频和MIDI的支持，在没有出现ALSA架构之前，一直使" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dingjingmaster.github.io/2023/01/0012-alsa/" /><meta property="og:image" content="https://dingjingmaster.github.io/img/logo.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-01-28T10:17:23+08:00" />
+<meta property="article:modified_time" content="2023-01-28T10:17:23+08:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://dingjingmaster.github.io/img/logo.jpg"/>
+
+<meta name="twitter:title" content="Linux音频体系结构——ALSA"/>
+<meta name="twitter:description" content="ALSA是什么 ALSA(Advanced Linux Sound Architecture)是linux上主流的音频结构，提供了对音频和MIDI的支持，在没有出现ALSA架构之前，一直使"/>
+<meta name="application-name" content="九九">
+<meta name="apple-mobile-web-app-title" content="九九"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://dingjingmaster.github.io/2023/01/0012-alsa/" /><link rel="prev" href="https://dingjingmaster.github.io/2023/01/0001-ncurses%E5%85%A5%E9%97%A8/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Linux音频体系结构——ALSA",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/dingjingmaster.github.io\/2023\/01\/0012-alsa\/"
+        },"image": ["https:\/\/dingjingmaster.github.io\/img\/logo.jpg"],"genre": "posts","keywords": "linux, alsa, music, sound","wordcount":  6422 ,
+        "url": "https:\/\/dingjingmaster.github.io\/2023\/01\/0012-alsa\/","datePublished": "2023-01-28T10:17:23+08:00","dateModified": "2023-01-28T10:17:23+08:00","publisher": {
+            "@type": "Organization",
+            "name": "九九","logo": "https:\/\/dingjingmaster.github.io\/img\/logo.jpg"},"author": {
+                "@type": "Person",
+                "name": "ding jing"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="九九"><span class="header-title-pre"> </span>九九</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/timeline/"> 时间轴 </a><a class="menu-item" href="https://github.com/dingjingmaster" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="九九"><span class="header-title-pre"> </span>九九</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/timeline/" title="">时间轴</a><a class="menu-item" href="https://github.com/dingjingmaster" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Linux音频体系结构——ALSA</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>ding jing</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/linux/"><i class="far fa-folder fa-fw"></i>linux</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-01-28">2023-01-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 6422 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 13 分钟&nbsp;<span id="/2023/01/0012-alsa/" class="leancloud_visitors" data-flag-title="Linux音频体系结构——ALSA">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#alsa是什么">ALSA是什么</a>
+      <ul>
+        <li><a href="#alsa-主要特点">ALSA 主要特点</a></li>
+        <li><a href="#alsa-与-oss-对比">ALSA 与 OSS 对比</a></li>
+        <li><a href="#alsa-兼容-oss">ALSA 兼容 OSS</a></li>
+        <li><a href="#alsa-系统架构">ALSA 系统架构</a></li>
+      </ul>
+    </li>
+    <li><a href="#alsa-相关工具">ALSA 相关工具</a></li>
+    <li><a href="#如何使用-alsa-audio-接口">如何使用 ALSA Audio 接口</a>
+      <ul>
+        <li><a href="#理解音频接口">理解音频接口</a></li>
+        <li><a href="#典型的音频应用程序是做什么的">典型的音频应用程序是做什么的</a></li>
+        <li><a href="#一个最小的后台播放程序">一个最小的后台播放程序</a></li>
+        <li><a href="#一些术语">一些术语</a></li>
+        <li><a href="#api使用流程">API使用流程</a></li>
+      </ul>
+    </li>
+    <li><a href="#alsa-api">ALSA API</a>
+      <ul>
+        <li><a href="#api-链接">API 链接</a></li>
+        <li><a href="#配置">配置</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="alsa是什么">ALSA是什么</h2>
+<p>ALSA(Advanced Linux Sound Architecture)是linux上主流的音频结构，提供了对音频和MIDI的支持，在没有出现ALSA架构之前，一直使用OSS(Open Sound System)音频架构。</p>
+<blockquote>
+<p>Linux 2.6 内核之前使用 OSS 音频架构，之后使用 ALSA 音频架构</p>
+</blockquote>
+<h3 id="alsa-主要特点">ALSA 主要特点</h3>
+<ul>
+<li>支持多种声卡设备</li>
+<li>模块化的内核驱动程序</li>
+<li>支持SMP(对称多处理)和多线程</li>
+<li>提供应用程序开发函数库</li>
+<li>兼容 OSS 有用程序</li>
+</ul>
+<h3 id="alsa-与-oss-对比">ALSA 与 OSS 对比</h3>
+<p>以下是关于OSS和ALSA的对比：</p>
+<div align=center><img src='/pic/linux/alsa-1.jpg'/></div>
+<center>OSS和ALSA对比</center>
+<p>主要的区别就是在OSS架构下，App访问底层是直接通过Sound设备节点访问的。而在ALSA音频架构下，App是通过ALSA提供的alsa-lib库访问底层硬件的操作，不再访问Sound设备节点了。这样做的好处可以简化App实现的难度。</p>
+<h3 id="alsa-兼容-oss">ALSA 兼容 OSS</h3>
+<p>ALSA为了兼容OSS，ALSA提供了内核模块来模拟OSS声音驱动，所以在OSS架构下编写的App无需修改就可以在ALSA下运行。另外libaoos库也可以模拟OSS，无需OSS相关的内核模块。</p>
+<div align=center><img src='/pic/linux/alsa-2.jpg'/></div>
+<center>ALSA兼容OSS</center>
+<h3 id="alsa-系统架构">ALSA 系统架构</h3>
+<div align=center><img src='/pic/linux/alsa-3.jpg'/></div>
+<center>ALSA系统架构</center>
+<p>User空间：主要由Alsa Libray API对应用程序提供统一的API接口，各个APP应用程序只要调用 alsa-lib 提供的 API接口来实现放音、录音、控制。现在提供了两套基本的库，tinyalsa是一个简化的alsa-lib库，现在Android的系统中主要使用它。</p>
+<p>ALSA CORE：alsa 核心层，向上提供逻辑设备（PCM/CTL/MIDI/TIMER/…）系统调用，向下驱动硬件设备（Machine/I2S/DMA/CODEC）</p>
+<p>ASOC Core：是 ALSA 的标准框架，是 ALSA-driver 的核心部分，提供了各种音频设备驱动的通用方法和数据结构，为 Audio driver提供 ALSA Driver API</p>
+<p>Hardware Driver：音频硬件设备驱动，由三大部分组成，分别是 Machine、Platform、Codec，提供的 ALSA Driver API 和相应音频设备的初始化及工作流程，实现具体的功能组件，这也是驱动开发人员需要具体实现的部分。</p>
+<blockquote>
+<p><a href="https://alsa.opensrc.org/" target="_blank" rel="noopener noreffer">https://alsa.opensrc.org/</a></p>
+</blockquote>
+<h2 id="alsa-相关工具">ALSA 相关工具</h2>
+<p>alsa utils 是一组小型且强大的有用程序，旨在允许用户控制 ALSA 系统的各个部分。</p>
+<ul>
+<li>alsactl 用来保存设备设置的方法</li>
+<li>amixer 允许调整设备的音量和声音控制的命令行工具</li>
+<li>alsamixer 是 amixer 的命令行版本</li>
+<li>acconnect 和 aseqview 应用程序用于进行 MIDI 连接和查看连接端口列表</li>
+<li>aply 和 arecord 用于命令行回放和记录许多文件类型，包括 raw、wave、aiff采样率、位深等</li>
+</ul>
+<h2 id="如何使用-alsa-audio-接口">如何使用 ALSA Audio 接口</h2>
+<blockquote>
+<p>翻译自 <a href="http://equalarea.com/paul/alsa-audio.html" target="_blank" rel="noopener noreffer">http://equalarea.com/paul/alsa-audio.html</a></p>
+</blockquote>
+<p>本文档试图提供ALSA音频API的介绍。</p>
+<p>它不是一个完整的API参考手册，它没有涵盖许多更复杂的软件需要解决的具体问题，它仅仅试图为一个相当熟练的程序员提供足够的背景和信息，</p>
+<h3 id="理解音频接口">理解音频接口</h3>
+<p>让我们首先回顾一下音频接口的基本设计。作为应用程序开发人员，您不需要担心这种级别的操作——它全部由设备驱动程序处理(这是ALSA提供的组件之一)。但是如果您想要编写高效且灵活的软件，您确实需要了解概念层面上的情况。</p>
+<p>音频接口是一种允许计算机从外部世界接收和发送音频数据的设备。在计算机内部，音频数据表示为比特流。然而，音频接口可以以<code>模拟信号</code>(时变电压)或<code>数字信号</code>(一些比特流)的形式发送和接收音频。在任何一种情况下，计算机用来表示特定声音的一组位在被传送到外部世界之前都需要转换，同样，接口接收到的外部信号在对计算机有用之前也需要转换。这两种转换是音频接口存在的原因。</p>
+<p>在音频接口中有一个称为“硬件缓冲区”的区域。当外部世界的音频信号到达时，接口将其转换为计算机可用的比特流，并将其存储在用于向计算机发送数据的部件硬件缓冲区中。当它在硬件缓冲区中收集了足够的数据时，接口中断计算机，告诉它已经为它准备好了数据。当数据从计算机发送到外部世界时，同样的过程反过来也会发生。接口中断计算机，告诉它硬件缓冲区中有空间，计算机继续在那里存储数据。接口稍后将这些位转换成所需的任何形式，以便将其传递给外部世界，并将其传递。理解接口使用这个缓冲区作为“循环缓冲区”是非常重要的。当它到达缓冲区的末尾时，它继续绕到开头。</p>
+<p>为了使这个过程正确工作，需要配置许多变量。它们包括:</p>
+<ul>
+<li>在计算机使用的比特流和外界使用的信号之间进行转换时，接口应该使用什么格式?</li>
+<li>音频数据在接口和计算机之间传输的速率是多少?</li>
+<li>当计算机设备发生中断前，应该有多少数据(或存储空间)?</li>
+<li>硬件缓冲区应该有多大?</li>
+</ul>
+<p>前两个问题是控制音频数据质量的基础。后两个问题会影响音频信号的“延迟”。</p>
+<ul>
+<li>来自外部世界的数据到达音频接口，并且它对计算机可用(“输入延迟”)</li>
+<li>前两个问题是控制音频数据质量的基础据由计算机传送，并被传送到外部世界(“输出延迟”)</li>
+</ul>
+<p>这两点对于许多类型的音频软件都是非常重要的，尽管有些程序不需要涉及这些问题。</p>
+<h3 id="典型的音频应用程序是做什么的">典型的音频应用程序是做什么的</h3>
+<p>一个典型的音频应用程序有这样的粗略结构:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="nf">open_the_device</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">set_the_parameters_of_the_device</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">done</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="cm">/* one or both of these */</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">receive_audio_data_from_the_device</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">deliver_audio_data_to_the_device</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">close</span> <span class="n">the</span> <span class="n">device</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="一个最小的后台播放程序">一个最小的后台播放程序</h3>
+<p>该程序打开一个音频接口播放，配置为立体声，16位，44.1kHz，交错常规读/写访问。然后它向它发送一组随机数据，然后退出。它代表了ALSA Audio API最简单的可能用法，并不是一个真正的程序。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;alsa/asoundlib.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span> <span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">err</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">short</span> <span class="n">buf</span><span class="p">[</span><span class="mi">128</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">snd_pcm_t</span> <span class="o">*</span><span class="n">playback_handle</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">snd_pcm_hw_params_t</span> <span class="o">*</span><span class="n">hw_params</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">//if ((err = snd_pcm_open (&amp;playback_handle, argv[1], SND_PCM_STREAM_PLAYBACK, 0)) &lt; 0) {
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">if</span> <span class="p">((</span><span class="n">err</span> <span class="o">=</span> <span class="nf">snd_pcm_open</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">playback_handle</span><span class="p">,</span> <span class="s">&#34;default&#34;</span><span class="p">,</span> <span class="n">SND_PCM_STREAM_PLAYBACK</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">fprintf</span> <span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#34;cannot open audio device &#39;default&#39; (%s)</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="nf">snd_strerror</span> <span class="p">(</span><span class="n">err</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">exit</span> <span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">((</span><span class="n">err</span> <span class="o">=</span> <span class="nf">snd_pcm_hw_params_malloc</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">hw_params</span><span class="p">))</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">fprintf</span> <span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#34;cannot allocate hardware parameter structure (%s)</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="nf">snd_strerror</span> <span class="p">(</span><span class="n">err</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">exit</span> <span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">((</span><span class="n">err</span> <span class="o">=</span> <span class="nf">snd_pcm_hw_params_any</span> <span class="p">(</span><span class="n">playback_handle</span><span class="p">,</span> <span class="n">hw_params</span><span class="p">))</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">fprintf</span> <span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#34;cannot initialize hardware parameter structure (%s)</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="nf">snd_strerror</span> <span class="p">(</span><span class="n">err</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">exit</span> <span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">((</span><span class="n">err</span> <span class="o">=</span> <span class="nf">snd_pcm_hw_params_set_access</span> <span class="p">(</span><span class="n">playback_handle</span><span class="p">,</span> <span class="n">hw_params</span><span class="p">,</span> <span class="n">SND_PCM_ACCESS_RW_INTERLEAVED</span><span class="p">))</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">fprintf</span> <span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#34;cannot set access type (%s)</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="nf">snd_strerror</span> <span class="p">(</span><span class="n">err</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">exit</span> <span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">((</span><span class="n">err</span> <span class="o">=</span> <span class="nf">snd_pcm_hw_params_set_format</span> <span class="p">(</span><span class="n">playback_handle</span><span class="p">,</span> <span class="n">hw_params</span><span class="p">,</span> <span class="n">SND_PCM_FORMAT_S16_LE</span><span class="p">))</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">fprintf</span> <span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#34;cannot set sample format (%s)</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="nf">snd_strerror</span> <span class="p">(</span><span class="n">err</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">exit</span> <span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">rate</span> <span class="o">=</span> <span class="mi">44100</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">((</span><span class="n">err</span> <span class="o">=</span> <span class="nf">snd_pcm_hw_params_set_rate_near</span> <span class="p">(</span><span class="n">playback_handle</span><span class="p">,</span> <span class="n">hw_params</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">rate</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">fprintf</span> <span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#34;cannot set sample rate (%s)</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="nf">snd_strerror</span> <span class="p">(</span><span class="n">err</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">exit</span> <span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">((</span><span class="n">err</span> <span class="o">=</span> <span class="nf">snd_pcm_hw_params_set_channels</span> <span class="p">(</span><span class="n">playback_handle</span><span class="p">,</span> <span class="n">hw_params</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">fprintf</span> <span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#34;cannot set channel count (%s)</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="nf">snd_strerror</span> <span class="p">(</span><span class="n">err</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">exit</span> <span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">((</span><span class="n">err</span> <span class="o">=</span> <span class="nf">snd_pcm_hw_params</span> <span class="p">(</span><span class="n">playback_handle</span><span class="p">,</span> <span class="n">hw_params</span><span class="p">))</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">fprintf</span> <span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#34;cannot set parameters (%s)</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="nf">snd_strerror</span> <span class="p">(</span><span class="n">err</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">exit</span> <span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nf">snd_pcm_hw_params_free</span> <span class="p">(</span><span class="n">hw_params</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">((</span><span class="n">err</span> <span class="o">=</span> <span class="nf">snd_pcm_prepare</span> <span class="p">(</span><span class="n">playback_handle</span><span class="p">))</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">fprintf</span> <span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#34;cannot prepare audio interface for use (%s)</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="nf">snd_strerror</span> <span class="p">(</span><span class="n">err</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">exit</span> <span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">((</span><span class="n">err</span> <span class="o">=</span> <span class="nf">snd_pcm_writei</span> <span class="p">(</span><span class="n">playback_handle</span><span class="p">,</span> <span class="n">buf</span><span class="p">,</span> <span class="mi">128</span><span class="p">))</span> <span class="o">!=</span> <span class="mi">128</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nf">fprintf</span> <span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#34;write to audio interface failed (%s)</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="nf">snd_strerror</span> <span class="p">(</span><span class="n">err</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">            <span class="nf">exit</span> <span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nf">snd_pcm_close</span> <span class="p">(</span><span class="n">playback_handle</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nf">exit</span> <span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>下面这个程序打开一个音频接口进行捕获，配置为立体声，16位，44.1kHz，交错常规读/写访问。然后它从中读取一组随机数据，然后退出。这并不是一个真正的程序。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;alsa/asoundlib.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span> <span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">err</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">short</span> <span class="n">buf</span><span class="p">[</span><span class="mi">128</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">snd_pcm_t</span> <span class="o">*</span><span class="n">capture_handle</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">snd_pcm_hw_params_t</span> <span class="o">*</span><span class="n">hw_params</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">((</span><span class="n">err</span> <span class="o">=</span> <span class="nf">snd_pcm_open</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">capture_handle</span><span class="p">,</span> <span class="s">&#34;default&#34;</span><span class="p">,</span> <span class="n">SND_PCM_STREAM_CAPTURE</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">fprintf</span> <span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#34;cannot open audio device &#39;default&#39; (%s)</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="nf">snd_strerror</span> <span class="p">(</span><span class="n">err</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">exit</span> <span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">((</span><span class="n">err</span> <span class="o">=</span> <span class="nf">snd_pcm_hw_params_malloc</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">hw_params</span><span class="p">))</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">fprintf</span> <span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#34;cannot allocate hardware parameter structure (%s)</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="nf">snd_strerror</span> <span class="p">(</span><span class="n">err</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">exit</span> <span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">((</span><span class="n">err</span> <span class="o">=</span> <span class="nf">snd_pcm_hw_params_any</span> <span class="p">(</span><span class="n">capture_handle</span><span class="p">,</span> <span class="n">hw_params</span><span class="p">))</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">fprintf</span> <span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#34;cannot initialize hardware parameter structure (%s)</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="nf">snd_strerror</span> <span class="p">(</span><span class="n">err</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">exit</span> <span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">((</span><span class="n">err</span> <span class="o">=</span> <span class="nf">snd_pcm_hw_params_set_access</span> <span class="p">(</span><span class="n">capture_handle</span><span class="p">,</span> <span class="n">hw_params</span><span class="p">,</span> <span class="n">SND_PCM_ACCESS_RW_INTERLEAVED</span><span class="p">))</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">fprintf</span> <span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#34;cannot set access type (%s)</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="nf">snd_strerror</span> <span class="p">(</span><span class="n">err</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">exit</span> <span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">((</span><span class="n">err</span> <span class="o">=</span> <span class="nf">snd_pcm_hw_params_set_format</span> <span class="p">(</span><span class="n">capture_handle</span><span class="p">,</span> <span class="n">hw_params</span><span class="p">,</span> <span class="n">SND_PCM_FORMAT_S16_LE</span><span class="p">))</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">fprintf</span> <span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#34;cannot set sample format (%s)</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="nf">snd_strerror</span> <span class="p">(</span><span class="n">err</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">exit</span> <span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">rate</span> <span class="o">=</span> <span class="mi">44100</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">((</span><span class="n">err</span> <span class="o">=</span> <span class="nf">snd_pcm_hw_params_set_rate_near</span> <span class="p">(</span><span class="n">capture_handle</span><span class="p">,</span> <span class="n">hw_params</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">rate</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">fprintf</span> <span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#34;cannot set sample rate (%s)</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="nf">snd_strerror</span> <span class="p">(</span><span class="n">err</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">exit</span> <span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">((</span><span class="n">err</span> <span class="o">=</span> <span class="nf">snd_pcm_hw_params_set_channels</span> <span class="p">(</span><span class="n">capture_handle</span><span class="p">,</span> <span class="n">hw_params</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">fprintf</span> <span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#34;cannot set channel count (%s)</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="nf">snd_strerror</span> <span class="p">(</span><span class="n">err</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">exit</span> <span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">((</span><span class="n">err</span> <span class="o">=</span> <span class="nf">snd_pcm_hw_params</span> <span class="p">(</span><span class="n">capture_handle</span><span class="p">,</span> <span class="n">hw_params</span><span class="p">))</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">fprintf</span> <span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#34;cannot set parameters (%s)</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="nf">snd_strerror</span> <span class="p">(</span><span class="n">err</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">exit</span> <span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nf">snd_pcm_hw_params_free</span> <span class="p">(</span><span class="n">hw_params</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">((</span><span class="n">err</span> <span class="o">=</span> <span class="nf">snd_pcm_prepare</span> <span class="p">(</span><span class="n">capture_handle</span><span class="p">))</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">fprintf</span> <span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#34;cannot prepare audio interface for use (%s)</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="nf">snd_strerror</span> <span class="p">(</span><span class="n">err</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">exit</span> <span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">((</span><span class="n">err</span> <span class="o">=</span> <span class="nf">snd_pcm_readi</span> <span class="p">(</span><span class="n">capture_handle</span><span class="p">,</span> <span class="n">buf</span><span class="p">,</span> <span class="mi">128</span><span class="p">))</span> <span class="o">!=</span> <span class="mi">128</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nf">fprintf</span> <span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#34;read from audio interface failed (%s)</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="nf">snd_strerror</span> <span class="p">(</span><span class="n">err</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">            <span class="nf">exit</span> <span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nf">snd_pcm_close</span> <span class="p">(</span><span class="n">capture_handle</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nf">exit</span> <span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>下面这个程序打开一个音频接口播放，配置为立体声，16位，44.1kHz，交错常规读/写访问。然后，它等待接口准备好播放数据，并在那个时候向它传递随机数据。这种设计允许您的程序轻松地移植到依赖回调驱动机制的系统，如JACK、LADSPA、CoreAudio、VST和许多其他系统。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span><span class="lnt">121
+</span><span class="lnt">122
+</span><span class="lnt">123
+</span><span class="lnt">124
+</span><span class="lnt">125
+</span><span class="lnt">126
+</span><span class="lnt">127
+</span><span class="lnt">128
+</span><span class="lnt">129
+</span><span class="lnt">130
+</span><span class="lnt">131
+</span><span class="lnt">132
+</span><span class="lnt">133
+</span><span class="lnt">134
+</span><span class="lnt">135
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;errno.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;poll.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;alsa/asoundlib.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="kt">snd_pcm_t</span> <span class="o">*</span><span class="n">playback_handle</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">short</span> <span class="n">buf</span><span class="p">[</span><span class="mi">4096</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">playback_callback</span> <span class="p">(</span><span class="kt">snd_pcm_sframes_t</span> <span class="n">nframes</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">err</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span> <span class="p">(</span><span class="s">&#34;playback callback called with %u frames</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="p">)</span><span class="n">nframes</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cm">/* ... fill buf with data ... */</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">((</span><span class="n">err</span> <span class="o">=</span> <span class="nf">snd_pcm_writei</span> <span class="p">(</span><span class="n">playback_handle</span><span class="p">,</span> <span class="n">buf</span><span class="p">,</span> <span class="n">nframes</span><span class="p">))</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">fprintf</span> <span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#34;write failed (%s)</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="nf">snd_strerror</span> <span class="p">(</span><span class="n">err</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">err</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span> <span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span><span class="o">*</span> <span class="n">argv</span><span class="p">[])</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">argc</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">argv</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">snd_pcm_hw_params_t</span> <span class="o">*</span><span class="n">hw_params</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">snd_pcm_sw_params_t</span> <span class="o">*</span><span class="n">sw_params</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">snd_pcm_sframes_t</span> <span class="n">frames_to_deliver</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">err</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">((</span><span class="n">err</span> <span class="o">=</span> <span class="nf">snd_pcm_open</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">playback_handle</span><span class="p">,</span> <span class="s">&#34;default&#34;</span><span class="p">,</span> <span class="n">SND_PCM_STREAM_PLAYBACK</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">fprintf</span> <span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#34;cannot open audio device &#39;default&#39; (%s)</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="nf">snd_strerror</span> <span class="p">(</span><span class="n">err</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">exit</span> <span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">((</span><span class="n">err</span> <span class="o">=</span> <span class="nf">snd_pcm_hw_params_malloc</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">hw_params</span><span class="p">))</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">fprintf</span> <span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#34;cannot allocate hardware parameter structure (%s)</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="nf">snd_strerror</span> <span class="p">(</span><span class="n">err</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">exit</span> <span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">((</span><span class="n">err</span> <span class="o">=</span> <span class="nf">snd_pcm_hw_params_any</span> <span class="p">(</span><span class="n">playback_handle</span><span class="p">,</span> <span class="n">hw_params</span><span class="p">))</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">fprintf</span> <span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#34;cannot initialize hardware parameter structure (%s)</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="nf">snd_strerror</span> <span class="p">(</span><span class="n">err</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">exit</span> <span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">((</span><span class="n">err</span> <span class="o">=</span> <span class="nf">snd_pcm_hw_params_set_access</span> <span class="p">(</span><span class="n">playback_handle</span><span class="p">,</span> <span class="n">hw_params</span><span class="p">,</span> <span class="n">SND_PCM_ACCESS_RW_INTERLEAVED</span><span class="p">))</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">fprintf</span> <span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#34;cannot set access type (%s)</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="nf">snd_strerror</span> <span class="p">(</span><span class="n">err</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">exit</span> <span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">((</span><span class="n">err</span> <span class="o">=</span> <span class="nf">snd_pcm_hw_params_set_format</span> <span class="p">(</span><span class="n">playback_handle</span><span class="p">,</span> <span class="n">hw_params</span><span class="p">,</span> <span class="n">SND_PCM_FORMAT_S16_LE</span><span class="p">))</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">fprintf</span> <span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#34;cannot set sample format (%s)</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="nf">snd_strerror</span> <span class="p">(</span><span class="n">err</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">exit</span> <span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">rate</span> <span class="o">=</span> <span class="mi">44100</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">((</span><span class="n">err</span> <span class="o">=</span> <span class="nf">snd_pcm_hw_params_set_rate_near</span> <span class="p">(</span><span class="n">playback_handle</span><span class="p">,</span> <span class="n">hw_params</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">rate</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">fprintf</span> <span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#34;cannot set sample rate (%s)</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="nf">snd_strerror</span> <span class="p">(</span><span class="n">err</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">exit</span> <span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">((</span><span class="n">err</span> <span class="o">=</span> <span class="nf">snd_pcm_hw_params_set_channels</span> <span class="p">(</span><span class="n">playback_handle</span><span class="p">,</span> <span class="n">hw_params</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">fprintf</span> <span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#34;cannot set channel count (%s)</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="nf">snd_strerror</span> <span class="p">(</span><span class="n">err</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">exit</span> <span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">((</span><span class="n">err</span> <span class="o">=</span> <span class="nf">snd_pcm_hw_params</span> <span class="p">(</span><span class="n">playback_handle</span><span class="p">,</span> <span class="n">hw_params</span><span class="p">))</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">fprintf</span> <span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#34;cannot set parameters (%s)</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="nf">snd_strerror</span> <span class="p">(</span><span class="n">err</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">exit</span> <span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nf">snd_pcm_hw_params_free</span> <span class="p">(</span><span class="n">hw_params</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cm">/* tell ALSA to wake us up whenever 4096 or more frames of playback data can be delivered. Also, tell ALSA that we&#39;ll start the device ourselves. */</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">((</span><span class="n">err</span> <span class="o">=</span> <span class="nf">snd_pcm_sw_params_malloc</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">sw_params</span><span class="p">))</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">fprintf</span> <span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#34;cannot allocate software parameters structure (%s)</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="nf">snd_strerror</span> <span class="p">(</span><span class="n">err</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">exit</span> <span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">((</span><span class="n">err</span> <span class="o">=</span> <span class="nf">snd_pcm_sw_params_current</span> <span class="p">(</span><span class="n">playback_handle</span><span class="p">,</span> <span class="n">sw_params</span><span class="p">))</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">fprintf</span> <span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#34;cannot initialize software parameters structure (%s)</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="nf">snd_strerror</span> <span class="p">(</span><span class="n">err</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">exit</span> <span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">((</span><span class="n">err</span> <span class="o">=</span> <span class="nf">snd_pcm_sw_params_set_avail_min</span> <span class="p">(</span><span class="n">playback_handle</span><span class="p">,</span> <span class="n">sw_params</span><span class="p">,</span> <span class="mi">4096</span><span class="p">))</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">fprintf</span> <span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#34;cannot set minimum available count (%s)</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="nf">snd_strerror</span> <span class="p">(</span><span class="n">err</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">exit</span> <span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">((</span><span class="n">err</span> <span class="o">=</span> <span class="nf">snd_pcm_sw_params_set_start_threshold</span> <span class="p">(</span><span class="n">playback_handle</span><span class="p">,</span> <span class="n">sw_params</span><span class="p">,</span> <span class="mi">0U</span><span class="p">))</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">fprintf</span> <span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#34;cannot set start mode (%s)</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="nf">snd_strerror</span> <span class="p">(</span><span class="n">err</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">exit</span> <span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">((</span><span class="n">err</span> <span class="o">=</span> <span class="nf">snd_pcm_sw_params</span> <span class="p">(</span><span class="n">playback_handle</span><span class="p">,</span> <span class="n">sw_params</span><span class="p">))</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">fprintf</span> <span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#34;cannot set software parameters (%s)</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="nf">snd_strerror</span> <span class="p">(</span><span class="n">err</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">exit</span> <span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="cm">/* the interface will interrupt the kernel every 4096 frames, and ALSA will wake up this program very soon after that. */</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">((</span><span class="n">err</span> <span class="o">=</span> <span class="nf">snd_pcm_prepare</span> <span class="p">(</span><span class="n">playback_handle</span><span class="p">))</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">fprintf</span> <span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#34;cannot prepare audio interface for use (%s)</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="nf">snd_strerror</span> <span class="p">(</span><span class="n">err</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">exit</span> <span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="cm">/* wait till the interface is ready for data, or 1 second has elapsed. */</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">((</span><span class="n">err</span> <span class="o">=</span> <span class="nf">snd_pcm_wait</span> <span class="p">(</span><span class="n">playback_handle</span><span class="p">,</span> <span class="mi">1000</span><span class="p">))</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nf">fprintf</span> <span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#34;poll failed (%s)</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="nf">strerror</span> <span class="p">(</span><span class="n">errno</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">            <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>	           
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="cm">/* find out how much space is available for playback data */</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">((</span><span class="n">frames_to_deliver</span> <span class="o">=</span> <span class="nf">snd_pcm_avail_update</span> <span class="p">(</span><span class="n">playback_handle</span><span class="p">))</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="n">frames_to_deliver</span> <span class="o">==</span> <span class="o">-</span><span class="n">EPIPE</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="nf">fprintf</span> <span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#34;an xrun occured</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="nf">fprintf</span> <span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#34;unknown ALSA avail update return value (%d)</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">frames_to_deliver</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">                <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">frames_to_deliver</span> <span class="o">=</span> <span class="n">frames_to_deliver</span> <span class="o">&gt;</span> <span class="mi">4096</span> <span class="o">?</span> <span class="mi">4096</span> <span class="o">:</span> <span class="n">frames_to_deliver</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="cm">/* deliver the data */</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="nf">playback_callback</span> <span class="p">(</span><span class="n">frames_to_deliver</span><span class="p">)</span> <span class="o">!=</span> <span class="n">frames_to_deliver</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nf">fprintf</span> <span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&#34;playback callback failed</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nf">snd_pcm_close</span> <span class="p">(</span><span class="n">playback_handle</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nf">exit</span> <span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="一些术语">一些术语</h3>
+<table>
+<thead>
+<tr>
+<th>术语</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>capture</td>
+<td>从外部世界接收数据(与“记录”不同，“记录”意味着将数据存储在某个地方，并且不是ALSA API的一部分)</td>
+</tr>
+<tr>
+<td>playback</td>
+<td>向外部世界传递数据(尽管不一定)，以便能够被听到。</td>
+</tr>
+<tr>
+<td>duplex</td>
+<td>捕获和回放同时发生在同一界面上的一种情况。</td>
+</tr>
+<tr>
+<td>xrun</td>
+<td>一旦音频接口开始运行，它就会继续运行，直到被告知停止。它将生成数据供计算机使用和/或将数据从计算机发送到外部世界。由于各种原因，您的程序可能跟不上它。对于回放，这可能导致接口需要来自计算机的新数据，但它不存在，迫使它使用遗留在硬件缓冲区中的旧数据。这就是所谓的“欠压”。为了捕获，接口可能有数据要传递给计算机，但没有地方存储这些数据，因此它必须覆盖硬件缓冲区中包含计算机尚未接收到的数据的部分。这就是所谓的“泛滥”。为简单起见，我们使用通用术语“xrun”来指代这两种情况</td>
+</tr>
+<tr>
+<td>PCM</td>
+<td>脉冲编码调制。这个短语(和首字母缩写词)描述了用数字形式表示模拟信号的一种方法。它是几乎被计算机音频接口使用的方法，在ALSA API中用作“音频”的缩写。</td>
+</tr>
+<tr>
+<td>channel</td>
+<td></td>
+</tr>
+<tr>
+<td>frame</td>
+<td>采样是描述音频信号在单个声道上的单个时间点的振幅的单个值。当我们谈论使用数字音频时，我们经常想要谈论在单个时间点上表示所有频道的数据。这是一个样本的集合，每个通道一个，通常称为“帧”。当我们以框架的形式讨论时间的流逝时，它大致相当于人们以样本的形式测量的时间，但更准确;更重要的是，当我们讨论在一个时间点上表示所有通道所需的数据量时，它是唯一有意义的单位。几乎每个ALSA Audio API函数都使用帧作为数据量的度量单位。</td>
+</tr>
+<tr>
+<td>interleaved</td>
+<td>一种数据布局安排，其中将在同一时间播放的每个通道的样本按顺序相互跟随。参见“non-interleaved”</td>
+</tr>
+<tr>
+<td>non-interleaved</td>
+<td>一种数据布局，其中单个通道的样本按顺序相互跟随;另一个通道的样本要么在另一个缓冲区中，要么在该缓冲区的另一部分中。与&quot;interleaves&quot;形成对比</td>
+</tr>
+<tr>
+<td>sample clock</td>
+<td>一种计时源，用于标记样品应该发送/接收到外部世界的时间。有些音频接口允许你使用外部采样时钟，要么是“文字时钟”信号(通常用于许多工作室)，要么是“自动同步”(使用传入数字数据中的时钟信号)。所有音频接口都至少有一个样本时钟源，该时钟源存在于接口本身，通常是一个小晶体时钟。有些接口不允许改变时钟的速率，有些接口的时钟实际上并不能精确地以您期望的速率运行(44.1kHz等)。没有两个样本时钟可以被期望以完全相同的速率运行——如果你需要两个样本流保持彼此同步，它们必须从同一个样本时钟运行。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="api使用流程">API使用流程</h3>
+<ol>
+<li>打开设备</li>
+<li>设置参数</li>
+<li>硬件参数
+<ul>
+<li>采样率：如果接口有模拟I/O，则控制A/D/D/A转换的速率。对于全数字接口，它控制用于将数字音频数据移动到/从外部世界的时钟的速度。在某些接口上，其他特定于设备的配置可能意味着您的程序不能控制这个值(例如，当接口被告知使用外部字时钟源来确定采样率时)。</li>
+<li>格式：它控制用于向接口传输数据和从接口传输数据的格式。它可能与硬件直接支持的格式对应，也可能不对应。</li>
+<li>通道数：</li>
+<li>数据访问与布局：这控制程序从接口传递/接收数据的方式。有两个参数由4个可能的设置控制。其中一个参数是是否使用“读/写”模型，即使用显式函数调用来传输数据。这里的另一个选项是使用“mmap模式”，在这种模式下，数据是通过在内存区域之间复制来传输的，API调用只需要注意它开始和结束的时间。另一个参数是数据布局是交错的还是非交错的。</li>
+<li>中断时间间隔：这决定了接口每次对其硬件缓冲区的完整遍历将产生多少中断。它可以通过指定周期大小的一些周期来设置。因为这决定了在接口中断计算机之前必须积累的空间/数据帧数。它是控制延迟的核心。</li>
+<li>缓冲区大小：这决定了硬件缓冲区的大小。它可以以时间或帧为单位指定。</li>
+</ul>
+</li>
+<li>软件参数(这些参数控制设备驱动程序的操作，而不是硬件本身。大多数使用ALSA音频API的程序不需要设置这些;少数将需要设置它们的子集。)
+<ul>
+<li>何时启动设备：当您打开音频接口时，ALSA确保它不是活动的-没有数据被移动到或从它的外部连接器。可以推测，在某个时刻，您希望数据传输开始。有几种方法可以实现这一目标。这里的控制点是开始阈值，它定义了自动启动设备所需的空间/数据帧数。如果设置为播放的某个值而不是0，则有必要在设备启动之前预填充播放缓冲区。如果设置为0，第一次写入设备的数据(或第一次尝试从捕获流读取数据)将启动设备。您还可以显式地使用<code>snd_pcm_start</code>启动设备，但是在播放流的情况下，这需要缓冲区预填充。如果尝试不这样做就启动流，则会得到<code>-EPIPE</code>作为返回代码，表示没有数据等待传递到回放硬件缓冲区。</li>
+<li>如何处理 xruns：如果发生了xrun，设备驱动程序可能会根据请求采取某些步骤来处理它。选项包括停止设备，或静音用于回放的全部或部分硬件缓冲区。
+<ul>
+<li>停止阈值：如果可用的数据/空间帧数达到或超过这个值，驱动程序将停止接口。</li>
+<li>沉默阈值：如果一个回放流的可用空间帧数达到或超过这个值，驱动程序将用静默填充部分回放硬件缓冲区。</li>
+<li>沉默值大小：当满足静默阈值水平时，这将决定有多少静默帧被写入回放硬件缓冲区</li>
+</ul>
+</li>
+<li>可用于唤醒的最小空间/数据帧数：使用poll(2)或select(2)来确定音频数据何时可以传输到接口或从接口传输的程序可以将此设置为控制相对于硬件缓冲区的状态，它们希望在哪个点被唤醒。</li>
+<li>传输块大小：这决定了从设备硬件缓冲区传输数据时使用的帧数。</li>
+</ul>
+</li>
+</ol>
+<p>还有一些其他的软件参数，但在这里不需要考虑。</p>
+<h2 id="alsa-api">ALSA API</h2>
+<blockquote>
+<p>ALSA 提供了 Kernel API 和 库API，本文当描述了库 API 以及它如何与内核 API 交互。</p>
+</blockquote>
+<p>应用程序程序员应该使用库API而不是内核API。该库提供了内核API的100%功能，但在可用性方面进行了重大改进，使应用程序代码更简单、更美观。此外，将来的修复程序或兼容性代码可能会放在库代码中，而不是放在内核驱动程序中。</p>
+<h3 id="api-链接">API 链接</h3>
+<ul>
+<li><a href="https://www.alsa-project.org/alsa-doc/alsa-lib/control.html" target="_blank" rel="noopener noreffer">页面控件接口解释了基本控件API</a></li>
+<li><a href="https://www.alsa-project.org/alsa-doc/alsa-lib/control_plugins.html" target="_blank" rel="noopener noreffer">基本控件插件解释了基本控件插件的设计</a></li>
+<li><a href="https://www.alsa-project.org/alsa-doc/alsa-lib/hcontrol.html" target="_blank" rel="noopener noreffer">高级控件接口解释了高级原语控件API</a></li>
+<li><a href="https://www.alsa-project.org/alsa-doc/alsa-lib/mixer.html" target="_blank" rel="noopener noreffer">页面混合器接口解释了混合器控件API</a></li>
+<li><a href="https://www.alsa-project.org/alsa-doc/alsa-lib/pcm.html" target="_blank" rel="noopener noreffer">PCM(数字音频)接口页面解释了PCM(数字音频)API的设计</a></li>
+<li><a href="https://www.alsa-project.org/alsa-doc/alsa-lib/pcm_plugins.html" target="_blank" rel="noopener noreffer">PCM(数字音频)插件页面解释了PCM(数字音频)插件的设计</a></li>
+<li><a href="https://www.alsa-project.org/alsa-doc/alsa-lib/pcm_external_plugins.html" target="_blank" rel="noopener noreffer">Page PCM External Plugin SDK介绍了外部PCM插件SDK</a></li>
+<li><a href="" rel="">Page ctl_external_plugins解释了外部控制插件SDK</a></li>
+<li><a href="https://www.alsa-project.org/alsa-doc/alsa-lib/rawmidi.html" target="_blank" rel="noopener noreffer">页面RawMidi接口说明了RawMidi API的设计</a></li>
+<li><a href="https://www.alsa-project.org/alsa-doc/alsa-lib/timer.html" target="_blank" rel="noopener noreffer">Page Timer接口解释了Timer API的设计</a></li>
+<li><a href="https://www.alsa-project.org/alsa-doc/alsa-lib/seq.html" target="_blank" rel="noopener noreffer">Page Sequencer界面解释了Sequencer API的设计</a></li>
+<li><a href="https://www.alsa-project.org/alsa-doc/alsa-lib/group__ucm.html" target="_blank" rel="noopener noreffer">页面用例接口解释用例API</a></li>
+<li><a href="https://www.alsa-project.org/alsa-doc/alsa-lib/group__topology.html" target="_blank" rel="noopener noreffer">Page ALSA Topology Interface解释了DSP拓扑API</a></li>
+</ul>
+<h3 id="配置">配置</h3>
+<ul>
+<li><a href="https://www.alsa-project.org/alsa-doc/alsa-lib/conf.html" target="_blank" rel="noopener noreffer">Page Configuration文件解释了库配置的语法</a></li>
+<li><a href="https://www.alsa-project.org/alsa-doc/alsa-lib/confarg.html" target="_blank" rel="noopener noreffer">配置文件中的Page运行时参数解释运行时参数语法</a></li>
+<li><a href="https://www.alsa-project.org/alsa-doc/alsa-lib/conffunc.html" target="_blank" rel="noopener noreffer">配置文件中的运行时函数页解释了运行时函数的定义及其用法</a></li>
+<li><a href="https://www.alsa-project.org/alsa-doc/alsa-lib/confhooks.html" target="_blank" rel="noopener noreffer">配置文件中的Page hook解释了运行时钩子的定义及其用法</a></li>
+<li><a href="https://www.alsa-project.org/alsa-doc/alsa-lib/group__ucm__conf.html" target="_blank" rel="noopener noreffer">页面用例配置解释了UCM配置和它们的用法</a></li>
+</ul>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2023-01-28</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">linux</a>,&nbsp;<a href="/tags/alsa/">alsa</a>,&nbsp;<a href="/tags/music/">music</a>,&nbsp;<a href="/tags/sound/">sound</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/2023/01/0001-ncurses%E5%85%A5%E9%97%A8/" class="prev" rel="prev" title="ncurses入门"><i class="fas fa-angle-left fa-fw"></i>ncurses入门</a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">ding jing</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="/lib/lightgallery/lightgallery.min.css"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script type="text/javascript" src="/lib/valine/Valine.min.js"></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/algoliasearch/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/twemoji/twemoji.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lightgallery.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-thumbnail.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-zoom.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":9999999999},"comment":{"valine":{"appId":"oGOJ6TSiiaaOrhXD1bEYILk9-gzGzoHsz","appKey":"lbK71uSxpg4XmLmvm2h13JdJ","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"serverURLs":"https://ogoj6tsi.lc-cn-n1-shared.com","visitor":true}},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.zh-cn","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":80,"type":"algolia"},"twemoji":true};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

@@ -4,7 +4,14 @@
         <link>https://dingjingmaster.github.io/tags/linux/</link>
         <description>linux - 标签 - 九九</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>dingjing@live.cn (ding jing)</managingEditor>
-            <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Wed, 11 Jan 2023 21:03:48 &#43;0800</lastBuildDate><atom:link href="https://dingjingmaster.github.io/tags/linux/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Sat, 28 Jan 2023 10:17:23 &#43;0800</lastBuildDate><atom:link href="https://dingjingmaster.github.io/tags/linux/" rel="self" type="application/rss+xml" /><item>
+    <title>Linux音频体系结构——ALSA</title>
+    <link>https://dingjingmaster.github.io/2023/01/0012-alsa/</link>
+    <pubDate>Sat, 28 Jan 2023 10:17:23 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://dingjingmaster.github.io/2023/01/0012-alsa/</guid>
+    <description><![CDATA[ALSA是什么 ALSA(Advanced Linux Sound Architecture)是linux上主流的音频结构，提供了对音频和MIDI的支持，在没有出现ALSA架构之前，一直使]]></description>
+</item><item>
     <title>ncurses入门</title>
     <link>https://dingjingmaster.github.io/2023/01/0001-ncurses%E5%85%A5%E9%97%A8/</link>
     <pubDate>Wed, 11 Jan 2023 21:03:48 &#43;0800</pubDate>
@@ -67,12 +74,5 @@
     <author>作者</author>
     <guid>https://dingjingmaster.github.io/2022/06/0001-bpf%E4%B8%8Eebpf/</guid>
     <description><![CDATA[BPF与eBPF是什么 BPF(Berkeley Packet Filter)，伯克利数据包过滤器，这项技术诞生于 1992 年，其作用是提升网络包过滤工具的性能，2014年正式加入Lin]]></description>
-</item><item>
-    <title>polkit 相关命令</title>
-    <link>https://dingjingmaster.github.io/2022/06/0003-polkit-%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4/</link>
-    <pubDate>Tue, 07 Jun 2022 19:55:26 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://dingjingmaster.github.io/2022/06/0003-polkit-%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4/</guid>
-    <description><![CDATA[pkcheck 检查进程是否被授权 说明 pkcheck用于检查进程(由&ndash;process(见下文)或&ndash;system-bus-name指]]></description>
 </item></channel>
 </rss>

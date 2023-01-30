@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>alsa - 标签 - 九九</title>
+        <link>https://dingjingmaster.github.io/tags/alsa/</link>
+        <description>alsa - 标签 - 九九</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>dingjing@live.cn (ding jing)</managingEditor>
+            <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Sat, 28 Jan 2023 10:17:23 &#43;0800</lastBuildDate><atom:link href="https://dingjingmaster.github.io/tags/alsa/" rel="self" type="application/rss+xml" /><item>
+    <title>Linux音频体系结构——ALSA</title>
+    <link>https://dingjingmaster.github.io/2023/01/0012-alsa/</link>
+    <pubDate>Sat, 28 Jan 2023 10:17:23 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://dingjingmaster.github.io/2023/01/0012-alsa/</guid>
+    <description><![CDATA[ALSA是什么 ALSA(Advanced Linux Sound Architecture)是linux上主流的音频结构，提供了对音频和MIDI的支持，在没有出现ALSA架构之前，一直使]]></description>
+</item></channel>
+</rss>
