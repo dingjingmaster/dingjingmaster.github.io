@@ -4,7 +4,14 @@
         <link>https://dingjingmaster.github.io/posts/</link>
         <description>所有文章 | 九九</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>dingjing@live.cn (ding jing)</managingEditor>
-            <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Sat, 28 Jan 2023 10:17:23 &#43;0800</lastBuildDate><atom:link href="https://dingjingmaster.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Sat, 04 Feb 2023 15:16:02 &#43;0800</lastBuildDate><atom:link href="https://dingjingmaster.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>UOS添加菜单项</title>
+    <link>https://dingjingmaster.github.io/2023/02/0013-uos%E6%B7%BB%E5%8A%A0%E8%8F%9C%E5%8D%95%E9%A1%B9/</link>
+    <pubDate>Sat, 04 Feb 2023 15:16:02 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://dingjingmaster.github.io/2023/02/0013-uos%E6%B7%BB%E5%8A%A0%E8%8F%9C%E5%8D%95%E9%A1%B9/</guid>
+    <description><![CDATA[需求背景 近来我做的项目需要在 UOS 文件管理器右键菜单添加几个菜单项，后来通过公司找到 UOS 同事，他们提供了两种解决方案给我且都可满足需求。本文接下来]]></description>
+</item><item>
     <title>Linux音频体系结构——ALSA</title>
     <link>https://dingjingmaster.github.io/2023/01/0012-alsa/</link>
     <pubDate>Sat, 28 Jan 2023 10:17:23 &#43;0800</pubDate>
@@ -67,12 +74,5 @@
     <author>作者</author>
     <guid>https://dingjingmaster.github.io/2022/08/0009-c-11%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88/</guid>
     <description><![CDATA[智能指针的作用 在使用C/C++时候，使用指针理由之一就是希望变量在需要的时候突破作用域边界的限制。然而，实际使用中，确保“指针的寿命”和“其]]></description>
-</item><item>
-    <title>gRPC C&#43;&#43; 例子</title>
-    <link>https://dingjingmaster.github.io/2022/08/0007-grpc-c-hello-world/</link>
-    <pubDate>Mon, 01 Aug 2022 22:31:15 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://dingjingmaster.github.io/2022/08/0007-grpc-c-hello-world/</guid>
-    <description><![CDATA[说明 gRPC 是一款好用的 RPC 框架，它使用 protobuf 做为接口定义和底层消息交换格式。 使用 gRPC，一个客户端程序可以直接调用另一台机器上服务端程序的方法，这使]]></description>
 </item></channel>
 </rss>

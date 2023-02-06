@@ -1,0 +1,1360 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>UOS添加菜单项 - 九九</title><meta name="Description" content=""><meta property="og:title" content="UOS添加菜单项" />
+<meta property="og:description" content="需求背景 近来我做的项目需要在 UOS 文件管理器右键菜单添加几个菜单项，后来通过公司找到 UOS 同事，他们提供了两种解决方案给我且都可满足需求。本文接下来" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dingjingmaster.github.io/2023/02/0013-uos%E6%B7%BB%E5%8A%A0%E8%8F%9C%E5%8D%95%E9%A1%B9/" /><meta property="og:image" content="https://dingjingmaster.github.io/img/logo.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-02-04T15:16:02+08:00" />
+<meta property="article:modified_time" content="2023-02-04T15:16:02+08:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://dingjingmaster.github.io/img/logo.jpg"/>
+
+<meta name="twitter:title" content="UOS添加菜单项"/>
+<meta name="twitter:description" content="需求背景 近来我做的项目需要在 UOS 文件管理器右键菜单添加几个菜单项，后来通过公司找到 UOS 同事，他们提供了两种解决方案给我且都可满足需求。本文接下来"/>
+<meta name="application-name" content="九九">
+<meta name="apple-mobile-web-app-title" content="九九"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://dingjingmaster.github.io/2023/02/0013-uos%E6%B7%BB%E5%8A%A0%E8%8F%9C%E5%8D%95%E9%A1%B9/" /><link rel="prev" href="https://dingjingmaster.github.io/2023/01/0012-alsa/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "UOS添加菜单项",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/dingjingmaster.github.io\/2023\/02\/0013-uos%E6%B7%BB%E5%8A%A0%E8%8F%9C%E5%8D%95%E9%A1%B9\/"
+        },"image": ["https:\/\/dingjingmaster.github.io\/img\/logo.jpg"],"genre": "posts","keywords": "linux, uos, menu, 菜单","wordcount":  5051 ,
+        "url": "https:\/\/dingjingmaster.github.io\/2023\/02\/0013-uos%E6%B7%BB%E5%8A%A0%E8%8F%9C%E5%8D%95%E9%A1%B9\/","datePublished": "2023-02-04T15:16:02+08:00","dateModified": "2023-02-04T15:16:02+08:00","publisher": {
+            "@type": "Organization",
+            "name": "九九","logo": "https:\/\/dingjingmaster.github.io\/img\/logo.jpg"},"author": {
+                "@type": "Person",
+                "name": "ding jing"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="九九"><span class="header-title-pre"> </span>九九</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/timeline/"> 时间轴 </a><a class="menu-item" href="https://github.com/dingjingmaster" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="九九"><span class="header-title-pre"> </span>九九</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/timeline/" title="">时间轴</a><a class="menu-item" href="https://github.com/dingjingmaster" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">UOS添加菜单项</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>ding jing</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/linux/"><i class="far fa-folder fa-fw"></i>linux</a>&nbsp;<a href="/categories/uos/"><i class="far fa-folder fa-fw"></i>uos</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-02-04">2023-02-04</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 5051 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 11 分钟&nbsp;<span id="/2023/02/0013-uos%E6%B7%BB%E5%8A%A0%E8%8F%9C%E5%8D%95%E9%A1%B9/" class="leancloud_visitors" data-flag-title="UOS添加菜单项">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#需求背景">需求背景</a></li>
+    <li><a href="#通过配置文件方式添加菜单项">通过配置文件方式添加菜单项</a></li>
+    <li><a href="#通过插件的方式扩展">通过插件的方式扩展</a>
+      <ul>
+        <li><a href="#dde-file-manager第三方插件加载流程">dde-file-manager第三方插件加载流程</a></li>
+        <li><a href="#接口列表">接口列表</a>
+          <ul>
+            <li><a href="#元接口">元接口</a></li>
+            <li><a href="#类接口">类接口</a>
+              <ul>
+                <li><a href="#角标">角标</a></li>
+                <li><a href="#右键菜单">右键菜单</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><a href="#dde-file-manager插件扩展示例">dde-file-manager插件扩展示例</a>
+          <ul>
+            <li><a href="#1-安装依赖">1. 安装依赖</a></li>
+            <li><a href="#2-cmake配置">2. cmake配置</a></li>
+            <li><a href="#3-实现元接口">3. 实现元接口</a></li>
+            <li><a href="#3-实现相关类接口">3. 实现相关类接口</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="需求背景">需求背景</h2>
+<p>近来我做的项目需要在 UOS 文件管理器右键菜单添加几个菜单项，后来通过公司找到 UOS 同事，他们提供了两种解决方案给我且都可满足需求。本文接下来将描述这两种实现方案</p>
+<h2 id="通过配置文件方式添加菜单项">通过配置文件方式添加菜单项</h2>
+<p>详细文档可参看：<a href="https://developer.chinauos.com/#/pages/document/info?id=ae53aada-100b-498c-ba02-b905fa3cf9ed&amp;admin=" target="_blank" rel="noopener noreffer">https://developer.chinauos.com/#/pages/document/info?id=ae53aada-100b-498c-ba02-b905fa3cf9ed&amp;admin=</a></p>
+<p>在此我提供一个简单的例子，配置文件的方式相对比较简单</p>
+<ol>
+<li>创建文件 &lsquo;menu.desktop&rsquo; 并写入如下内容：</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">[Desktop Entry]
+</span></span><span class="line"><span class="cl">Type=Application
+</span></span><span class="line"><span class="cl">Name=Test
+</span></span><span class="line"><span class="cl">Name[zh_CN]=测试
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Exec=/bin/xdg-open %F
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>把 &lsquo;menu.desktop&rsquo; 复制到 &lsquo;/usr/share/deepin/dde-file-manager/oem-menuextensions/&rsquo;</li>
+<li>安装 <code>xautomation</code> 软件包</li>
+<li>重启机器，启动后在桌面上选中文件并右键菜单即可看到菜单中添加了 <code>测试</code> 这一选项。</li>
+</ol>
+<blockquote>
+<p>这种方式扩展可满足绝大部分需求，我考虑过有一种使用场景是无法满足的：当需要根据选中文件的内容判断菜单项中是否需要显示指定菜单项目这一需求时候，通过这一方式无法实现。
+<br/>但是显然这种使用场景很少，大多数场景都是根据文件扩展名来做判断
+<br/>
+当然这种方式优势也很明显，哪怕插件接口改变也不会影响功能正常使用</p>
+</blockquote>
+<h2 id="通过插件的方式扩展">通过插件的方式扩展</h2>
+<p>UOS 文件管理器的插件机制是由文件管理器提供一个扩展库 libdfm-extension.so 来提供接口，这是一个纯 C/C++ 接口的库。第三方开发者通过加载该扩展库，按照文管提供的标准来调用和实现相应接口，共同完成定制需求的功能扩展。</p>
+<h3 id="dde-file-manager第三方插件加载流程">dde-file-manager第三方插件加载流程</h3>
+<p>在文件管理器启动时，会去检测目录 /usr/lib/[arch]/dde-file-manager/plugins/extensions 下的所有文件（其中 [arch] 代表平台架构，如 ARM64 下为 aarch64-linux-gnu，AMD 64下为 x86_64-linux-gnu）， 并检测是否是一个正常的动态库文件，如果是则尝试加载，因此第三方开发者应该将扩展插件安装到此目录下。如果加载成功，文管将会检查扩展插件是否实现了相应的元接口，如果通过了检查，文管将与第三方扩展插件开始正常业务交互。</p>
+<h3 id="接口列表">接口列表</h3>
+<p>这里列出文管提供的所有接口，其中元接口是 C ⻛格的接口，右键菜单和⻆标展示是通过 C++ 类接口进行实现的。</p>
+<h4 id="元接口">元接口</h4>
+<p>接口定义在头文件 dfm-extension.h 中，第三方开发者需要自行创建 C++ 源码文件实现接口，当前元接口定义如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">extern</span> <span class="s">&#34;C&#34;</span> <span class="kt">void</span> <span class="nf">dfm_extension_initialize</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="k">extern</span> <span class="s">&#34;C&#34;</span> <span class="kt">void</span> <span class="nf">dfm_extension_shutdown</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="k">extern</span> <span class="s">&#34;C&#34;</span> <span class="n">DFMExtMenuPlugin</span> <span class="o">*</span><span class="nf">dfm_extension_menu</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="k">extern</span> <span class="s">&#34;C&#34;</span> <span class="n">DFMExtEmblemIconPlugin</span> <span class="o">*</span><span class="nf">dfm_extension_emblem</span><span class="p">();</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>简介</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dfm_extension_initialize</td>
+<td>插件初始化入口函数，插件被加载后将首先调用它</td>
+</tr>
+<tr>
+<td>dfm_extension_shutdown</td>
+<td>插件释放的函数，当插件被卸载前将会调用它</td>
+</tr>
+<tr>
+<td>dfm_extension_menu</td>
+<td>返回右键菜单扩展对象的函数，该对象的类由第三方开发者实现</td>
+</tr>
+<tr>
+<td>dfm_extension_emblem</td>
+<td>返回⻆标对象的函数，该对象的类由第三方开发者实现</td>
+</tr>
+</tbody>
+</table>
+<h4 id="类接口">类接口</h4>
+<p>由于此扩展方式提供了共享库 libdfm-extension.so，因此为了避免 ABI 兼容性的问题，以下 C++ 类接口采用了pimpl 技法隐藏类属性，采用 std::function ＋ std::bind 来替代虚函数（伪虚函数）。</p>
+<blockquote>
+<p>【伪虚函数】
+<br/>与普通的 C++ 接口类不同的是，普通的 C++ 接口类通常在基类使用虚函数定义可重写的接口，派生类继承进行实现。而在 dfm-extension 中的，使用了宏来“标记“接口是一个可重写的接口（伪虚函数），定义在一个全局的头文件头文件 dfm-extension-global.h 中：
+<br/>
+// 仅用于标记，没有具体意义 <br/>
+#define DFM_FAKE_VIRTUAL<br/>
+#define DFM_FAKE_OVERRIDE<br/>
+<br/>
+宏 DFM_FAKE_VIRTUAL （伪虚函数）用来标记它是第三方开发者应该去注册的接口函数，开发者也可以在派生类用 DFM_FAKE_OVERRIDE 来标记将要 bind 的方法。</p>
+</blockquote>
+<h5 id="角标">角标</h5>
+<ul>
+<li>DFMExtEmblemIconPlugin</li>
+</ul>
+<p>DFMExtEmblemIconPlugin 类是第三方开发者应该继承并实现的接口类，并且在元接口 dfm_extension_emblem 中返回派生的类对象，接口定义在头文件 dfmextemblemiconplugin.h 中。需要特别注意的是，需要提前将⻆标资源图片文件安装到系统主题中，规则遵循 freedesktop 规范。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">DFMExtEmblemIconPluginPrivate</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">DFMExtEmblemIconPlugin</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">DFM_DISABLE_COPY</span><span class="p">(</span><span class="n">DFMExtEmblemIconPlugin</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">using</span> <span class="n">IconsType</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">using</span> <span class="n">EmblemIcons</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="n">IconsType</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="p">)</span><span class="o">&gt;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">using</span> <span class="n">LocationEmblemIcons</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="n">DFMExtEmblem</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="p">,</span> <span class="kt">int</span><span class="p">)</span><span class="o">&gt;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">DFMExtEmblemIconPlugin</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="o">~</span><span class="n">DFMExtEmblemIconPlugin</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// Note: If the corner mark set by emblemIcons conflicts with the corner mark position 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">// set by locationEmblemIcons,  the conflict position will only display the corner mark set by locationEmblemIcons
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">DFM_FAKE_VIRTUAL</span> <span class="n">IconsType</span> <span class="nf">emblemIcons</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">fileUrl</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">registerEmblemIcons</span><span class="p">(</span><span class="k">const</span> <span class="n">EmblemIcons</span> <span class="o">&amp;</span><span class="n">func</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">DFM_FAKE_VIRTUAL</span> <span class="n">DFMExtEmblem</span> <span class="nf">locationEmblemIcons</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">fileUrl</span><span class="p">,</span> <span class="kt">int</span> <span class="n">systemIconCount</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">registerLocationEmblemIcons</span><span class="p">(</span><span class="k">const</span> <span class="n">LocationEmblemIcons</span> <span class="o">&amp;</span><span class="n">func</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">private</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">DFMExtEmblemIconPluginPrivate</span> <span class="o">*</span><span class="n">d</span> <span class="p">{</span> <span class="k">nullptr</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>接口说明：</li>
+</ul>
+<p>emblemIcons 和 registerEmblemIcons 是旧接口，locationEmblemIcons 和 registerLocationEmblemIcons 可以代替</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>简介</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>emblemIcons</td>
+<td>文管主动调用，传入文件路径，返回被安装的⻆标图片名称列表</td>
+</tr>
+<tr>
+<td>registerEmblemIcons</td>
+<td>emblemIcons␁接口的注册函数，第三方开发者主动注册</td>
+</tr>
+<tr>
+<td>locationEmblemIcons</td>
+<td>文管主动调用，传入文件路径和这个文件的现有系统⻆标数量，如果这个值达到了4，那么就位置绘制扩展⻆标了</td>
+</tr>
+<tr>
+<td>registerLocationEmblemIcons</td>
+<td>locationEmblemIcons␁接口的注册函数，第三方开发者主动注册</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>DFMExtEmblemIconLayout
+扩展角标布局信息，描述一个角标位置和角标图片路径</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">DFMExtEmblemIconLayoutPrivate</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">DFMExtEmblemIconLayout</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">friend</span> <span class="k">class</span> <span class="nc">DFMExtEmblemIconLayoutPrivate</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">enum</span> <span class="k">class</span> <span class="nc">LocationType</span> <span class="o">:</span> <span class="kt">uint8_t</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">BottomRight</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">BottomLeft</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">TopLeft</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">TopRight</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Custom</span> <span class="o">=</span> <span class="mh">0xff</span>
+</span></span><span class="line"><span class="cl">    <span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">explicit</span> <span class="nf">DFMExtEmblemIconLayout</span><span class="p">(</span><span class="n">LocationType</span> <span class="n">type</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">path</span><span class="p">,</span> <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="o">~</span><span class="n">DFMExtEmblemIconLayout</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">DFMExtEmblemIconLayout</span><span class="p">(</span><span class="k">const</span> <span class="n">DFMExtEmblemIconLayout</span> <span class="o">&amp;</span><span class="n">emblem</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">DFMExtEmblemIconLayout</span> <span class="o">&amp;</span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">DFMExtEmblemIconLayout</span> <span class="o">&amp;</span><span class="n">emblem</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">LocationType</span> <span class="nf">locationType</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">iconPath</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="nf">x</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="nf">y</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">private</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">DFMExtEmblemIconLayoutPrivate</span> <span class="o">*</span><span class="n">d</span> <span class="p">{</span> <span class="k">nullptr</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>接口说明：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>简介</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>locationType</td>
+<td>需要第三方开发者返回⻆标的位置信息，目前有␁LocationType␁的␁4␁个位置，custom 暂时未使用</td>
+</tr>
+<tr>
+<td>iconPath</td>
+<td>需要第三方开发者返回返回⻆标图片路径的字符串</td>
+</tr>
+<tr>
+<td>x</td>
+<td>预留接口，暂时未实现</td>
+</tr>
+<tr>
+<td>y</td>
+<td>预留接口，暂时未实现</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>DFMExtEmblem
+⻆标操作对象类，管理一个文件扩展⻆标的所有布局信息。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">DFMExtEmblemPrivate</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">DFMExtEmblem</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">friend</span> <span class="k">class</span> <span class="nc">DFMExtEmblemPrivate</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">explicit</span> <span class="n">DFMExtEmblem</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="o">~</span><span class="n">DFMExtEmblem</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">DFMExtEmblem</span><span class="p">(</span><span class="k">const</span> <span class="n">DFMExtEmblem</span> <span class="o">&amp;</span><span class="n">emblem</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">DFMExtEmblem</span> <span class="o">&amp;</span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">DFMExtEmblem</span> <span class="o">&amp;</span><span class="n">emblem</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">setEmblem</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">DFMExtEmblemIconLayout</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">iconPaths</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">DFMExtEmblemIconLayout</span><span class="o">&gt;</span> <span class="n">emblems</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">private</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">DFMExtEmblemPrivate</span> <span class="o">*</span><span class="n">d</span> <span class="p">{</span> <span class="k">nullptr</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>接口说明</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>简介</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>setEmblem</td>
+<td>需要第三方开发者自行设置一个⻆标␁Layout␁信息，最多支持␁4␁个</td>
+</tr>
+<tr>
+<td>emblems</td>
+<td>返回␁setEmblem␁设置的␁Layout␁信息</td>
+</tr>
+</tbody>
+</table>
+<h5 id="右键菜单">右键菜单</h5>
+<ul>
+<li>DFMExtMenuPlugin</li>
+</ul>
+<p>DFMExtMenuPlugin 是第三方开发者应该继承并实现的接口类，并且在元接口 dfm_extension_menu 中返回派生的类对象，接口定义在头文件 dfmextmenuplugin.h 中：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">DFMExtMenuPlugin</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">DFM_DISABLE_COPY</span><span class="p">(</span><span class="n">DFMExtMenuPlugin</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">using</span> <span class="n">InitializeFunc</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span> <span class="p">(</span><span class="n">DFMEXT</span><span class="o">::</span><span class="n">DFMExtMenuProxy</span> <span class="o">*</span><span class="n">proxy</span><span class="p">)</span><span class="o">&gt;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">using</span> <span class="n">BuildNormalMenuFunc</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">bool</span> <span class="p">(</span><span class="n">DFMExtMenu</span> <span class="o">*</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">list</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="p">,</span> <span class="kt">bool</span><span class="p">)</span><span class="o">&gt;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">using</span> <span class="n">BuildEmptyAreaMenuFunc</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">bool</span> <span class="p">(</span><span class="n">DFMEXT</span><span class="o">::</span><span class="n">DFMExtMenu</span> <span class="o">*</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="p">,</span> <span class="kt">bool</span><span class="p">)</span><span class="o">&gt;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">DFMExtMenuPlugin</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="k">virtual</span> <span class="o">~</span><span class="n">DFMExtMenuPlugin</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="n">DFM_FAKE_VIRTUAL</span> <span class="kt">void</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">DFMEXT</span><span class="o">::</span><span class="n">DFMExtMenuProxy</span> <span class="o">*</span><span class="n">proxy</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">DFM_FAKE_VIRTUAL</span> <span class="kt">bool</span> <span class="nf">buildNormalMenu</span><span class="p">(</span><span class="n">DFMEXT</span><span class="o">::</span><span class="n">DFMExtMenu</span> <span class="o">*</span><span class="n">main</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">currentUrl</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">focusUrl</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">list</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">urlList</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">onDesktop</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">DFM_FAKE_VIRTUAL</span> <span class="kt">bool</span> <span class="nf">buildEmptyAreaMenu</span><span class="p">(</span><span class="n">DFMExtMenu</span> <span class="o">*</span><span class="n">main</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">currentUrl</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">onDesktop</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="n">registerInitialize</span><span class="p">(</span><span class="k">const</span> <span class="n">InitializeFunc</span> <span class="o">&amp;</span><span class="n">func</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">registerBuildNormalMenu</span><span class="p">(</span><span class="k">const</span> <span class="n">BuildNormalMenuFunc</span> <span class="o">&amp;</span><span class="n">func</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">registerBuildEmptyAreaMenu</span><span class="p">(</span><span class="k">const</span> <span class="n">BuildEmptyAreaMenuFunc</span> <span class="o">&amp;</span><span class="n">func</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">private</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">DFMExtMenuPluginPrivate</span> <span class="o">*</span><span class="n">d</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>
+<p>接口说明</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>简介</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>initialize</td>
+<td>文管主动调用，在其他所有接口被文管调用前调用，文管将␁proxy 传入给扩展插件，参数␁proxy␁可认为是文管主程序的进程</td>
+</tr>
+<tr>
+<td>buildNormalMenu</td>
+<td>文管主动调用，右键菜单在文件上触发时调用。main␁代表当前的右键菜单，urlList␁代表选中的所有文件列表的文件路径/URL，</td>
+</tr>
+<tr>
+<td>currentUrl</td>
+<td>代表当前右键点击的文件路径所在目录的URL，</td>
+</tr>
+<tr>
+<td>focusUrl</td>
+<td>代表当前右键选中文件的url，␁onDesktop␁为␁true␁代表操作是在桌面触发的</td>
+</tr>
+<tr>
+<td>buildEmptyAreaMenu</td>
+<td>文管主动调用，右键菜单在空白区域触发时调用。</td>
+</tr>
+<tr>
+<td>registerInitialize</td>
+<td>initialize␁接口的注册函数，第三方开发者主动注册</td>
+</tr>
+<tr>
+<td>registerBuildNormalMenu</td>
+<td>buildNormalMenu␁接口的注册函数，第三方开发者主动注册</td>
+</tr>
+<tr>
+<td>registerBuildEmptyAreaMenu</td>
+<td>buildEmptyAreaMenu␁接口的注册函数，第三方开发者主动注册</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>DFMExtMenuProxy</p>
+</li>
+</ul>
+<p>接口定义在头文件 dfmextmenuproxy.h 中，由于上面的接口对于插件来说都是被动的，即插件本身无法确定这些接口什么时刻会被调用，很明显这对于插件机制来说是不完整的，因此便有了 DFMExtMenuProxy，它定义了一些让插件主动调用以控制文管右键菜单的一些行为的接口。DFMExtMenuProxy 的具体实例可以认为是抽象了的文管主程序的右键菜单，这个实例将会通过 DFMExtMenuPlugin 中的 initialize 接口传递给插件，因此在上述 initialize 接口中总是会先把这个传入的对象保存起来以供后续使用。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">DFMExtMenuProxy</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">explicit</span> <span class="n">DFMExtMenuProxy</span><span class="p">(</span><span class="n">DFMExtMenuProxyPrivate</span> <span class="o">*</span><span class="n">d_ptr</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">virtual</span> <span class="o">~</span><span class="n">DFMExtMenuProxy</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="n">DFMExtMenu</span> <span class="o">*</span><span class="nf">createMenu</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">bool</span> <span class="nf">deleteMenu</span><span class="p">(</span><span class="n">DFMExtMenu</span> <span class="o">*</span><span class="n">menu</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">DFMExtAction</span> <span class="o">*</span><span class="nf">createAction</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">bool</span> <span class="nf">deleteAction</span><span class="p">(</span><span class="n">DFMExtAction</span> <span class="o">*</span><span class="n">action</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">private</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">DFMExtMenuProxyPrivate</span> <span class="o">*</span><span class="n">d</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>接口说明</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>简介</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>createMenu</td>
+<td>在堆上创建一个自定义的菜单对象，通常在␁DFMExtMenuPlugin␁的buildNormalMenu␁或␁buildEmptyAreaMenu␁接口中去调用</td>
+</tr>
+<tr>
+<td>deleteMenu</td>
+<td>释放创建的自定义的菜单对象，如果不调用将会造成内存泄露！需要在DFMExtMenuPlugin␁的␁buildNormalMenu␁或␁buildEmptyAreaMenu␁接口传入的参数␁main␁中去调用␁DFMExtMenu␁的␁registerDeleted␁注册释放函数来调用本接口释放内存</td>
+</tr>
+<tr>
+<td>createAction</td>
+<td>在堆上创建一个自定义的␁action␁对象，通常在␁DFMExtMenuPlugin␁的buildNormalMenu␁或␁buildEmptyAreaMenu␁接口中去调用</td>
+</tr>
+<tr>
+<td>deleteAction</td>
+<td>释放创建的自定义的␁action␁对象，如果不调用将会造成内存泄露！需要在DFMExtMenuPlugin␁的␁buildNormalMenu␁或␁buildEmptyAreaMenu␁接口传入的参数␁main␁中去调用␁DFMExtMenu␁的␁registerDeleted␁注册释放函数来调用本接口释放内存</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>DFMExtMenu
+接口定义在头文件 dfmextmenu.h 中，其接口设计参考 QMenu。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">DFMExtMenu</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">friend</span> <span class="k">class</span> <span class="nc">DFMExtMenuPrivate</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">using</span> <span class="n">TriggeredFunc</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span> <span class="p">(</span><span class="n">DFMExtAction</span> <span class="o">*</span><span class="n">action</span><span class="p">)</span><span class="o">&gt;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">using</span> <span class="n">HoveredFunc</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span> <span class="p">(</span><span class="n">DFMExtAction</span> <span class="o">*</span><span class="n">action</span><span class="p">)</span><span class="o">&gt;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">using</span> <span class="n">DeletedFunc</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span> <span class="p">(</span><span class="n">DFMExtMenu</span> <span class="o">*</span><span class="p">)</span><span class="o">&gt;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">title</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">setTitle</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">title</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">icon</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">setIcon</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">iconName</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">bool</span> <span class="nf">addAction</span><span class="p">(</span><span class="n">DFMExtAction</span> <span class="o">*</span><span class="n">action</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">bool</span> <span class="nf">insertAction</span><span class="p">(</span><span class="n">DFMExtAction</span> <span class="o">*</span><span class="n">before</span><span class="p">,</span> <span class="n">DFMExtAction</span> <span class="o">*</span><span class="n">action</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">DFMExtAction</span> <span class="o">*</span><span class="nf">menuAction</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">list</span><span class="o">&lt;</span><span class="n">DFMExtAction</span> <span class="o">*&gt;</span> <span class="n">actions</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">DFM_FAKE_VIRTUAL</span> <span class="kt">void</span> <span class="nf">triggered</span><span class="p">(</span><span class="n">DFMExtAction</span> <span class="o">*</span><span class="n">action</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">DFM_FAKE_VIRTUAL</span> <span class="kt">void</span> <span class="nf">hovered</span><span class="p">(</span><span class="n">DFMExtAction</span> <span class="o">*</span><span class="n">action</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">DFM_FAKE_VIRTUAL</span> <span class="kt">void</span> <span class="nf">deleted</span><span class="p">(</span><span class="n">DFMExtMenu</span> <span class="o">*</span><span class="n">self</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="n">registerTriggered</span><span class="p">(</span><span class="k">const</span> <span class="n">TriggeredFunc</span> <span class="o">&amp;</span><span class="n">func</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">registerHovered</span><span class="p">(</span><span class="k">const</span> <span class="n">HoveredFunc</span> <span class="o">&amp;</span><span class="n">func</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">registerDeleted</span><span class="p">(</span><span class="k">const</span> <span class="n">DeletedFunc</span> <span class="o">&amp;</span><span class="n">func</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">protected</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">explicit</span> <span class="n">DFMExtMenu</span><span class="p">(</span><span class="n">DFMExtMenuPrivate</span> <span class="o">*</span><span class="n">d_ptr</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">virtual</span> <span class="o">~</span><span class="n">DFMExtMenu</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="n">DFMExtMenuPrivate</span> <span class="o">*</span><span class="n">d</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>
+<p>接口说明</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>简介</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>title</td>
+<td>参考␁QMenu␁相关接口</td>
+</tr>
+<tr>
+<td>setTitle</td>
+<td>参考␁QMenu␁相关接口</td>
+</tr>
+<tr>
+<td>icon</td>
+<td>参考␁QMenu␁相关接口</td>
+</tr>
+<tr>
+<td>setIcon</td>
+<td>参考␁QMenu␁相关接口，参数应该传具体的␁icon␁文件路径或主题图标名</td>
+</tr>
+<tr>
+<td>addAction</td>
+<td>参考␁QMenu␁相关接口</td>
+</tr>
+<tr>
+<td>insertAction</td>
+<td>参考␁QMenu␁相关接口</td>
+</tr>
+<tr>
+<td>menuAction</td>
+<td>参考␁QMenu␁相关接口</td>
+</tr>
+<tr>
+<td>actions</td>
+<td>参考␁QMenu␁相关接口</td>
+</tr>
+<tr>
+<td>triggered</td>
+<td>参考␁QMenu␁相关接口</td>
+</tr>
+<tr>
+<td>hovered</td>
+<td>参考␁QMenu␁相关接口</td>
+</tr>
+<tr>
+<td>deleted</td>
+<td>特别重要，在␁menu␁对象被析构前调用，用于释放第三方开发者创建的自定义Menu␁的内存</td>
+</tr>
+<tr>
+<td>registerTriggered</td>
+<td>triggered␁接口的注册函数</td>
+</tr>
+<tr>
+<td>registerHovered</td>
+<td>registerHovered␁接口的注册函数</td>
+</tr>
+<tr>
+<td>registerDeleted</td>
+<td>registerDeleted␁接口的注册函数，第三方开发者必须要在DFMExtMenuPlugin的␁buildNormalMenu␁或␁buildEmptyAreaMenu␁接口传入的参数␁main␁中去调用␁DFMExtMenu␁的␁registerDeleted␁注册释放函数来调用本接口释放内存！</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>DFMExtAction</p>
+</li>
+</ul>
+<p>接口定义在头文件 dfmextaction.h 中，其接口设计参考 QAction。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">DFMExtAction</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">friend</span> <span class="k">class</span> <span class="nc">DFMExtActionPrivate</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">using</span> <span class="n">TriggeredFunc</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span> <span class="p">(</span><span class="n">DFMExtAction</span> <span class="o">*</span><span class="p">,</span> <span class="kt">bool</span><span class="p">)</span><span class="o">&gt;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">using</span> <span class="n">HoveredFunc</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span> <span class="p">(</span><span class="n">DFMExtAction</span> <span class="o">*</span><span class="p">)</span><span class="o">&gt;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">using</span> <span class="n">DeletedFunc</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span> <span class="p">(</span><span class="n">DFMExtAction</span> <span class="o">*</span><span class="p">)</span><span class="o">&gt;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="n">setIcon</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">icon</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">icon</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">setText</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">text</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">text</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">setToolTip</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">tip</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">toolTip</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">setMenu</span><span class="p">(</span><span class="n">DFMExtMenu</span> <span class="o">*</span><span class="n">menu</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">DFMExtMenu</span> <span class="o">*</span><span class="nf">menu</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">setSeparator</span><span class="p">(</span><span class="kt">bool</span> <span class="n">b</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">bool</span> <span class="nf">isSeparator</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">setCheckable</span><span class="p">(</span><span class="kt">bool</span> <span class="n">b</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">bool</span> <span class="nf">isCheckable</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">setChecked</span><span class="p">(</span><span class="kt">bool</span> <span class="n">b</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">bool</span> <span class="nf">isChecked</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">setEnabled</span><span class="p">(</span><span class="kt">bool</span> <span class="n">b</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">bool</span> <span class="nf">isEnabled</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">DFM_FAKE_VIRTUAL</span> <span class="kt">void</span> <span class="nf">triggered</span><span class="p">(</span><span class="n">DFMExtAction</span> <span class="o">*</span><span class="n">self</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">checked</span> <span class="o">=</span> <span class="nb">false</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">DFM_FAKE_VIRTUAL</span> <span class="kt">void</span> <span class="nf">hovered</span><span class="p">(</span><span class="n">DFMExtAction</span> <span class="o">*</span><span class="n">self</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">DFM_FAKE_VIRTUAL</span> <span class="kt">void</span> <span class="nf">deleted</span><span class="p">(</span><span class="n">DFMExtAction</span> <span class="o">*</span><span class="n">self</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="n">registerTriggered</span><span class="p">(</span><span class="k">const</span> <span class="n">TriggeredFunc</span> <span class="o">&amp;</span><span class="n">func</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">registerHovered</span><span class="p">(</span><span class="k">const</span> <span class="n">HoveredFunc</span> <span class="o">&amp;</span><span class="n">func</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">registerDeleted</span><span class="p">(</span><span class="k">const</span> <span class="n">DeletedFunc</span> <span class="o">&amp;</span><span class="n">func</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">protected</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">explicit</span> <span class="n">DFMExtAction</span><span class="p">(</span><span class="n">DFMExtActionPrivate</span> <span class="o">*</span><span class="n">d_ptr</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">virtual</span> <span class="o">~</span><span class="n">DFMExtAction</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="n">DFMExtActionPrivate</span> <span class="o">*</span><span class="n">d</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>接口说明</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>简介</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>setIcon</td>
+<td>参考␁QAction␁相关接口，参数应该传具体的␁icon␁文件路径或主题图标名</td>
+</tr>
+<tr>
+<td>icon</td>
+<td>参考␁QAction␁相关接口</td>
+</tr>
+<tr>
+<td>setText</td>
+<td>参考␁QAction␁相关接口</td>
+</tr>
+<tr>
+<td>text</td>
+<td>参考␁QAction␁相关接口</td>
+</tr>
+<tr>
+<td>setToolTip</td>
+<td>参考␁QAction␁相关接口</td>
+</tr>
+<tr>
+<td>toolTip</td>
+<td>参考␁QAction␁相关接口</td>
+</tr>
+<tr>
+<td>setMenu</td>
+<td>参考␁QAction␁相关接口</td>
+</tr>
+<tr>
+<td>menu</td>
+<td>参考␁QAction␁相关接口</td>
+</tr>
+<tr>
+<td>setSeparator</td>
+<td>参考␁QAction␁相关接口</td>
+</tr>
+<tr>
+<td>isSeparator</td>
+<td>参考␁QAction␁相关接口</td>
+</tr>
+<tr>
+<td>isCheckable</td>
+<td>参考␁QAction␁相关接口</td>
+</tr>
+<tr>
+<td>setChecked</td>
+<td>参考␁QAction␁相关接口</td>
+</tr>
+<tr>
+<td>isChecked</td>
+<td>参考␁QAction␁相关接口</td>
+</tr>
+<tr>
+<td>setEnabled</td>
+<td>参考␁QAction␁相关接口</td>
+</tr>
+<tr>
+<td>isEnabled</td>
+<td>参考␁QAction␁相关接口</td>
+</tr>
+<tr>
+<td>triggered</td>
+<td>参考␁QAction␁相关接口</td>
+</tr>
+<tr>
+<td>hovered</td>
+<td>参考␁QAction␁相关接口</td>
+</tr>
+<tr>
+<td>deleted</td>
+<td>非常重要，其意义同␁DFMExtMenu␁的␁deleted␁方法</td>
+</tr>
+<tr>
+<td>registerTriggered</td>
+<td>triggered␁接口的注册函数</td>
+</tr>
+<tr>
+<td>registerHovered</td>
+<td>hovered␁接口的注册函数</td>
+</tr>
+<tr>
+<td>registerDeleted</td>
+<td>其意义同␁DFMExtMenu␁的␁registerDeleted␁方法</td>
+</tr>
+</tbody>
+</table>
+<h3 id="dde-file-manager插件扩展示例">dde-file-manager插件扩展示例</h3>
+<h4 id="1-安装依赖">1. 安装依赖</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">libdde-file-manager-dev
+</span></span><span class="line"><span class="cl">cmake
+</span></span><span class="line"><span class="cl">pkg-config
+</span></span><span class="line"><span class="cl">libfm-extension
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="2-cmake配置">2. cmake配置</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cmake" data-lang="cmake"><span class="line"><span class="cl"><span class="nb">cmake_minimum_required</span><span class="p">(</span><span class="s">VERSION</span> <span class="s">2.8</span><span class="p">)</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c">#设置项目名称
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="nb">project</span><span class="p">(</span><span class="s">dfmextension-demo</span><span class="p">)</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c">#启用 pkg-config 标准
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="nb">find_package</span><span class="p">(</span><span class="s">PkgConfig</span> <span class="s">REQUIRED</span><span class="p">)</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c">#只需要依赖 dfm-extension
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="nb">pkg_search_module</span><span class="p">(</span><span class="s">dfm-extension</span> <span class="s">REQUIRED</span>
+</span></span><span class="line"><span class="cl">    <span class="s">dfm-extension</span>
+</span></span><span class="line"><span class="cl">    <span class="s">IMPORTED_TARGET</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c">#扩展插件源码
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="nb">set</span><span class="p">(</span><span class="s">SRCS</span>
+</span></span><span class="line"><span class="cl">        <span class="s">demomenuplugin.h</span>
+</span></span><span class="line"><span class="cl">        <span class="s">demomenuplugin.cpp</span><span class="p">)</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c">#生成共享库
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="nb">add_library</span><span class="p">(</span><span class="o">${</span><span class="nv">PROJECT_NAME</span><span class="o">}</span> <span class="s">SHARED</span> <span class="o">${</span><span class="nv">SRCS</span><span class="o">}</span><span class="p">)</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="nb">target_link_libraries</span><span class="p">(</span><span class="o">${</span><span class="nv">PROJECT_NAME</span><span class="o">}</span> <span class="s">PkgConfig::dfm-extension</span><span class="p">)</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c">#安裝配置
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="nb">include</span><span class="p">(</span><span class="s">GNUInstallDirs</span><span class="p">)</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="nb">set</span><span class="p">(</span><span class="s">LIB_INSTALL_DIR</span> <span class="s">/usr/lib/</span><span class="o">${</span><span class="nv">CMAKE_LIBRARY_ARCHITECTURE</span><span class="o">}</span><span class="s">/dde-file-manager/plugins/extensions</span><span class="p">)</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c">#安裝插件
+</span></span></span><span class="line"><span class="cl"><span class="c"></span><span class="nb">install</span><span class="p">(</span><span class="s">TARGETS</span> <span class="o">${</span><span class="nv">PROJECT_NAME</span><span class="o">}</span> <span class="s">LIBRARY</span> <span class="s">DESTINATION</span> <span class="o">${</span><span class="nv">LIB_INSTALL_DIR</span><span class="o">}</span><span class="p">)</span><span class="err">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="3-实现元接口">3. 实现元接口</h4>
+<p>在这里新建<code>.cpp</code>文件 <code>dfm-extension.cpp</code> 实现元接口：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">static</span> <span class="n">DFMExtMenuPlugin</span> <span class="o">*</span><span class="n">kMenuPlugin</span> <span class="o">=</span> <span class="n">nullptr</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">extern</span> <span class="s">&#34;C&#34;</span> <span class="kt">void</span> <span class="nf">dfm_extension_initiliaze</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">kMenuPlugin</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">kMenuPlugin</span> <span class="o">=</span> <span class="n">new</span> <span class="n">ICBCMenuPlugin</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">extern</span> <span class="s">&#34;C&#34;</span> <span class="n">DFMExtMenuPlugin</span> <span class="o">*</span><span class="nf">dfm_extension_menu</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">kMenuPlugin</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">extern</span> <span class="s">&#34;C&#34;</span> <span class="kt">void</span> <span class="nf">dfm_extension_shutdown</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">kMenuPlugin</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">delete</span> <span class="n">kMenuPlugin</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">kMenuPlugin</span> <span class="o">=</span> <span class="n">nullptr</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>需要特别注意的是，需要在接口前添加 extern &ldquo;C&rdquo; ，否则文管将无法解析出接口。</p>
+</blockquote>
+<h4 id="3-实现相关类接口">3. 实现相关类接口</h4>
+<p>继承右键菜单插件的基类 DFMExtMenuPlugin 进行实现：</p>
+<ul>
+<li>icbcmenuplugin.h</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">ICBCMenuPlugin</span><span class="o">:</span> <span class="k">public</span> <span class="n">DFMEXT</span><span class="o">::</span><span class="n">DFMExtMenuPlugin</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ICBCMenuPlugin</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">initilaize</span><span class="p">(</span><span class="n">DFMEXT</span><span class="o">::</span><span class="n">DFMExtMenuProxy</span> <span class="o">*</span><span class="n">proxy</span><span class="p">)</span> <span class="n">DFM_FAKE_OVERRIDE</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">bool</span> <span class="nf">buildNormalMenu</span><span class="p">(</span><span class="n">DFMEXT</span><span class="o">::</span><span class="n">DFMExtMenu</span> <span class="o">*</span><span class="n">main</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">list</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">urlList</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">currentUrl</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">focusUrl</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">onDesktop</span><span class="p">)</span> <span class="n">DFM_FAKE_OVERRIDE</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">bool</span> <span class="nf">buildEmptyAreaMenu</span><span class="p">(</span><span class="n">DFMEXT</span><span class="o">::</span><span class="n">DFMExtMenu</span> <span class="o">*</span><span class="n">main</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">currentUrl</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">onDesktop</span><span class="p">)</span> <span class="n">DFM_FAKE_OVERRIDE</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">hoverd</span><span class="p">(</span><span class="n">DFMEXT</span><span class="o">::</span><span class="n">DFMExtAction</span> <span class="o">*</span><span class="n">action</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">private</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">DFMEXT</span><span class="o">::</span><span class="n">DFMExtMenuProxy</span> <span class="o">*</span><span class="n">menuProxy</span> <span class="o">=</span> <span class="k">nullptr</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>icbcmenuplugin.cpp</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;icbcmenuplugin.h&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;menu/dfmextmenu.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;menu/dfmextmenuproxy.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;menu/dfmextaction.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;functional&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">ICBCMenuPlugin</span><span class="o">::</span><span class="n">hoverd</span><span class="p">(</span><span class="n">DFMEXT</span><span class="o">::</span><span class="n">DFMExtAction</span> <span class="o">*</span><span class="n">action</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;hover!!!!!!!!!!&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">auto</span> <span class="n">top</span> <span class="o">=</span> <span class="n">action</span><span class="o">-&gt;</span><span class="n">menu</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">top</span><span class="o">-&gt;</span><span class="n">actions</span><span class="p">().</span><span class="n">empty</span><span class="p">())</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">auto</span> <span class="n">a1</span> <span class="o">=</span> <span class="n">menuProxy</span><span class="o">-&gt;</span><span class="n">createAction</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">a1</span><span class="o">-&gt;</span><span class="n">setText</span><span class="p">(</span><span class="s">&#34;nihao&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">top</span><span class="o">-&gt;</span><span class="n">addAction</span><span class="p">(</span><span class="n">a1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">auto</span> <span class="n">a2</span> <span class="o">=</span> <span class="n">menuProxy</span><span class="o">-&gt;</span><span class="n">createAction</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">a2</span><span class="o">-&gt;</span><span class="n">setText</span><span class="p">(</span><span class="s">&#34;no hao&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">top</span><span class="o">-&gt;</span><span class="n">addAction</span><span class="p">(</span><span class="n">a2</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">ICBCMenuPlugin</span><span class="o">::</span><span class="n">ICBCMenuPlugin</span><span class="p">()</span> <span class="o">:</span> <span class="n">DFMEXT</span><span class="o">::</span><span class="n">DFMExtMenuPlugin</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">registerInitialize</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ICBCMenuPlugin</span><span class="o">::</span><span class="n">initilaize</span><span class="p">,</span> <span class="k">this</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">placeholders</span><span class="o">::</span><span class="n">_1</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">    <span class="n">registerBuildNormalMenu</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ICBCMenuPlugin</span><span class="o">::</span><span class="n">buildNormalMenu</span><span class="p">,</span> <span class="k">this</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">placeholders</span><span class="o">::</span><span class="n">_1</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">placeholders</span><span class="o">::</span><span class="n">_2</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">placeholders</span><span class="o">::</span><span class="n">_3</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">placeholders</span><span class="o">::</span><span class="n">_4</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">    <span class="n">registerBuildEmptyAreaMenu</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ICBCMenuPlugin</span><span class="o">::</span><span class="n">buildEmptyAreaMenu</span><span class="p">,</span> <span class="k">this</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">placeholders</span><span class="o">::</span><span class="n">_1</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">placeholders</span><span class="o">::</span><span class="n">_2</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">placeholders</span><span class="o">::</span><span class="n">_3</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">ICBCMenuPlugin</span><span class="o">::</span><span class="n">initilaize</span><span class="p">(</span><span class="n">DFMEXT</span><span class="o">::</span><span class="n">DFMExtMenuProxy</span> <span class="o">*</span><span class="n">proxy</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;ICBCMenuPlugin::initilaize&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">menuProxy</span> <span class="o">=</span> <span class="n">proxy</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">bool</span> <span class="n">ICBCMenuPlugin</span><span class="o">::</span><span class="n">buildNormalMenu</span><span class="p">(</span><span class="n">DFMEXT</span><span class="o">::</span><span class="n">DFMExtMenu</span> <span class="o">*</span><span class="n">main</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">list</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">urlList</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">currentUrl</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">focusUrl</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">onDesktop</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;ICBCMenuPlugin::buildNormalMenu&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">main</span> <span class="o">==</span> <span class="k">nullptr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">auto</span> <span class="n">top</span> <span class="o">=</span> <span class="n">menuProxy</span><span class="o">-&gt;</span><span class="n">createMenu</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//top-&gt;registerHovered(std::bind(&amp;hoverd,std::placeholders::_1));
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">    <span class="k">auto</span> <span class="n">ac</span> <span class="o">=</span> <span class="n">menuProxy</span><span class="o">-&gt;</span><span class="n">createAction</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ac</span><span class="o">-&gt;</span><span class="n">setMenu</span><span class="p">(</span><span class="n">top</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ac</span><span class="o">-&gt;</span><span class="n">setText</span><span class="p">(</span><span class="s">&#34;wps&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ac</span><span class="o">-&gt;</span><span class="n">registerHovered</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ICBCMenuPlugin</span><span class="o">::</span><span class="n">hoverd</span><span class="p">,</span><span class="k">this</span><span class="p">,</span><span class="n">std</span><span class="o">::</span><span class="n">placeholders</span><span class="o">::</span><span class="n">_1</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">    <span class="n">main</span><span class="o">-&gt;</span><span class="n">addAction</span><span class="p">(</span><span class="n">ac</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="nl">ac</span> <span class="p">:</span> <span class="n">main</span><span class="o">-&gt;</span><span class="n">actions</span><span class="p">())</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;ssss :&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">ac</span><span class="o">-&gt;</span><span class="n">text</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">//todo 释放
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">bool</span> <span class="n">ICBCMenuPlugin</span><span class="o">::</span><span class="n">buildEmptyAreaMenu</span><span class="p">(</span><span class="n">DFMEXT</span><span class="o">::</span><span class="n">DFMExtMenu</span> <span class="o">*</span><span class="n">main</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">currentUrl</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">onDesktop</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&#34;ICBCMenuPlugin::buildEmptyAreaMenu&#34;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p><a href="https://wikidev.uniontech.com/index.php?title=%e6%96%87%e7%ae%a1%e6%89%a9%e5%b1%95%e5%bc%80%e5%8f%91&amp;oldid=52343" target="_blank" rel="noopener noreffer">https://wikidev.uniontech.com/index.php?title=文管扩展开发&amp;oldid=52343</a></p>
+</blockquote>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2023-02-04</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">linux</a>,&nbsp;<a href="/tags/uos/">uos</a>,&nbsp;<a href="/tags/menu/">menu</a>,&nbsp;<a href="/tags/%E8%8F%9C%E5%8D%95/">菜单</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/2023/01/0012-alsa/" class="prev" rel="prev" title="Linux音频体系结构——ALSA"><i class="fas fa-angle-left fa-fw"></i>Linux音频体系结构——ALSA</a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">ding jing</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="/lib/lightgallery/lightgallery.min.css"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script type="text/javascript" src="/lib/valine/Valine.min.js"></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/algoliasearch/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/twemoji/twemoji.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lightgallery.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-thumbnail.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-zoom.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":9999999999},"comment":{"valine":{"appId":"oGOJ6TSiiaaOrhXD1bEYILk9-gzGzoHsz","appKey":"lbK71uSxpg4XmLmvm2h13JdJ","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"serverURLs":"https://ogoj6tsi.lc-cn-n1-shared.com","visitor":true}},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.zh-cn","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":80,"type":"algolia"},"twemoji":true};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
