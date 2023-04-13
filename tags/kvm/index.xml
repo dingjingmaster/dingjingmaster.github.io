@@ -4,7 +4,14 @@
         <link>https://dingjingmaster.github.io/tags/kvm/</link>
         <description>kvm - 标签 - 九九</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>dingjing@live.cn (ding jing)</managingEditor>
-            <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Sun, 24 Jul 2022 22:02:25 &#43;0800</lastBuildDate><atom:link href="https://dingjingmaster.github.io/tags/kvm/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Thu, 13 Apr 2023 15:31:50 &#43;0800</lastBuildDate><atom:link href="https://dingjingmaster.github.io/tags/kvm/" rel="self" type="application/rss+xml" /><item>
+    <title>Qemu与KVM</title>
+    <link>https://dingjingmaster.github.io/2023/04/0002-qemu%E4%B8%8Ekvm/</link>
+    <pubDate>Thu, 13 Apr 2023 15:31:50 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://dingjingmaster.github.io/2023/04/0002-qemu%E4%B8%8Ekvm/</guid>
+    <description><![CDATA[虚拟化简介 虚拟化思想 虚拟化的主要思想是，通过分层将底层的复杂、难用的资源虚拟抽象成简单、易用的资源，提供给上层使用。 底层资源或者通过空间的分]]></description>
+</item><item>
     <title>Linux挂载qcow2</title>
     <link>https://dingjingmaster.github.io/2022/07/0010-linux%E6%8C%82%E8%BD%BDqcow2/</link>
     <pubDate>Sun, 24 Jul 2022 22:02:25 &#43;0800</pubDate>

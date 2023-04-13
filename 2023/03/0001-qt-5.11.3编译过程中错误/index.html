@@ -19,7 +19,7 @@
 <meta name="application-name" content="九九">
 <meta name="apple-mobile-web-app-title" content="九九"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://dingjingmaster.github.io/2023/03/0001-qt-5.11.3%E7%BC%96%E8%AF%91%E8%BF%87%E7%A8%8B%E4%B8%AD%E9%94%99%E8%AF%AF/" /><link rel="prev" href="https://dingjingmaster.github.io/2023/02/0003-ncurses-api/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://dingjingmaster.github.io/2023/03/0001-qt-5.11.3%E7%BC%96%E8%AF%91%E8%BF%87%E7%A8%8B%E4%B8%AD%E9%94%99%E8%AF%AF/" /><link rel="prev" href="https://dingjingmaster.github.io/2023/02/0003-ncurses-api/" /><link rel="next" href="https://dingjingmaster.github.io/2023/04/0002-qemu%E4%B8%8Ekvm/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -28,7 +28,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/dingjingmaster.github.io\/2023\/03\/0001-qt-5.11.3%E7%BC%96%E8%AF%91%E8%BF%87%E7%A8%8B%E4%B8%AD%E9%94%99%E8%AF%AF\/"
-        },"image": ["https:\/\/dingjingmaster.github.io\/img\/logo.jpg"],"genre": "posts","keywords": "qt, linux","wordcount":  152 ,
+        },"image": ["https:\/\/dingjingmaster.github.io\/img\/logo.jpg"],"genre": "posts","keywords": "qt, linux","wordcount":  280 ,
         "url": "https:\/\/dingjingmaster.github.io\/2023\/03\/0001-qt-5.11.3%E7%BC%96%E8%AF%91%E8%BF%87%E7%A8%8B%E4%B8%AD%E9%94%99%E8%AF%AF\/","datePublished": "2023-03-13T08:28:17+08:00","dateModified": "2023-03-13T08:28:17+08:00","publisher": {
             "@type": "Organization",
             "name": "九九","logo": "https:\/\/dingjingmaster.github.io\/img\/logo.jpg"},"author": {
@@ -105,7 +105,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Qt 5.11.3编译过程中错误</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>ding jing</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/qt/"><i class="far fa-folder fa-fw"></i>qt</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-03-13">2023-03-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 152 字&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-03-13">2023-03-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 280 字&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 1 分钟&nbsp;<span id="/2023/03/0001-qt-5.11.3%E7%BC%96%E8%AF%91%E8%BF%87%E7%A8%8B%E4%B8%AD%E9%94%99%E8%AF%AF/" class="leancloud_visitors" data-flag-title="Qt 5.11.3编译过程中错误">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
@@ -118,6 +118,8 @@
   <ul>
     <li><a href="#qrandomcpp45562-error-no-matching-function-for-call-to-stdmersenne_twister_engine"><code>qrandom.cpp:455:62: error: no matching function for call to ‘std::mersenne_twister_engine</code></a></li>
     <li><a href="#qbytearraymatcherh10338-error-numeric_limits-is-not-a-member-of-std"><code>qbytearraymatcher.h:103:38: error: ‘numeric_limits’ is not a member of ‘std’</code></a></li>
+    <li><a href="#socketcanbackendcpp69741-error-siocgstamp-was-not-declared-in-this-scope"><code>socketcanbackend.cpp:697:41: error: ‘SIOCGSTAMP’ was not declared in this scope</code></a></li>
+    <li><a href="#qjp2handlercpp85341-error-pow-was-not-declared-in-this-scope"><code>qjp2handler.cpp:853:41: error: ‘pow’ was not declared in this scope</code></a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h2 id="qrandomcpp45562-error-no-matching-function-for-call-to-stdmersenne_twister_engine"><code>qrandom.cpp:455:62: error: no matching function for call to ‘std::mersenne_twister_engine</code></h2>
@@ -126,6 +128,12 @@
 <h2 id="qbytearraymatcherh10338-error-numeric_limits-is-not-a-member-of-std"><code>qbytearraymatcher.h:103:38: error: ‘numeric_limits’ is not a member of ‘std’</code></h2>
 <p>解决方法：</p>
 <p>因为<code>qbytearraymatcher.h</code> 文件缺少 <code>limits</code> 头文件，所以打开此文件添加 <code>#include &lt;limits&gt;</code></p>
+<h2 id="socketcanbackendcpp69741-error-siocgstamp-was-not-declared-in-this-scope"><code>socketcanbackend.cpp:697:41: error: ‘SIOCGSTAMP’ was not declared in this scope</code></h2>
+<p>解决方法：</p>
+<p>在qt源码中搜索<code>socketcanbackend.cpp</code>，在头文件中添加<code>#include &lt;linux/sockios.h&gt;</code></p>
+<h2 id="qjp2handlercpp85341-error-pow-was-not-declared-in-this-scope"><code>qjp2handler.cpp:853:41: error: ‘pow’ was not declared in this scope</code></h2>
+<p>解决方法：</p>
+<p>在Qt源码中查找<code>qjp2handler.cpp</code>，在头文件中添加<code>#include &lt;math.h&gt;</code></p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
@@ -149,7 +157,8 @@
         </section>
     </div>
 
-    <div class="post-nav"><a href="/2023/02/0003-ncurses-api/" class="prev" rel="prev" title="ncurses API"><i class="fas fa-angle-left fa-fw"></i>ncurses API</a></div>
+    <div class="post-nav"><a href="/2023/02/0003-ncurses-api/" class="prev" rel="prev" title="ncurses API"><i class="fas fa-angle-left fa-fw"></i>ncurses API</a>
+            <a href="/2023/04/0002-qemu%E4%B8%8Ekvm/" class="next" rel="next" title="Qemu与KVM">Qemu与KVM<i class="fas fa-angle-right fa-fw"></i></a></div>
 </div>
 <div id="comments"><div id="valine" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.

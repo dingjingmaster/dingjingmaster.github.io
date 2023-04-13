@@ -13,3 +13,17 @@
 
 因为`qbytearraymatcher.h` 文件缺少 `limits` 头文件，所以打开此文件添加 `#include <limits>`
 
+## `socketcanbackend.cpp:697:41: error: ‘SIOCGSTAMP’ was not declared in this scope`
+
+解决方法：
+
+在qt源码中搜索`socketcanbackend.cpp`，在头文件中添加`#include <linux/sockios.h>`
+
+## `qjp2handler.cpp:853:41: error: ‘pow’ was not declared in this scope`
+
+解决方法：
+
+在Qt源码中查找`qjp2handler.cpp`，在头文件中添加`#include <math.h>`
+
+
+
