@@ -4,7 +4,14 @@
         <link>https://dingjingmaster.github.io/posts/</link>
         <description>所有文章 | 九九</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>dingjing@live.cn (ding jing)</managingEditor>
-            <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Mon, 06 Feb 2023 22:39:18 &#43;0800</lastBuildDate><atom:link href="https://dingjingmaster.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Mon, 13 Mar 2023 08:28:17 &#43;0800</lastBuildDate><atom:link href="https://dingjingmaster.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Qt 5.11.3编译过程中错误</title>
+    <link>https://dingjingmaster.github.io/2023/03/0001-qt-5.11.3%E7%BC%96%E8%AF%91%E8%BF%87%E7%A8%8B%E4%B8%AD%E9%94%99%E8%AF%AF/</link>
+    <pubDate>Mon, 13 Mar 2023 08:28:17 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://dingjingmaster.github.io/2023/03/0001-qt-5.11.3%E7%BC%96%E8%AF%91%E8%BF%87%E7%A8%8B%E4%B8%AD%E9%94%99%E8%AF%AF/</guid>
+    <description><![CDATA[qrandom.cpp:455:62: error: no matching function for call to ‘std::mersenne_twister_engine 解决方法: 打开 qrandom.cpp 文件，文件编辑器打开后，在220行添加类型声明：t]]></description>
+</item><item>
     <title>ncurses API</title>
     <link>https://dingjingmaster.github.io/2023/02/0003-ncurses-api/</link>
     <pubDate>Mon, 06 Feb 2023 22:39:18 &#43;0800</pubDate>
@@ -67,12 +74,5 @@
     <author>作者</author>
     <guid>https://dingjingmaster.github.io/2022/09/1000-kernel%E5%AD%A6%E4%B9%A0%E5%87%86%E5%A4%87/</guid>
     <description><![CDATA[Linux 内核工程师 岗位分布 互联网 云计算 安全 OS发行商 芯片原厂 技能点 内存管理、调度、实时性 进程、同步与并发 存储、文件系统 网络子系统 虚拟化、区块链、容]]></description>
-</item><item>
-    <title>std::future</title>
-    <link>https://dingjingmaster.github.io/2022/09/0011-stdfuture/</link>
-    <pubDate>Sat, 10 Sep 2022 21:24:46 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://dingjingmaster.github.io/2022/09/0011-stdfuture/</guid>
-    <description><![CDATA[功能 类模板std::future提供了一个访问异步操作结果的机制: 异步操作(通过std::async、std::packaged_task或]]></description>
 </item></channel>
 </rss>
