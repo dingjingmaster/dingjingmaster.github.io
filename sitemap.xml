@@ -29,10 +29,12 @@
             <loc>https://dingjingmaster.github.io/tags/music/</loc><lastmod>2023-01-28T10:17:23&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://dingjingmaster.github.io/tags/sound/</loc><lastmod>2023-01-28T10:17:23&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://dingjingmaster.github.io/2023/01/0001-ncurses%E5%85%A5%E9%97%A8/</loc><lastmod>2023-01-11T21:03:48&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://dingjingmaster.github.io/tags/glib/</loc><lastmod>2023-01-08T21:35:22&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://dingjingmaster.github.io/tags/gnome/</loc><lastmod>2023-01-08T21:35:22&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://dingjingmaster.github.io/categories/gnome/</loc><lastmod>2023-01-08T21:35:22&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://dingjingmaster.github.io/tags/gobject/</loc><lastmod>2023-01-08T21:35:22&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://dingjingmaster.github.io/2023/01/0002-gobject/</loc><lastmod>2023-01-08T21:35:22&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://dingjingmaster.github.io/tags/gio/</loc><lastmod>2022-12-20T21:56:13&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://dingjingmaster.github.io/tags/glib/</loc><lastmod>2022-12-20T21:56:13&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://dingjingmaster.github.io/tags/gnome/</loc><lastmod>2022-12-20T21:56:13&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://dingjingmaster.github.io/categories/gnome/</loc><lastmod>2022-12-20T21:56:13&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://dingjingmaster.github.io/2022/12/0001-gvariant%E8%A7%84%E8%8C%831.0/</loc><lastmod>2022-12-20T21:56:13&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://dingjingmaster.github.io/tags/c/</loc><lastmod>2022-11-16T14:34:21&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://dingjingmaster.github.io/categories/cc&#43;&#43;/</loc><lastmod>2022-11-16T14:34:21&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>

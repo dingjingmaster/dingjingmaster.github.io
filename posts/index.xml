@@ -54,6 +54,13 @@
     <guid>https://dingjingmaster.github.io/2023/01/0001-ncurses%E5%85%A5%E9%97%A8/</guid>
     <description><![CDATA[简介 在电传终端的旧时代，终端远离计算机，通过串行电缆与计算机连接。终端可以通过发送一系列字节来配置。终端的所有功能(如移动光标到一个新的位置]]></description>
 </item><item>
+    <title>GObject</title>
+    <link>https://dingjingmaster.github.io/2023/01/0002-gobject/</link>
+    <pubDate>Sun, 08 Jan 2023 21:35:22 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://dingjingmaster.github.io/2023/01/0002-gobject/</guid>
+    <description><![CDATA[GObject 数据结构 GObject 是基对象类型，在GObject结构体中的所有字段都是私有的，无法直接访问。 从 GLib2.72开始，GObject都至少与最大的基]]></description>
+</item><item>
     <title>GVariant规范1.0</title>
     <link>https://dingjingmaster.github.io/2022/12/0001-gvariant%E8%A7%84%E8%8C%831.0/</link>
     <pubDate>Tue, 20 Dec 2022 21:56:13 &#43;0800</pubDate>
@@ -67,12 +74,5 @@
     <author>作者</author>
     <guid>https://dingjingmaster.github.io/2022/11/0012-%E9%98%B2%E6%AD%A2%E7%A8%8B%E5%BA%8F%E8%A2%ABhook%E7%9A%84%E6%96%B9%E6%B3%95/</guid>
     <description><![CDATA[最近需要实现一个外发阻断的功能，简单点就是给要外发的程序添加Hook，在外发前做数据检查，检查通过后才允许外发，然而实现过程中才发现，给某个]]></description>
-</item><item>
-    <title>计算机网络组成原理</title>
-    <link>https://dingjingmaster.github.io/2022/10/0003-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/</link>
-    <pubDate>Sat, 01 Oct 2022 21:23:03 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://dingjingmaster.github.io/2022/10/0003-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/</guid>
-    <description><![CDATA[计算机网络，说复杂，其实也简单。把它看成一个平面，实际上只有两种物理元素：链路和节点。 计算机网络的通信过程就是在链路和节点上实现的。为了实现]]></description>
 </item></channel>
 </rss>

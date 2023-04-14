@@ -4,7 +4,14 @@
         <link>https://dingjingmaster.github.io/categories/gnome/</link>
         <description>gnome - 分类 - 九九</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>dingjing@live.cn (ding jing)</managingEditor>
-            <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Tue, 20 Dec 2022 21:56:13 &#43;0800</lastBuildDate><atom:link href="https://dingjingmaster.github.io/categories/gnome/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Sun, 08 Jan 2023 21:35:22 &#43;0800</lastBuildDate><atom:link href="https://dingjingmaster.github.io/categories/gnome/" rel="self" type="application/rss+xml" /><item>
+    <title>GObject</title>
+    <link>https://dingjingmaster.github.io/2023/01/0002-gobject/</link>
+    <pubDate>Sun, 08 Jan 2023 21:35:22 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://dingjingmaster.github.io/2023/01/0002-gobject/</guid>
+    <description><![CDATA[GObject 数据结构 GObject 是基对象类型，在GObject结构体中的所有字段都是私有的，无法直接访问。 从 GLib2.72开始，GObject都至少与最大的基]]></description>
+</item><item>
     <title>GVariant规范1.0</title>
     <link>https://dingjingmaster.github.io/2022/12/0001-gvariant%E8%A7%84%E8%8C%831.0/</link>
     <pubDate>Tue, 20 Dec 2022 21:56:13 &#43;0800</pubDate>
