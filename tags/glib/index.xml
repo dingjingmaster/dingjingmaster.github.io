@@ -4,7 +4,14 @@
         <link>https://dingjingmaster.github.io/tags/glib/</link>
         <description>GLib - 标签 - 九九</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>dingjing@live.cn (ding jing)</managingEditor>
-            <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Sun, 08 Jan 2023 21:35:22 &#43;0800</lastBuildDate><atom:link href="https://dingjingmaster.github.io/tags/glib/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Fri, 14 Apr 2023 09:04:30 &#43;0800</lastBuildDate><atom:link href="https://dingjingmaster.github.io/tags/glib/" rel="self" type="application/rss+xml" /><item>
+    <title>GMainLoop</title>
+    <link>https://dingjingmaster.github.io/2023/04/0003-gmainloop/</link>
+    <pubDate>Fri, 14 Apr 2023 09:04:30 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://dingjingmaster.github.io/2023/04/0003-gmainloop/</guid>
+    <description><![CDATA[从g_main_loop_new开始&hellip; 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 GMainLoop* g_main_loop_new (GMainContext* context, gboolean is_running) { GMainLoop *loop; if (!context) context = g_main_context_default(); g_main_context_ref (context); loop = g_new0 (GMainLoop, 1); loop-&gt;context = context; loop-&gt;is_running = is_running !=]]></description>
+</item><item>
     <title>GObject</title>
     <link>https://dingjingmaster.github.io/2023/01/0002-gobject/</link>
     <pubDate>Sun, 08 Jan 2023 21:35:22 &#43;0800</pubDate>

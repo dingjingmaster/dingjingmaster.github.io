@@ -4,7 +4,14 @@
         <link>https://dingjingmaster.github.io/tags/linux/</link>
         <description>linux - 标签 - 九九</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>dingjing@live.cn (ding jing)</managingEditor>
-            <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Thu, 13 Apr 2023 15:31:50 &#43;0800</lastBuildDate><atom:link href="https://dingjingmaster.github.io/tags/linux/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Fri, 14 Apr 2023 09:04:30 &#43;0800</lastBuildDate><atom:link href="https://dingjingmaster.github.io/tags/linux/" rel="self" type="application/rss+xml" /><item>
+    <title>GMainLoop</title>
+    <link>https://dingjingmaster.github.io/2023/04/0003-gmainloop/</link>
+    <pubDate>Fri, 14 Apr 2023 09:04:30 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://dingjingmaster.github.io/2023/04/0003-gmainloop/</guid>
+    <description><![CDATA[从g_main_loop_new开始&hellip; 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 GMainLoop* g_main_loop_new (GMainContext* context, gboolean is_running) { GMainLoop *loop; if (!context) context = g_main_context_default(); g_main_context_ref (context); loop = g_new0 (GMainLoop, 1); loop-&gt;context = context; loop-&gt;is_running = is_running !=]]></description>
+</item><item>
     <title>Qemu与KVM</title>
     <link>https://dingjingmaster.github.io/2023/04/0002-qemu%E4%B8%8Ekvm/</link>
     <pubDate>Thu, 13 Apr 2023 15:31:50 &#43;0800</pubDate>
@@ -67,12 +74,5 @@
     <author>作者</author>
     <guid>https://dingjingmaster.github.io/2022/09/0008-linux%E5%86%85%E6%A0%B8%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/</guid>
     <description><![CDATA[书中内容基于 kernel-2.6.34 版本内核，书籍名《Linux内核设计与实现》 Linux内核简介 kernel许可协议 linux kernel 基于 (GPL v2)作为限制条款，保障每个人都可]]></description>
-</item><item>
-    <title>Linux Fstab配置每列含义</title>
-    <link>https://dingjingmaster.github.io/2022/08/0011-linux-fstab%E9%85%8D%E7%BD%AE%E6%AF%8F%E5%88%97%E5%90%AB%E4%B9%89/</link>
-    <pubDate>Mon, 01 Aug 2022 17:17:36 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://dingjingmaster.github.io/2022/08/0011-linux-fstab%E9%85%8D%E7%BD%AE%E6%AF%8F%E5%88%97%E5%90%AB%E4%B9%89/</guid>
-    <description><![CDATA[列数 含义 1 设备名 2 挂载点 3 文件系统格式(比如:ext, ext2, msdos, iso9660, nfs, swap), 字段来源:/proc/filesytems 4 挂载参数，详细看 man mount，不]]></description>
 </item></channel>
 </rss>

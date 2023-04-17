@@ -4,7 +4,14 @@
         <link>https://dingjingmaster.github.io/posts/</link>
         <description>所有文章 | 九九</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>dingjing@live.cn (ding jing)</managingEditor>
-            <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Thu, 13 Apr 2023 15:31:50 &#43;0800</lastBuildDate><atom:link href="https://dingjingmaster.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Fri, 14 Apr 2023 09:04:30 &#43;0800</lastBuildDate><atom:link href="https://dingjingmaster.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>GMainLoop</title>
+    <link>https://dingjingmaster.github.io/2023/04/0003-gmainloop/</link>
+    <pubDate>Fri, 14 Apr 2023 09:04:30 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://dingjingmaster.github.io/2023/04/0003-gmainloop/</guid>
+    <description><![CDATA[从g_main_loop_new开始&hellip; 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 GMainLoop* g_main_loop_new (GMainContext* context, gboolean is_running) { GMainLoop *loop; if (!context) context = g_main_context_default(); g_main_context_ref (context); loop = g_new0 (GMainLoop, 1); loop-&gt;context = context; loop-&gt;is_running = is_running !=]]></description>
+</item><item>
     <title>Qemu与KVM</title>
     <link>https://dingjingmaster.github.io/2023/04/0002-qemu%E4%B8%8Ekvm/</link>
     <pubDate>Thu, 13 Apr 2023 15:31:50 &#43;0800</pubDate>
@@ -67,12 +74,5 @@
     <author>作者</author>
     <guid>https://dingjingmaster.github.io/2022/12/0001-gvariant%E8%A7%84%E8%8C%831.0/</guid>
     <description><![CDATA[概念 根据需求，GVariant必须与DBus消息总线系统(在[DBus]中指定)基本兼容。 为此，GVariant中使用的类型系统与DBus中]]></description>
-</item><item>
-    <title>防止程序被Hook的方法</title>
-    <link>https://dingjingmaster.github.io/2022/11/0012-%E9%98%B2%E6%AD%A2%E7%A8%8B%E5%BA%8F%E8%A2%ABhook%E7%9A%84%E6%96%B9%E6%B3%95/</link>
-    <pubDate>Wed, 16 Nov 2022 14:34:21 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://dingjingmaster.github.io/2022/11/0012-%E9%98%B2%E6%AD%A2%E7%A8%8B%E5%BA%8F%E8%A2%ABhook%E7%9A%84%E6%96%B9%E6%B3%95/</guid>
-    <description><![CDATA[最近需要实现一个外发阻断的功能，简单点就是给要外发的程序添加Hook，在外发前做数据检查，检查通过后才允许外发，然而实现过程中才发现，给某个]]></description>
 </item></channel>
 </rss>
