@@ -4,7 +4,14 @@
         <link>https://dingjingmaster.github.io/posts/</link>
         <description>所有文章 | 九九</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>dingjing@live.cn (ding jing)</managingEditor>
-            <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Fri, 14 Apr 2023 09:04:30 &#43;0800</lastBuildDate><atom:link href="https://dingjingmaster.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Sat, 15 Apr 2023 11:10:23 &#43;0800</lastBuildDate><atom:link href="https://dingjingmaster.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>0001 基础</title>
+    <link>https://dingjingmaster.github.io/2023/04/0001-%E5%9F%BA%E7%A1%80/</link>
+    <pubDate>Sat, 15 Apr 2023 11:10:23 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://dingjingmaster.github.io/2023/04/0001-%E5%9F%BA%E7%A1%80/</guid>
+    <description><![CDATA[对称算法 给定一个明文和一个密钥，加密产生密文，其长度和明文大致相同。解密时，使用读密钥与加密密钥相同。 电子密码本模式 Electronic Code Book(ECB) 这种模式是最早采用]]></description>
+</item><item>
     <title>GMainLoop</title>
     <link>https://dingjingmaster.github.io/2023/04/0003-gmainloop/</link>
     <pubDate>Fri, 14 Apr 2023 09:04:30 &#43;0800</pubDate>
@@ -67,12 +74,5 @@
     <author>作者</author>
     <guid>https://dingjingmaster.github.io/2023/01/0002-gobject/</guid>
     <description><![CDATA[GObject 数据结构 GObject 是基对象类型，在GObject结构体中的所有字段都是私有的，无法直接访问。 从 GLib2.72开始，GObject都至少与最大的基]]></description>
-</item><item>
-    <title>GVariant规范1.0</title>
-    <link>https://dingjingmaster.github.io/2022/12/0001-gvariant%E8%A7%84%E8%8C%831.0/</link>
-    <pubDate>Tue, 20 Dec 2022 21:56:13 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://dingjingmaster.github.io/2022/12/0001-gvariant%E8%A7%84%E8%8C%831.0/</guid>
-    <description><![CDATA[概念 根据需求，GVariant必须与DBus消息总线系统(在[DBus]中指定)基本兼容。 为此，GVariant中使用的类型系统与DBus中]]></description>
 </item></channel>
 </rss>
