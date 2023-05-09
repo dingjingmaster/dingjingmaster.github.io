@@ -4,10 +4,24 @@
         <link>https://dingjingmaster.github.io/</link>
         <description>九九</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>dingjing@live.cn (ding jing)</managingEditor>
-            <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Sat, 15 Apr 2023 11:10:23 &#43;0800</lastBuildDate>
+            <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Tue, 09 May 2023 16:09:47 &#43;0800</lastBuildDate>
             <atom:link href="https://dingjingmaster.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
-    <title>0001 基础</title>
+    <title>C&#43;&#43;二进制兼容</title>
+    <link>https://dingjingmaster.github.io/2023/05/0014-cc-%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%85%BC%E5%AE%B9/</link>
+    <pubDate>Tue, 09 May 2023 16:09:47 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://dingjingmaster.github.io/2023/05/0014-cc-%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%85%BC%E5%AE%B9/</guid>
+    <description><![CDATA[什么是二进制兼容 二进制兼容ABI（application binary interface）主要指动态库文件单独升级，现有用到老动态库的应用程序是否受到影]]></description>
+</item><item>
+    <title>GObject使用——常见宏</title>
+    <link>https://dingjingmaster.github.io/2023/04/0004-gobject%E4%BD%BF%E7%94%A8/</link>
+    <pubDate>Sun, 16 Apr 2023 10:47:09 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://dingjingmaster.github.io/2023/04/0004-gobject%E4%BD%BF%E7%94%A8/</guid>
+    <description><![CDATA[GObject 常用宏 G_TYPE_IS_OBJECT(type) 说明：检查传入的类型type是否为G_TYPE_OBJECT或其派生 1 #define G_TYPE_IS_OBJECT(type) (G_TYPE_FUNDAMENTAL (type) == G_TYPE_OBJECT) G_OBJECT(obj) 说明：将GObject或派生GObject的子]]></description>
+</item><item>
+    <title>openssl加解密基础</title>
     <link>https://dingjingmaster.github.io/2023/04/0001-%E5%9F%BA%E7%A1%80/</link>
     <pubDate>Sat, 15 Apr 2023 11:10:23 &#43;0800</pubDate>
     <author>作者</author>
@@ -62,19 +76,5 @@
     <author>作者</author>
     <guid>https://dingjingmaster.github.io/2023/01/0012-alsa/</guid>
     <description><![CDATA[ALSA是什么 ALSA(Advanced Linux Sound Architecture)是linux上主流的音频结构，提供了对音频和MIDI的支持，在没有出现ALSA架构之前，一直使]]></description>
-</item><item>
-    <title>ncurses入门</title>
-    <link>https://dingjingmaster.github.io/2023/01/0001-ncurses%E5%85%A5%E9%97%A8/</link>
-    <pubDate>Wed, 11 Jan 2023 21:03:48 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://dingjingmaster.github.io/2023/01/0001-ncurses%E5%85%A5%E9%97%A8/</guid>
-    <description><![CDATA[简介 在电传终端的旧时代，终端远离计算机，通过串行电缆与计算机连接。终端可以通过发送一系列字节来配置。终端的所有功能(如移动光标到一个新的位置]]></description>
-</item><item>
-    <title>GObject</title>
-    <link>https://dingjingmaster.github.io/2023/01/0002-gobject/</link>
-    <pubDate>Sun, 08 Jan 2023 21:35:22 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://dingjingmaster.github.io/2023/01/0002-gobject/</guid>
-    <description><![CDATA[GObject 数据结构 GObject 是基对象类型，在GObject结构体中的所有字段都是私有的，无法直接访问。 从 GLib2.72开始，GObject都至少与最大的基]]></description>
 </item></channel>
 </rss>
