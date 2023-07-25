@@ -4,7 +4,28 @@
         <link>https://dingjingmaster.github.io/posts/</link>
         <description>所有文章 | 九九</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>dingjing@live.cn (ding jing)</managingEditor>
-            <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Tue, 09 May 2023 16:09:47 &#43;0800</lastBuildDate><atom:link href="https://dingjingmaster.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Mon, 24 Jul 2023 16:18:33 &#43;0800</lastBuildDate><atom:link href="https://dingjingmaster.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Intel架构介绍</title>
+    <link>https://dingjingmaster.github.io/2023/07/0009-intel%E6%9E%B6%E6%9E%84/</link>
+    <pubDate>Mon, 24 Jul 2023 16:18:33 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://dingjingmaster.github.io/2023/07/0009-intel%E6%9E%B6%E6%9E%84/</guid>
+    <description><![CDATA[简介 术语 英特尔®架构 包括微处理器和支持的硬件的组合，这些硬件为各种计算系统创建了构建块。 尽管该体系结构非常简单，但对于没有英特尔体系结构经验]]></description>
+</item><item>
+    <title>LXD</title>
+    <link>https://dingjingmaster.github.io/2023/07/0015-lxd/</link>
+    <pubDate>Mon, 03 Jul 2023 21:16:03 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://dingjingmaster.github.io/2023/07/0015-lxd/</guid>
+    <description><![CDATA[简介 LXD 是一个现代、安全、强大的系统容器和虚拟机管理器。 它为在容器或虚拟机中运行和管理完整的Linux系统提供了统一的体验。LXD为大量Lin]]></description>
+</item><item>
+    <title>Launchpad搭建</title>
+    <link>https://dingjingmaster.github.io/2023/07/0014-launchpad%E6%90%AD%E5%BB%BA/</link>
+    <pubDate>Mon, 03 Jul 2023 21:15:03 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://dingjingmaster.github.io/2023/07/0014-launchpad%E6%90%AD%E5%BB%BA/</guid>
+    <description><![CDATA[环境 Ubuntu 20.04服务器版（注意：16.04之前不支持了，22.04也不支持，截止2023-07-04支持的最新操作系统是20.04） python3.5 + LXD 容]]></description>
+</item><item>
     <title>C&#43;&#43;二进制兼容</title>
     <link>https://dingjingmaster.github.io/2023/05/0014-cc-%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%85%BC%E5%AE%B9/</link>
     <pubDate>Tue, 09 May 2023 16:09:47 &#43;0800</pubDate>
@@ -53,26 +74,5 @@
     <author>作者</author>
     <guid>https://dingjingmaster.github.io/2023/02/0003-ncurses-api/</guid>
     <description><![CDATA[add_wch 在窗口中添加复杂字符串，然后移动光标 1 2 3 4 5 6 7 8 9 #include &lt;curses.h&gt; int add_wch( const cchar_t *wch ); int wadd_wch( WINDOW *win, const cchar_t *wch ); int mvadd_wch( int y, int x, const cchar_t *wch ); int mvwadd_wch( WINDOW *win, int y, int x, const cchar_t *wch ); int echo_wchar( const cchar_t]]></description>
-</item><item>
-    <title>ncurses使用中需要明确的点</title>
-    <link>https://dingjingmaster.github.io/2023/02/0002-ncurses%E4%BD%BF%E7%94%A8%E4%B8%AD%E9%9C%80%E8%A6%81%E6%98%8E%E7%A1%AE%E7%9A%84%E7%82%B9/</link>
-    <pubDate>Sun, 05 Feb 2023 21:44:56 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://dingjingmaster.github.io/2023/02/0002-ncurses%E4%BD%BF%E7%94%A8%E4%B8%AD%E9%9C%80%E8%A6%81%E6%98%8E%E7%A1%AE%E7%9A%84%E7%82%B9/</guid>
-    <description><![CDATA[ncurses 与 curses ncurses 完全兼容旧的 curses，它们表示同一个函数库 initscr() 初始化终端，清空屏幕，为 当前窗口(stdscr) 和其它数据结构分配内存。 refresh() 对stds]]></description>
-</item><item>
-    <title>UOS添加菜单项</title>
-    <link>https://dingjingmaster.github.io/2023/02/0013-uos%E6%B7%BB%E5%8A%A0%E8%8F%9C%E5%8D%95%E9%A1%B9/</link>
-    <pubDate>Sat, 04 Feb 2023 15:16:02 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://dingjingmaster.github.io/2023/02/0013-uos%E6%B7%BB%E5%8A%A0%E8%8F%9C%E5%8D%95%E9%A1%B9/</guid>
-    <description><![CDATA[需求背景 近来我做的项目需要在 UOS 文件管理器右键菜单添加几个菜单项，后来通过公司找到 UOS 同事，他们提供了两种解决方案给我且都可满足需求。本文接下来]]></description>
-</item><item>
-    <title>Linux音频体系结构——ALSA</title>
-    <link>https://dingjingmaster.github.io/2023/01/0012-alsa/</link>
-    <pubDate>Sat, 28 Jan 2023 10:17:23 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://dingjingmaster.github.io/2023/01/0012-alsa/</guid>
-    <description><![CDATA[ALSA是什么 ALSA(Advanced Linux Sound Architecture)是linux上主流的音频结构，提供了对音频和MIDI的支持，在没有出现ALSA架构之前，一直使]]></description>
 </item></channel>
 </rss>

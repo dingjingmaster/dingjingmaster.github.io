@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Intel架构介绍 - 九九</title><meta name="Description" content=""><meta property="og:title" content="Intel架构介绍" />
+<meta property="og:description" content="简介 术语 英特尔®架构 包括微处理器和支持的硬件的组合，这些硬件为各种计算系统创建了构建块。 尽管该体系结构非常简单，但对于没有英特尔体系结构经验" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dingjingmaster.github.io/2023/07/0009-intel%E6%9E%B6%E6%9E%84/" /><meta property="og:image" content="https://dingjingmaster.github.io/img/logo.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-07-24T16:18:33+08:00" />
+<meta property="article:modified_time" content="2023-07-24T16:18:33+08:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://dingjingmaster.github.io/img/logo.jpg"/>
+
+<meta name="twitter:title" content="Intel架构介绍"/>
+<meta name="twitter:description" content="简介 术语 英特尔®架构 包括微处理器和支持的硬件的组合，这些硬件为各种计算系统创建了构建块。 尽管该体系结构非常简单，但对于没有英特尔体系结构经验"/>
+<meta name="application-name" content="九九">
+<meta name="apple-mobile-web-app-title" content="九九"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://dingjingmaster.github.io/2023/07/0009-intel%E6%9E%B6%E6%9E%84/" /><link rel="prev" href="https://dingjingmaster.github.io/2023/07/0015-lxd/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Intel架构介绍",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/dingjingmaster.github.io\/2023\/07\/0009-intel%E6%9E%B6%E6%9E%84\/"
+        },"image": ["https:\/\/dingjingmaster.github.io\/img\/logo.jpg"],"genre": "posts","keywords": "linux","wordcount":  7956 ,
+        "url": "https:\/\/dingjingmaster.github.io\/2023\/07\/0009-intel%E6%9E%B6%E6%9E%84\/","datePublished": "2023-07-24T16:18:33+08:00","dateModified": "2023-07-24T16:18:33+08:00","publisher": {
+            "@type": "Organization",
+            "name": "九九","logo": "https:\/\/dingjingmaster.github.io\/img\/logo.jpg"},"author": {
+                "@type": "Person",
+                "name": "ding jing"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="九九"><span class="header-title-pre"> </span>九九</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/timeline/"> 时间轴 </a><a class="menu-item" href="https://github.com/dingjingmaster" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="九九"><span class="header-title-pre"> </span>九九</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/timeline/" title="">时间轴</a><a class="menu-item" href="https://github.com/dingjingmaster" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Intel架构介绍</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>ding jing</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/linux/"><i class="far fa-folder fa-fw"></i>linux</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-07-24">2023-07-24</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 7956 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 16 分钟&nbsp;<span id="/2023/07/0009-intel%E6%9E%B6%E6%9E%84/" class="leancloud_visitors" data-flag-title="Intel架构介绍">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#简介">简介</a></li>
+    <li><a href="#缩写">缩写</a></li>
+    <li><a href="#什么是-intel-架构">什么是 &ldquo;Intel&rdquo; 架构</a>
+      <ul>
+        <li><a href="#intel-结构说明">Intel 结构说明</a></li>
+      </ul>
+    </li>
+    <li><a href="#intel-架构系统基础知识">Intel 架构系统基础知识</a></li>
+    <li><a href="#基于intel-core-i7处理器的系统">基于Intel Core i7处理器的系统</a>
+      <ul>
+        <li><a href="#intel-core-i7处理器">Intel Core i7处理器</a></li>
+        <li><a href="#dmiintels-direct-media-interface">DMI(Intel&rsquo;s Direct Media Interface)</a></li>
+        <li><a href="#pch平台控制中心">PCH(平台控制中心)</a></li>
+        <li><a href="#现代io接口">现代I/O接口</a></li>
+        <li><a href="#兼容性外围设备">兼容性外围设备</a></li>
+        <li><a href="#bios">BIOS</a></li>
+      </ul>
+    </li>
+    <li><a href="#基于intel-atom处理器的系统">基于Intel Atom处理器的系统</a>
+      <ul>
+        <li><a href="#intel-atom-处理器">Intel Atom 处理器</a></li>
+      </ul>
+    </li>
+    <li><a href="#新设计的工具">新设计的工具</a></li>
+    <li><a href="#结论">结论</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="简介">简介</h2>
+<p>术语 <strong>英特尔®架构</strong> 包括微处理器和支持的硬件的组合，这些硬件为各种计算系统创建了构建块。</p>
+<p>尽管该体系结构非常简单，但对于没有英特尔体系结构经验的工程师、程序员或产品开发人员来说，可能并不清除这些组件的工作方式。本文以三个实例系统为例，介绍了相关组件的基本操作和功能。具体来说，本文将重点介绍Intel®Core™i7处理器(高性能)和Intel®Atom™处理器(低功耗)的实现。</p>
+<p>本文将引导读者了解微处理器与内存和外设I/O设备通信的操作，不同类型组件之间的交互以及相关的设计准则。</p>
+<h2 id="缩写">缩写</h2>
+<p>上图用到的一些缩写</p>
+<ol>
+<li>BIOS:</li>
+<li>DDR3: DRAM接口标准</li>
+<li>DMI: 直接存储器接口，视频图形标准</li>
+<li>FIVR: 全集成稳压器</li>
+<li>LPC: 低速引脚数，用于连接低速I/O设备</li>
+<li>PCH: 平台控制器中心;配套芯片</li>
+<li>PCI: 外围器件互连;一种受欢迎的扩展总线</li>
+<li>PCIe: 一种升级的 PCI 总线标准</li>
+<li>SATA: 串行 ATA，一种流行的磁盘接口标准</li>
+<li>SPI: 串行外设接口;适用于较慢设备的一种简单接口</li>
+<li>CPU</li>
+<li>BLDK</li>
+<li>DMI</li>
+<li>FSB</li>
+<li>FSP</li>
+<li>GLCI</li>
+<li>ICH</li>
+<li>LPC</li>
+<li>MCH</li>
+<li>PCH</li>
+<li>PCI</li>
+<li>PCIe</li>
+<li>QPI</li>
+<li>SPI</li>
+<li>UEFI</li>
+<li>x86</li>
+</ol>
+<h2 id="什么是-intel-架构">什么是 &ldquo;Intel&rdquo; 架构</h2>
+<p>英特尔®是世界上历史最悠久的微处理器公司，生产世界上最受欢迎的微处理器芯片。尽管英特尔最出名的可能是其PC处理器，但它的设备几乎应用于电子产品的各个领域，包括汽车、工业、自动化、机器人、消费电子、图像处理、网络、加密、军事、建筑、医疗、能源和其他行业。</p>
+<p>不熟悉英特尔体系结构的设计人员可能会担心体系结构的基本概念、内部工作原理或复杂性。本文的目标是培训以前没有接触过Intel体系结构的熟练开发人员，并提供有关系统组件和概念的指导。</p>
+<h3 id="intel-结构说明">Intel 结构说明</h3>
+<p>自1971年第一个微型英特尔4004微处理器芯片问世以来，英特尔对微处理器家族进行了一系列不间断的升级和改进。从最初的8位开始，现在的英特尔架构包含了一系列32位和64位微处理器，以满足一系列应用程序，性能要求，功率水平和价格点。</p>
+<p>英特尔架构受欢迎的基石是它的兼容性。每一代英特尔架构微处理器都是其前身的超集，提供对旧芯片和旧软件的向后兼容性，同时还增加了新的或增强的功能。这种兼容性允许工程师、程序员和开发团队重用来自早期项目的软件和软件开发工具，保护他们在时间和人才上的投资。它还通过利用开发人员的经验，使开发新的基于英特尔的系统变得更加容易。软件可以在几代产品之间重用，产品团队可以以一种低成本的方式保护他们的投资(硬件和软件)。尽管为了利用最新的微处理器功能，可能需要重新做适配工作，但即使不做任何工作，旧软件仍将按原样工作。</p>
+<p>在过去的40多年里，英特尔架构芯片显然经历了许多变化。早期的芯片被赋予一些特殊编号，如8086、80386或80486，这些芯片统一称为“x86架构”(参考每个芯片部件号的最后两位数字)。从1993年开始，“x86”命名惯例让位于更容易记住(和发音)的产品名称，如Intel®Pentium®处理器、Intel®Celeron®处理器、Intel®Core™处理器和Intel®Atom™处理器。</p>
+<p>尽管广泛的英特尔架构(或x86)家族树的每个分支都保留了与早期芯片相同的基本特性和功能，并保留了与它们的向后兼容性，但每一代新芯片也都添加了自己独特的特性。例如，英特尔奔腾处理器增加了多媒体扩展(称为MMX™技术)，可以加速音频和视频处理。采用MMX技术的扩展英特尔奔腾处理器具有更多的流媒体功能，称为英特尔®Streaming SIMD Extensions(英特尔®SSE)和英特尔®Streaming SIMD Extensions 2(英特尔®SSE2)。浮点单元(fpu)从可选升级到英特尔架构处理器的标准功能，如今加/解密扩展、电源管理功能和多级缓存，这些特性在现在的大多数英特尔架构处理器上都可以找到。数据带宽已经从8位扩展到32位、64位，甚至128位甚至更多。工作频率已经从几兆赫兹跃升到2GHz(每秒20亿次循环)甚至更高。</p>
+<p>同样，许多英特尔®架构芯片现在都拥有多核性能，这意味着两个或更多的英特尔架构处理器内核或“引擎”被集成在单个芯片中运行。许多还提供多线程技术，这种技术旨在通过允许单个英特尔架构核心执行多个任务来提高性能。除此之外，Intel处理器芯片在功耗和散热方面也有很好的控制，这要归功于不断优化的片上电源管理硬件(其中一些可以通过软件调节)和行业领先的半导体制造技术。对英特尔架构技术特性的深入描述可以在英特尔软件开发人员手册中找到。</p>
+<p>虽然处理器的能力越来越强，但在支持逻辑、开发工具和完全集成的硬件“平台”方面也有类似的进步。每个英特尔架构处理器都由一个或多个芯片组支持，这些芯片组提供所需的系统级功能，一些英特尔架构处理器还包括它们自己的集成功能，如内存控制器、图形引擎或网络接口。有时“芯片组”是内部的，处理器成为一个独立的SoC -芯片上的系统。</p>
+<h2 id="intel-架构系统基础知识">Intel 架构系统基础知识</h2>
+<p>当然，每个客户应用程序的硬件需求是不同的，但有一些基本要求适用于所有应用程序。除了少数例外，处理器不是独立的，而是与兼容的支持芯片协同工作。不同的英特尔架构处理器使用不同的支持芯片，本文概述了两个具有代表性的示例。</p>
+<p>第一个示例描述了一个基于高性能Intel®Core™i7处理器的典型硬件平台，该处理器结合了类似的高性能支持逻辑(参见图1)。第二个示例侧重于一个小型的、低成本的基于Intel Atom处理器的系统(参见图2)。</p>
+<div align=center><img src='/pic/linux/intel-1.png'/></div>
+<center>图1 典型的系统基于Intel®Core™i7处理器</center>
+<div align=center><img src='/pic/linux/intel-2.png'/></div>
+<center>图2 典型的系统基于Intel®Atom处理器(Soc)</center>
+<p>一般来说，每个英特尔架构硬件平台将包括两个主要组件:微处理器芯片和称为平台控制器集线器(PCH)的配套芯片。在早期，英特尔®处理器与两个配套芯片配对，通常称为“北桥”和“南桥”，或MCH和ICH。如今，北桥的功能通常包含在处理器本身中，而南桥已被功能更强大的PCH所取代。在单芯片(SoC)配置中，没有PCH，它的功能包含在处理器本身中。</p>
+<p>围绕这两个组件(即处理器和PCH)的是其他外围组件，包括DRAM、引导ROM、电源和适合系统的外围接口，例如网络或传感器连接。大多数系统还将包括一些非易失性存储器(例如闪存或E2PROM)。</p>
+<p>正如这些图表所示，其中一个示例系统基于双芯片集(处理器和PCH)，而第二个示例仅使用带有集成控制器的单个芯片(处理器)。前者是为了更高的性能和更大的扩展能力而设计的，而后者是为了小尺寸和低成本而优化的。这些例子只突出了英特尔体系结构系统设计人员可用的众多选项中的两个。</p>
+<h2 id="基于intel-core-i7处理器的系统">基于Intel Core i7处理器的系统</h2>
+<p>图1中的示例说明了一个基于四核Intel酷睿i7处理器、Intel®Q87芯片组(Intel®DH82Q87 PCH)、两组外部DDR3 DRAM以及几个外围设备和接口的高性能系统。这种配置代表了一个具有最高性能、最大能力和可扩展性的高端系统。</p>
+<h3 id="intel-core-i7处理器">Intel Core i7处理器</h3>
+<p>该系统设计的核心是Intel®Core™i7-4770S处理器，这是Intel架构的高端64位实现。图中所示的第四代处理器，或“Haswell”，英特尔酷睿i7处理器有几个显著的特点，包括:</p>
+<ul>
+<li>4个独立的CPU内核</li>
+<li>每个CPU核心的双向多线程</li>
+<li>内置双通道DDR3 DRAM控制器</li>
+<li>集成L1、L2、L3缓存</li>
+<li>直接媒体接口(DMI)连接处理器和PCH</li>
+</ul>
+<p>英特尔酷睿i7处理器通过其多个CPU内核和同步多线程(SMT)功能实现其高性能。在四个核心(在本例中)和每个核心的双向多线程之间，英特尔酷睿i7处理器在软件上显示为八个独立的64位cpu。图3显示了Intel Core i7处理器的硅片，突出显示了四个独立的CPU内核和其他特性。图4显示了同一处理器的概念图，说明了四个cpu如何拥有自己的L1和L2缓存，以及共享的L3缓存。</p>
+<div align=center><img src='/pic/linux/intel-3.png'/></div>
+<center>图3 Intel Core i7处理器硅片</center>
+<div align=center><img src='/pic/linux/intel-4.png'/></div>
+<center>图4 Intel Core i7处理器内部框图</center>
+<p>处理器的片上DRAM控制器负责缓存一致性。如果所请求地址的数据不在处理器的缓存中，或者外部存储器中的数据比缓存的副本更新，则内存控制器被告知检索所请求地址的数据。处理器和内存之间的数据传输总是64位宽，这是处理器上二级缓存的全部宽度。如果只请求一个字节的数据，则检索完整的64位，但处理器可能只使用其中的8位。内存控制器可通过BIOS进行配置，以支持多种速度和/或内存大小。在初始配置之后，DRAM刷新也由内存控制器处理。所支持的内存的具体类型、大小和速度因处理器而异。</p>
+<p>PCIe (PCI Express)接口是Intel架构系统中带宽最大的I/O接口。PCIe通道的数量可以根据所使用的处理器而变化，但通常是4的倍数。PCIe的通用宽度是16通道，因为这是分立PCIe显卡的最大宽度。PCIe接口使用与DMI相同的差分信号，但PCIe支持更高的传输速率。原始PCIe规范规定的数据速率为每通道2.5 GT/sec (250 MB/sec)，与DMI相同。第二代PCIe将数据速率提高了一倍，达到5gt /sec (500mb /sec)。</p>
+<h3 id="dmiintels-direct-media-interface">DMI(Intel&rsquo;s Direct Media Interface)</h3>
+<p>DMI是指英特尔酷睿i7处理器与其配套芯片英特尔Q87芯片组(英特尔®DH82Q87 PCH)之间的<strong>链接</strong>。相同的DMI接口可用于多种不同的处理器和PCH实现，包括英特尔酷睿i7-4770S，英特尔酷睿i5-4570S，英特尔酷睿i3-4330处理器，英特尔奔腾处理器G3420，英特尔Q87芯片组，英特尔H81 Express芯片组和英特尔C226芯片组。DMI总线是两个芯片之间的高速点对点连接，如图所示。它与Intel®QuickPath Interconnect (Intel®QPI)的不同之处在于它只支持两个芯片:一个处理器和一个PCH，而Intel QPI用于具有两个或更多处理器的多插槽配置。DMI支持在两个单向通道中的每一个上的2gb /秒的传输速率。</p>
+<p>DMI由四个串行链路实现，具有专用的发送和接收引脚。这些串行链路被称为“通道”，并且都使用差分信号。因此，DMI是4通道×发送和接收(2)×差分信号(2)= 16引脚。DMI支持25亿次传输/秒的信令。(其他实现DMI 2.0的芯片可能达到5gt /秒)</p>
+<p>DMI还集成了基于优先级的高级服务，允许并发通信和同步传输功能，从而提高了较早的QPI接口的性能。这确保I/O子系统(PCI Express、音频、SATA、USB等)接收到峰值性能所需的带宽。</p>
+<h3 id="pch平台控制中心">PCH(平台控制中心)</h3>
+<p>平台控制器集线器(PCH)芯片是一种高度集成的器件，旨在为中高端系统提供所需的所有高价值功能和接口。根据PCH芯片的特定型号，它可以提供多个DRAM的控制器，多个图形显示器的控制器(加速器可能存在于处理器本身)，几个USB接口，磁盘驱动器和其他存储介质的SATA控制器，以太网LAN端口，英特尔®高清音频(英特尔®HD音频)等等。</p>
+<div align=center><img src='/pic/linux/intel-5.png'/></div>
+<center>图5 PCH内部框图</center>
+<p>如图5所示，PCH直接连接到处理器的DMI接口，不需要开发人员进行额外的工程设计，只需连接到适当的引脚即可。</p>
+<p>PCH本身是一个复杂的软件可编程组件，具有几个增强系统性能和可靠性的功能。其中主要有:</p>
+<ul>
+<li>PCI Express根端口控制器。以Intel Q87芯片组(Intel®DH82Q87 PCH)为例，PCH最多支持8个PCI Express 2.0根端口，支持高达5gt/秒(每秒50亿次传输)。</li>
+<li>多达6个SATA端口，集成AHCI控制器，所有端口的数据速率为6.0,3.0和1.5Gb/秒。</li>
+<li>支持10/100/1000mbit/sec数据速率和巨型帧的IEEE 802.3以太网LAN MAC。</li>
+<li>Intel®虚拟化技术(Intel®VT)用于定向I/O (Intel®VT-d);英特尔®防盗技术(Intel®AT);Intel®可信执行技术(Intel®TXT)</li>
+<li>时钟控制器，DMA控制器，事件计时器，实时时钟，JTAG边界扫描，可信平台模块(TPM)的低引脚计数接口，串行外设接口(SPI)，以及更多。</li>
+</ul>
+<h3 id="现代io接口">现代I/O接口</h3>
+<p>PCH作为各种工业标准接口的桥接或控制器，允许系统设计人员从广泛的外设中进行选择，包括:</p>
+<ul>
+<li>PCI接口工作频率为33MHz，并支持多个外部总线主机。PCH充当PCI总线的中心仲裁器和PCI总线根。</li>
+<li>PCI Express根端口控制器。不同PCH组件的端口数不同，一般为1 ~ 4个。链接宽度×1 ×4支持2.5 GT/秒的速度。</li>
+<li>串行ATA(SATA)控制器支持使用I/O空间的传统操作和使用内存映射I/O的高级主机控制器接口(AHCI)，以及允许热插拔和本机命令队列等高级功能。SATA II支持1.5Gb/s和3gb/s的数据速率。</li>
+<li>集成驱动电子(IDE)控制器也用于控制硬盘驱动器和CD/DVD驱动器。在一些平台上，它们已经被更新的SATA接口所取代，因为SATA在更小的接口上提供了更好的性能。</li>
+<li>通用串行总线(USB)支持高速USB2.0(480 Mb/s)操作以及全速(12 Mb/s)和低速信号。</li>
+<li>通用I/O(GPIO)引脚用于系统定制。许多引脚也可以配置为引起中断或唤醒事件。</li>
+<li>系统管理总线(SMBus 2.0) SMBus主机接口允许处理器与SMBus从机通信。该接口也兼容大多数I2C设备。实现了从功能，包括主机通知协议。</li>
+<li>SPI (Serial Peripheral Interface)用于连接包含引导固件和初始化代码的BIOS flash设备。最多可以连接两个工作在33MHz的SPI闪存设备。请注意，连接到LPC接口的闪存设备很快就会过时，SPI有望成为将来BIOS闪存的标准接口。PCH始终是SPI接口上的主接口。</li>
+<li>低引脚计数接口(LPC)该接口取代了最初由IBM在20世纪80年代早期开发的ISA总线，但仅使用7个信号加一个时钟。它可以用来连接到各种低速设备，不需要PCI或PCI Express的带宽。该接口通常用于与包含许多接口的超级I/O设备接口，如软盘驱动器控制器，PS2键盘/鼠标控制和串行端口。</li>
+<li>JTAG边界扫描允许在组装后测试PCB板。支持外设PCH集成了许多支持外设，取代了许多外部组件。</li>
+<li>实时时钟(RTC): RTC与流行的MC146818A兼容。它包含256字节的RAM，可以用3V电池维持。在这些空间中，有242个字节可供程序员使用，而其余的则专用于时钟功能。RTC可以在未来30天内生成唤醒事件。操作需要一个外部32.768khz晶体。</li>
+<li>高精度事件计时器这些是高分辨率计时器，可用于生成周期性或一次性中断。有8个比较器，它们共享一个来自14.31818MHz源的公共计数器。</li>
+<li>高级可编程中断控制器(APIC)是一个比早期的82C59更现代的中断控制器(见下文)。它通过允许将中断定向到特定的处理器来支持多处理器/多核中断管理。PCH中的I/O APIC可以支持多达24个中断向量，并与其他设备中的I/O APIC一起工作，以帮助消除多个设备之间共享中断的需要。</li>
+</ul>
+<h3 id="兼容性外围设备">兼容性外围设备</h3>
+<p>PCH包含与最早的带有ISA总线的IBM pc兼容的外设。现代系统用低引脚数(LPC)总线取代ISA总线，但曾经是分立组件的外设现在集成到PCH中。英特尔架构的一个关键优势是它的向后兼容性和持续创新的结合。</p>
+<p>PCH包含两个82C37 DMA控制器，两个isa兼容的82C59中断控制器和三个82C54可编程间隔定时器。</p>
+<p>不应将82C37 DMA控制器与一些早期MCH(内存控制器集线器)组件中的DMA引擎混淆。这些DMA控制器被绑定到ISA/LPC总线，主要用于传输到/从慢速设备，如软盘控制器。isa兼容的82C59中断控制器已经在很大程度上被高级可编程中断控制器(APIC，见上文)所取代，因为它提供了超过15个中断源的支持，并支持多核/多处理器系统。然而，82C59控制器仍然被一些仅在单处理器(单个CPU)系统上运行的旧操作系统所使用。</p>
+<h3 id="bios">BIOS</h3>
+<p>像任何计算机一样，英特尔体系结构系统需要一个引导ROM来引导处理器，并可选地加载操作系统和配置组件。在Intel体系结构系统中，这个引导ROM通常被称为BIOS:基本输入/输出系统。</p>
+<p>BIOS控制Intel架构硬件的活动，直到操作系统接管。BIOS的一项工作是配置寄存器和组件，并根据英特尔架构所设计的系统硬件的细节设置设备。在典型的PC设计中，一些硬件是基于主板设计的专用设计，但其他硬件方面根据最终用户可能插入主板的内容而变化。</p>
+<p>当BIOS执行时，初始配置完成后，它将确定内存的类型和数量，然后进入发现阶段。一旦所有的设备和硬件配置完毕，BIOS将把系统的控制权交给操作系统。</p>
+<p>许多Intel架构平台都已经安装了必要的引导固件。要为自定义或更新的系统创建引导ROM，英特尔提供了其英特尔®引导加载程序开发工具包(英特尔®BLDK)，可用于创建与许多操作系统兼容的uefi兼容(统一可扩展固件接口)引导加载程序。</p>
+<p>对于功能更低的引导加载程序，英特尔®固件支持包(英特尔®FSP)可能足够了。英特尔FSP包括免版税代码，支持英特尔架构处理器和芯片组的最关键功能。如果需要，英特尔FSP代码可以包含在功能更全面的uefi兼容引导加载程序中。</p>
+<h2 id="基于intel-atom处理器的系统">基于Intel Atom处理器的系统</h2>
+<p>与上面描述的基于英特尔酷睿i7处理器的系统相比，基于英特尔Atom处理器的系统几乎非常简单。本示例基于英特尔®Atom™处理器E3800产品系列，该产品系列已集成了所有必要的控制器和外围设备，无需配套芯片。请参见图2了解此系统配置的概述。</p>
+<h3 id="intel-atom-处理器">Intel Atom 处理器</h3>
+<p>英特尔Atom处理器是英特尔体系结构家族32位处理器的最新成员。它适用于尺寸小、功耗适中、成本低的嵌入式系统。因此，英特尔Atom处理器包括其自己的片上DRAM控制器、PCI Express接口、可选显示控制器、USB控制器、实时时钟、计时器、系统管理功能接口。因此，整个系统具有体积小、集成度高的特点。</p>
+<p>由于没有DMI(也不需要DMI)， Intel Atom处理器使用PCI Express作为其主要的扩展方式。PCIe具有足够的带宽来实现广泛的扩展能力，其标准化接口兼容多个厂商的许多设备。</p>
+<p>与英特尔酷睿i7处理器一样，英特尔凌动处理器E3800产品家族也有自己的片上DRAM控制器，能够处理两个通道的DDR3 DRAM。一个通道可选支持ECC(纠错)，进一步提高系统可靠性。</p>
+<h2 id="新设计的工具">新设计的工具</h2>
+<p>本节概述了一些参考文档，这些文档可以帮助您进行英特尔架构设计。这些文档中的许多都可以在 <a href="http://developer.intel.com/design/index.htm" target="_blank" rel="noopener noreffer">http://developer.intel.com/design/index.htm</a> 上找到。其他可能需要保密协议(NDA)，并将通过您的销售代表提供。</p>
+<p>Intel®嵌入式设计中心站点(<a href="http://edc.intel.com" target="_blank" rel="noopener noreffer">http://edc.intel.com</a>)还提供了丰富的信息、文档和与其他Intel架构开发人员的双向通信。</p>
+<p>平台设计指南在保密协议下提供，并给出详细的印刷电路板设计建议，包括PCB堆叠，阻抗目标，材料选择和布局建议。</p>
+<p>平台参考原理图给出了一个实例系统的植入。</p>
+<p>热与机械设计指南涵盖散热器设计建议和封装/插座附件到印刷电路板。</p>
+<p>数据表(处理器)包含英特尔处理器的电气，热和包装机械信息。</p>
+<p>数据表(MCH/IOH/ICH/PCH)包含设备的功能和寄存器描述。输出和包装机械信息也包括在内。电气规格可能在数据表中或可能需要保密协议。</p>
+<p>英特尔®64和IA-32架构软件开发人员手册这些手册描述了英特尔®64和IA-32处理器的架构和编程环境。</p>
+<p>规范更新包含勘误表列表和对其他文档的最新更改。应始终查阅规范更新以获取最新可用信息。</p>
+<p>英特尔的封装数据手册旨在仅作为英特尔封装选择和可用性的数据参考指南。由于包装环境变化非常迅速，信息可能很快就会过时。请参考产品网站上的产品规格，以获取最新的详细包装信息。</p>
+<h2 id="结论">结论</h2>
+<p>英特尔架构为各种系统提供了一个完整的、经过深思熟虑的启动点。它涵盖了一系列的特性、性能和功率级别。跨不同代和不同产品系列重用软件和软件工具的能力对产品团队来说是一个巨大的好处，并使设计人员能够在不重写新软件的情况下扩展性能和功能。英特尔架构系统的基本构建块是高度集成的，使系统设计尽可能简单。英特尔提供了设计前沿产品所需的所有资源，因此请访问http://www.intel.com并开始创建。</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2023-07-24</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/linux/">linux</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/2023/07/0015-lxd/" class="prev" rel="prev" title="LXD"><i class="fas fa-angle-left fa-fw"></i>LXD</a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2017 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">ding jing</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="/lib/lightgallery/lightgallery.min.css"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script type="text/javascript" src="/lib/valine/Valine.min.js"></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/algoliasearch/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/twemoji/twemoji.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lightgallery.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-thumbnail.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-zoom.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":9999999999},"comment":{"valine":{"appId":"oGOJ6TSiiaaOrhXD1bEYILk9-gzGzoHsz","appKey":"lbK71uSxpg4XmLmvm2h13JdJ","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"serverURLs":"https://ogoj6tsi.lc-cn-n1-shared.com","visitor":true}},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.zh-cn","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":80,"type":"algolia"},"twemoji":true};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

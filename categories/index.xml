@@ -1,0 +1,78 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Categories - 分类 - 九九</title>
+        <link>https://dingjingmaster.github.io/categories/</link>
+        <description>Categories - 分类 - 九九</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>dingjing@live.cn (ding jing)</managingEditor>
+            <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Mon, 24 Jul 2023 16:18:33 &#43;0800</lastBuildDate><atom:link href="https://dingjingmaster.github.io/categories/" rel="self" type="application/rss+xml" /><item>
+    <title>linux</title>
+    <link>https://dingjingmaster.github.io/categories/linux/</link>
+    <pubDate>Mon, 24 Jul 2023 16:18:33 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://dingjingmaster.github.io/categories/linux/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>c&amp;c&#43;&#43;</title>
+    <link>https://dingjingmaster.github.io/categories/cc&#43;&#43;/</link>
+    <pubDate>Tue, 09 May 2023 16:09:47 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://dingjingmaster.github.io/categories/cc&#43;&#43;/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>gnome</title>
+    <link>https://dingjingmaster.github.io/categories/gnome/</link>
+    <pubDate>Sun, 16 Apr 2023 10:47:09 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://dingjingmaster.github.io/categories/gnome/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>openssl</title>
+    <link>https://dingjingmaster.github.io/categories/openssl/</link>
+    <pubDate>Sat, 15 Apr 2023 11:10:23 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://dingjingmaster.github.io/categories/openssl/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>qemu</title>
+    <link>https://dingjingmaster.github.io/categories/qemu/</link>
+    <pubDate>Thu, 13 Apr 2023 15:31:50 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://dingjingmaster.github.io/categories/qemu/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>qt</title>
+    <link>https://dingjingmaster.github.io/categories/qt/</link>
+    <pubDate>Mon, 13 Mar 2023 08:28:17 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://dingjingmaster.github.io/categories/qt/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>ncurses</title>
+    <link>https://dingjingmaster.github.io/categories/ncurses/</link>
+    <pubDate>Mon, 06 Feb 2023 22:39:18 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://dingjingmaster.github.io/categories/ncurses/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>uos</title>
+    <link>https://dingjingmaster.github.io/categories/uos/</link>
+    <pubDate>Sat, 04 Feb 2023 15:16:02 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://dingjingmaster.github.io/categories/uos/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>system</title>
+    <link>https://dingjingmaster.github.io/categories/system/</link>
+    <pubDate>Sat, 01 Oct 2022 21:23:03 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://dingjingmaster.github.io/categories/system/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>kernel</title>
+    <link>https://dingjingmaster.github.io/categories/kernel/</link>
+    <pubDate>Fri, 30 Sep 2022 21:49:23 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://dingjingmaster.github.io/categories/kernel/</guid>
+    <description><![CDATA[]]></description>
+</item></channel>
+</rss>

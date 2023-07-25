@@ -4,7 +4,28 @@
         <link>https://dingjingmaster.github.io/categories/linux/</link>
         <description>linux - 分类 - 九九</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>dingjing@live.cn (ding jing)</managingEditor>
-            <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Mon, 06 Feb 2023 22:39:18 &#43;0800</lastBuildDate><atom:link href="https://dingjingmaster.github.io/categories/linux/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Mon, 24 Jul 2023 16:18:33 &#43;0800</lastBuildDate><atom:link href="https://dingjingmaster.github.io/categories/linux/" rel="self" type="application/rss+xml" /><item>
+    <title>Intel架构介绍</title>
+    <link>https://dingjingmaster.github.io/2023/07/0009-intel%E6%9E%B6%E6%9E%84/</link>
+    <pubDate>Mon, 24 Jul 2023 16:18:33 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://dingjingmaster.github.io/2023/07/0009-intel%E6%9E%B6%E6%9E%84/</guid>
+    <description><![CDATA[简介 术语 英特尔®架构 包括微处理器和支持的硬件的组合，这些硬件为各种计算系统创建了构建块。 尽管该体系结构非常简单，但对于没有英特尔体系结构经验]]></description>
+</item><item>
+    <title>LXD</title>
+    <link>https://dingjingmaster.github.io/2023/07/0015-lxd/</link>
+    <pubDate>Mon, 03 Jul 2023 21:16:03 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://dingjingmaster.github.io/2023/07/0015-lxd/</guid>
+    <description><![CDATA[简介 LXD 是一个现代、安全、强大的系统容器和虚拟机管理器。 它为在容器或虚拟机中运行和管理完整的Linux系统提供了统一的体验。LXD为大量Lin]]></description>
+</item><item>
+    <title>Launchpad搭建</title>
+    <link>https://dingjingmaster.github.io/2023/07/0014-launchpad%E6%90%AD%E5%BB%BA/</link>
+    <pubDate>Mon, 03 Jul 2023 21:15:03 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://dingjingmaster.github.io/2023/07/0014-launchpad%E6%90%AD%E5%BB%BA/</guid>
+    <description><![CDATA[环境 Ubuntu 20.04服务器版（注意：16.04之前不支持了，22.04也不支持，截止2023-07-04支持的最新操作系统是20.04） python3.5 + LXD 容]]></description>
+</item><item>
     <title>ncurses API</title>
     <link>https://dingjingmaster.github.io/2023/02/0003-ncurses-api/</link>
     <pubDate>Mon, 06 Feb 2023 22:39:18 &#43;0800</pubDate>
@@ -53,26 +74,5 @@
     <author>作者</author>
     <guid>https://dingjingmaster.github.io/2022/07/0009-vmware%E8%BD%ACqemu/</guid>
     <description><![CDATA[从 windows 换成 linux 之后发现 vmware 在linux 下运行很卡，于是考虑使用 qemu，图形界面开源安装 virt-manager 方便使用，而 vmware 的虚拟磁盘用的是 vmdk， 需要转为qemu]]></description>
-</item><item>
-    <title>Linux挂载qcow2</title>
-    <link>https://dingjingmaster.github.io/2022/07/0010-linux%E6%8C%82%E8%BD%BDqcow2/</link>
-    <pubDate>Sun, 24 Jul 2022 22:02:25 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://dingjingmaster.github.io/2022/07/0010-linux%E6%8C%82%E8%BD%BDqcow2/</guid>
-    <description><![CDATA[确定linux是否有nbd模块 1 modinfo nbd 插入nbd 模块 1 sudo modprobe nbd 使用qemu-nbd 工具关联 qcow2 文件和 nbd 设备节点 1 sudo qemu-nbd -c /dev/nbd0 &lt;qcow2的路径&]]></description>
-</item><item>
-    <title>BPF与eBPF</title>
-    <link>https://dingjingmaster.github.io/2022/06/0001-bpf%E4%B8%8Eebpf/</link>
-    <pubDate>Wed, 29 Jun 2022 11:02:30 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://dingjingmaster.github.io/2022/06/0001-bpf%E4%B8%8Eebpf/</guid>
-    <description><![CDATA[BPF与eBPF是什么 BPF(Berkeley Packet Filter)，伯克利数据包过滤器，这项技术诞生于 1992 年，其作用是提升网络包过滤工具的性能，2014年正式加入Lin]]></description>
-</item><item>
-    <title>polkit 相关命令</title>
-    <link>https://dingjingmaster.github.io/2022/06/0003-polkit-%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4/</link>
-    <pubDate>Tue, 07 Jun 2022 19:55:26 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://dingjingmaster.github.io/2022/06/0003-polkit-%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4/</guid>
-    <description><![CDATA[pkcheck 检查进程是否被授权 说明 pkcheck用于检查进程(由&ndash;process(见下文)或&ndash;system-bus-name指]]></description>
 </item></channel>
 </rss>

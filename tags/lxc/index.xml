@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>lxc - 标签 - 九九</title>
+        <link>https://dingjingmaster.github.io/tags/lxc/</link>
+        <description>lxc - 标签 - 九九</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>dingjing@live.cn (ding jing)</managingEditor>
+            <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Mon, 03 Jul 2023 21:16:03 &#43;0800</lastBuildDate><atom:link href="https://dingjingmaster.github.io/tags/lxc/" rel="self" type="application/rss+xml" /><item>
+    <title>LXD</title>
+    <link>https://dingjingmaster.github.io/2023/07/0015-lxd/</link>
+    <pubDate>Mon, 03 Jul 2023 21:16:03 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://dingjingmaster.github.io/2023/07/0015-lxd/</guid>
+    <description><![CDATA[简介 LXD 是一个现代、安全、强大的系统容器和虚拟机管理器。 它为在容器或虚拟机中运行和管理完整的Linux系统提供了统一的体验。LXD为大量Lin]]></description>
+</item></channel>
+</rss>

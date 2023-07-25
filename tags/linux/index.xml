@@ -4,7 +4,28 @@
         <link>https://dingjingmaster.github.io/tags/linux/</link>
         <description>linux - 标签 - 九九</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>dingjing@live.cn (ding jing)</managingEditor>
-            <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Sun, 16 Apr 2023 10:47:09 &#43;0800</lastBuildDate><atom:link href="https://dingjingmaster.github.io/tags/linux/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Mon, 24 Jul 2023 16:18:33 &#43;0800</lastBuildDate><atom:link href="https://dingjingmaster.github.io/tags/linux/" rel="self" type="application/rss+xml" /><item>
+    <title>Intel架构介绍</title>
+    <link>https://dingjingmaster.github.io/2023/07/0009-intel%E6%9E%B6%E6%9E%84/</link>
+    <pubDate>Mon, 24 Jul 2023 16:18:33 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://dingjingmaster.github.io/2023/07/0009-intel%E6%9E%B6%E6%9E%84/</guid>
+    <description><![CDATA[简介 术语 英特尔®架构 包括微处理器和支持的硬件的组合，这些硬件为各种计算系统创建了构建块。 尽管该体系结构非常简单，但对于没有英特尔体系结构经验]]></description>
+</item><item>
+    <title>LXD</title>
+    <link>https://dingjingmaster.github.io/2023/07/0015-lxd/</link>
+    <pubDate>Mon, 03 Jul 2023 21:16:03 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://dingjingmaster.github.io/2023/07/0015-lxd/</guid>
+    <description><![CDATA[简介 LXD 是一个现代、安全、强大的系统容器和虚拟机管理器。 它为在容器或虚拟机中运行和管理完整的Linux系统提供了统一的体验。LXD为大量Lin]]></description>
+</item><item>
+    <title>Launchpad搭建</title>
+    <link>https://dingjingmaster.github.io/2023/07/0014-launchpad%E6%90%AD%E5%BB%BA/</link>
+    <pubDate>Mon, 03 Jul 2023 21:15:03 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://dingjingmaster.github.io/2023/07/0014-launchpad%E6%90%AD%E5%BB%BA/</guid>
+    <description><![CDATA[环境 Ubuntu 20.04服务器版（注意：16.04之前不支持了，22.04也不支持，截止2023-07-04支持的最新操作系统是20.04） python3.5 + LXD 容]]></description>
+</item><item>
     <title>GObject使用——常见宏</title>
     <link>https://dingjingmaster.github.io/2023/04/0004-gobject%E4%BD%BF%E7%94%A8/</link>
     <pubDate>Sun, 16 Apr 2023 10:47:09 &#43;0800</pubDate>
@@ -53,26 +74,5 @@
     <author>作者</author>
     <guid>https://dingjingmaster.github.io/2023/01/0001-ncurses%E5%85%A5%E9%97%A8/</guid>
     <description><![CDATA[简介 在电传终端的旧时代，终端远离计算机，通过串行电缆与计算机连接。终端可以通过发送一系列字节来配置。终端的所有功能(如移动光标到一个新的位置]]></description>
-</item><item>
-    <title>GObject</title>
-    <link>https://dingjingmaster.github.io/2023/01/0002-gobject/</link>
-    <pubDate>Sun, 08 Jan 2023 21:35:22 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://dingjingmaster.github.io/2023/01/0002-gobject/</guid>
-    <description><![CDATA[GObject 数据结构 GObject 是基对象类型，在GObject结构体中的所有字段都是私有的，无法直接访问。 从 GLib2.72开始，GObject都至少与最大的基]]></description>
-</item><item>
-    <title>GVariant规范1.0</title>
-    <link>https://dingjingmaster.github.io/2022/12/0001-gvariant%E8%A7%84%E8%8C%831.0/</link>
-    <pubDate>Tue, 20 Dec 2022 21:56:13 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://dingjingmaster.github.io/2022/12/0001-gvariant%E8%A7%84%E8%8C%831.0/</guid>
-    <description><![CDATA[概念 根据需求，GVariant必须与DBus消息总线系统(在[DBus]中指定)基本兼容。 为此，GVariant中使用的类型系统与DBus中]]></description>
-</item><item>
-    <title>Linux Kernel学习准备</title>
-    <link>https://dingjingmaster.github.io/2022/09/1000-kernel%E5%AD%A6%E4%B9%A0%E5%87%86%E5%A4%87/</link>
-    <pubDate>Fri, 30 Sep 2022 21:49:23 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>https://dingjingmaster.github.io/2022/09/1000-kernel%E5%AD%A6%E4%B9%A0%E5%87%86%E5%A4%87/</guid>
-    <description><![CDATA[Linux 内核工程师 岗位分布 互联网 云计算 安全 OS发行商 芯片原厂 技能点 内存管理、调度、实时性 进程、同步与并发 存储、文件系统 网络子系统 虚拟化、区块链、容]]></description>
 </item></channel>
 </rss>

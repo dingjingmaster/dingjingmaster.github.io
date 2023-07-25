@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>launchpad - 标签 - 九九</title>
+        <link>https://dingjingmaster.github.io/tags/launchpad/</link>
+        <description>launchpad - 标签 - 九九</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>dingjing@live.cn (ding jing)</managingEditor>
+            <webMaster>dingjing@live.cn (ding jing)</webMaster><lastBuildDate>Mon, 03 Jul 2023 21:15:03 &#43;0800</lastBuildDate><atom:link href="https://dingjingmaster.github.io/tags/launchpad/" rel="self" type="application/rss+xml" /><item>
+    <title>Launchpad搭建</title>
+    <link>https://dingjingmaster.github.io/2023/07/0014-launchpad%E6%90%AD%E5%BB%BA/</link>
+    <pubDate>Mon, 03 Jul 2023 21:15:03 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://dingjingmaster.github.io/2023/07/0014-launchpad%E6%90%AD%E5%BB%BA/</guid>
+    <description><![CDATA[环境 Ubuntu 20.04服务器版（注意：16.04之前不支持了，22.04也不支持，截止2023-07-04支持的最新操作系统是20.04） python3.5 + LXD 容]]></description>
+</item></channel>
+</rss>
